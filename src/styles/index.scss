@@ -1,0 +1,36 @@
+@import "./reset.css";
+@import "./_var.scss";
+
+body {
+  background: #ffffff;
+  font-family: "Golos Text", sans-serif;
+  position: relative;
+  height: 100%;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+a {
+  transition: all 0.25s ease-in;
+  text-decoration: none;
+}
+
+svg {
+  transition: all 0.25s ease-in;
+}
+
+path {
+  transition: all 0.25s ease-in;
+}
+.wrapper {
+  max-width: 1400px;
+  padding: 0 20px;
+  margin: 0 auto;
+  position: relative;
+}
