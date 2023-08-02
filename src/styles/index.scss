@@ -37,6 +37,7 @@ path {
 }
 
 .default-button {
+  display: inline-block;
   padding: 18px 30px;
   font-size: 16px;
   font-weight: 400;
@@ -62,3 +63,4 @@ path {
 }
 
 @import "./_select.scss";
+@import "./_slider.scss";

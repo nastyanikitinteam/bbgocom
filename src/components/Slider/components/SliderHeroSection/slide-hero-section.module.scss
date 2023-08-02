@@ -1,0 +1,18 @@
+.container {
+  min-height: 493px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 86px 30px 86px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+}
