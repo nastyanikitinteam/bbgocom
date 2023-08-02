@@ -1,28 +1,26 @@
 import { useMemo } from "react";
 import Link from "next/link";
-import Select from "react-select";
 import Account from "./Account/Account";
-
 import styles from "./header.module.scss";
 import LogoSvg from "images/main/logo.svg";
 import StarSvg from "images/icons/star.svg";
-import LanguageSvg from "images/icons/language.svg";
 
 import cn from "classnames";
+import Select from "components/Select/Select";
 
 const Header = () => {
   const langList = [
     {
       value: "EN",
-      label: <div className="default-item">EN</div>,
+      label: "EN",
     },
     {
       value: "RU",
-      label: <div className="default-item">RU</div>,
+      label: "RU",
     },
     {
       value: "TH",
-      label: <div className="default-item">TH</div>,
+      label: "TH",
     },
   ];
 
@@ -57,20 +55,14 @@ const Header = () => {
             </div>
 
             <div className={styles.language}>
-              <span className={styles.icon}>
-                <LanguageSvg />
-              </span>
-              <Select
-                options={langList}
-                defaultValue={langList[0]}
-                className={cn("default-select language-select", styles.lang)}
-                classNamePrefix="default"
-                isSearchable={false}
-              />
+              <Select options={langList} classname="language-select" language />
             </div>
             <div className={styles.account}>
               <Account />
             </div>
+            <a href="#" className="default-button sm">
+              Create an Ad
+            </a>
           </div>
         </div>
       </div>
