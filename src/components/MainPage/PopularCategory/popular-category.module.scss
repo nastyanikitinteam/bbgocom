@@ -1,0 +1,39 @@
+.container {
+  padding-top: 130px;
+}
+
+.blocks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 40px -20px -40px;
+}
+.block {
+  width: calc(14.285% - 40px);
+  margin: 0 20px 40px;
+}
+
+.all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  color: #808080;
+  margin-top: 50px;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25s ease-in;
+  }
+  &.open .icon {
+    transform: rotate(-180deg);
+  }
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
+  }
+}

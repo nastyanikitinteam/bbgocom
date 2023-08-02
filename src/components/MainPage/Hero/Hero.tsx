@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import Slider from "../../Slider/Slider";
 import styles from "./hero.module.scss";
+import cn from "classnames";
 
 import slideBg1 from "images/main-page/slide-img-1.png";
 
@@ -32,12 +33,12 @@ const Hero = () => {
   );
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className="wrapper">
         {/* <Slider slides={sliderList} isHeroSection /> */}
         <Slider slides={sliderList} isHeroSection />
       </div>
-    </div>
+    </section>
   );
 };
 

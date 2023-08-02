@@ -1,0 +1,41 @@
+.container {
+  text-align: center;
+}
+
+.block {
+  &:hover {
+    .title {
+      color: #5bb75f;
+    }
+    img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.image {
+  border-radius: 50%;
+  overflow: hidden;
+  img {
+    transition: all 0.7s ease-in;
+  }
+}
+
+.title {
+  margin-top: 20px;
+  transition: all 0.25s ease-in;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.item {
+  color: #808080;
+  &:hover {
+    color: #5bb75f;
+  }
+}
