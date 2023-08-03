@@ -1,10 +1,10 @@
 import { useMemo, FC, useRef, useEffect } from "react";
+import { Pagination } from "swiper/modules";
 import {
   Swiper as SwiperComponent,
   SwiperSlide,
   SwiperProps,
 } from "swiper/react";
-import { Pagination } from "swiper/modules";
 import SliderHeroSection from "./components/SliderHeroSection/SliderHeroSection";
 
 // Import Swiper styles
@@ -24,7 +24,6 @@ const Swiper: FC<IProps> = ({ slides, isHeroSection, isCardProduct }) => {
     () => ({
       slidesPerView: 1,
       spaceBetween: 30,
-      className: "serve-swiper",
       modules: [Pagination],
       pagination: {
         modifierClass: "default-",

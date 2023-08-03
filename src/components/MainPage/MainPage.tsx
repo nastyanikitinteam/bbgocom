@@ -5,6 +5,7 @@ import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
 import LatestDeals from "./LatestDeals/LatestDeals";
 import PopularSearches from "./PopularSearches/PopularSearches";
 import WantSell from "./WantSell/WantSell";
+import Testimonials from "./Testimonials/Testimonials";
 
 import styles from "./main-page.module.scss";
 
@@ -18,6 +19,7 @@ const MainPage = () => {
       <LatestDeals />
       <PopularSearches />
       <WantSell />
+      <Testimonials />
     </div>
   );
 };
