@@ -1,0 +1,49 @@
+.block {
+  border-radius: 25px;
+  background: linear-gradient(186deg, #338c37 0%, #62c068 100%);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 100px 0 80px 120px;
+  overflow: hidden;
+}
+
+.info {
+  max-width: 644px;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.title {
+  color: #fff;
+  font-size: 100px;
+  font-weight: 500;
+  line-height: 90px;
+  letter-spacing: -5px;
+  flex-grow: 1;
+  span {
+    color: #cdffbf;
+  }
+}
+
+.text {
+  margin-top: 20px;
+  color: #cdffbf;
+  margin-bottom: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.image {
+  max-width: 596px;
+  width: 100%;
+  position: relative;
+  img {
+    position: absolute;
+    max-width: none;
+    width: 166%;
+    top: -330px;
+    left: -170px;
+  }
+}

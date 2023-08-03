@@ -81,6 +81,13 @@ path {
     background: #ebfaec;
     color: #d8d8d8;
   }
+  &.white {
+    background: #fff;
+    color: #000;
+    &:hover {
+      box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.15);
+    }
+  }
 }
 
 .title {
