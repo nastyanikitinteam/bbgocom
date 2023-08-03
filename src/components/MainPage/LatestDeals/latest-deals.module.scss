@@ -1,0 +1,36 @@
+.blocks {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.block {
+  width: calc(20% - 16px);
+}
+
+.all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  color: #808080;
+  margin-top: 50px;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25s ease-in;
+  }
+  &.open .icon {
+    transform: rotate(-180deg);
+  }
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
+  }
+}

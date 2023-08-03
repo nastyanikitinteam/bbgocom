@@ -1,5 +1,6 @@
 import { useMemo, FC } from "react";
 import styles from "./card-product.module.scss";
+import cn from "classnames";
 
 import Slider from "../Slider/Slider";
 
@@ -13,6 +14,7 @@ interface IProps {
   price: string;
   oldPrice?: string;
   location: string;
+  isGreenCard?: boolean;
 }
 
 const CardProduct: FC<IProps> = ({
@@ -21,9 +23,10 @@ const CardProduct: FC<IProps> = ({
   price,
   oldPrice,
   location,
+  isGreenCard,
 }) => {
   return (
-    <div className={styles.container}>
+    <div className={cn(styles.container, { [styles.green]: isGreenCard })}>
       <div className={styles.wishlist}>
         <StarIcon />
       </div>

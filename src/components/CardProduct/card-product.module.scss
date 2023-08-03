@@ -1,6 +1,20 @@
 .container {
   position: relative;
   height: 100%;
+  &.green {
+    .info {
+      background: #ebfaec;
+      border: none;
+      padding: 20px 20px 28px;
+    }
+    .title {
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: -0.2px;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+    }
+  }
 }
 
 .block {
@@ -47,6 +61,15 @@
 
 .title {
   margin-bottom: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  box-orient: vertical;
 }
 
 .location {
