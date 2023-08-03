@@ -1,5 +1,6 @@
 import Hero from "./Hero/Hero";
 import PopularCategory from "./PopularCategory/PopularCategory";
+import Recommend from "./Recommend/Recommend";
 
 import styles from "./main-page.module.scss";
 
@@ -8,6 +9,7 @@ const MainPage = () => {
     <div>
       <Hero />
       <PopularCategory />
+      <Recommend />
     </div>
   );
 };

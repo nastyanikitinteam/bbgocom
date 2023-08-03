@@ -35,7 +35,6 @@ const Hero = () => {
   return (
     <section className={styles.container}>
       <div className="wrapper">
-        {/* <Slider slides={sliderList} isHeroSection /> */}
         <Slider slides={sliderList} isHeroSection />
       </div>
     </section>

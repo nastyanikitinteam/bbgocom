@@ -1,4 +1,4 @@
-import { useMemo, FC, ReactNode } from "react";
+import { useMemo, FC, useRef, useEffect } from "react";
 import {
   Swiper as SwiperComponent,
   SwiperSlide,
@@ -12,13 +12,14 @@ import "swiper/css";
 // import "swiper/css/pagination";
 
 import styles from "./slider.module.scss";
-
+import cn from "classnames";
 interface IProps {
   slides?: any;
   isHeroSection?: boolean;
+  isCardProduct?: boolean;
 }
 
-const Swiper: FC<IProps> = ({ slides, isHeroSection }) => {
+const Swiper: FC<IProps> = ({ slides, isHeroSection, isCardProduct }) => {
   const params = useMemo(
     () => ({
       slidesPerView: 1,
@@ -26,24 +27,27 @@ const Swiper: FC<IProps> = ({ slides, isHeroSection }) => {
       className: "serve-swiper",
       modules: [Pagination],
       pagination: {
-        el: ".default-pagination",
+        modifierClass: "default-",
         clickable: true,
       },
     }),
     []
   );
+
   return (
-    <div className={styles.container}>
+    <div
+      className={cn(styles.container, { "pagination-center": isCardProduct })}
+    >
       <SwiperComponent {...(params as SwiperProps)}>
         {slides.map((props) => {
           return (
             <SwiperSlide key={props.id}>
-              <SliderHeroSection param={props} />
+              {isHeroSection && <SliderHeroSection param={props} />}
+              {isCardProduct && <img src={props.image} alt="" />}
             </SwiperSlide>
           );
         })}
       </SwiperComponent>
-      <div className={"default-pagination"} />
     </div>
   );
 };

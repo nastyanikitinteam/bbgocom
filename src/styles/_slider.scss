@@ -1,4 +1,4 @@
-.default-pagination.swiper-pagination-bullets {
+.default-bullets {
   position: absolute;
   top: auto;
   bottom: 25px;
@@ -23,5 +23,13 @@
   .swiper-pagination-bullet-active {
     opacity: 1;
     background: #ffffff;
+  }
+}
+
+.pagination-center {
+  .default-bullets {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 15px;
   }
 }
