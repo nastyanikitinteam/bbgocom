@@ -8,12 +8,15 @@ import WantSell from "./WantSell/WantSell";
 import Testimonials from "./Testimonials/Testimonials";
 import Who from "./Who/Who";
 
+import SearchBar from "components/SearchBar/SearchBar";
+
 import styles from "./main-page.module.scss";
 
 const MainPage = () => {
   return (
     <div>
       <Hero />
+      <SearchBar />
       <PopularCategory />
       <Recommend />
       <AdvertisingBanner />

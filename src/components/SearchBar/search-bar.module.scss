@@ -1,0 +1,49 @@
+.container {
+  border-radius: 50px;
+  background: #fff;
+  box-shadow: 0px 45px 80px 0px rgba(21, 40, 61, 0.15);
+  padding: 30px;
+  max-width: 880px;
+  width: 100%;
+  margin: -50px auto 0;
+  z-index: 200;
+  position: sticky;
+  top: -10px;
+  transition: all 0.25s ease-in;
+  &.top {
+    box-shadow: none;
+    background: transparent;
+  }
+}
+
+.blocks {
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.block {
+  border-radius: 20px;
+  border: 1px solid #d8d8d8;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 10px 7px 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+}

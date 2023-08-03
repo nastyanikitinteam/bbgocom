@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import Slider from "../../Slider/Slider";
 import styles from "./hero.module.scss";
 import cn from "classnames";
+import SearchBar from "components/SearchBar/SearchBar";
 
 import slideBg1 from "images/main-page/slide-img-1.png";
 
@@ -36,6 +37,10 @@ const Hero = () => {
     <section className={styles.container}>
       <div className="wrapper">
         <Slider slides={sliderList} isHeroSection />
+
+        {/* <div className={styles.searchBar}>
+          <SearchBar />
+        </div> */}
       </div>
     </section>
   );
