@@ -1,0 +1,46 @@
+.blocks {
+  display: flex;
+  justify-content: center;
+  margin: 0 -10px;
+}
+
+.block {
+  padding: 30px 40px 65px 40px;
+  border-radius: 25px;
+  text-align: center;
+  background: #e1f2ff;
+  width: calc(33.333% - 20px);
+  margin: 0 10px;
+  &:nth-child(2) {
+    background: #ffefe0;
+  }
+  &:nth-child(3) {
+    background: #ebfaec;
+  }
+}
+
+.image {
+  max-width: 160px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  margin-bottom: 20px;
+}
+
+.text {
+  color: rgba(#000, 0.5);
+}
+
+.info {
+  text-align: center;
+  margin-top: 40px;
+}
+.button {
+  margin-top: 20px;
+}

@@ -6,6 +6,7 @@ import LatestDeals from "./LatestDeals/LatestDeals";
 import PopularSearches from "./PopularSearches/PopularSearches";
 import WantSell from "./WantSell/WantSell";
 import Testimonials from "./Testimonials/Testimonials";
+import Who from "./Who/Who";
 
 import styles from "./main-page.module.scss";
 
@@ -20,6 +21,7 @@ const MainPage = () => {
       <PopularSearches />
       <WantSell />
       <Testimonials />
+      <Who />
     </div>
   );
 };
