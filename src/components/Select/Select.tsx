@@ -10,10 +10,16 @@ import ArrowSmSvg from "images/icons/drop-sm.svg";
 
 interface IPprops {
   options: any;
-  classname: string;
-  language: boolean;
+  classname?: string;
+  language?: boolean;
+  placeholder?: string;
 }
-const SelectContainer: FC<IPprops> = ({ options, classname, language }) => {
+const SelectContainer: FC<IPprops> = ({
+  options,
+  classname,
+  language,
+  placeholder,
+}) => {
   const DropdownIndicator = (props) => {
     return (
       <components.DropdownIndicator {...props}>
@@ -30,8 +36,9 @@ const SelectContainer: FC<IPprops> = ({ options, classname, language }) => {
       )}
       <Select
         options={options}
-        defaultValue={options[0]}
-        className={cn(`default-select ${classname}`, styles.lang)}
+        defaultValue={!placeholder && options[0]}
+        placeholder={placeholder && placeholder}
+        className={cn(`default-select ${classname}`)}
         classNamePrefix="default"
         isSearchable={false}
         components={{ DropdownIndicator }}

@@ -75,7 +75,9 @@ const SearchBar = () => {
           {isActiveChoice == "Category" && (
             <CategoryMain isSearchBarTop={isSearchBarTop} />
           )}
-          {isActiveChoice == "Price" && <PriceMain />}
+          {isActiveChoice == "Price" && (
+            <PriceMain isSearchBarTop={isSearchBarTop} />
+          )}
           {isActiveChoice == "Location" && <LocationMain />}
           {isActiveChoice == "Search" && <SearchMain />}
         </div>

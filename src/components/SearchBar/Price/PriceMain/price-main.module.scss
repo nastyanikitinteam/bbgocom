@@ -1,0 +1,33 @@
+.container {
+  &.menuTop {
+    max-width: 812px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.blocks {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.clear {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+}
