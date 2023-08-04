@@ -1,11 +1,17 @@
 import { useRef, useContext, useEffect, useState } from "react";
 import ThemeContext from "src/context";
 import cn from "classnames";
+import Category from "./Category/Category";
+import Price from "./Price/Price";
+import SearchLocation from "./SearchLocation/SearchLocation";
+
+import CategoryMain from "./Category/CategoryMain/CategoryMain";
+import PriceMain from "./Price/PriceMain/PriceMain";
+import LocationMain from "./SearchLocation/LocationMain/LocationMain";
+import SearchMain from "./SearchLocation/SearchMain/SearchMain";
+
 import styles from "./search-bar.module.scss";
 
-import ArrowIcon from "images/icons/drop.svg";
-import CatalogIcon from "images/icons/catalog-icon.svg";
-import PriceIcon from "images/icons/price-icon.svg";
 import SearchIcon from "images/icons/search.svg";
 
 const SearchBar = () => {
@@ -14,10 +20,14 @@ const SearchBar = () => {
 
   const [scrollTop, setScrollTop] = useState(0);
   const [isSearchBarTop, setIsSearchBarTop] = useState(false);
+  const [isActiveChoice, setIsActiveChoice] = useState("");
 
   useEffect(() => {
     setHeight(containerRef?.current?.offsetTop);
   }, []);
+  useEffect(() => {
+    console.log(isActiveChoice);
+  }, [isActiveChoice]);
 
   useEffect(() => {
     const handleScroll = (event) => {
@@ -39,32 +49,38 @@ const SearchBar = () => {
 
   return (
     <div
-      className={cn(styles.container, { [styles.top]: isSearchBarTop })}
+      className={cn(
+        styles.container,
+        { [styles.top]: isSearchBarTop },
+        { [styles.active]: isActiveChoice }
+      )}
       ref={containerRef}
     >
       <div className={styles.blocks}>
-        <div className={styles.block}>
-          <span className={styles.icon}>
-            <CatalogIcon />
-          </span>
-          <p>All</p>
-          <span className={styles.arrow}>
-            <ArrowIcon />
-          </span>
-        </div>
-        <div className={styles.block}>
-          <span className={styles.icon}>
-            <PriceIcon />
-          </span>
-          <p>USD 500 - 10500</p>
-          <span className={styles.arrow}>
-            <ArrowIcon />
-          </span>
-        </div>
+        <Category
+          setIsActiveChoice={setIsActiveChoice}
+          isActiveChoice={isActiveChoice}
+        />
+        <SearchLocation
+          setIsActiveChoice={setIsActiveChoice}
+          isActiveChoice={isActiveChoice}
+        />
+        <Price
+          setIsActiveChoice={setIsActiveChoice}
+          isActiveChoice={isActiveChoice}
+        />
         <button className={cn(styles.button, "default-button onlyIcon")}>
           <SearchIcon />
         </button>
       </div>
+      {isActiveChoice && (
+        <div className={styles.main}>
+          {isActiveChoice == "Category" && <CategoryMain />}
+          {isActiveChoice == "Price" && <PriceMain />}
+          {isActiveChoice == "Location" && <LocationMain />}
+          {isActiveChoice == "Search" && <SearchMain />}
+        </div>
+      )}
     </div>
   );
 };
