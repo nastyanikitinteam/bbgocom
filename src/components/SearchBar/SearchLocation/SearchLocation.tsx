@@ -15,7 +15,8 @@ const SearchLocation: FC<IProps> = ({ setIsActiveChoice, isActiveChoice }) => {
     <>
       <div
         className={cn(styles.block, {
-          [styles.active]: isActiveChoice === ("Search" || "Location"),
+          [styles.active]:
+            isActiveChoice === "Search" || isActiveChoice === "Location",
         })}
       >
         <div

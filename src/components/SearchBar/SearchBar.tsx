@@ -25,9 +25,6 @@ const SearchBar = () => {
   useEffect(() => {
     setHeight(containerRef?.current?.offsetTop);
   }, []);
-  useEffect(() => {
-    console.log(isActiveChoice);
-  }, [isActiveChoice]);
 
   useEffect(() => {
     const handleScroll = (event) => {

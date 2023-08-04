@@ -50,10 +50,7 @@ const Testimonials = () => {
       <div className="wrapper">
         <h2 className={cn("title", styles.title)}>Testimonials</h2>
         <div className={styles.slider}>
-          <SwiperComponent
-            {...(params as SwiperProps)}
-            onSlideChange={() => console.log("slide change")}
-          >
+          <SwiperComponent {...(params as SwiperProps)}>
             {reviewList.map((props) => {
               return (
                 <SwiperSlide key={props.id}>

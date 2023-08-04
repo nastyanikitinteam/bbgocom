@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 276px;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px 4px;
+  cursor: pointer;
+  &.active {
+    .title {
+      color: #5bb75f;
+    }
+  }
+}
+
+.title {
+  flex-grow: 1;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.image {
+  max-width: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 12px;
+}
+
+.arrow {
+  transform: rotate(-90deg);
+  margin-left: 12px;
+  path {
+    stroke: #000;
+  }
+}
+
+.main {
+  flex-grow: 1;
+}
