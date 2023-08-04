@@ -3,6 +3,7 @@ import cn from "classnames";
 
 import Currency from "./Currency/Currency";
 import SortBy from "./SortBy/SortBy";
+import Price from "./Price/Price";
 import styles from "./price-main.module.scss";
 
 import DelIcon from "images/icons/del.svg";
@@ -26,6 +27,9 @@ const PriceMain: FC<IProps> = ({ isSearchBarTop }) => {
       <div className={styles.blocks}>
         <Currency />
         <SortBy />
+      </div>
+      <div className={styles.block}>
+        <Price />
       </div>
     </div>
   );

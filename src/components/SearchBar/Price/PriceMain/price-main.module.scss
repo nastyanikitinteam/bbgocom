@@ -1,4 +1,7 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   &.menuTop {
     max-width: 812px;
     width: 100%;
@@ -16,7 +19,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
 }
 
 .clear {
