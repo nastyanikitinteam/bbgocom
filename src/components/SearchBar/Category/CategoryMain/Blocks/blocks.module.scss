@@ -6,6 +6,10 @@
   gap: 20px;
 }
 
+.top {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .block {
   // width: calc(50% - 10px);
   border-radius: 15px;

@@ -1,14 +1,16 @@
 import { FC } from "react";
 import styles from "./blocks.module.scss";
+import cn from "classnames";
 
 import { categoriesList } from "components/Category/config";
 
 interface IProps {
   isActiveCategrory: number;
+  isSearchBarTop: boolean;
 }
-const Blocks: FC<IProps> = ({ isActiveCategrory }) => {
+const Blocks: FC<IProps> = ({ isActiveCategrory, isSearchBarTop }) => {
   return (
-    <div className={styles.container}>
+    <div className={cn(styles.container, { [styles.top]: isSearchBarTop })}>
       {categoriesList.map(({ id, subcategories }) => {
         if (id === isActiveCategrory && subcategories) {
           return subcategories.map(({ id, title, items }) => {
