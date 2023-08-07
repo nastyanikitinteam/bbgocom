@@ -4,6 +4,7 @@ import styles from "./search-location.module.scss";
 
 import SearchIcon from "images/icons/search-icon.svg";
 import MapIcon from "images/icons/map-icon.svg";
+import CloseIcon from "images/icons/close.svg";
 
 interface IProps {
   setIsActiveChoice: (bool: string) => void;
@@ -30,6 +31,16 @@ const SearchLocation: FC<IProps> = ({ setIsActiveChoice, isActiveChoice }) => {
           </span>
           <p>I’m search</p>
         </div>
+
+        <span
+          className={cn(styles.close, {
+            [styles.active]:
+              isActiveChoice === "Search" || isActiveChoice === "Location",
+          })}
+          onClick={() => setIsActiveChoice("")}
+        >
+          <CloseIcon />
+        </span>
         <div
           className={styles.item}
           onClick={() =>
