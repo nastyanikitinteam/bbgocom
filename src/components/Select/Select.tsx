@@ -42,6 +42,7 @@ const SelectContainer: FC<IPprops> = ({
         classNamePrefix="default"
         isSearchable={false}
         components={{ DropdownIndicator }}
+        // menuIsOpen
       />
     </div>
   );

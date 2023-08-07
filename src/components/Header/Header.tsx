@@ -17,6 +17,7 @@ const Header = () => {
   const [scrollTop, setScrollTop] = useState(0);
   const [isHeaderActive, setIsHeaderActive] = useState(false);
   const [isSearchBarTop, setIsSearchBarTop] = useState(false);
+  const [isWishItems, setIsWishItems] = useState(0);
 
   const langList = useMemo(
     () => [
@@ -95,6 +96,9 @@ const Header = () => {
                 <StarSvg />
               </span>
               {!isSearchBarTop && "My Whishlist"}
+              {!isSearchBarTop && isWishItems > 0 && (
+                <span className={styles.num}>{isWishItems}</span>
+              )}
             </div>
 
             <div className={styles.language}>

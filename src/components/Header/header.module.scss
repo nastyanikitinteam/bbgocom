@@ -65,6 +65,8 @@
   align-items: center;
   padding: 0 12px;
   margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
   .icon {
     display: flex;
     justify-content: center;
@@ -75,6 +77,23 @@
     padding: 0;
     .icon {
       margin-right: 0;
+    }
+  }
+  .num {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 10px;
+    border-radius: 7px;
+    background: #5bb75f;
+    margin-left: 8px;
+    color: #fff;
+    padding: 2px 4px;
+    display: inline-block;
+  }
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
     }
   }
 }
