@@ -11,10 +11,14 @@ const Account = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isAvatar, setIsAvatar] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isNewMessages, setIsNewMessages] = useState(3);
 
   return (
     <div className={styles.container}>
       <div className={cn(styles.avatar, { [styles.noAvatar]: !isAvatar })}>
+        {isNewMessages > 0 && (
+          <span className={styles.num}>{isNewMessages}</span>
+        )}
         {isLogin ? (
           isAvatar ? (
             <img src={avatar.src} alt="" />
@@ -26,7 +30,7 @@ const Account = () => {
         )}
       </div>
       <div className={cn(styles.content, { [styles.active]: isOpenMenu })}>
-        <Menu />
+        <Menu isNewMessages={isNewMessages} />
       </div>
     </div>
   );

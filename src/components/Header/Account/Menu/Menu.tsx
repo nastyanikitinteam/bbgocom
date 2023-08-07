@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 import cn from "classnames";
 import styles from "./menu.module.scss";
 
@@ -11,7 +11,11 @@ import AvatarIcon from "images/icons/avatar.svg";
 import ArrowIcon from "images/icons/drop.svg";
 import avatar from "images/main/avatar.png";
 
-const Menu = () => {
+interface IProps {
+  isNewMessages: number;
+}
+
+const Menu: FC<IProps> = ({ isNewMessages }) => {
   const [isAvatar, setIsAvatar] = useState(false);
 
   return (
@@ -46,6 +50,9 @@ const Menu = () => {
             <MessagesIcon />
           </span>
           My messages
+          {isNewMessages > 0 && (
+            <span className={styles.num}>{isNewMessages}</span>
+          )}
         </div>
         <div className={styles.item}>
           <span className={styles.icon}>
