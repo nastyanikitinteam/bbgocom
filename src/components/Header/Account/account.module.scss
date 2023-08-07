@@ -1,7 +1,48 @@
 .avatar {
   min-width: 40px;
   max-width: 40px;
+  height: 40px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
+  background: #5bb75f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  transition: all 0.25s ease-in;
+  &.noAvatar {
+    background: #f5f5f7;
+  }
+}
+
+.container {
+  position: relative;
+  &:hover {
+    .content {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .avatar {
+      border-color: #5bb75f;
+    }
+  }
+}
+
+.content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  max-width: 294px;
+  min-width: 294px;
+  width: 100%;
+  transform: translateX(-50%);
+  padding-top: 10px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.25s ease-in;
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
