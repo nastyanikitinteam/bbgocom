@@ -1,0 +1,39 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clear {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+}
+
+.main {
+  margin-top: 20px;
+}
+
+.item {
+  padding: 16px 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    path {
+      stroke: #808080;
+    }
+  }
+}

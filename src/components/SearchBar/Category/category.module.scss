@@ -12,6 +12,10 @@
   p {
     flex-grow: 1;
   }
+  &:hover {
+    box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.1);
+    border-color: transparent;
+  }
 }
 
 .arrow {
