@@ -27,6 +27,7 @@
   letter-spacing: -0.3px;
   text-align: center;
   transition: all 0.25s ease-in;
+  cursor: pointer;
   &.active {
     background: #5bb75f;
     border-color: #5bb75f;

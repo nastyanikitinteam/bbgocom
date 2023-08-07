@@ -78,3 +78,46 @@
     color: #000;
   }
 }
+
+.customSelect {
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin: 10px 0 15px;
+  .ant-slider-rail {
+    background: #d8d8d8;
+    height: 2px;
+  }
+  .ant-slider-handle {
+    border-radius: 30px;
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    top: calc(50% - 20px);
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMSAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjQxNiAyLjVMMTMuNDE2IDE3LjVNNy41ODI2OCAyLjVMNy41ODI2OCAxNy41IiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEuMTUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K);
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: border 0.25s ease-in;
+    &:after,
+    &:before {
+      display: none;
+    }
+    &:hover {
+      border-color: #38953c;
+    }
+  }
+  .ant-slider-track {
+    height: 2px;
+    background-color: #38953c;
+  }
+  &:hover {
+    .ant-slider-track {
+      background-color: #38953c;
+    }
+    .ant-slider-rail {
+      background: #d8d8d8;
+    }
+  }
+}
