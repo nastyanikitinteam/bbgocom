@@ -105,7 +105,7 @@ const Header = () => {
               <Select options={langList} classname="language-select" language />
             </div>
             <div className={styles.account}>
-              <Account />
+              <Account isHeaderActive={isHeaderActive} />
             </div>
             <a
               href="#"

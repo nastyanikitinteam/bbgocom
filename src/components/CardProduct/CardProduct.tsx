@@ -2,7 +2,7 @@ import { useMemo, FC } from "react";
 import styles from "./card-product.module.scss";
 import cn from "classnames";
 
-import Slider from "../Slider/Slider";
+import Slider from "components/Slider/Slider";
 
 import cover from "images/main/card-product.png";
 import MapIcon from "images/icons/map-icon.svg";

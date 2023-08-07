@@ -27,7 +27,7 @@ const CategoryMain: FC<IProps> = ({ isSearchBarTop }) => {
               onClick={() => setIsActiveCategory(id)}
             >
               <div className={styles.image}>
-                <img src={image} alt="" />{" "}
+                <img src={image} alt="" />
               </div>
               <h3 className={styles.title}>{title}</h3>
               <span className={styles.arrow}>

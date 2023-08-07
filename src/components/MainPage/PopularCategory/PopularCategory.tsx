@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import Category from "components/Category/Category";
+import useMediaQuery from "src/utils/useMediaQuery";
 
 import { categoriesList } from "components/Category/config";
 
@@ -11,15 +12,47 @@ import ArrowSvg from "images/icons/drop.svg";
 const PopularCategory = () => {
   const [isViewAll, setIsViewAll] = useState(false);
   const [isShowCategory, setIsShowCategory] = useState(7);
+  const isSmallLaptop = useMediaQuery(1300);
+  const isTablet = useMediaQuery(998);
+  const isMobile = useMediaQuery(768);
 
   useEffect(() => {
     isViewAll ? setIsShowCategory(categoriesList.length) : setIsShowCategory(7);
   }, [isViewAll]);
 
+  useEffect(() => {
+    if (isMobile) {
+      setIsShowCategory(categoriesList.length);
+    } else if (isTablet) {
+      isViewAll
+        ? setIsShowCategory(categoriesList.length)
+        : setIsShowCategory(5);
+    } else if (isSmallLaptop) {
+      isViewAll
+        ? setIsShowCategory(categoriesList.length)
+        : setIsShowCategory(6);
+    } else {
+      isViewAll
+        ? setIsShowCategory(categoriesList.length)
+        : setIsShowCategory(7);
+    }
+  }, [isSmallLaptop, isTablet]);
+
   return (
     <section className={styles.container}>
-      <div className="wrapper">
-        <h2 className={cn("title", styles.title)}>Popular Categories</h2>
+      <div className={cn("wrapper", styles.wrapper)}>
+        <div className={styles.top}>
+          <h2 className={cn("title", styles.title)}>Popular Categories</h2>
+          {isMobile && (
+            <div className={styles.all}>
+              View all
+              <span className={styles.icon}>
+                <ArrowSvg />
+              </span>
+            </div>
+          )}
+        </div>
+
         <div className={styles.blocks}>
           {categoriesList.map(({ id, title, image, link, items }) => {
             return (
@@ -36,15 +69,17 @@ const PopularCategory = () => {
             );
           })}
         </div>
-        <div
-          className={cn(styles.all, { [styles.open]: isViewAll })}
-          onClick={() => setIsViewAll((prev) => !prev)}
-        >
-          {isViewAll ? "Hide Category" : "View all Category"}
-          <span className={styles.icon}>
-            <ArrowSvg />
-          </span>
-        </div>
+        {!isMobile && (
+          <div
+            className={cn(styles.all, { [styles.open]: isViewAll })}
+            onClick={() => setIsViewAll((prev) => !prev)}
+          >
+            {isViewAll ? "Hide Category" : "View all Category"}
+            <span className={styles.icon}>
+              <ArrowSvg />
+            </span>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -37,6 +37,11 @@
 .swiper.review-swiper {
   overflow: visible;
 }
+
+.swiper.latest-swiper {
+  overflow: visible;
+  max-width: 256px;
+}
 .default-navigation__buttons {
   display: flex;
   justify-content: center;

@@ -16,7 +16,7 @@ const MainPage = () => {
   return (
     <div>
       <Hero />
-      <SearchBar />
+      {/* <SearchBar /> */}
       <PopularCategory />
       <Recommend />
       <AdvertisingBanner />

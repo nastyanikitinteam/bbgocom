@@ -1,5 +1,6 @@
 .container {
   padding-top: 130px;
+  overflow: hidden;
 }
 
 .blocks {
@@ -7,10 +8,12 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: 0px -20px -40px;
+  gap: 40px;
 }
 .block {
   width: calc(14.285% - 40px);
-  margin: 0 20px 40px;
+  // max-width: 160px;
+  margin-bottom: 40px;
 }
 
 .all {
@@ -20,12 +23,13 @@
   cursor: pointer;
   transition: all 0.25s ease-in;
   color: #808080;
-  margin-top: 50px;
+  margin-top: 48px;
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.25s ease-in;
+    margin-left: 8px;
   }
   &.open .icon {
     transform: rotate(-180deg);
@@ -35,5 +39,52 @@
     path {
       stroke: #5bb75f;
     }
+  }
+}
+
+@media (max-width: 1300px) {
+  .blocks {
+    margin: 0px -10px -40px;
+    gap: 20px;
+  }
+  .block {
+    width: calc(16.666% - 20px);
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 998px) {
+  .block {
+    width: calc(20% - 20px);
+  }
+}
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 0;
+  }
+  .blocks {
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .all {
+    margin-top: 0;
+    margin-left: 15px;
+  }
+  .title {
+    margin-bottom: 0;
+  }
+  .top {
+    margin-bottom: 15px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .block {
+    min-width: 100px;
+    max-width: 100px;
   }
 }

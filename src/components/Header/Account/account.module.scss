@@ -59,4 +59,9 @@
     opacity: 1;
     pointer-events: all;
   }
+  &.small {
+    right: -55px;
+    left: auto;
+    transform: none;
+  }
 }
