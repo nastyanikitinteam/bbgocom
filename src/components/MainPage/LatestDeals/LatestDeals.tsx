@@ -26,14 +26,10 @@ const LatestDeals = () => {
     () => ({
       slidesPerView: 1,
       spaceBetween: 10,
-      className: "latest-swiper",
+      className: cn("latest-swiper", styles.swiper),
     }),
     []
   );
-
-  useEffect(() => {
-    isViewAll ? setIsShowCategory(10) : setIsShowCategory(5);
-  }, [isViewAll]);
 
   useEffect(() => {
     if (isTablet) {
@@ -43,7 +39,7 @@ const LatestDeals = () => {
     } else {
       isViewAll ? setIsShowCategory(10) : setIsShowCategory(5);
     }
-  }, [isSmallLaptop, isTablet]);
+  }, [isSmallLaptop, isTablet, isViewAll]);
 
   return (
     <section className={styles.container}>
@@ -70,24 +66,22 @@ const LatestDeals = () => {
               )}
             </SwiperComponent>
           ) : (
-            latestLst.map(
-              ({ id, title, images, price, oldPrice, location }) => {
+            latestLst
+              .slice(0, isShowCategory)
+              .map(({ id, title, images, price, oldPrice, location }) => {
                 return (
-                  id < isShowCategory && (
-                    <div className={styles.block} key={id}>
-                      <CardProduct
-                        title={title}
-                        images={images}
-                        price={price}
-                        oldPrice={oldPrice}
-                        location={location}
-                        isGreenCard
-                      />
-                    </div>
-                  )
+                  <div className={styles.block} key={id}>
+                    <CardProduct
+                      title={title}
+                      images={images}
+                      price={price}
+                      oldPrice={oldPrice}
+                      location={location}
+                      isGreenCard
+                    />
+                  </div>
                 );
-              }
-            )
+              })
           )}
         </div>
         {!isMobile && (

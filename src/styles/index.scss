@@ -42,6 +42,9 @@ h3 {
 
 section {
   padding: 40px 0;
+  @media (max-width: 768px) {
+    padding: 0 0 25px;
+  }
 }
 
 svg {
@@ -81,6 +84,9 @@ input[type="number"] {
   background: #5bb75f;
   border-radius: 30px;
   transition: all 0.25s ease-in;
+  @media (max-width: 768px) {
+    padding: 10px 30px;
+  }
   &:hover {
     box-shadow: 10px 10px 20px 0px rgba(51, 140, 55, 0.45);
   }
@@ -114,6 +120,10 @@ input[type="number"] {
 .title {
   text-align: center;
   margin-bottom: 40px;
+  @media (max-width: 768px) {
+    text-align: left;
+    margin-bottom: 15px;
+  }
 }
 
 .tag {
@@ -133,6 +143,11 @@ input[type="number"] {
     border-color: #5bb75f;
     color: #ffffff;
     box-shadow: 10px 10px 20px 0px rgba(51, 140, 55, 0.45);
+  }
+  @media (max-width: 768px) {
+    padding: 2px 8px;
+    font-size: 14px;
+    line-height: 20px;
   }
 }
 

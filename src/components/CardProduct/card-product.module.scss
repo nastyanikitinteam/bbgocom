@@ -25,6 +25,9 @@
   height: 100%;
   &:hover {
     box-shadow: 0 45px 40px 0 rgba(21, 40, 61, 0.1);
+    @media (max-width: 768px) {
+      box-shadow: 0 10px 20px 0 rgba(21, 40, 61, 0.1);
+    }
   }
 }
 

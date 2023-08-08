@@ -5,8 +5,11 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 5px;
 }
 
-.tag {
-  margin: 0 2.5px 5px;
+@media (max-width: 768px) {
+  .tags {
+    justify-content: flex-start;
+  }
 }
