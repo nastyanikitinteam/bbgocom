@@ -19,7 +19,6 @@ const Testimonials = () => {
   const params = useMemo(
     () => ({
       slidesPerView: 1,
-      spaceBetween: 40,
       className: "review-swiper",
       modules: [Pagination, Navigation],
       pagination: {
@@ -40,6 +39,17 @@ const Testimonials = () => {
       navigation: {
         nextEl: ".reviews-next-btn",
         prevEl: ".reviews-prev-btn",
+      },
+      breakpoints: {
+        300: {
+          spaceBetween: 10,
+        },
+        769: {
+          spaceBetween: 20,
+        },
+        1200: {
+          spaceBetween: 40,
+        },
       },
     }),
     []

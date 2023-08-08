@@ -11,7 +11,6 @@ import ArrowSvg from "images/icons/drop.svg";
 const Recommend = () => {
   const isTablet = useMediaQuery(998);
   const isMobileFirst = useMediaQuery(768);
-  const isMobileSecond = useMediaQuery(550);
   const [isViewAll, setIsViewAll] = useState(false);
   const [isShowCategory, setIsShowCategory] = useState(8);
 

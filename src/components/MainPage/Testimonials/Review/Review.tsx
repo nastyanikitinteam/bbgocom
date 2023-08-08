@@ -1,4 +1,5 @@
 import { FC } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import CardProduct from "components/CardProduct/CardProduct";
 import styles from "./review.module.scss";
 
@@ -9,6 +10,7 @@ interface IProps {
 }
 
 const Review: FC<IProps> = ({ info }) => {
+  const isMobile = useMediaQuery(768);
   const card = [
     {
       id: 0,
@@ -37,15 +39,18 @@ const Review: FC<IProps> = ({ info }) => {
   ];
   return (
     <div className={styles.container}>
-      <div className={styles.product}>
-        <CardProduct
-          title={info.title}
-          images={info.images}
-          price={info.price}
-          location={info.location}
-          isGreenCard
-        />
-      </div>
+      {!isMobile && (
+        <div className={styles.product}>
+          <CardProduct
+            title={info.title}
+            images={info.images}
+            price={info.price}
+            location={info.location}
+            isGreenCard
+          />
+        </div>
+      )}
+
       <div className={styles.main}>
         <p className={styles.text}>{info.review}</p>
         <div className={styles.info}>

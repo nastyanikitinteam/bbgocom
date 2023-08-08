@@ -1,5 +1,7 @@
 .container {
   overflow: hidden;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 
 .slider {
@@ -21,4 +23,39 @@
 
 .navigation {
   margin-left: 20px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media (max-width: 998px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .controllers {
+    bottom: 55px;
+    right: 30px;
+  }
+  .navigation {
+    gap: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .controllers {
+    bottom: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .controllers {
+    width: calc(100% - 60px);
+    justify-content: space-between;
+  }
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
