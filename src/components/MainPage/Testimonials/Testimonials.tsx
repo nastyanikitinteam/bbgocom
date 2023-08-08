@@ -40,6 +40,7 @@ const Testimonials = () => {
         nextEl: ".reviews-next-btn",
         prevEl: ".reviews-prev-btn",
       },
+      initialSlide: 1,
       breakpoints: {
         300: {
           spaceBetween: 10,

@@ -1,3 +1,6 @@
+.container {
+  overflow: hidden;
+}
 .blocks {
   display: flex;
   justify-content: center;
@@ -43,4 +46,40 @@
 }
 .button {
   margin-top: 20px;
+}
+
+@media (max-width: 1200px) {
+  .block {
+    padding: 30px 30px 60px;
+  }
+}
+
+@media (max-width: 998px) {
+  .blocks {
+    margin: 0;
+  }
+  .block {
+    width: 100%;
+    margin: 0;
+  }
+  .swiper {
+    max-width: 440px;
+    width: 100%;
+    overflow: visible;
+  }
+}
+@media (max-width: 768px) {
+  .image {
+    max-width: 100px;
+    margin-bottom: 10px;
+  }
+  .name {
+    margin-bottom: 15px;
+  }
+  .info {
+    margin-top: 15px;
+  }
+  .button {
+    margin-top: 10px;
+  }
 }

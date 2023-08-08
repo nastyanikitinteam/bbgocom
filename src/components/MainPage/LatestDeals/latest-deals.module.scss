@@ -1,3 +1,6 @@
+.container {
+  overflow: hidden;
+}
 .blocks {
   display: flex;
   justify-content: flex-start;
@@ -48,11 +51,7 @@
 }
 @media (max-width: 768px) {
   .blocks {
-    padding: 0 60px;
-    overflow: hidden;
-  }
-  .wrapper {
-    padding: 0;
+    padding: 0 40px;
   }
   .container {
     padding-bottom: 0;

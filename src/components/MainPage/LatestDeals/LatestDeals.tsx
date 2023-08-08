@@ -27,6 +27,7 @@ const LatestDeals = () => {
       slidesPerView: 1,
       spaceBetween: 10,
       className: cn("latest-swiper", styles.swiper),
+      initialSlide: 1,
     }),
     []
   );

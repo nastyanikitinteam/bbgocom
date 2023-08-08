@@ -1,4 +1,10 @@
 import { useMemo } from "react";
+import {
+  Swiper as SwiperComponent,
+  SwiperSlide,
+  SwiperProps,
+} from "swiper/react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
 import styles from "./who.module.scss";
 
@@ -7,6 +13,18 @@ import image2 from "images/main-page/who-img-2.png";
 import image3 from "images/main-page/who-img-3.png";
 
 const Who = () => {
+  const isTablet = useMediaQuery(998);
+
+  const params = useMemo(
+    () => ({
+      slidesPerView: 1,
+      spaceBetween: 10,
+      className: cn("who-swiper", styles.swiper),
+      initialSlide: 1,
+    }),
+    []
+  );
+
   const blocksList = useMemo(
     () => [
       {
@@ -36,17 +54,33 @@ const Who = () => {
       <div className="wrapper">
         <h2 className={cn("title", styles.title)}>Who we are</h2>
         <div className={styles.blocks}>
-          {blocksList.map(({ id, image, title, text }) => {
-            return (
-              <div key={id} className={styles.block}>
-                <div className={styles.image}>
-                  <img src={image} alt="" />
+          {isTablet ? (
+            <SwiperComponent {...(params as SwiperProps)}>
+              {blocksList.map(({ id, image, title, text }) => {
+                return (
+                  <SwiperSlide key={id} className={styles.block}>
+                    <div className={styles.image}>
+                      <img src={image} alt="" />
+                    </div>
+                    <h3 className={styles.name}>{title}</h3>
+                    <p className={styles.text}>{text}</p>
+                  </SwiperSlide>
+                );
+              })}
+            </SwiperComponent>
+          ) : (
+            blocksList.map(({ id, image, title, text }) => {
+              return (
+                <div key={id} className={styles.block}>
+                  <div className={styles.image}>
+                    <img src={image} alt="" />
+                  </div>
+                  <h3 className={styles.name}>{title}</h3>
+                  <p className={styles.text}>{text}</p>
                 </div>
-                <h3 className={styles.name}>{title}</h3>
-                <p className={styles.text}>{text}</p>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
 
         <div className={styles.info}>
