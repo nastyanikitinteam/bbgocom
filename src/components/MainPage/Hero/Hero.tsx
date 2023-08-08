@@ -5,6 +5,7 @@ import cn from "classnames";
 import SearchBar from "components/SearchBar/SearchBar";
 
 import slideBg1 from "images/main-page/slide-img-1.png";
+import slideBg1Mobile from "images/main-page/slide-img-1-mobile.png";
 
 const Hero = () => {
   const sliderList = useMemo(
@@ -12,6 +13,7 @@ const Hero = () => {
       {
         id: 0,
         background: slideBg1.src,
+        backgroundMobile: slideBg1Mobile.src,
         button: {
           name: "Create an Ad",
           link: "#",

@@ -126,3 +126,11 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .default-bullets {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 15px;
+  }
+}

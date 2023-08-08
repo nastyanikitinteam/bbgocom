@@ -1,5 +1,5 @@
-import { url } from "inspector";
 import { FC } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./slide-hero-section.module.scss";
 
 interface IProps {
@@ -10,13 +10,18 @@ interface IProps {
 //   name: string;
 //   link: string;
 // }
+// backgroundMobile;
 
 const Slide: FC<IProps> = ({ param }) => {
+  const isMobile = useMediaQuery(400);
   return (
     <div
       className={styles.container}
       style={{
-        backgroundImage: `url(${param.background})`,
+        backgroundImage:
+          isMobile && param.backgroundMobile
+            ? `url(${param.backgroundMobile})`
+            : `url(${param.background})`,
       }}
     >
       {param.button && (
