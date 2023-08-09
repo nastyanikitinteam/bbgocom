@@ -24,7 +24,8 @@ const SearchBar = () => {
 
   const [isActiveCategory, setIsActiveCategory] = useState(null);
 
-  const [data, setData] = useState({});
+  const [dataCategory, setDataCategory] = useState({});
+  const [dataRegion, setDataRegion] = useState({});
 
   useEffect(() => {
     setHeight(containerRef?.current?.offsetTop);
@@ -48,9 +49,16 @@ const SearchBar = () => {
     }
   }, [scrollTop]);
 
-  const handleClick = (key, value) => {
-    setData((prev) => ({ ...prev, [key]: value }));
+  const handleClickCategory = (key, value) => {
+    setDataCategory((prev) => ({ ...prev, [key]: value }));
   };
+  const handleClickRegion = (key, value) => {
+    setDataRegion((prev) => ({ ...prev, [key]: value }));
+  };
+
+  // useEffect(() => {
+  //   console.log(dataRegion);
+  // }, [dataRegion]);
 
   return (
     <div
@@ -70,6 +78,7 @@ const SearchBar = () => {
         <SearchLocation
           setIsActiveChoice={setIsActiveChoice}
           isActiveChoice={isActiveChoice}
+          dataRegion={dataRegion}
         />
         <Price
           setIsActiveChoice={setIsActiveChoice}
@@ -86,15 +95,21 @@ const SearchBar = () => {
               isSearchBarTop={isSearchBarTop}
               isActiveCategory={isActiveCategory}
               setIsActiveCategory={setIsActiveCategory}
-              handleClick={handleClick}
+              handleClick={handleClickCategory}
               setIsActiveChoice={setIsActiveChoice}
             />
           )}
           {isActiveChoice == "Price" && (
             <PriceMain isSearchBarTop={isSearchBarTop} />
           )}
-          {isActiveChoice == "Location" && <LocationMain />}
           {isActiveChoice == "Search" && <SearchMain />}
+          {isActiveChoice == "Location" && (
+            <LocationMain
+              handleClick={handleClickRegion}
+              setIsActiveChoice={setIsActiveChoice}
+              dataRegion={dataRegion}
+            />
+          )}
         </div>
       )}
     </div>

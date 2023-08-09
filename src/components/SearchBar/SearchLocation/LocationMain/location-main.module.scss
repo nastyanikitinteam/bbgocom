@@ -86,13 +86,26 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 10px;
+    width: 24px;
+    min-width: 24px;
+    svg {
+      width: 100%;
+    }
   }
   path {
     stroke: #000;
+  }
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
   }
 }

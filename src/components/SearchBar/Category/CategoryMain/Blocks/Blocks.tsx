@@ -18,7 +18,7 @@ const Blocks: FC<IProps> = ({
 }) => {
   const chooseCategoryItem = (id, title) => {
     handleClick("nameOfCategoryItem", title);
-    setIsActiveChoice(" ");
+    setIsActiveChoice("");
   };
 
   return (

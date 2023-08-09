@@ -9,9 +9,18 @@ import CloseIcon from "images/icons/close.svg";
 interface IProps {
   setIsActiveChoice: (bool: string) => void;
   isActiveChoice: string;
+  dataRegion: any;
 }
 
-const SearchLocation: FC<IProps> = ({ setIsActiveChoice, isActiveChoice }) => {
+const SearchLocation: FC<IProps> = ({
+  setIsActiveChoice,
+  isActiveChoice,
+  dataRegion,
+}) => {
+  useEffect(() => {
+    console.log(dataRegion);
+  }, [dataRegion]);
+
   return (
     <>
       <div
@@ -50,7 +59,13 @@ const SearchLocation: FC<IProps> = ({ setIsActiveChoice, isActiveChoice }) => {
           <span className={styles.icon}>
             <MapIcon />
           </span>
-          <p>All Thailand</p>
+          <p>
+            {dataRegion.nameOfCity
+              ? dataRegion.nameOfCity
+              : dataRegion.nameOfRegion
+              ? dataRegion.nameOfRegion
+              : "All Thailand"}
+          </p>
         </div>
       </div>
     </>
