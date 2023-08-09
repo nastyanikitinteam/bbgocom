@@ -18,6 +18,7 @@
     background: #fff;
     padding: 7px 10px 7px 15px;
     cursor: pointer;
+    flex-wrap: nowrap;
     &--menu-is-open {
       border-color: #38953c;
       .default__indicator {

@@ -11,6 +11,14 @@
   transition: all 0.25s ease-in;
   p {
     flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
   }
   &:hover {
     box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.1);
@@ -31,6 +39,11 @@
   justify-content: center;
   align-items: center;
   margin-right: 8px;
+  min-width: 24px;
+  width: 24px;
+  svg {
+    width: 100%;
+  }
 }
 
 .active {

@@ -2,8 +2,9 @@
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(277px, auto);
+  grid-auto-rows: minmax(50%, auto);
   gap: 8px;
+  height: 100%;
 }
 
 .top {
@@ -11,8 +12,6 @@
   gap: 20px;
   .block {
     padding: 30px;
-  }
-  .item {
   }
 }
 
@@ -47,4 +46,10 @@
   cursor: pointer;
   font-size: 14px;
   line-height: 20px;
+  &:hover {
+    color: #5bb75f;
+  }
+  &.active {
+    color: #5bb75f;
+  }
 }

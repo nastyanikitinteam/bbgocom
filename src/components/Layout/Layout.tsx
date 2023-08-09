@@ -16,7 +16,7 @@ const Layout: FC<IProps> = ({ title = "Page", children }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      {/* <Header /> */}
+      <Header />
       <div className={styles.container}>{children}</div>
       <Footer />
     </div>

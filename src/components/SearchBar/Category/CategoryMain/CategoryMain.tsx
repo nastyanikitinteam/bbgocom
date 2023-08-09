@@ -1,4 +1,4 @@
-import { useState, FC } from "react";
+import { useState, useEffect, FC } from "react";
 import { categoriesList } from "components/Category/config";
 import Blocks from "./Blocks/Blocks";
 import cn from "classnames";
@@ -9,10 +9,23 @@ import ArrowIcon from "images/icons/drop.svg";
 
 interface IProps {
   isSearchBarTop: boolean;
+  isActiveCategory: number;
+  setIsActiveCategory: (bool: number) => void;
+  setIsActiveChoice: (bool: string) => void;
+  handleClick: (key: string, value: string) => void;
 }
 
-const CategoryMain: FC<IProps> = ({ isSearchBarTop }) => {
-  const [isActiveCategrory, setIsActiveCategory] = useState(0);
+const CategoryMain: FC<IProps> = ({
+  isSearchBarTop,
+  isActiveCategory,
+  setIsActiveCategory,
+  handleClick,
+  setIsActiveChoice,
+}) => {
+  const chooseCategory = (id, title) => {
+    handleClick("nameOfCategory", title);
+    setIsActiveCategory(id);
+  };
 
   return (
     <div className={cn(styles.container, { [styles.top]: isSearchBarTop })}>
@@ -21,10 +34,10 @@ const CategoryMain: FC<IProps> = ({ isSearchBarTop }) => {
           return (
             <div
               className={cn(styles.item, {
-                [styles.active]: isActiveCategrory == id,
+                [styles.active]: isActiveCategory == id,
               })}
               key={id}
-              onClick={() => setIsActiveCategory(id)}
+              onClick={() => chooseCategory(id, title)}
             >
               <div className={styles.image}>
                 <img src={image} alt="" />
@@ -39,8 +52,10 @@ const CategoryMain: FC<IProps> = ({ isSearchBarTop }) => {
       </div>
       <div className={styles.main}>
         <Blocks
-          isActiveCategrory={isActiveCategrory}
+          isActiveCategory={isActiveCategory}
           isSearchBarTop={isSearchBarTop}
+          handleClick={handleClick}
+          setIsActiveChoice={setIsActiveChoice}
         />
       </div>
     </div>

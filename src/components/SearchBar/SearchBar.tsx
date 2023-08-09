@@ -22,6 +22,10 @@ const SearchBar = () => {
   const [isSearchBarTop, setIsSearchBarTop] = useState(false);
   const [isActiveChoice, setIsActiveChoice] = useState("");
 
+  const [isActiveCategory, setIsActiveCategory] = useState(null);
+
+  const [data, setData] = useState({});
+
   useEffect(() => {
     setHeight(containerRef?.current?.offsetTop);
   }, []);
@@ -44,6 +48,10 @@ const SearchBar = () => {
     }
   }, [scrollTop]);
 
+  const handleClick = (key, value) => {
+    setData((prev) => ({ ...prev, [key]: value }));
+  };
+
   return (
     <div
       className={cn(
@@ -57,6 +65,7 @@ const SearchBar = () => {
         <Category
           setIsActiveChoice={setIsActiveChoice}
           isActiveChoice={isActiveChoice}
+          isActiveCategory={isActiveCategory}
         />
         <SearchLocation
           setIsActiveChoice={setIsActiveChoice}
@@ -73,7 +82,13 @@ const SearchBar = () => {
       {isActiveChoice && (
         <div className={styles.main}>
           {isActiveChoice == "Category" && (
-            <CategoryMain isSearchBarTop={isSearchBarTop} />
+            <CategoryMain
+              isSearchBarTop={isSearchBarTop}
+              isActiveCategory={isActiveCategory}
+              setIsActiveCategory={setIsActiveCategory}
+              handleClick={handleClick}
+              setIsActiveChoice={setIsActiveChoice}
+            />
           )}
           {isActiveChoice == "Price" && (
             <PriceMain isSearchBarTop={isSearchBarTop} />

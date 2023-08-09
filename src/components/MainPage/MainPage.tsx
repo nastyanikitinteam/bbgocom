@@ -7,16 +7,18 @@ import PopularSearches from "./PopularSearches/PopularSearches";
 import WantSell from "./WantSell/WantSell";
 import Testimonials from "./Testimonials/Testimonials";
 import Who from "./Who/Who";
+import useMediaQuery from "src/utils/useMediaQuery";
 
 import SearchBar from "components/SearchBar/SearchBar";
 
 import styles from "./main-page.module.scss";
 
 const MainPage = () => {
+  const SmallLaptop = useMediaQuery(768);
   return (
     <div>
       <Hero />
-      {/* <SearchBar /> */}
+      <SearchBar />
       <PopularCategory />
       <Recommend />
       <AdvertisingBanner />
