@@ -9,6 +9,7 @@ import CategoryMain from "./Category/CategoryMain/CategoryMain";
 import PriceMain from "./Price/PriceMain/PriceMain";
 import LocationMain from "./SearchLocation/LocationMain/LocationMain";
 import SearchMain from "./SearchLocation/SearchMain/SearchMain";
+import LocationSearch from "./SearchLocation/LocationSearch/LocationSearch";
 
 import styles from "./search-bar.module.scss";
 
@@ -26,6 +27,8 @@ const SearchBar = () => {
 
   const [dataCategory, setDataCategory] = useState({});
   const [dataRegion, setDataRegion] = useState({});
+
+  const [isSearchRegionQuery, setIsSearchRegionQuery] = useState("");
 
   useEffect(() => {
     setHeight(containerRef?.current?.offsetTop);
@@ -56,9 +59,9 @@ const SearchBar = () => {
     setDataRegion((prev) => ({ ...prev, [key]: value }));
   };
 
-  // useEffect(() => {
-  //   console.log(dataRegion);
-  // }, [dataRegion]);
+  useEffect(() => {
+    console.log(dataRegion);
+  }, [dataRegion]);
 
   return (
     <div
@@ -79,6 +82,8 @@ const SearchBar = () => {
           setIsActiveChoice={setIsActiveChoice}
           isActiveChoice={isActiveChoice}
           dataRegion={dataRegion}
+          setIsSearchRegionQuery={setIsSearchRegionQuery}
+          isSearchRegionQuery={isSearchRegionQuery}
         />
         <Price
           setIsActiveChoice={setIsActiveChoice}
@@ -106,6 +111,14 @@ const SearchBar = () => {
           {isActiveChoice == "Location" && (
             <LocationMain
               handleClick={handleClickRegion}
+              setIsActiveChoice={setIsActiveChoice}
+              dataRegion={dataRegion}
+            />
+          )}
+          {isActiveChoice == "LocationSearch" && (
+            <LocationSearch
+              isSearchRegionQuery={isSearchRegionQuery}
+              handleClickRegion={handleClickRegion}
               setIsActiveChoice={setIsActiveChoice}
               dataRegion={dataRegion}
             />

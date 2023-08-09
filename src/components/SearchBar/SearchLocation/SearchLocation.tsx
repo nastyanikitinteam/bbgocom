@@ -10,15 +10,34 @@ interface IProps {
   setIsActiveChoice: (bool: string) => void;
   isActiveChoice: string;
   dataRegion: any;
+  setIsSearchRegionQuery: (bool: string) => void;
+  isSearchRegionQuery: string;
 }
 
 const SearchLocation: FC<IProps> = ({
   setIsActiveChoice,
   isActiveChoice,
   dataRegion,
+  setIsSearchRegionQuery,
+  isSearchRegionQuery,
 }) => {
+  const onChangeInput1 = (event) => {
+    setIsSearchRegionQuery(event.target.value);
+    if (event.target.value.length > 0) {
+      setIsActiveChoice((isActiveChoice = "LocationSearch"));
+    } else {
+      setIsActiveChoice((isActiveChoice = "Location"));
+    }
+  };
+
   useEffect(() => {
-    console.log(dataRegion);
+    setIsSearchRegionQuery(
+      dataRegion.nameOfCity
+        ? dataRegion.nameOfCity
+        : dataRegion.nameOfRegion
+        ? dataRegion.nameOfRegion
+        : ""
+    );
   }, [dataRegion]);
 
   return (
@@ -53,19 +72,26 @@ const SearchLocation: FC<IProps> = ({
         <div
           className={styles.item}
           onClick={() =>
-            setIsActiveChoice(isActiveChoice === "Location" ? "" : "Location")
+            // setIsActiveChoice(isActiveChoice === "Location" ? "" : "Location")
+            setIsActiveChoice((isActiveChoice = "Location"))
           }
         >
           <span className={styles.icon}>
             <MapIcon />
           </span>
-          <p>
+          <input
+            type="text"
+            value={isSearchRegionQuery}
+            onChange={onChangeInput1}
+            placeholder="All Thailand"
+          />
+          {/* <p>
             {dataRegion.nameOfCity
               ? dataRegion.nameOfCity
               : dataRegion.nameOfRegion
               ? dataRegion.nameOfRegion
               : "All Thailand"}
-          </p>
+          </p> */}
         </div>
       </div>
     </>

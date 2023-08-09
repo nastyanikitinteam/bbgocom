@@ -65,6 +65,11 @@
     line-clamp: 1;
     flex-grow: 1;
   }
+  input {
+    border: none;
+    background: none;
+    padding: 0;
+  }
 }
 
 .active {
