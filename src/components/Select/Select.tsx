@@ -13,12 +13,14 @@ interface IPprops {
   classname?: string;
   language?: boolean;
   placeholder?: string;
+  onChange?: (value: any) => void;
 }
 const SelectContainer: FC<IPprops> = ({
   options,
   classname,
   language,
   placeholder,
+  onChange,
 }) => {
   const DropdownIndicator = (props) => {
     return (
@@ -42,6 +44,7 @@ const SelectContainer: FC<IPprops> = ({
         classNamePrefix="default"
         isSearchable={false}
         components={{ DropdownIndicator }}
+        onChange={onChange}
         // menuIsOpen
       />
     </div>

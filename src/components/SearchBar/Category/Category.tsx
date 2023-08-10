@@ -5,24 +5,27 @@ import { categoriesList } from "components/Category/config";
 
 import ArrowIcon from "images/icons/drop.svg";
 import CatalogIcon from "images/icons/catalog-icon.svg";
+import { AbstractKeyword } from "typescript";
 
 interface IProps {
   setIsActiveChoice: (bool: string) => void;
   isActiveChoice: string;
   isActiveCategory: number;
+  dataCategory: any;
 }
 
 const Category: FC<IProps> = ({
   setIsActiveChoice,
   isActiveChoice,
   isActiveCategory,
+  dataCategory,
 }) => {
   return (
     <>
       <div
         className={cn(styles.block, {
           [styles.active]: isActiveChoice === "Category",
-          [styles.fill]: isActiveCategory,
+          [styles.fill]: dataCategory.nameOfCategory,
         })}
         onClick={() =>
           setIsActiveChoice(isActiveChoice === "Category" ? "" : "Category")
@@ -32,11 +35,7 @@ const Category: FC<IProps> = ({
           <CatalogIcon />
         </span>
         <p>
-          {isActiveCategory !== null
-            ? categoriesList.map(({ id, title }) => {
-                return id === isActiveCategory && title;
-              })
-            : "All"}
+          {dataCategory.nameOfCategory ? dataCategory.nameOfCategory : "All"}
         </p>
         <span className={styles.arrow}>
           <ArrowIcon />

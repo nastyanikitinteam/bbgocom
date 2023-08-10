@@ -30,8 +30,21 @@ const SearchBar = () => {
   const [dataRegion, setDataRegion] = useState({});
   const [dataSearch, setDataSearch] = useState({});
 
+  const [dataPriceDefault, setDataPriceDefault] = useState({
+    minPrice: 0,
+    maxPrice: 500000,
+    currency: "USD",
+  });
+
+  const [dataPrice, setDataPrice] = useState({
+    minPrice: dataPriceDefault.minPrice,
+    maxPrice: dataPriceDefault.maxPrice,
+    currency: dataPriceDefault.currency,
+  });
+
   const [isSearchRegionQuery, setIsSearchRegionQuery] = useState("");
   const [isSearchQuery, setIsSearchQuery] = useState("");
+  const [isPriceBlockDefault, setIsPriceBlockDefault] = useState(true);
 
   useEffect(() => {
     setHeight(containerRef?.current?.offsetTop);
@@ -65,21 +78,43 @@ const SearchBar = () => {
   const handleClickSeacrh = (key, value) => {
     setDataSearch((prev) => ({ ...prev, [key]: value }));
   };
-
-  const send = () => {
-    console.log(dataCategory, dataRegion, dataSearch);
+  const handleClickPrice = (key, value) => {
+    if (key === "default") {
+      setDataPrice({
+        minPrice: dataPriceDefault.minPrice,
+        maxPrice: dataPriceDefault.maxPrice,
+        currency: dataPriceDefault.currency,
+      });
+    } else {
+      setDataPrice((prev) => ({ ...prev, [key]: value }));
+    }
   };
 
-  useEffect(() => {
-    const onClick = (e) =>
-      containerRef.current.contains(e.target) || setIsActiveChoice("");
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  }, []);
+  const send = () => {
+    console.log(dataCategory, dataRegion, dataSearch, dataPrice);
+    setIsActiveChoice("");
+    setDataCategory({});
+    setDataRegion({});
+    setDataSearch({});
+    setDataPrice({
+      minPrice: dataPriceDefault.minPrice,
+      maxPrice: dataPriceDefault.maxPrice,
+      currency: dataPriceDefault.currency,
+    });
+  };
 
   // useEffect(() => {
-  //   console.log(dataSearch);
-  // }, [dataSearch]);
+  //   const onClick = (e) =>
+  //     containerRef.current.contains(e.target) || setIsActiveChoice("");
+  //   document.addEventListener("click", onClick);
+  //   return () => document.removeEventListener("click", onClick);
+  // }, []);
+
+  useEffect(() => {
+    setIsPriceBlockDefault(
+      JSON.stringify(dataPriceDefault) === JSON.stringify(dataPrice)
+    );
+  }, [dataPrice]);
 
   return (
     <div
@@ -95,6 +130,7 @@ const SearchBar = () => {
           setIsActiveChoice={setIsActiveChoice}
           isActiveChoice={isActiveChoice}
           isActiveCategory={isActiveCategory}
+          dataCategory={dataCategory}
         />
         <SearchLocation
           setIsActiveChoice={setIsActiveChoice}
@@ -110,6 +146,8 @@ const SearchBar = () => {
         <Price
           setIsActiveChoice={setIsActiveChoice}
           isActiveChoice={isActiveChoice}
+          dataPrice={dataPrice}
+          isPriceBlockDefault={isPriceBlockDefault}
         />
         <button
           className={cn(styles.button, "default-button onlyIcon")}
@@ -130,7 +168,11 @@ const SearchBar = () => {
             />
           )}
           {isActiveChoice == "Price" && (
-            <PriceMain isSearchBarTop={isSearchBarTop} />
+            <PriceMain
+              isSearchBarTop={isSearchBarTop}
+              dataPrice={dataPrice}
+              handleClickPrice={handleClickPrice}
+            />
           )}
           {isActiveChoice == "SearchHistory" && (
             <SearchHistory

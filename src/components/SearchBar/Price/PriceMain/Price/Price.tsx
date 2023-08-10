@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { Slider } from "antd";
 import cn from "classnames";
 
@@ -6,21 +6,34 @@ import styles from "./price.module.scss";
 
 import PriceMin from "images/icons/price-min.svg";
 
-const Price = () => {
-  const [inputValue, setInputValue] = useState(1);
-  const [inputValue1, setInputValue1] = useState(10000);
-  const [inputValue2, setInputValue2] = useState(200000);
+interface IProps {
+  dataPrice: any;
+  handleClickPrice: (key: string, value: string) => void;
+}
+
+const Price: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
+  const [inputValue1, setInputValue1] = useState(+dataPrice.minPrice);
+  const [inputValue2, setInputValue2] = useState(+dataPrice.maxPrice);
 
   const onChangeInput1 = (event) => {
     setInputValue1(+event.target.value);
+    handleClickPrice("minPrice", event.target.value);
   };
   const onChangeInput2 = (event) => {
     setInputValue2(+event.target.value);
+    handleClickPrice("maxPrice", event.target.value);
   };
   const onChangeSlider = (newValue) => {
     setInputValue1(newValue[0]);
     setInputValue2(newValue[1]);
+    handleClickPrice("minPrice", newValue[0]);
+    handleClickPrice("maxPrice", newValue[1]);
   };
+
+  useEffect(() => {
+    setInputValue1(+dataPrice.minPrice);
+    setInputValue2(+dataPrice.maxPrice);
+  }, [dataPrice]);
 
   return (
     <div className={styles.container}>
@@ -31,7 +44,7 @@ const Price = () => {
       </div>
       <Slider
         range
-        defaultValue={[10000, 100000]}
+        defaultValue={[+dataPrice.minPrice, +dataPrice.maxPrice]}
         min={0}
         max={500000}
         onChange={onChangeSlider}

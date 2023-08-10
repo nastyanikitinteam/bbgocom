@@ -1,9 +1,14 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, FC } from "react";
 import cn from "classnames";
 import styles from "./currency.module.scss";
 
-const Currency = () => {
-  const [isActiveCurrency, setIsActiveCurrency] = useState("USD");
+interface IProps {
+  dataPrice: any;
+  handleClickPrice: (key: string, value: string) => void;
+}
+
+const Currency: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
+  // const [isActiveCurrency, setIsActiveCurrency] = useState("USD");
 
   const currencyArray = useMemo(
     () => [
@@ -31,10 +36,10 @@ const Currency = () => {
           return (
             <div
               className={cn(styles.block, {
-                [styles.active]: isActiveCurrency == value,
+                [styles.active]: dataPrice.currency == value,
               })}
               key={id}
-              onClick={() => setIsActiveCurrency(value)}
+              onClick={() => handleClickPrice("currency", value)}
             >
               {value}
             </div>

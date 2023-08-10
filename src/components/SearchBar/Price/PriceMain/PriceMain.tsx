@@ -10,14 +10,23 @@ import DelIcon from "images/icons/del.svg";
 
 interface IProps {
   isSearchBarTop: boolean;
+  dataPrice: any;
+  handleClickPrice: (key: string, value: string) => void;
 }
 
-const PriceMain: FC<IProps> = ({ isSearchBarTop }) => {
+const PriceMain: FC<IProps> = ({
+  isSearchBarTop,
+  dataPrice,
+  handleClickPrice,
+}) => {
   return (
     <div className={cn(styles.container, { [styles.menuTop]: isSearchBarTop })}>
       <div className={styles.top}>
         <h3>Price Filter</h3>
-        <div className={styles.clear}>
+        <div
+          className={styles.clear}
+          onClick={() => handleClickPrice("default", null)}
+        >
           <span className={styles.icon}>
             <DelIcon />
           </span>
@@ -25,11 +34,11 @@ const PriceMain: FC<IProps> = ({ isSearchBarTop }) => {
         </div>
       </div>
       <div className={styles.blocks}>
-        <Currency />
-        <SortBy />
+        <Currency dataPrice={dataPrice} handleClickPrice={handleClickPrice} />
+        <SortBy dataPrice={dataPrice} handleClickPrice={handleClickPrice} />
       </div>
       <div className={styles.block}>
-        <Price />
+        <Price dataPrice={dataPrice} handleClickPrice={handleClickPrice} />
       </div>
     </div>
   );
