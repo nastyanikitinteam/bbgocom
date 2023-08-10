@@ -15,11 +15,21 @@
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
+  transition: all 0.25s ease-in;
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 10px;
+  }
+  path {
+    stroke: #000;
+  }
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
   }
 }
 

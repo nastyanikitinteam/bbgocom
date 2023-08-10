@@ -53,13 +53,6 @@ const SearchLocation: FC<IProps> = ({
     showActiveBlock(event.target.value, "Search", "SearchHistory");
   };
 
-  // const handleBlurSearch = (event) => {
-  //   if (event.target.value != dataSearch.nameOfSearch) {
-  //     setIsSearchQuery(dataSearch.nameOfSearch ? dataSearch.nameOfSearch : "");
-  //     setIsActiveChoice("SearchHistory");
-  //   }
-  // };
-
   const handleBlurRegion = (event) => {
     if (
       event.target.value != dataRegion.nameOfCity ||
@@ -117,13 +110,19 @@ const SearchLocation: FC<IProps> = ({
       <div
         className={cn(styles.block, {
           [styles.active]: isActive,
+          [styles.fill]:
+            isSearchQuery.length > 0 && isSearchRegionQuery.length > 0,
         })}
       >
         <div
           className={styles.item}
           onClick={() => showActiveBlock(null, "Search", "SearchHistory")}
         >
-          <span className={styles.icon}>
+          <span
+            className={cn(styles.icon, {
+              [styles.fill]: isSearchQuery.length > 0,
+            })}
+          >
             <SearchIcon />
           </span>
           <input
@@ -131,7 +130,6 @@ const SearchLocation: FC<IProps> = ({
             placeholder="I’m search"
             value={isSearchQuery}
             onChange={onChangeSearchInput}
-            // onBlur={handleBlurSearch}
           />
         </div>
 
@@ -147,7 +145,11 @@ const SearchLocation: FC<IProps> = ({
           className={styles.item}
           onClick={() => showActiveBlock(null, "LocationSearch", "Location")}
         >
-          <span className={styles.icon}>
+          <span
+            className={cn(styles.icon, {
+              [styles.fill]: isSearchRegionQuery.length > 0,
+            })}
+          >
             <MapIcon />
           </span>
           <input

@@ -22,6 +22,7 @@ const Category: FC<IProps> = ({
       <div
         className={cn(styles.block, {
           [styles.active]: isActiveChoice === "Category",
+          [styles.fill]: isActiveCategory,
         })}
         onClick={() =>
           setIsActiveChoice(isActiveChoice === "Category" ? "" : "Category")

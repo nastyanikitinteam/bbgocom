@@ -70,6 +70,13 @@ const SearchBar = () => {
     console.log(dataCategory, dataRegion, dataSearch);
   };
 
+  useEffect(() => {
+    const onClick = (e) =>
+      containerRef.current.contains(e.target) || setIsActiveChoice("");
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   // useEffect(() => {
   //   console.log(dataSearch);
   // }, [dataSearch]);
