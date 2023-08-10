@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { regionList } from "../LocationMain/config";
+import NoResult from "../NoResult/NoResults";
 import styles from "./location-search.module.scss";
 
 import MapIcon from "images/icons/map-icon.svg";
@@ -64,25 +65,29 @@ const LocationSearch: FC<IProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.list}>
-        {searchResults
-          .sort((a, b) => (a.name > b.name ? 1 : -1))
-          .map((item, key) => {
-            return (
-              <div className={styles.item} onClick={() => chooseCity(item)}>
-                <span className={styles.icon}>
-                  <MapIcon />
-                </span>
-                {item.name}
-                {findParentOf(item) && (
-                  <span className={styles.region}>
-                    {findParentOf(item).name}
+      {searchResults.length > 0 ? (
+        <div className={styles.list}>
+          {searchResults
+            .sort((a, b) => (a.name > b.name ? 1 : -1))
+            .map((item, key) => {
+              return (
+                <div className={styles.item} onClick={() => chooseCity(item)}>
+                  <span className={styles.icon}>
+                    <MapIcon />
                   </span>
-                )}
-              </div>
-            );
-          })}
-      </div>
+                  {item.name}
+                  {findParentOf(item) && (
+                    <span className={styles.region}>
+                      {findParentOf(item).name}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+        </div>
+      ) : (
+        <NoResult />
+      )}
     </div>
   );
 };

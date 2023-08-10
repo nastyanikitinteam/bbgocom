@@ -8,8 +8,9 @@ import SearchLocation from "./SearchLocation/SearchLocation";
 import CategoryMain from "./Category/CategoryMain/CategoryMain";
 import PriceMain from "./Price/PriceMain/PriceMain";
 import LocationMain from "./SearchLocation/LocationMain/LocationMain";
-import SearchMain from "./SearchLocation/SearchMain/SearchMain";
 import LocationSearch from "./SearchLocation/LocationSearch/LocationSearch";
+import SearchHistory from "./SearchLocation/SearchHistory/SearchHistory";
+import Search from "./SearchLocation/Search/Search";
 
 import styles from "./search-bar.module.scss";
 
@@ -27,8 +28,10 @@ const SearchBar = () => {
 
   const [dataCategory, setDataCategory] = useState({});
   const [dataRegion, setDataRegion] = useState({});
+  const [dataSearch, setDataSearch] = useState({});
 
   const [isSearchRegionQuery, setIsSearchRegionQuery] = useState("");
+  const [isSearchQuery, setIsSearchQuery] = useState("");
 
   useEffect(() => {
     setHeight(containerRef?.current?.offsetTop);
@@ -55,13 +58,21 @@ const SearchBar = () => {
   const handleClickCategory = (key, value) => {
     setDataCategory((prev) => ({ ...prev, [key]: value }));
   };
+
   const handleClickRegion = (key, value) => {
     setDataRegion((prev) => ({ ...prev, [key]: value }));
   };
+  const handleClickSeacrh = (key, value) => {
+    setDataSearch((prev) => ({ ...prev, [key]: value }));
+  };
 
-  useEffect(() => {
-    console.log(dataRegion);
-  }, [dataRegion]);
+  const send = () => {
+    console.log(dataCategory, dataRegion, dataSearch);
+  };
+
+  // useEffect(() => {
+  //   console.log(dataSearch);
+  // }, [dataSearch]);
 
   return (
     <div
@@ -84,12 +95,19 @@ const SearchBar = () => {
           dataRegion={dataRegion}
           setIsSearchRegionQuery={setIsSearchRegionQuery}
           isSearchRegionQuery={isSearchRegionQuery}
+          setIsSearchQuery={setIsSearchQuery}
+          isSearchQuery={isSearchQuery}
+          dataSearch={dataSearch}
+          setDataSearch={setDataSearch}
         />
         <Price
           setIsActiveChoice={setIsActiveChoice}
           isActiveChoice={isActiveChoice}
         />
-        <button className={cn(styles.button, "default-button onlyIcon")}>
+        <button
+          className={cn(styles.button, "default-button onlyIcon")}
+          onClick={send}
+        >
           <SearchIcon />
         </button>
       </div>
@@ -107,12 +125,18 @@ const SearchBar = () => {
           {isActiveChoice == "Price" && (
             <PriceMain isSearchBarTop={isSearchBarTop} />
           )}
-          {isActiveChoice == "Search" && <SearchMain />}
+          {isActiveChoice == "SearchHistory" && (
+            <SearchHistory
+              handleClickSeacrh={handleClickSeacrh}
+              setIsActiveChoice={setIsActiveChoice}
+            />
+          )}
           {isActiveChoice == "Location" && (
             <LocationMain
-              handleClick={handleClickRegion}
+              handleClickRegion={handleClickRegion}
               setIsActiveChoice={setIsActiveChoice}
               dataRegion={dataRegion}
+              setDataRegion={setDataRegion}
             />
           )}
           {isActiveChoice == "LocationSearch" && (
@@ -121,6 +145,13 @@ const SearchBar = () => {
               handleClickRegion={handleClickRegion}
               setIsActiveChoice={setIsActiveChoice}
               dataRegion={dataRegion}
+            />
+          )}
+          {isActiveChoice == "Search" && (
+            <Search
+              isSearchQuery={isSearchQuery}
+              handleClickSeacrh={handleClickSeacrh}
+              setIsActiveChoice={setIsActiveChoice}
             />
           )}
         </div>

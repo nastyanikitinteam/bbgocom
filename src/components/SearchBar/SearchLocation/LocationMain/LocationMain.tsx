@@ -9,37 +9,49 @@ import ArrowIcon from "images/icons/drop.svg";
 import MapIcon from "images/icons/map-icon.svg";
 
 interface IProps {
-  handleClick: (key: string, value: string) => void;
+  handleClickRegion: (key: string, value: string) => void;
   setIsActiveChoice: (bool: string) => void;
+  setDataRegion: (bool: string) => void;
   dataRegion: any;
 }
 
 const LocationMain: FC<IProps> = ({
-  handleClick,
+  handleClickRegion,
   setIsActiveChoice,
   dataRegion,
+  setDataRegion,
 }) => {
-  const [isActiveRegion, setIsActiveRegion] = useState(null);
-
-  const chooseRegion = (id, name) => {
-    setIsActiveRegion(id);
-    handleClick("nameOfRegion", name);
-    delete dataRegion.nameOfCity;
+  const chooseRegion = (name) => {
+    if (dataRegion.nameOfCity) {
+      let obj = dataRegion;
+      delete obj.nameOfCity;
+      setDataRegion(obj);
+    }
+    handleClickRegion("nameOfRegion", name);
   };
 
-  const chooseCity = (id, name) => {
+  const chooseCity = (name, region) => {
     if (name) {
-      handleClick("nameOfCity", name);
+      handleClickRegion("nameOfCity", name);
     } else {
-      delete dataRegion.nameOfCity;
+      if (dataRegion.nameOfCity) {
+        let obj = dataRegion;
+        delete obj.nameOfCity;
+        setDataRegion(obj);
+      }
+      handleClickRegion("nameOfRegion", region);
     }
     setIsActiveChoice("");
   };
 
   const deleteRegionResult = () => {
-    handleClick("nameOfRegion", "All Thailand");
+    if (dataRegion.nameOfCity) {
+      let obj = dataRegion;
+      delete obj.nameOfCity;
+      setDataRegion(obj);
+    }
+    handleClickRegion("nameOfRegion", "All Thailand");
     setIsActiveChoice("");
-    delete dataRegion.nameOfCity;
   };
 
   return (
@@ -62,7 +74,7 @@ const LocationMain: FC<IProps> = ({
                   [styles.active]: dataRegion.nameOfRegion == name,
                 })}
                 key={id}
-                onClick={() => chooseRegion(id, name)}
+                onClick={() => chooseRegion(name)}
               >
                 <h3 className={styles.name}>{name}</h3>
                 <span className={styles.arrow}>
@@ -83,7 +95,7 @@ const LocationMain: FC<IProps> = ({
                       className={cn(styles.item, {
                         [styles.active]: !dataRegion.nameOfCity,
                       })}
-                      onClick={() => chooseCity("nameOfCity", null)}
+                      onClick={() => chooseCity(null, name)}
                     >
                       <p className={styles.name}>All {name}</p>
                     </div>
@@ -94,7 +106,7 @@ const LocationMain: FC<IProps> = ({
                           className={cn(styles.item, {
                             [styles.active]: dataRegion.nameOfCity == name,
                           })}
-                          onClick={() => chooseCity("nameOfCity", name)}
+                          onClick={() => chooseCity(name, null)}
                         >
                           <p className={styles.name}>{name}</p>
                         </div>

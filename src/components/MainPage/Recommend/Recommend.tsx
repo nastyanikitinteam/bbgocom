@@ -15,7 +15,7 @@ const Recommend = () => {
   const [isShowCategory, setIsShowCategory] = useState(8);
 
   useEffect(() => {
-    isViewAll ? setIsShowCategory(16) : setIsShowCategory(8);
+    isViewAll ? setIsShowCategory(16) : setIsShowCategory(3);
   }, [isViewAll]);
 
   useEffect(() => {
@@ -32,23 +32,21 @@ const Recommend = () => {
         <h2 className={cn("title", styles.title)}>Recommend</h2>
 
         <div className={styles.blocks}>
-          {productLst.map(
-            ({ id, title, images, price, oldPrice, location }) => {
+          {productLst
+            .slice(0, isShowCategory)
+            .map(({ id, name, images, price, oldPrice, location }) => {
               return (
-                id < isShowCategory && (
-                  <div className={styles.block} key={id}>
-                    <CardProduct
-                      title={title}
-                      images={images}
-                      price={price}
-                      oldPrice={oldPrice}
-                      location={location}
-                    />
-                  </div>
-                )
+                <div className={styles.block} key={id}>
+                  <CardProduct
+                    title={name}
+                    images={images}
+                    price={price}
+                    oldPrice={oldPrice}
+                    location={location}
+                  />
+                </div>
               );
-            }
-          )}
+            })}
         </div>
         <div
           className={cn(styles.all, { [styles.open]: isViewAll })}

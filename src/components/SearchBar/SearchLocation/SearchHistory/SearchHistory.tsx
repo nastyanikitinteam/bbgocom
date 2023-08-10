@@ -1,9 +1,18 @@
-import styles from "./search-main.module.scss";
+import { FC } from "react";
+import styles from "./search-history.module.scss";
 
 import DelIcon from "images/icons/del.svg";
 import SearchIcon from "images/icons/search.svg";
 
-const SearchMain = () => {
+interface IProps {
+  handleClickSeacrh: (key: string, value: string) => void;
+  setIsActiveChoice;
+}
+
+const SearchHistory: FC<IProps> = ({
+  handleClickSeacrh,
+  setIsActiveChoice,
+}) => {
   const serachList = [
     {
       id: 0,
@@ -31,6 +40,11 @@ const SearchMain = () => {
     },
   ];
 
+  const chooseSearchResult = (name) => {
+    handleClickSeacrh("nameOfSearch", name);
+    setIsActiveChoice("");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -46,7 +60,11 @@ const SearchMain = () => {
         <div className={styles.list}>
           {serachList.map(({ id, name }) => {
             return (
-              <div className={styles.item} key={id}>
+              <div
+                className={styles.item}
+                key={id}
+                onClick={() => chooseSearchResult(name)}
+              >
                 <span className={styles.icon}>
                   <SearchIcon />
                 </span>
@@ -60,4 +78,4 @@ const SearchMain = () => {
   );
 };
 
-export default SearchMain;
+export default SearchHistory;
