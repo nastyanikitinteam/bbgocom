@@ -82,11 +82,13 @@ const SearchHistory: FC<IProps> = ({
         </div>
       </div>
       {isMobile && (
-        <div className={cn("default-button sm border", styles.button)}>
-          <span className="icon">
-            <ClearIcon />
-          </span>
-          Clean History
+        <div className={styles.bottom}>
+          <div className={cn("default-button sm border")}>
+            <span className="icon">
+              <ClearIcon />
+            </span>
+            Clean History
+          </div>
         </div>
       )}
     </div>

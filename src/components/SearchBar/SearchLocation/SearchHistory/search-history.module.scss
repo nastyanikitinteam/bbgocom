@@ -64,8 +64,13 @@
   }
 }
 
-.button {
+.bottom {
   margin-top: auto;
+  position: fixed;
+  bottom: 25px;
+  width: 100%;
+  left: 0;
+  padding: 0 20px;
 }
 
 @media (max-width: 768px) {
