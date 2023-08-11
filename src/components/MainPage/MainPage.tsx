@@ -15,10 +15,11 @@ import styles from "./main-page.module.scss";
 
 const MainPage = () => {
   const SmallLaptop = useMediaQuery(768);
+  const isTablet = useMediaQuery(998);
   return (
     <div>
       <Hero />
-      <SearchBar />
+      {!isTablet && <SearchBar />}
       <PopularCategory />
       <Recommend />
       <AdvertisingBanner />

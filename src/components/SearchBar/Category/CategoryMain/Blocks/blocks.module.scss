@@ -40,6 +40,10 @@
   margin-bottom: 15px;
 }
 
+.list {
+  margin-bottom: 20px;
+}
+
 .item {
   color: #808080;
   margin-bottom: 10px;
@@ -51,5 +55,19 @@
   }
   &.active {
     color: #5bb75f;
+  }
+}
+
+.add {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #000000;
+  margin-top: auto;
+  .icon {
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

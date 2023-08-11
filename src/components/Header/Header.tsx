@@ -1,8 +1,10 @@
 import { useMemo, useContext, useEffect, useState } from "react";
 import Link from "next/link";
+import useMediaQuery from "src/utils/useMediaQuery";
 import ThemeContext from "src/context";
 
 import Account from "./Account/Account";
+import SearchBar from "components/SearchBar/SearchBar";
 import styles from "./header.module.scss";
 import LogoSvg from "images/main/logo.svg";
 import StarSvg from "images/icons/star.svg";
@@ -18,6 +20,8 @@ const Header = () => {
   const [isHeaderActive, setIsHeaderActive] = useState(false);
   const [isSearchBarTop, setIsSearchBarTop] = useState(false);
   const [isWishItems, setIsWishItems] = useState(0);
+
+  const isTablet = useMediaQuery(998);
 
   const langList = useMemo(
     () => [
@@ -67,10 +71,13 @@ const Header = () => {
           <div className={styles.logo}>
             <LogoSvg />
           </div>
-          <p className={styles.logoDescription}>
-            Service of Private Advertisements
-          </p>
-          {!isSearchBarTop && (
+          {!isTablet && (
+            <p className={styles.logoDescription}>
+              Service of Private Advertisements
+            </p>
+          )}
+
+          {!isSearchBarTop && !isTablet && (
             <ul className={styles.list}>
               <li className={styles.item}>
                 <a>Help</a>
@@ -83,19 +90,22 @@ const Header = () => {
               </li>
             </ul>
           )}
+          {isTablet && <SearchBar />}
 
-          {isSearchBarTop && <div className={styles.searchBar}></div>}
+          {isSearchBarTop && !isTablet && (
+            <div className={styles.searchBar}></div>
+          )}
 
           <div className={styles.info}>
             <div
               className={cn(styles.wishlist, {
-                [styles.small]: isSearchBarTop,
+                [styles.small]: isSearchBarTop || isTablet,
               })}
             >
               <span className={styles.icon}>
                 <StarSvg />
               </span>
-              {!isSearchBarTop && "My Whishlist"}
+              {!isSearchBarTop && !isTablet && "My Whishlist"}
               {!isSearchBarTop && isWishItems > 0 && (
                 <span className={styles.num}>{isWishItems}</span>
               )}
@@ -109,9 +119,11 @@ const Header = () => {
             </div>
             <a
               href="#"
-              className={cn("default-button sm", { onlyIcon: isSearchBarTop })}
+              className={cn("default-button sm", {
+                onlyIcon: isSearchBarTop || isTablet,
+              })}
             >
-              {isSearchBarTop ? <AddSvg /> : " Create an Ad"}
+              {isSearchBarTop || isTablet ? <AddSvg /> : " Create an Ad"}
             </a>
           </div>
         </div>

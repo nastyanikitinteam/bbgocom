@@ -4,6 +4,8 @@ import cn from "classnames";
 
 import { categoriesList } from "components/Category/config";
 
+import Plus from "images/icons/plus.svg";
+
 interface IProps {
   isActiveCategory: number;
   isSearchBarTop: boolean;
@@ -46,6 +48,12 @@ const Blocks: FC<IProps> = ({
                     );
                   })}
                 </ul>
+                <a href="#" className={styles.add}>
+                  <span className={styles.icon}>
+                    <Plus />
+                  </span>
+                  Add new one
+                </a>
               </div>
             );
           });

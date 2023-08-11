@@ -1,4 +1,5 @@
 import { useRef, useContext, useEffect, useState } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import ThemeContext from "src/context";
 import cn from "classnames";
 import Category from "./Category/Category";
@@ -19,10 +20,11 @@ import SearchIcon from "images/icons/search.svg";
 const SearchBar = () => {
   const containerRef = useRef(null as null | HTMLDivElement);
   const { height, setHeight } = useContext(ThemeContext);
-
   const [scrollTop, setScrollTop] = useState(0);
   const [isSearchBarTop, setIsSearchBarTop] = useState(false);
   const [isActiveChoice, setIsActiveChoice] = useState("");
+
+  const isSmallLaptop = useMediaQuery(1300);
 
   const [isActiveCategory, setIsActiveCategory] = useState(null);
 
@@ -126,12 +128,15 @@ const SearchBar = () => {
       ref={containerRef}
     >
       <div className={styles.blocks}>
-        <Category
-          setIsActiveChoice={setIsActiveChoice}
-          isActiveChoice={isActiveChoice}
-          isActiveCategory={isActiveCategory}
-          dataCategory={dataCategory}
-        />
+        {!isSmallLaptop && (
+          <Category
+            setIsActiveChoice={setIsActiveChoice}
+            isActiveChoice={isActiveChoice}
+            isActiveCategory={isActiveCategory}
+            dataCategory={dataCategory}
+          />
+        )}
+
         <SearchLocation
           setIsActiveChoice={setIsActiveChoice}
           isActiveChoice={isActiveChoice}
@@ -143,12 +148,14 @@ const SearchBar = () => {
           dataSearch={dataSearch}
           setDataSearch={setDataSearch}
         />
-        <Price
-          setIsActiveChoice={setIsActiveChoice}
-          isActiveChoice={isActiveChoice}
-          dataPrice={dataPrice}
-          isPriceBlockDefault={isPriceBlockDefault}
-        />
+        {!isSmallLaptop && (
+          <Price
+            setIsActiveChoice={setIsActiveChoice}
+            isActiveChoice={isActiveChoice}
+            dataPrice={dataPrice}
+            isPriceBlockDefault={isPriceBlockDefault}
+          />
+        )}
         <button
           className={cn(styles.button, "default-button onlyIcon")}
           onClick={send}
