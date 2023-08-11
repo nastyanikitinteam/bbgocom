@@ -1,4 +1,5 @@
 import { FC, useState, useEffect } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
 import styles from "./search-location.module.scss";
 
@@ -30,6 +31,7 @@ const SearchLocation: FC<IProps> = ({
   setDataSearch,
 }) => {
   const [isActive, setIsActive] = useState(false);
+  const isMobile = useMediaQuery(768);
 
   const showActiveBlock = (value, nameSearch, nameMain) => {
     if (value) {
@@ -141,25 +143,27 @@ const SearchLocation: FC<IProps> = ({
         >
           <CloseIcon />
         </div>
-        <div
-          className={styles.item}
-          onClick={() => showActiveBlock(null, "LocationSearch", "Location")}
-        >
-          <span
-            className={cn(styles.icon, {
-              [styles.fill]: isSearchRegionQuery.length > 0,
-            })}
+        {!isMobile && (
+          <div
+            className={styles.item}
+            onClick={() => showActiveBlock(null, "LocationSearch", "Location")}
           >
-            <MapIcon />
-          </span>
-          <input
-            type="text"
-            value={isSearchRegionQuery}
-            onChange={onChangeRegionInput}
-            placeholder="All Thailand"
-            onBlur={handleBlurRegion}
-          />
-        </div>
+            <span
+              className={cn(styles.icon, {
+                [styles.fill]: isSearchRegionQuery.length > 0,
+              })}
+            >
+              <MapIcon />
+            </span>
+            <input
+              type="text"
+              value={isSearchRegionQuery}
+              onChange={onChangeRegionInput}
+              placeholder="All Thailand"
+              onBlur={handleBlurRegion}
+            />
+          </div>
+        )}
       </div>
     </>
   );

@@ -10,16 +10,19 @@
   position: sticky;
   top: -10px;
   // transition: all 0.25s ease-in;
-  &.top {
-    box-shadow: none;
-    background: transparent;
-    // padding: 30px 30px 20px;
-    .main {
-      position: fixed;
-      top: 80px;
-      padding-top: 30px;
+  @media (min-width: 768px) {
+    &.top {
+      box-shadow: none;
+      background: transparent;
+      // padding: 30px 30px 20px;
+      .main {
+        position: fixed;
+        top: 80px;
+        padding-top: 30px;
+      }
     }
   }
+
   &.active {
     border-radius: 50px 50px 0 0;
     box-shadow: none;
@@ -36,6 +39,9 @@
     margin: 0;
     padding: 0;
     box-shadow: none;
+  }
+  @media (max-width: 768px) {
+    padding: 12px 0;
   }
 }
 
@@ -94,5 +100,13 @@
     bottom: 100%;
     left: 0;
     background: #fff;
+  }
+  @media (max-width: 768px) {
+    width: calc(100% + 40px);
+    left: -20px;
+    padding: 13px 20px 30px;
+    border-radius: 0;
+    max-height: none;
+    height: calc(100vh - 64px);
   }
 }

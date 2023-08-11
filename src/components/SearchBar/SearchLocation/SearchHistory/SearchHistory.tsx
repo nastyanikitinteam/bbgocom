@@ -1,7 +1,10 @@
 import { FC } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./search-history.module.scss";
+import cn from "classnames";
 
 import DelIcon from "images/icons/del.svg";
+import ClearIcon from "images/icons/clean-icon.svg";
 import SearchIcon from "images/icons/search.svg";
 
 interface IProps {
@@ -13,6 +16,8 @@ const SearchHistory: FC<IProps> = ({
   handleClickSeacrh,
   setIsActiveChoice,
 }) => {
+  const isMobile = useMediaQuery(768);
+
   const serachList = [
     {
       id: 0,
@@ -49,12 +54,14 @@ const SearchHistory: FC<IProps> = ({
     <div className={styles.container}>
       <div className={styles.top}>
         <h3>Search history:</h3>
-        <div className={styles.clear}>
-          <span className={styles.icon}>
-            <DelIcon />
-          </span>
-          Clean All
-        </div>
+        {!isMobile && (
+          <div className={styles.clear}>
+            <span className={styles.icon}>
+              <DelIcon />
+            </span>
+            Clean All
+          </div>
+        )}
       </div>
       <div className={styles.main}>
         <div className={styles.list}>
@@ -74,6 +81,14 @@ const SearchHistory: FC<IProps> = ({
           })}
         </div>
       </div>
+      {isMobile && (
+        <div className={cn("default-button sm border", styles.button)}>
+          <span className="icon">
+            <ClearIcon />
+          </span>
+          Clean History
+        </div>
+      )}
     </div>
   );
 };

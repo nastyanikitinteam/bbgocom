@@ -12,19 +12,22 @@
   transition: all 0.25s ease-in;
   max-width: 369px;
   width: 100%;
-  &:after {
-    content: "";
-    position: absolute;
-    left: calc(50% - 0.5px);
-    top: calc(50% - 9.5px);
-    width: 1px;
-    height: 19px;
-    background: #d8d8d8;
+  @media (min-width: 769px) {
+    &:after {
+      content: "";
+      position: absolute;
+      left: calc(50% - 0.5px);
+      top: calc(50% - 9.5px);
+      width: 1px;
+      height: 19px;
+      background: #d8d8d8;
+    }
+    &:hover {
+      box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.1);
+      border-color: transparent;
+    }
   }
-  &:hover {
-    box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.1);
-    border-color: transparent;
-  }
+
   &.fill {
     border-color: #000000;
   }
@@ -65,6 +68,7 @@
   align-items: center;
   width: 50%;
   padding: 7px 15px 7px 15px;
+
   p {
     // min-width: 116px;
     overflow: hidden;
@@ -88,6 +92,9 @@
   }
   &:first-child {
     padding-right: 30px;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
   }
 }
 

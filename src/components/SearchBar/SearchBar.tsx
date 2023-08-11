@@ -25,6 +25,8 @@ const SearchBar = () => {
   const [isActiveChoice, setIsActiveChoice] = useState("");
 
   const isSmallLaptop = useMediaQuery(1300);
+  const isTablet = useMediaQuery(998);
+  const isMobile = useMediaQuery(768);
 
   const [isActiveCategory, setIsActiveCategory] = useState(null);
 
@@ -53,20 +55,24 @@ const SearchBar = () => {
   }, []);
 
   useEffect(() => {
-    const handleScroll = (event) => {
-      setScrollTop(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    if (!isTablet) {
+      const handleScroll = (event) => {
+        setScrollTop(window.scrollY);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, []);
 
   useEffect(() => {
-    if (scrollTop > height) {
-      setIsSearchBarTop(true);
-    } else {
-      setIsSearchBarTop(false);
+    if (!isTablet) {
+      if (scrollTop > height) {
+        setIsSearchBarTop(true);
+      } else {
+        setIsSearchBarTop(false);
+      }
     }
   }, [scrollTop]);
 

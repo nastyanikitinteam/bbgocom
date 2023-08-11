@@ -63,3 +63,16 @@
     background: #f5f5f7;
   }
 }
+
+.button {
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .item {
+    padding: 16px 0;
+  }
+  .list {
+    margin-bottom: 40px;
+  }
+}
