@@ -41,7 +41,7 @@
   padding: 16px 15px;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   cursor: pointer;
   border-radius: 12px;
   transition: all 0.25s ease-in;
@@ -59,8 +59,10 @@
       stroke: #808080;
     }
   }
-  &:hover {
-    background: #f5f5f7;
+  @media (min-width: 768px) {
+    &:hover {
+      background: #f5f5f7;
+    }
   }
 }
 

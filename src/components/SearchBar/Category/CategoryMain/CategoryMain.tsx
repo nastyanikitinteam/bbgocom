@@ -1,5 +1,7 @@
 import { useState, useEffect, FC } from "react";
 import { categoriesList } from "components/Category/config";
+import useMediaQuery from "src/utils/useMediaQuery";
+import CategoryMobile from "./CategoryMobile/CategoryMobile";
 import Blocks from "./Blocks/Blocks";
 import cn from "classnames";
 
@@ -22,12 +24,20 @@ const CategoryMain: FC<IProps> = ({
   handleClick,
   setIsActiveChoice,
 }) => {
+  const isMobile = useMediaQuery(768);
+
   const chooseCategory = (id, title) => {
     handleClick("nameOfCategory", title);
     setIsActiveCategory(id);
   };
 
-  return (
+  return isMobile ? (
+    <CategoryMobile
+      categoriesList={categoriesList}
+      handleClick={handleClick}
+      setIsActiveChoice={setIsActiveChoice}
+    />
+  ) : (
     <div className={cn(styles.container, { [styles.top]: isSearchBarTop })}>
       <div className={styles.list}>
         {categoriesList.map(({ id, title, image }) => {

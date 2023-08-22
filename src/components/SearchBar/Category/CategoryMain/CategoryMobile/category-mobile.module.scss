@@ -1,0 +1,103 @@
+.container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+}
+
+.title {
+  text-align: center;
+}
+
+.top {
+  position: relative;
+  padding: 10px 20px;
+  margin-bottom: 25px;
+}
+
+.back {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  .arrow {
+    transform: rotate(90deg);
+  }
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  max-height: calc(100% - 67px);
+  overflow-y: auto;
+  padding: 0 20px;
+}
+
+.list {
+  height: max-content;
+  padding-bottom: 25px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px 4px 4px;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  border-radius: 50px;
+  .arrow {
+    transform: rotate(-90deg);
+    margin-left: 12px;
+  }
+}
+
+.subtitle {
+  flex-grow: 1;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  padding: 12px 0;
+}
+.image {
+  max-width: 65px;
+  min-width: 65px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  path {
+    stroke: #000;
+  }
+}
+
+.mainItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 4px 10px 4px 4px;
+}
+
+.info {
+  .subtitle {
+    padding: 0 0 5px;
+  }
+}

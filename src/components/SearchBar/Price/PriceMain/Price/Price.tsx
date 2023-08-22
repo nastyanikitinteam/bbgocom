@@ -49,7 +49,7 @@ const Price: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
         max={500000}
         onChange={onChangeSlider}
         value={[inputValue1, inputValue2]}
-        className={"customSelect"}
+        className={cn("customSelect", styles.slider)}
         tooltip={{ open: false }}
       />
 

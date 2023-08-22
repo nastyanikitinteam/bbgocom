@@ -5,6 +5,7 @@ import styles from "./search-location.module.scss";
 
 import SearchIcon from "images/icons/search-icon.svg";
 import MapIcon from "images/icons/map-icon.svg";
+import FilterIcon from "images/icons/filter-icon.svg";
 import CloseIcon from "images/icons/close.svg";
 
 interface IProps {
@@ -143,6 +144,11 @@ const SearchLocation: FC<IProps> = ({
         >
           <CloseIcon />
         </div>
+        {isMobile && (
+          <div className={styles.filter}>
+            <FilterIcon onClick={() => setIsActiveChoice("Filter")} />
+          </div>
+        )}
         {!isMobile && (
           <div
             className={styles.item}

@@ -10,7 +10,7 @@
   position: sticky;
   top: -10px;
   // transition: all 0.25s ease-in;
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     &.top {
       box-shadow: none;
       background: transparent;
@@ -92,14 +92,16 @@
   z-index: 1;
   overflow-y: auto;
   max-height: 80vh;
-  &:before {
-    content: "";
-    position: absolute;
-    height: 10px;
-    width: 100%;
-    bottom: 100%;
-    left: 0;
-    background: #fff;
+  @media (min-width: 769px) {
+    &:before {
+      content: "";
+      position: absolute;
+      height: 10px;
+      width: 100%;
+      bottom: 100%;
+      left: 0;
+      background: #fff;
+    }
   }
   @media (max-width: 768px) {
     width: calc(100% + 40px);
@@ -108,5 +110,12 @@
     border-radius: 0;
     max-height: none;
     height: calc(100vh - 64px);
+    z-index: 3;
   }
+}
+
+.cancel {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
 }

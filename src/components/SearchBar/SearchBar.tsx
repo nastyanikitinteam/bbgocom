@@ -16,6 +16,7 @@ import Search from "./SearchLocation/Search/Search";
 import styles from "./search-bar.module.scss";
 
 import SearchIcon from "images/icons/search.svg";
+import Filter from "./Filter/Filter";
 
 const SearchBar = () => {
   const containerRef = useRef(null as null | HTMLDivElement);
@@ -162,12 +163,19 @@ const SearchBar = () => {
             isPriceBlockDefault={isPriceBlockDefault}
           />
         )}
-        <button
-          className={cn(styles.button, "default-button onlyIcon")}
-          onClick={send}
-        >
-          <SearchIcon />
-        </button>
+        {!isMobile && (
+          <button
+            className={cn(styles.button, "default-button onlyIcon")}
+            onClick={send}
+          >
+            <SearchIcon />
+          </button>
+        )}
+        {isActiveChoice != "" && (
+          <div className={styles.cancel} onClick={() => setIsActiveChoice("")}>
+            Cancel
+          </div>
+        )}
       </div>
       {isActiveChoice && (
         <div className={styles.main}>
@@ -214,6 +222,16 @@ const SearchBar = () => {
               isSearchQuery={isSearchQuery}
               handleClickSeacrh={handleClickSeacrh}
               setIsActiveChoice={setIsActiveChoice}
+            />
+          )}
+          {isActiveChoice == "Filter" && (
+            <Filter
+              dataPrice={dataPrice}
+              handleClickPrice={handleClickPrice}
+              setIsActiveChoice={setIsActiveChoice}
+              isActiveChoice={isActiveChoice}
+              isActiveCategory={isActiveCategory}
+              dataCategory={dataCategory}
             />
           )}
         </div>

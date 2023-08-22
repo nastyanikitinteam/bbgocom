@@ -37,3 +37,15 @@
     border-color: #5bb75f;
   }
 }
+
+@media (max-width: 768px) {
+  .title {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blocks {
+    gap: 5px;
+  }
+}
