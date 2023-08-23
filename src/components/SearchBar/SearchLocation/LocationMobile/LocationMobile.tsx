@@ -54,24 +54,43 @@ const LocationMobile: FC<IProps> = ({
     setIsInputValue("");
   };
 
+  const closeList = () => {
+    setIsOpenList(false);
+    setIsInputValue("");
+    setIsOpenSearchBlock(false);
+    setIsSearchRegionQuery(
+      dataRegion.nameOfCity
+        ? dataRegion.nameOfCity
+        : dataRegion.nameOfRegion
+        ? dataRegion.nameOfRegion
+        : ""
+    );
+  };
+  const openList = () => {
+    setIsOpenList(true);
+    setIsSearchRegionQuery("");
+  };
+
   return (
     <>
       <h3 className={styles.title}>Location:</h3>
       <div
-        className={cn(styles.input, { [styles.fill]: dataRegion.nameOfCity })}
-        onClick={() => setIsOpenList(true)}
+        className={cn(styles.input, {
+          [styles.fill]: dataRegion.nameOfCity || dataRegion.nameOfRegion,
+        })}
+        onClick={openList}
       >
         <span className={styles.icon}>
           <MapIcon />
         </span>
-        <p>{isSearchRegionQuery}</p>
+        <p>{isSearchRegionQuery ? isSearchRegionQuery : "All Thailand"}</p>
         <span className={styles.arrow}>
           <ArrowSvg />
         </span>
       </div>
       <div
         className={cn(styles.blockBg, { [styles.active]: isOpenList })}
-        onClick={() => setIsOpenList(false)}
+        onClick={closeList}
       ></div>
       <div className={cn(styles.block, { [styles.active]: isOpenList })}>
         <h3 className={styles.subtitle}>Choose region</h3>
@@ -92,7 +111,7 @@ const LocationMobile: FC<IProps> = ({
             />
           </div>
         </div>
-        <div className={styles.close} onClick={() => setIsOpenList(false)}>
+        <div className={styles.close} onClick={closeList}>
           <CloseIcon />
         </div>
         {isOpenSearchBlock ? (
@@ -101,6 +120,8 @@ const LocationMobile: FC<IProps> = ({
             handleClickRegion={handleClickRegion}
             setIsActiveChoice={setIsActiveChoice}
             dataRegion={dataRegion}
+            isMobile
+            closeList={closeList}
           />
         ) : (
           <div className={styles.main}>

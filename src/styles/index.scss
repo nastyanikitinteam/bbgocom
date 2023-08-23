@@ -87,9 +87,12 @@ input[type="number"] {
   @media (max-width: 768px) {
     padding: 10px 30px;
   }
-  &:hover {
-    box-shadow: 10px 10px 20px 0px rgba(51, 140, 55, 0.45);
+  @media (min-width: 769px) {
+    &:hover {
+      box-shadow: 10px 10px 20px 0px rgba(51, 140, 55, 0.45);
+    }
   }
+
   &.sm {
     padding: 10px 30px;
     font-size: 14px;
@@ -105,8 +108,10 @@ input[type="number"] {
   &.white {
     background: #fff;
     color: #000;
-    &:hover {
-      box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.15);
+    @media (min-width: 769px) {
+      &:hover {
+        box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.15);
+      }
     }
   }
   &.border {
@@ -116,8 +121,10 @@ input[type="number"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    &:hover {
-      box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.15);
+    @media (min-width: 769px) {
+      &:hover {
+        box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.15);
+      }
     }
   }
   &.onlyIcon {
@@ -158,6 +165,7 @@ input[type="number"] {
   border-radius: 15px;
   display: inline-block;
   transition: all 0.3s ease-in;
+
   &:hover {
     background: #5bb75f;
     border-color: #5bb75f;
@@ -190,7 +198,7 @@ input[type="number"] {
     letter-spacing: -0.3px;
     background-position: 15px 8px;
   }
-  @media (hover: hover) {
+  @media (min-width: 769px) {
     &:hover {
       box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.15);
       border-color: transparent;

@@ -10,6 +10,8 @@ interface IProps {
   setIsActiveChoice: (bool: string) => void;
   handleClickRegion: (key: string, value: string) => void;
   dataRegion: any;
+  isMobile?: boolean;
+  closeList: () => void;
 }
 
 const LocationSearch: FC<IProps> = ({
@@ -17,6 +19,8 @@ const LocationSearch: FC<IProps> = ({
   setIsActiveChoice,
   handleClickRegion,
   dataRegion,
+  isMobile,
+  closeList,
 }) => {
   const searchResults = searchArray(regionList, isSearchRegionQuery);
 
@@ -60,7 +64,7 @@ const LocationSearch: FC<IProps> = ({
       handleClickRegion("nameOfRegion", item.name);
       delete dataRegion.nameOfCity;
     }
-    setIsActiveChoice("");
+    isMobile ? closeList() : setIsActiveChoice("");
   };
 
   return (

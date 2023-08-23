@@ -30,12 +30,20 @@
       stroke: #808080;
     }
   }
-  &:hover {
-    background: #f5f5f7;
+  @media (min-width: 769px) {
+    &:hover {
+      background: #f5f5f7;
+    }
   }
 }
 
 .region {
   color: #808080;
   margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+  .item {
+    padding: 10px 20px;
+  }
 }

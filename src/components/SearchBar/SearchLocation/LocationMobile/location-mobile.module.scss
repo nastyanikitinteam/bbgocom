@@ -31,10 +31,13 @@
       color: #808080;
     }
   }
-  &:hover {
-    box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.1);
-    border-color: transparent;
+  @media (min-width: 769px) {
+    &:hover {
+      box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.1);
+      border-color: transparent;
+    }
   }
+
   &.fill {
     border-color: #000;
     path {
