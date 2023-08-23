@@ -44,7 +44,9 @@ const Filter: FC<IProps> = ({
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Filter</h3>
-      <PriceMain dataPrice={dataPrice} handleClickPrice={handleClickPrice} />
+      <div className={styles.item}>
+        <PriceMain dataPrice={dataPrice} handleClickPrice={handleClickPrice} />
+      </div>
       <div className={styles.item}>
         <h3 className={styles.subtitle}>Category</h3>
         <Category
