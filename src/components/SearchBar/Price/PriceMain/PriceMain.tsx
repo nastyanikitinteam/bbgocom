@@ -12,7 +12,7 @@ import DelIcon from "images/icons/del.svg";
 interface IProps {
   isSearchBarTop?: boolean;
   dataPrice: any;
-  handleClickPrice: (key: string, value: string) => void;
+  handleClickPrice: (key: string, value: any) => void;
 }
 
 const PriceMain: FC<IProps> = ({
