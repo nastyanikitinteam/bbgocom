@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
+
 import Slider from "../../Slider/Slider";
 import styles from "./hero.module.scss";
 import cn from "classnames";
@@ -37,7 +38,12 @@ const Hero = () => {
 
   return (
     <section className={styles.container}>
-      <div className="wrapper">
+      <div
+        className="wrapper"
+        data-aos-anchor-placement="center-bottom"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
         <Slider slides={sliderList} isHeroSection />
 
         {/* <div className={styles.searchBar}>

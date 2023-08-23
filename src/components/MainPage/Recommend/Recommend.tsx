@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import CardProduct from "components/CardProduct/CardProduct";
 import useMediaQuery from "src/utils/useMediaQuery";
 import { productLst } from "./config";
@@ -29,14 +30,27 @@ const Recommend = () => {
   return (
     <section className={styles.container}>
       <div className="wrapper">
-        <h2 className={cn("title", styles.title)}>Recommend</h2>
+        <h2
+          className={cn("title", styles.title)}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          Recommend
+        </h2>
 
         <div className={styles.blocks}>
           {productLst
             .slice(0, isShowCategory)
             .map(({ id, name, images, price, oldPrice, location }) => {
               return (
-                <div className={styles.block} key={id}>
+                <div
+                  className={styles.block}
+                  key={id}
+                  data-aos-anchor-placement="center-bottom"
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+                >
                   <CardProduct
                     title={name}
                     images={images}
@@ -51,6 +65,9 @@ const Recommend = () => {
         <div
           className={cn(styles.all, { [styles.open]: isViewAll })}
           onClick={() => setIsViewAll((prev) => !prev)}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade-up"
+          data-aos-delay="300"
         >
           {isViewAll ? "Hide recommended" : "View all recommended"}
           <span className={styles.icon}>

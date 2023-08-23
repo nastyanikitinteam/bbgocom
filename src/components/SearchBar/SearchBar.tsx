@@ -1,11 +1,11 @@
 import { useRef, useContext, useEffect, useState } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import ThemeContext from "src/context";
+
 import cn from "classnames";
 import Category from "./Category/Category";
 import Price from "./Price/Price";
 import SearchLocation from "./SearchLocation/SearchLocation";
-
 import CategoryMain from "./Category/CategoryMain/CategoryMain";
 import PriceMain from "./Price/PriceMain/PriceMain";
 import LocationMain from "./SearchLocation/LocationMain/LocationMain";

@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+
 import CardProduct from "components/CardProduct/CardProduct";
 import {
   Swiper as SwiperComponent,
@@ -45,8 +46,20 @@ const LatestDeals = () => {
   return (
     <section className={styles.container}>
       <div className={cn("wrapper", styles.wrapper)}>
-        <h2 className={cn("title", styles.title)}>Latest deals</h2>
-        <div className={styles.blocks}>
+        <h2
+          className={cn("title", styles.title)}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          Latest deals
+        </h2>
+        <div
+          className={styles.blocks}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           {isMobile ? (
             <SwiperComponent {...(params as SwiperProps)}>
               {latestLst.map(
@@ -89,6 +102,9 @@ const LatestDeals = () => {
           <div
             className={cn(styles.all, { [styles.open]: isViewAll })}
             onClick={() => setIsViewAll((prev) => !prev)}
+            data-aos-anchor-placement="center-bottom"
+            data-aos="fade-up"
+            data-aos-delay="300"
           >
             {isViewAll ? "Hide latest deals" : "View all latest deals"}
             <span className={styles.icon}>

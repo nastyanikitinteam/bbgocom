@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
+
 import { Navigation, Pagination } from "swiper/modules";
 import {
   Swiper as SwiperComponent,
@@ -59,8 +60,20 @@ const Testimonials = () => {
   return (
     <section className={styles.container}>
       <div className="wrapper">
-        <h2 className={cn("title", styles.title)}>Testimonials</h2>
-        <div className={styles.slider}>
+        <h2
+          className={cn("title", styles.title)}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          Testimonials
+        </h2>
+        <div
+          className={styles.slider}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
           <SwiperComponent {...(params as SwiperProps)}>
             {reviewList.map((props) => {
               return (

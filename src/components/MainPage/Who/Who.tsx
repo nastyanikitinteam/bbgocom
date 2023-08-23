@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
+
 import {
   Swiper as SwiperComponent,
   SwiperSlide,
@@ -52,7 +53,14 @@ const Who = () => {
   return (
     <section className={styles.container}>
       <div className="wrapper">
-        <h2 className={cn("title", styles.title)}>Who we are</h2>
+        <h2
+          className={cn("title", styles.title)}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          Who we are
+        </h2>
         <div className={styles.blocks}>
           {isTablet ? (
             <SwiperComponent {...(params as SwiperProps)}>
@@ -71,7 +79,13 @@ const Who = () => {
           ) : (
             blocksList.map(({ id, image, title, text }) => {
               return (
-                <div key={id} className={styles.block}>
+                <div
+                  key={id}
+                  className={styles.block}
+                  data-aos-anchor-placement="center-bottom"
+                  data-aos="fade"
+                  data-aos-delay={200 + 200 * id}
+                >
                   <div className={styles.image}>
                     <img src={image} alt="" />
                   </div>
@@ -83,7 +97,12 @@ const Who = () => {
           )}
         </div>
 
-        <div className={styles.info}>
+        <div
+          className={styles.info}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           <p className={styles.description}>Do you have any questions?</p>
           <a href="#" className={cn("default-button sm", styles.button)}>
             Help section

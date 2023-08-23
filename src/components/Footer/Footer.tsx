@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 
 import styles from "./footer.module.scss";
 import qrCode from "images/main/qr-code.png";
@@ -109,7 +109,13 @@ const Footer = () => {
         <div className={styles.content}>
           {footerArray.map(({ id, title, list }) => {
             return (
-              <div className={styles.block} key={id}>
+              <div
+                className={styles.block}
+                key={id}
+                data-aos-anchor-placement="center-bottom"
+                data-aos="fade"
+                data-aos-delay={200 + 150 * id}
+              >
                 <h3 className={styles.title}>{title}</h3>
                 <ul className={styles.list}>
                   {list.map(({ id, name, link }) => {
@@ -123,7 +129,12 @@ const Footer = () => {
               </div>
             );
           })}
-          <div className={styles.block}>
+          <div
+            className={styles.block}
+            data-aos-anchor-placement="center-bottom"
+            data-aos="fade"
+            data-aos-delay="650"
+          >
             <h3 className={styles.title}>App</h3>
             <p className={styles.text}>
               Scan the QR code to install the mobile app
@@ -132,13 +143,23 @@ const Footer = () => {
               <img src={qrCode.src} alt="" />
             </div>
           </div>
-          <div className={styles.button}>
+          <div
+            className={styles.button}
+            data-aos-anchor-placement="center-bottom"
+            data-aos="fade"
+            data-aos-delay="800"
+          >
             <a href="#" className="default-button sm">
               Report a bug
             </a>
           </div>
         </div>
-        <p className={styles.copyright}>
+        <p
+          className={styles.copyright}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade"
+          data-aos-delay="800"
+        >
           Copyright © 2023 BBGO. All rights reserved.
         </p>
       </div>

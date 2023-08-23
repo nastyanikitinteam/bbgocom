@@ -1,4 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
+
 import Category from "components/Category/Category";
 import CategoryMobile from "components/SearchBar/Category/CategoryMain/CategoryMobile/CategoryMobile";
 import useMediaQuery from "src/utils/useMediaQuery";
@@ -44,17 +45,27 @@ const PopularCategory = () => {
         ? setIsShowCategory(categoriesList.length)
         : setIsShowCategory(7);
     }
-  }, [isSmallLaptop, isTablet]);
+  }, [isSmallLaptop, isTablet, isMobile]);
 
   return (
     <section className={styles.container}>
       <div className={cn("wrapper", styles.wrapper)}>
         <div className={styles.top}>
-          <h2 className={cn("title", styles.title)}>Popular Categories</h2>
+          <h2
+            className={cn("title", styles.title)}
+            data-aos-anchor-placement="center-bottom"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            Popular Categories
+          </h2>
           {isMobile && (
             <div
               className={styles.all}
               onClick={() => setIsShowCategoryMenu(true)}
+              data-aos-anchor-placement="center-bottom"
+              data-aos="fade-up"
+              data-aos-delay="300"
             >
               View all
               <span className={styles.icon}>
@@ -64,7 +75,12 @@ const PopularCategory = () => {
           )}
         </div>
 
-        <div className={styles.blocks}>
+        <div
+          className={styles.blocks}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           {categoriesList.map(({ id, title, image, link, items }) => {
             return (
               id < isShowCategory && (
@@ -84,6 +100,9 @@ const PopularCategory = () => {
           <div
             className={cn(styles.all, { [styles.open]: isViewAll })}
             onClick={() => setIsViewAll((prev) => !prev)}
+            data-aos-anchor-placement="center-bottom"
+            data-aos="fade-up"
+            data-aos-delay="300"
           >
             {isViewAll ? "Hide Category" : "View all Category"}
             <span className={styles.icon}>

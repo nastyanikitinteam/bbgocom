@@ -1,4 +1,6 @@
-import React, { ReactNode, FC, useState } from "react";
+import React, { ReactNode, FC, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Head from "next/head";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Header from "components/Header/Header";
@@ -14,6 +16,14 @@ interface IProps {
 
 const Layout: FC<IProps> = ({ title = "Page", children }) => {
   const isMobile = useMediaQuery(768);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      easing: "ease-in-out",
+    });
+    AOS.refresh();
+  }, []);
 
   return (
     <div className={styles["app"]}>

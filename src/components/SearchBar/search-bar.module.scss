@@ -9,6 +9,13 @@
   z-index: 200;
   position: sticky;
   top: -10px;
+  opacity: 0;
+  transform: translate3d(0, 100px, 0);
+  animation-name: showBlockFadeUp;
+  animation-duration: 0.7s;
+  animation-delay: 0.6s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
   // transition: all 0.25s ease-in;
   @media (min-width: 769px) {
     &.top {
@@ -39,6 +46,8 @@
     margin: 0;
     padding: 0;
     box-shadow: none;
+    animation-name: showBlockFadeDown;
+    animation-delay: 0.3s;
   }
   @media (max-width: 768px) {
     padding: 12px 0;
@@ -118,4 +127,26 @@
   display: flex;
   align-items: center;
   margin-left: 5px;
+}
+
+@keyframes showBlockFadeUp {
+  from {
+    transform: translate3d(0, 100px, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0px, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes showBlockFadeDown {
+  from {
+    transform: translate3d(0, -100px, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0px, 0);
+    opacity: 1;
+  }
 }

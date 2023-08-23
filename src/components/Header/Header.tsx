@@ -1,4 +1,5 @@
 import { useMemo, useContext, useEffect, useState } from "react";
+
 import Link from "next/link";
 import useMediaQuery from "src/utils/useMediaQuery";
 import ThemeContext from "src/context";
@@ -65,7 +66,12 @@ const Header = () => {
   }, [scrollTop]);
 
   return (
-    <div className={cn(styles.container, { [styles.active]: isHeaderActive })}>
+    <div
+      className={cn(styles.container, { [styles.active]: isHeaderActive })}
+      data-aos-anchor-placement="center-bottom"
+      data-aos="fade-down"
+      data-aos-delay="300"
+    >
       <div className="wrapper">
         <div className={styles.content}>
           <div className={styles.logo}>
