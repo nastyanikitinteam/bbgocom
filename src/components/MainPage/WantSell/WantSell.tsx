@@ -28,9 +28,9 @@ const WantSell = () => {
               Check out BBGO offers for business. Raise your applications to the
               top and earn more.
             </p>
-            <a href="" className={cn("default-button white", styles.button)}>
+            <div className={cn("default-button white", styles.button)}>
               Start Selling
-            </a>
+            </div>
           </div>
           <div
             className={styles.image}

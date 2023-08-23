@@ -12,7 +12,6 @@ const Portal: FC<PortalProps> = ({ children }) => {
 
   useEffect(() => {
     ref.current = document.querySelector<HTMLElement>("#portal");
-    console.log(ref.current);
     setMounted(true);
   }, []);
 

@@ -32,7 +32,6 @@ const Account: FC<IProps> = ({ isSearchBarTop }) => {
   useEffect(() => {
     setTopPosition(isPosition?.top + isPosition?.height + 10);
     setIsLeftPosition(isPosition?.left - 147);
-    console.log(isPosition?.left);
   }, [isPosition]);
 
   useEffect(() => {

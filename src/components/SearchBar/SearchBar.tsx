@@ -123,10 +123,11 @@ const SearchBar = () => {
 
   // useEffect(() => {
   //   const onClick = (e) =>
+  //       // @ts-ignore
   //     containerRef.current.contains(e.target) || setIsActiveChoice("");
   //   document.addEventListener("click", onClick);
-  //   return () => document.removeEventListener("click", onClick);
-  // }, []);
+  //   return () => !isMobile && document.removeEventListener("click", onClick);
+  // }, [isMobile]);
 
   useEffect(() => {
     setIsPriceBlockDefault(

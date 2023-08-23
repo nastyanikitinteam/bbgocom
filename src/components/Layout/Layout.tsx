@@ -21,6 +21,7 @@ const Layout: FC<IProps> = ({ title = "Page", children }) => {
     AOS.init({
       duration: 700,
       easing: "ease-in-out",
+      once: true,
     });
     AOS.refresh();
   }, []);

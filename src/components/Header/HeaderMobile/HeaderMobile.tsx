@@ -19,18 +19,18 @@ const Header = () => {
         <div
           className={cn(styles.menu, { [styles.openMenu]: isOpenProfileMenu })}
         >
-          <a href="" className={styles.item}>
+          <div className={styles.item}>
             <HomeIcon />
-          </a>
-          <a href="" className={styles.item}>
+          </div>
+          <div className={styles.item}>
             <WishlistIcon />
-          </a>
-          <a href="" className={styles.item}>
+          </div>
+          <div className={styles.item}>
             <CreateAdIcon />
-          </a>
-          <a href="" className={styles.item}>
+          </div>
+          <div className={styles.item}>
             <MessageIcon />
-          </a>
+          </div>
           <div
             className={cn(styles.item, { [styles.aсtive]: isOpenProfileMenu })}
             onClick={() => setIsOpenProfileMenu((prev) => !prev)}

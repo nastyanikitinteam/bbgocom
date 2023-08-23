@@ -30,7 +30,7 @@ const CardProduct: FC<IProps> = ({
       <div className={styles.wishlist}>
         <StarIcon />
       </div>
-      <a href="#" className={styles.block}>
+      <div className={styles.block}>
         <div className={styles.image}>
           <Slider slides={images} isCardProduct />
         </div>
@@ -47,7 +47,7 @@ const CardProduct: FC<IProps> = ({
             {oldPrice && <span className={styles.old}>{oldPrice}</span>}
           </div>
         </div>
-      </a>
+      </div>
     </div>
   );
 };

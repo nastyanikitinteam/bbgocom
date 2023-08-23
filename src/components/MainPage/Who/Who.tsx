@@ -104,9 +104,9 @@ const Who = () => {
           data-aos-delay="300"
         >
           <p className={styles.description}>Do you have any questions?</p>
-          <a href="#" className={cn("default-button sm", styles.button)}>
+          <div className={cn("default-button sm", styles.button)}>
             Help section
-          </a>
+          </div>
         </div>
       </div>
     </section>

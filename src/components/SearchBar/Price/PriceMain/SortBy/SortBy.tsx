@@ -1,5 +1,6 @@
 import { useMemo, useRef, FC, useEffect, useState } from "react";
 import Select, { components } from "react-select";
+import PortalContainer from "components/PortalContainer/PortalContainer";
 import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
 import styles from "./sortby.module.scss";
@@ -98,31 +99,36 @@ const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
               <ArrowSvg />
             </span>
           </div>
-          <div
-            className={cn(styles.blockBg, { [styles.active]: isOpenList })}
-            onClick={() => setIsOpenList(false)}
-          ></div>
-          <div className={cn(styles.block, { [styles.active]: isOpenList })}>
-            <h3 className={styles.subtitle}>Short Buy</h3>
-            <div className={styles.close} onClick={() => setIsOpenList(false)}>
-              <CloseIcon />
+          <PortalContainer>
+            <div
+              className={cn(styles.blockBg, { [styles.active]: isOpenList })}
+              onClick={() => setIsOpenList(false)}
+            ></div>
+            <div className={cn(styles.block, { [styles.active]: isOpenList })}>
+              <h3 className={styles.subtitle}>Sort Buy</h3>
+              <div
+                className={styles.close}
+                onClick={() => setIsOpenList(false)}
+              >
+                <CloseIcon />
+              </div>
+              <div className={styles.list}>
+                {sortList.map(({ value }) => {
+                  return (
+                    <div
+                      key={value}
+                      className={cn(styles.item, {
+                        [styles.active]: value === dataPrice.sortBy,
+                      })}
+                      onClick={() => handleListChange(value)}
+                    >
+                      {value}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div className={styles.list}>
-              {sortList.map(({ value }) => {
-                return (
-                  <div
-                    key={value}
-                    className={cn(styles.item, {
-                      [styles.active]: value === dataPrice.sortBy,
-                    })}
-                    onClick={() => handleListChange(value)}
-                  >
-                    {value}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          </PortalContainer>
         </>
       )}
     </div>

@@ -33,9 +33,9 @@ const PopularSearches = () => {
         >
           {searchList.slice(0, isCount).map(({ id, title }) => {
             return (
-              <a href="#" className={cn("tag", styles.tag)} key={id}>
+              <div className={cn("tag", styles.tag)} key={id}>
                 {title}
-              </a>
+              </div>
             );
           })}
         </div>

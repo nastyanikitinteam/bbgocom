@@ -1,4 +1,5 @@
 import { useState, useEffect, FC } from "react";
+import PortalContainer from "components/PortalContainer/PortalContainer";
 import { categoriesList } from "components/Category/config";
 import useMediaQuery from "src/utils/useMediaQuery";
 import CategoryMobile from "./CategoryMobile/CategoryMobile";
@@ -36,13 +37,15 @@ const CategoryMain: FC<IProps> = ({
   };
 
   return isMobile ? (
-    <CategoryMobile
-      categoriesList={categoriesList}
-      handleClick={handleClick}
-      setIsActiveChoice={setIsActiveChoice}
-      dataCategory={dataCategory}
-      setDataCategory={setDataCategory}
-    />
+    <PortalContainer>
+      <CategoryMobile
+        categoriesList={categoriesList}
+        handleClick={handleClick}
+        setIsActiveChoice={setIsActiveChoice}
+        dataCategory={dataCategory}
+        setDataCategory={setDataCategory}
+      />
+    </PortalContainer>
   ) : (
     <div className={cn(styles.container, { [styles.top]: isSearchBarTop })}>
       <div className={styles.list}>

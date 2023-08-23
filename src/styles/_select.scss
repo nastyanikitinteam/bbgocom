@@ -16,6 +16,7 @@
     padding: 7px 10px 7px 15px;
     cursor: pointer;
     flex-wrap: nowrap;
+    transition: all 0.25s ease-in;
     &--menu-is-open {
       border-color: #38953c;
       .default__indicator {
@@ -62,7 +63,6 @@
     box-shadow: 0px 45px 80px 0px rgba(21, 40, 61, 0.15);
     border: none;
     overflow: hidden;
-    -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
     &-list {
       padding: 0;
     }

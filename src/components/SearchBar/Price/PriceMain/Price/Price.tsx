@@ -8,7 +8,7 @@ import PriceMin from "images/icons/price-min.svg";
 
 interface IProps {
   dataPrice: any;
-  handleClickPrice: (key: string, value: string) => void;
+  handleClickPrice: (key: string, value: number) => void;
 }
 
 const Price: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
@@ -16,12 +16,22 @@ const Price: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
   const [inputValue2, setInputValue2] = useState(+dataPrice.maxPrice);
 
   const onChangeInput1 = (event) => {
-    setInputValue1(+event.target.value);
-    handleClickPrice("minPrice", event.target.value);
+    if (event.target.value > 500000) {
+      setInputValue1(500000);
+      handleClickPrice("minPrice", 500000);
+    } else {
+      setInputValue1(+event.target.value);
+      handleClickPrice("minPrice", +event.target.value);
+    }
   };
   const onChangeInput2 = (event) => {
-    setInputValue2(+event.target.value);
-    handleClickPrice("maxPrice", event.target.value);
+    if (event.target.value > 500000) {
+      setInputValue1(500000);
+      handleClickPrice("maxPrice", 500000);
+    } else {
+      setInputValue1(+event.target.value);
+      handleClickPrice("maxPrice", +event.target.value);
+    }
   };
   const onChangeSlider = (newValue) => {
     setInputValue1(newValue[0]);
@@ -56,23 +66,29 @@ const Price: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
       <div className={styles.bottom}>
         <div className={styles.item}>
           <input
-            type="number"
-            min={0}
-            max={500000}
+            type="text"
             value={inputValue1}
             className={cn("default-input sm", styles.priceMin)}
             onChange={onChangeInput1}
+            onKeyPress={(event) => {
+              if (!/[0-9]/.test(event.key)) {
+                event.preventDefault();
+              }
+            }}
           />
         </div>
         <span className={styles.separator}>-</span>
         <div className={styles.item}>
           <input
-            type="number"
+            type="text"
             className={cn("default-input sm", styles.priceMax)}
-            min={0}
-            max={500000}
             value={inputValue2}
             onChange={onChangeInput2}
+            onKeyPress={(event) => {
+              if (!/[0-9]/.test(event.key)) {
+                event.preventDefault();
+              }
+            }}
           />
         </div>
       </div>

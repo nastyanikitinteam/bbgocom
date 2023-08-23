@@ -149,9 +149,7 @@ const Footer = () => {
             data-aos="fade"
             data-aos-delay="800"
           >
-            <a href="#" className="default-button sm">
-              Report a bug
-            </a>
+            <div className="default-button sm">Report a bug</div>
           </div>
         </div>
         <p

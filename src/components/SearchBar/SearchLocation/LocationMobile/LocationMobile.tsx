@@ -1,5 +1,6 @@
 import { useMemo, useRef, FC, useEffect, useState } from "react";
 import { regionList } from "../LocationMain/config";
+import PortalContainer from "components/PortalContainer/PortalContainer";
 import styles from "./location-mobile.module.scss";
 import cn from "classnames";
 import MapIcon from "images/icons/map-icon.svg";
@@ -88,73 +89,75 @@ const LocationMobile: FC<IProps> = ({
           <ArrowSvg />
         </span>
       </div>
-      <div
-        className={cn(styles.blockBg, { [styles.active]: isOpenList })}
-        onClick={closeList}
-      ></div>
-      <div className={cn(styles.block, { [styles.active]: isOpenList })}>
-        <h3 className={styles.subtitle}>Choose region</h3>
-        <div className={styles.top}>
-          <div className={styles.input}>
-            <span
-              className={cn(styles.icon, {
-                [styles.fill]: isSearchRegionQuery.length > 0,
-              })}
-            >
-              <MapIcon />
-            </span>
-            <input
-              type="text"
-              value={isInputValue}
-              onChange={onChangeRegionInput}
-              placeholder="Search"
-            />
-          </div>
-        </div>
-        <div className={styles.close} onClick={closeList}>
-          <CloseIcon />
-        </div>
-        {isOpenSearchBlock ? (
-          <LocationSearch
-            isSearchRegionQuery={isSearchRegionQuery}
-            handleClickRegion={handleClickRegion}
-            setIsActiveChoice={setIsActiveChoice}
-            dataRegion={dataRegion}
-            isMobile
-            closeList={closeList}
-          />
-        ) : (
-          <div className={styles.main}>
-            <div className={styles.list}>
-              {regionList.map(({ id, name, items }) => {
-                return (
-                  <>
-                    <div
-                      key={id}
-                      className={cn(styles.region)}
-                      onClick={() => chooseCity(null, name)}
-                    >
-                      {name}
-                    </div>
-
-                    {items.map(({ id, name }) => {
-                      return (
-                        <div
-                          key={id}
-                          className={cn(styles.city)}
-                          onClick={() => chooseCity(name, null)}
-                        >
-                          {name}
-                        </div>
-                      );
-                    })}
-                  </>
-                );
-              })}
+      <PortalContainer>
+        <div
+          className={cn(styles.blockBg, { [styles.active]: isOpenList })}
+          onClick={closeList}
+        ></div>
+        <div className={cn(styles.block, { [styles.active]: isOpenList })}>
+          <h3 className={styles.subtitle}>Choose region</h3>
+          <div className={styles.top}>
+            <div className={styles.input}>
+              <span
+                className={cn(styles.icon, {
+                  [styles.fill]: isSearchRegionQuery.length > 0,
+                })}
+              >
+                <MapIcon />
+              </span>
+              <input
+                type="text"
+                value={isInputValue}
+                onChange={onChangeRegionInput}
+                placeholder="Search"
+              />
             </div>
           </div>
-        )}
-      </div>
+          <div className={styles.close} onClick={closeList}>
+            <CloseIcon />
+          </div>
+          {isOpenSearchBlock ? (
+            <LocationSearch
+              isSearchRegionQuery={isSearchRegionQuery}
+              handleClickRegion={handleClickRegion}
+              setIsActiveChoice={setIsActiveChoice}
+              dataRegion={dataRegion}
+              isMobile
+              closeList={closeList}
+            />
+          ) : (
+            <div className={styles.main}>
+              <div className={styles.list}>
+                {regionList.map(({ id, name, items }) => {
+                  return (
+                    <>
+                      <div
+                        key={id}
+                        className={cn(styles.region)}
+                        onClick={() => chooseCity(null, name)}
+                      >
+                        {name}
+                      </div>
+
+                      {items.map(({ id, name }) => {
+                        return (
+                          <div
+                            key={id}
+                            className={cn(styles.city)}
+                            onClick={() => chooseCity(name, null)}
+                          >
+                            {name}
+                          </div>
+                        );
+                      })}
+                    </>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      </PortalContainer>
     </>
   );
 };
