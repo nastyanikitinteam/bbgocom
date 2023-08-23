@@ -7,12 +7,16 @@ interface IProps {
   categoriesList: any;
   handleClick: (key: string, value: string) => void;
   setIsActiveChoice: (bool: string) => void;
+  dataCategory: any;
+  setDataCategory: (bool: string) => void;
 }
 
 const CategoryMobile: FC<IProps> = ({
   categoriesList,
   handleClick,
   setIsActiveChoice,
+  dataCategory,
+  setDataCategory,
 }) => {
   const [isCategoryChoose, setIsCategoryChoose] = useState(null);
   const [isSubCategoryChoose, setIsSubCategoryChoose] = useState(null);
@@ -32,17 +36,48 @@ const CategoryMobile: FC<IProps> = ({
     setIsActiveChoice("Filter");
   };
 
+  const deletSubCategoryResult = () => {
+    if (dataCategory.nameOfSubCategory) {
+      let obj = dataCategory;
+      delete obj.nameOfSubCategory;
+      setDataCategory(obj);
+    }
+    setIsSubCategoryChoose(null);
+  };
+
+  const deletCategoryResult = () => {
+    if (dataCategory.nameOfCategory) {
+      let obj = dataCategory;
+      delete obj.nameOfCategory;
+      setDataCategory(obj);
+    }
+    setIsCategoryChoose(null);
+    // handleClick("nameOfRegion", "All Thailand");
+  };
+
+  const back = () => {
+    isSubCategoryChoose !== null
+      ? deletSubCategoryResult()
+      : isCategoryChoose !== null
+      ? deletCategoryResult()
+      : setIsActiveChoice("Filter");
+  };
+
+  const close = () => {
+    setIsActiveChoice("Filter");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <div className={styles.back}>
+        <div className={styles.back} onClick={back}>
           <span className={styles.arrow}>
             <ArrowSvg />
           </span>
           Back
         </div>
         <h3 className={styles.title}>Category</h3>
-        <div className={styles.close}>
+        <div className={styles.close} onClick={close}>
           <CloseIcon />
         </div>
       </div>
@@ -92,7 +127,7 @@ const CategoryMobile: FC<IProps> = ({
               {categoriesList
                 .filter(({ id }) => id === isCategoryChoose)
                 .map(({ subcategories }) =>
-                  subcategories.map(({ id, title, items }) => {
+                  subcategories?.map(({ id, title, items }) => {
                     return isSubCategoryChoose === null ? (
                       <div
                         className={styles.item}

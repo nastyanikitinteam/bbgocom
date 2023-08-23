@@ -15,6 +15,8 @@ interface IProps {
   setIsActiveCategory: (bool: number) => void;
   setIsActiveChoice: (bool: string) => void;
   handleClick: (key: string, value: string) => void;
+  dataCategory: any;
+  setDataCategory: (bool: string) => void;
 }
 
 const CategoryMain: FC<IProps> = ({
@@ -23,6 +25,8 @@ const CategoryMain: FC<IProps> = ({
   setIsActiveCategory,
   handleClick,
   setIsActiveChoice,
+  dataCategory,
+  setDataCategory,
 }) => {
   const isMobile = useMediaQuery(768);
 
@@ -36,6 +40,8 @@ const CategoryMain: FC<IProps> = ({
       categoriesList={categoriesList}
       handleClick={handleClick}
       setIsActiveChoice={setIsActiveChoice}
+      dataCategory={dataCategory}
+      setDataCategory={setDataCategory}
     />
   ) : (
     <div className={cn(styles.container, { [styles.top]: isSearchBarTop })}>

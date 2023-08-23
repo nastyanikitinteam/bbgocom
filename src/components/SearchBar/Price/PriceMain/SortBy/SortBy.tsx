@@ -96,27 +96,29 @@ const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
               <ArrowSvg />
             </span>
           </div>
-          <div className={cn(styles.content, { [styles.active]: isOpenList })}>
-            <div className={styles.block}>
-              <h3 className={styles.subtitle}>Short Buy</h3>
-              <div className={styles.close}>
-                <CloseIcon />
-              </div>
-              <div className={styles.list}>
-                {sortList.map(({ value }) => {
-                  return (
-                    <div
-                      key={value}
-                      className={cn(styles.item, {
-                        [styles.active]: value === dataPrice.sortBy,
-                      })}
-                      onClick={() => handleListChange(value)}
-                    >
-                      {value}
-                    </div>
-                  );
-                })}
-              </div>
+          <div
+            className={cn(styles.blockBg, { [styles.active]: isOpenList })}
+            onClick={() => setIsOpenList(false)}
+          ></div>
+          <div className={cn(styles.block, { [styles.active]: isOpenList })}>
+            <h3 className={styles.subtitle}>Short Buy</h3>
+            <div className={styles.close} onClick={() => setIsOpenList(false)}>
+              <CloseIcon />
+            </div>
+            <div className={styles.list}>
+              {sortList.map(({ value }) => {
+                return (
+                  <div
+                    key={value}
+                    className={cn(styles.item, {
+                      [styles.active]: value === dataPrice.sortBy,
+                    })}
+                    onClick={() => handleListChange(value)}
+                  >
+                    {value}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </>

@@ -171,7 +171,7 @@ const SearchBar = () => {
             <SearchIcon />
           </button>
         )}
-        {isActiveChoice != "" && (
+        {isMobile && isActiveChoice != "" && (
           <div className={styles.cancel} onClick={() => setIsActiveChoice("")}>
             Cancel
           </div>
@@ -186,6 +186,8 @@ const SearchBar = () => {
               setIsActiveCategory={setIsActiveCategory}
               handleClick={handleClickCategory}
               setIsActiveChoice={setIsActiveChoice}
+              dataCategory={dataCategory}
+              setDataCategory={setDataCategory}
             />
           )}
           {isActiveChoice == "Price" && (
@@ -232,6 +234,11 @@ const SearchBar = () => {
               isActiveChoice={isActiveChoice}
               isActiveCategory={isActiveCategory}
               dataCategory={dataCategory}
+              setIsSearchRegionQuery={setIsSearchRegionQuery}
+              isSearchRegionQuery={isSearchRegionQuery}
+              handleClickRegion={handleClickRegion}
+              dataRegion={dataRegion}
+              setDataRegion={setDataRegion}
             />
           )}
         </div>
