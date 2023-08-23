@@ -1,0 +1,20 @@
+.container {
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  padding: 22px 30px 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+  margin-right: 5px;
+}
+.title {
+  color: #fff;
+}
+
+.description {
+  color: #d8d8d8;
+}
