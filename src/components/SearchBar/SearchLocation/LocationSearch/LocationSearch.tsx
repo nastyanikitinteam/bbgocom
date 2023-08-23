@@ -11,7 +11,7 @@ interface IProps {
   handleClickRegion: (key: string, value: string) => void;
   dataRegion: any;
   isMobile?: boolean;
-  closeList: () => void;
+  closeList?: () => void;
 }
 
 const LocationSearch: FC<IProps> = ({

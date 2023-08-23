@@ -1,4 +1,4 @@
-import { useState, FC } from "react";
+import { useState, FC, useEffect, useRef } from "react";
 import cn from "classnames";
 import styles from "./menu.module.scss";
 
@@ -13,13 +13,34 @@ import avatar from "images/main/avatar.png";
 
 interface IProps {
   isNewMessages: number;
+  isTopPosition: number;
+  isLeftPosition: number;
+  setIsOpenMenu: (bool: boolean) => void;
 }
 
-const Menu: FC<IProps> = ({ isNewMessages }) => {
+const Menu: FC<IProps> = ({
+  isNewMessages,
+  isTopPosition,
+  isLeftPosition,
+  setIsOpenMenu,
+}) => {
   const [isAvatar, setIsAvatar] = useState(false);
 
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const onClick = (e) =>
+      containerRef?.current.contains(e.target) || setIsOpenMenu(false);
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   return (
-    <div className={styles.main}>
+    <div
+      className={styles.main}
+      style={{ top: `${isTopPosition}px`, left: `${isLeftPosition}px` }}
+      ref={containerRef}
+    >
       <div className={styles.account}>
         <div className={cn(styles.avatar, { [styles.noAvatar]: !isAvatar })}>
           {isAvatar ? <img src={avatar.src} alt="" /> : <AvatarIcon />}

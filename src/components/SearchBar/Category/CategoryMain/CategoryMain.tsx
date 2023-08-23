@@ -10,7 +10,7 @@ import styles from "./category-main.module.scss";
 import ArrowIcon from "images/icons/drop.svg";
 
 interface IProps {
-  isSearchBarTop: boolean;
+  isSearchBarTop?: boolean;
   isActiveCategory: number;
   setIsActiveCategory: (bool: number) => void;
   setIsActiveChoice: (bool: string) => void;

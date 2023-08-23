@@ -5,6 +5,7 @@
   top: 0;
   left: 0;
   background: #ffffff;
+  z-index: 200;
 }
 
 .title {
@@ -70,7 +71,7 @@
   font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.2px;
-  padding: 12px 0;
+  padding: 5px 0;
 }
 .image {
   max-width: 65px;
@@ -78,6 +79,7 @@
   border-radius: 50%;
   overflow: hidden;
   margin-right: 10px;
+  -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
 }
 
 .arrow {
@@ -94,10 +96,4 @@
   justify-content: flex-start;
   align-items: center;
   padding: 4px 10px 4px 4px;
-}
-
-.info {
-  .subtitle {
-    padding: 0 0 5px;
-  }
 }

@@ -50,6 +50,7 @@ const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
   const handleListChange = (value: any) => {
     handleClickPrice("sortBy", value);
     setIsOpenList(false);
+
     setIsChooseOption(true);
   };
 
@@ -65,6 +66,7 @@ const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
     if (dataPrice.sortBy == undefined) {
       // @ts-ignore
       selectRef?.current?.clearValue();
+      setIsChooseOption(false);
     }
   }, [dataPrice]);
 

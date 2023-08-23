@@ -4,11 +4,13 @@ import ArrowSvg from "images/icons/drop.svg";
 import CloseIcon from "images/icons/close-sm.svg";
 
 interface IProps {
-  categoriesList: any;
-  handleClick: (key: string, value: string) => void;
-  setIsActiveChoice: (bool: string) => void;
-  dataCategory: any;
-  setDataCategory: (bool: string) => void;
+  categoriesList?: any;
+  handleClick?: (key: string, value: string) => void;
+  setIsActiveChoice?: (bool: string) => void;
+  dataCategory?: any;
+  setDataCategory?: (bool: string) => void;
+  isPopularCategory?: boolean;
+  setIsShowCategoryMenu?: (bool: boolean) => void;
 }
 
 const CategoryMobile: FC<IProps> = ({
@@ -17,6 +19,8 @@ const CategoryMobile: FC<IProps> = ({
   setIsActiveChoice,
   dataCategory,
   setDataCategory,
+  isPopularCategory,
+  setIsShowCategoryMenu,
 }) => {
   const [isCategoryChoose, setIsCategoryChoose] = useState(null);
   const [isSubCategoryChoose, setIsSubCategoryChoose] = useState(null);
@@ -33,7 +37,9 @@ const CategoryMobile: FC<IProps> = ({
 
   const chooseCategoryItem = (id, title) => {
     handleClick("nameOfCategoryItem", title);
-    setIsActiveChoice("Filter");
+    isPopularCategory
+      ? setIsShowCategoryMenu(false)
+      : setIsActiveChoice("Filter");
   };
 
   const deletSubCategoryResult = () => {
@@ -60,11 +66,15 @@ const CategoryMobile: FC<IProps> = ({
       ? deletSubCategoryResult()
       : isCategoryChoose !== null
       ? deletCategoryResult()
+      : isPopularCategory
+      ? setIsShowCategoryMenu(false)
       : setIsActiveChoice("Filter");
   };
 
   const close = () => {
-    setIsActiveChoice("Filter");
+    isPopularCategory
+      ? setIsShowCategoryMenu(false)
+      : setIsActiveChoice("Filter");
   };
 
   return (

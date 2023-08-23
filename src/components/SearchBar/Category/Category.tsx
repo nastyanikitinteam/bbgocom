@@ -10,14 +10,12 @@ import { AbstractKeyword } from "typescript";
 interface IProps {
   setIsActiveChoice: (bool: string) => void;
   isActiveChoice: string;
-  isActiveCategory: number;
   dataCategory: any;
 }
 
 const Category: FC<IProps> = ({
   setIsActiveChoice,
   isActiveChoice,
-  isActiveCategory,
   dataCategory,
 }) => {
   return (

@@ -10,7 +10,7 @@ export default function Document() {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
       </Head>
-      <body>
+      <body id="portal">
         <Main />
         <NextScript />
       </body>

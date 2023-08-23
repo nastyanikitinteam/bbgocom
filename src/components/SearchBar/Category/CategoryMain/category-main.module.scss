@@ -50,6 +50,7 @@
   border-radius: 50%;
   overflow: hidden;
   margin-right: 12px;
+  -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
 }
 
 .arrow {

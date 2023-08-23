@@ -62,6 +62,7 @@
     box-shadow: 0px 45px 80px 0px rgba(21, 40, 61, 0.15);
     border: none;
     overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
     &-list {
       padding: 0;
     }

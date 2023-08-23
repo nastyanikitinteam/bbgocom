@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import Category from "components/Category/Category";
+import CategoryMobile from "components/SearchBar/Category/CategoryMain/CategoryMobile/CategoryMobile";
 import useMediaQuery from "src/utils/useMediaQuery";
 
 import { categoriesList } from "components/Category/config";
@@ -12,9 +13,16 @@ import ArrowSvg from "images/icons/drop.svg";
 const PopularCategory = () => {
   const [isViewAll, setIsViewAll] = useState(false);
   const [isShowCategory, setIsShowCategory] = useState(7);
+  const [isShowCategoryMenu, setIsShowCategoryMenu] = useState(false);
+  const [dataCategory, setDataCategory] = useState({});
+
   const isSmallLaptop = useMediaQuery(1300);
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
+
+  const handleClickCategory = (key, value) => {
+    setDataCategory((prev) => ({ ...prev, [key]: value }));
+  };
 
   useEffect(() => {
     isViewAll ? setIsShowCategory(categoriesList.length) : setIsShowCategory(7);
@@ -44,7 +52,10 @@ const PopularCategory = () => {
         <div className={styles.top}>
           <h2 className={cn("title", styles.title)}>Popular Categories</h2>
           {isMobile && (
-            <div className={styles.all}>
+            <div
+              className={styles.all}
+              onClick={() => setIsShowCategoryMenu(true)}
+            >
               View all
               <span className={styles.icon}>
                 <ArrowSvg />
@@ -81,6 +92,16 @@ const PopularCategory = () => {
           </div>
         )}
       </div>
+      {isShowCategoryMenu && (
+        <CategoryMobile
+          categoriesList={categoriesList}
+          handleClick={handleClickCategory}
+          dataCategory={dataCategory}
+          setDataCategory={setDataCategory}
+          isPopularCategory
+          setIsShowCategoryMenu={setIsShowCategoryMenu}
+        />
+      )}
     </section>
   );
 };

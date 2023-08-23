@@ -1,12 +1,14 @@
 .container {
   padding: 20px 0 19px;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 100;
   background: #ffffff;
   border-bottom: 1px solid transparent;
   transition: all 0.25s ease-in;
-  overflow: hidden;
+  // overflow: hidden;
   &.active {
     border-color: #d8d8d8;
   }
@@ -112,4 +114,8 @@
   height: 40px;
   // background: red;
   flex-grow: 1;
+}
+
+.button {
+  transition: none;
 }

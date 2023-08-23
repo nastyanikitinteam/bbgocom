@@ -115,13 +115,17 @@ const Header = () => {
               <Select options={langList} classname="language-select" language />
             </div>
             <div className={styles.account}>
-              <Account isHeaderActive={isHeaderActive} />
+              <Account isSearchBarTop={isSearchBarTop} />
             </div>
             <a
               href="#"
-              className={cn("default-button sm", {
-                onlyIcon: isSearchBarTop || isTablet,
-              })}
+              className={cn(
+                "default-button sm",
+                {
+                  onlyIcon: isSearchBarTop || isTablet,
+                },
+                styles.button
+              )}
             >
               {isSearchBarTop || isTablet ? <AddSvg /> : " Create an Ad"}
             </a>

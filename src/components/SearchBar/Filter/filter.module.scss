@@ -1,3 +1,10 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: 90px;
+}
+
 .title {
   margin-bottom: 25px;
 }
@@ -12,4 +19,19 @@
 
 .item {
   margin-top: 25px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  gap: 5px;
+}
+.apply {
+  width: 100%;
+}
+.reset {
+  max-width: 120px;
+  width: 100%;
 }

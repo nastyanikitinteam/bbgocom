@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import PriceMain from "../Price/PriceMain/PriceMain";
 import Category from "../Category/Category";
 import LocationMobile from "components/SearchBar/SearchLocation/LocationMobile/LocationMobile";
+import cn from "classnames";
 
 import styles from "./filter.module.scss";
 
@@ -12,11 +13,14 @@ interface IProps {
   isActiveChoice: string;
   isActiveCategory: number;
   dataCategory: any;
+  setDataCategory: (bool: any) => void;
   setIsSearchRegionQuery: (bool: string) => void;
   isSearchRegionQuery: string;
   handleClickRegion: (key: string, value: string) => void;
-  setDataRegion: (bool: string) => void;
+  setDataRegion: (bool: any) => void;
   dataRegion: any;
+  sendResult: () => void;
+  deleteFilterResult: (bool: string) => void;
 }
 
 const Filter: FC<IProps> = ({
@@ -26,11 +30,14 @@ const Filter: FC<IProps> = ({
   isActiveChoice,
   isActiveCategory,
   dataCategory,
+  setDataCategory,
   setIsSearchRegionQuery,
   isSearchRegionQuery,
   handleClickRegion,
   setDataRegion,
   dataRegion,
+  sendResult,
+  deleteFilterResult,
 }) => {
   const [isOpenLocationList, setIsOpenLocationList] = useState(false);
 
@@ -43,7 +50,6 @@ const Filter: FC<IProps> = ({
         <Category
           setIsActiveChoice={setIsActiveChoice}
           isActiveChoice={isActiveChoice}
-          isActiveCategory={isActiveCategory}
           dataCategory={dataCategory}
         />
       </div>
@@ -56,6 +62,20 @@ const Filter: FC<IProps> = ({
           setDataRegion={setDataRegion}
           dataRegion={dataRegion}
         />
+      </div>
+      <div className={styles.buttons}>
+        <button
+          className={cn("default-button", styles.apply)}
+          onClick={sendResult}
+        >
+          Apply
+        </button>
+        <button
+          className={cn("default-button border", styles.reset)}
+          onClick={() => deleteFilterResult("reset")}
+        >
+          Reset
+        </button>
       </div>
     </div>
   );

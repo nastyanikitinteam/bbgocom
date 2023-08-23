@@ -4,6 +4,7 @@
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
   cursor: pointer;
   background: #5bb75f;
   display: flex;
@@ -28,6 +29,7 @@
   top: 50%;
   left: -5px;
   transform: translateY(-50%);
+  z-index: 10;
 }
 
 .container {

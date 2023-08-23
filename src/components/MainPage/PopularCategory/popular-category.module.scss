@@ -31,6 +31,11 @@
     transition: all 0.25s ease-in;
     margin-left: 8px;
   }
+  @media (max-width: 768px) {
+    .icon {
+      transform: rotate(-90deg);
+    }
+  }
   &.open .icon {
     transform: rotate(-180deg);
   }

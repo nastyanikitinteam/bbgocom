@@ -112,6 +112,15 @@ const SearchBar = () => {
     });
   };
 
+  const deleteFilterResult = (param) => {
+    handleClickPrice("default", null);
+    setDataCategory({});
+    setDataRegion({});
+    if (param === "cancel") {
+      setIsActiveChoice("");
+    }
+  };
+
   // useEffect(() => {
   //   const onClick = (e) =>
   //     containerRef.current.contains(e.target) || setIsActiveChoice("");
@@ -139,7 +148,6 @@ const SearchBar = () => {
           <Category
             setIsActiveChoice={setIsActiveChoice}
             isActiveChoice={isActiveChoice}
-            isActiveCategory={isActiveCategory}
             dataCategory={dataCategory}
           />
         )}
@@ -172,7 +180,10 @@ const SearchBar = () => {
           </button>
         )}
         {isMobile && isActiveChoice != "" && (
-          <div className={styles.cancel} onClick={() => setIsActiveChoice("")}>
+          <div
+            className={styles.cancel}
+            onClick={() => deleteFilterResult("cancel")}
+          >
             Cancel
           </div>
         )}
@@ -234,11 +245,14 @@ const SearchBar = () => {
               isActiveChoice={isActiveChoice}
               isActiveCategory={isActiveCategory}
               dataCategory={dataCategory}
+              setDataCategory={setDataCategory}
               setIsSearchRegionQuery={setIsSearchRegionQuery}
               isSearchRegionQuery={isSearchRegionQuery}
               handleClickRegion={handleClickRegion}
               dataRegion={dataRegion}
               setDataRegion={setDataRegion}
+              sendResult={send}
+              deleteFilterResult={deleteFilterResult}
             />
           )}
         </div>
