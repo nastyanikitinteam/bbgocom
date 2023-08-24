@@ -4,25 +4,40 @@
   margin: 0 auto;
 }
 .list {
-  max-height: 400px;
+  max-height: 344px;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #d8d8d8;
+    border-radius: 20px;
+  }
 }
 
 .item {
-  padding: 16px 15px;
+  padding: 16px 15px 16px 47px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
   border-radius: 12px;
   transition: all 0.25s ease-in;
+  flex-wrap: wrap;
+  position: relative;
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 8px;
+    // margin-right: 8px;
     min-width: 24px;
     width: 24px;
+    position: absolute;
+    top: 14px;
+    left: 15px;
     svg {
       width: 100%;
     }
@@ -37,13 +52,27 @@
   }
 }
 
+.city {
+  margin-right: 5px;
+}
+
 .region {
   color: #808080;
-  margin-left: 5px;
 }
 
 @media (max-width: 768px) {
   .item {
-    padding: 10px 20px;
+    padding: 10px 20px 10px 52px;
+    .icon {
+      left: 20px;
+      top: 7px;
+    }
+  }
+  .container {
+    max-height: calc(100% - 104px);
+    height: 100%;
+  }
+  .list {
+    max-height: 100%;
   }
 }

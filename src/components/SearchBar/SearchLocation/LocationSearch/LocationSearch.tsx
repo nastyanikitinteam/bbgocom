@@ -79,7 +79,7 @@ const LocationSearch: FC<IProps> = ({
                   <span className={styles.icon}>
                     <MapIcon />
                   </span>
-                  {item.name}
+                  <span className={styles.city}>{item.name}</span>
                   {findParentOf(item) && (
                     <span className={styles.region}>
                       {findParentOf(item).name}

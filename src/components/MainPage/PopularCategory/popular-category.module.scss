@@ -24,6 +24,7 @@
   transition: all 0.25s ease-in;
   color: #808080;
   margin-top: 48px;
+  white-space: nowrap;
   .icon {
     display: flex;
     justify-content: center;
@@ -94,5 +95,11 @@
   .block {
     min-width: 100px;
     max-width: 100px;
+  }
+}
+
+@media (max-width: 370px) {
+  .top {
+    padding: 0 10px;
   }
 }

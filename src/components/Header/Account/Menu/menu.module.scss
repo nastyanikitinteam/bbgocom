@@ -11,6 +11,13 @@
   max-width: 294px;
   min-width: 294px;
   // transition: all 0.25s ease-in;
+
+  @media (max-width: 1500px) {
+    &.searhTop {
+      right: 20px;
+      left: auto !important;
+    }
+  }
 }
 
 .account {

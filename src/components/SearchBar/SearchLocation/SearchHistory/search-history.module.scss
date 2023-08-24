@@ -69,10 +69,11 @@
 .bottom {
   margin-top: auto;
   position: fixed;
-  bottom: 25px;
-  width: 100%;
-  left: 0;
-  padding: 0 20px;
+  bottom: 0px;
+  width: calc(100% - 40px);
+  left: 20px;
+  padding: 0 0px 25px;
+  background: #fff;
 }
 
 @media (max-width: 768px) {

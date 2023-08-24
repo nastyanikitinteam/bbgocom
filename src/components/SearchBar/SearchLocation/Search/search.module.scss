@@ -6,6 +6,16 @@
 .list {
   max-height: 400px;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #d8d8d8;
+    border-radius: 20px;
+  }
 }
 
 .item {

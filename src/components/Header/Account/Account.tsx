@@ -70,6 +70,7 @@ const Account: FC<IProps> = ({ isSearchBarTop }) => {
             isTopPosition={isTopPosition}
             isLeftPosition={isLeftPosition}
             setIsOpenMenu={setIsOpenMenu}
+            isSearchBarTop={isSearchBarTop}
           />
           {/* <div
           className={cn(

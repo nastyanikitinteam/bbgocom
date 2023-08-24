@@ -16,6 +16,7 @@ interface IProps {
   isTopPosition: number;
   isLeftPosition: number;
   setIsOpenMenu: (bool: boolean) => void;
+  isSearchBarTop: boolean;
 }
 
 const Menu: FC<IProps> = ({
@@ -23,6 +24,7 @@ const Menu: FC<IProps> = ({
   isTopPosition,
   isLeftPosition,
   setIsOpenMenu,
+  isSearchBarTop,
 }) => {
   const [isAvatar, setIsAvatar] = useState(false);
 
@@ -37,7 +39,7 @@ const Menu: FC<IProps> = ({
 
   return (
     <div
-      className={styles.main}
+      className={cn(styles.main, { [styles.searhTop]: isSearchBarTop })}
       style={{ top: `${isTopPosition}px`, left: `${isLeftPosition}px` }}
       ref={containerRef}
     >

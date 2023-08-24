@@ -24,6 +24,12 @@
 
 .item {
   margin-bottom: 10px;
+  a {
+    cursor: pointer;
+    &:hover {
+      color: #5bb75f;
+    }
+  }
 }
 
 .qrcode {

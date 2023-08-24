@@ -84,6 +84,7 @@ input[type="number"] {
   background: #5bb75f;
   border-radius: 30px;
   transition: all 0.25s ease-in;
+  white-space: nowrap;
   @media (max-width: 768px) {
     padding: 10px 30px;
   }
@@ -216,6 +217,19 @@ input[type="number"] {
     font-weight: 500;
     line-height: 32px;
     letter-spacing: -1px;
+  }
+}
+@media (max-width: 370px) {
+  h2 {
+    font-size: 20px;
+    line-height: 25px;
+  }
+  h3 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .wrapper {
+    padding: 0 10px;
   }
 }
 

@@ -17,6 +17,7 @@
   transition: all 0.25s ease-in;
   color: #808080;
   margin-top: 50px;
+  white-space: nowrap;
   .icon {
     display: flex;
     justify-content: center;
@@ -31,6 +32,9 @@
     path {
       stroke: #5bb75f;
     }
+  }
+  @media (max-width: 768px) {
+    margin-top: 25px;
   }
 }
 
