@@ -1,4 +1,4 @@
-import { useMemo, useContext, useEffect, useState } from "react";
+import { useMemo, useContext, useEffect, useState, FC } from "react";
 
 import Link from "next/link";
 import useMediaQuery from "src/utils/useMediaQuery";
@@ -14,7 +14,11 @@ import AddSvg from "images/icons/add-icon.svg";
 import cn from "classnames";
 import Select from "components/Select/Select";
 
-const Header = () => {
+interface IProps {
+  setIsOpenAuthorization: (bool: boolean) => void;
+}
+
+const Header: FC<IProps> = ({ setIsOpenAuthorization }) => {
   const { height } = useContext(ThemeContext);
 
   const [scrollTop, setScrollTop] = useState(0);
@@ -121,8 +125,7 @@ const Header = () => {
             <div className={styles.account}>
               <Account isSearchBarTop={isSearchBarTop} />
             </div>
-            <a
-              href="#"
+            <div
               className={cn(
                 "default-button sm",
                 {
@@ -130,9 +133,10 @@ const Header = () => {
                 },
                 styles.button
               )}
+              onClick={() => setIsOpenAuthorization(true)}
             >
               {isSearchBarTop || isTablet ? <AddSvg /> : " Create an Ad"}
-            </a>
+            </div>
           </div>
         </div>
       </div>

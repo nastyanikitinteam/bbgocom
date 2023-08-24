@@ -127,7 +127,7 @@
 }
 
 .button {
-  transition: none;
+  transition: box-shadow 0.25s ease-in;
 }
 
 @keyframes showBlock {
