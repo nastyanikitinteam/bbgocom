@@ -144,120 +144,122 @@ const SearchBar = () => {
       )}
       ref={containerRef}
     >
-      <div className={styles.blocks}>
-        {!isSmallLaptop && (
-          <Category
-            setIsActiveChoice={setIsActiveChoice}
-            isActiveChoice={isActiveChoice}
-            dataCategory={dataCategory}
-          />
-        )}
+      <div className={styles.content}>
+        <div className={styles.blocks}>
+          {!isSmallLaptop && (
+            <Category
+              setIsActiveChoice={setIsActiveChoice}
+              isActiveChoice={isActiveChoice}
+              dataCategory={dataCategory}
+            />
+          )}
 
-        <SearchLocation
-          setIsActiveChoice={setIsActiveChoice}
-          isActiveChoice={isActiveChoice}
-          dataRegion={dataRegion}
-          setIsSearchRegionQuery={setIsSearchRegionQuery}
-          isSearchRegionQuery={isSearchRegionQuery}
-          setIsSearchQuery={setIsSearchQuery}
-          isSearchQuery={isSearchQuery}
-          dataSearch={dataSearch}
-          setDataSearch={setDataSearch}
-        />
-        {!isSmallLaptop && (
-          <Price
+          <SearchLocation
             setIsActiveChoice={setIsActiveChoice}
             isActiveChoice={isActiveChoice}
-            dataPrice={dataPrice}
-            isPriceBlockDefault={isPriceBlockDefault}
+            dataRegion={dataRegion}
+            setIsSearchRegionQuery={setIsSearchRegionQuery}
+            isSearchRegionQuery={isSearchRegionQuery}
+            setIsSearchQuery={setIsSearchQuery}
+            isSearchQuery={isSearchQuery}
+            dataSearch={dataSearch}
+            setDataSearch={setDataSearch}
           />
-        )}
-        {!isMobile && (
-          <button
-            className={cn(styles.button, "default-button onlyIcon")}
-            onClick={send}
-          >
-            <SearchIcon />
-          </button>
-        )}
-        {isMobile && isActiveChoice != "" && (
-          <div
-            className={styles.cancel}
-            onClick={() => deleteFilterResult("cancel")}
-          >
-            Cancel
+          {!isSmallLaptop && (
+            <Price
+              setIsActiveChoice={setIsActiveChoice}
+              isActiveChoice={isActiveChoice}
+              dataPrice={dataPrice}
+              isPriceBlockDefault={isPriceBlockDefault}
+            />
+          )}
+          {!isMobile && (
+            <button
+              className={cn(styles.button, "default-button onlyIcon")}
+              onClick={send}
+            >
+              <SearchIcon />
+            </button>
+          )}
+          {isMobile && isActiveChoice != "" && (
+            <div
+              className={styles.cancel}
+              onClick={() => deleteFilterResult("cancel")}
+            >
+              Cancel
+            </div>
+          )}
+        </div>
+        {isActiveChoice && (
+          <div className={styles.main}>
+            {isActiveChoice == "Category" && (
+              <CategoryMain
+                isSearchBarTop={isSearchBarTop}
+                isActiveCategory={isActiveCategory}
+                setIsActiveCategory={setIsActiveCategory}
+                handleClick={handleClickCategory}
+                setIsActiveChoice={setIsActiveChoice}
+                dataCategory={dataCategory}
+                setDataCategory={setDataCategory}
+              />
+            )}
+            {isActiveChoice == "Price" && (
+              <PriceMain
+                isSearchBarTop={isSearchBarTop}
+                dataPrice={dataPrice}
+                handleClickPrice={handleClickPrice}
+              />
+            )}
+            {isActiveChoice == "SearchHistory" && (
+              <SearchHistory
+                handleClickSeacrh={handleClickSeacrh}
+                setIsActiveChoice={setIsActiveChoice}
+              />
+            )}
+            {isActiveChoice == "Location" && (
+              <LocationMain
+                handleClickRegion={handleClickRegion}
+                setIsActiveChoice={setIsActiveChoice}
+                dataRegion={dataRegion}
+                setDataRegion={setDataRegion}
+              />
+            )}
+            {isActiveChoice == "LocationSearch" && (
+              <LocationSearch
+                isSearchRegionQuery={isSearchRegionQuery}
+                handleClickRegion={handleClickRegion}
+                setIsActiveChoice={setIsActiveChoice}
+                dataRegion={dataRegion}
+              />
+            )}
+            {isActiveChoice == "Search" && (
+              <Search
+                isSearchQuery={isSearchQuery}
+                handleClickSeacrh={handleClickSeacrh}
+                setIsActiveChoice={setIsActiveChoice}
+              />
+            )}
+            {isActiveChoice == "Filter" && (
+              <Filter
+                dataPrice={dataPrice}
+                handleClickPrice={handleClickPrice}
+                setIsActiveChoice={setIsActiveChoice}
+                isActiveChoice={isActiveChoice}
+                isActiveCategory={isActiveCategory}
+                dataCategory={dataCategory}
+                setDataCategory={setDataCategory}
+                setIsSearchRegionQuery={setIsSearchRegionQuery}
+                isSearchRegionQuery={isSearchRegionQuery}
+                handleClickRegion={handleClickRegion}
+                dataRegion={dataRegion}
+                setDataRegion={setDataRegion}
+                sendResult={send}
+                deleteFilterResult={deleteFilterResult}
+              />
+            )}
           </div>
         )}
       </div>
-      {isActiveChoice && (
-        <div className={styles.main}>
-          {isActiveChoice == "Category" && (
-            <CategoryMain
-              isSearchBarTop={isSearchBarTop}
-              isActiveCategory={isActiveCategory}
-              setIsActiveCategory={setIsActiveCategory}
-              handleClick={handleClickCategory}
-              setIsActiveChoice={setIsActiveChoice}
-              dataCategory={dataCategory}
-              setDataCategory={setDataCategory}
-            />
-          )}
-          {isActiveChoice == "Price" && (
-            <PriceMain
-              isSearchBarTop={isSearchBarTop}
-              dataPrice={dataPrice}
-              handleClickPrice={handleClickPrice}
-            />
-          )}
-          {isActiveChoice == "SearchHistory" && (
-            <SearchHistory
-              handleClickSeacrh={handleClickSeacrh}
-              setIsActiveChoice={setIsActiveChoice}
-            />
-          )}
-          {isActiveChoice == "Location" && (
-            <LocationMain
-              handleClickRegion={handleClickRegion}
-              setIsActiveChoice={setIsActiveChoice}
-              dataRegion={dataRegion}
-              setDataRegion={setDataRegion}
-            />
-          )}
-          {isActiveChoice == "LocationSearch" && (
-            <LocationSearch
-              isSearchRegionQuery={isSearchRegionQuery}
-              handleClickRegion={handleClickRegion}
-              setIsActiveChoice={setIsActiveChoice}
-              dataRegion={dataRegion}
-            />
-          )}
-          {isActiveChoice == "Search" && (
-            <Search
-              isSearchQuery={isSearchQuery}
-              handleClickSeacrh={handleClickSeacrh}
-              setIsActiveChoice={setIsActiveChoice}
-            />
-          )}
-          {isActiveChoice == "Filter" && (
-            <Filter
-              dataPrice={dataPrice}
-              handleClickPrice={handleClickPrice}
-              setIsActiveChoice={setIsActiveChoice}
-              isActiveChoice={isActiveChoice}
-              isActiveCategory={isActiveCategory}
-              dataCategory={dataCategory}
-              setDataCategory={setDataCategory}
-              setIsSearchRegionQuery={setIsSearchRegionQuery}
-              isSearchRegionQuery={isSearchRegionQuery}
-              handleClickRegion={handleClickRegion}
-              dataRegion={dataRegion}
-              setDataRegion={setDataRegion}
-              sendResult={send}
-              deleteFilterResult={deleteFilterResult}
-            />
-          )}
-        </div>
-      )}
     </div>
   );
 };

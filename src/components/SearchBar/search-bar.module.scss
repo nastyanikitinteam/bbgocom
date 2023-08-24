@@ -1,8 +1,4 @@
 .container {
-  border-radius: 50px;
-  background: #fff;
-  box-shadow: 0px 45px 80px 0px rgba(21, 40, 61, 0.15);
-  padding: 30px;
   max-width: 880px;
   width: 100%;
   margin: -50px auto 0;
@@ -10,29 +6,33 @@
   position: sticky;
   top: -10px;
   opacity: 0;
-  transform: translate3d(0, 100px, 0);
+  // transform: translate3d(0, 100px, 0);
   animation-name: showBlockFadeUp;
   animation-duration: 0.7s;
   animation-delay: 0.6s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
-  // transition: all 0.25s ease-in;
+  transition: all 0.25s ease-in;
   @media (min-width: 769px) {
     &.top {
-      box-shadow: none;
-      background: transparent;
-      // padding: 30px 30px 20px;
-      .main {
-        position: fixed;
-        top: 80px;
-        padding-top: 30px;
+      .content {
+        box-shadow: none;
+        background: transparent;
+        // padding: 30px 30px 20px;
+        .main {
+          position: fixed;
+          top: 80px;
+          padding-top: 30px;
+        }
       }
     }
   }
 
   &.active {
-    border-radius: 50px 50px 0 0;
-    box-shadow: none;
+    .content {
+      border-radius: 50px 50px 0 0;
+      box-shadow: none;
+    }
   }
   @media (max-width: 1300px) {
     max-width: 640px;
@@ -42,16 +42,28 @@
     max-width: none;
     width: 100%;
     position: relative;
-    top: 0;
     margin: 0;
-    padding: 0;
-    box-shadow: none;
-    animation-name: showBlockFadeDown;
+    top: 0;
+
+    // animation-name: showBlockFadeDown;
     animation-delay: 0.3s;
+    .content {
+      padding: 0;
+      box-shadow: none;
+    }
   }
   @media (max-width: 768px) {
-    padding: 12px 0;
+    .content {
+      padding: 12px 0;
+    }
   }
+}
+
+.content {
+  border-radius: 50px;
+  background: #fff;
+  box-shadow: 0px 45px 80px 0px rgba(21, 40, 61, 0.15);
+  padding: 30px;
 }
 
 .blocks {
@@ -131,11 +143,11 @@
 
 @keyframes showBlockFadeUp {
   from {
-    transform: translate3d(0, 100px, 0);
+    // transform: translate3d(0, 100px, 0);
     opacity: 0;
   }
   to {
-    transform: translate3d(0, 0px, 0);
+    // transform: translate3d(0, 0px, 0);
     opacity: 1;
   }
 }
