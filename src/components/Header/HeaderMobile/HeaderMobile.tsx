@@ -15,6 +15,7 @@ const Header = () => {
 
   useEffect(() => {
     if (isOpenProfileMenu) {
+      console.log("work");
       document.body.classList.add("hidden");
     } else {
       document.body.classList.remove("hidden");

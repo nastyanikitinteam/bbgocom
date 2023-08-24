@@ -56,7 +56,7 @@ const CategoryMain: FC<IProps> = ({
                 [styles.active]: isActiveCategory == id,
               })}
               key={id}
-              onClick={() => chooseCategory(id, title)}
+              onMouseEnter={() => chooseCategory(id, title)}
             >
               <div className={styles.image}>
                 <img src={image} alt="" />

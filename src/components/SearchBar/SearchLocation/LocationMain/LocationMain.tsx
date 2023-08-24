@@ -74,7 +74,7 @@ const LocationMain: FC<IProps> = ({
                   [styles.active]: dataRegion.nameOfRegion == name,
                 })}
                 key={id}
-                onClick={() => chooseRegion(name)}
+                onMouseEnter={() => chooseRegion(name)}
               >
                 <h3 className={styles.name}>{name}</h3>
                 <span className={styles.arrow}>
