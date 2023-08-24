@@ -135,6 +135,23 @@ const SearchBar = () => {
     );
   }, [dataPrice]);
 
+  useEffect(() => {
+    if (isMobile) {
+      if (
+        isActiveChoice == "Filter" ||
+        isActiveChoice == "SearchHistory" ||
+        isActiveChoice == "Search"
+      ) {
+        document.body.classList.add("hidden");
+      } else {
+        document.body.classList.remove("hidden");
+      }
+      return () => {
+        document.body.classList.remove("hidden");
+      };
+    }
+  }, [isActiveChoice, isMobile]);
+
   return (
     <div
       className={cn(

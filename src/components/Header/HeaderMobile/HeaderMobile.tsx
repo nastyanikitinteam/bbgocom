@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./header-mobile.module.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import SearchBar from "components/SearchBar/SearchBar";
@@ -12,6 +12,17 @@ import WishlistIcon from "images/icons/Wishlist-mobile.svg";
 
 const Header = () => {
   const [isOpenProfileMenu, setIsOpenProfileMenu] = useState(false);
+
+  useEffect(() => {
+    if (isOpenProfileMenu) {
+      document.body.classList.add("hidden");
+    } else {
+      document.body.classList.remove("hidden");
+    }
+    return () => {
+      document.body.classList.remove("hidden");
+    };
+  }, [isOpenProfileMenu]);
 
   return (
     <div className={styles.container}>

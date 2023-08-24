@@ -9,6 +9,12 @@
   border-bottom: 1px solid transparent;
   transition: all 0.25s ease-in;
   // overflow: hidden;
+  opacity: 0;
+  animation-name: showBlock;
+  animation-duration: 0.7s;
+  animation-delay: 0.6s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
   &.active {
     border-color: #d8d8d8;
   }
@@ -122,4 +128,13 @@
 
 .button {
   transition: none;
+}
+
+@keyframes showBlock {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

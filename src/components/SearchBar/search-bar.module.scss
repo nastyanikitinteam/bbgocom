@@ -6,14 +6,13 @@
   position: sticky;
   top: -10px;
   opacity: 0;
-  // transform: translate3d(0, 100px, 0);
-  animation-name: showBlockFadeUp;
+  animation-name: showBlock;
   animation-duration: 0.7s;
   animation-delay: 0.6s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
   transition: all 0.25s ease-in;
-  @media (min-width: 769px) {
+  @media (min-width: 999px) {
     &.top {
       .content {
         box-shadow: none;
@@ -27,7 +26,6 @@
       }
     }
   }
-
   &.active {
     .content {
       border-radius: 50px 50px 0 0;
@@ -44,8 +42,6 @@
     position: relative;
     margin: 0;
     top: 0;
-
-    // animation-name: showBlockFadeDown;
     animation-delay: 0.3s;
     .content {
       padding: 0;
@@ -124,6 +120,11 @@
       background: #fff;
     }
   }
+  @media (max-width: 998px) and (min-width: 769px) {
+    position: fixed;
+    top: 80px;
+    padding-top: 30px;
+  }
   @media (max-width: 768px) {
     width: calc(100% + 40px);
     left: -20px;
@@ -141,24 +142,11 @@
   margin-left: 5px;
 }
 
-@keyframes showBlockFadeUp {
+@keyframes showBlock {
   from {
-    // transform: translate3d(0, 100px, 0);
     opacity: 0;
   }
   to {
-    // transform: translate3d(0, 0px, 0);
-    opacity: 1;
-  }
-}
-
-@keyframes showBlockFadeDown {
-  from {
-    transform: translate3d(0, -100px, 0);
-    opacity: 0;
-  }
-  to {
-    transform: translate3d(0, 0px, 0);
     opacity: 1;
   }
 }
