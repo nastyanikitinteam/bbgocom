@@ -65,6 +65,17 @@
     overflow: hidden;
     &-list {
       padding: 0;
+      &::-webkit-scrollbar {
+        width: 12px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #d8d8d8;
+        border-radius: 20px;
+        border: 4px solid #fff;
+      }
     }
   }
   .default__option {
@@ -136,5 +147,62 @@
     .default__control {
       background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNSAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQuNSAxN0gxMS41IiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMS4xNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik00LjUgMTJMMTEuNSAxMiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjEuMTUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNNC41IDdMMTEuNSA3IiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMS4xNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik0xNy41IDRMMTcuNSAyME0xNy41IDRMMTQuNSA4TTE3LjUgNEwyMC41IDhNMTcuNSAyMEwyMC41IDE2TTE3LjUgMjBMMTQuNSAxNiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjEuMTUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K);
     }
+  }
+}
+
+.default-select.phone {
+  .default__menu-list {
+    max-height: 336px;
+  }
+  .default__option {
+    padding: 16px 24px;
+    transition: all 0.25s ease-in;
+    &.default__option--is-selected {
+      color: #000;
+    }
+    &:hover {
+      color: #000;
+      background: #f5f5f7;
+    }
+  }
+  .default-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .icon {
+      width: 24px;
+      min-width: 24px;
+      margin-right: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .code {
+      color: #808080;
+      margin-left: 5px;
+    }
+  }
+  .default__control {
+    padding: 17px 17px;
+    border-radius: 100px;
+    border-color: #000;
+    .name {
+      display: none;
+    }
+    .code {
+      color: #000;
+      margin-left: 0;
+    }
+  }
+  .default__indicator {
+    path {
+      stroke: #000;
+    }
+  }
+  .default__menu {
+    min-width: 305px;
+  }
+  .default__value-container {
+    padding: 0;
   }
 }

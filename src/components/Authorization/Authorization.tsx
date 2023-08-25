@@ -1,4 +1,5 @@
 import styles from "./authorization.module.scss";
+import Login from "./Login/Login";
 
 import girl from "images/authorization/girl.png";
 import bag from "images/authorization/bag.png";
@@ -23,9 +24,7 @@ const Authorization = () => {
         <div className={styles.card} data-aos="fade-up" data-aos-delay="500">
           <img src={image1.src} alt="" />
         </div>
-        <div className={styles.icons} data-aos="fade" data-aos-delay="400">
-          <img src={image2.src} alt="" />
-        </div>
+
         <div
           className={styles.shadow}
           data-aos="fade-down"
@@ -35,7 +34,10 @@ const Authorization = () => {
         </div>
       </div>
       <div className={styles.content}>
-        <h2>Log in</h2>
+        <div className={styles.icons} data-aos="fade" data-aos-delay="400">
+          <img src={image2.src} alt="" />
+        </div>
+        <Login />
       </div>
     </div>
   );

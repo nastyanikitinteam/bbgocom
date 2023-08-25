@@ -14,6 +14,7 @@ interface IPprops {
   language?: boolean;
   placeholder?: string;
   onChange?: (value: any) => void;
+  isPhoneList?: boolean;
 }
 const SelectContainer: FC<IPprops> = ({
   options,

@@ -72,7 +72,10 @@ input[type="number"] {
 }
 
 .default-button {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
   padding: 18px 30px;
   font-size: 16px;
   font-weight: 400;
@@ -230,6 +233,43 @@ input[type="number"] {
   }
   .wrapper {
     padding: 0 10px;
+  }
+}
+
+.sendMessage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
+  background: #5bb75f;
+  box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.15);
+  padding: 10px 15px;
+  color: #fff;
+  max-width: 453px;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  &.error {
+    background: #ff5a27;
+    &:before {
+      content: "😢";
+    }
+  }
+  &.warning {
+    background: #ffefe0;
+    color: #000;
+    &:before {
+      content: "⚠️";
+    }
+  }
+  &:before {
+    content: "👋";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    margin-right: 10px;
   }
 }
 

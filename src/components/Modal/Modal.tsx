@@ -2,7 +2,7 @@ import React, { ReactNode, FC } from "react";
 import styles from "./modal.module.scss";
 import cn from "classnames";
 
-import CloseIcon from "images/icons/close-sm.svg";
+import CloseIcon from "images/icons/modal-close.svg";
 
 interface IProps {
   children: ReactNode;
