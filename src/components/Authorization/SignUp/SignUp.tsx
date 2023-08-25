@@ -9,9 +9,9 @@ import cn from "classnames";
 import { CountriesList } from "../config";
 import Country from "../Country/Country";
 
-import styles from "./login.module.scss";
+import styles from "./sign-up.module.scss";
 
-import LoginIcon from "images/icons/login.svg";
+import AvatarIcon from "images/icons/avatar.svg";
 import GoogleIcon from "images/icons/google.svg";
 import TelegramIcon from "images/icons/telegram.svg";
 import LineIcon from "images/icons/line.svg";
@@ -20,7 +20,7 @@ interface IProps {
   setIsLoginActive: (bool: boolean) => void;
 }
 
-const Login: FC<IProps> = ({ setIsLoginActive }) => {
+const SignUp: FC<IProps> = ({ setIsLoginActive }) => {
   const validationSchema = yup.object().shape({
     email: yup.string().email().required(`Введіть електрону пошту`),
     password: yup.string().required(`Wrong phone format`),
@@ -53,10 +53,10 @@ const Login: FC<IProps> = ({ setIsLoginActive }) => {
   return (
     isCountryList.length && (
       <div className={styles.container} data-aos="fade" data-aos-delay="400">
-        <h2 className={styles.title}>Log In</h2>
+        <h2 className={styles.title}>Sign Up</h2>
         <p className={styles.text}>
-          You don't have an account yet?{" "}
-          <a onClick={() => setIsLoginActive(false)}>Sign Up</a>
+          You already have an account?{" "}
+          <a onClick={() => setIsLoginActive(true)}>Log In</a>
         </p>
         <Form
           onSubmit={onSubmit}
@@ -82,26 +82,12 @@ const Login: FC<IProps> = ({ setIsLoginActive }) => {
                   />
                 </div>
               </div>
-
-              {/* <div className={styles.item}>
-              <Field
-                name="email"
-                placeholder={"Email"}
-                type="email"
-                component={FormInput}
-              />
-            </div> */}
-              <div className={styles.item}>
-                <Field
-                  name="password"
-                  type="password"
-                  placeholder={"Password"}
-                  component={FormInput}
-                />
-              </div>
+              <p className={styles.info}>
+                The specified number will receive an SMS for authorization
+              </p>
               <div className={styles.terms}>
                 <Field name="terms" type="checkbox" component={Checkbox}>
-                  By Log In, you agree to our <a>Terms of Use</a>
+                  By Sign Up, you agree to our <a>Terms of Use</a>
                 </Field>
               </div>
               <div className={styles.button}>
@@ -111,9 +97,9 @@ const Login: FC<IProps> = ({ setIsLoginActive }) => {
                   aria-label={`Log In`}
                 >
                   <span className="icon">
-                    <LoginIcon />
+                    <AvatarIcon />
                   </span>
-                  Log In
+                  Sign Up
                 </button>
               </div>
             </form>
@@ -149,4 +135,4 @@ const Login: FC<IProps> = ({ setIsLoginActive }) => {
   );
 };
 
-export default Login;
+export default SignUp;

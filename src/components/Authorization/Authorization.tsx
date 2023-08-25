@@ -1,5 +1,7 @@
+import { useState } from "react";
 import styles from "./authorization.module.scss";
 import Login from "./Login/Login";
+import SignUp from "./SignUp/SignUp";
 
 import girl from "images/authorization/girl.png";
 import bag from "images/authorization/bag.png";
@@ -9,6 +11,8 @@ import shadow from "images/authorization/login-shadow.png";
 import LogoSvg from "images/main/logo.svg";
 
 const Authorization = () => {
+  const [isLoginActive, setIsLoginActive] = useState(true);
+
   return (
     <div className={styles.container}>
       <div className={styles.block}>
@@ -37,7 +41,11 @@ const Authorization = () => {
         <div className={styles.icons} data-aos="fade" data-aos-delay="400">
           <img src={image2.src} alt="" />
         </div>
-        <Login />
+        {isLoginActive ? (
+          <Login setIsLoginActive={setIsLoginActive} />
+        ) : (
+          <SignUp setIsLoginActive={setIsLoginActive} />
+        )}
       </div>
     </div>
   );
