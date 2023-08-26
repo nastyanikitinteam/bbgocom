@@ -177,6 +177,9 @@
       justify-content: center;
       align-items: center;
     }
+    .name {
+      white-space: nowrap;
+    }
     .code {
       color: #808080;
       margin-left: 5px;
@@ -200,7 +203,7 @@
     }
   }
   .default__menu {
-    min-width: 305px;
+    min-width: 317px;
   }
   .default__value-container {
     padding: 0;

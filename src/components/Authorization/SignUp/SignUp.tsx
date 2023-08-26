@@ -54,7 +54,7 @@ const SignUp: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
 
   return (
     isCountryList.length && (
-      <div className={styles.container} data-aos="fade" data-aos-delay="100">
+      <div className={styles.container}>
         <h2 className={styles.title}>Sign Up</h2>
         <p className={styles.text}>
           You already have an account? <a onClick={changeActiveAuth}>Log In</a>

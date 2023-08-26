@@ -16,25 +16,27 @@ import WhatAppIcon from "images/icons/whatsapp.svg";
 import CallIcon from "images/icons/call.svg";
 
 interface IProps {
-  setIsConfirmNumber: (bool: boolean) => void;
+  openNextStepSignUp: () => void;
 }
 
-const Login: FC<IProps> = ({ setIsConfirmNumber }) => {
+const Login: FC<IProps> = ({ openNextStepSignUp }) => {
   const [loading, setLoading] = useState(false);
 
   const validationSchema = yup.object().shape({
-    email: yup.string().email().required(`Введіть електрону пошту`),
-    password: yup.string().required(`Wrong phone format`),
+    // email: yup.string().email().required(`Введіть електрону пошту`),
+    // password: yup.string().required(`Wrong phone format`),
   });
 
   const validate = validateForm(validationSchema);
 
   const onSubmit = useCallback((data, form) => {
+    console.log("1234");
     console.log(data);
+    openNextStepSignUp();
   }, []);
 
   return (
-    <div className={styles.container} data-aos="fade" data-aos-delay="100">
+    <div className={styles.container}>
       <h2 className={styles.title}>Confirm number</h2>
       <p className={styles.text}>
         Enter the code sent to
@@ -67,7 +69,7 @@ const Login: FC<IProps> = ({ setIsConfirmNumber }) => {
               <button
                 type="submit"
                 className={cn("default-button", styles.button)}
-                aria-label={`Log In`}
+                aria-label={`Continue`}
               >
                 <span className="icon">
                   <ArrowIcon />

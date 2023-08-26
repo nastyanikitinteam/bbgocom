@@ -4,6 +4,7 @@ import styles from "./form-input.module.scss";
 
 import EyeClosed from "images/icons/eye-closed-svgrepo-com.svg";
 import EyeOpen from "images/icons/eye-open-svgrepo-com.svg";
+import ErrorIcon from "images/icons/error.svg";
 
 interface IProps {
   placeholder?: string;
@@ -77,15 +78,20 @@ const FormInput: React.FC<IProps> = ({
             className={styles.passwordShow}
             onClick={() => setIsShowPassword((prev) => !prev)}
           >
-            {isShowPassword ? <EyeOpen /> : <EyeClosed />}
+            {isShowPassword ? <EyeClosed /> : <EyeOpen />}
           </div>
         )}
+        {meta?.error && meta?.touched && input.type !== "password" && (
+          <div className={styles.errorIcon}>
+            <ErrorIcon />
+          </div>
+
+          // <div className="error sendMessage">{meta.error}</div>
+        )}
       </div>
-      {meta?.error && meta?.touched && (
-        <div className="error sendMessage">{meta.error}</div>
-      )}
+
       {!meta?.error && !meta?.dirtySinceLastSubmit && serverErrors && (
-        <div className="error sendMessage">{serverErrors}</div>
+        <div className="error serverError">{serverErrors}</div>
       )}
     </>
   );

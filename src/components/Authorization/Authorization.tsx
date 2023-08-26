@@ -3,6 +3,7 @@ import styles from "./authorization.module.scss";
 import Login from "./Login/Login";
 import SignUp from "./SignUp/SignUp";
 import ConfirmNumber from "./ConfirmNumber/ConfirmNumber";
+import Profile from "./Profile/Profile";
 
 import girl from "images/authorization/girl.png";
 import bag from "images/authorization/bag.png";
@@ -32,8 +33,9 @@ const Authorization = () => {
       setIsSignUp(false);
       setIsConfirmNumber(true);
     } else {
+      console.log("112");
       setIsConfirmNumber(false);
-      setIsRegisterStep(false);
+      setIsRegisterStep(true);
     }
   };
 
@@ -73,8 +75,9 @@ const Authorization = () => {
           />
         )}
         {isConfirmNumber && (
-          <ConfirmNumber setIsConfirmNumber={setIsConfirmNumber} />
+          <ConfirmNumber openNextStepSignUp={openNextStepSignUp} />
         )}
+        {isRegisterStep && <Profile />}
       </div>
     </div>
   );

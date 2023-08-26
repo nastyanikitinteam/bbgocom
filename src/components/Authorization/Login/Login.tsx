@@ -52,7 +52,7 @@ const Login: FC<IProps> = ({ changeActiveAuth }) => {
 
   return (
     isCountryList.length && (
-      <div className={styles.container} data-aos="fade" data-aos-delay="100">
+      <div className={styles.container}>
         <h2 className={styles.title}>Log In</h2>
         <p className={styles.text}>
           You don't have an account yet?{" "}
