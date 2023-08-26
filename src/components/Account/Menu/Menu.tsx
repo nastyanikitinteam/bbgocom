@@ -1,6 +1,8 @@
-import { useMemo, useState } from "react";
-import styles from "./menu.module.scss";
+import { useMemo, useState, FC } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
+import Banner from "./Banner/Banner";
 import cn from "classnames";
+import styles from "./menu.module.scss";
 
 import OrdersIcon from "images/icons/orders-icon.svg";
 import AdsIcon from "images/icons/ads-icon.svg";
@@ -13,8 +15,13 @@ import ReviewsIcon from "images/icons/reviews-icon.svg";
 import HelpIcon from "images/icons/help-icon.svg";
 import LogOutIcon from "images/icons/log-out-icon.svg";
 
-const Menu = () => {
-  const [isActive, setIsActive] = useState("");
+interface IProps {
+  isActiveMenuItem?: string;
+  setIsActiveMenuItem?: (bool: string) => void;
+}
+
+const Menu: FC<IProps> = ({ isActiveMenuItem, setIsActiveMenuItem }) => {
+  const isMobile = useMediaQuery(768);
 
   const menuList = useMemo(
     () => [
@@ -73,18 +80,26 @@ const Menu = () => {
 
   return (
     <div className={styles.container}>
-      {menuList.map(({ id, name, icon, link, isNew }) => {
-        return (
-          <div
-            key={id}
-            className={cn(styles.item, { [styles.active]: isActive === name })}
-          >
-            <span className={styles.icon}>{icon}</span>
-            {name}
-            {isNew > 0 && <span className={styles.num}>{isNew}</span>}
-          </div>
-        );
-      })}
+      <div className={styles.block}>
+        {menuList.map(({ id, name, icon, link, isNew }) => {
+          return (
+            <div
+              key={id}
+              className={cn(styles.item, {
+                [styles.active]: isActiveMenuItem === name,
+              })}
+              onClick={() => setIsActiveMenuItem(name)}
+            >
+              <span className={styles.icon}>{icon}</span>
+              {name}
+              {isNew > 0 && <span className={styles.num}>{isNew}</span>}
+            </div>
+          );
+        })}
+      </div>
+      <div className={styles.banner}>
+        <Banner />
+      </div>
     </div>
   );
 };

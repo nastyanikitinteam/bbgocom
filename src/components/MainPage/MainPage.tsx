@@ -17,7 +17,7 @@ const MainPage = () => {
   const SmallLaptop = useMediaQuery(768);
   const isTablet = useMediaQuery(998);
   return (
-    <div>
+    <>
       <Hero />
       {!isTablet && <SearchBar />}
       <PopularCategory />
@@ -28,7 +28,7 @@ const MainPage = () => {
       <WantSell />
       <Testimonials />
       <Who />
-    </div>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import Banner from "./Banner/Banner";
+import Banner from "../../Account/Menu/Banner/Banner";
 import Menu from "components/Account/Menu/Menu";
 import styles from "./mobile-menu.module.scss";
 import cn from "classnames";
@@ -49,7 +49,7 @@ const MobileMenu = () => {
           })}
         </div>
       </div>
-      <Banner />
+      {/* <Banner /> */}
       <div className={styles.menu}>
         <Menu />
       </div>

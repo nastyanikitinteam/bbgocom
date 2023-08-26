@@ -47,20 +47,20 @@ const Header = () => {
           <div className={styles.item}>
             <MessageIcon />
           </div>
-          <div
+          {/* <div
             className={cn(styles.item, {
               [styles.aсtive]: isOpenProfileMenu || isOpenAuthorization,
             })}
             onClick={() => setIsOpenAuthorization((prev) => !prev)}
           >
             <ProfileIcon />
-          </div>
-          {/* <div
+          </div> */}
+          <div
             className={cn(styles.item, { [styles.aсtive]: isOpenProfileMenu })}
             onClick={() => setIsOpenProfileMenu((prev) => !prev)}
           >
             <ProfileIcon />
-          </div> */}
+          </div>
         </div>
         {isOpenAuthorization && <Authorization />}
         {isOpenProfileMenu && <MobileMenu />}

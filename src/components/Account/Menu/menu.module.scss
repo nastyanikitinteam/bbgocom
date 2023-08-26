@@ -1,3 +1,7 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
 .item {
   padding: 15px 0;
   display: flex;
@@ -6,6 +10,13 @@
   cursor: pointer;
   border-radius: 15px;
   transition: all 0.25s ease-in;
+  @media (min-width: 769px) {
+    padding: 16px 24px;
+
+    &.active {
+      background: #ebfaec;
+    }
+  }
 }
 
 .icon {
@@ -24,4 +35,22 @@
   line-height: 10px;
   color: #ffffff;
   margin-left: auto;
+}
+
+@media (min-width: 769px) {
+  .block {
+    border-radius: 15px;
+    border: 1px solid #d8d8d8;
+    padding: 30px;
+  }
+  .banner {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    margin-bottom: 20px;
+    order: -1;
+  }
 }
