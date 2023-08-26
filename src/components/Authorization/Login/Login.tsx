@@ -17,10 +17,10 @@ import TelegramIcon from "images/icons/telegram.svg";
 import LineIcon from "images/icons/line.svg";
 
 interface IProps {
-  setIsLoginActive: (bool: boolean) => void;
+  changeActiveAuth: () => void;
 }
 
-const Login: FC<IProps> = ({ setIsLoginActive }) => {
+const Login: FC<IProps> = ({ changeActiveAuth }) => {
   const validationSchema = yup.object().shape({
     email: yup.string().email().required(`Введіть електрону пошту`),
     password: yup.string().required(`Wrong phone format`),
@@ -52,11 +52,11 @@ const Login: FC<IProps> = ({ setIsLoginActive }) => {
 
   return (
     isCountryList.length && (
-      <div className={styles.container} data-aos="fade" data-aos-delay="400">
+      <div className={styles.container} data-aos="fade" data-aos-delay="100">
         <h2 className={styles.title}>Log In</h2>
         <p className={styles.text}>
           You don't have an account yet?{" "}
-          <a onClick={() => setIsLoginActive(false)}>Sign Up</a>
+          <a onClick={changeActiveAuth}>Sign Up</a>
         </p>
         <Form
           onSubmit={onSubmit}

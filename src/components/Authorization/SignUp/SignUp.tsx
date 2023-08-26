@@ -17,19 +17,21 @@ import TelegramIcon from "images/icons/telegram.svg";
 import LineIcon from "images/icons/line.svg";
 
 interface IProps {
-  setIsLoginActive: (bool: boolean) => void;
+  changeActiveAuth: () => void;
+  openNextStepSignUp: () => void;
 }
 
-const SignUp: FC<IProps> = ({ setIsLoginActive }) => {
+const SignUp: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
   const validationSchema = yup.object().shape({
-    email: yup.string().email().required(`Введіть електрону пошту`),
-    password: yup.string().required(`Wrong phone format`),
+    // email: yup.string().email().required(`Введіть електрону пошту`),
+    // password: yup.string().required(`Wrong phone format`),
   });
 
   const validate = validateForm(validationSchema);
 
   const onSubmit = useCallback((data, form) => {
     console.log(data);
+    openNextStepSignUp();
   }, []);
 
   const [isCountryList, setIsCountryList] = useState([]);
@@ -52,11 +54,10 @@ const SignUp: FC<IProps> = ({ setIsLoginActive }) => {
 
   return (
     isCountryList.length && (
-      <div className={styles.container} data-aos="fade" data-aos-delay="400">
+      <div className={styles.container} data-aos="fade" data-aos-delay="100">
         <h2 className={styles.title}>Sign Up</h2>
         <p className={styles.text}>
-          You already have an account?{" "}
-          <a onClick={() => setIsLoginActive(true)}>Log In</a>
+          You already have an account? <a onClick={changeActiveAuth}>Log In</a>
         </p>
         <Form
           onSubmit={onSubmit}
@@ -94,7 +95,7 @@ const SignUp: FC<IProps> = ({ setIsLoginActive }) => {
                 <button
                   type="submit"
                   className={cn("default-button", styles.button)}
-                  aria-label={`Log In`}
+                  aria-label={`Sign up`}
                 >
                   <span className="icon">
                     <AvatarIcon />
