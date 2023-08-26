@@ -26,11 +26,30 @@
   }
 }
 
-.social:not(:nth-child(2)) {
-  max-width: 107px;
+@media (min-width: 769px) {
+  .social:not(:nth-child(2)) {
+    max-width: 107px;
+  }
+
+  .social:nth-child(2) {
+    max-width: 170px;
+    flex-grow: 1;
+  }
 }
 
-.social:nth-child(2) {
-  max-width: 170px;
-  flex-grow: 1;
+@media (max-width: 768px) {
+  .info {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    padding: 8px 0;
+    margin-bottom: 17px;
+    & + .description {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.3px;
+    }
+  }
 }

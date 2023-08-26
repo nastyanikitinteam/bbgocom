@@ -143,3 +143,26 @@
   top: 18px;
   right: 18px;
 }
+
+@media (max-width: 768px) {
+  .input {
+    padding: 7px 14px 7px 47px;
+    background-position: 14px 7px;
+    letter-spacing: -0.3px;
+    &::placeholder {
+      letter-spacing: -0.3px;
+    }
+  }
+  .noIcon {
+    .input {
+      padding-left: 7px;
+    }
+  }
+  .passwordShow {
+    right: 10px;
+  }
+  .errorIcon {
+    top: 8px;
+    right: 10px;
+  }
+}

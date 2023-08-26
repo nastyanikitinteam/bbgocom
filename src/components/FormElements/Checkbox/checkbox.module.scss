@@ -18,6 +18,7 @@
   line-height: 20px;
   letter-spacing: -0.3px;
   color: #808080;
+  text-align: left;
   a {
     cursor: pointer;
     color: #5bb75f;
@@ -25,6 +26,7 @@
 }
 
 .block {
+  min-width: 20px;
   width: 20px;
   height: 20px;
   border: 1px solid #d8d8d8;
@@ -35,49 +37,3 @@
   transition: all 0.25s ease-in;
   cursor: pointer;
 }
-// &:hover
-// 	.default-radio__block
-// 		border-color $blue
-// &__text
-// 	font-size: $px20
-// 	line-height: 140%
-// 	font-weight 300
-// 	color: $black;
-// 	transition: all .25s ease-in
-// 	a
-// 		font-size: $px20
-// 		line-height: 140%
-// 		font-weight 300
-// 		color: $black;
-// 		transition: all .25s ease-in
-// 		&:hover
-// 			color $blue
-// &__label
-// 	display flex
-// 	align-items flex-start
-// 	cursor pointer
-// &__block
-// 	width $px28
-// 	height $px28
-// 	min-width $px28
-// 	border: $px1 solid rgba(20, 45, 174, 0.30);
-// 	border-radius: 50%
-// 	display inline-block
-// 	position: relative
-// 	background-repeat no-repeat
-// 	background-position center center
-// 	transition all .25s ease-in
-// 	position relative
-// 	margin-right $px15
-// 	&:after
-// 		content ""
-// 		position absolute
-// 		width $px16
-// 		height $px16
-// 		border-radius: 50%
-// 		top 50%
-// 		left 50%
-// 		transform: translate(-50%, -50%)
-// 		background-position: center
-// 		background-repeat no-repeat
-// 		transition: all .25s ease-in

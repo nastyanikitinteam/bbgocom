@@ -9,10 +9,7 @@ import cn from "classnames";
 
 import styles from "./profile.module.scss";
 
-import LoginIcon from "images/icons/login.svg";
-import GoogleIcon from "images/icons/google.svg";
-import TelegramIcon from "images/icons/telegram.svg";
-import LineIcon from "images/icons/line.svg";
+import LogoSvg from "images/main/logo.svg";
 
 // interface IProps {
 //   changeActiveAuth: () => void;
@@ -34,8 +31,11 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.logo}>
+        <LogoSvg />
+      </div>
       <h2 className={styles.title}>Profile</h2>
-      <p className={styles.text}>Crate an account</p>
+      <p className={styles.text}>Create an account</p>
       <Form
         onSubmit={onSubmit}
         validate={validate}

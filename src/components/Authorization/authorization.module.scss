@@ -82,3 +82,42 @@
   display: flex;
   position: relative;
 }
+
+@media (max-width: 998px) {
+  .block {
+    width: 40%;
+  }
+  .content {
+    width: 60%;
+  }
+  .card {
+    display: none;
+  }
+  .girl {
+    width: calc(100% + 40px);
+    left: -20px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 300;
+  }
+
+  .block {
+    display: none;
+  }
+  .icons {
+    display: none;
+  }
+  .content {
+    margin: 0 auto;
+    padding-top: 60px;
+    overflow-y: auto;
+    padding-bottom: 90px;
+  }
+}

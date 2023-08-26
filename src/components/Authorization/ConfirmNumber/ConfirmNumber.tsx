@@ -14,6 +14,7 @@ import ArrowIcon from "images/icons/drop.svg";
 import SMSIcon from "images/icons/sms.svg";
 import WhatAppIcon from "images/icons/whatsapp.svg";
 import CallIcon from "images/icons/call.svg";
+import LogoSvg from "images/main/logo.svg";
 
 interface IProps {
   openNextStepSignUp: () => void;
@@ -30,13 +31,15 @@ const Login: FC<IProps> = ({ openNextStepSignUp }) => {
   const validate = validateForm(validationSchema);
 
   const onSubmit = useCallback((data, form) => {
-    console.log("1234");
     console.log(data);
     openNextStepSignUp();
   }, []);
 
   return (
     <div className={styles.container}>
+      <div className={styles.logo}>
+        <LogoSvg />
+      </div>
       <h2 className={styles.title}>Confirm number</h2>
       <p className={styles.text}>
         Enter the code sent to

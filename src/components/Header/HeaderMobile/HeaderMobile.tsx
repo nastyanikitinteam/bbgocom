@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./header-mobile.module.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import SearchBar from "components/SearchBar/SearchBar";
+import Authorization from "components/Authorization/Authorization";
 import cn from "classnames";
 
 import CreateAdIcon from "images/icons/Greate-Ad-mobile.svg";
@@ -12,9 +13,10 @@ import WishlistIcon from "images/icons/Wishlist-mobile.svg";
 
 const Header = () => {
   const [isOpenProfileMenu, setIsOpenProfileMenu] = useState(false);
+  const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
 
   useEffect(() => {
-    if (isOpenProfileMenu) {
+    if (isOpenProfileMenu || isOpenAuthorization) {
       console.log("work");
       document.body.classList.add("hidden");
     } else {
@@ -29,7 +31,9 @@ const Header = () => {
     <div className={styles.container}>
       <div className="wrapper">
         <div
-          className={cn(styles.menu, { [styles.openMenu]: isOpenProfileMenu })}
+          className={cn(styles.menu, {
+            [styles.openMenu]: isOpenProfileMenu || isOpenAuthorization,
+          })}
         >
           <div className={styles.item}>
             <HomeIcon />
@@ -44,12 +48,21 @@ const Header = () => {
             <MessageIcon />
           </div>
           <div
+            className={cn(styles.item, {
+              [styles.aсtive]: isOpenProfileMenu || isOpenAuthorization,
+            })}
+            onClick={() => setIsOpenAuthorization((prev) => !prev)}
+          >
+            <ProfileIcon />
+          </div>
+          {/* <div
             className={cn(styles.item, { [styles.aсtive]: isOpenProfileMenu })}
             onClick={() => setIsOpenProfileMenu((prev) => !prev)}
           >
             <ProfileIcon />
-          </div>
+          </div> */}
         </div>
+        {isOpenAuthorization && <Authorization />}
         {isOpenProfileMenu && <MobileMenu />}
         <SearchBar />
       </div>

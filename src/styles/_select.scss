@@ -6,6 +6,10 @@
   .default__indicator {
     padding: 0;
     transition: all 0.25s ease-in;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
   .default__control {
     box-shadow: none;
@@ -128,6 +132,12 @@
   .default__option {
     padding: 5px 8px 5px 18px;
   }
+  .default__indicator {
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
 }
 
 .default-select.sort {
@@ -207,5 +217,11 @@
   }
   .default__value-container {
     padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .default-select.phone .default__control {
+    padding: 7px 14px;
   }
 }

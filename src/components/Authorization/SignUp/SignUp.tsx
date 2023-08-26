@@ -15,6 +15,7 @@ import AvatarIcon from "images/icons/avatar.svg";
 import GoogleIcon from "images/icons/google.svg";
 import TelegramIcon from "images/icons/telegram.svg";
 import LineIcon from "images/icons/line.svg";
+import LogoSvg from "images/main/logo.svg";
 
 interface IProps {
   changeActiveAuth: () => void;
@@ -55,6 +56,9 @@ const SignUp: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
   return (
     isCountryList.length && (
       <div className={styles.container}>
+        <div className={styles.logo}>
+          <LogoSvg />
+        </div>
         <h2 className={styles.title}>Sign Up</h2>
         <p className={styles.text}>
           You already have an account? <a onClick={changeActiveAuth}>Log In</a>

@@ -35,18 +35,9 @@ const Layout: FC<IProps> = ({ title = "Page", children }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      {isMobile ? (
-        <HeaderMobile />
-      ) : (
-        <Header setIsOpenAuthorization={setIsOpenAuthorization} />
-      )}
+      {isMobile ? <HeaderMobile /> : <Header />}
       <div className={styles.container}>{children}</div>
       <Footer />
-      {isOpenAuthorization && (
-        <Modal closeModal={setIsOpenAuthorization} type="authorization">
-          <Authorization />
-        </Modal>
-      )}
     </div>
   );
 };

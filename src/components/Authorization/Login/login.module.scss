@@ -11,6 +11,11 @@
   animation-delay: 0.1s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  height: max-content;
+}
+
+.logo {
+  display: none;
 }
 
 .text {
@@ -28,6 +33,7 @@
     margin-left: 5px;
     color: #000;
     font-weight: 500;
+    white-space: nowrap;
   }
 }
 
@@ -88,6 +94,10 @@
   width: 100%;
   padding-left: 5px;
   padding-right: 5px;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .description {
@@ -107,5 +117,71 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+  .socials {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .social {
+    max-width: none;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .item {
+    margin-bottom: 10px;
+  }
+  .items {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    margin-top: 5px;
+  }
+  .form {
+    margin-top: 15px;
+  }
+  .code {
+    max-width: 114px;
+  }
+  .phone {
+    gap: 5px;
+  }
+  .terms {
+    margin-top: 17px;
+  }
+  .button {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    margin-top: 16px;
+  }
+
+  .subtitle {
+    margin-top: 26px;
+  }
+  .description {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0;
   }
 }

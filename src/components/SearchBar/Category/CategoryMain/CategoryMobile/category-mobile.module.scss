@@ -29,6 +29,10 @@
   .arrow {
     transform: rotate(90deg);
   }
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .close {
@@ -98,6 +102,10 @@
   align-items: center;
   path {
     stroke: #000;
+  }
+  svg {
+    width: 24px;
+    height: 24px;
   }
 }
 

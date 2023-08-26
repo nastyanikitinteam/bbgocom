@@ -91,6 +91,9 @@ input[type="number"] {
   white-space: nowrap;
   @media (max-width: 768px) {
     padding: 10px 30px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.3px;
   }
   @media (min-width: 769px) {
     &:hover {
@@ -131,6 +134,9 @@ input[type="number"] {
         box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.15);
       }
     }
+    @media (max-width: 768px) {
+      padding: 9px 29px;
+    }
   }
   &.onlyIcon {
     display: flex;
@@ -146,6 +152,14 @@ input[type="number"] {
     justify-content: center;
     align-items: center;
     margin-right: 8px;
+    svg {
+      width: 24px;
+      height: 24px;
+      @media (max-width: 768px) {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
 }
 
@@ -271,6 +285,10 @@ input[type="number"] {
     font-weight: 500;
     line-height: 32px;
     margin-right: 10px;
+  }
+  @media (max-width: 768px) {
+    top: 5px;
+    transform: translateX(-50%);
   }
 }
 

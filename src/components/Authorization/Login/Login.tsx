@@ -15,6 +15,7 @@ import LoginIcon from "images/icons/login.svg";
 import GoogleIcon from "images/icons/google.svg";
 import TelegramIcon from "images/icons/telegram.svg";
 import LineIcon from "images/icons/line.svg";
+import LogoSvg from "images/main/logo.svg";
 
 interface IProps {
   changeActiveAuth: () => void;
@@ -53,6 +54,9 @@ const Login: FC<IProps> = ({ changeActiveAuth }) => {
   return (
     isCountryList.length && (
       <div className={styles.container}>
+        <div className={styles.logo}>
+          <LogoSvg />
+        </div>
         <h2 className={styles.title}>Log In</h2>
         <p className={styles.text}>
           You don't have an account yet?{" "}
@@ -82,15 +86,6 @@ const Login: FC<IProps> = ({ changeActiveAuth }) => {
                   />
                 </div>
               </div>
-
-              {/* <div className={styles.item}>
-              <Field
-                name="email"
-                placeholder={"Email"}
-                type="email"
-                component={FormInput}
-              />
-            </div> */}
               <div className={styles.item}>
                 <Field
                   name="password"
