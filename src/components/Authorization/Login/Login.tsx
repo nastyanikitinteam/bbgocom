@@ -52,95 +52,98 @@ const Login: FC<IProps> = ({ changeActiveAuth }) => {
   }, [CountriesList]);
 
   return (
-    isCountryList.length && (
-      <div className={styles.container}>
-        <div className={styles.logo}>
-          <LogoSvg />
-        </div>
-        <h2 className={styles.title}>Log In</h2>
-        <p className={styles.text}>
-          You don't have an account yet?{" "}
-          <a onClick={changeActiveAuth}>Sign Up</a>
-        </p>
-        <Form
-          onSubmit={onSubmit}
-          validate={validate}
-          render={({ handleSubmit }) => (
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <div className={cn(styles.phone, styles.item)}>
-                <div className={styles.code}>
-                  <Select
-                    options={isCountryList}
-                    isPhoneList
-                    classname="phone"
-                  />
+    <div className={styles.container}>
+      {isCountryList.length && (
+        <>
+          <div className={styles.logo}>
+            <LogoSvg />
+          </div>
+          <h2 className={styles.title}>Log In</h2>
+          <p className={styles.text}>
+            You don't have an account yet?{" "}
+            <a onClick={changeActiveAuth}>Sign Up</a>
+          </p>
+          <Form
+            onSubmit={onSubmit}
+            validate={validate}
+            render={({ handleSubmit }) => (
+              <form className={styles.form} onSubmit={handleSubmit}>
+                <div className={cn(styles.phone, styles.item)}>
+                  <div className={styles.code}>
+                    <Select
+                      options={isCountryList}
+                      isPhoneList
+                      classname="phone"
+                      title="Choose Country"
+                    />
+                  </div>
+                  <div className={styles.number}>
+                    <Field
+                      name="phone"
+                      type="text"
+                      placeholder={"Phone"}
+                      component={FormInput}
+                      number
+                      extClassName="noIcon"
+                    />
+                  </div>
                 </div>
-                <div className={styles.number}>
+                <div className={styles.item}>
                   <Field
-                    name="phone"
-                    type="text"
-                    placeholder={"Phone"}
+                    name="password"
+                    type="password"
+                    placeholder={"Password"}
                     component={FormInput}
-                    number
-                    extClassName="noIcon"
                   />
                 </div>
-              </div>
-              <div className={styles.item}>
-                <Field
-                  name="password"
-                  type="password"
-                  placeholder={"Password"}
-                  component={FormInput}
-                />
-              </div>
-              <div className={styles.terms}>
-                <Field name="terms" type="checkbox" component={Checkbox}>
-                  By Log In, you agree to our <a>Terms of Use</a>
-                </Field>
-              </div>
-              <div className={styles.button}>
-                <button
-                  type="submit"
-                  className={cn("default-button", styles.button)}
-                  aria-label={`Log In`}
-                >
-                  <span className="icon">
-                    <LoginIcon />
-                  </span>
-                  Log In
-                </button>
-              </div>
-            </form>
-          )}
-        ></Form>
-        <h3 className={styles.subtitle}>Or Log In with</h3>
-        <div className={styles.socials}>
-          <a href="#" className={cn("default-button border", styles.social)}>
-            <span className="icon">
-              <GoogleIcon />
-            </span>
-            Google
-          </a>
-          <a href="#" className={cn("default-button border", styles.social)}>
-            <span className="icon">
-              <TelegramIcon />
-            </span>
-            Telegram
-          </a>
-          <a href="#" className={cn("default-button border", styles.social)}>
-            <span className="icon">
-              <LineIcon />
-            </span>
-            Line
-          </a>
-        </div>
-        <p className={styles.description}>
-          If you want to receive messages from users (your mail will be visible
-          to the sender only if the question is answered)
-        </p>
-      </div>
-    )
+                <div className={styles.terms}>
+                  <Field name="terms" type="checkbox" component={Checkbox}>
+                    By Log In, you agree to our <a>Terms of Use</a>
+                  </Field>
+                </div>
+                <div className={styles.button}>
+                  <button
+                    type="submit"
+                    className={cn("default-button", styles.button)}
+                    aria-label={`Log In`}
+                  >
+                    <span className="icon">
+                      <LoginIcon />
+                    </span>
+                    Log In
+                  </button>
+                </div>
+              </form>
+            )}
+          ></Form>
+          <h3 className={styles.subtitle}>Or Log In with</h3>
+          <div className={styles.socials}>
+            <a href="#" className={cn("default-button border", styles.social)}>
+              <span className="icon">
+                <GoogleIcon />
+              </span>
+              Google
+            </a>
+            <a href="#" className={cn("default-button border", styles.social)}>
+              <span className="icon">
+                <TelegramIcon />
+              </span>
+              Telegram
+            </a>
+            <a href="#" className={cn("default-button border", styles.social)}>
+              <span className="icon">
+                <LineIcon />
+              </span>
+              Line
+            </a>
+          </div>
+          <p className={styles.description}>
+            If you want to receive messages from users (your mail will be
+            visible to the sender only if the question is answered)
+          </p>
+        </>
+      )}
+    </div>
   );
 };
 
