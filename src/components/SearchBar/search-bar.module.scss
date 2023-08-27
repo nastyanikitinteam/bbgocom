@@ -26,6 +26,27 @@
       }
     }
   }
+  @media (min-width: 999px) {
+    &.secondVariant {
+      position: relative;
+      margin: 0 20px;
+      top: 0;
+      max-width: 812px;
+      .content {
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+        .main {
+          position: fixed;
+          top: 80px;
+          padding-top: 30px;
+        }
+      }
+      .blocks {
+        justify-content: center;
+      }
+    }
+  }
   &.active {
     .content {
       border-radius: 50px 50px 0 0;

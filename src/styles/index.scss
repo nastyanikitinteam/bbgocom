@@ -117,6 +117,12 @@ input[type="number"] {
     &.border {
       padding: 9px 29px;
     }
+    .icon {
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
   &.disabled {
     background: #ebfaec;
@@ -225,6 +231,12 @@ input[type="number"] {
     line-height: 26px;
     letter-spacing: -0.3px;
     background-position: 15px 8px;
+    &.withoutIcon {
+      padding: 7px 14px 7px 14px;
+    }
+  }
+  &.withoutIcon {
+    padding: 17px 17px 17px 17px;
   }
   @media (min-width: 769px) {
     &:hover {

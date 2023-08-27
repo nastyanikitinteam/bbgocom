@@ -7,6 +7,21 @@
       padding-left: 17px;
     }
   }
+  &.smNoIcon {
+    .input {
+      padding: 6px 9px 6px 14px;
+      font-size: 14px;
+      line-height: 26px;
+      letter-spacing: -0.3px;
+      background-position: 15px 8px;
+      &::placeholder {
+        font-size: 14px;
+        line-height: 26px;
+        letter-spacing: -0.3px;
+        color: #808080;
+      }
+    }
+  }
 }
 
 .input {
@@ -14,6 +29,7 @@
   border-radius: 100px;
   border: 1px solid #d8d8d8;
   padding: 17px 17px 17px 49px;
+  font-family: "Golos Text", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -24,13 +40,6 @@
   background-position: 17px 17px;
   &:not(:placeholder-shown) {
     border-color: black;
-  }
-  &.sm {
-    padding: 7px 9px 7px 46px;
-    font-size: 14px;
-    line-height: 26px;
-    letter-spacing: -0.3px;
-    background-position: 15px 8px;
   }
   @media (min-width: 769px) {
     &:hover {

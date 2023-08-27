@@ -19,6 +19,7 @@ interface IProps {
   onClick?: () => void;
   readonly?: boolean;
   number?: boolean;
+  text?: string;
 }
 
 const FormInput: React.FC<IProps> = ({
@@ -33,8 +34,14 @@ const FormInput: React.FC<IProps> = ({
   onClick,
   readonly = false,
   number,
+  text,
 }) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isValue, setIsValue] = useState(text ? text : "");
+
+  const onChangeInput = (event) => {
+    setIsValue(event.target.value);
+  };
 
   return (
     <>
@@ -50,7 +57,8 @@ const FormInput: React.FC<IProps> = ({
                 (serverErrors && !meta?.dirtySinceLastSubmit) ||
                 (meta?.error && meta?.touched),
             },
-            input.type === "password" && [styles.password]
+            input.type === "password" &&
+              extClassName !== "smNoIcon" && [styles.password]
           )}
           style={
             secondaryColor && {
@@ -60,10 +68,12 @@ const FormInput: React.FC<IProps> = ({
             }
           }
           id={placeholder}
+          value={isValue}
           placeholder={placeholder}
           onClick={onClick}
           type={isShowPassword ? "text" : input.type}
           readOnly={readonly}
+          onChange={onChangeInput}
           onKeyPress={
             number &&
             ((event) => {

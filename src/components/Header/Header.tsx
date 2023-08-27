@@ -16,11 +16,11 @@ import AddSvg from "images/icons/add-icon.svg";
 import cn from "classnames";
 import Select from "components/Select/Select";
 
-// interface IProps {
-//   setIsOpenAuthorization: (bool: boolean) => void;
-// }
+interface IProps {
+  isSecondHeader: boolean;
+}
 
-const Header = () => {
+const Header: FC<IProps> = ({ isSecondHeader }) => {
   const { height } = useContext(ThemeContext);
 
   const [scrollTop, setScrollTop] = useState(0);
@@ -75,7 +75,9 @@ const Header = () => {
   return (
     <>
       <div
-        className={cn(styles.container, { [styles.active]: isHeaderActive })}
+        className={cn(styles.container, {
+          [styles.active]: isHeaderActive || isSecondHeader,
+        })}
         data-aos-anchor-placement="center-bottom"
       >
         <div className="wrapper">
@@ -89,7 +91,7 @@ const Header = () => {
               </p>
             )}
 
-            {!isSearchBarTop && !isTablet && (
+            {!isSearchBarTop && !isTablet && !isSecondHeader && (
               <ul className={styles.list}>
                 <li className={styles.item}>
                   <a>Help</a>
@@ -102,22 +104,27 @@ const Header = () => {
                 </li>
               </ul>
             )}
-            {isTablet && <SearchBar />}
+            {(isTablet || isSecondHeader) && (
+              <SearchBar isSecondHeader={isSecondHeader} />
+            )}
 
-            {isSearchBarTop && !isTablet && (
+            {isSearchBarTop && !isTablet && !isSecondHeader && (
               <div className={styles.searchBar}></div>
             )}
 
             <div className={styles.info}>
               <div
                 className={cn(styles.wishlist, {
-                  [styles.small]: isSearchBarTop || isTablet,
+                  [styles.small]: isSearchBarTop || isTablet || isSecondHeader,
                 })}
               >
                 <span className={styles.icon}>
                   <StarSvg />
                 </span>
-                {!isSearchBarTop && !isTablet && "My Whishlist"}
+                {!isSearchBarTop &&
+                  !isTablet &&
+                  !isSecondHeader &&
+                  "My Whishlist"}
                 {!isSearchBarTop && isWishItems > 0 && (
                   <span className={styles.num}>{isWishItems}</span>
                 )}
@@ -137,13 +144,17 @@ const Header = () => {
                 className={cn(
                   "default-button sm",
                   {
-                    onlyIcon: isSearchBarTop || isTablet,
+                    onlyIcon: isSearchBarTop || isTablet || isSecondHeader,
                   },
                   styles.button
                 )}
                 onClick={() => setIsOpenAuthorization(true)}
               >
-                {isSearchBarTop || isTablet ? <AddSvg /> : " Create an Ad"}
+                {isSearchBarTop || isTablet || isSecondHeader ? (
+                  <AddSvg />
+                ) : (
+                  " Create an Ad"
+                )}
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { useState, FC, useEffect, useRef } from "react";
+import Link from "next/link";
 import cn from "classnames";
 import styles from "./menu.module.scss";
 
@@ -68,7 +69,7 @@ const Menu: FC<IProps> = ({
           </span>
           My ads
         </div>
-        <div className={styles.item}>
+        <Link href="/my-messages" className={styles.item}>
           <span className={styles.icon}>
             <MessagesIcon />
           </span>
@@ -76,13 +77,13 @@ const Menu: FC<IProps> = ({
           {isNewMessages > 0 && (
             <span className={styles.num}>{isNewMessages}</span>
           )}
-        </div>
-        <div className={styles.item}>
+        </Link>
+        <Link href="/account-settings" className={styles.item}>
           <span className={styles.icon}>
             <SettingIcon />
           </span>
           Settings
-        </div>
+        </Link>
       </div>
       <div className={cn(styles.item, styles.logout)}>
         <span className={styles.icon}>

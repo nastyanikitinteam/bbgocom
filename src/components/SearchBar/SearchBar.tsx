@@ -1,4 +1,4 @@
-import { useRef, useContext, useEffect, useState } from "react";
+import { useRef, useContext, useEffect, useState, FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import ThemeContext from "src/context";
 
@@ -18,7 +18,11 @@ import styles from "./search-bar.module.scss";
 import SearchIcon from "images/icons/search.svg";
 import Filter from "./Filter/Filter";
 
-const SearchBar = () => {
+interface IProps {
+  isSecondHeader: boolean;
+}
+
+const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
   const containerRef = useRef(null as null | HTMLDivElement);
   const { height, setHeight } = useContext(ThemeContext);
   const [scrollTop, setScrollTop] = useState(0);
@@ -56,7 +60,7 @@ const SearchBar = () => {
   }, []);
 
   useEffect(() => {
-    if (!isTablet) {
+    if (!isTablet && !isSecondHeader) {
       const handleScroll = (event) => {
         setScrollTop(window.scrollY);
       };
@@ -157,6 +161,7 @@ const SearchBar = () => {
       className={cn(
         styles.container,
         { [styles.top]: isSearchBarTop },
+        { [styles.secondVariant]: isSecondHeader },
         { [styles.active]: isActiveChoice }
       )}
       ref={containerRef}

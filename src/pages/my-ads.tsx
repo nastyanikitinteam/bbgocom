@@ -2,13 +2,14 @@ import type { NextPage } from "next";
 
 import Layout from "../components/Layout/Layout";
 import ProfilePage from "components/ProfilePage/ProfilePage";
+import Settings from "components/ProfilePage/Settings/Settings";
 
-const Home: NextPage = () => {
+const ADS: NextPage = () => {
   return (
-    <Layout title="Profile">
-      <ProfilePage />
+    <Layout title="My ADS" isSecondHeader isProfile>
+      My ADS
     </Layout>
   );
 };
 
-export default Home;
+export default ADS;
