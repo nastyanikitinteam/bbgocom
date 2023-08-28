@@ -104,6 +104,11 @@
       background: #ebfaec;
     }
   }
+
+  .default__single-value {
+    margin: 0;
+    padding: 0;
+  }
 }
 .default-select.language-select {
   .default__value-container {
@@ -163,6 +168,7 @@
 .default-select.phone {
   .default__menu-list {
     max-height: 336px;
+    overflow-x: hidden;
   }
   .default__option {
     padding: 16px 24px;
@@ -179,9 +185,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 24px;
     .icon {
       width: 24px;
       min-width: 24px;
+      height: 24px;
       margin-right: 8px;
       display: flex;
       justify-content: center;
@@ -189,6 +200,9 @@
     }
     .name {
       white-space: nowrap;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .code {
       color: #808080;
@@ -199,12 +213,21 @@
     padding: 17px 17px;
     border-radius: 100px;
     border-color: #000;
+    position: relative;
     .name {
       display: none;
     }
     .code {
       color: #000;
       margin-left: 0;
+    }
+    .icon {
+      position: absolute;
+      top: calc(50% - 12px);
+      left: 0;
+    }
+    .default-item {
+      padding-left: 32px;
     }
   }
   .default__indicator {
@@ -217,6 +240,13 @@
   }
   .default__value-container {
     padding: 0;
+  }
+  .default__input-container {
+    margin: 0;
+    padding: 0;
+  }
+  .default__single-value ~ .default__input-container {
+    margin-left: 32px;
   }
 }
 

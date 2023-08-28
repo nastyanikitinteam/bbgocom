@@ -55,6 +55,9 @@
   font-weight: 500;
   line-height: 20px;
   letter-spacing: -0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .edit {
@@ -64,5 +67,15 @@
     line-height: 20px;
     letter-spacing: -0.2px;
     color: #000;
+  }
+}
+
+@media (max-width: 1350px) {
+  .itemPass:not(:first-child) {
+    width: calc(50% - 10px);
+    min-height: 70px;
+  }
+  .itemPass:first-child {
+    width: 100%;
   }
 }

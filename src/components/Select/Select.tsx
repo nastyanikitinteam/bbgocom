@@ -27,6 +27,7 @@ const SelectContainer: FC<IPprops> = ({
   placeholder,
   onChange,
   title,
+  isPhoneList,
 }) => {
   const [isOpenList, setIsOpenList] = useState(false);
   const [isChooseOption, setIsChooseOption] = useState(options[0].value);
@@ -58,10 +59,10 @@ const SelectContainer: FC<IPprops> = ({
         placeholder={placeholder && placeholder}
         className={cn(`default-select ${classname}`)}
         classNamePrefix="default"
-        isSearchable={false}
+        isSearchable={isPhoneList ? true : false}
         components={{ DropdownIndicator }}
         onChange={onChange}
-        // menuIsOpen
+        menuIsOpen
       />
     </div>
   ) : (

@@ -1,5 +1,6 @@
 import { useMemo, useState, FC } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Banner from "./Banner/Banner";
 import cn from "classnames";
@@ -23,6 +24,7 @@ interface IProps {
 
 const Menu: FC<IProps> = ({ isActiveMenuItem, setIsActiveMenuItem }) => {
   const isMobile = useMediaQuery(768);
+  const router = useRouter();
 
   const menuList = useMemo(
     () => [
@@ -87,9 +89,10 @@ const Menu: FC<IProps> = ({ isActiveMenuItem, setIsActiveMenuItem }) => {
             <Link
               href={link}
               key={id}
-              className={cn(styles.item, {
-                [styles.active]: isActiveMenuItem === name,
-              })}
+              className={cn(
+                styles.item,
+                router.pathname == link && [styles.active]
+              )}
             >
               <span className={styles.icon}>{icon}</span>
               {name}
