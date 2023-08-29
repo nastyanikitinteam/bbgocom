@@ -136,7 +136,7 @@ import Iraq from "images/countries/iraq.svg";
 import Ireland from "images/countries/ireland.svg";
 import IsleofMan from "images/countries/isle-of-man.svg";
 import Israel from "images/countries/israel.svg";
-import Italy from "images/countries/italy.svg";
+// import Italy from "images/countries/italy.svg";
 import Jamaica from "images/countries/jamaica.svg";
 import Japan from "images/countries/japan.svg";
 import Jersey from "images/countries/jersey.svg";
@@ -1105,12 +1105,12 @@ export const CountriesList = [
     name: "Israel (‫ישראל‬‎)",
     code: "+972",
   },
-  {
-    value: "Italy",
-    icon: <Italy />,
-    name: "Italy (Italia)",
-    code: "+39",
-  },
+  // {
+  //   value: "Italy",
+  //   icon: <Italy />,
+  //   name: "Italy (Italia)",
+  //   code: "+39",
+  // },
   {
     value: "Jamaica",
     icon: <Jamaica />,
