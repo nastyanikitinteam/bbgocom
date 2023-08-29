@@ -55,3 +55,15 @@
   line-height: 32px;
   letter-spacing: -1px;
 }
+
+@media (max-width: 768px) {
+  .text {
+    margin-top: 10px;
+  }
+  .buttons {
+    gap: 10px;
+  }
+  .button {
+    width: calc(50% - 5px);
+  }
+}

@@ -92,3 +92,23 @@
     }
   }
 }
+
+@media (max-width: 998px) and (min-width: 851px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 850px) {
+  .container {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  .bottom {
+    margin-top: 20px;
+  }
+}

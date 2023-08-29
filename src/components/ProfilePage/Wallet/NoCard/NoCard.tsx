@@ -1,4 +1,5 @@
 import { useState, FC } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
 import styles from "./no-card.module.scss";
 
@@ -11,9 +12,15 @@ interface IProps {
 }
 
 const NoCard: FC<IProps> = ({ setIsWallet, setIsActiveNewCard }) => {
+  const isMobile = useMediaQuery(768);
+
   const addNewCard = () => {
-    setIsWallet(true);
-    setIsActiveNewCard(true);
+    if (isMobile) {
+      setIsActiveNewCard(true);
+    } else {
+      setIsWallet(true);
+      setIsActiveNewCard(true);
+    }
   };
 
   return (

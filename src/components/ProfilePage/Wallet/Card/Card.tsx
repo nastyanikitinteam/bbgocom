@@ -17,6 +17,13 @@ const Card: FC<IProps> = ({ item }) => {
     console.log(data);
   }, []);
 
+  const formatCardNumber = (number) => {
+    const visibleDigits = 4;
+    const maskedNumber =
+      "•".repeat(number.length - visibleDigits) + number.slice(-visibleDigits);
+    return maskedNumber.replace(/(.{4})/g, "$1 "); // Розділяємо на блоки по 4 цифри
+  };
+
   return (
     <>
       <div
@@ -26,7 +33,7 @@ const Card: FC<IProps> = ({ item }) => {
           <p className={styles.type}>{item.typeOfCard}</p>
           <span className={styles.icon}>{item.icon}</span>
         </div>
-        <div className={styles.number}>{item.number}</div>
+        <div className={styles.number}>{formatCardNumber(item.number)}</div>
         <div className={styles.bottom}>
           <div className={styles.position}>
             <label className={styles.radio}>

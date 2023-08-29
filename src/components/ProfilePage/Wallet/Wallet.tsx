@@ -1,5 +1,7 @@
 import { useState, useMemo } from "react";
 import NoCard from "./NoCard/NoCard";
+import useMediaQuery from "src/utils/useMediaQuery";
+import PortalContainer from "components/PortalContainer/PortalContainer";
 import cn from "classnames";
 import styles from "./wallet.module.scss";
 
@@ -10,10 +12,12 @@ import WalletIcon from "images/icons/wallet-big.svg";
 import PlusIcon from "images/icons/plus.svg";
 import VisaIcon from "images/icons/visa.svg";
 import MastercardIcon from "images/icons/mastercard.svg";
+import ArrowSvg from "images/icons/drop.svg";
 
 const Wallet = () => {
   const [isWallet, setIsWallet] = useState(false);
   const [isActiveNewCard, setIsActiveNewCard] = useState(false);
+  const isMobile = useMediaQuery(768);
 
   const cardList = useMemo(
     () => [
@@ -21,7 +25,7 @@ const Wallet = () => {
         id: 0,
         typeOfCard: "Mastercard",
         icon: <MastercardIcon />,
-        number: "5908 5908 5908 5908",
+        number: "1234567890123456",
         date: "03/24",
         cvv: "123",
         isMainCard: true,
@@ -30,7 +34,7 @@ const Wallet = () => {
         id: 1,
         typeOfCard: "Visa",
         icon: <VisaIcon />,
-        number: "5908 5908 5908 5908",
+        number: "5908590859085908",
         date: "03/24",
         cvv: "123",
         isMainCard: false,
@@ -39,7 +43,7 @@ const Wallet = () => {
         id: 2,
         typeOfCard: "Visa",
         icon: <VisaIcon />,
-        number: "5908 5908 5908 5908",
+        number: "5908590859085908",
         date: "03/24",
         cvv: "123",
         isMainCard: false,
@@ -48,17 +52,59 @@ const Wallet = () => {
     []
   );
 
+  const back = () => {
+    console.log("back");
+  };
+
   return (
     <div className={styles.container}>
+      {isMobile ? (
+        <div className={styles.top}>
+          <div className="back" onClick={back}>
+            <span className="arrow">
+              <ArrowSvg />
+            </span>
+            Back
+          </div>
+          <h3 className={styles.title}>Wallet</h3>
+          <a
+            href="#"
+            className={styles.addCard}
+            onClick={() => setIsActiveNewCard(true)}
+          >
+            <span className={styles.icon}>
+              <PlusIcon />
+            </span>
+            Add New
+          </a>
+        </div>
+      ) : (
+        <></>
+      )}
+      {isMobile && (
+        <PortalContainer>
+          <div
+            className={cn(styles.blockBg, { [styles.active]: isActiveNewCard })}
+            onClick={() => setIsActiveNewCard(false)}
+          ></div>
+          <AddCard
+            isActiveNewCard={isActiveNewCard}
+            setIsActiveNewCard={setIsActiveNewCard}
+            setIsWallet={setIsWallet}
+          />
+        </PortalContainer>
+      )}
       {isWallet ? (
         <div className={styles.items}>
           {cardList.map((item, index) => {
             return <Card key={index} item={item} />;
           })}
-          <AddCard
-            isActiveNewCard={isActiveNewCard}
-            setIsActiveNewCard={setIsActiveNewCard}
-          />
+          {!isMobile && (
+            <AddCard
+              isActiveNewCard={isActiveNewCard}
+              setIsActiveNewCard={setIsActiveNewCard}
+            />
+          )}
         </div>
       ) : (
         <NoCard
