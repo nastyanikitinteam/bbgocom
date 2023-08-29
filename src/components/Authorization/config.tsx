@@ -221,7 +221,7 @@ import Samoa from "images/countries/samoa.svg";
 import SanMarino from "images/countries/san-marino.svg";
 // import SãoToméandPríncipe from "images/countries/são.svg";
 import SaudiArabia from "images/countries/saudi-arabia.svg";
-import Senegal from "images/countries/senegal.svg";
+// import Senegal from "images/countries/senegal.svg";
 import Serbia from "images/countries/serbia.svg";
 import Seychelles from "images/countries/seychelles.svg";
 import SierraLeone from "images/countries/sierra-leone.svg";
@@ -1615,12 +1615,12 @@ export const CountriesList = [
     name: "Saudi Arabia (‫المملكة العربية السعودية‬‎)",
     code: "+966",
   },
-  {
-    value: "Senegal",
-    icon: <Senegal />,
-    name: "Senegal (Sénégal)",
-    code: "+221",
-  },
+  // {
+  //   value: "Senegal",
+  //   icon: <Senegal />,
+  //   name: "Senegal (Sénégal)",
+  //   code: "+221",
+  // },
   {
     value: "Serbia",
     icon: <Serbia />,
