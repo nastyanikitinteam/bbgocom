@@ -4,11 +4,20 @@
   gap: 20px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (max-width: 998px) {
+  .container {
+    gap: 10px;
+  }
+}
 @media (max-width: 768px) {
   .container {
-    display: flex;
-    flex-direction: column;
     flex-grow: 1;
+    gap: 0;
   }
   .top {
     text-align: center;

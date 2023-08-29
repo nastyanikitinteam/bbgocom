@@ -27,7 +27,7 @@ const Menu = () => {
         id: 0,
         name: "My orders",
         icon: <OrdersIcon />,
-        link: "/",
+        link: "/orders",
       },
       {
         id: 1,
@@ -39,25 +39,25 @@ const Menu = () => {
         id: 2,
         name: "Wallet",
         icon: <WalletIcon />,
-        link: "/",
+        link: "/wallet",
       },
       {
         id: 3,
         name: "Reviews",
         icon: <ReviewsIcon />,
-        link: "/",
+        link: "/reviews",
       },
       {
         id: 4,
         name: "Reviewed products",
         icon: <ReviewedProductsIcon />,
-        link: "/",
+        link: "/reviwes-products",
       },
       {
         id: 5,
         name: "Notifications",
         icon: <NotificationIcon />,
-        link: "/",
+        link: "/notification",
         isNew: 5,
       },
       {
@@ -70,7 +70,7 @@ const Menu = () => {
         id: 7,
         name: "Help",
         icon: <HelpIcon />,
-        link: "/",
+        link: "/help",
       },
     ],
     []

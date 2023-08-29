@@ -38,4 +38,17 @@
   &:hover {
     background: #5bb75f;
   }
+  &.other {
+    background: transparent;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    width: 34px;
+    height: 34px;
+    &:hover {
+      path {
+        stroke: #5bb75f;
+      }
+    }
+  }
 }

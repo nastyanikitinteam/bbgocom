@@ -9,3 +9,9 @@
     flex-direction: row;
   }
 }
+
+@media (max-width: 998px) {
+  .container {
+    gap: 10px;
+  }
+}

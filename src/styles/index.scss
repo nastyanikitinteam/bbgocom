@@ -137,6 +137,14 @@ input[type="number"] {
       }
     }
   }
+  &.red {
+    background: #ff5a27;
+    @media (min-width: 769px) {
+      &:hover {
+        box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.15);
+      }
+    }
+  }
   &.border {
     background: #fff;
     color: #000;

@@ -88,11 +88,7 @@ const Settings = () => {
         </>
       ) : (
         AccountInfo.map(({ id, title, items }) => {
-          return (
-            <div className={styles.block} key={id}>
-              <Block title={title} items={items} />
-            </div>
-          );
+          return <Block title={title} items={items} key={id} />;
         })
       )}
     </div>

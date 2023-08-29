@@ -20,6 +20,9 @@ interface IProps {
   readonly?: boolean;
   number?: boolean;
   text?: string;
+  isCardNumber?: boolean;
+  isDate?: boolean;
+  maxLength?: number;
 }
 
 const FormInput: React.FC<IProps> = ({
@@ -35,12 +38,27 @@ const FormInput: React.FC<IProps> = ({
   readonly = false,
   number,
   text,
+  isCardNumber,
+  isDate,
+  maxLength,
 }) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const [cardNumber, setCardNumber] = useState("");
+
   const [isValue, setIsValue] = useState(text ? text : "");
 
   const onChangeInput = (event) => {
-    setIsValue(event.target.value);
+    if (isCardNumber) {
+      const input = event.target.value.replace(/\D/g, "");
+      const formattedInput = input.replace(/(\d{4})(?=\d)/g, "$1 ");
+      setIsValue(formattedInput);
+    } else if (isDate) {
+      const input = event.target.value.replace(/\D/g, "");
+      const formattedInput = input.replace(/^(\d{2})/, "$1/").substr(0, 5);
+      setIsValue(formattedInput);
+    } else {
+      setIsValue(event.target.value);
+    }
   };
 
   return (
@@ -82,6 +100,7 @@ const FormInput: React.FC<IProps> = ({
               }
             })
           }
+          maxLength={maxLength ? maxLength : false}
         />
         {input.type === "password" && (
           <div

@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    display: none;
+    &:checked + .block {
+      background-color: #5bb75f;
+      border-color: #5bb75f;
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDExIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDMuODNMMy44MyA2LjY2TDkuNSAxIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEuMTUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K);
+    }
+  }
+}
+
+.text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  color: #808080;
+  text-align: left;
+  a {
+    cursor: pointer;
+    color: #5bb75f;
+  }
+}
+
+.block {
+  min-width: 20px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+  margin-right: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.25s ease-in;
+  cursor: pointer;
+}
