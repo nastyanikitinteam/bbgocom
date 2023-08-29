@@ -62,7 +62,7 @@ const SelectContainer: FC<IPprops> = ({
         isSearchable={isPhoneList ? true : false}
         components={{ DropdownIndicator }}
         onChange={onChange}
-        menuIsOpen
+        // menuIsOpen
       />
     </div>
   ) : (

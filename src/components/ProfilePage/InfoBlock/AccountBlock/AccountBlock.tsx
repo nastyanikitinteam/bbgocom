@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./account-block.module.scss";
 
 import ShareIcon from "images/icons/share.svg";
@@ -9,8 +10,8 @@ import PhotoIcon from "images/icons/photo.svg";
 
 const AccountBlock = () => {
   const [isAvatar, setIsAvatar] = useState(true);
-
   const [isFile, setIsFile] = useState();
+  const isMobile = useMediaQuery(768);
 
   const handleFile = (e) => {
     console.log(e);
@@ -49,12 +50,14 @@ const AccountBlock = () => {
       </div>
       <h3 className={styles.name}>Kimhan Nakpradith</h3>
       <p className={styles.date}>From April 2023</p>
-      <div className={styles.logOut}>
-        <span className={styles.icon}>
-          <LogOutIcon />
-        </span>
-        Log Out
-      </div>
+      {!isMobile && (
+        <div className={styles.logOut}>
+          <span className={styles.icon}>
+            <LogOutIcon />
+          </span>
+          Log Out
+        </div>
+      )}
     </div>
   );
 };

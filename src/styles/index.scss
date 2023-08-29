@@ -313,6 +313,29 @@ input[type="number"] {
   }
 }
 
+.back {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  .arrow {
+    transform: rotate(90deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  svg {
+    width: 24px;
+    height: 24px;
+    path {
+      stroke: #000;
+    }
+  }
+}
+
 @import "./_select.scss";
 @import "./_slider.scss";
 @import "./_modal.scss";

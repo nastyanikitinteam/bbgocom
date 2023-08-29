@@ -2,13 +2,14 @@ import type { NextPage } from "next";
 
 import Layout from "../components/Layout/Layout";
 import ProfilePage from "components/ProfilePage/ProfilePage";
+import useMediaQuery from "src/utils/useMediaQuery";
 import Settings from "components/ProfilePage/Settings/Settings";
 
 const MySettings: NextPage = () => {
   return (
-    <Layout title="Account settings" isSecondHeader isProfile>
+    <ProfilePage title="Account settings">
       <Settings />
-    </Layout>
+    </ProfilePage>
   );
 };
 

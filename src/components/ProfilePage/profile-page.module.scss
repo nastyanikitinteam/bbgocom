@@ -1,5 +1,6 @@
 .container {
   padding: 40px 0 80px;
+  min-height: 100vh;
   @media (min-width: 769px) {
     padding-top: 120px;
   }
@@ -12,10 +13,21 @@
   margin-top: 40px;
 }
 
-.menu {
+.left {
   max-width: 325px;
   width: 100%;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  // height: 100%;
+}
+
+.menu {
+  flex-grow: 1;
+}
+
+.banner {
+  margin-top: 20px;
 }
 
 .main {
@@ -25,4 +37,37 @@
 .info {
   max-width: 325px;
   width: 100%;
+}
+
+@media (max-width: 1300px) {
+  .content {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .info {
+    width: 100%;
+    order: -1;
+    max-width: none;
+  }
+  .main {
+    width: calc(100% - 345px);
+  }
+}
+
+@media (max-width: 998px) {
+  .content {
+    gap: 10px;
+  }
+  .left {
+    max-width: 240px;
+  }
+  .main {
+    width: calc(100% - 250px);
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 20px 90px;
+    display: flex;
+  }
 }

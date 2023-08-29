@@ -19,7 +19,7 @@ import SearchIcon from "images/icons/search.svg";
 import Filter from "./Filter/Filter";
 
 interface IProps {
-  isSecondHeader: boolean;
+  isSecondHeader?: boolean;
 }
 
 const SearchBar: FC<IProps> = ({ isSecondHeader }) => {

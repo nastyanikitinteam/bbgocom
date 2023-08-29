@@ -9,9 +9,9 @@
 
 .image {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  max-width: 173px;
+  bottom: -30px;
+  right: -91px;
+  width: 264px;
 }
 
 .title {
@@ -32,4 +32,40 @@
 
 .button {
   margin-top: 142px;
+}
+@media (max-width: 1300px) {
+  .container {
+    width: calc(100% - 345px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    br {
+      display: none;
+    }
+  }
+
+  .button {
+    margin-top: auto;
+  }
+
+  .text {
+    max-width: 254px;
+    margin-bottom: 25px;
+  }
+
+  .image {
+    bottom: -82px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 998px) {
+  .container {
+    width: calc(100% - 250px);
+  }
+  .image {
+    width: 224px;
+  }
 }

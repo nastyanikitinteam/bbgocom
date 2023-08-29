@@ -2,7 +2,7 @@ import { useMemo, useState, FC } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useMediaQuery from "src/utils/useMediaQuery";
-import Banner from "./Banner/Banner";
+
 import cn from "classnames";
 import styles from "./menu.module.scss";
 
@@ -17,12 +17,7 @@ import ReviewsIcon from "images/icons/reviews-icon.svg";
 import HelpIcon from "images/icons/help-icon.svg";
 import LogOutIcon from "images/icons/log-out-icon.svg";
 
-interface IProps {
-  isActiveMenuItem?: string;
-  setIsActiveMenuItem?: (bool: string) => void;
-}
-
-const Menu: FC<IProps> = ({ isActiveMenuItem, setIsActiveMenuItem }) => {
+const Menu = () => {
   const isMobile = useMediaQuery(768);
   const router = useRouter();
 
@@ -82,28 +77,23 @@ const Menu: FC<IProps> = ({ isActiveMenuItem, setIsActiveMenuItem }) => {
   );
 
   return (
-    <div className={styles.container}>
-      <div className={styles.block}>
-        {menuList.map(({ id, name, icon, link, isNew }) => {
-          return (
-            <Link
-              href={link}
-              key={id}
-              className={cn(
-                styles.item,
-                router.pathname == link && [styles.active]
-              )}
-            >
-              <span className={styles.icon}>{icon}</span>
-              {name}
-              {isNew > 0 && <span className={styles.num}>{isNew}</span>}
-            </Link>
-          );
-        })}
-      </div>
-      <div className={styles.banner}>
-        <Banner />
-      </div>
+    <div className={styles.block}>
+      {menuList.map(({ id, name, icon, link, isNew }) => {
+        return (
+          <Link
+            href={link}
+            key={id}
+            className={cn(
+              styles.item,
+              router.pathname == link && [styles.active]
+            )}
+          >
+            <span className={styles.icon}>{icon}</span>
+            {name}
+            {isNew > 0 && <span className={styles.num}>{isNew}</span>}
+          </Link>
+        );
+      })}
     </div>
   );
 };

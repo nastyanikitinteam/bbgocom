@@ -3,3 +3,9 @@
   flex-direction: column;
   gap: 20px;
 }
+
+@media (max-width: 1300px) {
+  .container {
+    flex-direction: row;
+  }
+}

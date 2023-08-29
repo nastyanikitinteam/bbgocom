@@ -33,7 +33,6 @@ const Authorization = () => {
       setIsSignUp(false);
       setIsConfirmNumber(true);
     } else {
-      console.log("112");
       setIsConfirmNumber(false);
       setIsRegisterStep(true);
     }

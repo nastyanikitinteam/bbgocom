@@ -99,3 +99,30 @@
     margin-right: 8px;
   }
 }
+
+@media (max-width: 1300px) {
+  .container {
+    max-width: 325px;
+    width: 100%;
+  }
+}
+@media (max-width: 998px) {
+  .container {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 32px;
+  }
+  .date {
+    margin-top: 4px;
+  }
+}
