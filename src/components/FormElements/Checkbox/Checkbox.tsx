@@ -16,7 +16,9 @@ interface IProps {
   readonly?: boolean;
   number?: boolean;
   text?: string;
-  children: ReactNode;
+  children?: ReactNode;
+  onChange?: (bool: any) => void;
+  checked?: boolean;
 }
 
 const Checkbox: React.FC<IProps> = ({
@@ -33,6 +35,8 @@ const Checkbox: React.FC<IProps> = ({
   number,
   text,
   children,
+  onChange,
+  checked,
 }) => {
   return (
     <label
@@ -52,9 +56,11 @@ const Checkbox: React.FC<IProps> = ({
         onClick={onClick}
         type={input.type}
         readOnly={readonly}
+        onChange={onChange}
+        checked={checked}
       />
       <div className={styles.block}></div>
-      <p className={styles.text}>{children}</p>
+      {children && <p className={styles.text}>{children}</p>}
     </label>
   );
 };

@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useRouter } from "next/router";
 import NoCard from "./NoCard/NoCard";
 import useMediaQuery from "src/utils/useMediaQuery";
 import PortalContainer from "components/PortalContainer/PortalContainer";
@@ -18,6 +19,8 @@ const Wallet = () => {
   const [isWallet, setIsWallet] = useState(false);
   const [isActiveNewCard, setIsActiveNewCard] = useState(false);
   const isMobile = useMediaQuery(768);
+
+  const router = useRouter();
 
   const cardList = useMemo(
     () => [
@@ -53,7 +56,7 @@ const Wallet = () => {
   );
 
   const back = () => {
-    console.log("back");
+    router.back();
   };
 
   return (

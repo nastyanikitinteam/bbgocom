@@ -37,3 +37,15 @@
   transition: all 0.25s ease-in;
   cursor: pointer;
 }
+
+.noText {
+  .block {
+    margin-right: 0;
+  }
+}
+
+.blackWhenChecked {
+  input:checked + .block + .text {
+    color: #000;
+  }
+}

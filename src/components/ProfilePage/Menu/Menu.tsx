@@ -57,7 +57,7 @@ const Menu = () => {
         id: 5,
         name: "Notifications",
         icon: <NotificationIcon />,
-        link: "/notification",
+        link: "/notifications",
         isNew: 5,
       },
       {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import cn from "classnames";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Block from "./Block/Block";
@@ -15,6 +16,8 @@ const Settings = () => {
   const [isActiveItem, setIsActiveItem] = useState(0);
   const [isOpenParam, setIsOpenParam] = useState(false);
 
+  const router = useRouter();
+
   const handleParam = (id) => {
     setIsOpenParam(true);
     setIsActiveItem(id);
@@ -24,7 +27,7 @@ const Settings = () => {
     if (isOpenParam) {
       setIsOpenParam(false);
     } else {
-      console.log("back");
+      router.back();
     }
   };
 

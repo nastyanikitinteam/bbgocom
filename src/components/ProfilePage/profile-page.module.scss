@@ -23,7 +23,7 @@
   // height: 100%;
 }
 
-.menu {
+.menu:not(.short) {
   flex-grow: 1;
 }
 

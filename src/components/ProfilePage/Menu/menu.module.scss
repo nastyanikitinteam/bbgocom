@@ -36,12 +36,6 @@
   margin-left: auto;
 }
 
-@media (min-width: 999px) {
-  .block {
-    padding: 30px;
-  }
-}
-
 @media (min-width: 769px) {
   .block {
     padding: 10px;
@@ -52,6 +46,11 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+  }
+}
+@media (min-width: 999px) {
+  .block {
+    padding: 30px;
   }
 }
 
