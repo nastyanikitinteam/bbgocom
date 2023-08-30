@@ -86,6 +86,10 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
   &:hover {
     path {
       stroke: #5bb75f;

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
 }
 
 .main {
@@ -10,12 +11,16 @@
   gap: 20px;
 }
 
-.top {
+.info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   min-height: 40px;
+}
+
+.selected {
+  cursor: pointer;
 }
 
 .more {
@@ -26,7 +31,8 @@
   color: #808080;
   cursor: pointer;
   padding: 10px 0;
-  margin-top: 20px;
+  width: max-content;
+  margin: 20px auto 0;
   .icon {
     display: flex;
     justify-content: center;
@@ -43,5 +49,46 @@
     path {
       stroke: #5bb75f;
     }
+  }
+}
+
+.deleteSelected {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  color: #5bb75f;
+  padding: 5px 0 !important;
+  transition: none;
+  background: transparent;
+  path {
+    stroke: #5bb75f;
+  }
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-grow: 1;
+    height: auto;
+  }
+  .top {
+    text-align: center;
+    position: relative;
+    padding: 4px 60px;
+    margin-bottom: 30px;
+  }
+  .info {
+    margin-bottom: 10px;
   }
 }

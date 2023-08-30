@@ -55,3 +55,37 @@
   padding: 7px;
   margin: auto 0;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 19px;
+    flex-wrap: wrap;
+  }
+  .button {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .checkbox {
+    padding: 2px;
+    margin: 0;
+  }
+  .date {
+    width: calc(100% - 34px);
+    text-align: right;
+    margin: 0;
+    padding: 4px 0;
+  }
+  .avatar {
+    margin-left: 0;
+    margin-right: 10px;
+    margin-top: 20px;
+  }
+  .info {
+    width: calc(100% - 50px);
+    margin-top: 20px;
+    padding-right: 0;
+  }
+  .text {
+    margin-top: 4px;
+  }
+}

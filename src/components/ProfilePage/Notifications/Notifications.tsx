@@ -14,13 +14,12 @@ import Avatar1 from "images/profile/notification-avatar1.png";
 import Avatar2 from "images/profile/notification-avatar2.png";
 import Avatar3 from "images/profile/notification-avatar3.png";
 import Avatar4 from "images/profile/notification-avatar4.png";
+import DelIcon from "images/icons/delete.svg";
 
 const Notifications = () => {
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [isShowNotification, setIsShowNotification] = useState(4);
-
-  // const [anyNotificationChecked, setAnyNotificationChecked] = useState(false);
 
   const isMobile = useMediaQuery(768);
   const router = useRouter();
@@ -123,6 +122,8 @@ const Notifications = () => {
 
   const onSubmit = useCallback((data, form) => {
     console.log(data);
+    setCheckedItems([]);
+    setSelectAllChecked(false);
   }, []);
 
   const handleCheckboxChange = (itemId) => {
@@ -160,7 +161,32 @@ const Notifications = () => {
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.top}>
+            {isMobile && (
+              <div className={styles.top}>
+                <div className="back" onClick={back}>
+                  <span className="arrow">
+                    <ArrowSvg />
+                  </span>
+                  Back
+                </div>
+                <h3 className={styles.title}>Notifications</h3>
+                {checkedItems.length > 0 && (
+                  <div className={styles.button}>
+                    <button
+                      type="submit"
+                      className={styles.deleteSelected}
+                      aria-label={`Delete`}
+                    >
+                      <span className={styles.icon}>
+                        <DelIcon />
+                      </span>
+                      Delete
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+            <div className={styles.info}>
               {checkedItems.length > 0 && !selectAllChecked ? (
                 <div className={styles.selected}>
                   <Field
@@ -191,7 +217,7 @@ const Notifications = () => {
                 </div>
               )}
 
-              {checkedItems.length > 0 && (
+              {checkedItems.length > 0 && !isMobile && (
                 <div className={styles.button}>
                   <button
                     type="submit"
