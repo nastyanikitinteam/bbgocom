@@ -20,6 +20,10 @@
   gap: 8px;
 }
 
+.description {
+  color: #808080;
+}
+
 .stars {
   display: flex;
   justify-content: flex-start;
@@ -33,4 +37,24 @@
 .star.active path {
   stroke: #ffda44;
   fill: #ffda44;
+}
+
+@media (max-width: 768px) {
+  .container {
+    border: none;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+  .icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .stars {
+    justify-content: center;
+  }
+  .description {
+    max-width: 300px;
+  }
 }

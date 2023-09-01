@@ -109,7 +109,7 @@ const Reviews = () => {
             </span>
             Back
           </div>
-          <h3 className={styles.title}>Wallet</h3>
+          <h3 className={styles.title}>Reviews</h3>
         </div>
       )}
       <div className={styles.main}>
