@@ -37,6 +37,7 @@
 
 .selected {
   cursor: pointer;
+  margin-right: 20px;
 }
 
 .filter {
@@ -73,6 +74,8 @@
 
 .sort {
   max-width: 164px;
+  min-width: 164px;
+  display: flex;
 }
 
 .more {
@@ -129,6 +132,11 @@
   }
 }
 
+@media (max-width: 950px) {
+  .block {
+    width: calc(50% - 20px);
+  }
+}
 @media (max-width: 768px) {
   .container {
     flex-grow: 1;
@@ -142,5 +150,15 @@
   }
   .info {
     margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .main {
+    margin-right: 0;
+  }
+  .block {
+    width: 100%;
+    margin: 0 auto 20px;
   }
 }

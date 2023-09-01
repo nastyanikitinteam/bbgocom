@@ -21,6 +21,7 @@ const ReviewedProducts = () => {
 
   const [dataPrice, setDataPrice] = useState({});
 
+  const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
   const router = useRouter();
 
@@ -57,6 +58,10 @@ const ReviewedProducts = () => {
     setDataPrice((prev) => ({ ...prev, [key]: value }));
   };
 
+  useEffect(() => {
+    isTablet && setIsHorizontalShow(false);
+  }, [isTablet]);
+
   return (
     <div className={styles.container}>
       <Form
@@ -71,7 +76,7 @@ const ReviewedProducts = () => {
                   </span>
                   Back
                 </div>
-                <h3 className={styles.title}>Notifications</h3>
+                <h3 className={styles.title}>Reviewed products</h3>
                 {checkedItems.length > 0 && (
                   <div className={styles.button}>
                     <button
@@ -114,6 +119,8 @@ const ReviewedProducts = () => {
                   >
                     {selectAllChecked
                       ? `Selected: ${checkedItems.length}`
+                      : isTablet
+                      ? "Select all"
                       : "Select all the desired ads from the list to apply the same actions to them"}
                   </Field>
                 </div>
@@ -121,22 +128,27 @@ const ReviewedProducts = () => {
 
               {checkedItems.length === 0 && (
                 <div className={styles.filter}>
-                  <div
-                    className={cn(styles.filterButton, {
-                      [styles.active]: !isHorizontalShow,
-                    })}
-                    onClick={() => setIsHorizontalShow(false)}
-                  >
-                    <BlocksIcon />
-                  </div>
-                  <div
-                    className={cn(styles.filterButton, {
-                      [styles.active]: isHorizontalShow,
-                    })}
-                    onClick={() => setIsHorizontalShow(true)}
-                  >
-                    <HorizonalIcon />
-                  </div>
+                  {!isTablet && (
+                    <>
+                      <div
+                        className={cn(styles.filterButton, {
+                          [styles.active]: !isHorizontalShow,
+                        })}
+                        onClick={() => setIsHorizontalShow(false)}
+                      >
+                        <BlocksIcon />
+                      </div>
+                      <div
+                        className={cn(styles.filterButton, {
+                          [styles.active]: isHorizontalShow,
+                        })}
+                        onClick={() => setIsHorizontalShow(true)}
+                      >
+                        <HorizonalIcon />
+                      </div>
+                    </>
+                  )}
+
                   <div className={styles.sort}>
                     <SortBy
                       dataPrice={dataPrice}
