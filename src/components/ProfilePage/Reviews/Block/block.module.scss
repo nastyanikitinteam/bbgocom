@@ -1,0 +1,98 @@
+.container {
+  border-radius: 15px;
+  border: 1px solid #d8d8d8;
+  padding: 29px;
+}
+
+.avatar {
+  max-width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.main {
+  display: flex;
+  margin-top: 19px;
+}
+
+.info {
+  margin-right: 20px;
+}
+
+.text {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+  span {
+    color: #5bb75f;
+  }
+}
+
+.date {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #808080;
+  margin-top: 5px;
+}
+
+.rating {
+  margin-left: auto;
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px;
+}
+
+.star {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.star path {
+  stroke: #808080;
+}
+.star.active path {
+  stroke: #ffda44;
+  fill: #ffda44;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 19px;
+    flex-wrap: wrap;
+  }
+  .button {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .checkbox {
+    padding: 2px;
+    margin: 0;
+  }
+  .date {
+    width: calc(100% - 34px);
+    text-align: right;
+    margin: 0;
+    padding: 4px 0;
+  }
+  .avatar {
+    margin-left: 0;
+    margin-right: 10px;
+    margin-top: 20px;
+  }
+  .info {
+    width: calc(100% - 50px);
+    margin-top: 20px;
+    padding-right: 0;
+  }
+  .text {
+    margin-top: 4px;
+  }
+}

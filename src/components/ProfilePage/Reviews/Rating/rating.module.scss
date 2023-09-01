@@ -1,0 +1,36 @@
+.container {
+  border-radius: 15px;
+  border: 1px solid #d8d8d8;
+  padding: 29px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.icon {
+  max-width: 80px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info {
+  display: grid;
+  gap: 8px;
+}
+
+.stars {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+}
+
+.star path {
+  stroke: #808080;
+}
+.star.active path {
+  stroke: #ffda44;
+  fill: #ffda44;
+}
