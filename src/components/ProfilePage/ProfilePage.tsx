@@ -17,10 +17,16 @@ import styles from "./profile-page.module.scss";
 interface IProps {
   title: string;
   isShortMenu?: boolean;
+  withoutInfoBlock?: boolean;
   children: ReactNode;
 }
 
-const ProfilePage: FC<IProps> = ({ title = "Page", children, isShortMenu }) => {
+const ProfilePage: FC<IProps> = ({
+  title = "Page",
+  children,
+  isShortMenu,
+  withoutInfoBlock,
+}) => {
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
 
@@ -72,13 +78,15 @@ const ProfilePage: FC<IProps> = ({ title = "Page", children, isShortMenu }) => {
                 >
                   {children}
                 </div>
-                <div
-                  className={styles.info}
-                  data-aos="fade"
-                  data-aos-delay="300"
-                >
-                  <InfoBlock />
-                </div>
+                {!withoutInfoBlock && (
+                  <div
+                    className={styles.info}
+                    data-aos="fade"
+                    data-aos-delay="300"
+                  >
+                    <InfoBlock />
+                  </div>
+                )}
               </div>
               {isTablet && (
                 <div

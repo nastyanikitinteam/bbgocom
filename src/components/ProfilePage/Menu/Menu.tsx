@@ -51,7 +51,7 @@ const Menu = () => {
         id: 4,
         name: "Reviewed products",
         icon: <ReviewedProductsIcon />,
-        link: "/reviwes-products",
+        link: "/reviewed-products",
       },
       {
         id: 5,

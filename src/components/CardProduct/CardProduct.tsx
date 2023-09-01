@@ -1,4 +1,4 @@
-import { useMemo, FC } from "react";
+import { useMemo, FC, ReactNode } from "react";
 import styles from "./card-product.module.scss";
 import cn from "classnames";
 
@@ -15,6 +15,8 @@ interface IProps {
   oldPrice?: string;
   location: string;
   isGreenCard?: boolean;
+  children?: ReactNode;
+  isHorizontal?: boolean;
 }
 
 const CardProduct: FC<IProps> = ({
@@ -24,9 +26,18 @@ const CardProduct: FC<IProps> = ({
   oldPrice,
   location,
   isGreenCard,
+  children,
+  isHorizontal,
 }) => {
   return (
-    <div className={cn(styles.container, { [styles.green]: isGreenCard })}>
+    <div
+      className={cn(
+        styles.container,
+        { [styles.green]: isGreenCard },
+        { [styles.isHorizontal]: isHorizontal }
+      )}
+    >
+      {children && <div className={styles.checkbox}>{children}</div>}
       <div className={styles.wishlist}>
         <StarIcon />
       </div>

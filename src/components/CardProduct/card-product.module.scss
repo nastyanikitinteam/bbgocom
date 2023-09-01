@@ -15,6 +15,23 @@
       line-clamp: 2;
     }
   }
+  &.isHorizontal {
+    .block {
+      flex-direction: row;
+    }
+    .image {
+      max-width: 325px;
+      border-radius: 25px 0 0 25px;
+    }
+    .info {
+      border-radius: 0 25px 25px 0;
+      border-right: 1px solid #d8d8d8;
+      border-bottom: 1px solid #d8d8d8;
+      border-top: 1px solid #d8d8d8;
+      border-left: none;
+      padding: 29px;
+    }
+  }
 }
 
 .block {
@@ -123,4 +140,11 @@
     text-decoration-line: line-through;
     margin-left: 4px;
   }
+}
+
+.checkbox {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 20;
 }

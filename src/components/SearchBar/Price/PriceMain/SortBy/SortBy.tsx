@@ -12,9 +12,10 @@ import SortSvg from "images/icons/sort.svg";
 interface IProps {
   dataPrice: any;
   handleClickPrice: (key: string, value: string) => void;
+  withoutLabel?: boolean;
 }
 
-const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
+const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice, withoutLabel }) => {
   const [isChooseOption, setIsChooseOption] = useState(false);
   const [isOpenList, setIsOpenList] = useState(false);
 
@@ -73,7 +74,7 @@ const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>Sort by:</h3>
+      {!withoutLabel && <h3 className={styles.title}>Sort by:</h3>}
       {!isMobile ? (
         <Select
           ref={selectRef}
