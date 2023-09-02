@@ -2,14 +2,15 @@ import type { NextPage } from "next";
 
 import Layout from "../components/Layout/Layout";
 import ProfilePage from "components/ProfilePage/ProfilePage";
-import Settings from "components/ProfilePage/Settings/Settings";
+import MyAds from "components/ProfilePage/MyAds/MyAds";
+import useMediaQuery from "src/utils/useMediaQuery";
 
-const ADS: NextPage = () => {
+const MyWallet: NextPage = () => {
   return (
-    <Layout title="My ADS" isSecondHeader isProfile>
-      My ADS
-    </Layout>
+    <ProfilePage title="My Ads" isShortMenu withoutInfoBlock>
+      <MyAds />
+    </ProfilePage>
   );
 };
 
-export default ADS;
+export default MyWallet;

@@ -17,6 +17,7 @@ interface IProps {
   isGreenCard?: boolean;
   children?: ReactNode;
   isHorizontal?: boolean;
+  isAds?: boolean;
 }
 
 const CardProduct: FC<IProps> = ({
@@ -28,6 +29,7 @@ const CardProduct: FC<IProps> = ({
   isGreenCard,
   children,
   isHorizontal,
+  isAds,
 }) => {
   return (
     <div
