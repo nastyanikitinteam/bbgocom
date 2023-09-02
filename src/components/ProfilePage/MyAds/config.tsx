@@ -31,6 +31,7 @@ export const activeList = [
       },
     ],
     price: "$1,250 000.00",
+    oldPrice: "$1,500.00",
     location: "Phuket, Thailand",
   },
 
@@ -123,6 +124,7 @@ export const waitingList = [
       },
     ],
     price: "$1,250 000.00",
+    oldPrice: "$1,500.00",
     location: "Phuket, Thailand",
   },
 

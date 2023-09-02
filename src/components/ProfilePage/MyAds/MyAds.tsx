@@ -27,6 +27,8 @@ const MyAds = () => {
   const [isActiveCategory, setIsActiveCategory] = useState("Active");
   const [isActiveCategoryList, setIsActiveCategoryList] = useState(activeList);
 
+  const [isShowCategory, setIsShowCategory] = useState(false);
+
   const [dataPrice, setDataPrice] = useState({});
 
   const isTablet = useMediaQuery(998);
@@ -34,7 +36,11 @@ const MyAds = () => {
   const router = useRouter();
 
   const back = () => {
-    router.back();
+    if (isShowCategory) {
+      setIsShowCategory(false);
+    } else {
+      router.back();
+    }
   };
 
   const onSubmit = useCallback((data, form) => {
@@ -71,25 +77,30 @@ const MyAds = () => {
     setIsActiveCategoryList(list);
     setCheckedItems([]);
     setSelectAllChecked(false);
+    if (isMobile) {
+      setIsShowCategory(true);
+    }
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.categories}>
-        {categorieList.map(({ id, title, items, list }) => {
-          return (
-            <div
-              className={cn(styles.category, {
-                [styles.active]: isActiveCategory === title,
-              })}
-              key={id}
-              onClick={() => handleCategories(title, list)}
-            >
-              {title} ({items})
-            </div>
-          );
-        })}
-      </div>
+      {!isMobile && (
+        <div className={styles.categories}>
+          {categorieList.map(({ id, title, items, list }) => {
+            return (
+              <div
+                className={cn(styles.category, {
+                  [styles.active]: isActiveCategory === title,
+                })}
+                key={id}
+                onClick={() => handleCategories(title, list)}
+              >
+                {title} ({items})
+              </div>
+            );
+          })}
+        </div>
+      )}
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
@@ -102,7 +113,11 @@ const MyAds = () => {
                   </span>
                   Back
                 </div>
-                <h3 className={styles.title}>Reviewed products</h3>
+                <h3 className={styles.title}>
+                  {isShowCategory
+                    ? `${isActiveCategory} (${isActiveCategoryList.length})`
+                    : "My Ads"}
+                </h3>
                 {checkedItems.length > 0 && (
                   <div className={styles.button}>
                     <button
@@ -113,94 +128,128 @@ const MyAds = () => {
                       <span className={styles.icon}>
                         <DelIcon />
                       </span>
-                      Delete
+                      {isActiveCategory === "Active" ? "Deactivate" : "Delete"}
                     </button>
                   </div>
                 )}
               </div>
             )}
-            <div className={styles.info}>
-              {checkedItems.length > 0 && !selectAllChecked ? (
-                <div className={styles.selected}>
-                  <Field
-                    name={`notificationSelected`}
-                    type="checkbox"
-                    component={Checkbox}
-                    onChange={handleSelectAllChange}
-                    checked={checkedItems.length > 0}
-                    extClassName="blackWhenChecked"
-                  >
-                    Selected: {checkedItems.length}
-                  </Field>
-                </div>
-              ) : (
-                <div className={styles.selected}>
-                  <Field
-                    name={`notificationSelectedAll`}
-                    type="checkbox"
-                    component={Checkbox}
-                    onChange={handleSelectAllChange}
-                    checked={selectAllChecked}
-                    extClassName="blackWhenChecked"
-                  >
-                    {selectAllChecked
-                      ? `Selected: ${checkedItems.length}`
-                      : isTablet
-                      ? "Select all"
-                      : "Select all the desired ads from the list to apply the same actions to them"}
-                  </Field>
-                </div>
-              )}
+            {isMobile && !isShowCategory && (
+              <div className={styles.categories}>
+                {categorieList.map(({ id, title, items, list }) => {
+                  return (
+                    <div
+                      className={cn(styles.category)}
+                      key={id}
+                      onClick={() => handleCategories(title, list)}
+                    >
+                      <h3>
+                        {title} ({items})
+                      </h3>
+                      <span className={styles.arrow}>
+                        <ArrowSvg />
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
 
-              {checkedItems.length === 0 && (
-                <div className={styles.filter}>
-                  <div className={styles.sort}>
-                    <SortBy
-                      dataPrice={dataPrice}
-                      handleClickPrice={handleClickPrice}
-                      withoutLabel
-                    />
-                  </div>
-                </div>
-              )}
-              {checkedItems.length > 0 && !isMobile && (
-                <div className={styles.button}>
-                  <button
-                    type="submit"
-                    className={cn("default-button border sm", styles.button)}
-                    aria-label={`Deactivate`}
-                  >
-                    {isActiveCategory === "Active" ? "Deactivate" : "Delete"}
-                  </button>
-                </div>
-              )}
-            </div>
-            <div className={styles.main}>
-              {isActiveCategoryList.map((item) => {
-                return (
-                  <div
-                    className={styles.block}
-                    key={item.id}
-                    data-aos-anchor-placement="center-bottom"
-                    data-aos="fade-up"
-                    data-aos-delay="300"
-                  >
-                    <Card item={item} type={isActiveCategory}>
+            {(!isMobile || (isMobile && isShowCategory)) && (
+              <>
+                <div
+                  className={styles.info}
+                  data-aos="fade"
+                  data-aos-delay="300"
+                >
+                  {checkedItems.length > 0 && !selectAllChecked ? (
+                    <div className={styles.selected}>
                       <Field
-                        name={`notification${item.id}`}
+                        name={`notificationSelected`}
                         type="checkbox"
                         component={Checkbox}
-                        extClassName="noText"
-                        onClick={() => handleCheckboxChange(item.id)}
-                        checked={checkedItems.includes(item.id)}
-                      />
-                    </Card>
-                  </div>
-                );
-              })}
-              {(isActiveCategoryList == rejectedList && rejectedList.length) ===
-                0 && <NoResult />}
-            </div>
+                        onChange={handleSelectAllChange}
+                        checked={checkedItems.length > 0}
+                        extClassName="blackWhenChecked"
+                      >
+                        Selected: {checkedItems.length}
+                      </Field>
+                    </div>
+                  ) : (
+                    <div className={styles.selected}>
+                      <Field
+                        name={`notificationSelectedAll`}
+                        type="checkbox"
+                        component={Checkbox}
+                        onChange={handleSelectAllChange}
+                        checked={selectAllChecked}
+                        extClassName="blackWhenChecked"
+                      >
+                        {selectAllChecked
+                          ? `Selected: ${checkedItems.length}`
+                          : isTablet
+                          ? "Select all"
+                          : "Select all the desired ads from the list to apply the same actions to them"}
+                      </Field>
+                    </div>
+                  )}
+
+                  {checkedItems.length === 0 && (
+                    <div className={styles.filter}>
+                      <div className={styles.sort}>
+                        <SortBy
+                          dataPrice={dataPrice}
+                          handleClickPrice={handleClickPrice}
+                          withoutLabel
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {checkedItems.length > 0 && !isMobile && (
+                    <div className={styles.button}>
+                      <button
+                        type="submit"
+                        className={cn(
+                          "default-button border sm",
+                          styles.button
+                        )}
+                        aria-label={`Deactivate`}
+                      >
+                        {isActiveCategory === "Active"
+                          ? "Deactivate"
+                          : "Delete"}
+                      </button>
+                    </div>
+                  )}
+                </div>
+                <div className={styles.main}>
+                  {isActiveCategoryList.map((item) => {
+                    return (
+                      <div
+                        className={styles.block}
+                        key={item.id}
+                        data-aos-anchor-placement="center-bottom"
+                        data-aos="fade-up"
+                        data-aos-delay="300"
+                      >
+                        <Card item={item} type={isActiveCategory}>
+                          <Field
+                            name={`notification${item.id}`}
+                            type="checkbox"
+                            component={Checkbox}
+                            extClassName="noText"
+                            onClick={() => handleCheckboxChange(item.id)}
+                            checked={checkedItems.includes(item.id)}
+                          />
+                        </Card>
+                      </div>
+                    );
+                  })}
+                  {(isActiveCategoryList == rejectedList &&
+                    rejectedList.length) === 0 && <NoResult />}
+                </div>
+              </>
+            )}
           </form>
         )}
       ></Form>

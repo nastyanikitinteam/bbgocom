@@ -1,7 +1,7 @@
 import { useMemo, FC, ReactNode } from "react";
 import styles from "./card.module.scss";
 import cn from "classnames";
-
+import useMediaQuery from "src/utils/useMediaQuery";
 import Slider from "components/Slider/Slider";
 import MapIcon from "images/icons/map-icon.svg";
 import EditIcon from "images/icons/edit.svg";
@@ -17,40 +17,80 @@ interface IProps {
 }
 
 const Card: FC<IProps> = ({ item, children, type }) => {
+  const isTablet = useMediaQuery(998);
+
   return (
     <div className={styles.container}>
-      <div className={styles.checkbox}>{children}</div>
-
+      {!isTablet && <div className={styles.checkbox}>{children}</div>}
       <div className={styles.block}>
-        <div className={styles.image}>
-          <Slider slides={item.images} isCardProduct />
-        </div>
+        {!isTablet && (
+          <div className={styles.image}>
+            <Slider slides={item.images} isCardProduct />
+          </div>
+        )}
         <div className={styles.info}>
+          {isTablet && (
+            <>
+              <div className={styles.top}>
+                <div className={styles.checkbox}>{children}</div>
+                {isTablet && (
+                  <div className={styles.date}>
+                    <span className={styles.icon}>
+                      <CalendarIcon />
+                    </span>
+                    {item.date}
+                  </div>
+                )}
+              </div>
+              <div className={styles.main}>
+                <div className={styles.image}>
+                  <img src={item.images[0].image} alt="" />
+                </div>
+                <div className={styles.description}>
+                  <h3 className={styles.title}>{item.name}</h3>
+                  <div className={styles.location}>
+                    <span className={styles.icon}>
+                      <MapIcon />
+                    </span>
+                    {item.location}
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+
           <div className={styles.items}>
-            <div className={styles.item}>
-              <p className={styles.mainCategory}>{item.category}</p>
-              <p className={styles.subCategory}>{item.subCategory}</p>
-            </div>
+            {!isTablet && (
+              <div className={styles.item}>
+                <p className={styles.mainCategory}>{item.category}</p>
+                <p className={styles.subCategory}>{item.subCategory}</p>
+              </div>
+            )}
             <div className={styles.item}>
               <p>ID: {item.id}</p>
               <p>Views: {item.views}</p>
             </div>
           </div>
-          <h3 className={styles.title}>{item.name}</h3>
-          <div className={styles.items}>
-            <div className={styles.location}>
-              <span className={styles.icon}>
-                <MapIcon />
-              </span>
-              {item.location}
-            </div>
-            <div className={styles.date}>
-              <span className={styles.icon}>
-                <CalendarIcon />
-              </span>
-              {item.date}
-            </div>
-          </div>
+
+          {!isTablet && (
+            <>
+              <h3 className={styles.title}>{item.name}</h3>
+              <div className={styles.items}>
+                <div className={styles.location}>
+                  <span className={styles.icon}>
+                    <MapIcon />
+                  </span>
+                  {item.location}
+                </div>
+                <div className={styles.date}>
+                  <span className={styles.icon}>
+                    <CalendarIcon />
+                  </span>
+                  {item.date}
+                </div>
+              </div>
+            </>
+          )}
 
           <div className={styles.bottom}>
             <div className={styles.price}>

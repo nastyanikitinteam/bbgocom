@@ -35,7 +35,9 @@ const Swiper: FC<IProps> = ({ slides, isHeroSection, isCardProduct }) => {
 
   return (
     <div
-      className={cn(styles.container, { "pagination-center": isCardProduct })}
+      className={cn(styles.container, {
+        "pagination-center product-slider": isCardProduct,
+      })}
     >
       <SwiperComponent {...(params as SwiperProps)}>
         {slides.map((props) => {
