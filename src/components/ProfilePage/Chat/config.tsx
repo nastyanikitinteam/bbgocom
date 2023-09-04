@@ -37,6 +37,30 @@ export const chatLists = [
         time: "02:18 PM",
         date: "02.09.2023",
       },
+      {
+        userIsSender: true,
+        text: "I'm also curious about the pricing for these banner ads",
+        time: "11:28 AM",
+        date: "02.09.2023",
+      },
+      {
+        userIsSender: true,
+        text: "I have a moderate budget, and I'm looking to run the campaign for one month. 🤔",
+        time: "11:30 AM",
+        date: "02.09.2023",
+      },
+      {
+        userIsSender: false,
+        text: "Great! 👍",
+        time: "12:38 PM",
+        date: "02.09.2023",
+      },
+      {
+        userIsSender: false,
+        text: "We have budget-friendly packages for one-month campaigns. To give you a more precise quote, could you share your target audience and any specific demographics you'd like to reach? ",
+        time: "02:18 PM",
+        date: "02.09.2023",
+      },
     ],
   },
   {

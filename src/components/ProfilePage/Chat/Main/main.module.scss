@@ -74,6 +74,8 @@
   flex-direction: column;
   gap: 5px;
   padding: 20px 19px;
+  max-height: 487px;
+  overflow-y: auto;
 }
 
 .bottom {

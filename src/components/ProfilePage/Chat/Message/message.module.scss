@@ -1,14 +1,60 @@
-.container {
-  border-radius: 10px 10px 0px 10px;
-  background: #5bb75f;
-  margin-left: auto;
+.block {
+  border-radius: 10px 10px 10px 0px;
+  background: #fff;
   max-width: 470px;
   width: max-content;
   padding: 12px;
-  color: #fff;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: -0.3px;
+}
+
+.isUser {
+  .block {
+    border-radius: 10px 10px 0px 10px;
+
+    background: #5bb75f;
+    margin-left: auto;
+    color: #fff;
+  }
+  .description {
+    justify-content: flex-end;
+  }
+}
+
+.description {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0;
+  gap: 8px;
+  margin-top: 5px;
+  p:first-child {
+    position: relative;
+    padding-right: 12px;
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: calc(50% - 2px);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #808080;
+    }
+  }
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time {
+  color: #808080;
 }

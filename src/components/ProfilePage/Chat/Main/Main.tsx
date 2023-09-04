@@ -48,6 +48,7 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists }) => {
                   text={item.text}
                   time={item.time}
                   date={item.date}
+                  name={name}
                 />
               );
             })}
