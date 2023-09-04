@@ -23,17 +23,24 @@ const Menu = () => {
 
   const menuList = useMemo(
     () => [
-      {
-        id: 0,
-        name: "My orders",
-        icon: <OrdersIcon />,
-        link: "/orders",
-      },
+      // {
+      //   id: 0,
+      //   name: "My orders",
+      //   icon: <OrdersIcon />,
+      //   link: "/orders",
+      // },
       {
         id: 1,
         name: "My ads",
         icon: <AdsIcon />,
         link: "/my-ads",
+      },
+      {
+        id: 10,
+        name: "My messages",
+        icon: <MessagesIcon />,
+        link: "/my-messages",
+        isNew: 2,
       },
       {
         id: 2,
@@ -66,12 +73,12 @@ const Menu = () => {
         icon: <SettingIcon />,
         link: "/account-settings",
       },
-      {
-        id: 7,
-        name: "Help",
-        icon: <HelpIcon />,
-        link: "/help",
-      },
+      // {
+      //   id: 7,
+      //   name: "Help",
+      //   icon: <HelpIcon />,
+      //   link: "/help",
+      // },
     ],
     []
   );

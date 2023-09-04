@@ -1,10 +1,16 @@
 import type { NextPage } from "next";
 
 import Layout from "../components/Layout/Layout";
-import MainPage from "components/MainPage/MainPage";
+import ProfilePage from "components/ProfilePage/ProfilePage";
+import useMediaQuery from "src/utils/useMediaQuery";
+import Chat from "components/ProfilePage/Chat/Chat";
 
-const Messages: NextPage = () => {
-  return <Layout title=" My Messages">My Messages</Layout>;
+const MyWallet: NextPage = () => {
+  return (
+    <ProfilePage title="My Messages" isShortMenu withoutInfoBlock>
+      <Chat />
+    </ProfilePage>
+  );
 };
 
-export default Messages;
+export default MyWallet;
