@@ -30,6 +30,7 @@ const Chat = () => {
           setIsActiveChat={setIsActiveChat}
           setIsActiveChatID={setIsActiveChatID}
           chatLists={chatLists}
+          isActiveChatID={isActiveChatID}
         />
       </div>
     </div>

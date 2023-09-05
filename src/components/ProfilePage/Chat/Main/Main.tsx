@@ -2,6 +2,7 @@ import { FC } from "react";
 import cn from "classnames";
 import styles from "./main.module.scss";
 import Message from "../Message/Message";
+import Ad from "./Ad/Ad";
 
 import BlockIcon from "images/icons/block.svg";
 import DeleteIcon from "images/icons/delete.svg";
@@ -13,7 +14,7 @@ interface IProps {
 const Main: FC<IProps> = ({ isActiveChatID, chatLists }) => {
   return chatLists
     .filter(({ id }) => id === isActiveChatID)
-    .map(({ id, name, avatar, timeOnline, title, messages, isNew }) => {
+    .map(({ id, name, avatar, timeOnline, title, cover, messages, isNew }) => {
       return (
         <div className={styles.container} key={id}>
           <div className={styles.top}>
@@ -39,19 +40,23 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists }) => {
               </div>
             </div>
           </div>
+
           <div className={styles.main}>
-            {messages.map((item, id) => {
-              return (
-                <Message
-                  key={id}
-                  userIsSender={item.userIsSender}
-                  text={item.text}
-                  time={item.time}
-                  date={item.date}
-                  name={name}
-                />
-              );
-            })}
+            <Ad cover={cover} title={title} />
+            <div className={styles.list}>
+              {messages.map((item, id) => {
+                return (
+                  <Message
+                    key={id}
+                    userIsSender={item.userIsSender}
+                    text={item.text}
+                    time={item.time}
+                    date={item.date}
+                    name={name}
+                  />
+                );
+              })}
+            </div>
           </div>
           <div className={styles.bottom}></div>
         </div>

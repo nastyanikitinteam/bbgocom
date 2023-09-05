@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styles from "./block.module.scss";
+import cn from "classnames";
 
 interface IProps {
   id: number;
@@ -8,11 +9,24 @@ interface IProps {
   title: string;
   messages: any;
   isNew?: number;
+  isActiveChatID: number;
 }
 
-const Block: FC<IProps> = ({ id, name, avatar, title, messages, isNew }) => {
+const Block: FC<IProps> = ({
+  id,
+  name,
+  avatar,
+  title,
+  messages,
+  isNew,
+  isActiveChatID,
+}) => {
   return (
-    <div className={styles.container}>
+    <div
+      className={cn(styles.container, {
+        [styles.active]: id === isActiveChatID,
+      })}
+    >
       <div className={styles.avatar}>
         <img src={avatar} alt="" />
       </div>

@@ -1,4 +1,5 @@
 import avatar from "images/main/avatar.png";
+import cover1 from "images/main/card-product-real-estate.png";
 
 export const chatLists = [
   {
@@ -7,6 +8,7 @@ export const chatLists = [
     avatar: avatar.src,
     title:
       "Country house in the forest from a wooden frame, in a picturesque place",
+    cover: cover1.src,
     link: "/",
     statusOnline: false,
     timeOnline: "2:58 P.M",
@@ -68,6 +70,7 @@ export const chatLists = [
     name: "Vincent Gilmor",
     avatar: avatar.src,
     title: "Parking place for sale in a new underground parking",
+    cover: cover1.src,
     link: "/",
     statusOnline: false,
     timeOnline: "2:58 P.M",
@@ -104,6 +107,7 @@ export const chatLists = [
     name: "Karin Suchinda",
     avatar: avatar.src,
     title: "Luxurious apartment on the 5th floor",
+    cover: cover1.src,
     link: "/",
     statusOnline: false,
     timeOnline: "2:58 P.M",

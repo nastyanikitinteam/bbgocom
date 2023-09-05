@@ -7,12 +7,14 @@ interface IProps {
   setIsActiveChat: (bool: boolean) => void;
   setIsActiveChatID: (bool: any) => void;
   chatLists: any;
+  isActiveChatID: number;
 }
 
 const Info: FC<IProps> = ({
   setIsActiveChat,
   setIsActiveChatID,
   chatLists,
+  isActiveChatID,
 }) => {
   const handleActiveChat = (chatId) => {
     setIsActiveChat(true);
@@ -36,6 +38,7 @@ const Info: FC<IProps> = ({
                 title={title}
                 messages={messages}
                 isNew={isNew}
+                isActiveChatID={isActiveChatID}
               />
             </div>
           );
