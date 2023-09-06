@@ -3,6 +3,7 @@ import cn from "classnames";
 import styles from "./main.module.scss";
 import Message from "../Message/Message";
 import Ad from "./Ad/Ad";
+import Bottom from "./Bottom/Bottom";
 
 import BlockIcon from "images/icons/block.svg";
 import DeleteIcon from "images/icons/delete.svg";
@@ -58,7 +59,9 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists }) => {
               })}
             </div>
           </div>
-          <div className={styles.bottom}></div>
+          <div className={styles.bottom}>
+            <Bottom />
+          </div>
         </div>
       );
     });
