@@ -1,5 +1,7 @@
 import avatar from "images/main/avatar.png";
 import cover1 from "images/main/card-product-real-estate.png";
+import images1 from "images/profile/messages-1.png";
+import images2 from "images/profile/messages-2.png";
 
 export const chatLists = [
   {
@@ -20,6 +22,7 @@ export const chatLists = [
         text: "I'm also curious about the pricing for these banner ads",
         time: "11:28 AM",
         date: "02.09.2023",
+        images: [images1.src, images2.src],
       },
       {
         userIsSender: true,
@@ -32,6 +35,7 @@ export const chatLists = [
         text: "Great! 👍",
         time: "12:38 PM",
         date: "02.09.2023",
+        images: [images1.src, images2.src, images1.src],
       },
       {
         userIsSender: false,
@@ -87,6 +91,7 @@ export const chatLists = [
         text: "I have a moderate budget, and I'm looking to run the campaign for one month. 🤔",
         time: "11:30 AM",
         date: "02.09.2023",
+        images: [images1.src, images2.src],
       },
       {
         userIsSender: false,
@@ -133,9 +138,10 @@ export const chatLists = [
       },
       {
         userIsSender: false,
-        text: "We have budget-friendly packages for one-month campaigns. To give you a more precise quote, could you share your target audience and any specific demographics you'd like to reach? ",
+        // text: "We have budget-friendly packages for one-month campaigns. To give you a more precise quote, could you share your target audience and any specific demographics you'd like to reach? ",
         time: "02:18 PM",
         date: "12.06.2023",
+        images: [images1.src],
       },
     ],
   },

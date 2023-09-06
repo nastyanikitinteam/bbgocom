@@ -34,8 +34,9 @@
 .tags {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 8px;
-  width: max-content;
+  // width: max-content;
   margin-top: 15px;
   padding-left: 12px;
   padding-right: 12px;

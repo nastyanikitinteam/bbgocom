@@ -14,7 +14,7 @@ const Ad: FC<IProps> = ({ cover, title }) => {
       <div className={styles.avatar}>
         <img src={cover} alt="" />
       </div>
-      <h3 className={styles.adTitle}>{title}</h3>
+      <h3 className={styles.title}>{title}</h3>
       <div className={cn("default-button sm", styles.button)}>Go to Ad</div>
     </div>
   );
