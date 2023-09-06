@@ -1,5 +1,7 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Block from "./Block/Block";
+import List from "./List/List";
+import cn from "classnames";
 
 import styles from "./info.module.scss";
 
@@ -8,6 +10,8 @@ interface IProps {
   setIsActiveChatID: (bool: any) => void;
   chatLists: any;
   isActiveChatID: number;
+  setIsActiveCategory: (bool: string) => void;
+  isActiveCategory: string;
 }
 
 const Info: FC<IProps> = ({
@@ -15,6 +19,8 @@ const Info: FC<IProps> = ({
   setIsActiveChatID,
   chatLists,
   isActiveChatID,
+  setIsActiveCategory,
+  isActiveCategory,
 }) => {
   const handleActiveChat = (chatId) => {
     setIsActiveChat(true);
@@ -23,26 +29,38 @@ const Info: FC<IProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.list}>
-        {chatLists.map(({ id, name, avatar, title, messages, isNew }) => {
-          return (
-            <div
-              className={styles.item}
-              key={id}
-              onClick={() => handleActiveChat(id)}
-            >
-              <Block
-                id={id}
-                name={name}
-                avatar={avatar}
-                title={title}
-                messages={messages}
-                isNew={isNew}
-                isActiveChatID={isActiveChatID}
-              />
-            </div>
-          );
-        })}
+      <div className={styles.top}>
+        <div className={styles.categories}>
+          <div
+            className={cn(styles.category, {
+              [styles.active]: isActiveCategory === "Buy",
+            })}
+            onClick={() => setIsActiveCategory("Buy")}
+          >
+            Buy
+          </div>
+          <div
+            className={cn(styles.category, {
+              [styles.active]: isActiveCategory === "Sell",
+            })}
+            onClick={() => setIsActiveCategory("Sell")}
+          >
+            Sell
+          </div>
+        </div>
+      </div>
+      <div className={styles.main}>
+        <List
+          chatLists={chatLists}
+          handleActiveChat={handleActiveChat}
+          isActiveChatID={isActiveChatID}
+          isNewList
+        />
+        <List
+          chatLists={chatLists}
+          handleActiveChat={handleActiveChat}
+          isActiveChatID={isActiveChatID}
+        />
       </div>
     </div>
   );

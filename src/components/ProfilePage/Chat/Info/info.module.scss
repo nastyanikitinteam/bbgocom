@@ -1,10 +1,39 @@
 .container {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   overflow-y: auto;
 }
 
-.list {
+.categories {
+  border-radius: 30px;
+  border: 1px solid #d8d8d8;
+  padding: 3px;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  justify-content: space-between;
+}
+
+.category {
+  width: 100%;
+  border-radius: 30px;
+  background: transparent;
+  padding: 8px 12px;
+  text-align: center;
+  color: #808080;
+  transition: all 0.25s ease-in;
+  cursor: pointer;
+  &:hover {
+    color: #5bb75f;
+  }
+  &.active {
+    background: #5bb75f;
+    color: #fff;
+  }
 }
