@@ -1,0 +1,29 @@
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.info {
+  max-width: 325px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 15px;
+  background: #f5f5f7;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style-type: disc;
+  li {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    color: #808080;
+    cursor: pointer;
+  }
+}

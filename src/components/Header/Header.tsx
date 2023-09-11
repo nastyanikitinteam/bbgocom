@@ -100,7 +100,7 @@ const Header: FC<IProps> = ({ isSecondHeader }) => {
                   <a>Advertise with us</a>
                 </li>
                 <li className={styles.item}>
-                  <a>Rules</a>
+                  <Link href="/rules">Rules</Link>
                 </li>
               </ul>
             )}
