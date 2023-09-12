@@ -56,7 +56,7 @@ const LatestDeals = () => {
         </h2>
         <div
           className={styles.blocks}
-          data-aos-anchor-placement="center-bottom"
+          data-aos-anchor-placement="top-bottom"
           data-aos="fade-up"
           data-aos-delay="300"
         >
@@ -84,7 +84,13 @@ const LatestDeals = () => {
               .slice(0, isShowCategory)
               .map(({ id, title, images, price, oldPrice, location }) => {
                 return (
-                  <div className={styles.block} key={id}>
+                  <div
+                    className={styles.block}
+                    key={id}
+                    data-aos-anchor-placement="top-bottom"
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                  >
                     <CardProduct
                       title={title}
                       images={images}
@@ -100,14 +106,14 @@ const LatestDeals = () => {
         </div>
         {!isMobile && (
           <div
-            className={cn(styles.all, { [styles.open]: isViewAll })}
+            className={styles.all}
             onClick={() => setIsViewAll((prev) => !prev)}
             data-aos-anchor-placement="center-bottom"
-            data-aos="fade-up"
+            data-aos="fade"
             data-aos-delay="300"
           >
             {isViewAll ? "Hide latest deals" : "View all latest deals"}
-            <span className={styles.icon}>
+            <span className={cn(styles.icon, { [styles.open]: isViewAll })}>
               <ArrowSvg />
             </span>
           </div>

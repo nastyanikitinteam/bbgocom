@@ -9,6 +9,8 @@
 
 .product {
   max-width: 296px;
+  width: 100%;
+  flex-grow: 1;
   border-radius: 25px;
   box-shadow: 0 45px 40px 0 rgba(21, 40, 61, 0.1);
 }

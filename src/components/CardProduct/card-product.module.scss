@@ -53,6 +53,17 @@
   position: relative;
   border-radius: 25px 25px 0 0;
   -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
+  // max-height: 250px;
+  padding-top: 56.25%;
+  padding-top: 76.93%;
+}
+
+.photos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .wishlist {

@@ -45,7 +45,9 @@ const CardProduct: FC<IProps> = ({
       </div>
       <div className={styles.block}>
         <div className={styles.image}>
-          <Slider slides={images} isCardProduct />
+          <div className={styles.photos}>
+            <Slider slides={images} isCardProduct />
+          </div>
         </div>
         <div className={styles.info}>
           <h3 className={styles.title}>{title}</h3>

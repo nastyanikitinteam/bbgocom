@@ -15,9 +15,9 @@ const Recommend = () => {
   const [isViewAll, setIsViewAll] = useState(false);
   const [isShowCategory, setIsShowCategory] = useState(8);
 
-  useEffect(() => {
-    isViewAll ? setIsShowCategory(16) : setIsShowCategory(3);
-  }, [isViewAll]);
+  // useEffect(() => {
+  //   isViewAll ? setIsShowCategory(16) : setIsShowCategory(3);
+  // }, [isViewAll]);
 
   useEffect(() => {
     if (isTablet && !isMobileFirst) {
@@ -25,7 +25,7 @@ const Recommend = () => {
     } else {
       isViewAll ? setIsShowCategory(16) : setIsShowCategory(8);
     }
-  }, [isTablet, isMobileFirst]);
+  }, [isTablet, isMobileFirst, isViewAll]);
 
   return (
     <section className={styles.container}>
@@ -47,7 +47,7 @@ const Recommend = () => {
                 <div
                   className={styles.block}
                   key={id}
-                  data-aos-anchor-placement="center-bottom"
+                  data-aos-anchor-placement="top-bottom"
                   data-aos="fade-up"
                   data-aos-delay="300"
                 >
@@ -63,14 +63,14 @@ const Recommend = () => {
             })}
         </div>
         <div
-          className={cn(styles.all, { [styles.open]: isViewAll })}
+          className={styles.all}
           onClick={() => setIsViewAll((prev) => !prev)}
           data-aos-anchor-placement="center-bottom"
-          data-aos="fade-up"
+          data-aos="fade"
           data-aos-delay="300"
         >
           {isViewAll ? "Hide recommended" : "View all recommended"}
-          <span className={styles.icon}>
+          <span className={cn(styles.icon, { [styles.open]: isViewAll })}>
             <ArrowSvg />
           </span>
         </div>

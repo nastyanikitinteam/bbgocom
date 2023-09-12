@@ -41,7 +41,7 @@
       transform: rotate(-90deg);
     }
   }
-  &.open .icon {
+  .open {
     transform: rotate(-180deg);
   }
   &:hover {

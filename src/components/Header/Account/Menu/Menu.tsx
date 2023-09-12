@@ -69,12 +69,6 @@ const Menu: FC<IProps> = ({
           </span>
           My ads
         </Link>
-        <div className={styles.item}>
-          <span className={styles.icon}>
-            <AdsIcon />
-          </span>
-          My ads
-        </div>
         <Link href="/my-messages" className={styles.item}>
           <span className={styles.icon}>
             <MessagesIcon />

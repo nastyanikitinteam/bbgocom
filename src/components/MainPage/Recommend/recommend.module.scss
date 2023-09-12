@@ -28,7 +28,7 @@
       height: 24px;
     }
   }
-  &.open .icon {
+  .open {
     transform: rotate(-180deg);
   }
   &:hover {

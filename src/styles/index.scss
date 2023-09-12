@@ -111,6 +111,7 @@ input[type="number"] {
   @media (min-width: 769px) {
     &:hover {
       box-shadow: 10px 10px 20px 0px rgba(51, 140, 55, 0.45);
+      box-shadow: 0px 10px 20px 0px rgba(51, 140, 55, 0.45);
     }
   }
 
@@ -211,12 +212,12 @@ input[type="number"] {
   border-radius: 15px;
   display: inline-block;
   transition: all 0.3s ease-in;
-
   &:hover {
     background: #5bb75f;
     border-color: #5bb75f;
     color: #ffffff;
     box-shadow: 10px 10px 20px 0px rgba(51, 140, 55, 0.45);
+    box-shadow: 0 10px 20px 0px rgba(51, 140, 55, 0.45);
   }
   @media (max-width: 768px) {
     padding: 2px 8px;

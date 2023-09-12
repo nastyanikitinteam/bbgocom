@@ -98,14 +98,14 @@ const PopularCategory = () => {
         </div>
         {!isMobile && (
           <div
-            className={cn(styles.all, { [styles.open]: isViewAll })}
+            className={styles.all}
             onClick={() => setIsViewAll((prev) => !prev)}
             data-aos-anchor-placement="center-bottom"
-            data-aos="fade-up"
+            data-aos="fade"
             data-aos-delay="300"
           >
             {isViewAll ? "Hide Category" : "View all Category"}
-            <span className={styles.icon}>
+            <span className={cn(styles.icon, { [styles.open]: isViewAll })}>
               <ArrowSvg />
             </span>
           </div>
