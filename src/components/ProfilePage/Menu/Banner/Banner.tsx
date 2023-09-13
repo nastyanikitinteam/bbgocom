@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./banner.module.scss";
 import cn from "classnames";
 
@@ -11,9 +12,12 @@ const Banner = () => {
     >
       <div className={styles.info}>
         <h3 className={styles.title}>Your advertisement</h3>
+
         <p className={styles.description}>Add your banners</p>
       </div>
-      <div className={cn("default-button sm", styles.button)}>Add</div>
+      <Link href="/banner" className={cn("default-button sm", styles.button)}>
+        Add
+      </Link>
     </div>
   );
 };

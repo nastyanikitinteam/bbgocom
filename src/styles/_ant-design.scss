@@ -1,0 +1,29 @@
+.ant-upload-list.ant-upload-list-text {
+  display: none;
+}
+
+:where(.css-dev-only-do-not-override-fpg3f5).ant-upload-wrapper
+  .ant-upload-drag {
+  background: transparent;
+  border: none;
+}
+
+:where(
+    .css-dev-only-do-not-override-fpg3f5
+  ).ant-upload-wrapper.ant-upload-picture-card-wrapper
+  .ant-upload-list.ant-upload-list-picture-card
+  .ant-upload-list-item-container {
+  width: 100%;
+  max-width: 320px;
+  padding: 0;
+  border: none;
+}
+
+:where(
+    .css-dev-only-do-not-override-fpg3f5
+  ).ant-upload-wrapper.ant-upload-picture-card-wrapper
+  .ant-upload-list.ant-upload-list-picture-card
+  .ant-upload-list-item {
+  border: none;
+  padding: 0;
+}
