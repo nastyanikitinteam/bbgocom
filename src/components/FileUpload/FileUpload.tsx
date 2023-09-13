@@ -1,21 +1,35 @@
-import React, { useState, useRef } from "react";
-import styles from "./upload.module.scss";
+import React, { useState, useRef, FC } from "react";
+import styles from "./fileUpload.module.scss";
 import UploadIcon from "images/icons/upload-img.svg";
 import CloseIcon from "images/icons/close.svg";
 
-function FileUpload() {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [imageDimensions, setImageDimensions] = useState({
-    width: 0,
-    height: 0,
-  });
+interface IProps {
+  setSelectedFile: (bool: any) => void;
+  selectedFile: any;
+  setImageDimensions: (bool: any) => void;
+  imageDimensions: any;
+}
+
+const FileUpload: FC<IProps> = ({
+  setSelectedFile,
+  selectedFile,
+  setImageDimensions,
+  imageDimensions,
+}) => {
   const fileInputRef = useRef(null);
+  const maxSizeInBytes = 1024 * 1024;
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
 
-    // Отримайте ширину та висоту завантаженого зображення
+    if (file.size > maxSizeInBytes) {
+      alert("The file is too big. Drag a file smaller than 1 MB.");
+      setSelectedFile(null);
+      setImageDimensions({ width: 0, height: 0 });
+      return;
+    }
+
     getDimensions(file);
   };
 
@@ -24,7 +38,13 @@ function FileUpload() {
     const file = e.dataTransfer.files[0];
     setSelectedFile(file);
 
-    // Отримайте ширину та висоту завантаженого зображення
+    if (file.size > maxSizeInBytes) {
+      alert("The file is too big. Drag a file smaller than 1 MB.");
+      setSelectedFile(null);
+      setImageDimensions({ width: 0, height: 0 });
+      return;
+    }
+
     getDimensions(file);
   };
 
@@ -38,13 +58,8 @@ function FileUpload() {
     };
   };
 
-  const handleSubmit = () => {
-    // Тут ви можете виконати обробку завантаженого файлу, наприклад, відправити його на сервер
-    console.log(selectedFile);
-  };
-
   const handleRemoveFile = () => {
-    setSelectedFile(null); // Видалити обраний файл
+    setSelectedFile(null);
     setImageDimensions({ width: 0, height: 0 });
   };
 
@@ -57,14 +72,12 @@ function FileUpload() {
         style={{ display: "none" }}
         ref={fileInputRef}
       />
-      {/* <button onClick={() => fileInputRef.current.click()}>Вибрати файл</button> */}
       {selectedFile ? (
         <div className={styles.uploaded}>
-          {/* <p>Вибраний файл: {selectedFile.name}</p> */}
           <div className={styles.preview}>
             <img
               src={URL.createObjectURL(selectedFile)}
-              alt="Завантажений файл"
+              alt={selectedFile.name}
             />
           </div>
 
@@ -77,7 +90,6 @@ function FileUpload() {
           <button onClick={handleRemoveFile} className={styles.delete}>
             <CloseIcon />
           </button>
-          {/* <button onClick={handleSubmit}>Завантажити</button> */}
         </div>
       ) : (
         <>
@@ -101,6 +113,6 @@ function FileUpload() {
       )}
     </div>
   );
-}
+};
 
 export default FileUpload;

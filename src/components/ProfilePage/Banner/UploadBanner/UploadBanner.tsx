@@ -4,12 +4,17 @@ import Select from "components/Select/Select";
 import { validateForm } from "../../../../utils/validateForm";
 import * as yup from "yup";
 import FormInput from "components/FormElements/FormInput/FormInput";
-import Upload from "../Upload/Upload";
+import FileUpload from "components/FileUpload/FileUpload";
 import cn from "classnames";
 import styles from "./uploadBanner.module.scss";
 
 const UploadBanner = () => {
   const [isActiveLang, setIsActiveLang] = useState("EN");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [imageDimensions, setImageDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
 
   const validationSchema = yup.object().shape({});
 
@@ -17,7 +22,13 @@ const UploadBanner = () => {
 
   const onSubmit = useCallback((data, form) => {
     console.log(data);
+    console.log(selectedFile);
   }, []);
+
+  const handleRemoveFile = () => {
+    setSelectedFile(null);
+    setImageDimensions({ width: 0, height: 0 });
+  };
 
   const langList = useMemo(
     () => [
@@ -45,9 +56,31 @@ const UploadBanner = () => {
         <form className={styles.container} onSubmit={handleSubmit}>
           <div className={styles.top}>
             <h3 className={styles.title}>Upload banner</h3>
+            {selectedFile && (
+              <div className={styles.buttons}>
+                <div
+                  className={cn(styles.button, "default-button border sm")}
+                  onClick={handleRemoveFile}
+                >
+                  Cancel
+                </div>
+                <button
+                  type="submit"
+                  className={cn("default-button sm", styles.button)}
+                  aria-label={`Upload`}
+                >
+                  Upload
+                </button>
+              </div>
+            )}
           </div>
           <div className={styles.main}>
-            <Upload />
+            <FileUpload
+              selectedFile={selectedFile}
+              setSelectedFile={setSelectedFile}
+              setImageDimensions={setImageDimensions}
+              imageDimensions={imageDimensions}
+            />
           </div>
           <div className={styles.bottom}>
             <div className={cn(styles.item, styles.language)}>
