@@ -1,4 +1,5 @@
 import { useMemo, useState, useCallback } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import { Form, Field } from "react-final-form";
 import { validateForm } from "../../../../utils/validateForm";
 import * as yup from "yup";
@@ -14,6 +15,8 @@ const UploadBanner = () => {
     width: 0,
     height: 0,
   });
+  const isSmallDisplay = useMediaQuery(1200);
+  const isMobile = useMediaQuery(768);
 
   const validationSchema = yup.object().shape({});
 
@@ -53,37 +56,30 @@ const UploadBanner = () => {
       validate={validate}
       render={({ handleSubmit }) => (
         <form className={styles.container} onSubmit={handleSubmit}>
-          <div className={styles.top}>
-            <h3 className={styles.title}>Upload banner</h3>
-            {selectedFile && (
-              <div className={styles.buttons}>
-                <div
-                  className={cn(styles.button, "default-button border sm")}
-                  onClick={handleRemoveFile}
-                >
-                  Cancel
+          {!isMobile && (
+            <div className={styles.top}>
+              <h3 className={styles.title}>Upload banner</h3>
+              {selectedFile && !isSmallDisplay && (
+                <div className={styles.buttons}>
+                  <div
+                    className={cn(styles.button, "default-button border sm")}
+                    onClick={handleRemoveFile}
+                  >
+                    Cancel
+                  </div>
+                  <button
+                    type="submit"
+                    className={cn("default-button sm", styles.button)}
+                    aria-label={`Upload`}
+                  >
+                    Upload
+                  </button>
                 </div>
-                <button
-                  type="submit"
-                  className={cn("default-button sm", styles.button)}
-                  aria-label={`Upload`}
-                >
-                  Upload
-                </button>
-              </div>
-            )}
-          </div>
-          <div className={styles.main}>
-            <FileUpload
-              selectedFile={selectedFile}
-              setSelectedFile={setSelectedFile}
-              setImageDimensions={setImageDimensions}
-              imageDimensions={imageDimensions}
-            />
-          </div>
-          <div className={styles.bottom}>
+              )}
+            </div>
+          )}
+          {isMobile && (
             <div className={cn(styles.item, styles.language)}>
-              <h3 className={styles.subtitle}>Language banner</h3>
               <div className={styles.languages}>
                 {langList.map(({ value }) => {
                   return (
@@ -100,6 +96,38 @@ const UploadBanner = () => {
                 })}
               </div>
             </div>
+          )}
+
+          <div className={styles.main}>
+            <FileUpload
+              selectedFile={selectedFile}
+              setSelectedFile={setSelectedFile}
+              setImageDimensions={setImageDimensions}
+              imageDimensions={imageDimensions}
+            />
+          </div>
+          <div className={styles.bottom}>
+            {!isMobile && (
+              <div className={cn(styles.item, styles.language)}>
+                <h3 className={styles.subtitle}>Language banner</h3>
+                <div className={styles.languages}>
+                  {langList.map(({ value }) => {
+                    return (
+                      <div
+                        className={cn(styles.lang, {
+                          [styles.active]: value === isActiveLang,
+                        })}
+                        key={value}
+                        onClick={() => setIsActiveLang(value)}
+                      >
+                        {value}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             <div className={styles.link}>
               <h3 className={styles.subtitle}>Add link</h3>
               <Field
@@ -111,16 +139,34 @@ const UploadBanner = () => {
               />
             </div>
           </div>
-
-          {/* <div className={styles.button}>
+          {selectedFile && isSmallDisplay && !isMobile && (
+            <div className={styles.buttons}>
+              <div
+                className={cn(styles.button, "default-button border sm")}
+                onClick={handleRemoveFile}
+              >
+                Cancel
+              </div>
               <button
                 type="submit"
-                className={cn("default-button", styles.button)}
-                aria-label={`Log In`}
+                className={cn("default-button sm", styles.button)}
+                aria-label={`Upload`}
               >
                 Upload
               </button>
-            </div> */}
+            </div>
+          )}
+          {isMobile && (
+            <button
+              type="submit"
+              className={cn("default-button sm", styles.button, {
+                disabled: !selectedFile,
+              })}
+              aria-label={`Upload`}
+            >
+              Save
+            </button>
+          )}
         </form>
       )}
     ></Form>

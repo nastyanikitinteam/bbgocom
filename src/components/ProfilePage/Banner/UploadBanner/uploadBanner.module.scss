@@ -1,7 +1,7 @@
 .container {
   border-radius: 15px;
   border: 1px solid #d8d8d8;
-  padding: 30px;
+  padding: 29px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -14,6 +14,12 @@
 
 .title {
   padding: 9px 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
 }
 
 .buttons {
@@ -65,4 +71,41 @@
 
 .subtitle {
   margin-bottom: 10px;
+}
+
+@media (max-width: 1300px) {
+  .bottom {
+    flex-direction: column;
+  }
+  .link {
+    width: 100%;
+  }
+  .container {
+    padding: 19px;
+  }
+}
+@media (max-width: 1200px) {
+  .buttons {
+    width: 100%;
+  }
+  .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+    border: none;
+    flex-grow: 1;
+  }
+  .language {
+    max-width: none;
+  }
+  .lang {
+    width: 33.333%;
+  }
+  .button {
+    margin-top: auto;
+  }
 }

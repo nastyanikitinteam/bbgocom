@@ -1,6 +1,11 @@
+import { FC } from "react";
 import styles from "./rules.module.scss";
 
-const Rules = () => {
+interface IProps {
+  setIsOpenRules?: (bool: boolean) => void;
+}
+
+const Rules: FC<IProps> = ({ setIsOpenRules }) => {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>

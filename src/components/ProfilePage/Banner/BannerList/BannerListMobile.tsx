@@ -1,12 +1,22 @@
-import { useMemo, useState, useCallback, useEffect } from "react";
+import { useMemo, useState, useCallback, useEffect, FC } from "react";
 import styles from "./banner-list-mobile.module.scss";
 import { Form, Field } from "react-final-form";
+import useMediaQuery from "src/utils/useMediaQuery";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import cn from "classnames";
 
 import DotsIcon from "images/icons/dots.svg";
+import ArrowIcon from "images/icons/drop.svg";
 
-const BannerListMobile = () => {
+interface IProps {
+  isOpenRules: boolean;
+  setIsOpenRules: (bool: boolean) => void;
+}
+
+const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
+  const isTablet = useMediaQuery(998);
+  const isMobile = useMediaQuery(768);
+
   const bannerList = useMemo(
     () => [
       {
@@ -113,92 +123,108 @@ const BannerListMobile = () => {
   }, [isActiveStatus]);
 
   return (
-    <div className={styles.container}>
-      <Form
-        onSubmit={onSubmit}
-        render={({ handleSubmit }) => (
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <h3 className={styles.title}>Your banners</h3>
-            <div className={styles.categories}>
-              {categoriesList.map(({ id, name }) => {
-                return (
-                  <div
-                    className={cn(styles.category, {
-                      [styles.active]: name === isActiveStatus,
-                    })}
-                    key={id}
-                    onClick={() => handleCategories(name)}
-                  >
-                    {name}
-                  </div>
-                );
-              })}
-            </div>
-            <div className={styles.list}>
-              {checkedItems.length > 0 && !selectAllChecked ? (
-                <div className={styles.checkboxMain}>
-                  <Field
-                    name={`bannerSelectedAll`}
-                    type="checkbox"
-                    component={Checkbox}
-                    onChange={handleSelectAllChange}
-                    checked={checkedItems.length > 0}
-                    extClassName="blackWhenChecked"
-                  >
-                    Choosed: {checkedItems.length}
-                  </Field>
-                </div>
-              ) : (
-                <div className={styles.checkboxMain}>
-                  <Field
-                    name={`bannerSelectedAll`}
-                    type="checkbox"
-                    component={Checkbox}
-                    onChange={handleSelectAllChange}
-                    checked={selectAllChecked}
-                    extClassName="blackWhenChecked"
-                  >
-                    {selectAllChecked
-                      ? `Choosed: ${checkedItems.length}`
-                      : "Choose all"}
-                  </Field>
-                </div>
-              )}
-              {isActiveCategoryList.map(
-                ({ id, name, weight, size, dataUploaded, status }) => {
+    <>
+      <div className={styles.container}>
+        <Form
+          onSubmit={onSubmit}
+          render={({ handleSubmit }) => (
+            <form className={styles.form} onSubmit={handleSubmit}>
+              {!isMobile && <h3 className={styles.title}>Your banners</h3>}
+
+              <div className={styles.categories}>
+                {categoriesList.map(({ id, name }) => {
                   return (
-                    <div className={styles.item} key={id}>
-                      <div className={styles.checkbox}>
-                        <Field
-                          name={`banner${id}`}
-                          type="checkbox"
-                          component={Checkbox}
-                          extClassName="noText"
-                          onClick={() => handleCheckboxChange(id)}
-                          checked={checkedItems.includes(id)}
-                        ></Field>
-                      </div>
-                      <div className={styles.info}>
-                        <div className={styles.infoItem}>
-                          <p className={styles.black}>{name}</p> <p>{weight}</p>
-                        </div>
-                        <div className={styles.infoItem}>
-                          <p>{size},</p>
-                          <p>{dataUploaded}</p>
-                        </div>
-                      </div>
-                      <div className={styles.action}>
-                        <DotsIcon />
-                      </div>
+                    <div
+                      className={cn(styles.category, {
+                        [styles.active]: name === isActiveStatus,
+                      })}
+                      key={id}
+                      onClick={() => handleCategories(name)}
+                    >
+                      {name}
                     </div>
                   );
-                }
-              )}
-            </div>
-          </form>
-        )}
-      ></Form>
-    </div>
+                })}
+              </div>
+              <div className={styles.list}>
+                {checkedItems.length > 0 && !selectAllChecked ? (
+                  <div className={styles.checkboxMain}>
+                    <Field
+                      name={`bannerSelectedAll`}
+                      type="checkbox"
+                      component={Checkbox}
+                      onChange={handleSelectAllChange}
+                      checked={checkedItems.length > 0}
+                      extClassName="blackWhenChecked"
+                    >
+                      Choosed: {checkedItems.length}
+                    </Field>
+                  </div>
+                ) : (
+                  <div className={styles.checkboxMain}>
+                    <Field
+                      name={`bannerSelectedAll`}
+                      type="checkbox"
+                      component={Checkbox}
+                      onChange={handleSelectAllChange}
+                      checked={selectAllChecked}
+                      extClassName="blackWhenChecked"
+                    >
+                      {selectAllChecked
+                        ? `Choosed: ${checkedItems.length}`
+                        : "Choose all"}
+                    </Field>
+                  </div>
+                )}
+                {isActiveCategoryList.map(
+                  ({ id, name, weight, size, dataUploaded, status }) => {
+                    return (
+                      <div className={styles.item} key={id}>
+                        <div className={styles.checkbox}>
+                          <Field
+                            name={`banner${id}`}
+                            type="checkbox"
+                            component={Checkbox}
+                            extClassName="noText"
+                            onClick={() => handleCheckboxChange(id)}
+                            checked={checkedItems.includes(id)}
+                            onChange={() => handleCheckboxChange(id)}
+                          ></Field>
+                        </div>
+                        <div className={styles.info}>
+                          <div className={styles.infoItem}>
+                            <p className={styles.name}>{name}</p>{" "}
+                            <p>{weight}</p>
+                          </div>
+                          <div className={styles.infoItem}>
+                            <p>{size},</p>
+                            <p>{dataUploaded}</p>
+                          </div>
+                        </div>
+                        <div className={styles.action}>
+                          <DotsIcon />
+                        </div>
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            </form>
+          )}
+        ></Form>
+      </div>
+      {isTablet && (
+        <div
+          className={styles.rullesButton}
+          onClick={() => setIsOpenRules(true)}
+        >
+          Rules and requirements for banner advertising
+          <span className={styles.icon}>
+            <ArrowIcon />
+          </span>
+        </div>
+      )}
+    </>
   );
 };
 

@@ -90,23 +90,25 @@ const BannerList = () => {
           <form className={styles.form} onSubmit={handleSubmit}>
             <table className={styles.table}>
               <thead className={styles.thead}>
-                <th className={styles.subtitle}>
-                  <span className={styles.checkbox}>
-                    <Field
-                      name={`allBannersSelect`}
-                      type="checkbox"
-                      component={Checkbox}
-                      onChange={handleSelectAllChange}
-                      checked={checkedItems.length === bannerList.length}
-                      extClassName="noText"
-                    ></Field>
-                  </span>
-                </th>
-                <th className={styles.subtitle}>File name</th>
-                <th className={styles.subtitle}>Size</th>
-                <th className={styles.subtitle}>Data uploaded</th>
-                <th className={styles.subtitle}>Status</th>
-                <th className={styles.subtitle}>Action</th>
+                <tr>
+                  <th className={styles.subtitle}>
+                    <span className={styles.checkbox}>
+                      <Field
+                        name={`allBannersSelect`}
+                        type="checkbox"
+                        component={Checkbox}
+                        onChange={handleSelectAllChange}
+                        checked={checkedItems.length === bannerList.length}
+                        extClassName="noText"
+                      ></Field>
+                    </span>
+                  </th>
+                  <th className={styles.subtitle}>File name</th>
+                  <th className={styles.subtitle}>Size</th>
+                  <th className={styles.subtitle}>Data uploaded</th>
+                  <th className={styles.subtitle}>Status</th>
+                  <th className={styles.subtitle}>Action</th>
+                </tr>
               </thead>
               <tbody>
                 {bannerList.map(
@@ -122,6 +124,7 @@ const BannerList = () => {
                               extClassName="noText"
                               onClick={() => handleCheckboxChange(id)}
                               checked={checkedItems.includes(id)}
+                              onChange={() => handleCheckboxChange(id)}
                             ></Field>
                           </span>
                         </td>

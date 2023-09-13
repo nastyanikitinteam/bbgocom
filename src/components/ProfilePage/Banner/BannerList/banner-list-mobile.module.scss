@@ -34,9 +34,13 @@
     font-size: 12px;
     line-height: 16px;
   }
+  p:not(.name) {
+    white-space: nowrap;
+  }
 }
-.black {
+.name {
   color: #000;
+  white-space: normal;
 }
 
 .action {
@@ -82,4 +86,26 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
+}
+
+.rullesButton {
+  padding: 15px 20px;
+  border-radius: 15px;
+  background: #ebfaec;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  .icon {
+    width: 24px;
+    height: 24px;
+    transform: rotate(-90deg);
+  }
+  path {
+    stroke: #000;
+  }
 }
