@@ -1,6 +1,5 @@
 import { useMemo, useState, useCallback } from "react";
 import { Form, Field } from "react-final-form";
-import Select from "components/Select/Select";
 import { validateForm } from "../../../../utils/validateForm";
 import * as yup from "yup";
 import FormInput from "components/FormElements/FormInput/FormInput";

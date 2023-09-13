@@ -1,0 +1,76 @@
+.title {
+  padding: 9px 0;
+}
+
+.table {
+  width: 100%;
+  text-align: left;
+}
+
+.thead {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  padding: 4px 5px 10px 0;
+  vertical-align: middle;
+  &:first-child {
+    padding-left: 10px;
+  }
+}
+.row {
+  border-bottom: 1px solid #d8d8d8;
+  &:last-child {
+    border: none;
+  }
+}
+
+.item {
+  padding: 7px 5px 7px 0;
+  vertical-align: middle;
+  &:first-child {
+    padding-left: 10px;
+  }
+}
+
+.weight {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #808080;
+  margin-top: 2px;
+}
+
+.status {
+  border-radius: 17px;
+  border: 1px solid #5bb75f;
+  padding: 2px 4px;
+  width: 80px;
+  display: inline-block;
+  text-align: center;
+  color: #5bb75f;
+  &.waiting {
+    color: #ff9811;
+    border-color: #ff9811;
+  }
+  &.rejected {
+    color: #ff5a27;
+    border-color: #ff5a27;
+  }
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox {
+  padding-right: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
