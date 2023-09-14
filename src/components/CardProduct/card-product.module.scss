@@ -21,7 +21,13 @@
     }
     .image {
       max-width: 325px;
+      width: 100%;
       border-radius: 25px 0 0 25px;
+      padding-top: 0;
+      height: 100%;
+    }
+    .photos {
+      position: relative;
     }
     .info {
       border-radius: 0 25px 25px 0;

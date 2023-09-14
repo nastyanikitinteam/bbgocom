@@ -25,7 +25,9 @@ const Card: FC<IProps> = ({ item, children, type }) => {
       <div className={styles.block}>
         {!isTablet && (
           <div className={styles.image}>
-            <Slider slides={item.images} isCardProduct />
+            <div className={styles.photos}>
+              <Slider slides={item.images} isCardProduct />
+            </div>
           </div>
         )}
         <div className={styles.info}>
