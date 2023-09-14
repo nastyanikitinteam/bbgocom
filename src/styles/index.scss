@@ -165,12 +165,16 @@ input[type="number"] {
     @media (max-width: 768px) {
       padding: 9px 29px;
     }
+    &.onlyIcon {
+      padding: 9px;
+    }
   }
   &.onlyIcon {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 9px;
+    padding: 10px;
     path {
       stroke: #fff;
     }

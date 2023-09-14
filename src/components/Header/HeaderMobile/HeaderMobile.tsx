@@ -11,7 +11,7 @@ import MessageIcon from "images/icons/Message-mobile.svg";
 import ProfileIcon from "images/icons/Profile-mobile.svg";
 import WishlistIcon from "images/icons/Wishlist-mobile.svg";
 
-const Header = () => {
+const HeaderMobile = () => {
   const [isOpenProfileMenu, setIsOpenProfileMenu] = useState(false);
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
 
@@ -70,4 +70,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderMobile;
