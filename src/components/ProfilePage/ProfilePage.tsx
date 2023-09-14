@@ -12,6 +12,8 @@ import cn from "classnames";
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
 import Menu from "components/ProfilePage/Menu/Menu";
 
+import bannerImg from "images/main-page/banner.png";
+
 import styles from "./profile-page.module.scss";
 
 interface IProps {
@@ -97,7 +99,7 @@ const ProfilePage: FC<IProps> = ({
                   <Banner />
                 </div>
               )}
-              {!isMobile && <AdvertisingBanner />}
+              {!isMobile && <AdvertisingBanner bannerImg={bannerImg.src} />}
             </div>
           </div>
           {!isMobile && <Footer />}

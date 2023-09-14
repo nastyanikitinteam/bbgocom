@@ -13,6 +13,8 @@ import SearchBar from "components/SearchBar/SearchBar";
 
 import styles from "./main-page.module.scss";
 
+import bannerImg from "images/main-page/banner.png";
+
 const MainPage = () => {
   const SmallLaptop = useMediaQuery(768);
   const isTablet = useMediaQuery(998);
@@ -22,7 +24,7 @@ const MainPage = () => {
       {!isTablet && <SearchBar />}
       <PopularCategory />
       <Recommend />
-      <AdvertisingBanner />
+      <AdvertisingBanner bannerImg={bannerImg.src} />
       <LatestDeals />
       <PopularSearches />
       <WantSell />

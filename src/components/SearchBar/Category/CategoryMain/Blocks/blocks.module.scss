@@ -5,6 +5,9 @@
   grid-auto-rows: minmax(50%, auto);
   gap: 8px;
   height: 100%;
+  &.categoryPage {
+    grid-auto-rows: auto;
+  }
 }
 
 .top {
@@ -33,6 +36,9 @@
   }
   &:nth-child(5) {
     background: #f5f5f7;
+  }
+  &.categoryPage {
+    min-height: 280px;
   }
 }
 

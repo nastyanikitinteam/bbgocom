@@ -18,6 +18,8 @@
   line-height: 20px;
   letter-spacing: -0.3px;
   color: #808080;
+  transition: all 0.25s ease-in;
+  cursor: pointer;
   .icon {
     display: flex;
     justify-content: center;
@@ -31,6 +33,12 @@
     width: 24px;
     height: 24px;
     transform: rotate(-90deg);
+  }
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
   }
 }
 

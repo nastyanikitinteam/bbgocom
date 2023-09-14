@@ -1,13 +1,13 @@
-import { useEffect } from "react";
+import { FC } from "react";
 
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./advertising-banner.module.scss";
-import bannerImg from "images/main-page/banner.png";
-import bannerMobileImg from "images/main-page/banner-mobile.png";
 
-const AdvertisingBanner = () => {
-  const isMobile = useMediaQuery(768);
+interface IProps {
+  bannerImg: string;
+}
 
+const AdvertisingBanner: FC<IProps> = ({ bannerImg }) => {
   return (
     <section className={styles.container}>
       <div
@@ -17,7 +17,7 @@ const AdvertisingBanner = () => {
         data-aos-delay="300"
       >
         <div className={styles.banner}>
-          <img src={bannerImg.src} alt="" />
+          <img src={bannerImg} alt="" />
         </div>
       </div>
     </section>
