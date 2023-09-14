@@ -1,0 +1,41 @@
+.tags {
+  max-width: 1121px;
+  width: 100%;
+  margin: 0px auto 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  color: #808080;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+  }
+  path {
+    stroke: #808080;
+  }
+  svg {
+    width: 24px;
+    height: 24px;
+    transform: rotate(-90deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .tags {
+    justify-content: flex-start;
+  }
+}

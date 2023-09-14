@@ -216,6 +216,7 @@ input[type="number"] {
   border-radius: 15px;
   display: inline-block;
   transition: all 0.3s ease-in;
+  cursor: pointer;
   &:hover {
     background: #5bb75f;
     border-color: #5bb75f;

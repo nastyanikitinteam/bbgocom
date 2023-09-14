@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./category.module.scss";
 
@@ -13,20 +14,19 @@ const Category: FC<IProps> = ({ title, image, link, items }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.block}>
+      <Link href={link} className={styles.block}>
         <div className={styles.image}>
           <img src={image} alt="" />
         </div>
         <h3 className={styles.title}>{title}</h3>
-      </div>
-
+      </Link>
       {!isMobile && (
         <div className={styles.items}>
           {items.map(({ id, title, link }) => {
             return (
-              <div key={id} className={styles.item}>
+              <Link href={link} key={id} className={styles.item}>
                 {title}
-              </div>
+              </Link>
             );
           })}
         </div>

@@ -16,22 +16,22 @@ export const categoriesList = [
     id: 0,
     title: "Real Estate",
     image: categoryRealEstateImg.src,
-    link: "",
+    link: "/category",
     items: [
       {
         id: 0,
         title: "Flats and apartments",
-        link: "",
+        link: "/category",
       },
       {
         id: 1,
         title: "Houses, villas",
-        link: "",
+        link: "/category",
       },
       {
         id: 2,
         title: "Rooms",
-        link: "",
+        link: "/category",
       },
     ],
     subcategories: [
