@@ -8,7 +8,7 @@ import cn from "classnames";
 
 import HorizonalIcon from "images/icons/typeOfShow-2.svg";
 import BlocksIcon from "images/icons/typeOfShow-1.svg";
-
+import ArrowSvg from "images/icons/drop.svg";
 interface IProps {
   title: string;
 }
@@ -16,6 +16,8 @@ interface IProps {
 const Main: FC<IProps> = ({ title }) => {
   const [isHorizontalShow, setIsHorizontalShow] = useState(false);
   const [dataPrice, setDataPrice] = useState({});
+  const [isViewAll, setIsViewAll] = useState(false);
+  const [isShowCategory, setIsShowCategory] = useState(5);
 
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
@@ -85,6 +87,19 @@ const Main: FC<IProps> = ({ title }) => {
             </div>
           );
         })}
+      </div>
+      <div
+        className={styles.all}
+        onClick={() => setIsViewAll((prev) => !prev)}
+        data-aos-anchor-placement="center-bottom"
+        data-aos="fade"
+        data-aos-delay="300"
+      >
+        {/* {isViewAll ? "Hide latest deals" : "View all latest deals"} */}
+        View more
+        <span className={cn(styles.icon, { [styles.open]: isViewAll })}>
+          <ArrowSvg />
+        </span>
       </div>
     </div>
   );

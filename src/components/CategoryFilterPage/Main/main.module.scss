@@ -51,6 +51,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   margin-right: -20px;
+  margin-top: 40px;
   &.isHorizontal {
     margin-right: 0;
     .block {
@@ -66,4 +67,34 @@
   margin-right: 20px;
   margin-bottom: 20px;
   max-width: 325px;
+}
+
+.all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  color: #808080;
+  margin-top: 20px;
+  white-space: nowrap;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25s ease-in;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  .open {
+    transform: rotate(-180deg);
+  }
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
+  }
 }
