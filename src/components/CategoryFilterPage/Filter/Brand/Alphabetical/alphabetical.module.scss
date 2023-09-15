@@ -1,0 +1,30 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.letter {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  color: #808080;
+  min-width: 13px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.active {
+  color: #38953c;
+}
+
+.hidden {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.container {
+  display: grid;
+  gap: 15px;
+}

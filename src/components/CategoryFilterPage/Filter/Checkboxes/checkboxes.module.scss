@@ -11,3 +11,22 @@
 .column {
   columns: 2;
 }
+
+.list {
+  max-height: 272px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #d8d8d8;
+    border-radius: 20px;
+  }
+}
+
+// .noresult {
+//   color: #38953c;
+// }

@@ -1,0 +1,83 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px 7px 15px;
+  border-radius: 20px;
+  border: 1px solid #d8d8d8;
+  background: #fff;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  @media (min-width: 769px) {
+    &:hover {
+      box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.1);
+      border-color: transparent;
+    }
+  }
+  &.fill {
+    border-color: #000000;
+  }
+  input {
+    border: none;
+    background: none;
+    padding: 0;
+    width: 100%;
+    &::placeholder {
+      color: #808080;
+    }
+  }
+  &.active {
+    border-color: #38953c;
+    .arrow {
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  min-width: 24px;
+  svg {
+    width: 100%;
+  }
+  path {
+    stroke: #808080;
+  }
+  &.fill {
+    path,
+    circle {
+      stroke: #000000;
+    }
+  }
+}
+
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.1s ease-in;
+  pointer-events: none;
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  &:hover {
+    path {
+      stroke: #38953c;
+    }
+  }
+  path {
+    stroke: #000;
+  }
+  @media (max-width: 768px) {
+    left: auto;
+    right: 60px;
+  }
+}
