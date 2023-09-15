@@ -1,5 +1,5 @@
 import React, { useState, useRef, FC } from "react";
-import styles from "./fileUpload.module.scss";
+import styles from "./file-upload.module.scss";
 import UploadIcon from "images/icons/upload-img.svg";
 import CloseIcon from "images/icons/close.svg";
 
