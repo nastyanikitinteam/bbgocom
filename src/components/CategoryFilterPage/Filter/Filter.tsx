@@ -4,7 +4,15 @@ import PriceRange from "./PriceRange/PriceRange";
 import Brand from "./Brand/Brand";
 import Range from "./Range/Range";
 import styles from "./filter.module.scss";
-import { tabsList, propertyType, condition, numberOfRooms } from "./config";
+import ColorPicker from "./ColorPicker/ColorPicker";
+import {
+  tabsList,
+  propertyType,
+  condition,
+  numberOfRooms,
+  colors,
+  carBrands,
+} from "./config";
 import cn from "classnames";
 
 const Filter = () => {
@@ -12,7 +20,8 @@ const Filter = () => {
     <div className={styles.container}>
       <div className={styles.main}>
         <Tabs tabsList={tabsList} />
-        <Brand />
+        <ColorPicker title="Colors" colors={colors} />
+        <Brand title="Car brand" list={carBrands} />
         <Checkboxes title="Property type" list={propertyType} />
         <PriceRange title="Price Range" />
         <Checkboxes title="Condition" list={condition} />

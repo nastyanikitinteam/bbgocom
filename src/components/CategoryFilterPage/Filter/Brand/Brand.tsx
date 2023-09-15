@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 import styles from "./brand.module.scss";
 import cn from "classnames";
-import { carBrands } from "../config";
 
 import Checkboxes from "../Checkboxes/Checkboxes";
 import Alphabetical from "./Alphabetical/Alphabetical";
@@ -9,12 +8,17 @@ import Search from "./Search/Search";
 
 import ArrowIcon from "images/icons/drop.svg";
 
-const Brand = () => {
+interface IProps {
+  title: string;
+  list: any;
+}
+
+const Brand: FC<IProps> = ({ title, list }) => {
   const [isShow, setIsShow] = useState(true);
   const [selectedLetter, setSelectedLetter] = useState("");
   const [isSearchQuery, setIsSearchQuery] = useState("");
 
-  const searchResults = searchArray(carBrands, isSearchQuery);
+  const searchResults = searchArray(list, isSearchQuery);
 
   function searchArray(array, query) {
     const results = [];
@@ -27,7 +31,7 @@ const Brand = () => {
     return results;
   }
 
-  const filteredBrands = carBrands.filter(
+  const filteredBrands = list.filter(
     (brand) => brand.charAt(0).toUpperCase() === selectedLetter
   );
 
@@ -44,7 +48,7 @@ const Brand = () => {
   return (
     <div className={styles.container}>
       <div className={styles.top} onClick={() => setIsShow((prev) => !prev)}>
-        <h3 className={styles.title}>Car brand</h3>
+        <h3 className={styles.title}>{title}</h3>
         <span className={cn(styles.arrow, { [styles.open]: isShow })}>
           <ArrowIcon />
         </span>
@@ -58,7 +62,7 @@ const Brand = () => {
           />
           <Alphabetical
             onLetterSelect={handleLetterSelect}
-            carBrands={carBrands}
+            carBrands={list}
             selectedLetter={selectedLetter}
           />
           <Checkboxes
@@ -68,7 +72,7 @@ const Brand = () => {
                 ? filteredBrands
                 : isSearchQuery
                 ? searchResults
-                : carBrands
+                : list
             }
           />
         </div>
