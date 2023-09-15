@@ -1,0 +1,14 @@
+.histogram {
+  margin-bottom: -29px;
+  height: 82px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.histogramContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+}

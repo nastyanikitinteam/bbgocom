@@ -8,9 +8,9 @@ interface IProps {
   extClassName?: string;
   secondaryColor?: string;
   textColor?: string;
-  input: any;
+  input?: any;
   label?: string;
-  meta: any;
+  meta?: any;
   required?: boolean;
   onClick?: () => void;
   readonly?: boolean;
@@ -19,6 +19,7 @@ interface IProps {
   children?: ReactNode;
   onChange?: (bool: any) => void;
   checked?: boolean;
+  name?: string;
 }
 
 const Checkbox: React.FC<IProps> = ({
@@ -37,6 +38,7 @@ const Checkbox: React.FC<IProps> = ({
   children,
   onChange,
   checked,
+  name,
 }) => {
   return (
     <label
@@ -44,6 +46,7 @@ const Checkbox: React.FC<IProps> = ({
     >
       <input
         {...input}
+        name={!input && name}
         className={styles.input}
         style={
           secondaryColor && {
@@ -54,7 +57,7 @@ const Checkbox: React.FC<IProps> = ({
         }
         id={placeholder}
         onClick={onClick}
-        type={input.type}
+        type="checkbox"
         readOnly={readonly}
         onChange={onChange}
         checked={checked}
