@@ -5,26 +5,35 @@ import cn from "classnames";
 
 interface IProps {
   setIsShowPartOfHistogramm: (bool: any) => void;
+  minPrice: number;
+  maxPrice: number;
+  inputValue1: number;
+  inputValue2: number;
+  setInputValue1: (bool: number) => void;
+  setInputValue2: (bool: number) => void;
 }
 
-const Range: FC<IProps> = ({ setIsShowPartOfHistogramm }) => {
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(100000);
-  const [inputValue1, setInputValue1] = useState(minPrice);
-  const [inputValue2, setInputValue2] = useState(maxPrice);
-
+const Range: FC<IProps> = ({
+  setIsShowPartOfHistogramm,
+  setInputValue1,
+  setInputValue2,
+  minPrice,
+  maxPrice,
+  inputValue1,
+  inputValue2,
+}) => {
   const onChangeInput1 = (event) => {
-    if (event.target.value > 500000) {
-      setInputValue1(500000);
+    if (event.target.value > maxPrice) {
+      setInputValue1(maxPrice);
     } else {
       setInputValue1(+event.target.value);
     }
   };
   const onChangeInput2 = (event) => {
-    if (event.target.value > 500000) {
-      setInputValue1(500000);
+    if (event.target.value > maxPrice) {
+      setInputValue2(maxPrice);
     } else {
-      setInputValue1(+event.target.value);
+      setInputValue2(+event.target.value);
     }
   };
 
@@ -32,15 +41,6 @@ const Range: FC<IProps> = ({ setIsShowPartOfHistogramm }) => {
     setInputValue1(newValue[0]);
     setInputValue2(newValue[1]);
   };
-
-  // useEffect(() => {
-  //   let block = document.querySelector(".priceRange .ant-slider-track");
-  //   let histogram = document.querySelector(".histogram");
-  //   if (block) {
-  //     const styles = block.getAttribute("style");
-  //     histogram.setAttribute("style", styles);
-  //   }
-  // }, [inputValue1, inputValue2]);
 
   return (
     <>

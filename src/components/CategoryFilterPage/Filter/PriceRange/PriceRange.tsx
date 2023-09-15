@@ -12,20 +12,19 @@ interface IProps {
 
 const PriceRange: FC<IProps> = ({ title, list }) => {
   const [isShowPartOfHistogramm, setIsShowPartOfHistogramm] = useState();
-  const [isWidthOfHistogramm, setIsWidthOfHistogramm] = useState(null);
+
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(100000);
 
   const containerRef = useRef(null);
   const histogramRef = useRef(null);
-  const histogramContainerRef = useRef(null);
 
-  useEffect(() => {
-    console.log(isShowPartOfHistogramm);
-  }, [isShowPartOfHistogramm]);
+  const [inputValue1, setInputValue1] = useState(minPrice);
+  const [inputValue2, setInputValue2] = useState(maxPrice);
 
   useEffect(() => {
     if (containerRef.current) {
       const blockWidth = containerRef.current.offsetWidth;
-      setIsWidthOfHistogramm(blockWidth);
       if (histogramRef.current) {
         histogramRef.current.style.width = `${blockWidth}px`;
       }
@@ -35,15 +34,25 @@ const PriceRange: FC<IProps> = ({ title, list }) => {
   return (
     <div className={styles.container} ref={containerRef}>
       <h3 className={styles.title}>{title}</h3>
-      <div className={cn(styles.histogram, "histogram")}>
-        <div
-          ref={histogramRef}
-          className={cn(styles.histogramContainer, "histogramContainer")}
-        >
-          <Histogram />
+      <div className={styles.histogram}>
+        <div ref={histogramRef} className={styles.histogramContainer}>
+          <Histogram
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            inputValue1={inputValue1}
+            inputValue2={inputValue2}
+          />
         </div>
       </div>
-      <Range setIsShowPartOfHistogramm={setIsShowPartOfHistogramm} />
+      <Range
+        setIsShowPartOfHistogramm={setIsShowPartOfHistogramm}
+        minPrice={minPrice}
+        maxPrice={maxPrice}
+        inputValue1={inputValue1}
+        inputValue2={inputValue2}
+        setInputValue1={setInputValue1}
+        setInputValue2={setInputValue2}
+      />
     </div>
   );
 };
