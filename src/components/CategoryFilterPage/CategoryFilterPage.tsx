@@ -1,5 +1,6 @@
 import useMediaQuery from "src/utils/useMediaQuery";
 import Main from "./Main/Main";
+import MapContainer from "./Map/Map";
 import Filter from "./Filter/Filter";
 import styles from "./category-filter-page.module.scss";
 
@@ -15,6 +16,7 @@ const CategoryFilterPage = () => {
           </div>
           <div className={styles.main}>
             <Main title="Buy a home" />
+            {/* <MapContainer /> */}
           </div>
         </div>
       </div>
