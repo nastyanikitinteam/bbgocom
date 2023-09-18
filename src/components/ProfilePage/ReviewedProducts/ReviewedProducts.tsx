@@ -181,7 +181,7 @@ const ReviewedProducts = () => {
                     <div
                       className={styles.block}
                       key={id}
-                      data-aos-anchor-placement="center-bottom"
+                      data-aos-anchor-placement="top-bottom"
                       data-aos="fade-up"
                       data-aos-delay="300"
                     >
