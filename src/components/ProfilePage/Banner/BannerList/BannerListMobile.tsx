@@ -213,7 +213,7 @@ const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
           )}
         ></Form>
       </div>
-      {isTablet && (
+      {isMobile && (
         <div
           className={styles.rullesButton}
           onClick={() => setIsOpenRules(true)}

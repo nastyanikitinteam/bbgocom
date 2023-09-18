@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useRouter } from "next/router";
 import NoCard from "./NoCard/NoCard";
 import useMediaQuery from "src/utils/useMediaQuery";
@@ -22,42 +22,48 @@ const Wallet = () => {
 
   const router = useRouter();
 
-  const cardList = useMemo(
-    () => [
-      {
-        id: 0,
-        typeOfCard: "Mastercard",
-        icon: <MastercardIcon />,
-        number: "1234567890123456",
-        date: "03/24",
-        cvv: "123",
-        isMainCard: true,
-      },
-      {
-        id: 1,
-        typeOfCard: "Visa",
-        icon: <VisaIcon />,
-        number: "5908590859085908",
-        date: "03/24",
-        cvv: "123",
-        isMainCard: false,
-      },
-      {
-        id: 2,
-        typeOfCard: "Visa",
-        icon: <VisaIcon />,
-        number: "5908590859085908",
-        date: "03/24",
-        cvv: "123",
-        isMainCard: false,
-      },
-    ],
-    []
-  );
+  const [cardList, setCardList] = useState([
+    {
+      id: 0,
+      typeOfCard: "Mastercard",
+      icon: <MastercardIcon />,
+      number: "1234567890123456",
+      date: "03/24",
+      cvv: "123",
+      isMainCard: true,
+    },
+    {
+      id: 1,
+      typeOfCard: "Visa",
+      icon: <VisaIcon />,
+      number: "5908590859085908",
+      date: "03/24",
+      cvv: "123",
+      isMainCard: false,
+    },
+    {
+      id: 2,
+      typeOfCard: "Visa",
+      icon: <VisaIcon />,
+      number: "5908590859085908",
+      date: "03/24",
+      cvv: "123",
+      isMainCard: false,
+    },
+  ]);
 
   const back = () => {
     router.back();
   };
+
+  const changeMainCard = useCallback((id: number) => {
+    setCardList((prev) =>
+      prev.map((item) => ({
+        ...item,
+        isMainCard: item.id === id,
+      }))
+    );
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -100,7 +106,13 @@ const Wallet = () => {
       {isWallet ? (
         <div className={styles.items}>
           {cardList.map((item, index) => {
-            return <Card key={index} item={item} />;
+            return (
+              <Card
+                key={index}
+                item={item}
+                changeMainCard={() => changeMainCard(item.id)}
+              />
+            );
           })}
           {!isMobile && (
             <AddCard

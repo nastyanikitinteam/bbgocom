@@ -24,7 +24,7 @@ interface IProps {
 const Login: FC<IProps> = ({ changeActiveAuth }) => {
   const validationSchema = yup.object().shape({
     email: yup.string().email().required(`Введіть електрону пошту`),
-    password: yup.string().required(`Wrong phone format`),
+    // password: yup.string().required(`Wrong phone format`),
   });
 
   const validate = validateForm(validationSchema);
@@ -38,7 +38,7 @@ const Login: FC<IProps> = ({ changeActiveAuth }) => {
   const processingCounrtryList = () => {
     let arr = CountriesList.map(({ value, icon, name, code }) => {
       return {
-        value: value,
+        value: `${value} ${code}`,
         label: <Country icon={icon} name={name} code={code} />,
       };
     });

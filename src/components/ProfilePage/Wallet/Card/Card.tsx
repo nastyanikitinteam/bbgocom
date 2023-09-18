@@ -8,9 +8,10 @@ import DelIcon from "images/icons/delete.svg";
 
 interface IProps {
   item: any;
+  changeMainCard: () => void;
 }
 
-const Card: FC<IProps> = ({ item }) => {
+const Card: FC<IProps> = ({ item, changeMainCard }) => {
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
 
   const onSubmit = useCallback((data, form) => {
@@ -21,7 +22,7 @@ const Card: FC<IProps> = ({ item }) => {
     const visibleDigits = 4;
     const maskedNumber =
       "•".repeat(number.length - visibleDigits) + number.slice(-visibleDigits);
-    return maskedNumber.replace(/(.{4})/g, "$1 "); // Розділяємо на блоки по 4 цифри
+    return maskedNumber.replace(/(.{4})/g, "$1 ");
   };
 
   return (
@@ -41,6 +42,7 @@ const Card: FC<IProps> = ({ item }) => {
                 type="radio"
                 name="positionCard"
                 checked={item.isMainCard}
+                onChange={changeMainCard}
               />
               <div className={styles.radioBlock}></div>
               <p className={styles.text}>

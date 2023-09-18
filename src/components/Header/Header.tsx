@@ -82,9 +82,9 @@ const Header: FC<IProps> = ({ isSecondHeader }) => {
       >
         <div className="wrapper">
           <div className={styles.content}>
-            <div className={styles.logo}>
+            <Link href="/" className={styles.logo}>
               <LogoSvg />
-            </div>
+            </Link>
             {!isTablet && (
               <p className={styles.logoDescription}>
                 Service of Private Advertisements

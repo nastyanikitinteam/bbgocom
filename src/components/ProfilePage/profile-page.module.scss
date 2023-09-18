@@ -40,6 +40,33 @@
   width: 100%;
 }
 
+.del {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #808080;
+  transition: all 0.25s ease-in;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-top: 20px;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
+  }
+}
+
 @media (max-width: 1300px) {
   .content {
     flex-wrap: wrap;

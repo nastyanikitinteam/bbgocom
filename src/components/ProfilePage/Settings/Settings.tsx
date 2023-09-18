@@ -10,6 +10,7 @@ import { AccountInfo } from "./config";
 
 import ArrowSvg from "images/icons/drop.svg";
 import LogOutIcon from "images/icons/log-out-icon.svg";
+import DeleteIcon from "images/icons/delete.svg";
 
 const Settings = () => {
   const isMobile = useMediaQuery(768);
@@ -85,6 +86,12 @@ const Settings = () => {
                   <LogOutIcon />
                 </span>
                 Log Out
+              </div>
+              <div className={styles.del}>
+                <span className={styles.icon}>
+                  <DeleteIcon />
+                </span>
+                Delete account
               </div>
             </>
           )}

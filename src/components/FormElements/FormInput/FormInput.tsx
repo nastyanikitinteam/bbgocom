@@ -113,9 +113,8 @@ const FormInput: React.FC<IProps> = ({
         {meta?.error && meta?.touched && input.type !== "password" && (
           <div className={styles.errorIcon}>
             <ErrorIcon />
+            <div className={styles.toolError}>{meta.error}</div>
           </div>
-
-          // <div className="error sendMessage">{meta.error}</div>
         )}
       </div>
 

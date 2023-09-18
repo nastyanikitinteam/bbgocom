@@ -7,7 +7,7 @@ import Settings from "components/ProfilePage/Settings/Settings";
 
 const MySettings: NextPage = () => {
   return (
-    <ProfilePage title="Account settings">
+    <ProfilePage title="Account settings" showDeleteButton>
       <Settings />
     </ProfilePage>
   );

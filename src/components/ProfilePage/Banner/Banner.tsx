@@ -89,7 +89,7 @@ const Banner = () => {
               </>
             )}
           </div>
-          {(!isTablet || (isTablet && isOpenRules)) && (
+          {!isTablet && (
             <div className={styles.info}>
               <Rules />
             </div>

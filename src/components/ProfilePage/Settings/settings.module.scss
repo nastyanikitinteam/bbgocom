@@ -66,4 +66,24 @@
       margin-right: 8px;
     }
   }
+
+  .del {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #808080;
+    transition: all 0.25s ease-in;
+    cursor: pointer;
+    padding: 15px 0;
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
