@@ -92,11 +92,18 @@
   color: #808080;
   cursor: pointer;
   margin-top: 25px;
+  transition: all 0.25s ease-in;
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 8px;
+  }
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
   }
 }
 
