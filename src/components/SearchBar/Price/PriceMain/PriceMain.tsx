@@ -28,7 +28,7 @@ const PriceMain: FC<IProps> = ({
         <div className={styles.top}>
           <h3>Price Filter</h3>
           <div
-            className={styles.clear}
+            className={styles.clean}
             onClick={() => handleClickPrice("default", null)}
           >
             <span className={styles.icon}>

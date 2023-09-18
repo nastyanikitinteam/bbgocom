@@ -64,4 +64,22 @@ export const carBrands = [
   "Lamborghini",
 ];
 
-export const colors = ["red", "blue", "green", "yellow", "purple"];
+export const colors = [
+  "white",
+  "silver",
+  "grey",
+  "black",
+  "brown",
+  "gold",
+  "beige",
+  "lightRed",
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "blue",
+  "darkBlue",
+  "purple",
+  "pink",
+  "lightPink",
+];
