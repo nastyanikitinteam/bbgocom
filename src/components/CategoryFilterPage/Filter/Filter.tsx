@@ -5,6 +5,7 @@ import Brand from "./Brand/Brand";
 import Range from "./Range/Range";
 import styles from "./filter.module.scss";
 import ColorPicker from "./ColorPicker/ColorPicker";
+import BodyType from "./BodyType/BodyType";
 import {
   tabsList,
   propertyType,
@@ -20,6 +21,7 @@ const Filter = () => {
     <div className={styles.container}>
       <div className={styles.main}>
         <Tabs tabsList={tabsList} />
+        <BodyType title="Body type" />
         <ColorPicker title="Colors" colors={colors} />
         <Brand title="Car brand" list={carBrands} />
         <Checkboxes title="Property type" list={propertyType} />
