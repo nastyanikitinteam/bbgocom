@@ -17,6 +17,7 @@ interface IProps {
   children: ReactNode;
   isSecondHeader?: boolean;
   isProfile?: boolean;
+  mobileWithoutHeader?: boolean;
 }
 
 const Layout: FC<IProps> = ({
@@ -24,6 +25,7 @@ const Layout: FC<IProps> = ({
   children,
   isSecondHeader,
   isProfile,
+  mobileWithoutHeader,
 }) => {
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
 
@@ -43,7 +45,11 @@ const Layout: FC<IProps> = ({
       <Head>
         <title>{title}</title>
       </Head>
-      {isMobile ? <HeaderMobile /> : <Header isSecondHeader={isSecondHeader} />}
+      {isMobile ? (
+        !mobileWithoutHeader && <HeaderMobile />
+      ) : (
+        <Header isSecondHeader={isSecondHeader} />
+      )}
       {isProfile ? (
         <ProfilePage title={title}>{children}</ProfilePage>
       ) : (

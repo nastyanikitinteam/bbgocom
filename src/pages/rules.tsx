@@ -5,7 +5,7 @@ import Rules from "components/HelpPages/Rules/Rules";
 
 const RulesPage: NextPage = () => {
   return (
-    <Layout title="Rules">
+    <Layout title="Rules" mobileWithoutHeader>
       <Rules />
     </Layout>
   );

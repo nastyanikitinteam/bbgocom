@@ -271,7 +271,8 @@ input[type="number"] {
 }
 
 @media (max-width: 768px) {
-  h2 {
+  h2,
+  h1 {
     font-size: 24px;
     font-weight: 500;
     line-height: 32px;
@@ -279,7 +280,8 @@ input[type="number"] {
   }
 }
 @media (max-width: 370px) {
-  h2 {
+  h2,
+  h1 {
     font-size: 20px;
     line-height: 25px;
   }

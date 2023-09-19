@@ -2,7 +2,7 @@ import styles from "./rules.module.scss";
 
 const Terms = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.description}>
       <h3>1. Terms of Service</h3>
       <p>
         <b>
