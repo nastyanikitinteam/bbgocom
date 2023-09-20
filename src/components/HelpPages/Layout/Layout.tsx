@@ -15,18 +15,18 @@ import styles from "./layout.module.scss";
 
 interface IProps {
   title: string;
-  isSecondHeader?: boolean;
   list?: any;
   infoContent?: any;
   isBlocktype?: boolean;
+  isUserArgeement?: boolean;
 }
 
 const Layout: FC<IProps> = ({
   title = "Page",
-  isSecondHeader,
   list,
   infoContent,
   isBlocktype,
+  isUserArgeement,
 }) => {
   const [isActiveRules, setIsActiveRules] = useState(null);
   const isTablet = useMediaQuery(998);
@@ -90,7 +90,8 @@ const Layout: FC<IProps> = ({
       <Head>
         <title>{title}</title>
       </Head>
-      {!isMobile && <Header isSecondHeader={isSecondHeader} />}
+      {!isMobile && <Header withoutSearchBar />}
+
       <div className={styles.container}>
         <div className="wrapper">
           <BreadCrumbs crumbs={breadCrumbs} />
@@ -137,6 +138,24 @@ const Layout: FC<IProps> = ({
                 </div>
               ) : (
                 <div className={styles.sections}>
+                  {isUserArgeement && (
+                    <>
+                      <p>
+                        <b>
+                          This document is an offer by BBGO LLC ("Company") to
+                          registered users ("users", "you") to enter into a
+                          framework service agreement ("Agreement",) on the
+                          terms and conditions set forth below (the "offer").
+                        </b>
+                      </p>
+                      <p>
+                        <b>
+                          The offer may contain terms as defined in the{" "}
+                          <Link href="">Terms of Use.</Link>
+                        </b>
+                      </p>
+                    </>
+                  )}
                   {list.map((item, id) => {
                     return (
                       <div
@@ -153,6 +172,15 @@ const Layout: FC<IProps> = ({
                       </div>
                     );
                   })}
+                </div>
+              )}
+              {isUserArgeement && (
+                <div className={styles.argeementBlock}>
+                  The concluded agreement is a contract with open conditions.
+                  Essential conditions of each service transaction are formed
+                  online individually for the user with the help of the
+                  interface, through which the user selects the service and its
+                  parameters, the parties agree on the terms of the transaction.
                 </div>
               )}
             </div>

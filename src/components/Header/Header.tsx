@@ -17,10 +17,11 @@ import cn from "classnames";
 import Select from "components/Select/Select";
 
 interface IProps {
-  isSecondHeader: boolean;
+  isSecondHeader?: boolean;
+  withoutSearchBar?: boolean;
 }
 
-const Header: FC<IProps> = ({ isSecondHeader }) => {
+const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
   const { height } = useContext(ThemeContext);
 
   const [scrollTop, setScrollTop] = useState(0);
@@ -91,26 +92,29 @@ const Header: FC<IProps> = ({ isSecondHeader }) => {
               </p>
             )}
 
-            {!isSearchBarTop && !isTablet && !isSecondHeader && (
-              <ul className={styles.list}>
-                <li className={styles.item}>
-                  <a>Help</a>
-                </li>
-                <li className={styles.item}>
-                  <a>Advertise with us</a>
-                </li>
-                <li className={styles.item}>
-                  <Link href="/rules">Rules</Link>
-                </li>
-              </ul>
-            )}
-            {(isTablet || isSecondHeader) && (
+            {!isSearchBarTop &&
+              (!isTablet || withoutSearchBar) &&
+              !isSecondHeader && (
+                <ul className={styles.list}>
+                  <li className={styles.item}>
+                    <a>Help</a>
+                  </li>
+                  <li className={styles.item}>
+                    <Link href="/advertise-with-us">Advertise with us</Link>
+                  </li>
+                  <li className={styles.item}>
+                    <Link href="/rules">Rules</Link>
+                  </li>
+                </ul>
+              )}
+            {(isTablet || isSecondHeader) && !withoutSearchBar && (
               <SearchBar isSecondHeader={isSecondHeader} />
             )}
 
-            {isSearchBarTop && !isTablet && !isSecondHeader && (
-              <div className={styles.searchBar}></div>
-            )}
+            {isSearchBarTop &&
+              !isTablet &&
+              !isSecondHeader &&
+              !withoutSearchBar && <div className={styles.searchBar}></div>}
 
             <div className={styles.info}>
               <div

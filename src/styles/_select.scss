@@ -254,4 +254,7 @@
   .default-select.phone .default__control {
     padding: 7px 14px;
   }
+  .default-select.phone .default__control .default-item {
+    position: relative;
+  }
 }

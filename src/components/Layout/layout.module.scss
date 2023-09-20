@@ -3,3 +3,9 @@
     padding-top: 80px;
   }
 }
+
+@media (max-width: 768px) {
+  .withoutHeder {
+    padding-top: 25px;
+  }
+}

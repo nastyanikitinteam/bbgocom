@@ -1,16 +1,17 @@
 import cn from "classnames";
 import styles from "./textarea.module.scss";
+import ErrorIcon from "images/icons/error.svg";
 
 interface IProps {
-  placeholder: string;
+  placeholder?: string;
   type?: string;
   serverErrors?: string;
   extClassName?: string;
   secondaryColor?: string;
   textColor?: string;
-  input: any;
+  input?: any;
   label?: string;
-  meta: any;
+  meta?: any;
   required?: boolean;
 }
 
@@ -26,41 +27,32 @@ const Textarea: React.FC<IProps> = ({
   textColor,
 }) => {
   return (
-    <div className={styles.wrap}>
-      <label htmlFor={placeholder} className={styles.label}>
-        {label && (
-          <p
-            className={styles.title}
-            style={
-              secondaryColor && {
-                color: textColor,
-              }
-            }
-          >
-            {label}
-          </p>
-        )}
-        <div className={styles.block}>
-          <textarea
-            {...input}
-            type={type}
-            className={cn(styles.input, {
-              [styles.errorInput]:
-                (serverErrors && !meta?.dirtySinceLastSubmit) ||
-                (meta?.error && meta?.touched),
-            })}
-            id={input.value}
-            placeholder={placeholder}
-          />
-        </div>
+    <>
+      {label && <label className={styles.label}>{label}</label>}
+      <div className={styles.block}>
+        <textarea
+          {...input}
+          type={type}
+          className={cn(styles.input, {
+            [styles.errorInput]:
+              (serverErrors && !meta?.dirtySinceLastSubmit) ||
+              (meta?.error && meta?.touched),
+          })}
+          id={input.value}
+          placeholder={placeholder}
+          rows="3"
+        />
         {meta?.error && meta?.touched && (
-          <div className="error">{meta.error}</div>
+          <div className={styles.errorIcon}>
+            <ErrorIcon />
+            <div className={styles.toolError}>{meta.error}</div>
+          </div>
         )}
         {!meta?.error && !meta?.dirtySinceLastSubmit && serverErrors && (
-          <div className="error">{serverErrors}</div>
+          <div className="error serverError">{serverErrors}</div>
         )}
-      </label>
-    </div>
+      </div>
+    </>
   );
 };
 

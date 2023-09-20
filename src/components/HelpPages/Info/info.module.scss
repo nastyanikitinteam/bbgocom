@@ -13,6 +13,11 @@
   padding-right: 20px;
 }
 
+.withButtonImage {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .content {
   max-width: 418px;
 }
@@ -78,5 +83,11 @@
   }
   .content {
     max-width: none;
+  }
+  .withButtonImage {
+    flex-wrap: wrap;
+    .content {
+      width: calc(100% - 67px);
+    }
   }
 }

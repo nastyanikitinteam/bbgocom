@@ -86,3 +86,9 @@
     height: 24px;
   }
 }
+
+.list {
+  max-height: 336px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

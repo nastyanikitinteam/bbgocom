@@ -63,6 +63,7 @@ const FormInput: React.FC<IProps> = ({
 
   return (
     <>
+      {label && <label className={styles.label}>{label}</label>}
       <div
         className={cn(styles.container, extClassName && styles[extClassName])}
       >

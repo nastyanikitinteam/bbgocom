@@ -9,6 +9,7 @@ import Footer from "components/Footer/Footer";
 import ProfilePage from "components/ProfilePage/ProfilePage";
 import Modal from "components/Modal/Modal";
 import Authorization from "components/Authorization/Authorization";
+import cn from "classnames";
 
 import styles from "./layout.module.scss";
 
@@ -16,7 +17,7 @@ interface IProps {
   title: string;
   children: ReactNode;
   isSecondHeader?: boolean;
-  isProfile?: boolean;
+  withoutSearchBar?: boolean;
   mobileWithoutHeader?: boolean;
 }
 
@@ -24,7 +25,7 @@ const Layout: FC<IProps> = ({
   title = "Page",
   children,
   isSecondHeader,
-  isProfile,
+  withoutSearchBar,
   mobileWithoutHeader,
 }) => {
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
@@ -48,14 +49,18 @@ const Layout: FC<IProps> = ({
       {isMobile ? (
         !mobileWithoutHeader && <HeaderMobile />
       ) : (
-        <Header isSecondHeader={isSecondHeader} />
+        <Header
+          isSecondHeader={isSecondHeader}
+          withoutSearchBar={withoutSearchBar}
+        />
       )}
-      {isProfile ? (
-        <ProfilePage title={title}>{children}</ProfilePage>
-      ) : (
-        <div className={styles.container}>{children}</div>
-      )}
-
+      <div
+        className={cn(styles.container, {
+          [styles.withoutHeder]: mobileWithoutHeader,
+        })}
+      >
+        {children}
+      </div>
       <Footer />
     </div>
   );

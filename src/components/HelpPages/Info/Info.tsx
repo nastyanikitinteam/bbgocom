@@ -13,8 +13,9 @@ const Info: FC<IProps> = ({ content }) => {
     <div
       className={cn(
         styles.container,
-        { [styles.withIcon]: content.image },
-        { [styles.withButton]: content.button }
+        { [styles.withIcon]: content.image && !content.button },
+        { [styles.withButton]: content.button && !content.image },
+        { [styles.withButtonImage]: content.button && content.image }
       )}
     >
       {content.image && (
