@@ -3,18 +3,19 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import { Form, Field } from "react-final-form";
-import Select from "components/Select/Select";
 import * as yup from "yup";
-import { validateForm } from "../../utils/validateForm";
+import { validateForm } from "../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
-import styles from "./advertise-with-us-page.module.scss";
-import { CountriesList } from "../Authorization/config";
-import Country from "../Authorization/Country/Country";
+import FilesUpload from "components/FileUpload/FilesUpload";
+import styles from "./help-page.module.scss";
+import { CountriesList } from "../../Authorization/config";
+import Country from "../../Authorization/Country/Country";
 import Textarea from "components/FormElements/Textarea/Textarea";
 import cn from "classnames";
 
 const AdvertiseWithUs = () => {
   const [isCountryList, setIsCountryList] = useState([]);
+  const [selectedFiles, setSelectedFiles] = useState([]);
   const router = useRouter();
 
   const validationSchema = yup.object().shape({
@@ -29,6 +30,10 @@ const AdvertiseWithUs = () => {
     console.log(data);
   }, []);
 
+  const handleRemoveFile = () => {
+    setSelectedFiles(null);
+  };
+
   const breadCrumbs = useMemo(
     () => [
       {
@@ -38,7 +43,7 @@ const AdvertiseWithUs = () => {
       },
       {
         id: 0,
-        title: "Advertise with us",
+        title: "Help",
       },
     ],
     []
@@ -69,60 +74,23 @@ const AdvertiseWithUs = () => {
       <div className="wrapper">
         <BreadCrumbs crumbs={breadCrumbs} />
         <div className={styles.content}>
-          <h1 className={styles.title}>Advertise with us</h1>
-          <p className={styles.text}>
-            If you need display advertising, please fill out the form below. We
-            will determine your needs and form a suitable offer. If you would
-            like to advertise your product or service, you can do so{" "}
-            <a href="/">here</a>. If you have a question about working with the
-            service, you can find the answer <a href="/">here</a>.
-          </p>
+          <h1 className={styles.title}>Service Request Form</h1>
+
           {isCountryList.length && (
             <Form
               onSubmit={onSubmit}
               validate={validate}
               render={({ handleSubmit }) => (
                 <form className={styles.form} onSubmit={handleSubmit}>
-                  <div className={styles.item}>
-                    <Field
-                      name="name"
-                      placeholder={"Enter name"}
-                      type="text"
-                      component={FormInput}
-                      extClassName="firstName"
-                      label="Name"
-                    />
-                  </div>
-                  <div className={cn(styles.phone, styles.item)}>
-                    <div className={styles.code}>
-                      <p className={styles.label}>Your phone</p>
-                      <Select
-                        options={isCountryList}
-                        isPhoneList
-                        classname="phone"
-                        title="Choose Country"
-                      />
-                    </div>
-                    <div className={styles.number}>
-                      <Field
-                        name="phone"
-                        type="text"
-                        placeholder={"Phone"}
-                        component={FormInput}
-                        number
-                        extClassName="noIcon"
-                      />
-                    </div>
-                  </div>
                   <div className={styles.items}>
                     <div className={styles.item}>
                       <Field
-                        name="company"
-                        placeholder={"Enter name"}
+                        name="theme"
+                        placeholder={"Enter theme"}
                         type="text"
                         component={FormInput}
-                        extClassName="company"
-                        label="Company’s name"
+                        extClassName="theme"
+                        label="Theme of Request"
                       />
                     </div>
                     <div className={styles.item}>
@@ -138,11 +106,41 @@ const AdvertiseWithUs = () => {
                   </div>
                   <div className={styles.item}>
                     <Field
-                      name="message"
+                      name="name"
+                      placeholder={"Enter name"}
+                      type="text"
+                      component={FormInput}
+                      extClassName="firstName"
+                      label="Name"
+                    />
+                  </div>
+
+                  <div className={styles.item}>
+                    <Field
+                      name="company"
+                      placeholder={"Enter name"}
+                      type="text"
+                      component={FormInput}
+                      extClassName="company"
+                      label="Company’s name"
+                    />
+                  </div>
+
+                  <div className={styles.item}>
+                    <Field
+                      name="Name"
                       placeholder={"Enter Message"}
                       type="text"
                       component={Textarea}
                       label="Message"
+                    />
+                  </div>
+                  <div className={styles.item}>
+                    <FilesUpload
+                      selectedFiles={selectedFiles}
+                      setSelectedFiles={setSelectedFiles}
+                      title="<span>Attach file</span> or drop files here"
+                      description="You can upload screenshots. File requirements: pdf, png, jpeg, heic and no more than 15 mb."
                     />
                   </div>
                   <p className={styles.description}>

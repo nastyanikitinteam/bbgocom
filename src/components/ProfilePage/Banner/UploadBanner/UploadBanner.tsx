@@ -104,6 +104,8 @@ const UploadBanner = () => {
               setSelectedFile={setSelectedFile}
               setImageDimensions={setImageDimensions}
               imageDimensions={imageDimensions}
+              title="Drag the image or <span> Open explorer</span>"
+              description={`size <100KB and file type PNG/GIF/JPEG`}
             />
           </div>
           <div className={styles.bottom}>

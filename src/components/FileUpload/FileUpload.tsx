@@ -8,6 +8,8 @@ interface IProps {
   selectedFile: any;
   setImageDimensions: (bool: any) => void;
   imageDimensions: any;
+  title: string;
+  description: string;
 }
 
 const FileUpload: FC<IProps> = ({
@@ -15,6 +17,8 @@ const FileUpload: FC<IProps> = ({
   selectedFile,
   setImageDimensions,
   imageDimensions,
+  title,
+  description,
 }) => {
   const fileInputRef = useRef(null);
   const maxSizeInBytes = 1024 * 1024;
@@ -102,12 +106,11 @@ const FileUpload: FC<IProps> = ({
             <div className={styles.icon}>
               <UploadIcon />
             </div>
-            <h3 className={styles.title}>
-              Drag the image or <span> Open explorer</span>
-            </h3>
-            <p
-              className={styles.description}
-            >{`size <100KB and file type PNG/GIF/JPEG`}</p>
+            <h3
+              className={styles.title}
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
+            <p className={styles.description}>{description}</p>
           </div>
         </>
       )}
