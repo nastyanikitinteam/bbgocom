@@ -6,7 +6,7 @@ import CloseIcon from "images/icons/close-sm.svg";
 interface IProps {
   categoriesList?: any;
   handleClick?: (key: string, value: string) => void;
-  setIsActiveChoice?: (bool: string) => void;
+  setIsActiveChoice?: () => void;
   dataCategory?: any;
   setDataCategory?: (bool: string) => void;
   isPopularCategory?: boolean;
@@ -37,9 +37,7 @@ const CategoryMobile: FC<IProps> = ({
 
   const chooseCategoryItem = (id, title) => {
     handleClick("nameOfCategoryItem", title);
-    isPopularCategory
-      ? setIsShowCategoryMenu(false)
-      : setIsActiveChoice("Filter");
+    isPopularCategory ? setIsShowCategoryMenu(false) : setIsActiveChoice();
   };
 
   const deletSubCategoryResult = () => {
@@ -68,13 +66,11 @@ const CategoryMobile: FC<IProps> = ({
       ? deletCategoryResult()
       : isPopularCategory
       ? setIsShowCategoryMenu(false)
-      : setIsActiveChoice("Filter");
+      : setIsActiveChoice();
   };
 
   const close = () => {
-    isPopularCategory
-      ? setIsShowCategoryMenu(false)
-      : setIsActiveChoice("Filter");
+    isPopularCategory ? setIsShowCategoryMenu(false) : setIsActiveChoice();
   };
 
   return (

@@ -11,7 +11,7 @@ interface IProps {
   isActiveCategory: number;
   isSearchBarTop?: boolean;
   handleClick?: (key: string, value: string) => void;
-  setIsActiveChoice?: (bool: string) => void;
+  setIsActiveChoice?: () => void;
   isCategoryPage?: boolean;
 }
 const Blocks: FC<IProps> = ({
@@ -23,7 +23,7 @@ const Blocks: FC<IProps> = ({
 }) => {
   const chooseCategoryItem = (id, title) => {
     handleClick("nameOfCategoryItem", title);
-    setIsActiveChoice("");
+    setIsActiveChoice();
   };
 
   return (

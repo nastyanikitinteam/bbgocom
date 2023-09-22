@@ -50,9 +50,12 @@ const Filter: FC<IProps> = ({
       <div className={styles.item}>
         <h3 className={styles.subtitle}>Category</h3>
         <Category
-          setIsActiveChoice={setIsActiveChoice}
-          isActiveChoice={isActiveChoice}
+          handleActive={() =>
+            setIsActiveChoice(isActiveChoice === "Category" ? "" : "Category")
+          }
+          isActiveChoice={isActiveChoice === "Category"}
           dataCategory={dataCategory}
+          placeholder="All"
         />
       </div>
       <div className={styles.item}>

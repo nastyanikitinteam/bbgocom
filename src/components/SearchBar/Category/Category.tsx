@@ -8,32 +8,45 @@ import CatalogIcon from "images/icons/catalog-icon.svg";
 import { AbstractKeyword } from "typescript";
 
 interface IProps {
-  setIsActiveChoice: (bool: string) => void;
-  isActiveChoice: string;
+  handleActive?: () => void;
+  isActiveChoice?: boolean;
   dataCategory: any;
+  setIsOpenCategoryMenu?: (bool: boolean) => void;
+  isOpenCategoryMenu?: boolean;
+  isBig?: boolean;
+  placeholder: string;
 }
 
 const Category: FC<IProps> = ({
-  setIsActiveChoice,
+  handleActive,
   isActiveChoice,
   dataCategory,
+  setIsOpenCategoryMenu,
+  isOpenCategoryMenu,
+  isBig,
+  placeholder,
 }) => {
   return (
     <>
       <div
         className={cn(styles.block, {
-          [styles.active]: isActiveChoice === "Category",
+          [styles.active]: isActiveChoice || isOpenCategoryMenu,
           [styles.fill]: dataCategory.nameOfCategory,
+          [styles.big]: isBig,
         })}
-        onClick={() =>
-          setIsActiveChoice(isActiveChoice === "Category" ? "" : "Category")
-        }
+        onClick={() => handleActive()}
       >
         <span className={styles.icon}>
           <CatalogIcon />
         </span>
         <p>
-          {dataCategory.nameOfCategory ? dataCategory.nameOfCategory : "All"}
+          {dataCategory.nameOfCategoryItem
+            ? dataCategory.nameOfCategoryItem
+            : dataCategory.nameOfSubCategory
+            ? dataCategory.nameOfSubCategory
+            : dataCategory.nameOfCategory
+            ? dataCategory.nameOfCategory
+            : placeholder}
         </p>
         <span className={styles.arrow}>
           <ArrowIcon />

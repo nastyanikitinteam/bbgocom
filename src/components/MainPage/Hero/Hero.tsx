@@ -17,7 +17,7 @@ const Hero = () => {
         backgroundMobile: slideBg1Mobile.src,
         button: {
           name: "Create an Ad",
-          link: "#",
+          link: "/create-an-ad",
         },
       },
       {

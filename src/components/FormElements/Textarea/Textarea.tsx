@@ -40,7 +40,7 @@ const Textarea: React.FC<IProps> = ({
           })}
           id={input.value}
           placeholder={placeholder}
-          rows="3"
+          rows="5"
         />
         {meta?.error && meta?.touched && (
           <div className={styles.errorIcon}>

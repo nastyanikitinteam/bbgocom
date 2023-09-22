@@ -170,9 +170,14 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
         <div className={styles.blocks}>
           {!isSmallLaptop && (
             <Category
-              setIsActiveChoice={setIsActiveChoice}
-              isActiveChoice={isActiveChoice}
+              handleActive={() =>
+                setIsActiveChoice(
+                  isActiveChoice === "Category" ? "" : "Category"
+                )
+              }
+              isActiveChoice={isActiveChoice === "Category"}
               dataCategory={dataCategory}
+              placeholder="All"
             />
           )}
 
@@ -220,7 +225,9 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
                 isActiveCategory={isActiveCategory}
                 setIsActiveCategory={setIsActiveCategory}
                 handleClick={handleClickCategory}
-                setIsActiveChoice={setIsActiveChoice}
+                setIsActiveChoice={() =>
+                  isMobile ? setIsActiveChoice("Filter") : setIsActiveChoice("")
+                }
                 dataCategory={dataCategory}
                 setDataCategory={setDataCategory}
               />

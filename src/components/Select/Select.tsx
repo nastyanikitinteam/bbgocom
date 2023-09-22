@@ -31,6 +31,18 @@ const SelectContainer: FC<IPprops> = ({
 }) => {
   const [isOpenList, setIsOpenList] = useState(false);
   const [isChooseOption, setIsChooseOption] = useState(options[0].value);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [fillClass, setFillClass] = useState("");
+
+  const handleChange = (selectedOption) => {
+    setSelectedOption(selectedOption);
+    if (selectedOption) {
+      setFillClass("fill");
+    } else {
+      setFillClass("");
+    }
+    onChange && onChange(selectedOption);
+  };
 
   const isMobile = useMediaQuery(768);
 
@@ -57,11 +69,11 @@ const SelectContainer: FC<IPprops> = ({
         options={options}
         defaultValue={!placeholder && options[0]}
         placeholder={placeholder && placeholder}
-        className={cn(`default-select ${classname}`)}
+        className={cn(`default-select ${classname} ${fillClass}`)}
         classNamePrefix="default"
         isSearchable={isPhoneList ? true : false}
         components={{ DropdownIndicator }}
-        onChange={onChange}
+        onChange={handleChange}
         // menuIsOpen
       />
     </div>

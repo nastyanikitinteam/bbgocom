@@ -14,7 +14,7 @@ interface IProps {
   isSearchBarTop?: boolean;
   isActiveCategory: number;
   setIsActiveCategory: (bool: number) => void;
-  setIsActiveChoice: (bool: string) => void;
+  setIsActiveChoice?: () => void;
   handleClick: (key: string, value: string) => void;
   dataCategory: any;
   setDataCategory: (bool: string) => void;
