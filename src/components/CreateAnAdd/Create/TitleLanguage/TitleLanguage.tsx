@@ -44,6 +44,18 @@ const TitleLanguage: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
     }
   };
 
+  const handleDescription = (event) => {
+    if (event.length) {
+      setDataArray((prev) => ({ ...prev, description: event }));
+    } else {
+      if (dataArray.title) {
+        let obj = dataArray;
+        delete obj.description;
+        setDataArray(obj);
+      }
+    }
+  };
+
   const handleLanguage = (value) => {
     setIsActiveLang(value);
     setDataArray((prev) => ({ ...prev, language: value }));
@@ -56,7 +68,7 @@ const TitleLanguage: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
   return (
     <div className={styles.container}>
       <h3 className={cn(styles.title, { [styles.disabled]: styles.title })}>
-        <span className={styles.num}>2</span>Title and language
+        <span className={styles.num}>2</span>Title and Description
       </h3>
       {!disabled && (
         <>
@@ -114,6 +126,7 @@ const TitleLanguage: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
                 type="text"
                 component={Textarea}
                 row={11}
+                onChange={handleDescription}
               />
             </div>
           </div>

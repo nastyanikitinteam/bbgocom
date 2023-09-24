@@ -2,12 +2,15 @@ import React, { useState, useRef, FC, useEffect } from "react";
 import styles from "./file-upload.module.scss";
 import UploadIcon from "images/icons/upload-img.svg";
 import CloseIcon from "images/icons/close.svg";
+import cn from "classnames";
 
 interface IProps {
   setSelectedFiles: (bool: any) => void;
   selectedFiles: any;
   title: string;
   description: string;
+  isBig?: boolean;
+  isSmall?: boolean;
 }
 
 const FilesUpload: FC<IProps> = ({
@@ -15,6 +18,8 @@ const FilesUpload: FC<IProps> = ({
   selectedFiles,
   title,
   description,
+  isBig,
+  isSmall,
 }) => {
   const fileInputRef = useRef(null);
   const maxSizeInBytes = 1024 * 1024;
@@ -73,16 +78,61 @@ const FilesUpload: FC<IProps> = ({
 
   return (
     <div className={styles.container}>
-      <input
-        type="file"
-        accept=".jpg, .jpeg, .png"
-        onChange={handleFileChange}
-        style={{ display: "none" }}
-        ref={fileInputRef}
-        multiple
-      />
-      {selectedFiles.length > 0 ? (
-        <div className={styles.files}>
+      <div
+        className={cn(
+          styles.block,
+          { [styles.big]: isBig },
+          { [styles.small]: isSmall }
+        )}
+      >
+        <input
+          type="file"
+          accept=".jpg, .jpeg, .png"
+          onChange={handleFileChange}
+          style={{ display: "none" }}
+          ref={fileInputRef}
+          multiple
+        />
+        {selectedFiles.length > 0 && !isBig ? (
+          <div className={styles.files}>
+            {selectedFiles.map((file, index) => (
+              <div className={styles.preview} key={index}>
+                <img src={URL.createObjectURL(file)} alt={file.name} />
+                <button
+                  onClick={() => handleRemoveFile(index)}
+                  className={styles.delete}
+                >
+                  <span className={styles.deleteIcon}>
+                    <CloseIcon />
+                  </span>
+                </button>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <>
+            <div
+              className={styles.drop}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={handleDrop}
+              onClick={() => fileInputRef.current.click()}
+            >
+              <div className={styles.info}>
+                <h3
+                  className={styles.title}
+                  dangerouslySetInnerHTML={{ __html: title }}
+                />
+                <p
+                  className={styles.description}
+                  dangerouslySetInnerHTML={{ __html: description }}
+                />
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+      {selectedFiles.length > 0 && isBig && (
+        <div className={styles.bottom}>
           {selectedFiles.map((file, index) => (
             <div className={styles.preview} key={index}>
               <img src={URL.createObjectURL(file)} alt={file.name} />
@@ -97,21 +147,6 @@ const FilesUpload: FC<IProps> = ({
             </div>
           ))}
         </div>
-      ) : (
-        <>
-          <div
-            className={styles.drop}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={handleDrop}
-            onClick={() => fileInputRef.current.click()}
-          >
-            <h3
-              className={styles.title}
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-            <p className={styles.description}>{description}</p>
-          </div>
-        </>
       )}
     </div>
   );

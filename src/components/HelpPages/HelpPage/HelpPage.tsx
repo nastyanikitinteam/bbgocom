@@ -141,6 +141,7 @@ const AdvertiseWithUs = () => {
                       setSelectedFiles={setSelectedFiles}
                       title="<span>Attach file</span> or drop files here"
                       description="You can upload screenshots. File requirements: pdf, png, jpeg, heic and no more than 15 mb."
+                      isSmall
                     />
                   </div>
                   <p className={styles.description}>

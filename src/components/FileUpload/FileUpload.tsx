@@ -69,51 +69,53 @@ const FileUpload: FC<IProps> = ({
 
   return (
     <div className={styles.container}>
-      <input
-        type="file"
-        accept=".jpg, .jpeg, .png"
-        onChange={handleFileChange}
-        style={{ display: "none" }}
-        ref={fileInputRef}
-      />
-      {selectedFile ? (
-        <div className={styles.uploaded}>
-          <div className={styles.preview}>
-            <img
-              src={URL.createObjectURL(selectedFile)}
-              alt={selectedFile.name}
-            />
-          </div>
-
-          <p className={styles.description}>
-            Size:{" "}
-            <span className={styles.black}>
-              {imageDimensions.width}x{imageDimensions.height} px
-            </span>
-          </p>
-          <button onClick={handleRemoveFile} className={styles.delete}>
-            <CloseIcon />
-          </button>
-        </div>
-      ) : (
-        <>
-          <div
-            className={styles.drop}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={handleDrop}
-            onClick={() => fileInputRef.current.click()}
-          >
-            <div className={styles.icon}>
-              <UploadIcon />
+      <div className={styles.block}>
+        <input
+          type="file"
+          accept=".jpg, .jpeg, .png"
+          onChange={handleFileChange}
+          style={{ display: "none" }}
+          ref={fileInputRef}
+        />
+        {selectedFile ? (
+          <div className={styles.uploaded}>
+            <div className={styles.preview}>
+              <img
+                src={URL.createObjectURL(selectedFile)}
+                alt={selectedFile.name}
+              />
             </div>
-            <h3
-              className={styles.title}
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-            <p className={styles.description}>{description}</p>
+
+            <p className={styles.description}>
+              Size:{" "}
+              <span className={styles.black}>
+                {imageDimensions.width}x{imageDimensions.height} px
+              </span>
+            </p>
+            <button onClick={handleRemoveFile} className={styles.delete}>
+              <CloseIcon />
+            </button>
           </div>
-        </>
-      )}
+        ) : (
+          <>
+            <div
+              className={styles.drop}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={handleDrop}
+              onClick={() => fileInputRef.current.click()}
+            >
+              <div className={styles.icon}>
+                <UploadIcon />
+              </div>
+              <h3
+                className={styles.title}
+                dangerouslySetInnerHTML={{ __html: title }}
+              />
+              <p className={styles.description}>{description}</p>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

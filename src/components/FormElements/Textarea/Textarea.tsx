@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import cn from "classnames";
 import styles from "./textarea.module.scss";
 import ErrorIcon from "images/icons/error.svg";
@@ -14,6 +15,7 @@ interface IProps {
   meta?: any;
   required?: boolean;
   row?: number;
+  onChange?: () => void;
 }
 
 const Textarea: React.FC<IProps> = ({
@@ -27,7 +29,19 @@ const Textarea: React.FC<IProps> = ({
   secondaryColor,
   textColor,
   row,
+  onChange,
 }) => {
+  const [isValue, setIsValue] = useState("");
+
+  const onChangeText = (event) => {
+    setIsValue(event.target.value);
+  };
+
+  useEffect(() => {
+    // @ts-ignore
+    onChange && onChange(isValue);
+  }, [isValue]);
+
   return (
     <>
       {label && <label className={styles.label}>{label}</label>}
@@ -35,6 +49,7 @@ const Textarea: React.FC<IProps> = ({
         <textarea
           {...input}
           type={type}
+          value={isValue}
           className={cn(styles.input, {
             [styles.errorInput]:
               (serverErrors && !meta?.dirtySinceLastSubmit) ||
@@ -43,6 +58,7 @@ const Textarea: React.FC<IProps> = ({
           id={input.value}
           placeholder={placeholder}
           rows={row ? row : 5}
+          onChange={onChangeText}
         />
         {meta?.error && meta?.touched && (
           <div className={styles.errorIcon}>

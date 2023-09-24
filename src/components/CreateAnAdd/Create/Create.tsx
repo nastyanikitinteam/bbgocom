@@ -5,6 +5,7 @@ import { validateForm } from "../../../utils/validateForm";
 
 import ChooseCategory from "./ChooseCategory/ChooseCategory";
 import TitleLanguage from "./TitleLanguage/TitleLanguage";
+import PhotoVideo from "./PhotoVideo/PhotoVideo";
 
 import cn from "classnames";
 import styles from "./create.module.scss";
@@ -42,6 +43,12 @@ const Create = () => {
               setDataArray={setDataArray}
               // @ts-ignore
               disabled={!dataArray?.salesman}
+            />
+            <PhotoVideo
+              dataArray={dataArray}
+              setDataArray={setDataArray}
+              // @ts-ignore
+              disabled={!dataArray?.description}
             />
             <div className={styles.button}>
               <button
