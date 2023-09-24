@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cn from "classnames";
 import styles from "./form-input.module.scss";
 
 import EyeClosed from "images/icons/eye-closed-svgrepo-com.svg";
 import EyeOpen from "images/icons/eye-open-svgrepo-com.svg";
 import ErrorIcon from "images/icons/error.svg";
+import { CodeFixAction } from "typescript";
 
 interface IProps {
   placeholder?: string;
@@ -23,6 +24,7 @@ interface IProps {
   isCardNumber?: boolean;
   isDate?: boolean;
   maxLength?: number;
+  onChange?: () => void;
 }
 
 const FormInput: React.FC<IProps> = ({
@@ -41,6 +43,7 @@ const FormInput: React.FC<IProps> = ({
   isCardNumber,
   isDate,
   maxLength,
+  onChange,
 }) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [cardNumber, setCardNumber] = useState("");
@@ -60,6 +63,11 @@ const FormInput: React.FC<IProps> = ({
       setIsValue(event.target.value);
     }
   };
+
+  useEffect(() => {
+    // @ts-ignore
+    onChange && onChange(isValue);
+  }, [isValue]);
 
   return (
     <>

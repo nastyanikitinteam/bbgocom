@@ -13,6 +13,7 @@ interface IProps {
   label?: string;
   meta?: any;
   required?: boolean;
+  row?: number;
 }
 
 const Textarea: React.FC<IProps> = ({
@@ -25,6 +26,7 @@ const Textarea: React.FC<IProps> = ({
   extClassName,
   secondaryColor,
   textColor,
+  row,
 }) => {
   return (
     <>
@@ -40,7 +42,7 @@ const Textarea: React.FC<IProps> = ({
           })}
           id={input.value}
           placeholder={placeholder}
-          rows="5"
+          rows={row ? row : 5}
         />
         {meta?.error && meta?.touched && (
           <div className={styles.errorIcon}>

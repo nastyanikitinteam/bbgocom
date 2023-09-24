@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useState, useEffect } from "react";
+import { useMemo, FC, useState, useEffect } from "react";
 import { Form, Field } from "react-final-form";
 import SelectContainer from "components/Select/Select";
 import FormInput from "components/FormElements/FormInput/FormInput";
@@ -7,18 +7,17 @@ import Category from "components/SearchBar/Category/Category";
 import CategoryMain from "components/SearchBar/Category/CategoryMain/CategoryMain";
 import styles from "../steps.module.scss";
 
-import ArrowSvg from "images/icons/drop.svg";
-
 import cn from "classnames";
 
-const ChooseCategory = () => {
+interface IProps {
+  dataArray: any;
+  setDataArray: (bool: any) => void;
+}
+
+const ChooseCategory: FC<IProps> = ({ dataArray, setDataArray }) => {
   const [isActiveCategory, setIsActiveCategory] = useState(null);
   const [dataCategory, setDataCategory] = useState({});
-  const [dataDealType, setDataDealType] = useState({});
-  const [dataSalesman, setDataSalesman] = useState({});
   const [isOpenCategoryMenu, setIsOpenCategoryMenu] = useState(false);
-
-  const [dataArray, setDataArray] = useState({});
 
   const dealTypes = useMemo(
     () => [
@@ -67,10 +66,6 @@ const ChooseCategory = () => {
   };
 
   useEffect(() => {
-    console.log(dataArray);
-  }, [dataArray]);
-
-  useEffect(() => {
     setDataArray((prev) => ({ ...prev, category: dataCategory }));
   }, [dataCategory]);
 
@@ -97,7 +92,7 @@ const ChooseCategory = () => {
           <div
             className={cn(styles.input, {
               // @ts-ignore
-              [styles.disabled]: !dataCategory.nameOfCategoryItem,
+              [styles.disabled]: !dataArray?.category?.nameOfCategoryItem,
             })}
           >
             <SelectContainer

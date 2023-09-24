@@ -19,6 +19,7 @@
   height: 40px;
   border-radius: 50%;
   background: var(--neutrals-light-gray, #f5f5f7);
+  color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,19 +45,23 @@
   gap: 10px;
 }
 
-.disabled {
+.input.disabled {
   opacity: 0.4;
   pointer-events: none;
 }
 
+.title.disabled {
+  color: #d8d8d8;
+}
+
 .categoryMenu {
   position: absolute;
-  top: 100%;
-  left: 0;
+  top: calc(100% + 12px);
+  left: -44px;
   z-index: 10;
   border-radius: 25px;
   background: var(--neutrals-white, #fff);
   box-shadow: 0px 45px 80px 0px rgba(21, 40, 61, 0.15);
-  width: 100%;
+  width: calc(100% + 88px);
   padding: 20px;
 }

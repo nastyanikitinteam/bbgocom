@@ -20,17 +20,17 @@ const CreateAnAdd = () => {
     []
   );
   return (
-    <div className={styles.container}>
-      <div className="wrapper">
-        <BreadCrumbs crumbs={breadCrumbs} />
-        <div className={styles.banner}>
-          <img src={bannerImg.src} alt="" />
+    <>
+      <section>
+        <div className="wrapper">
+          <BreadCrumbs crumbs={breadCrumbs} />
+          <div className={styles.banner}>
+            <img src={bannerImg.src} alt="" />
+          </div>
         </div>
-        <section className={styles.section}>
-          <Create />
-        </section>
-      </div>
-    </div>
+      </section>
+      <Create />
+    </>
   );
 };
 

@@ -1,19 +1,17 @@
 import { useMemo, useCallback, useState, useEffect } from "react";
 import { Form, Field } from "react-final-form";
-import Select from "components/Select/Select";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
-import FormInput from "components/FormElements/FormInput/FormInput";
-import Checkbox from "components/FormElements/Checkbox/Checkbox";
-import Category from "components/SearchBar/Category/Category";
 
 import ChooseCategory from "./ChooseCategory/ChooseCategory";
+import TitleLanguage from "./TitleLanguage/TitleLanguage";
 
-import CategoryMain from "components/SearchBar/Category/CategoryMain/CategoryMain";
 import cn from "classnames";
 import styles from "./create.module.scss";
 
 const Create = () => {
+  const [dataArray, setDataArray] = useState({});
+
   const validationSchema = yup.object().shape({
     firstName: yup.string().required(`No correct first name`),
     lastName: yup.string().required(`No correct last name`),
@@ -27,14 +25,24 @@ const Create = () => {
     console.log(data);
   }, []);
 
+  useEffect(() => {
+    console.log(dataArray);
+  }, [dataArray]);
+
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <Form
         onSubmit={onSubmit}
         validate={validate}
         render={({ handleSubmit }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <ChooseCategory />
+            <ChooseCategory dataArray={dataArray} setDataArray={setDataArray} />
+            <TitleLanguage
+              dataArray={dataArray}
+              setDataArray={setDataArray}
+              // @ts-ignore
+              disabled={!dataArray?.salesman}
+            />
             <div className={styles.button}>
               <button
                 type="submit"
@@ -47,7 +55,7 @@ const Create = () => {
           </form>
         )}
       ></Form>
-    </div>
+    </section>
   );
 };
 
