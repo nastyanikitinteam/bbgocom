@@ -67,7 +67,7 @@ const TitleLanguage: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
 
   return (
     <div className={styles.container}>
-      <h3 className={cn(styles.title, { [styles.disabled]: styles.title })}>
+      <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
         <span className={styles.num}>2</span>Title and Description
       </h3>
       {!disabled && (
@@ -94,11 +94,11 @@ const TitleLanguage: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
                   [styles.disabled]: !dataArray?.title,
                 })}
               >
-                <div className={styles.languages}>
+                <div className={styles.tabs}>
                   {langList.map(({ value }) => {
                     return (
                       <div
-                        className={cn(styles.lang, {
+                        className={cn(styles.tab, {
                           [styles.active]: value === isActiveLang,
                         })}
                         key={value}

@@ -65,3 +65,34 @@
   width: calc(100% + 88px);
   padding: 20px;
 }
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid #d8d8d8;
+  padding: 3px;
+}
+
+.tab {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 10px;
+  border-radius: 30px;
+  color: #808080;
+  transition: all 0.25s ease-in;
+  cursor: pointer;
+  &.active {
+    background: #5bb75f;
+    color: #fff;
+  }
+}
+
+.disabled {
+  .tab.active {
+    background: #d8d8d8;
+  }
+}

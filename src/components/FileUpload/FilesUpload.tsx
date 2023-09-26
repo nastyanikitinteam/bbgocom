@@ -2,6 +2,7 @@ import React, { useState, useRef, FC, useEffect } from "react";
 import styles from "./file-upload.module.scss";
 import UploadIcon from "images/icons/upload-img.svg";
 import CloseIcon from "images/icons/close.svg";
+import PlusIcon from "images/icons/plus.svg";
 import cn from "classnames";
 
 interface IProps {
@@ -9,7 +10,6 @@ interface IProps {
   selectedFiles: any;
   title: string;
   description: string;
-  isBig?: boolean;
   isSmall?: boolean;
 }
 
@@ -18,10 +18,10 @@ const FilesUpload: FC<IProps> = ({
   selectedFiles,
   title,
   description,
-  isBig,
   isSmall,
 }) => {
   const fileInputRef = useRef(null);
+  const emptyBlocks = Array(5).fill(null);
   const maxSizeInBytes = 1024 * 1024;
 
   const handleFileChange = (e) => {
@@ -78,13 +78,7 @@ const FilesUpload: FC<IProps> = ({
 
   return (
     <div className={styles.container}>
-      <div
-        className={cn(
-          styles.block,
-          { [styles.big]: isBig },
-          { [styles.small]: isSmall }
-        )}
-      >
+      <div className={cn(styles.block, { [styles.small]: isSmall })}>
         <input
           type="file"
           accept=".jpg, .jpeg, .png"
@@ -93,7 +87,7 @@ const FilesUpload: FC<IProps> = ({
           ref={fileInputRef}
           multiple
         />
-        {selectedFiles.length > 0 && !isBig ? (
+        {selectedFiles.length > 0 ? (
           <div className={styles.files}>
             {selectedFiles.map((file, index) => (
               <div className={styles.preview} key={index}>
@@ -131,23 +125,6 @@ const FilesUpload: FC<IProps> = ({
           </>
         )}
       </div>
-      {selectedFiles.length > 0 && isBig && (
-        <div className={styles.bottom}>
-          {selectedFiles.map((file, index) => (
-            <div className={styles.preview} key={index}>
-              <img src={URL.createObjectURL(file)} alt={file.name} />
-              <button
-                onClick={() => handleRemoveFile(index)}
-                className={styles.delete}
-              >
-                <span className={styles.deleteIcon}>
-                  <CloseIcon />
-                </span>
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };
