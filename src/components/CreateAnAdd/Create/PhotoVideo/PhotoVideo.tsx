@@ -31,6 +31,18 @@ const PhotoVideo: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
     setSelectedFiles(null);
   };
 
+  useEffect(() => {
+    if (selectedFiles.length) {
+      setDataArray((prev) => ({ ...prev, files: selectedFiles }));
+    } else {
+      if (dataArray.files) {
+        let obj = dataArray;
+        delete obj.files;
+        setDataArray(obj);
+      }
+    }
+  }, [selectedFiles]);
+
   return (
     <div className={styles.container}>
       <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
