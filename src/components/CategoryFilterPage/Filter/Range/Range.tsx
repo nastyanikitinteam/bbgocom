@@ -4,7 +4,6 @@ import cn from "classnames";
 
 interface IProps {
   title: string;
-
   defaultVelue1: string;
   defaultVelue2: string;
 }

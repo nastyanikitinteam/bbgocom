@@ -7,6 +7,7 @@ import ChooseCategory from "./ChooseCategory/ChooseCategory";
 import TitleLanguage from "./TitleLanguage/TitleLanguage";
 import PhotoVideo from "./PhotoVideo/PhotoVideo";
 import Price from "./Price/Price";
+import DetailedInformation from "./DetailedInformation/DetailedInformation";
 
 import cn from "classnames";
 import styles from "./create.module.scss";
@@ -27,6 +28,18 @@ const Create = () => {
     console.log(data);
   }, []);
 
+  const handleDataArray = (event, title) => {
+    if (event?.length) {
+      setDataArray((prev) => ({ ...prev, [title]: event }));
+    } else {
+      if (dataArray[title]) {
+        let obj = dataArray;
+        delete obj[title];
+        setDataArray(obj);
+      }
+    }
+  };
+
   useEffect(() => {
     console.log(dataArray);
   }, [dataArray]);
@@ -42,20 +55,30 @@ const Create = () => {
             <TitleLanguage
               dataArray={dataArray}
               setDataArray={setDataArray}
+              handleDataArray={handleDataArray}
               // @ts-ignore
               disabled={!dataArray?.salesman}
             />
             <PhotoVideo
               dataArray={dataArray}
               setDataArray={setDataArray}
+              handleDataArray={handleDataArray}
               // @ts-ignore
               disabled={!dataArray?.description}
             />
             <Price
               dataArray={dataArray}
               setDataArray={setDataArray}
+              handleDataArray={handleDataArray}
               // @ts-ignore
               disabled={!dataArray?.files}
+            />
+            <DetailedInformation
+              dataArray={dataArray}
+              setDataArray={setDataArray}
+              handleDataArray={handleDataArray}
+              // @ts-ignore
+              disabled={!dataArray?.price}
             />
 
             <div className={styles.button}>

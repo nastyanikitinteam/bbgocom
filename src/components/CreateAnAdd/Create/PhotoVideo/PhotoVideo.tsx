@@ -10,37 +10,19 @@ interface IProps {
   dataArray: any;
   setDataArray: (bool: any) => void;
   disabled: boolean;
+  handleDataArray: (event: any, title: any) => void;
 }
 
-const PhotoVideo: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
+const PhotoVideo: FC<IProps> = ({
+  dataArray,
+  setDataArray,
+  disabled,
+  handleDataArray,
+}) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
 
-  const handleTitleInput = (event) => {
-    if (event.length) {
-      setDataArray((prev) => ({ ...prev, title: event }));
-    } else {
-      if (dataArray.title) {
-        let obj = dataArray;
-        delete obj.title;
-        setDataArray(obj);
-      }
-    }
-  };
-
-  const handleRemoveFile = () => {
-    setSelectedFiles(null);
-  };
-
   useEffect(() => {
-    if (selectedFiles.length) {
-      setDataArray((prev) => ({ ...prev, files: selectedFiles }));
-    } else {
-      if (dataArray.files) {
-        let obj = dataArray;
-        delete obj.files;
-        setDataArray(obj);
-      }
-    }
+    handleDataArray && handleDataArray(selectedFiles, "files");
   }, [selectedFiles]);
 
   return (

@@ -9,10 +9,16 @@ interface IProps {
   dataArray: any;
   setDataArray: (bool: any) => void;
   disabled: boolean;
+  handleDataArray: (event: any, title: any) => void;
 }
 
-const Price: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
-  const [isActiveLang, setIsActiveLang] = useState("USD");
+const Price: FC<IProps> = ({
+  dataArray,
+  setDataArray,
+  disabled,
+  handleDataArray,
+}) => {
+  const [isActiveCurrency, setIsActiveCurrency] = useState("USD");
 
   const currencyList = useMemo(
     () => [
@@ -45,13 +51,13 @@ const Price: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
   };
 
   const handleLanguage = (value) => {
-    setIsActiveLang(value);
-    setDataArray((prev) => ({ ...prev, currency: value }));
+    setIsActiveCurrency(value);
+    handleDataArray(value, "currency");
   };
 
   useEffect(() => {
-    setDataArray((prev) => ({ ...prev, currency: isActiveLang }));
-  }, [currencyList]);
+    dataArray?.title && handleDataArray(isActiveCurrency, "currency");
+  }, [dataArray?.files]);
 
   return (
     <div className={styles.container}>
@@ -69,7 +75,7 @@ const Price: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
                     return (
                       <div
                         className={cn(styles.tab, {
-                          [styles.active]: value === isActiveLang,
+                          [styles.active]: value === isActiveCurrency,
                         })}
                         key={value}
                         onClick={() => handleLanguage(value)}

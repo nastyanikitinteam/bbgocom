@@ -8,15 +8,18 @@ interface IProps {
   extClassName?: string;
   secondaryColor?: string;
   textColor?: string;
-  input: any;
+  input?: any;
   label?: string;
-  meta: any;
+  meta?: any;
   required?: boolean;
   onClick?: () => void;
   readonly?: boolean;
   number?: boolean;
   text?: string;
-  children: ReactNode;
+  children?: ReactNode;
+  name?: string;
+  value?: string;
+  onChange?: () => void;
 }
 
 const Radio: React.FC<IProps> = ({
@@ -33,6 +36,9 @@ const Radio: React.FC<IProps> = ({
   number,
   text,
   children,
+  name,
+  value,
+  onChange,
 }) => {
   return (
     <label
@@ -40,14 +46,17 @@ const Radio: React.FC<IProps> = ({
     >
       <input
         {...input}
+        name={!input && name}
+        value={!input && value}
         className={styles.input}
         id={placeholder}
         onClick={onClick}
-        type={input.type}
+        onChange={onChange && onChange}
+        type="radio"
         readOnly={readonly}
       />
       <div className={styles.block}></div>
-      <p className={styles.text}>{children}</p>
+      {children && <p className={styles.text}>{children}</p>}
     </label>
   );
 };

@@ -15,6 +15,7 @@ interface IProps {
   meta?: any;
   required?: boolean;
   row?: number;
+  keyName?: string;
   onChange?: () => void;
 }
 
@@ -29,6 +30,7 @@ const Textarea: React.FC<IProps> = ({
   secondaryColor,
   textColor,
   row,
+  keyName,
   onChange,
 }) => {
   const [isValue, setIsValue] = useState("");
@@ -39,7 +41,7 @@ const Textarea: React.FC<IProps> = ({
 
   useEffect(() => {
     // @ts-ignore
-    onChange && onChange(isValue);
+    onChange && (keyName ? onChange(isValue, keyName) : onChange(isValue));
   }, [isValue]);
 
   return (

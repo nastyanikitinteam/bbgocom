@@ -24,6 +24,7 @@ interface IProps {
   isCardNumber?: boolean;
   isDate?: boolean;
   maxLength?: number;
+  keyName?: string;
   onChange?: () => void;
 }
 
@@ -44,6 +45,7 @@ const FormInput: React.FC<IProps> = ({
   isDate,
   maxLength,
   onChange,
+  keyName,
 }) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [cardNumber, setCardNumber] = useState("");
@@ -66,7 +68,7 @@ const FormInput: React.FC<IProps> = ({
 
   useEffect(() => {
     // @ts-ignore
-    onChange && onChange(isValue);
+    onChange && (keyName ? onChange(isValue, keyName) : onChange(isValue));
   }, [isValue]);
 
   return (

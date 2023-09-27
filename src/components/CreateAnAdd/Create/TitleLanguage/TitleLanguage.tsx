@@ -9,9 +9,15 @@ interface IProps {
   dataArray: any;
   setDataArray: (bool: any) => void;
   disabled: boolean;
+  handleDataArray: (event: any, title: any) => void;
 }
 
-const TitleLanguage: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
+const TitleLanguage: FC<IProps> = ({
+  dataArray,
+  setDataArray,
+  disabled,
+  handleDataArray,
+}) => {
   const [isActiveLang, setIsActiveLang] = useState("EN");
 
   const langList = useMemo(
@@ -32,38 +38,14 @@ const TitleLanguage: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
     []
   );
 
-  const handleTitleInput = (event) => {
-    if (event.length) {
-      setDataArray((prev) => ({ ...prev, title: event }));
-    } else {
-      if (dataArray.title) {
-        let obj = dataArray;
-        delete obj.title;
-        setDataArray(obj);
-      }
-    }
-  };
-
-  const handleDescription = (event) => {
-    if (event.length) {
-      setDataArray((prev) => ({ ...prev, description: event }));
-    } else {
-      if (dataArray.title) {
-        let obj = dataArray;
-        delete obj.description;
-        setDataArray(obj);
-      }
-    }
-  };
-
   const handleLanguage = (value) => {
     setIsActiveLang(value);
-    setDataArray((prev) => ({ ...prev, language: value }));
+    handleDataArray(value, "language");
   };
 
   useEffect(() => {
-    setDataArray((prev) => ({ ...prev, language: isActiveLang }));
-  }, [langList]);
+    dataArray?.title && handleDataArray(isActiveLang, "language");
+  }, [dataArray?.title]);
 
   return (
     <div className={styles.container}>
@@ -82,7 +64,8 @@ const TitleLanguage: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
                   type="text"
                   component={FormInput}
                   extClassName="theme"
-                  onChange={handleTitleInput}
+                  keyName="title"
+                  onChange={handleDataArray}
                 />
               </div>
             </div>
@@ -126,7 +109,8 @@ const TitleLanguage: FC<IProps> = ({ dataArray, setDataArray, disabled }) => {
                 type="text"
                 component={Textarea}
                 row={11}
-                onChange={handleDescription}
+                keyName="description"
+                onChange={handleDataArray}
               />
             </div>
           </div>
