@@ -1,8 +1,9 @@
 import { useMemo, useCallback, useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { Form, Field } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
-
+import useMediaQuery from "src/utils/useMediaQuery";
 import ChooseCategory from "./ChooseCategory/ChooseCategory";
 import TitleLanguage from "./TitleLanguage/TitleLanguage";
 import PhotoVideo from "./PhotoVideo/PhotoVideo";
@@ -14,11 +15,15 @@ import Contacts from "./Contacts/Contacts";
 import cn from "classnames";
 import styles from "./create.module.scss";
 
+import ArrowSvg from "images/icons/drop.svg";
+
 const Create = () => {
+  const isMobile = useMediaQuery(768);
   const [dataArray, setDataArray] = useState({});
 
-  const validationSchema = yup.object().shape({});
+  const router = useRouter();
 
+  const validationSchema = yup.object().shape({});
   const validate = validateForm(validationSchema);
 
   const onSubmit = useCallback((data, form) => {
@@ -37,62 +42,80 @@ const Create = () => {
     }
   };
 
+  const cancel = () => {
+    setDataArray({});
+    router.back();
+  };
+
   useEffect(() => {
     console.log(dataArray);
   }, [dataArray]);
 
   return (
     <section className={styles.container}>
-      <Form
-        onSubmit={onSubmit}
-        validate={validate}
-        render={({ handleSubmit }) => (
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <ChooseCategory dataArray={dataArray} setDataArray={setDataArray} />
-            <TitleLanguage
-              dataArray={dataArray}
-              setDataArray={setDataArray}
-              handleDataArray={handleDataArray}
-              // @ts-ignore
-              disabled={!dataArray?.salesman}
-            />
-            <PhotoVideo
-              dataArray={dataArray}
-              setDataArray={setDataArray}
-              handleDataArray={handleDataArray}
-              // @ts-ignore
-              disabled={!dataArray?.description}
-            />
-            <Price
-              dataArray={dataArray}
-              setDataArray={setDataArray}
-              handleDataArray={handleDataArray}
-              // @ts-ignore
-              disabled={!dataArray?.files}
-            />
-            <DetailedInformation
-              dataArray={dataArray}
-              setDataArray={setDataArray}
-              handleDataArray={handleDataArray}
-              // @ts-ignore
-              disabled={!dataArray?.price}
-            />
-            <Location
-              dataArray={dataArray}
-              handleDataArray={handleDataArray}
-              // @ts-ignore
-              disabled={!dataArray?.enterArea}
-            />
-            <Contacts
-              dataArray={dataArray}
-              handleDataArray={handleDataArray}
-              setDataArray={setDataArray}
-              // @ts-ignore
-              disabled={!dataArray?.adress}
-            />
-          </form>
+      <div className="wrapper">
+        {isMobile && (
+          <div className={styles.top}>
+            <div className="cancel" onClick={cancel}>
+              Cancel
+            </div>
+            <h3 className={styles.title}>New Add</h3>
+          </div>
         )}
-      ></Form>
+        <Form
+          onSubmit={onSubmit}
+          validate={validate}
+          render={({ handleSubmit }) => (
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <ChooseCategory
+                dataArray={dataArray}
+                setDataArray={setDataArray}
+              />
+              <TitleLanguage
+                dataArray={dataArray}
+                setDataArray={setDataArray}
+                handleDataArray={handleDataArray}
+                // @ts-ignore
+                disabled={!dataArray?.salesman}
+              />
+              <PhotoVideo
+                dataArray={dataArray}
+                setDataArray={setDataArray}
+                handleDataArray={handleDataArray}
+                // @ts-ignore
+                disabled={!dataArray?.description}
+              />
+              <Price
+                dataArray={dataArray}
+                setDataArray={setDataArray}
+                handleDataArray={handleDataArray}
+                // @ts-ignore
+                disabled={!dataArray?.files}
+              />
+              <DetailedInformation
+                dataArray={dataArray}
+                setDataArray={setDataArray}
+                handleDataArray={handleDataArray}
+                // @ts-ignore
+                disabled={!dataArray?.price}
+              />
+              <Location
+                dataArray={dataArray}
+                handleDataArray={handleDataArray}
+                // @ts-ignore
+                disabled={!dataArray?.enterArea}
+              />
+              <Contacts
+                dataArray={dataArray}
+                handleDataArray={handleDataArray}
+                setDataArray={setDataArray}
+                // @ts-ignore
+                disabled={!dataArray?.adress}
+              />
+            </form>
+          )}
+        ></Form>
+      </div>
     </section>
   );
 };

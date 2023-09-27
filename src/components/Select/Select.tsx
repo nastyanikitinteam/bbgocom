@@ -30,7 +30,9 @@ const SelectContainer: FC<IPprops> = ({
   isPhoneList,
 }) => {
   const [isOpenList, setIsOpenList] = useState(false);
-  const [isChooseOption, setIsChooseOption] = useState(options[0].value);
+  const [isChooseOption, setIsChooseOption] = useState(
+    placeholder ? placeholder : options[0].value
+  );
   const [selectedOption, setSelectedOption] = useState(null);
   const [fillClass, setFillClass] = useState("");
 
@@ -41,7 +43,7 @@ const SelectContainer: FC<IPprops> = ({
     } else {
       setFillClass("");
     }
-    onChange && onChange(selectedOption);
+    onChange && onChange(selectedOption.value);
   };
 
   const isMobile = useMediaQuery(768);
@@ -49,6 +51,7 @@ const SelectContainer: FC<IPprops> = ({
   const handleListChange = (value: any) => {
     setIsOpenList(false);
     setIsChooseOption(value);
+    onChange && onChange(value);
   };
 
   const DropdownIndicator = (props) => {
@@ -78,16 +81,24 @@ const SelectContainer: FC<IPprops> = ({
       />
     </div>
   ) : (
-    <div className={cn(`default-select ${classname}`, styles.container)}>
+    <div
+      className={cn(`default-select ${classname}`, styles.container, {
+        fill: isChooseOption != placeholder,
+      })}
+    >
       <div
         className={cn("default__control", styles.input)}
         onClick={() => setIsOpenList(true)}
       >
-        {options
-          .filter(({ value }) => value === isChooseOption)
-          .map(({ value, label }) => {
-            return <div key={value}>{label}</div>;
-          })}
+        {isChooseOption === placeholder ? (
+          <p className={styles.placeholder}>{isChooseOption}</p>
+        ) : (
+          options
+            .filter(({ value }) => value === isChooseOption)
+            .map(({ value, label }) => {
+              return <div key={value}>{label}</div>;
+            })
+        )}
         <span className={styles.arrow}>
           <ArrowSvg />
         </span>

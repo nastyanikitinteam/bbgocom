@@ -56,12 +56,12 @@ const ChooseCategory: FC<IProps> = ({ dataArray, setDataArray }) => {
 
   const handleChangeDealType = (value: any) => {
     if (value != null) {
-      setDataArray((prev) => ({ ...prev, dealType: value?.value }));
+      setDataArray((prev) => ({ ...prev, dealType: value }));
     }
   };
   const handleSalesMan = (value: any) => {
     if (value != null) {
-      setDataArray((prev) => ({ ...prev, salesman: value?.value }));
+      setDataArray((prev) => ({ ...prev, salesman: value }));
     }
   };
 

@@ -1,5 +1,6 @@
 .container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 
@@ -46,7 +47,7 @@
 }
 
 .input.disabled {
-  opacity: 0.4;
+  opacity: 0.2;
   pointer-events: none;
 }
 
@@ -94,5 +95,33 @@
 .disabled {
   .tab.active {
     background: #d8d8d8;
+  }
+}
+
+@media (max-width: 998px) {
+  .categoryMenu {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .items {
+    flex-direction: column;
+  }
+  .container {
+    gap: 15px;
+  }
+  .title {
+    gap: 10px;
+  }
+  .num {
+    width: 32px;
+    height: 32px;
+  }
+  .tab {
+    padding: 8px;
+    font-size: 16px;
+    line-height: 24px;
   }
 }

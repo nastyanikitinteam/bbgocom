@@ -156,56 +156,58 @@ const FilesUpload: FC<IProps> = ({
         </div>
       )}
       <div className={styles.bottom}>
-        {emptyBlocks.map((_, index) => {
-          if (selectedFiles.length > index) {
-            return (
-              <div
-                className={styles.preview}
-                key={index}
-                draggable="true"
-                onDragStart={(e) => handleDragStart(e, index)}
-                onDragOver={(e) => handleDragOver(e, index)}
-                onDragEnd={handleDragEnd}
-              >
-                {selectedFiles[index].type.startsWith("video/") ? (
-                  <div className={styles.video}>
-                    <video
-                      src={URL.createObjectURL(selectedFiles[index])}
-                      muted={true}
-                    ></video>
+        <div className={styles.previews}>
+          {emptyBlocks.map((_, index) => {
+            if (selectedFiles.length > index) {
+              return (
+                <div
+                  className={styles.preview}
+                  key={index}
+                  draggable="true"
+                  onDragStart={(e) => handleDragStart(e, index)}
+                  onDragOver={(e) => handleDragOver(e, index)}
+                  onDragEnd={handleDragEnd}
+                >
+                  {selectedFiles[index].type.startsWith("video/") ? (
+                    <div className={styles.video}>
+                      <video
+                        src={URL.createObjectURL(selectedFiles[index])}
+                        muted={true}
+                      ></video>
+                    </div>
+                  ) : (
+                    <div className={styles.image}>
+                      <img
+                        src={URL.createObjectURL(selectedFiles[index])}
+                        alt={selectedFiles[index].name}
+                      />
+                    </div>
+                  )}
+                  <div className={styles.deleteContainer}>
+                    <button
+                      className={styles.deleteButton}
+                      onClick={() => handleRemoveFile(index)}
+                    >
+                      <CloseIcon />
+                    </button>
                   </div>
-                ) : (
-                  <div className={styles.image}>
-                    <img
-                      src={URL.createObjectURL(selectedFiles[index])}
-                      alt={selectedFiles[index].name}
-                    />
-                  </div>
-                )}
-                <div className={styles.deleteContainer}>
-                  <button
-                    className={styles.deleteButton}
-                    onClick={() => handleRemoveFile(index)}
-                  >
-                    <CloseIcon />
-                  </button>
                 </div>
-              </div>
-            );
-          } else {
-            return (
-              <div
-                className={styles.preview}
-                key={index}
-                onClick={() => fileInputRef.current.click()}
-              >
-                <span className={styles.icon}>
-                  <PlusIcon />
-                </span>
-              </div>
-            );
-          }
-        })}
+              );
+            } else {
+              return (
+                <div
+                  className={styles.preview}
+                  key={index}
+                  onClick={() => fileInputRef.current.click()}
+                >
+                  <span className={styles.icon}>
+                    <PlusIcon />
+                  </span>
+                </div>
+              );
+            }
+          })}
+        </div>
       </div>
     </div>
   );

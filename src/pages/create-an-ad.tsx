@@ -5,7 +5,7 @@ import Layout from "components/Layout/Layout";
 
 const CreateAnAddPage: NextPage = () => {
   return (
-    <Layout title="Create an add" isSecondHeader>
+    <Layout title="Create an add" isSecondHeader mobileWithoutSearchBar>
       <CreateAnAdd />
     </Layout>
   );

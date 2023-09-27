@@ -332,6 +332,24 @@
   .default-select.phone .default__control {
     padding: 7px 14px;
   }
+
+  .default-select.phone .default-item {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+  }
+  .default-select.big .default__control {
+    padding: 7px 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+  }
+  .default-select.withIcon .default__control {
+    padding-left: 46px;
+    background-position: 14px 7px;
+  }
   .default-select.phone .default__control .default-item {
     position: relative;
   }

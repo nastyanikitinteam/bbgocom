@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import styles from "./header-mobile.module.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import SearchBar from "components/SearchBar/SearchBar";
@@ -11,7 +11,11 @@ import MessageIcon from "images/icons/Message-mobile.svg";
 import ProfileIcon from "images/icons/Profile-mobile.svg";
 import WishlistIcon from "images/icons/Wishlist-mobile.svg";
 
-const HeaderMobile = () => {
+interface IProps {
+  mobileWithoutSearchBar?: boolean;
+}
+
+const HeaderMobile: FC<IProps> = ({ mobileWithoutSearchBar }) => {
   const [isOpenProfileMenu, setIsOpenProfileMenu] = useState(false);
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
 
@@ -64,7 +68,7 @@ const HeaderMobile = () => {
         </div>
         {isOpenAuthorization && <Authorization />}
         {isOpenProfileMenu && <MobileMenu />}
-        <SearchBar />
+        {!mobileWithoutSearchBar && <SearchBar />}
       </div>
     </div>
   );

@@ -1,10 +1,13 @@
 import { useMemo } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./create-an-add.module.scss";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import bannerImg from "images/create-an-add/hero-banner.jpg";
 import Create from "./Create/Create";
 
 const CreateAnAdd = () => {
+  const isMobile = useMediaQuery(768);
+
   const breadCrumbs = useMemo(
     () => [
       {
@@ -21,14 +24,17 @@ const CreateAnAdd = () => {
   );
   return (
     <>
-      <section>
-        <div className="wrapper">
-          <BreadCrumbs crumbs={breadCrumbs} />
-          <div className={styles.banner}>
-            <img src={bannerImg.src} alt="" />
+      {!isMobile && (
+        <section>
+          <div className="wrapper">
+            <BreadCrumbs crumbs={breadCrumbs} />
+            <div className={styles.banner}>
+              <img src={bannerImg.src} alt="" />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
       <Create />
     </>
   );

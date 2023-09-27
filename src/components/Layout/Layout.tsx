@@ -19,6 +19,7 @@ interface IProps {
   isSecondHeader?: boolean;
   withoutSearchBar?: boolean;
   mobileWithoutHeader?: boolean;
+  mobileWithoutSearchBar?: boolean;
 }
 
 const Layout: FC<IProps> = ({
@@ -27,6 +28,7 @@ const Layout: FC<IProps> = ({
   isSecondHeader,
   withoutSearchBar,
   mobileWithoutHeader,
+  mobileWithoutSearchBar,
 }) => {
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
 
@@ -47,7 +49,9 @@ const Layout: FC<IProps> = ({
         <title>{title}</title>
       </Head>
       {isMobile ? (
-        !mobileWithoutHeader && <HeaderMobile />
+        !mobileWithoutHeader && (
+          <HeaderMobile mobileWithoutSearchBar={mobileWithoutSearchBar} />
+        )
       ) : (
         <Header
           isSecondHeader={isSecondHeader}
@@ -56,7 +60,7 @@ const Layout: FC<IProps> = ({
       )}
       <div
         className={cn(styles.container, {
-          [styles.withoutHeder]: mobileWithoutHeader,
+          [styles.withoutHeder]: mobileWithoutHeader || mobileWithoutSearchBar,
         })}
       >
         {children}

@@ -2,6 +2,7 @@ import { useMemo, useState, FC, useEffect } from "react";
 import { Form, Field } from "react-final-form";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import Textarea from "components/FormElements/Textarea/Textarea";
+import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./title-language.module.scss";
 import cn from "classnames";
 
@@ -19,6 +20,7 @@ const TitleLanguage: FC<IProps> = ({
   handleDataArray,
 }) => {
   const [isActiveLang, setIsActiveLang] = useState("EN");
+  const isMobile = useMediaQuery(768);
 
   const langList = useMemo(
     () => [
@@ -108,7 +110,7 @@ const TitleLanguage: FC<IProps> = ({
                 placeholder={"Enter Description"}
                 type="text"
                 component={Textarea}
-                row={11}
+                row={isMobile ? 5 : 11}
                 keyName="description"
                 onChange={handleDataArray}
               />

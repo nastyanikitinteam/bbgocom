@@ -354,6 +354,16 @@ input[type="number"] {
   }
 }
 
+.cancel {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 input {
   font-family: "Golos Text", sans-serif;
   &::placeholder {
