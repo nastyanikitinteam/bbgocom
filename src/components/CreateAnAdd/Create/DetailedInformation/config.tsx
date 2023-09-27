@@ -92,3 +92,101 @@ export const colors = [
   "pink",
   "lightPink",
 ];
+
+export const regionList = [
+  {
+    value: "Northern Thailand",
+    label: "Northern Thailand",
+  },
+  {
+    value: "Northeastern Thailand",
+    label: "Northeastern Thailand",
+  },
+  {
+    value: "Western Thailand",
+    label: "Western Thailand",
+  },
+  {
+    value: "Central Thailand",
+    label: "Central Thailand",
+  },
+  {
+    value: "Eastern Thailand",
+    label: "Eastern Thailand",
+  },
+  {
+    value: "Southern Thailand",
+    label: "Southern Thailand",
+  },
+];
+
+export const adressList = [
+  {
+    id: 0,
+    name: "Lamphun Southern Thailand",
+  },
+  {
+    id: 1,
+    name: "Lamphun",
+  },
+  {
+    id: 2,
+    name: "Lampang",
+  },
+  {
+    id: 3,
+    name: "Uttaradit",
+  },
+  {
+    id: 4,
+    name: "Phrae",
+  },
+  {
+    id: 5,
+    name: "Nan",
+  },
+  {
+    id: 6,
+    name: "Phayao",
+  },
+  {
+    id: 7,
+    name: "Chiang Rai",
+  },
+  {
+    id: 8,
+    name: "Mae Hong Son",
+  },
+  {
+    id: 9,
+    name: "Nakhon Sawan",
+  },
+  {
+    id: 10,
+    name: "Uthai Thani",
+  },
+  {
+    id: 11,
+    name: "Kamphaeng Phet",
+  },
+  {
+    id: 12,
+    name: "Tak",
+  },
+  {
+    id: 13,
+    name: "Sukhothai",
+  },
+  {
+    id: 14,
+    name: "Phitsanulok",
+  },
+  {
+    id: 15,
+    name: "Phichit",
+  },
+  {
+    id: 16,
+    name: "Phetchabun",
+  },
+];

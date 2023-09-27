@@ -1,0 +1,36 @@
+@import "../steps.module.scss";
+
+.phone {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.code {
+  max-width: 148px;
+  width: 100%;
+}
+
+.number {
+  width: 100%;
+}
+
+.description {
+  color: #808080;
+  display: grid;
+  gap: 12px;
+  a {
+    color: #38953c;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.button {
+  max-width: 260px;
+  width: 100%;
+}

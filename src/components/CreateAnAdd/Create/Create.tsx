@@ -8,6 +8,8 @@ import TitleLanguage from "./TitleLanguage/TitleLanguage";
 import PhotoVideo from "./PhotoVideo/PhotoVideo";
 import Price from "./Price/Price";
 import DetailedInformation from "./DetailedInformation/DetailedInformation";
+import Location from "./Location/Location";
+import Contacts from "./Contacts/Contacts";
 
 import cn from "classnames";
 import styles from "./create.module.scss";
@@ -15,12 +17,7 @@ import styles from "./create.module.scss";
 const Create = () => {
   const [dataArray, setDataArray] = useState({});
 
-  const validationSchema = yup.object().shape({
-    firstName: yup.string().required(`No correct first name`),
-    lastName: yup.string().required(`No correct last name`),
-    email: yup.string().email().required(`No correct email`),
-    password: yup.string().required(`Wrong phone format`),
-  });
+  const validationSchema = yup.object().shape({});
 
   const validate = validateForm(validationSchema);
 
@@ -80,16 +77,19 @@ const Create = () => {
               // @ts-ignore
               disabled={!dataArray?.price}
             />
-
-            <div className={styles.button}>
-              <button
-                type="submit"
-                className={cn("default-button", styles.button)}
-                aria-label={`Crate an account`}
-              >
-                Crate an account
-              </button>
-            </div>
+            <Location
+              dataArray={dataArray}
+              handleDataArray={handleDataArray}
+              // @ts-ignore
+              disabled={!dataArray?.enterArea}
+            />
+            <Contacts
+              dataArray={dataArray}
+              handleDataArray={handleDataArray}
+              setDataArray={setDataArray}
+              // @ts-ignore
+              disabled={!dataArray?.adress}
+            />
           </form>
         )}
       ></Form>

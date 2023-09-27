@@ -38,18 +38,6 @@ const Price: FC<IProps> = ({
     []
   );
 
-  const handlePriceInput = (event) => {
-    if (event.length) {
-      setDataArray((prev) => ({ ...prev, price: event }));
-    } else {
-      if (dataArray.price) {
-        let obj = dataArray;
-        delete obj.price;
-        setDataArray(obj);
-      }
-    }
-  };
-
   const handleLanguage = (value) => {
     setIsActiveCurrency(value);
     handleDataArray(value, "currency");
@@ -101,7 +89,8 @@ const Price: FC<IProps> = ({
                   type="number"
                   component={FormInput}
                   extClassName="price"
-                  onChange={handlePriceInput}
+                  keyName="price"
+                  onChange={handleDataArray}
                 />
               </div>
             </div>
