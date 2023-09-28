@@ -63,7 +63,10 @@ const Search: FC<IProps> = ({
             })}
         </div>
       ) : (
-        <NoResult />
+        <NoResult
+          title="You haven't searched yet"
+          description="Find the products you need"
+        />
       )}
     </div>
   );

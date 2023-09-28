@@ -97,7 +97,7 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
               !isSecondHeader && (
                 <ul className={styles.list}>
                   <li className={styles.item}>
-                    <a>Help</a>
+                    <Link href="/help">Help</Link>
                   </li>
                   <li className={styles.item}>
                     <Link href="/advertise-with-us">Advertise with us</Link>

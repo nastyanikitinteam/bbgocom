@@ -15,7 +15,8 @@
   justify-content: flex-end;
   align-items: center;
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   right: 0;
   border: none;
   color: #5bb75f;

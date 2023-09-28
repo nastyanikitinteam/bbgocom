@@ -50,22 +50,17 @@ const PopularCategory = () => {
   return (
     <section className={styles.container}>
       <div className={cn("wrapper", styles.wrapper)}>
-        <div className={styles.top}>
-          <h2
-            className={cn("title", styles.title)}
-            data-aos-anchor-placement="center-bottom"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            Popular Categories
-          </h2>
+        <div
+          className={styles.top}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <h2 className={cn("title", styles.title)}>Popular Categories</h2>
           {isMobile && (
             <div
               className={styles.all}
               onClick={() => setIsShowCategoryMenu(true)}
-              data-aos-anchor-placement="center-bottom"
-              data-aos="fade-up"
-              data-aos-delay="300"
             >
               View all
               <span className={styles.icon}>
@@ -101,7 +96,7 @@ const PopularCategory = () => {
             className={styles.all}
             onClick={() => setIsViewAll((prev) => !prev)}
             data-aos-anchor-placement="center-bottom"
-            data-aos="fade"
+            data-aos="fade-up"
             data-aos-delay="300"
           >
             {isViewAll ? "Hide Category" : "View all Category"}

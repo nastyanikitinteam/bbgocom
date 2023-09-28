@@ -86,7 +86,7 @@ const SelectSearch: FC<IProps> = ({
             );
           })
         ) : (
-          <NoResult />
+          <NoResult title="You haven't searched yet" />
         )}
       </div>
     </div>

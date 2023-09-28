@@ -59,7 +59,7 @@
     color: #808080;
   }
   @media (max-width: 768px) {
-    padding: 7px 14px;
+    padding: 9px 14px;
     border-radius: 20px;
     font-size: 14px;
     font-weight: 400;
@@ -89,6 +89,13 @@
     .toolError {
       opacity: 1;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .errorIcon {
+    top: 9px;
+    right: 10px;
   }
 }
 
