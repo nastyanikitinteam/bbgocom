@@ -36,6 +36,8 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
                   options={regionList}
                   classname="region big withIcon"
                   onChange={handleRegion}
+                  placeholder="Choose region"
+                  title="Choose region"
                 />
               </div>
             </div>

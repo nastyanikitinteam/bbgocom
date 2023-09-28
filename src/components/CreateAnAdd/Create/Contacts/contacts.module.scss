@@ -28,9 +28,19 @@
   display: flex;
   justify-content: space-between;
   align-content: center;
+  gap: 5px;
 }
 
 .button {
   max-width: 260px;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .code {
+    max-width: 114px;
+  }
+  .buttons {
+    margin-top: 10px;
+  }
 }
