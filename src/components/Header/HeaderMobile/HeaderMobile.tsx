@@ -1,4 +1,6 @@
-import { useState, useEffect, FC } from "react";
+import { useState, useEffect, FC, useMemo } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "./header-mobile.module.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import SearchBar from "components/SearchBar/SearchBar";
@@ -18,10 +20,10 @@ interface IProps {
 const HeaderMobile: FC<IProps> = ({ mobileWithoutSearchBar }) => {
   const [isOpenProfileMenu, setIsOpenProfileMenu] = useState(false);
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (isOpenProfileMenu || isOpenAuthorization) {
-      console.log("work");
       document.body.classList.add("hidden");
     } else {
       document.body.classList.remove("hidden");
@@ -31,6 +33,41 @@ const HeaderMobile: FC<IProps> = ({ mobileWithoutSearchBar }) => {
     };
   }, [isOpenProfileMenu]);
 
+  const handleProfileMenu = () => {
+    setIsOpenProfileMenu((prev) => !prev);
+  };
+
+  const mobileMenu = useMemo(
+    () => [
+      {
+        id: 0,
+        icon: <HomeIcon />,
+        link: "/",
+      },
+      {
+        id: 1,
+        icon: <WishlistIcon />,
+        link: "",
+      },
+      {
+        id: 2,
+        icon: <CreateAdIcon />,
+        link: "/create-an-ad",
+      },
+      {
+        id: 3,
+        icon: <MessageIcon />,
+        link: "/my-messages",
+      },
+      {
+        id: 4,
+        icon: <ProfileIcon />,
+        fn: () => handleProfileMenu(),
+      },
+    ],
+    []
+  );
+
   return (
     <div className={styles.container}>
       <div className="wrapper">
@@ -39,32 +76,30 @@ const HeaderMobile: FC<IProps> = ({ mobileWithoutSearchBar }) => {
             [styles.openMenu]: isOpenProfileMenu || isOpenAuthorization,
           })}
         >
-          <div className={styles.item}>
-            <HomeIcon />
-          </div>
-          <div className={styles.item}>
-            <WishlistIcon />
-          </div>
-          <div className={styles.item}>
-            <CreateAdIcon />
-          </div>
-          <div className={styles.item}>
-            <MessageIcon />
-          </div>
-          {/* <div
-            className={cn(styles.item, {
-              [styles.aсtive]: isOpenProfileMenu || isOpenAuthorization,
-            })}
-            onClick={() => setIsOpenAuthorization((prev) => !prev)}
-          >
-            <ProfileIcon />
-          </div> */}
-          <div
-            className={cn(styles.item, { [styles.aсtive]: isOpenProfileMenu })}
-            onClick={() => setIsOpenProfileMenu((prev) => !prev)}
-          >
-            <ProfileIcon />
-          </div>
+          {mobileMenu.map(({ id, icon, link, fn }) => {
+            return !fn ? (
+              <Link
+                href={link}
+                className={cn(
+                  styles.item,
+                  router.pathname == link && [styles.active]
+                )}
+                key={id}
+              >
+                {icon}
+              </Link>
+            ) : (
+              <div
+                className={cn(styles.item, {
+                  [styles.active]: isOpenProfileMenu,
+                })}
+                key={id}
+                onClick={fn}
+              >
+                {icon}
+              </div>
+            );
+          })}
         </div>
         {isOpenAuthorization && <Authorization />}
         {isOpenProfileMenu && <MobileMenu />}

@@ -77,6 +77,11 @@
   svg {
     width: 100%;
   }
+  &.fill {
+    path {
+      stroke: #000;
+    }
+  }
 }
 
 .active {

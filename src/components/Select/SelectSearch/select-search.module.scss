@@ -1,0 +1,76 @@
+@import "../select.module.scss";
+
+.top {
+  padding: 0 20px 20px;
+}
+
+.input {
+  border-radius: 20px;
+  border: 1px solid #d8d8d8;
+  background: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 7px 10px 7px 15px;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  p {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    @media (max-width: 768px) {
+      color: #808080;
+    }
+  }
+  path {
+    stroke: #808080;
+  }
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+  &.fill {
+    border-color: #000;
+    path {
+      stroke: #000;
+    }
+    p {
+      color: #000;
+    }
+  }
+  input {
+    border: none;
+    background: none;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  min-width: 24px;
+  width: 24px;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+  &.fill {
+    path {
+      stroke: #000;
+    }
+  }
+}
+
+.list {
+  min-height: 323px;
+}

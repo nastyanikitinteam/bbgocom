@@ -97,12 +97,12 @@ const LocationMobile: FC<IProps> = ({
         <div className={cn(styles.block, { [styles.active]: isOpenList })}>
           <h3 className={styles.subtitle}>Choose region</h3>
           <div className={styles.top}>
-            <div className={styles.input}>
-              <span
-                className={cn(styles.icon, {
-                  [styles.fill]: isSearchRegionQuery.length > 0,
-                })}
-              >
+            <div
+              className={cn(styles.input, {
+                [styles.fill]: isSearchRegionQuery.length > 0,
+              })}
+            >
+              <span className={styles.icon}>
                 <MapIcon />
               </span>
               <input

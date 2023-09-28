@@ -75,7 +75,7 @@ const SearchHistory: FC<IProps> = ({
                 <span className={styles.icon}>
                   <SearchIcon />
                 </span>
-                {name}
+                <p className={styles.text}>{name}</p>
               </div>
             );
           })}
@@ -83,7 +83,7 @@ const SearchHistory: FC<IProps> = ({
       </div>
       {isMobile && (
         <div className={styles.bottom}>
-          <div className={cn("default-button sm border")}>
+          <div className={cn("default-button sm border", styles.button)}>
             <span className="icon">
               <ClearIcon />
             </span>

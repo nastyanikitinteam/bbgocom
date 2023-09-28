@@ -74,7 +74,7 @@ const SignUp: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
                   <div className={styles.code}>
                     <Select
                       options={isCountryList}
-                      isPhoneList
+                      isSearch
                       classname="phone"
                     />
                   </div>

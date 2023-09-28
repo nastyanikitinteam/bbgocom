@@ -57,7 +57,7 @@ const Search: FC<IProps> = ({
                   <span className={styles.icon}>
                     <SearchIcon />
                   </span>
-                  {item.name}
+                  <p className={styles.text}>{item.name}</p>
                 </div>
               );
             })}

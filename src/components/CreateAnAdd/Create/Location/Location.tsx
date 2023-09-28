@@ -17,7 +17,13 @@ interface IProps {
 const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
   const handleRegion = (value: any) => {
     if (value != null) {
-      handleDataArray(value?.value, "region");
+      handleDataArray(value, "region");
+    }
+  };
+
+  const handleAdress = (value: any) => {
+    if (value != null) {
+      handleDataArray(value, "adress");
     }
   };
 
@@ -44,14 +50,13 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
             <div className={styles.item}>
               <p className={styles.label}>Address</p>
               <div className={styles.input}>
-                <Field
-                  name="adress"
-                  type="text"
-                  placeholder={"Adress"}
-                  component={FormInput}
-                  extClassName="search"
-                  keyName="adress"
-                  onChange={handleDataArray}
+                <SelectContainer
+                  options={adressList}
+                  classname="search big withIcon"
+                  onChange={handleAdress}
+                  placeholder="Enter address"
+                  title="Enter address"
+                  isSearch
                 />
               </div>
             </div>

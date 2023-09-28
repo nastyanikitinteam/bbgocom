@@ -19,6 +19,9 @@
   }
   &.fill {
     border-color: #000000;
+    path {
+      stroke: #000;
+    }
   }
   input {
     border: none;
@@ -44,7 +47,8 @@
   width: 24px;
   min-width: 24px;
   svg {
-    width: 100%;
+    width: 24px;
+    height: 24px;
   }
   path {
     stroke: #808080;

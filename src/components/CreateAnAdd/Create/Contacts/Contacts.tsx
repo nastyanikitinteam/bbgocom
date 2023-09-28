@@ -82,7 +82,7 @@ const Contacts: FC<IProps> = ({
                   <div className={styles.code}>
                     <Select
                       options={isCountryList}
-                      isPhoneList
+                      isSearch
                       classname="phone"
                       title="Choose Country"
                       onChange={handlePhoneCode}

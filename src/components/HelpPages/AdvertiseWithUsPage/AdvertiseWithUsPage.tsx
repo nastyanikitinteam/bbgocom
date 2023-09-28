@@ -98,7 +98,7 @@ const AdvertiseWithUs = () => {
                       <p className={styles.label}>Your phone</p>
                       <Select
                         options={isCountryList}
-                        isPhoneList
+                        isSearch
                         classname="phone"
                         title="Choose Country"
                       />

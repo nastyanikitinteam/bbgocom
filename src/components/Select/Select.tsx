@@ -1,6 +1,7 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Select, { components } from "react-select";
 import PortalContainer from "components/PortalContainer/PortalContainer";
+import SelectSearch from "./SelectSearch/SelectSearch";
 import useMediaQuery from "src/utils/useMediaQuery";
 
 import styles from "./select.module.scss";
@@ -11,23 +12,23 @@ import ArrowSvg from "images/icons/drop.svg";
 import ArrowSmSvg from "images/icons/drop-sm.svg";
 import CloseIcon from "images/icons/close.svg";
 
-interface IPprops {
+interface IProps {
   options: any;
   classname?: string;
   language?: boolean;
   placeholder?: string;
   onChange?: (value: any) => void;
-  isPhoneList?: boolean;
+  isSearch?: boolean;
   title?: string;
 }
-const SelectContainer: FC<IPprops> = ({
+const SelectContainer: FC<IProps> = ({
   options,
   classname,
   language,
   placeholder,
   onChange,
   title,
-  isPhoneList,
+  isSearch,
 }) => {
   const [isOpenList, setIsOpenList] = useState(false);
   const [isChooseOption, setIsChooseOption] = useState(
@@ -61,6 +62,15 @@ const SelectContainer: FC<IPprops> = ({
       </components.DropdownIndicator>
     );
   };
+
+  const NoOptionsMessage = (props) => {
+    return (
+      <components.NoOptionsMessage {...props}>
+        <span className={styles.noresult}>No result</span>
+      </components.NoOptionsMessage>
+    );
+  };
+
   return !isMobile ? (
     <div className={styles.container}>
       {language && (
@@ -74,8 +84,8 @@ const SelectContainer: FC<IPprops> = ({
         placeholder={placeholder && placeholder}
         className={cn(`default-select ${classname} ${fillClass}`)}
         classNamePrefix="default"
-        isSearchable={isPhoneList ? true : false}
-        components={{ DropdownIndicator }}
+        isSearchable={isSearch ? true : false}
+        components={{ DropdownIndicator, NoOptionsMessage }}
         onChange={handleChange}
         // menuIsOpen
       />
@@ -99,7 +109,7 @@ const SelectContainer: FC<IPprops> = ({
               return <div key={value}>{label}</div>;
             })
         )}
-        <span className={styles.arrow}>
+        <span className={cn(styles.arrow, "default__indicator")}>
           <ArrowSvg />
         </span>
       </div>
@@ -118,21 +128,29 @@ const SelectContainer: FC<IPprops> = ({
           <div className={styles.close} onClick={() => setIsOpenList(false)}>
             <CloseIcon />
           </div>
-          <div className={styles.list}>
-            {options.map(({ value, label }) => {
-              return (
-                <div
-                  key={value}
-                  className={cn(styles.item, {
-                    [styles.active]: value === isChooseOption,
-                  })}
-                  onClick={() => handleListChange(value)}
-                >
-                  {label}
-                </div>
-              );
-            })}
-          </div>
+          {isSearch ? (
+            <SelectSearch
+              list={options}
+              handleListChange={handleListChange}
+              isChooseOption={isChooseOption}
+            />
+          ) : (
+            <div className={styles.list}>
+              {options.map(({ value, label }) => {
+                return (
+                  <div
+                    key={value}
+                    className={cn(styles.item, {
+                      [styles.active]: value === isChooseOption,
+                    })}
+                    onClick={() => handleListChange(value)}
+                  >
+                    {label}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </PortalContainer>
     </div>

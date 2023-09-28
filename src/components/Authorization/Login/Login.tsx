@@ -72,7 +72,7 @@ const Login: FC<IProps> = ({ changeActiveAuth }) => {
                   <div className={styles.code}>
                     <Select
                       options={isCountryList}
-                      isPhoneList
+                      isSearch
                       classname="phone"
                       title="Choose Country"
                     />

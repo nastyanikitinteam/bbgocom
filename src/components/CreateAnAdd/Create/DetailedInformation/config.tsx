@@ -122,71 +122,71 @@ export const regionList = [
 
 export const adressList = [
   {
-    id: 0,
-    name: "Lamphun Southern Thailand",
+    value: "Lamphun Southern Thailand",
+    label: "Lamphun Southern Thailand",
   },
   {
-    id: 1,
-    name: "Lamphun",
+    value: "Lamphun",
+    label: "Lamphun",
   },
   {
-    id: 2,
-    name: "Lampang",
+    value: "Lampang",
+    label: "Lampang",
   },
   {
-    id: 3,
-    name: "Uttaradit",
+    value: "Uttaradit",
+    label: "Uttaradit",
   },
   {
-    id: 4,
-    name: "Phrae",
+    value: "Phrae",
+    label: "Phrae",
   },
   {
-    id: 5,
-    name: "Nan",
+    value: "Nan",
+    label: "Nan",
   },
   {
-    id: 6,
-    name: "Phayao",
+    value: "Phayao",
+    label: "Phayao",
   },
   {
-    id: 7,
-    name: "Chiang Rai",
+    value: "Chiang Rai",
+    label: "Chiang Rai",
   },
   {
-    id: 8,
-    name: "Mae Hong Son",
+    value: "Mae Hong Son",
+    label: "Mae Hong Son",
   },
   {
-    id: 9,
-    name: "Nakhon Sawan",
+    value: "Nakhon Sawan",
+    label: "Nakhon Sawan",
   },
   {
-    id: 10,
-    name: "Uthai Thani",
+    value: "Uthai Thani",
+    label: "Uthai Thani",
   },
   {
-    id: 11,
-    name: "Kamphaeng Phet",
+    value: "Kamphaeng Phet",
+    label: "Kamphaeng Phet",
   },
   {
-    id: 12,
-    name: "Tak",
+    value: "Tak",
+    label: "Tak",
   },
   {
-    id: 13,
-    name: "Sukhothai",
+    value: "Sukhothai",
+    label: "Sukhothai",
   },
   {
-    id: 14,
-    name: "Phitsanulok",
+    value: "Phitsanulok",
+    label: "Phitsanulok",
   },
   {
-    id: 15,
-    name: "Phichit",
+    value: "Phichit",
+    label: "Phichit",
   },
   {
-    id: 16,
-    name: "Phetchabun",
+    value: "Phetchabun",
+    label: "Phetchabun",
   },
 ];

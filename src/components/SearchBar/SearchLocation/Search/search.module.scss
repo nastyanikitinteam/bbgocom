@@ -34,7 +34,8 @@
     min-width: 24px;
     width: 24px;
     svg {
-      width: 100%;
+      width: 24px;
+      height: 24px;
     }
     path {
       stroke: #808080;
@@ -45,6 +46,10 @@
       background: #f5f5f7;
     }
   }
+}
+
+.text {
+  padding-top: 2px;
 }
 
 @media (max-width: 768px) {
