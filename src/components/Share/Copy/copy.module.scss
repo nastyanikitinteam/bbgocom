@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+  input {
+    color: #808080;
+    padding-right: 42px !important;
+  }
+}
+
+.button {
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
