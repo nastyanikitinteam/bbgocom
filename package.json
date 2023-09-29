@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-google-maps/api": "^2.19.2",
+    "@googlemaps/markerclusterer": "^2.0.10",
+    "@googlemaps/react-wrapper": "^1.1.35",
     "@svgr/webpack": "^7.0.0",
+    "@tanstack/react-query": "^4.35.3",
     "@types/node": "20.4.5",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
+    "@ubilabs/google-maps-react-hooks": "^1.5.1",
     "antd": "^5.9.0",
     "antd-img-crop": "^4.12.2",
     "aos": "^2.3.4",
@@ -21,6 +24,7 @@
     "classnames": "^2.3.2",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "framer-motion": "^10.16.4",
     "lodash": "^4.17.21",
     "next": "^13.4.12",
     "react": "18.2.0",
