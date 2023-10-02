@@ -16,6 +16,7 @@
     }
   }
   &.isHorizontal {
+    min-height: 250px;
     .block {
       flex-direction: row;
     }

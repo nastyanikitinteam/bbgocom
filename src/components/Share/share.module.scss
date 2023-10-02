@@ -1,7 +1,13 @@
 .container {
   display: grid;
   gap: 15px;
-  max-width: 280px;
+}
+
+.isModal {
+  background: #fff;
+  max-width: none;
+  padding: 40px;
+  border-radius: 25px;
 }
 
 .title {
@@ -11,10 +17,13 @@
   letter-spacing: -0.2px;
   text-align: center;
 }
+
 .socials {
   display: flex;
   justify-content: space-between;
   gap: 8px;
+  max-width: 280px;
+  margin: 0 auto;
 }
 
 .social {
@@ -28,12 +37,22 @@
   }
 }
 
+.item {
+  max-width: 280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 @media (max-width: 768px) {
   .container {
     max-width: none;
   }
   .socials {
     gap: 0;
+    max-width: none;
+  }
+  .item {
+    max-width: none;
   }
   .social {
     svg {

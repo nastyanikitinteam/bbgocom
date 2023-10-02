@@ -31,7 +31,6 @@ const AddToWishList: FC<IProps> = ({ cancel }) => {
   const searchResults = searchArray(wishlistArr, isSearchQuery);
 
   const onChangeSearchInput = (event) => {
-    console.log("work");
     setIsSearchQuery(event.target.value);
     // setIsSearchList(searchArray(list, event.target.value));
   };

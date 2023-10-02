@@ -1,6 +1,7 @@
-import { useMemo, useState, useRef } from "react";
+import { useMemo, useState, useRef, FC } from "react";
 import styles from "./share.module.scss";
 import Copy from "./Copy/Copy";
+import cn from "classnames";
 
 import Facebook from "images/icons/social-facebook.svg";
 import Instagram from "images/icons/social-instagram.svg";
@@ -9,7 +10,11 @@ import Telegram from "images/icons/social-telegram.svg";
 import Twitter from "images/icons/social-twitter.svg";
 import Whatsapp from "images/icons/social-whatsapp.svg";
 
-const Share = () => {
+interface IProps {
+  isModal?: boolean;
+}
+
+const Share: FC<IProps> = ({ isModal }) => {
   const [inputValue, setInputValue] = useState("https://bbgo.com/ad_id1234456");
   const inputRef = useRef(null);
 
@@ -50,7 +55,7 @@ const Share = () => {
   );
 
   return (
-    <div className={styles.container}>
+    <div className={cn(styles.container, { [styles.isModal]: isModal })}>
       <h4 className={styles.title}>Share with</h4>
       <div className={styles.socials}>
         {socialsList.map(({ id, icon }) => {
@@ -61,7 +66,9 @@ const Share = () => {
           );
         })}
       </div>
-      <Copy />
+      <div className={styles.item}>
+        <Copy />
+      </div>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import cover from "images/main/card-product.png";
 import cover1 from "images/wishlist/img-1.jpg";
 import cover2 from "images/wishlist/img-2.jpg";
 import cover3 from "images/wishlist/img-3.jpg";
@@ -7,7 +8,8 @@ export const wishlistArr = [
   {
     id: 0,
     name: "Buy Home",
-    description: "",
+    description:
+      "I will add here all the ads that suit me that are available in my region. ",
     update: "20.09.2023",
     items: [
       {
@@ -16,19 +18,19 @@ export const wishlistArr = [
         images: [
           {
             id: 0,
-            url: cover1.src,
+            image: cover1.src,
           },
           {
             id: 1,
-            url: cover1.src,
+            image: cover1.src,
           },
           {
             id: 2,
-            url: cover1.src,
+            image: cover.src,
           },
           {
             id: 3,
-            url: cover1.src,
+            image: cover.src,
           },
         ],
         price: "$1,250.00",
@@ -37,16 +39,15 @@ export const wishlistArr = [
       },
       {
         id: 1,
-        name: "iPad Air Silver, 12.9-inch display, M2 chip, 2TB, Wi-Fi",
-
+        name: "676iPad Air Silver, 12.9-inch display, M2 chip, 2TB, Wi-Fi",
         images: [
           {
             id: 0,
-            url: cover2.src,
+            image: cover.src,
           },
           {
             id: 1,
-            url: cover2.src,
+            image: cover2.src,
           },
         ],
         price: "$1,250.00",
@@ -58,19 +59,19 @@ export const wishlistArr = [
         images: [
           {
             id: 0,
-            url: cover3.src,
+            image: cover2.src,
           },
           {
             id: 1,
-            url: cover3.src,
+            image: cover3.src,
           },
           {
             id: 2,
-            url: cover3.src,
+            image: cover3.src,
           },
           {
             id: 3,
-            url: cover3.src,
+            image: cover3.src,
           },
         ],
         price: "$1,250.00",
@@ -82,19 +83,19 @@ export const wishlistArr = [
         images: [
           {
             id: 0,
-            url: cover3.src,
+            image: cover4.src,
           },
           {
             id: 1,
-            url: cover3.src,
+            image: cover3.src,
           },
           {
             id: 2,
-            url: cover3.src,
+            image: cover3.src,
           },
           {
             id: 3,
-            url: cover3.src,
+            image: cover3.src,
           },
         ],
         price: "$1,250.00",
@@ -114,7 +115,7 @@ export const wishlistArr = [
         images: [
           {
             id: 0,
-            url: cover4.src,
+            image: cover4.src,
           },
         ],
         price: "$1,250.00",
@@ -135,7 +136,7 @@ export const wishlistArr = [
         images: [
           {
             id: 0,
-            url: cover3.src,
+            image: cover3.src,
           },
         ],
         price: "$1,250.00",
@@ -156,7 +157,7 @@ export const wishlistArr = [
         images: [
           {
             id: 0,
-            url: cover3.src,
+            image: cover3.src,
           },
         ],
         price: "$1,250.00",
@@ -176,7 +177,7 @@ export const wishlistArr = [
         images: [
           {
             id: 0,
-            url: cover3.src,
+            image: cover3.src,
           },
         ],
         price: "$1,250.00",

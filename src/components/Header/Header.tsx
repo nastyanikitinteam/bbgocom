@@ -61,6 +61,11 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
   }, []);
 
   useEffect(() => {
+    console.log(
+      !isSearchBarTop,
+      !isTablet || withoutSearchBar,
+      !isSecondHeader
+    );
     if (scrollTop > 0) {
       setIsHeaderActive(true);
     } else {
@@ -91,8 +96,7 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
                 Service of Private Advertisements
               </p>
             )}
-
-            {!isSearchBarTop &&
+            {(!isSearchBarTop || withoutSearchBar) &&
               (!isTablet || withoutSearchBar) &&
               !isSecondHeader && (
                 <ul className={styles.list}>
@@ -119,16 +123,19 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
             <div className={styles.info}>
               <div
                 className={cn(styles.wishlist, {
-                  [styles.small]: isSearchBarTop || isTablet || isSecondHeader,
+                  [styles.small]:
+                    !withoutSearchBar &&
+                    (isSearchBarTop || isTablet || isSecondHeader),
                 })}
               >
                 <span className={styles.icon}>
                   <StarSvg />
                 </span>
-                {!isSearchBarTop &&
+                {(!isSearchBarTop || withoutSearchBar) &&
                   !isTablet &&
                   !isSecondHeader &&
                   "My Whishlist"}
+
                 {!isSearchBarTop && isWishItems > 0 && (
                   <span className={styles.num}>{isWishItems}</span>
                 )}
@@ -148,13 +155,16 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
                 className={cn(
                   "default-button sm",
                   {
-                    onlyIcon: isSearchBarTop || isTablet || isSecondHeader,
+                    onlyIcon:
+                      !withoutSearchBar &&
+                      (isSearchBarTop || isTablet || isSecondHeader),
                   },
                   styles.button
                 )}
                 onClick={() => setIsOpenAuthorization(true)}
               >
-                {isSearchBarTop || isTablet || isSecondHeader ? (
+                {!withoutSearchBar &&
+                (isSearchBarTop || isTablet || isSecondHeader) ? (
                   <AddSvg />
                 ) : (
                   " Create an Ad"

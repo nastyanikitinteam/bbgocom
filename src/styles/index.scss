@@ -81,6 +81,13 @@ input[type="number"] {
   position: relative;
 }
 
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 .default-button {
   display: flex;
   justify-content: center;
@@ -340,6 +347,9 @@ input[type="number"] {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  width: max-content;
   .arrow {
     transform: rotate(90deg);
     display: flex;
@@ -351,6 +361,12 @@ input[type="number"] {
     height: 24px;
     path {
       stroke: #000;
+    }
+  }
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
     }
   }
 }
@@ -382,6 +398,23 @@ textarea {
 .link {
   transition: all 0.25s ease-in;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  path {
+    stroke: #000;
+  }
   &:hover {
     color: #5bb75f;
     path {

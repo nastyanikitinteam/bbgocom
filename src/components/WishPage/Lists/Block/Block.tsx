@@ -42,7 +42,7 @@ const Block: FC<IProps> = ({ item }) => {
             return (
               <div key={index} className={styles.image}>
                 {item.items[index].images && item.items[index].images[0] && (
-                  <img src={item.items[index].images[0].url} alt="" />
+                  <img src={item.items[index].images[0].image} alt="" />
                 )}
               </div>
             );
