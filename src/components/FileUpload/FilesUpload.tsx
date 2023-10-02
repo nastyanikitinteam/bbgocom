@@ -1,8 +1,6 @@
 import React, { useState, useRef, FC, useEffect } from "react";
 import styles from "./file-upload.module.scss";
-import UploadIcon from "images/icons/upload-img.svg";
 import CloseIcon from "images/icons/close.svg";
-import PlusIcon from "images/icons/plus.svg";
 import cn from "classnames";
 
 interface IProps {

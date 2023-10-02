@@ -379,6 +379,17 @@ textarea {
   }
 }
 
+.link {
+  transition: all 0.25s ease-in;
+  cursor: pointer;
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
+  }
+}
+
 @import "./_select.scss";
 @import "./_slider.scss";
 @import "./_modal.scss";

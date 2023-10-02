@@ -1,0 +1,27 @@
+.container {
+  border-radius: 25px;
+  background: var(--neutrals-white, #fff);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.title {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+.button {
+  width: 50%;
+}

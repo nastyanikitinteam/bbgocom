@@ -7,6 +7,7 @@ export const wishlistArr = [
   {
     id: 0,
     name: "Buy Home",
+    description: "",
     update: "20.09.2023",
     items: [
       {
@@ -37,6 +38,7 @@ export const wishlistArr = [
       {
         id: 1,
         name: "iPad Air Silver, 12.9-inch display, M2 chip, 2TB, Wi-Fi",
+
         images: [
           {
             id: 0,
@@ -103,6 +105,7 @@ export const wishlistArr = [
   {
     id: 1,
     name: "For Computer",
+    description: "ooo",
     update: "10.09.2023",
     items: [
       {
@@ -123,6 +126,7 @@ export const wishlistArr = [
   {
     id: 2,
     name: "Buy Home",
+    description: "lalalalalalal",
     update: "10.09.2020",
     items: [
       {
@@ -143,6 +147,7 @@ export const wishlistArr = [
   {
     id: 3,
     name: "Buy Home",
+    description: "",
     update: "10.09.2020",
     items: [
       {

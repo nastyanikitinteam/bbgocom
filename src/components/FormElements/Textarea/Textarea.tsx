@@ -14,8 +14,10 @@ interface IProps {
   label?: string;
   meta?: any;
   required?: boolean;
+  isSmall?: boolean;
   row?: number;
   keyName?: string;
+  text?: string;
   onChange?: () => void;
 }
 
@@ -31,9 +33,11 @@ const Textarea: React.FC<IProps> = ({
   textColor,
   row,
   keyName,
+  text,
   onChange,
+  isSmall,
 }) => {
-  const [isValue, setIsValue] = useState("");
+  const [isValue, setIsValue] = useState(text ? text : "");
 
   const onChangeText = (event) => {
     setIsValue(event.target.value);
@@ -47,7 +51,7 @@ const Textarea: React.FC<IProps> = ({
   return (
     <>
       {label && <label className={styles.label}>{label}</label>}
-      <div className={styles.block}>
+      <div className={cn(styles.block, { [styles.isSmall]: isSmall })}>
         <textarea
           {...input}
           type={type}

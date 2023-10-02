@@ -60,7 +60,7 @@ const Card: FC<IProps> = ({ item, changeMainCard }) => {
       </div>
       {isActiveDeleteModal && (
         <Modal
-          closeModal={setIsActiveDeleteModal}
+          closeModal={() => setIsActiveDeleteModal(false)}
           type="deleteCard"
           otherCloseIcon
         >

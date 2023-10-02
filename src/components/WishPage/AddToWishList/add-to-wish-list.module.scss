@@ -1,0 +1,125 @@
+.container {
+  border-radius: 25px;
+  background: var(--neutrals-white, #fff);
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.title {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.top {
+  display: grid;
+  gap: 25px;
+  padding: 0 40px;
+}
+
+.items {
+  display: grid;
+  gap: 5px;
+  max-height: 261px;
+  overflow-y: auto;
+  padding: 0 40px 25px;
+}
+
+.bottom {
+  border-top: 1px solid var(--neutrals-light-gray, #f5f5f7);
+  padding: 25px 40px 0;
+  margin-top: -25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  max-width: 133px;
+  width: 100%;
+}
+
+.search {
+  border-radius: 20px;
+  border: 1px solid #d8d8d8;
+  background: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 7px 10px 7px 15px;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  p {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    @media (max-width: 768px) {
+      color: #808080;
+    }
+  }
+  path {
+    stroke: #808080;
+  }
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+  &.fill {
+    border-color: #000;
+    path {
+      stroke: #000;
+    }
+    p {
+      color: #000;
+    }
+  }
+  input {
+    border: none;
+    background: none;
+    padding: 0;
+    width: 100%;
+  }
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    min-width: 24px;
+    width: 24px;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    &.fill {
+      path {
+        stroke: #000;
+      }
+    }
+  }
+}
+
+.add {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+  }
+}

@@ -22,6 +22,7 @@ interface IProps {
   number?: boolean;
   text?: string;
   isCardNumber?: boolean;
+  isSmall?: boolean;
   isDate?: boolean;
   maxLength?: number;
   keyName?: string;
@@ -42,6 +43,7 @@ const FormInput: React.FC<IProps> = ({
   number,
   text,
   isCardNumber,
+  isSmall,
   isDate,
   maxLength,
   onChange,
@@ -75,7 +77,9 @@ const FormInput: React.FC<IProps> = ({
     <>
       {label && <label className={styles.label}>{label}</label>}
       <div
-        className={cn(styles.container, extClassName && styles[extClassName])}
+        className={cn(styles.container, extClassName && styles[extClassName], {
+          [styles.isSmall]: isSmall,
+        })}
       >
         <input
           {...input}

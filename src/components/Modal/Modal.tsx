@@ -1,4 +1,4 @@
-import React, { ReactNode, FC } from "react";
+import React, { ReactNode, FC, useEffect } from "react";
 import styles from "./modal.module.scss";
 import cn from "classnames";
 
@@ -6,23 +6,18 @@ import CloseIcon from "images/icons/modal-close.svg";
 
 interface IProps {
   children: ReactNode;
-  closeModal: (bool: boolean) => void;
+  closeModal: () => void;
   type: string;
   otherCloseIcon?: boolean;
 }
 
-function Modal({
-  children,
-  closeModal,
-  type,
-  otherCloseIcon,
-}: IProps): JSX.Element {
+const Modal: FC<IProps> = ({ children, closeModal, type, otherCloseIcon }) => {
   return (
     <div className={cn(styles.container, "modal")}>
       <div className={cn(styles.block, `modal-${type}`)}>
         <div
           className={cn(styles.close, { [styles.other]: otherCloseIcon })}
-          onClick={() => closeModal(false)}
+          onClick={closeModal}
         >
           <CloseIcon />
         </div>
@@ -30,6 +25,6 @@ function Modal({
       </div>
     </div>
   );
-}
+};
 
 export default Modal;

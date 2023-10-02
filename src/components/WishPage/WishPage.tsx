@@ -1,12 +1,14 @@
 import { useState, useMemo } from "react";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
+
 import Create from "./Create/Create";
-import List from "./List/List";
+import List from "./Lists/List";
 import styles from "./wish-page.module.scss";
-import { wishlistArr } from "./List/config";
+import { wishlistArr } from "./Lists/config";
 
 const WishPage = () => {
   const [isWishList, setIsWishList] = useState(true);
+  const [isOpenEdit, setIsOpenEdit] = useState(true);
 
   const breadCrumbs = useMemo(
     () => [

@@ -165,7 +165,10 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
         </div>
       </div>
       {isOpenAuthorization && (
-        <Modal closeModal={setIsOpenAuthorization} type="authorization">
+        <Modal
+          closeModal={() => setIsOpenAuthorization(false)}
+          type="authorization"
+        >
           <Authorization />
         </Modal>
       )}
