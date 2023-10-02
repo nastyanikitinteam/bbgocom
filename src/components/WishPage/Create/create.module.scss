@@ -1,0 +1,35 @@
+.container {
+  background-image: url("../../../assets/images/wishlist/bg-desktop.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 25px;
+  padding: 80px;
+  max-width: 812px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.info {
+  max-width: 360px;
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -1px;
+}
+
+.text {
+  color: #808080;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+}
+
+.button {
+  margin-top: 40px;
+}
