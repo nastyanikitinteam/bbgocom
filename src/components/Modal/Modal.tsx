@@ -9,12 +9,23 @@ interface IProps {
   closeModal: () => void;
   type: string;
   otherCloseIcon?: boolean;
+  mobileIsBottom?: boolean;
 }
 
-const Modal: FC<IProps> = ({ children, closeModal, type, otherCloseIcon }) => {
+const Modal: FC<IProps> = ({
+  children,
+  closeModal,
+  type,
+  otherCloseIcon,
+  mobileIsBottom,
+}) => {
   return (
     <div className={cn(styles.container, "modal")}>
-      <div className={cn(styles.block, `modal-${type}`)}>
+      <div
+        className={cn(styles.block, `modal-${type}`, {
+          [styles.noModal]: mobileIsBottom,
+        })}
+      >
         <div
           className={cn(styles.close, { [styles.other]: otherCloseIcon })}
           onClick={closeModal}

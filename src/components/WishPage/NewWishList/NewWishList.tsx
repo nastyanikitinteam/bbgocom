@@ -49,7 +49,7 @@ const NewWishList: FC<IProps> = ({ cancel, item }) => {
                 type="text"
                 text={item?.description && item.description}
                 component={Textarea}
-                row={3}
+                row={6}
                 isSmall
               />
             </div>

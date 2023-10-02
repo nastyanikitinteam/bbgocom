@@ -52,3 +52,12 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .block.noModal {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+}

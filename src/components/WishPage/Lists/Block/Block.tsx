@@ -66,6 +66,7 @@ const Block: FC<IProps> = ({ item }) => {
           closeModal={() => setIsOpenEdit(false)}
           type="successful"
           otherCloseIcon
+          mobileIsBottom
         >
           <NewWishList cancel={() => setIsOpenEdit(false)} item={item} />
         </Modal>
@@ -75,6 +76,7 @@ const Block: FC<IProps> = ({ item }) => {
           closeModal={() => setIsOpenAdd(false)}
           type="successful"
           otherCloseIcon
+          mobileIsBottom
         >
           <AddToWishList cancel={() => setIsOpenAdd(false)} />
         </Modal>

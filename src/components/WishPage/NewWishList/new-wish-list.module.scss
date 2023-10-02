@@ -25,3 +25,15 @@
 .button {
   width: 50%;
 }
+
+@media (max-width: 768px) {
+  .container {
+    border-radius: 15px 15px 0 0;
+    padding: 20px 20px;
+    min-height: 474px;
+  }
+
+  .title {
+    padding: 7px 0 8px;
+  }
+}

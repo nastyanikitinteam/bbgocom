@@ -15,24 +15,28 @@
   position: relative;
   // padding-bottom: 5px;
   &:hover {
-    .menu {
+    .block {
       opacity: 1;
       pointer-events: all;
     }
   }
 }
 
-.menu {
+.block {
   position: absolute;
   right: 0;
   top: 100%;
-  border-radius: 15px;
-  background: #fff;
-  box-shadow: 0px 45px 80px 0px rgba(21, 40, 61, 0.15);
-  z-index: 2;
   opacity: 0;
   pointer-events: none;
   transition: all 0.25s ease-in;
+  z-index: 2;
+  padding-top: 5px;
+}
+
+.menu {
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0px 45px 80px 0px rgba(21, 40, 61, 0.15);
 }
 
 .icon {

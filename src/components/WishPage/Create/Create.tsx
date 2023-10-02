@@ -1,6 +1,8 @@
 import styles from "./create.module.scss";
 import cn from "classnames";
 
+import Car from "images/wishlist/auto.jpg";
+
 const Create = () => {
   return (
     <div className={styles.container}>
@@ -13,6 +15,9 @@ const Create = () => {
         <a href="#" className={cn(styles.button, "default-button")}>
           Start search
         </a>
+      </div>
+      <div className={styles.image}>
+        <img src={Car.src} alt="" />
       </div>
     </div>
   );

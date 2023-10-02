@@ -67,7 +67,7 @@ const Wallet = () => {
 
   return (
     <div className={styles.container}>
-      {isMobile ? (
+      {isMobile && (
         <div className={styles.top}>
           <div className="back" onClick={back}>
             <span className="arrow">
@@ -87,8 +87,6 @@ const Wallet = () => {
             Add New
           </a>
         </div>
-      ) : (
-        <></>
       )}
       {isMobile && (
         <PortalContainer>
