@@ -63,7 +63,7 @@ const LatestDeals = () => {
           {isMobile ? (
             <SwiperComponent {...(params as SwiperProps)}>
               {latestLst.map(
-                ({ id, title, images, price, oldPrice, location }) => {
+                ({ id, title, images, price, oldPrice, location, isWish }) => {
                   return (
                     <SwiperSlide key={id}>
                       <CardProduct
@@ -72,6 +72,7 @@ const LatestDeals = () => {
                         price={price}
                         oldPrice={oldPrice}
                         location={location}
+                        isWish={isWish}
                         isGreenCard
                       />
                     </SwiperSlide>
@@ -82,26 +83,29 @@ const LatestDeals = () => {
           ) : (
             latestLst
               .slice(0, isShowCategory)
-              .map(({ id, title, images, price, oldPrice, location }) => {
-                return (
-                  <div
-                    className={styles.block}
-                    key={id}
-                    data-aos-anchor-placement="top-bottom"
-                    data-aos="fade-up"
-                    data-aos-delay="300"
-                  >
-                    <CardProduct
-                      title={title}
-                      images={images}
-                      price={price}
-                      oldPrice={oldPrice}
-                      location={location}
-                      isGreenCard
-                    />
-                  </div>
-                );
-              })
+              .map(
+                ({ id, title, images, price, oldPrice, location, isWish }) => {
+                  return (
+                    <div
+                      className={styles.block}
+                      key={id}
+                      data-aos-anchor-placement="top-bottom"
+                      data-aos="fade-up"
+                      data-aos-delay="300"
+                    >
+                      <CardProduct
+                        title={title}
+                        images={images}
+                        price={price}
+                        oldPrice={oldPrice}
+                        location={location}
+                        isWish={isWish}
+                        isGreenCard
+                      />
+                    </div>
+                  );
+                }
+              )
           )}
         </div>
         {!isMobile && (

@@ -25,6 +25,7 @@ export const productLst = [
     price: "$1,250.00",
     oldPrice: "$1,500.00",
     location: "Phuket, Thailand",
+    isWish: true,
   },
   {
     id: 1,
@@ -65,6 +66,7 @@ export const productLst = [
     ],
     price: "$1,250.00",
     location: "Phuket, Thailand",
+    isWish: true,
   },
   {
     id: 3,
@@ -140,6 +142,7 @@ export const productLst = [
     price: "$1,250.00",
     oldPrice: "$1,500.00",
     location: "Phuket, Thailand",
+    isWish: true,
   },
   {
     id: 6,

@@ -24,7 +24,8 @@
 }
 
 .items {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 5px;
   max-height: 261px;
   overflow-y: auto;
@@ -128,7 +129,7 @@
   .container {
     border-radius: 15px 15px 0 0;
     padding: 20px 0;
-    min-height: 474px;
+    min-height: 494px;
   }
 
   .form {
@@ -147,6 +148,7 @@
   .items {
     padding: 0 20px 12px;
     max-height: 305px;
+    height: 305px;
   }
 
   .bottom {

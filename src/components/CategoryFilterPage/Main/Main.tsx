@@ -67,26 +67,29 @@ const Main: FC<IProps> = ({ title }) => {
           [styles.isHorizontal]: isHorizontalShow,
         })}
       >
-        {productLst.map(({ id, name, images, price, oldPrice, location }) => {
-          return (
-            <div
-              className={styles.block}
-              key={id}
-              data-aos-anchor-placement="top-bottom"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <CardProduct
-                title={name}
-                images={images}
-                price={price}
-                oldPrice={oldPrice}
-                location={location}
-                isHorizontal={isHorizontalShow}
-              ></CardProduct>
-            </div>
-          );
-        })}
+        {productLst.map(
+          ({ id, name, images, price, oldPrice, location, isWish }) => {
+            return (
+              <div
+                className={styles.block}
+                key={id}
+                data-aos-anchor-placement="top-bottom"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <CardProduct
+                  title={name}
+                  images={images}
+                  price={price}
+                  oldPrice={oldPrice}
+                  location={location}
+                  isWish={isWish}
+                  isHorizontal={isHorizontalShow}
+                ></CardProduct>
+              </div>
+            );
+          }
+        )}
       </div>
       <div
         className={styles.all}

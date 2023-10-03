@@ -42,7 +42,7 @@ const Recommend = () => {
         <div className={styles.blocks}>
           {productLst
             .slice(0, isShowCategory)
-            .map(({ id, name, images, price, oldPrice, location }) => {
+            .map(({ id, name, images, price, oldPrice, location, isWish }) => {
               return (
                 <div
                   className={styles.block}
@@ -57,6 +57,7 @@ const Recommend = () => {
                     price={price}
                     oldPrice={oldPrice}
                     location={location}
+                    isWish={isWish}
                   />
                 </div>
               );

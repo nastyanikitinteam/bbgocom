@@ -87,6 +87,12 @@
     fill: rgba(#000, 0.6);
     stroke: #ffffff;
   }
+  &.active {
+    path {
+      fill: #5bb75f;
+      stroke: transparent;
+    }
+  }
 }
 
 .info {

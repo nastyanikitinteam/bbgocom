@@ -168,6 +168,7 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
                           price={price}
                           oldPrice={oldPrice}
                           location={location}
+                          isWish={true}
                         ></CardProduct>
                       </div>
                     );

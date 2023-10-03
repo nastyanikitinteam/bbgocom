@@ -1,4 +1,5 @@
 import React, { ReactNode, FC, useEffect } from "react";
+import PortalContainer from "components/PortalContainer/PortalContainer";
 import styles from "./modal.module.scss";
 import cn from "classnames";
 
@@ -20,21 +21,23 @@ const Modal: FC<IProps> = ({
   mobileIsBottom,
 }) => {
   return (
-    <div className={cn(styles.container, "modal")}>
-      <div
-        className={cn(styles.block, `modal-${type}`, {
-          [styles.noModal]: mobileIsBottom,
-        })}
-      >
+    <PortalContainer>
+      <div className={cn(styles.container, "modal")}>
         <div
-          className={cn(styles.close, { [styles.other]: otherCloseIcon })}
-          onClick={closeModal}
+          className={cn(styles.block, `modal-${type}`, {
+            [styles.noModal]: mobileIsBottom,
+          })}
         >
-          <CloseIcon />
+          <div
+            className={cn(styles.close, { [styles.other]: otherCloseIcon })}
+            onClick={closeModal}
+          >
+            <CloseIcon />
+          </div>
+          {children}
         </div>
-        {children}
       </div>
-    </div>
+    </PortalContainer>
   );
 };
 
