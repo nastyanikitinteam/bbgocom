@@ -8,9 +8,10 @@ export const wishlistArr = [
   {
     id: 0,
     name: "Buy Home",
+    slug: "buy-home",
     description:
       "I will add here all the ads that suit me that are available in my region. ",
-    update: "20.09.2023",
+    update: 1688371600,
     items: [
       {
         id: 0,
@@ -106,8 +107,9 @@ export const wishlistArr = [
   {
     id: 1,
     name: "For Computer",
+    slug: "for-computer",
     description: "ooo",
-    update: "10.09.2023",
+    update: 1696147600,
     items: [
       {
         id: 0,
@@ -127,8 +129,9 @@ export const wishlistArr = [
   {
     id: 2,
     name: "Buy Home",
+    slug: "buy-home",
     description: "lalalalalalal",
-    update: "10.09.2020",
+    update: 1664611600,
     items: [
       {
         id: 0,
@@ -147,9 +150,10 @@ export const wishlistArr = [
   },
   {
     id: 3,
-    name: "Buy Home",
+    name: "Buy Book",
+    slug: "buy-book",
     description: "",
-    update: "10.09.2020",
+    update: 1694678800,
     items: [
       {
         id: 0,
@@ -168,8 +172,9 @@ export const wishlistArr = [
   },
   {
     id: 4,
-    name: "Buy Home",
-    update: "10.09.2020",
+    name: "Cup",
+    slug: "cup",
+    update: 1692000400,
     items: [
       {
         id: 0,

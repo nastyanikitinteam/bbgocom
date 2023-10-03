@@ -1,9 +1,16 @@
 .container {
-  // max-width: 325px;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  &.hover {
+    .images {
+      opacity: 0.3;
+    }
+    .title {
+      text-decoration: underline;
+    }
+  }
 }
 
 .images {
@@ -14,6 +21,7 @@
   overflow: hidden;
   min-height: 253px;
   max-height: 253px;
+  transition: all 0.25s ease-in;
 }
 
 .image {
@@ -31,6 +39,15 @@
     height: 100%;
     object-fit: cover;
   }
+}
+
+.info {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.title {
+  transition: all 0.25s ease-in;
 }
 
 .bottom {

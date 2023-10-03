@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect, useRef } from "react";
+import { useMemo, useState, useEffect, useRef, FC } from "react";
 import { useRouter } from "next/router";
 import styles from "./wish-list-page.module.scss";
 import DropMenu from "components/DropMenu/DropMenu";
@@ -7,18 +7,24 @@ import NewWishList from "components/WishPage/NewWishList/NewWishList";
 import Share from "components/Share/Share";
 import CardProduct from "components/CardProduct/CardProduct";
 import { wishlistArr } from "components/WishPage/Lists/config";
+import { IWishlist, initialWishlist } from "src/interfaces/wishlists";
 import cn from "classnames";
 
 import ArrowIcon from "images/icons/drop.svg";
 import ShareIcon from "images/icons/share.svg";
 import EditIcon from "images/icons/edit.svg";
 import DelIcon from "images/icons/delete.svg";
-import MapIcon from "images/icons/map-icon.svg";
 
-const WishListPage = () => {
+interface IProps {
+  activeSlug: string | string[];
+}
+
+const WishListPage: FC<IProps> = ({ activeSlug }) => {
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenShare, setIsOpenShare] = useState(false);
   const [isOpenMap, setIsOpenMap] = useState(false);
+  const [isCurrentList, setIsCurrentList] =
+    useState<IWishlist>(initialWishlist);
   const router = useRouter();
   const blockRef = useRef(null);
   const [isMapWidth, setIsMapWidth] = useState(null);
@@ -59,24 +65,18 @@ const WishListPage = () => {
     []
   );
 
+  useEffect(() => {
+    const currentItem = wishlistArr.filter(({ slug }) => slug === activeSlug);
+    // @ts-ignore
+    setIsCurrentList(currentItem[0] || initialWishlist);
+  }, [activeSlug]);
+
   return (
     <>
       <section className={styles.section}>
         <div className="wrapper">
           <div className={styles.content} ref={blockRef}>
             <div className={styles.main}>
-              {!isOpenMap && (
-                <div
-                  className={cn("link", styles.showMap)}
-                  onClick={() => setIsOpenMap((prev) => !prev)}
-                >
-                  <span className={cn("icon", styles.icon)}>
-                    <MapIcon />
-                  </span>
-                  Show to map
-                </div>
-              )}
-
               <div className={cn(styles.back, "back")} onClick={back}>
                 <span className="arrow">
                   <ArrowIcon />
@@ -85,7 +85,7 @@ const WishListPage = () => {
               </div>
               <div className={styles.info}>
                 <div className={styles.top}>
-                  <h1 className={styles.title}>{wishlistArr[0].name}</h1>
+                  <h1 className={styles.title}>{isCurrentList.name}</h1>
                   <div className={styles.actions}>
                     <button
                       className={styles.share}
@@ -96,13 +96,15 @@ const WishListPage = () => {
                     <DropMenu list={dropMenuList} />
                   </div>
                 </div>
-                <p className={styles.ads}>{wishlistArr[0].items.length} ads</p>
-                <p className={styles.description}>
-                  {wishlistArr[0].description}
-                </p>
+                <p className={styles.ads}>{isCurrentList.items.length} ads</p>
+                {isCurrentList.description && (
+                  <p className={styles.description}>
+                    {isCurrentList.description}
+                  </p>
+                )}
               </div>
               <div className={styles.list}>
-                {wishlistArr[0].items.map(
+                {isCurrentList.items.map(
                   ({ id, name, images, price, oldPrice, location }) => {
                     return (
                       <div
@@ -125,22 +127,20 @@ const WishListPage = () => {
                 )}
               </div>
             </div>
-            {isOpenMap && (
-              <div className={styles.map}>
-                <div
-                  className={styles.button}
-                  onClick={() => setIsOpenMap((prev) => !prev)}
-                >
-                  <ArrowIcon />
-                </div>
-                <div
-                  className={styles.mapBlock}
-                  style={{
-                    width: `calc(100% + ${isMapWidth}px)`,
-                  }}
-                ></div>
+            <div className={cn(styles.map, { [styles.open]: isOpenMap })}>
+              <div
+                className={styles.button}
+                onClick={() => setIsOpenMap((prev) => !prev)}
+              >
+                <ArrowIcon />
               </div>
-            )}
+              <div
+                className={styles.mapBlock}
+                style={{
+                  width: `calc(100% + ${isMapWidth}px)`,
+                }}
+              ></div>
+            </div>
           </div>
         </div>
       </section>
@@ -152,7 +152,7 @@ const WishListPage = () => {
         >
           <NewWishList
             cancel={() => setIsOpenEdit(false)}
-            item={wishlistArr[0]}
+            item={isCurrentList}
           />
         </Modal>
       )}
