@@ -39,7 +39,7 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
         setIsMapWidth((window.innerWidth - width) / 2);
       }
     };
-    if (isMobile) {
+    if (!isMobile) {
       handleResize();
     }
     window.addEventListener("resize", handleResize);

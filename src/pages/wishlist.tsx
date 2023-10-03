@@ -5,7 +5,12 @@ import WishPage from "components/WishPage/WishPage";
 
 const Wishlist: NextPage = () => {
   return (
-    <Layout title="Wishlists" withoutSearchBar mobileWithoutSearchBar>
+    <Layout
+      title="Wishlists"
+      withoutSearchBar
+      mobileWithoutSearchBar
+      mobileWithoutFooter
+    >
       <WishPage />
     </Layout>
   );

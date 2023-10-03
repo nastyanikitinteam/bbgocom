@@ -20,6 +20,7 @@ interface IProps {
   withoutSearchBar?: boolean;
   mobileWithoutHeader?: boolean;
   mobileWithoutSearchBar?: boolean;
+  mobileWithoutFooter?: boolean;
 }
 
 const Layout: FC<IProps> = ({
@@ -29,6 +30,7 @@ const Layout: FC<IProps> = ({
   withoutSearchBar,
   mobileWithoutHeader,
   mobileWithoutSearchBar,
+  mobileWithoutFooter,
 }) => {
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
 
@@ -65,7 +67,7 @@ const Layout: FC<IProps> = ({
       >
         {children}
       </div>
-      <Footer />
+      {isMobile && mobileWithoutFooter ? "" : <Footer />}
     </div>
   );
 };

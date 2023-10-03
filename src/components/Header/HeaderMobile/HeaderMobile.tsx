@@ -47,7 +47,7 @@ const HeaderMobile: FC<IProps> = ({ mobileWithoutSearchBar }) => {
       {
         id: 1,
         icon: <WishlistIcon />,
-        link: "",
+        link: "/wishlist",
       },
       {
         id: 2,
