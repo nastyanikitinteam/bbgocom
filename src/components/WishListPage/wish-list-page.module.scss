@@ -136,10 +136,114 @@
   margin-top: 20px;
 }
 
-// .product {
-//   max-width: 296px;
-//   width: 100%;
-//   flex-grow: 1;
-//   border-radius: 25px;
-//   box-shadow: 0 45px 40px 0 rgba(21, 40, 61, 0.1);
-// }
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .main {
+    padding: 25px 0 0;
+  }
+
+  .map {
+    display: none;
+    width: 100%;
+    height: calc(100vh - 52px);
+    &.open {
+      display: block;
+    }
+  }
+
+  .main {
+    &.open {
+      display: none;
+    }
+  }
+
+  .button {
+    display: none;
+  }
+
+  .back {
+    padding: 0;
+    width: 60px;
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    text-align: center;
+  }
+
+  .top {
+    text-align: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 9px 0px;
+    margin-top: 0;
+  }
+
+  .actions {
+    margin-left: 0;
+    width: 60px;
+    gap: 10px;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+    path {
+      stroke: #000;
+    }
+  }
+
+  .share {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .ads {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .list {
+    margin-top: 10px;
+  }
+
+  .toMap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    color: #000;
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    path {
+      stroke: #000;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .mapBlock {
+    left: -20px;
+    width: calc(100% + 40px) !important;
+  }
+}
+
+@media (max-width: 374px) {
+  .mapBlock {
+    left: -10px;
+    width: calc(100% + 20px) !important;
+  }
+}

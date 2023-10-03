@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect, useRef, FC } from "react";
 import { useRouter } from "next/router";
+import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./wish-list-page.module.scss";
 import DropMenu from "components/DropMenu/DropMenu";
 import Modal from "components/Modal/Modal";
@@ -14,6 +15,7 @@ import ArrowIcon from "images/icons/drop.svg";
 import ShareIcon from "images/icons/share.svg";
 import EditIcon from "images/icons/edit.svg";
 import DelIcon from "images/icons/delete.svg";
+import MapIcon from "images/icons/map-icon.svg";
 
 interface IProps {
   activeSlug: string | string[];
@@ -28,6 +30,7 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
   const router = useRouter();
   const blockRef = useRef(null);
   const [isMapWidth, setIsMapWidth] = useState(null);
+  const isMobile = useMediaQuery(768);
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,8 +39,9 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
         setIsMapWidth((window.innerWidth - width) / 2);
       }
     };
-    handleResize();
-
+    if (isMobile) {
+      handleResize();
+    }
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -45,7 +49,11 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
   }, []);
 
   const back = () => {
-    router.back();
+    if (isOpenMap && isMobile) {
+      setIsOpenMap(false);
+    } else {
+      router.back();
+    }
   };
 
   const dropMenuList = useMemo(
@@ -76,27 +84,67 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
       <section className={styles.section}>
         <div className="wrapper">
           <div className={styles.content} ref={blockRef}>
-            <div className={styles.main}>
-              <div className={cn(styles.back, "back")} onClick={back}>
-                <span className="arrow">
-                  <ArrowIcon />
-                </span>
-                Back
-              </div>
-              <div className={styles.info}>
-                <div className={styles.top}>
-                  <h1 className={styles.title}>{isCurrentList.name}</h1>
-                  <div className={styles.actions}>
-                    <button
-                      className={styles.share}
-                      onClick={() => setIsOpenShare(true)}
-                    >
-                      <ShareIcon />
-                    </button>
-                    <DropMenu list={dropMenuList} />
+            {isMobile && (
+              <div className={styles.top}>
+                {isMobile && (
+                  <div className={cn(styles.back, "back")} onClick={back}>
+                    <span className="arrow">
+                      <ArrowIcon />
+                    </span>
+                    Back
                   </div>
+                )}
+                <h1 className={styles.title}>{isCurrentList.name}</h1>
+                <div className={styles.actions}>
+                  <button
+                    className={styles.share}
+                    onClick={() => setIsOpenShare(true)}
+                  >
+                    <ShareIcon />
+                  </button>
+                  <DropMenu list={dropMenuList} />
                 </div>
-                <p className={styles.ads}>{isCurrentList.items.length} ads</p>
+              </div>
+            )}
+            <div className={cn(styles.main, { [styles.open]: isOpenMap })}>
+              {!isMobile && (
+                <div className={cn(styles.back, "back")} onClick={back}>
+                  <span className="arrow">
+                    <ArrowIcon />
+                  </span>
+                  Back
+                </div>
+              )}
+
+              <div className={styles.info}>
+                {!isMobile && (
+                  <div className={styles.top}>
+                    <h1 className={styles.title}>{isCurrentList.name}</h1>
+                    <div className={styles.actions}>
+                      <button
+                        className={styles.share}
+                        onClick={() => setIsOpenShare(true)}
+                      >
+                        <ShareIcon />
+                      </button>
+                      <DropMenu list={dropMenuList} />
+                    </div>
+                  </div>
+                )}
+                <p className={styles.ads}>
+                  {isCurrentList.items.length} ads
+                  {isMobile && (
+                    <div
+                      className={styles.toMap}
+                      onClick={() => setIsOpenMap(true)}
+                    >
+                      <span className={styles.icon}>
+                        <MapIcon />
+                      </span>
+                      To map
+                    </div>
+                  )}
+                </p>
                 {isCurrentList.description && (
                   <p className={styles.description}>
                     {isCurrentList.description}
@@ -149,6 +197,7 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
           closeModal={() => setIsOpenEdit(false)}
           type="successful"
           otherCloseIcon
+          mobileIsBottom
         >
           <NewWishList
             cancel={() => setIsOpenEdit(false)}

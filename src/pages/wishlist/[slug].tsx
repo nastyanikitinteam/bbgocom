@@ -9,7 +9,7 @@ const Wishlist: NextPage = () => {
   console.log(router);
 
   return (
-    <Layout title="Wishlist" withoutSearchBar mobileWithoutSearchBar>
+    <Layout title="Wishlist" withoutSearchBar mobileWithoutHeader>
       <WishListPage activeSlug={router.query.slug} />
     </Layout>
   );

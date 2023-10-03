@@ -73,4 +73,15 @@
   .bottom {
     padding: 0;
   }
+  .images {
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 20px;
+    gap: 3px;
+  }
+
+  .image {
+    &:first-child {
+      grid-column: 1/4;
+    }
+  }
 }
