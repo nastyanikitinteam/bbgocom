@@ -121,7 +121,8 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
               !withoutSearchBar && <div className={styles.searchBar}></div>}
 
             <div className={styles.info}>
-              <div
+              <Link
+                href="/wishlist"
                 className={cn(styles.wishlist, {
                   [styles.small]:
                     !withoutSearchBar &&
@@ -139,7 +140,7 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
                 {!isSearchBarTop && isWishItems > 0 && (
                   <span className={styles.num}>{isWishItems}</span>
                 )}
-              </div>
+              </Link>
 
               <div className={styles.language}>
                 <Select

@@ -15,15 +15,6 @@ interface IProps {
 }
 
 const Share: FC<IProps> = ({ isModal }) => {
-  const [inputValue, setInputValue] = useState("https://bbgo.com/ad_id1234456");
-  const inputRef = useRef(null);
-
-  const handleCopyClick = () => {
-    inputRef.current.select();
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
-  };
-
   const socialsList = useMemo(
     () => [
       {

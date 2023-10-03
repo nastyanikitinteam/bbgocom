@@ -125,13 +125,16 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
     }
   };
 
-  // useEffect(() => {
-  //   const onClick = (e) =>
-  //       // @ts-ignore
-  //     containerRef.current.contains(e.target) || setIsActiveChoice("");
-  //   document.addEventListener("click", onClick);
-  //   return () => !isMobile && document.removeEventListener("click", onClick);
-  // }, [isMobile]);
+  useEffect(() => {
+    const onClick = (e) => {
+      const clickedElement = e.target;
+      if (!clickedElement?.classList.contains("default__option")) {
+        containerRef.current.contains(e.target) || setIsActiveChoice("");
+      }
+    };
+    document.addEventListener("click", onClick);
+    return () => !isMobile && document.removeEventListener("click", onClick);
+  }, [isMobile]);
 
   useEffect(() => {
     setIsPriceBlockDefault(

@@ -1,10 +1,12 @@
 import { useMemo, useState, useRef } from "react";
+import { useRouter } from "next/router";
 import styles from "./copy.module.scss";
 
 import CopyIcon from "images/icons/copy.svg";
 
 const Copy = () => {
   const [inputValue, setInputValue] = useState("https://bbgo.com/ad_id1234456");
+  const router = useRouter();
   const inputRef = useRef(null);
 
   const handleCopyClick = () => {
@@ -12,6 +14,11 @@ const Copy = () => {
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
   };
+
+  const currentUrl = router.asPath;
+  const currentPath = router.pathname;
+
+  console.log(`Поточний URL: ${currentUrl}`, `Поточний шлях: ${currentPath}`);
 
   return (
     <div className={styles.container}>

@@ -20,6 +20,7 @@ interface IProps {
   onChange?: (value: any) => void;
   isSearch?: boolean;
   title?: string;
+  chooseOption?: any;
 }
 const SelectContainer: FC<IProps> = ({
   options,
@@ -29,13 +30,14 @@ const SelectContainer: FC<IProps> = ({
   onChange,
   title,
   isSearch,
+  chooseOption,
 }) => {
   const [isOpenList, setIsOpenList] = useState(false);
   const [isChooseOption, setIsChooseOption] = useState(
     placeholder ? placeholder : options[0].value
   );
   const [selectedOption, setSelectedOption] = useState(null);
-  const [fillClass, setFillClass] = useState("");
+  const [fillClass, setFillClass] = useState(chooseOption ? "fill" : "");
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
@@ -80,7 +82,7 @@ const SelectContainer: FC<IProps> = ({
       )}
       <Select
         options={options}
-        defaultValue={!placeholder && options[0]}
+        defaultValue={chooseOption ? chooseOption : !placeholder && options[0]}
         placeholder={placeholder && placeholder}
         className={cn(`default-select ${classname} ${fillClass}`)}
         classNamePrefix="default"
