@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./blocks.module.scss";
 import cn from "classnames";
@@ -23,12 +23,16 @@ const Blocks: FC<IProps> = ({
   isCategoryPage,
   currentSubcategories,
 }) => {
-  const baseUrl = window.location.origin;
+  const [isbaseUrl, setIsBaseUrl] = useState("");
 
   const chooseCategoryItem = (id, title) => {
     handleClick("nameOfCategoryItem", title);
     setIsActiveChoice();
   };
+
+  useEffect(() => {
+    setIsBaseUrl(window.location.origin);
+  }, []);
 
   return (
     currentSubcategories && (
@@ -53,7 +57,7 @@ const Blocks: FC<IProps> = ({
                   })}
                 >
                   <Link
-                    href={`${baseUrl}/product/${slug}`}
+                    href={`${isbaseUrl}/product/${slug}`}
                     className={styles.title}
                   >
                     {title}
@@ -62,7 +66,7 @@ const Blocks: FC<IProps> = ({
                     {items.map(({ id, slug, title }) => {
                       return (
                         <Link
-                          href={`${baseUrl}/product/${slug}`}
+                          href={`${isbaseUrl}/product/${slug}`}
                           className={styles.item}
                           key={id}
                         >

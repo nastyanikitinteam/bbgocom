@@ -24,6 +24,19 @@ import heroRealEstateImg from "images/category-page/real-estate-hero.jpg";
 import heroServicesImg from "images/category-page/services-hero.jpg";
 import heroSportImg from "images/category-page/sport-hero.jpg";
 
+import heroMobileClothesImg from "images/category-page/clothes-hero-mobile.jpg";
+import heroMobileBeutyImg from "images/category-page/beauty-hero-mobile.jpg";
+import heroMobileEducationImg from "images/category-page/work-education-hero-mobile.jpg";
+import heroMobileHobbiesImg from "images/category-page/hobbies-hero-mobile.jpg";
+import heroMobileHomeImg from "images/category-page/for-home-hero-mobile.jpg";
+import heroMobileKidsImg from "images/category-page/kids-hero-mobile.jpg";
+import heroMobileMotorsImg from "images/category-page/motors-hero-mobile.jpg";
+import heroMobilePetsImg from "images/category-page/pets-hero-mobile.jpg";
+import heroMobilePsychologyImg from "images/category-page/psychology-hero-mobile.jpg";
+import heroMobileRealEstateImg from "images/category-page/real-estate-hero-mobile.jpg";
+import heroMobileServicesImg from "images/category-page/services-hero-mobile.jpg";
+import heroMobileSportImg from "images/category-page/sport-hero-mobile.jpg";
+
 import bannerBeutyImg from "images/category-page/beauty-banner.jpg";
 import bannerClothesImg from "images/category-page/clothes-banner.jpg";
 import bannerEducationImg from "images/category-page/work-education-banner.jpg";
@@ -43,6 +56,7 @@ export const categoriesList = [
     title: "Real Estate",
     image: categoryRealEstateImg.src,
     heroImg: heroRealEstateImg.src,
+    heroMobileImg: heroMobileRealEstateImg.src,
     bannerImg: bannerRealEstateImg.src,
     slug: "real-estate",
     tags: [
@@ -202,6 +216,7 @@ export const categoriesList = [
     title: "Motors",
     image: categoryMotorsImg.src,
     heroImg: heroMotorsImg.src,
+    heroMobileImg: heroMobileMotorsImg.src,
     bannerImg: bannerMotorsImg.src,
     slug: "motors",
     tags: [
@@ -386,6 +401,7 @@ export const categoriesList = [
     title: "Pets",
     image: categoryPetsImg.src,
     heroImg: heroPetsImg.src,
+    heroMobileImg: heroMobilePetsImg.src,
     bannerImg: bannerPetsImg.src,
     slug: "pets",
     tags: [
@@ -593,6 +609,7 @@ export const categoriesList = [
     title: "Beauty and Health",
     image: categoryBeutyImg.src,
     heroImg: heroBeutyImg.src,
+    heroMobileImg: heroMobileBeutyImg.src,
     bannerImg: bannerBeutyImg.src,
     slug: "beauty-and-health",
     tags: [
@@ -805,6 +822,7 @@ export const categoriesList = [
     title: "All for Home",
     image: categoryHomeImg.src,
     heroImg: heroHomeImg.src,
+    heroMobileImg: heroMobileHomeImg.src,
     bannerImg: bannerHomeImg.src,
     slug: "all-for-home",
     tags: [
@@ -1014,6 +1032,7 @@ export const categoriesList = [
     title: "Work and Education",
     image: categoryEducationImg.src,
     heroImg: heroEducationImg.src,
+    heroMobileImg: heroMobileEducationImg.src,
     bannerImg: bannerEducationImg.src,
     slug: "work-and-education",
     tags: [
@@ -1244,6 +1263,7 @@ export const categoriesList = [
     title: "Kids and Babies",
     image: categoryKidsImg.src,
     heroImg: heroKidsImg.src,
+    heroMobileImg: heroMobileKidsImg.src,
     bannerImg: bannerKidsImg.src,
     slug: "kids-and-babies",
     tags: [
@@ -1352,6 +1372,7 @@ export const categoriesList = [
     title: "Services",
     image: categoryServicesImg.src,
     heroImg: heroServicesImg.src,
+    heroMobileImg: heroMobileServicesImg.src,
     bannerImg: bannerServicesImg.src,
     slug: "services",
     tags: [
@@ -1591,6 +1612,7 @@ export const categoriesList = [
     title: "Hobbies and Entertainment",
     image: categoryHobbiesImg.src,
     heroImg: heroHobbiesImg.src,
+    heroMobileImg: heroMobileHobbiesImg.src,
     bannerImg: bannerHobbiesImg.src,
     slug: "hobbies-and-entertainment",
     tags: [
@@ -1811,6 +1833,7 @@ export const categoriesList = [
     title: "Clothes and Footwear",
     image: categoryClothesImg.src,
     heroImg: heroClothesImg.src,
+    heroMobileImg: heroMobileClothesImg.src,
     bannerImg: bannerClothesImg.src,
     slug: "clothes-and-footwear",
     tags: [
@@ -2204,6 +2227,7 @@ export const categoriesList = [
     title: "Psychology and personal development",
     image: categoryPsychologyImg.src,
     heroImg: heroPsychologyImg.src,
+    heroMobileImg: heroMobilePsychologyImg.src,
     bannerImg: bannerPsychologyImg.src,
     slug: "psychology-and-personal-development",
     tags: [
@@ -2385,6 +2409,7 @@ export const categoriesList = [
     title: "Sports and outdoor activities",
     image: categorySportImg.src,
     heroImg: heroSportImg.src,
+    heroMobileImg: heroMobileSportImg.src,
     bannerImg: bannerSportImg.src,
     slug: "sports-and-outdoor-activities",
     tags: [

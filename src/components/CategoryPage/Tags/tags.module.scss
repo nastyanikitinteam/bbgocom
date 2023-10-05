@@ -1,5 +1,6 @@
 .tags {
   max-width: 1121px;
+  max-width: 1090px;
   width: 100%;
   margin: 0px auto 40px;
   display: flex;
@@ -45,5 +46,42 @@
 @media (max-width: 768px) {
   .tags {
     justify-content: flex-start;
+    margin-bottom: 0;
+  }
+  .title {
+    margin-bottom: 0;
+  }
+  .top {
+    margin-bottom: 15px;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #808080;
+    white-space: nowrap;
+    padding: 4px 0;
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.25s ease-in;
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    @media (max-width: 768px) {
+      .icon {
+        transform: rotate(-90deg);
+      }
+    }
   }
 }

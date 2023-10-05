@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Hero from "./Hero/Hero";
 import Tags from "./Tags/Tags";

@@ -21,17 +21,27 @@ const Tags: FC<IProps> = ({ isCurrentList }) => {
   return (
     <section className={styles.container}>
       <div className="wrapper">
-        <h2
-          className={cn("title", styles.title)}
-          data-aos-anchor-placement="center-bottom"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          {isCurrentList.title}
-        </h2>
+        <div className={styles.top}>
+          <h2
+            className={cn("title", styles.title)}
+            data-aos-anchor-placement="top-bottom"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            {isCurrentList.title}
+          </h2>
+          {isMobile && (
+            <div className={styles.all}>
+              View all
+              <span className={styles.icon}>
+                <ArrowSvg />
+              </span>
+            </div>
+          )}
+        </div>
         <div
           className={styles.tags}
-          data-aos-anchor-placement="center-bottom"
+          data-aos-anchor-placement="top-bottom"
           data-aos="fade-up"
           data-aos-delay="400"
         >
@@ -52,12 +62,19 @@ const Tags: FC<IProps> = ({ isCurrentList }) => {
               })}
         </div>
 
-        <div className={styles.show}>
-          Show 1,258 348 offers
-          <span className={styles.icon}>
-            <ArrowSvg />
-          </span>
-        </div>
+        {!isMobile && (
+          <div
+            className={styles.show}
+            data-aos-anchor-placement="top-bottom"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            Show 1,258 348 offers
+            <span className={styles.icon}>
+              <ArrowSvg />
+            </span>
+          </div>
+        )}
       </div>
     </section>
   );

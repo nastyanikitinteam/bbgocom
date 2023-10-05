@@ -20,3 +20,9 @@
     padding: 25px 0;
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0 25px;
+  }
+}
