@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import Layout from "../components/Layout/Layout";
+import Layout from "components/Layout/Layout";
 import AdvertiseWithUsPage from "components/HelpPages/AdvertiseWithUsPage/AdvertiseWithUsPage";
 
 const AdvertiseWithUs: NextPage = () => {

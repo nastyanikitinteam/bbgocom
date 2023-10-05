@@ -6,7 +6,6 @@ import WishListPage from "components/WishListPage/WishListPage";
 
 const Wishlist: NextPage = () => {
   const router = useRouter();
-  console.log(router);
 
   return (
     <Layout

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
 import { tagsList } from "./config";
@@ -6,7 +6,11 @@ import styles from "./tags.module.scss";
 
 import ArrowSvg from "images/icons/drop.svg";
 
-const Tags = () => {
+interface IProps {
+  isCurrentList: any;
+}
+
+const Tags: FC<IProps> = ({ isCurrentList }) => {
   const [isCount, setIsCount] = useState(tagsList.length);
   const isMobile = useMediaQuery(768);
 
@@ -23,7 +27,7 @@ const Tags = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          Real Estate
+          {isCurrentList.title}
         </h2>
         <div
           className={styles.tags}
@@ -31,13 +35,21 @@ const Tags = () => {
           data-aos="fade-up"
           data-aos-delay="400"
         >
-          {tagsList.slice(0, isCount).map(({ id, title }) => {
-            return (
-              <div className={cn("tag", styles.tag)} key={id}>
-                {title}
-              </div>
-            );
-          })}
+          {isCurrentList
+            ? isCurrentList.tags.slice(0, isCount).map(({ id, name }) => {
+                return (
+                  <div className={cn("tag", styles.tag)} key={id}>
+                    {name}
+                  </div>
+                );
+              })
+            : tagsList.slice(0, isCount).map(({ id, title }) => {
+                return (
+                  <div className={cn("tag", styles.tag)} key={id}>
+                    {title}
+                  </div>
+                );
+              })}
         </div>
 
         <div className={styles.show}>

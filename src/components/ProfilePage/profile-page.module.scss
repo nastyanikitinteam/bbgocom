@@ -1,9 +1,19 @@
-.container {
-  padding: 40px 0 80px;
+.page {
   min-height: 100vh;
+  padding: 0px 0 40px;
   @media (min-width: 769px) {
-    padding-top: 120px;
+    padding-top: 60px;
   }
+}
+
+// .container {
+//   @media (min-width: 769px) {
+//     padding-top: 100px;
+//   }
+// }
+
+.title {
+  margin-top: 40px;
 }
 
 .content {
@@ -83,14 +93,30 @@
 }
 
 @media (max-width: 998px) {
+  .page {
+    padding-bottom: 0;
+  }
   .content {
     gap: 10px;
+    margin-top: 25px;
   }
   .left {
     max-width: 240px;
   }
   .main {
     width: calc(100% - 250px);
+  }
+  .del {
+    margin-top: 10px;
+  }
+  .banner {
+    margin-top: 25px;
+  }
+  .container {
+    padding-bottom: 0;
+  }
+  .title {
+    margin-top: 25px;
   }
 }
 @media (max-width: 768px) {

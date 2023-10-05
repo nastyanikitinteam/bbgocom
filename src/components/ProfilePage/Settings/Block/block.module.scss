@@ -2,6 +2,7 @@
   border-radius: 15px;
   border: 1px solid #d8d8d8;
   padding: 29px;
+  // padding: 29px 29px 19px 29px;
 }
 
 .form {
@@ -34,6 +35,9 @@
   width: calc(50% - 10px);
   // margin: 0 10px;
   min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .itemPass {
   width: calc(32.6% - 10px);

@@ -1,7 +1,10 @@
+// @ts-nocheck
 import { useState, useCallback } from "react";
 import { GoogleMapProvider } from "@ubilabs/google-maps-react-hooks";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import SuperClusterAlgorithm from "../../utils/superClusterAlgorithm";
+import WhiteBg from "images/main/white-round-bg.png";
+import WhiteBgSm from "images/main/white-round.png";
 import trees from "./trees";
 
 const mapOptions = {
@@ -10,13 +13,19 @@ const mapOptions = {
     lat: 43.68,
     lng: -79.43,
   },
+  styles: [
+    {
+      featureType: "poi",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }, // Скрываем маркеры "poi"
+      ],
+    },
+  ],
+  zoomControl: true, // Оставляем кнопки масштабирования
+  streetViewControl: false, // Скрываем кнопку Street View
+  mapTypeControl: false,
 };
-
-// const Map = () => {
-//   return (
-
-//   )
-// }
 
 export default function Index() {
   const [mapContainer, setMapContainer] = useState(null);
@@ -24,7 +33,7 @@ export default function Index() {
 
   return (
     <GoogleMapProvider
-      googleMapsAPIKey="AIzaSyD63zJ4TU1D6YJxCz6JMggh7M_Q2KMtucI"
+      googleMapsAPIKey="AIzaSyARPU7EpZus5RgzTH2Ri2ein17DFlvftrk"
       options={mapOptions}
       mapContainer={mapContainer}
       onLoad={onLoad}
@@ -35,11 +44,9 @@ export default function Index() {
 }
 
 function addMarkers(map) {
-  // @ts-ignore
   const infoWindow = new google.maps.InfoWindow();
 
-  const markers = trees.map(([name, lat, lng]) => {
-    // @ts-ignore
+  const markers = trees.map(([name, lat, lng, price]) => {
     const marker = new google.maps.Marker({ position: { lat, lng } });
 
     marker.addListener("click", () => {
@@ -52,6 +59,21 @@ function addMarkers(map) {
       infoWindow.open({ map });
     });
 
+    const customIcon = {
+      url: WhiteBg.src, // Путь к изображению кастомной иконки
+      scaledSize: new google.maps.Size(
+        typeof price === "undefined" ? 60 : 50,
+        typeof price === "undefined" ? 40 : 40
+      ), // Размер иконки
+    };
+
+    // Задайте кастомную иконку и центрирующую метку с ценой
+    marker.setIcon(customIcon);
+    marker.setLabel({
+      text: `$${price || "10 000"}`, // Ваша цена
+      color: "black", // Цвет текста
+    });
+
     return marker;
   });
 
@@ -60,9 +82,7 @@ function addMarkers(map) {
     map,
     algorithm: new SuperClusterAlgorithm({ radius: 200 }),
     renderer: {
-      // @ts-ignore
       render: ({ markers, _position: position }) => {
-        // @ts-ignore
         return new google.maps.Marker({
           position: {
             lat: position.lat(),
@@ -73,9 +93,8 @@ function addMarkers(map) {
             color: "black",
           },
           icon: {
-            url: "https://koshka.top/uploads/posts/2021-12/thumbs/1639509672_41-koshka-top-p-kota-rizhika-44.jpg",
-            // @ts-ignore
-            scaledSize: new google.maps.Size(45, 45),
+            url: WhiteBgSm.src,
+            scaledSize: new google.maps.Size(40, 30),
           },
         });
       },

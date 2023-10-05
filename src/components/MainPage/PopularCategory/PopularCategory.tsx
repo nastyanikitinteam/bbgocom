@@ -76,14 +76,14 @@ const PopularCategory = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          {categoriesList.map(({ id, title, image, link, items }) => {
+          {categoriesList.map(({ id, title, image, slug, items }) => {
             return (
               id < isShowCategory && (
                 <div className={styles.block} key={id}>
                   <Category
                     title={title}
                     image={image}
-                    link={link}
+                    link={slug}
                     items={items}
                   />
                 </div>

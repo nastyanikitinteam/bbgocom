@@ -1,11 +1,21 @@
+import { FC } from "react";
 import styles from "./sub-category.module.scss";
 import Blocks from "components/SearchBar/Category/CategoryMain/Blocks/Blocks";
 
-const SubCategory = () => {
+interface IProps {
+  isCurrentList: any;
+}
+
+const SubCategory: FC<IProps> = ({ isCurrentList }) => {
+  console.log(isCurrentList.subcategories, "d");
   return (
     <section className={styles.container}>
       <div className="wrapper">
-        <Blocks isActiveCategory={0} isSearchBarTop={true} isCategoryPage />
+        <Blocks
+          currentSubcategories={isCurrentList.subcategories}
+          isSearchBarTop={true}
+          isCategoryPage
+        />
       </div>
     </section>
   );

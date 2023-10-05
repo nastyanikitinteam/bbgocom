@@ -29,12 +29,22 @@ const CategoryMain: FC<IProps> = ({
   dataCategory,
   setDataCategory,
 }) => {
+  const [isCurrentList, setIsCurrentList] = useState([]);
+
   const isMobile = useMediaQuery(768);
 
   const chooseCategory = (id, title) => {
     handleClick("nameOfCategory", title);
     setIsActiveCategory(id);
   };
+
+  useEffect(() => {
+    const currentItem = categoriesList.filter(
+      ({ id }) => id === isActiveCategory
+    );
+    // @ts-ignore
+    setIsCurrentList(currentItem[0] || categoriesList[0]);
+  }, [isActiveCategory]);
 
   return isMobile ? (
     <PortalContainer>
@@ -71,7 +81,8 @@ const CategoryMain: FC<IProps> = ({
       </div>
       <div className={styles.main}>
         <Blocks
-          isActiveCategory={isActiveCategory}
+          // @ts-ignore
+          currentSubcategories={isCurrentList.subcategories}
           isSearchBarTop={isSearchBarTop}
           handleClick={handleClick}
           setIsActiveChoice={setIsActiveChoice}

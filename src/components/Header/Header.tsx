@@ -61,11 +61,6 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
   }, []);
 
   useEffect(() => {
-    console.log(
-      !isSearchBarTop,
-      !isTablet || withoutSearchBar,
-      !isSecondHeader
-    );
     if (scrollTop > 0) {
       setIsHeaderActive(true);
     } else {

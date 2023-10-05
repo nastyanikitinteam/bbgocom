@@ -71,69 +71,77 @@ const ProfilePage: FC<IProps> = ({
       {!isMobile ? (
         <>
           <Header isSecondHeader={true} />
-          <div className={styles.container}>
-            <div className="wrapper">
-              <BreadCrumbs crumbs={breadCrumbs} />
-              <h1 className={styles.title} data-aos="fade" data-aos-delay="300">
-                {title}
-              </h1>
-              <div className={styles.content}>
-                <div className={styles.left}>
-                  <div
-                    className={cn(styles.menu, { [styles.short]: isShortMenu })}
-                    data-aos="fade"
-                    data-aos-delay="300"
-                  >
-                    <Menu />
-                  </div>
-                  {!isTablet && (
+          <main className={styles.page}>
+            <section className={styles.container}>
+              <div className="wrapper">
+                <BreadCrumbs crumbs={breadCrumbs} />
+                <h1
+                  className={styles.title}
+                  data-aos="fade"
+                  data-aos-delay="300"
+                >
+                  {title}
+                </h1>
+                <div className={styles.content}>
+                  <div className={styles.left}>
                     <div
-                      className={styles.banner}
+                      className={cn(styles.menu, {
+                        [styles.short]: isShortMenu,
+                      })}
                       data-aos="fade"
                       data-aos-delay="300"
                     >
-                      <Banner />
+                      <Menu />
                     </div>
-                  )}
-                </div>
-                <div
-                  className={styles.main}
-                  data-aos="fade"
-                  data-aos-delay="300"
-                >
-                  {children}
-                </div>
-                {!withoutInfoBlock && (
+                    {!isTablet && (
+                      <div
+                        className={styles.banner}
+                        data-aos="fade"
+                        data-aos-delay="300"
+                      >
+                        <Banner />
+                      </div>
+                    )}
+                  </div>
                   <div
-                    className={styles.info}
+                    className={styles.main}
                     data-aos="fade"
                     data-aos-delay="300"
                   >
-                    <InfoBlock />
+                    {children}
+                  </div>
+                  {!withoutInfoBlock && (
+                    <div
+                      className={styles.info}
+                      data-aos="fade"
+                      data-aos-delay="300"
+                    >
+                      <InfoBlock />
+                    </div>
+                  )}
+                </div>
+                {showDeleteButton && (
+                  <div className={styles.del}>
+                    <span className={styles.icon}>
+                      <DeleteIcon />
+                    </span>
+                    Delete account
+                  </div>
+                )}
+                {isBanner && isTablet && <Rules />}
+                {isTablet && (
+                  <div
+                    className={styles.banner}
+                    data-aos="fade"
+                    data-aos-delay="300"
+                  >
+                    <Banner />
                   </div>
                 )}
               </div>
-              {showDeleteButton && (
-                <div className={styles.del}>
-                  <span className={styles.icon}>
-                    <DeleteIcon />
-                  </span>
-                  Delete account
-                </div>
-              )}
-              {isBanner && isTablet && <Rules />}
-              {isTablet && (
-                <div
-                  className={styles.banner}
-                  data-aos="fade"
-                  data-aos-delay="300"
-                >
-                  <Banner />
-                </div>
-              )}
-              {!isMobile && <AdvertisingBanner bannerImg={bannerImg.src} />}
-            </div>
-          </div>
+            </section>
+            {!isMobile && <AdvertisingBanner bannerImg={bannerImg.src} />}
+          </main>
           <Footer />
         </>
       ) : (

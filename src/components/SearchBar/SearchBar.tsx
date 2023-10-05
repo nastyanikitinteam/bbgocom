@@ -128,8 +128,11 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
   useEffect(() => {
     const onClick = (e) => {
       const clickedElement = e.target;
-      if (!clickedElement?.classList.contains("default__option")) {
-        containerRef.current.contains(e.target) || setIsActiveChoice("");
+      if (
+        !clickedElement?.classList?.contains("default__option") &&
+        !containerRef.current?.contains(e.target)
+      ) {
+        setIsActiveChoice("");
       }
     };
     document.addEventListener("click", onClick);

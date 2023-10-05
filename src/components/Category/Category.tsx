@@ -3,6 +3,9 @@ import Link from "next/link";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./category.module.scss";
 
+import { categoriesList } from "components/Category/config";
+import { ICategory, initialCategory } from "src/interfaces/category";
+
 interface IProps {
   title: string;
   image: string;
@@ -14,7 +17,7 @@ const Category: FC<IProps> = ({ title, image, link, items }) => {
 
   return (
     <div className={styles.container}>
-      <Link href={link} className={styles.block}>
+      <Link href={`category/${link}`} className={styles.block}>
         <div className={styles.image}>
           <img src={image} alt="" />
         </div>
@@ -22,9 +25,9 @@ const Category: FC<IProps> = ({ title, image, link, items }) => {
       </Link>
       {!isMobile && (
         <div className={styles.items}>
-          {items.map(({ id, title, link }) => {
+          {items.map(({ id, title, slug }) => {
             return (
-              <Link href={link} key={id} className={styles.item}>
+              <Link href={`product/${slug}`} key={id} className={styles.item}>
                 {title}
               </Link>
             );
