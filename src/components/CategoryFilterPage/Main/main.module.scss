@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+.title {
+  margin-top: 7px;
+}
+
 .filter {
   display: flex;
   justify-content: flex-end;
@@ -48,11 +52,14 @@
 }
 
 .main {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin-right: -20px;
+  // display: flex;
+  // justify-content: flex-start;
+  // flex-wrap: wrap;
   margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
   &.isHorizontal {
     margin-right: 0;
     .block {
@@ -61,14 +68,17 @@
       max-width: 100%;
     }
   }
+  &.openMap {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.block {
-  width: calc(33.333% - 20px);
-  margin-right: 20px;
-  margin-bottom: 20px;
-  max-width: 325px;
-}
+// .block {
+//   width: calc(33.333% - 20px);
+//   margin-right: 20px;
+//   margin-bottom: 20px;
+//   max-width: 325px;
+// }
 
 .all {
   display: flex;
@@ -97,5 +107,81 @@
     path {
       stroke: #5bb75f;
     }
+  }
+}
+
+.filterOpen {
+  border-radius: 20px;
+  border: 1px solid var(--neutrals-stroke-gray, #d8d8d8);
+  background: var(--neutrals-white, #fff);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  color: #808080;
+  padding: 7px 14px;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .arrow {
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.toMap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  path {
+    stroke: #000;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 769px) {
+  .toMap {
+    justify-content: flex-start;
+    padding: 10px 0;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 998px) {
+  .main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    margin-top: 25px;
+  }
+
+  .main {
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .info {
+    margin: 10px 0 15px;
   }
 }

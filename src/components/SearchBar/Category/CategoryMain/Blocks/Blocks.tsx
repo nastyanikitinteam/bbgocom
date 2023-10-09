@@ -14,6 +14,7 @@ interface IProps {
   setIsActiveChoice?: () => void;
   isCategoryPage?: boolean;
   currentSubcategories?: any;
+  category?: string;
 }
 
 const Blocks: FC<IProps> = ({
@@ -22,6 +23,7 @@ const Blocks: FC<IProps> = ({
   setIsActiveChoice,
   isCategoryPage,
   currentSubcategories,
+  category,
 }) => {
   const [isbaseUrl, setIsBaseUrl] = useState("");
 
@@ -57,7 +59,7 @@ const Blocks: FC<IProps> = ({
                   })}
                 >
                   <Link
-                    href={`${isbaseUrl}/product/${slug}`}
+                    href={`${isbaseUrl}/${category}/${slug}`}
                     className={styles.title}
                   >
                     {title}
@@ -66,7 +68,7 @@ const Blocks: FC<IProps> = ({
                     {items.map(({ id, slug, title }) => {
                       return (
                         <Link
-                          href={`${isbaseUrl}/product/${slug}`}
+                          href={`${isbaseUrl}/${category}/${slug}`}
                           className={styles.item}
                           key={id}
                         >

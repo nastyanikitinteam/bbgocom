@@ -15,9 +15,13 @@ import WishlistIcon from "images/icons/Wishlist-mobile.svg";
 
 interface IProps {
   mobileWithoutSearchBar?: boolean;
+  mobileWithoutBottomMenu?: boolean;
 }
 
-const HeaderMobile: FC<IProps> = ({ mobileWithoutSearchBar }) => {
+const HeaderMobile: FC<IProps> = ({
+  mobileWithoutSearchBar,
+  mobileWithoutBottomMenu,
+}) => {
   const [isOpenProfileMenu, setIsOpenProfileMenu] = useState(false);
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
   const router = useRouter();
@@ -71,36 +75,39 @@ const HeaderMobile: FC<IProps> = ({ mobileWithoutSearchBar }) => {
   return (
     <div className={styles.container}>
       <div className="wrapper">
-        <div
-          className={cn(styles.menu, {
-            [styles.openMenu]: isOpenProfileMenu || isOpenAuthorization,
-          })}
-        >
-          {mobileMenu.map(({ id, icon, link, fn }) => {
-            return !fn ? (
-              <Link
-                href={link}
-                className={cn(
-                  styles.item,
-                  router.pathname == link && [styles.active]
-                )}
-                key={id}
-              >
-                {icon}
-              </Link>
-            ) : (
-              <div
-                className={cn(styles.item, {
-                  [styles.active]: isOpenProfileMenu,
-                })}
-                key={id}
-                onClick={fn}
-              >
-                {icon}
-              </div>
-            );
-          })}
-        </div>
+        {!mobileWithoutBottomMenu && (
+          <div
+            className={cn(styles.menu, {
+              [styles.openMenu]: isOpenProfileMenu || isOpenAuthorization,
+            })}
+          >
+            {mobileMenu.map(({ id, icon, link, fn }) => {
+              return !fn ? (
+                <Link
+                  href={link}
+                  className={cn(
+                    styles.item,
+                    router.pathname == link && [styles.active]
+                  )}
+                  key={id}
+                >
+                  {icon}
+                </Link>
+              ) : (
+                <div
+                  className={cn(styles.item, {
+                    [styles.active]: isOpenProfileMenu,
+                  })}
+                  key={id}
+                  onClick={fn}
+                >
+                  {icon}
+                </div>
+              );
+            })}
+          </div>
+        )}
+
         {isOpenAuthorization && <Authorization />}
         {isOpenProfileMenu && <MobileMenu />}
         {!mobileWithoutSearchBar && <SearchBar />}

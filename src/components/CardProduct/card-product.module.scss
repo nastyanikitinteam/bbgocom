@@ -1,6 +1,7 @@
 .container {
   position: relative;
   height: 100%;
+  font-family: "Golos Text", sans-serif;
   &.green {
     .info {
       background: #ebfaec;
@@ -40,6 +41,13 @@
       border-top: 1px solid #d8d8d8;
       border-left: none;
       padding: 29px;
+    }
+  }
+  &.isMap {
+    .block {
+      &:hover {
+        box-shadow: none;
+      }
     }
   }
 }
@@ -131,9 +139,13 @@
 .location {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   color: #808080;
   margin-top: auto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.3px;
   .icon {
     display: flex;
     justify-content: center;
@@ -141,6 +153,7 @@
     margin-right: 4px;
     max-width: 18px;
     min-width: 18px;
+    margin-top: 1px;
     svg {
       width: 18px;
       height: 18px;

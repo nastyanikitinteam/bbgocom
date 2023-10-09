@@ -22,6 +22,7 @@ interface IProps {
   isHorizontal?: boolean;
   isAds?: boolean;
   isWish?: boolean;
+  isMap?: boolean;
 }
 
 const CardProduct: FC<IProps> = ({
@@ -35,6 +36,7 @@ const CardProduct: FC<IProps> = ({
   isHorizontal,
   isAds,
   isWish,
+  isMap,
 }) => {
   const [isOpenAddToWish, setIsOpenAddToWish] = useState(false);
   const [isOpenDeleteWish, setIsOpenDeleteWish] = useState(false);
@@ -53,7 +55,8 @@ const CardProduct: FC<IProps> = ({
         className={cn(
           styles.container,
           { [styles.green]: isGreenCard },
-          { [styles.isHorizontal]: isHorizontal }
+          { [styles.isHorizontal]: isHorizontal },
+          { [styles.isMap]: isMap }
         )}
       >
         {children && <div className={styles.checkbox}>{children}</div>}

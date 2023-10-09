@@ -18,6 +18,7 @@ const SubCategory: FC<IProps> = ({ isCurrentList }) => {
       >
         <Blocks
           currentSubcategories={isCurrentList.subcategories}
+          category={isCurrentList.slug}
           isSearchBarTop={true}
           isCategoryPage
         />

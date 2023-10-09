@@ -5,6 +5,7 @@ import { tagsList } from "./config";
 import styles from "./tags.module.scss";
 
 import ArrowSvg from "images/icons/drop.svg";
+import Link from "next/link";
 
 interface IProps {
   isCurrentList: any;
@@ -12,11 +13,16 @@ interface IProps {
 
 const Tags: FC<IProps> = ({ isCurrentList }) => {
   const [isCount, setIsCount] = useState(tagsList.length);
+  const [isbaseUrl, setIsBaseUrl] = useState("");
   const isMobile = useMediaQuery(768);
 
   useEffect(() => {
     isMobile ? setIsCount(15) : setIsCount(tagsList.length);
   }, [isMobile]);
+
+  useEffect(() => {
+    setIsBaseUrl(window.location.origin);
+  }, []);
 
   return (
     <section className={styles.container}>
@@ -63,7 +69,8 @@ const Tags: FC<IProps> = ({ isCurrentList }) => {
         </div>
 
         {!isMobile && (
-          <div
+          <Link
+            href={`${isbaseUrl}/${isCurrentList.slug}`}
             className={styles.show}
             data-aos-anchor-placement="top-bottom"
             data-aos="fade-up"
@@ -73,7 +80,7 @@ const Tags: FC<IProps> = ({ isCurrentList }) => {
             <span className={styles.icon}>
               <ArrowSvg />
             </span>
-          </div>
+          </Link>
         )}
       </div>
     </section>

@@ -1,30 +1,33 @@
 // @ts-nocheck
 import { useState, useCallback } from "react";
+import * as ReactDOM from "react-dom";
 import { GoogleMapProvider } from "@ubilabs/google-maps-react-hooks";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import SuperClusterAlgorithm from "../../utils/superClusterAlgorithm";
 import WhiteBg from "images/main/white-round-bg.png";
 import WhiteBgSm from "images/main/white-round.png";
-import trees from "./trees";
+import MarkersBig from "images/main/markers-big.png";
+import MarkersSm from "images/main/markers-sm.png";
+import CardProduct from "components/CardProduct/CardProduct";
+import { productLst } from "components/MainPage/Recommend/config";
 
 const mapOptions = {
-  zoom: 12,
+  zoom: 7,
   center: {
-    lat: 43.68,
-    lng: -79.43,
+    lat: 15,
+    lng: 101,
   },
   styles: [
     {
       featureType: "poi",
       elementType: "labels",
-      stylers: [
-        { visibility: "off" }, // Скрываем маркеры "poi"
-      ],
+      stylers: [{ visibility: "off" }],
     },
   ],
-  zoomControl: true, // Оставляем кнопки масштабирования
-  streetViewControl: false, // Скрываем кнопку Street View
+  zoomControl: true,
+  streetViewControl: false,
   mapTypeControl: false,
+  fullscreenControl: false,
 };
 
 export default function Index() {
@@ -33,12 +36,12 @@ export default function Index() {
 
   return (
     <GoogleMapProvider
-      googleMapsAPIKey="AIzaSyARPU7EpZus5RgzTH2Ri2ein17DFlvftrk"
+      googleMapsAPIKey="AIzaSyD63zJ4TU1D6YJxCz6JMggh7M_Q2KMtucI"
       options={mapOptions}
       mapContainer={mapContainer}
       onLoad={onLoad}
     >
-      <div ref={(node) => setMapContainer(node)} style={{ height: "100vh" }} />
+      <div ref={(node) => setMapContainer(node)} style={{ height: "100%" }} />
     </GoogleMapProvider>
   );
 }
@@ -46,32 +49,47 @@ export default function Index() {
 function addMarkers(map) {
   const infoWindow = new google.maps.InfoWindow();
 
-  const markers = trees.map(([name, lat, lng, price]) => {
+  const markers = productLst.map((item) => {
+    const lat = item.location.lat;
+    const lng = item.location.lng;
+
+    const iconWidth = item.price.length * 10;
+    const markersUrl = item.price.length > 7 ? MarkersBig.src : WhiteBg.src;
+
     const marker = new google.maps.Marker({ position: { lat, lng } });
 
-    marker.addListener("click", () => {
+    marker.addListener("click", (e) => {
       infoWindow.setPosition({ lat, lng });
-      infoWindow.setContent(`
-        <div class="info-window">
-          <h2>${name}</h2>
-        </div>
-      `);
+      const content = document.createElement("div");
+      ReactDOM.render(
+        <CardProduct
+          title={item.name}
+          images={item.images}
+          price={item.price}
+          oldPrice={item.oldPrice}
+          location={item.location.name}
+          isWish={item.isWish}
+          isGreenCard
+          isMap
+        />,
+        content
+      );
+      infoWindow.setContent(content);
       infoWindow.open({ map });
     });
 
     const customIcon = {
-      url: WhiteBg.src, // Путь к изображению кастомной иконки
+      url: markersUrl,
       scaledSize: new google.maps.Size(
-        typeof price === "undefined" ? 60 : 50,
-        typeof price === "undefined" ? 40 : 40
-      ), // Размер иконки
+        typeof price === "undefined" ? iconWidth : iconWidth,
+        typeof price === "undefined" ? 30 : 30
+      ),
     };
 
-    // Задайте кастомную иконку и центрирующую метку с ценой
     marker.setIcon(customIcon);
     marker.setLabel({
-      text: `$${price || "10 000"}`, // Ваша цена
-      color: "black", // Цвет текста
+      text: `${item.price}`,
+      color: "black",
     });
 
     return marker;
@@ -93,8 +111,11 @@ function addMarkers(map) {
             color: "black",
           },
           icon: {
-            url: WhiteBgSm.src,
-            scaledSize: new google.maps.Size(40, 30),
+            url: markers.length < 10 ? MarkersSm.src : WhiteBgSm.src,
+            scaledSize: new google.maps.Size(
+              markers.length.toString().length * 10 + 20,
+              30
+            ),
           },
         });
       },

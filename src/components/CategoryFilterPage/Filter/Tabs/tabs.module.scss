@@ -17,11 +17,19 @@
   color: #808080;
   transition: all 0.25s ease-in;
   cursor: pointer;
+  text-align: center;
   &:hover {
     color: #5bb75f;
   }
   &.active {
     background: #5bb75f;
     color: #fff;
+  }
+}
+
+@media (max-width: 998px) and (min-width: 769px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
   }
 }

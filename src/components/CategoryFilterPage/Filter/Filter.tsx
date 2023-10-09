@@ -1,3 +1,4 @@
+import useMediaQuery from "src/utils/useMediaQuery";
 import Tabs from "./Tabs/Tabs";
 import Checkboxes from "./Checkboxes/Checkboxes";
 import PriceRange from "./PriceRange/PriceRange";
@@ -6,6 +7,7 @@ import Range from "./Range/Range";
 import styles from "./filter.module.scss";
 import ColorPicker from "./ColorPicker/ColorPicker";
 import BodyType from "./BodyType/BodyType";
+
 import {
   tabsList,
   propertyType,
@@ -17,9 +19,12 @@ import {
 import cn from "classnames";
 
 const Filter = () => {
+  const isMobile = useMediaQuery(768);
+
   return (
     <div className={styles.container}>
       <div className={styles.main}>
+        {isMobile && <h3 className={styles.title}>Filter</h3>}
         <Tabs tabsList={tabsList} />
         <BodyType title="Body type" />
         <ColorPicker title="Colors" colors={colors} />
