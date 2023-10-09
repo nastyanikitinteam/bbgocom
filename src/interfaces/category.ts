@@ -10,14 +10,14 @@ export interface ICategory {
   tags: Array<ITags>;
 }
 
-interface ISubcategories {
+export interface ISubcategories {
   id: number;
   title: string;
   slug: string;
   items: Array<ISubcategoriesItem>;
 }
 
-interface ISubcategoriesItem {
+export interface ISubcategoriesItem {
   id: number;
   title: string;
   slug: string;
@@ -39,4 +39,17 @@ export const initialCategory = {
   update: "",
   items: [],
   tags: [],
+};
+
+export const initialSubcategories = {
+  id: 0,
+  title: "",
+  slug: "",
+  items: [],
+};
+
+export const initialSubcategoryItem = {
+  id: 0,
+  title: "",
+  slug: "",
 };

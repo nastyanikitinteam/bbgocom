@@ -72,7 +72,7 @@ const Contacts: FC<IProps> = ({
       <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
         <span className={styles.num}>7</span>Contacts
       </h3>
-      {disabled && (
+      {!disabled && (
         <>
           <div className={styles.items}>
             {isCountryList.length && (

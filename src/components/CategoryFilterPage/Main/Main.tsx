@@ -48,31 +48,39 @@ const Main: FC<IProps> = ({ title, openFilter, setIsOpenMap, isOpenMap }) => {
 
   return (
     <div className={styles.container}>
-      <BreadCrumbs crumbs={breadCrumbs} />
-      <h2 className={styles.title}>{title}</h2>
-      <div
-        className={styles.toMap}
-        onClick={() => setIsOpenMap((prev) => !prev)}
-      >
-        <span className={styles.icon}>
-          <MapIcon />
-        </span>
-        To map
-      </div>
-      <div className={styles.info}>
-        <p className={styles.description}>12,215 units avaliable</p>
+      <div className={styles.top}>
+        <BreadCrumbs crumbs={breadCrumbs} />
 
-        {/* {isMobile && (
-          <div className={styles.toMap} onClick={() => setIsOpenMap(true)}>
+        {!isOpenMap && !isMobile && (
+          <div
+            className={cn(styles.toMap, "link")}
+            onClick={() => setIsOpenMap(true)}
+          >
             <span className={styles.icon}>
               <MapIcon />
             </span>
-            To map
+            Show to map
           </div>
-        )} */}
+        )}
+      </div>
+      <h2 className={styles.title}>{title}</h2>
+
+      <div className={styles.info}>
+        <p className={styles.description}>12,215 units avaliable</p>
+        {isMobile && (
+          <div
+            className={cn(styles.toMap, "link")}
+            onClick={() => setIsOpenMap(true)}
+          >
+            <span className={styles.icon}>
+              <MapIcon />
+            </span>
+            Show to map
+          </div>
+        )}
         {!isMobile && (
           <div className={styles.filter}>
-            {!isTablet && (
+            {!isTablet && !isOpenMap && (
               <>
                 <div
                   className={cn(styles.filterButton, {
@@ -141,6 +149,7 @@ const Main: FC<IProps> = ({ title, openFilter, setIsOpenMap, isOpenMap }) => {
                   location={location.name}
                   isWish={isWish}
                   isHorizontal={isHorizontalShow}
+                  isOpenMap={isOpenMap}
                 ></CardProduct>
               </div>
             );

@@ -1,3 +1,4 @@
+import { FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Tabs from "./Tabs/Tabs";
 import Checkboxes from "./Checkboxes/Checkboxes";
@@ -18,8 +19,17 @@ import {
 } from "./config";
 import cn from "classnames";
 
-const Filter = () => {
+interface IProps {
+  addWidth: string;
+  setIsOpenFilter: (bool: boolean) => void;
+}
+
+const Filter: FC<IProps> = ({ addWidth, setIsOpenFilter }) => {
   const isMobile = useMediaQuery(768);
+
+  const reset = () => {
+    setIsOpenFilter(false);
+  };
 
   return (
     <div className={styles.container}>
@@ -37,10 +47,20 @@ const Filter = () => {
         <Range title="Floor" defaultVelue1="0" defaultVelue2="0" />
       </div>
       <div className={styles.bottom}>
+        <div
+          className={styles.line}
+          style={{
+            width: `calc(100% + ${addWidth}px)`,
+          }}
+        ></div>
         <a href="" className={cn("default-button sm", styles.button)}>
           Show 150 000 units
         </a>
-        <a href="" className={cn("default-button sm border", styles.button)}>
+        <a
+          href=""
+          className={cn("default-button sm border", styles.button)}
+          onClick={reset}
+        >
           Reset
         </a>
       </div>

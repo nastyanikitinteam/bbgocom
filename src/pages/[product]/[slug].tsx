@@ -5,7 +5,14 @@ import Layout from "components/Layout/Layout";
 import CategoryFilterPage from "components/CategoryFilterPage/CategoryFilterPage";
 
 import { categoriesList } from "components/Category/config";
-import { ICategory, initialCategory } from "src/interfaces/category";
+import {
+  ICategory,
+  ISubcategories,
+  initialCategory,
+  initialSubcategories,
+  ISubcategoriesItem,
+  initialSubcategoryItem,
+} from "src/interfaces/category";
 
 const Product: NextPage = () => {
   const router = useRouter();
@@ -13,19 +20,46 @@ const Product: NextPage = () => {
   const [isCurrentList, setIsCurrentList] =
     useState<ICategory>(initialCategory);
 
+  const [isSubcategories, setIsSubcategories] =
+    useState<ISubcategories>(initialSubcategories);
+
+  const [isSubcategoryItem, setIsSubcategoryItem] =
+    useState<ISubcategories>(initialSubcategories);
+
   useEffect(() => {
     const currentItem = categoriesList.filter(
-      ({ slug }) => slug === router.query.slug
+      ({ slug }) => slug === router.query.product
     );
 
     // @ts-ignore
     setIsCurrentList(currentItem[0] || initialCategory);
-    console.log(router.query.product);
   }, [router.query.slug]);
+
+  useEffect(() => {
+    const subcategoriesItems = isCurrentList.items.filter(
+      ({ slug }) => slug === router.query.slug
+    );
+
+    // @ts-ignore
+    setIsSubcategories(subcategoriesItems[0] || initialSubcategories);
+  }, [isCurrentList]);
+
+  useEffect(() => {
+    const subcategoriesItem = isCurrentList.items.filter(
+      ({ slug }) => slug === router.query.slug
+    );
+
+    // @ts-ignore
+    setIsSubcategoryItem(subcategoriesItem[0] || initialSubcategoryItem);
+  }, [isSubcategoryItem]);
 
   return (
     <Layout title="Category filter" isSecondHeader mobileWithoutBottomMenu>
-      <CategoryFilterPage />
+      <CategoryFilterPage
+        isCurrentList={isCurrentList}
+        isSubcategories={isSubcategories}
+        isSubcategoryItem={isSubcategoryItem}
+      />
     </Layout>
   );
 };

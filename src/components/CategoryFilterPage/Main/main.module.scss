@@ -4,8 +4,16 @@
   align-items: center;
 }
 
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  min-height: 40px;
+}
+
 .title {
   margin-top: 7px;
+  margin-bottom: 10px;
 }
 
 .filter {
@@ -52,33 +60,26 @@
 }
 
 .main {
-  // display: flex;
-  // justify-content: flex-start;
-  // flex-wrap: wrap;
-  margin-top: 40px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-
+  &.openMap {
+    grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
+  }
   &.isHorizontal {
     margin-right: 0;
+    grid-template-columns: repeat(1, 1fr);
     .block {
       width: 100%;
       margin-right: 0;
       max-width: 100%;
     }
   }
-  &.openMap {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
-
-// .block {
-//   width: calc(33.333% - 20px);
-//   margin-right: 20px;
-//   margin-bottom: 20px;
-//   max-width: 325px;
-// }
 
 .all {
   display: flex;
@@ -161,10 +162,23 @@
   .toMap {
     justify-content: flex-start;
     padding: 10px 0;
-    margin-top: 10px;
   }
 }
 
+@media (max-width: 1200px) {
+  .info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sort {
+    max-width: none;
+    width: 100%;
+  }
+  .filter {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
 @media (max-width: 998px) {
   .main {
     grid-template-columns: repeat(2, 1fr);
@@ -183,5 +197,12 @@
 
   .info {
     margin: 10px 0 15px;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 550px) {
+  .main {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

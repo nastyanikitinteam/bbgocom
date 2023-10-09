@@ -36,6 +36,8 @@ const Layout: FC<IProps> = ({
 }) => {
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
 
+  const [isHiddenFooter, setIsHiddenFooter] = useState(false);
+
   const isMobile = useMediaQuery(768);
 
   useEffect(() => {
@@ -72,7 +74,7 @@ const Layout: FC<IProps> = ({
       >
         {children}
       </div>
-      {isMobile && mobileWithoutFooter ? "" : <Footer />}
+      {(isMobile && mobileWithoutFooter) || isHiddenFooter ? "" : <Footer />}
     </div>
   );
 };

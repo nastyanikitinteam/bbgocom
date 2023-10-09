@@ -1,35 +1,82 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef, FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Main from "./Main/Main";
+import MapContainer from "./MapContainer/MapContainer";
 import Map from "components/Map/Map";
 import Filter from "./Filter/Filter";
 import styles from "./category-filter-page.module.scss";
 import cn from "classnames";
 
-const CategoryFilterPage = () => {
+import ArrowIcon from "images/icons/drop.svg";
+import CloseIcon from "images/icons/modal-close.svg";
+
+interface IProps {
+  isCurrentList?: any;
+  isSubcategories?: any;
+  isSubcategoryItem?: any;
+}
+
+const CategoryFilterPage: FC<IProps> = ({
+  isCurrentList,
+  isSubcategories,
+  isSubcategoryItem,
+}) => {
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isOpenMap, setIsOpenMap] = useState(false);
-
-  const SmallLaptop = useMediaQuery(768);
+  const [isOpenFullMap, setIsOpenFullMap] = useState(false);
+  const [isMapWidth, setIsMapWidth] = useState(null);
+  const blockRef = useRef(null);
   const isMobile = useMediaQuery(768);
 
   useEffect(() => {
     !isMobile && setIsOpenFilter(false);
   }, [isMobile]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (blockRef.current) {
+        const width = blockRef.current.getBoundingClientRect().width;
+        setIsMapWidth((window.innerWidth - width) / 2);
+      }
+    };
+    if (!isMobile) {
+      handleResize();
+    }
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    isMobile && setIsOpenFilter(false);
+  }, [isOpenMap]);
+
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.content}>
+        <div className={styles.content} ref={blockRef}>
           {(!isMobile || isOpenFilter) && (
             <div className={styles.info}>
-              <Filter />
+              <Filter addWidth={isMapWidth} setIsOpenFilter={setIsOpenFilter} />
             </div>
           )}
           {!isOpenFilter && (
-            <div className={cn(styles.main, { [styles.open]: isOpenMap })}>
+            <div
+              className={cn(
+                styles.main,
+                { [styles.open]: isOpenMap },
+                { [styles.hidden]: isOpenFullMap }
+              )}
+            >
               <Main
-                title="Buy a home"
+                title={
+                  isSubcategoryItem
+                    ? isSubcategoryItem.title
+                    : isSubcategories
+                    ? isSubcategories.title
+                    : isCurrentList.title
+                }
                 openFilter={() => setIsOpenFilter(true)}
                 isOpenMap={isOpenMap}
                 setIsOpenMap={setIsOpenMap}
@@ -37,11 +84,14 @@ const CategoryFilterPage = () => {
             </div>
           )}
           {isOpenMap && (
-            <div className={styles.map}>
-              <div className={styles.mapBlock}>
-                <Map />
-              </div>
-            </div>
+            <MapContainer
+              setIsOpenFullMap={setIsOpenFullMap}
+              isOpenFullMap={isOpenFullMap}
+              setIsOpenMap={setIsOpenMap}
+              isMapWidth={isMapWidth}
+              isOpenMap={isOpenMap}
+              setIsOpenFilter={setIsOpenFilter}
+            />
           )}
         </div>
       </div>
