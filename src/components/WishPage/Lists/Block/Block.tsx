@@ -20,7 +20,6 @@ const Block: FC<IProps> = ({ item }) => {
   const [isHover, setIsHover] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenDel, setIsOpenDel] = useState(false);
-  const [isOpenAdd, setIsOpenAdd] = useState(false);
   const isMobile = useMediaQuery(768);
   const emptyBlocks = Array(isMobile ? 4 : 3).fill(null);
 

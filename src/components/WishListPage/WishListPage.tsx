@@ -3,10 +3,12 @@ import { useRouter } from "next/router";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./wish-list-page.module.scss";
 import DropMenu from "components/DropMenu/DropMenu";
+import MapContainer from "./MapContainer/MapContainer";
 import Modal from "components/Modal/Modal";
 import NewWishList from "components/WishPage/NewWishList/NewWishList";
 import Share from "components/Share/Share";
 import CardProduct from "components/CardProduct/CardProduct";
+import Delete from "components/WishPage/Delete/Delete";
 import { wishlistArr } from "components/WishPage/Lists/config";
 import { IWishlist, initialWishlist } from "src/interfaces/wishlists";
 import cn from "classnames";
@@ -25,6 +27,8 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenShare, setIsOpenShare] = useState(false);
   const [isOpenMap, setIsOpenMap] = useState(false);
+  const [isOpenDel, setIsOpenDel] = useState(false);
+  const [isOpenFullMap, setIsOpenFullMap] = useState(false);
   const [isCurrentList, setIsCurrentList] =
     useState<IWishlist>(initialWishlist);
   const router = useRouter();
@@ -68,6 +72,7 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
         id: 1,
         title: "Delete",
         icon: <DelIcon />,
+        fn: () => setIsOpenDel(true),
       },
     ],
     []
@@ -106,7 +111,7 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
                 </div>
               </div>
             )}
-            <div className={cn(styles.main, { [styles.open]: isOpenMap })}>
+            <div className={cn(styles.main, { [styles.open]: isOpenFullMap })}>
               {!isMobile && (
                 <div className={cn(styles.back, "back")} onClick={back}>
                   <span className="arrow">
@@ -176,20 +181,14 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
                 )}
               </div>
             </div>
-            <div className={cn(styles.map, { [styles.open]: isOpenMap })}>
-              <div
-                className={styles.button}
-                onClick={() => setIsOpenMap((prev) => !prev)}
-              >
-                <ArrowIcon />
-              </div>
-              <div
-                className={styles.mapBlock}
-                style={{
-                  width: `calc(100% + ${isMapWidth}px)`,
-                }}
-              ></div>
-            </div>
+            <MapContainer
+              setIsOpenFullMap={setIsOpenFullMap}
+              isOpenFullMap={isOpenFullMap}
+              setIsOpenMap={setIsOpenMap}
+              isMapWidth={isMapWidth}
+              isOpenMap={isOpenMap}
+              isWishList
+            />
           </div>
         </div>
       </section>
@@ -213,6 +212,16 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
           otherCloseIcon
         >
           <Share isModal />
+        </Modal>
+      )}
+      {isOpenDel && (
+        <Modal
+          closeModal={() => setIsOpenDel(false)}
+          type="successful"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <Delete cancel={() => setIsOpenDel(false)} item={isCurrentList} />
         </Modal>
       )}
     </>
