@@ -59,16 +59,16 @@ const Blocks: FC<IProps> = ({
                   })}
                 >
                   <Link
-                    href={`${isbaseUrl}/${category}/${slug}`}
+                    href={`${isbaseUrl}/categories/${category}/${slug}`}
                     className={styles.title}
                   >
                     {title}
                   </Link>
                   <ul className={styles.list}>
-                    {items.map(({ id, slug, title }) => {
+                    {items.map(({ id, slug: link, title }) => {
                       return (
                         <Link
-                          href={`${isbaseUrl}/${category}/${slug}`}
+                          href={`${isbaseUrl}/categories/${category}/${slug}/${link}`}
                           className={styles.item}
                           key={id}
                         >

@@ -1,4 +1,4 @@
-import { FC, useState, useMemo } from "react";
+import { FC, useState, useMemo, useEffect } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import CardProduct from "components/CardProduct/CardProduct";
@@ -16,35 +16,38 @@ interface IProps {
   openFilter: () => void;
   setIsOpenMap: (bool: any) => void;
   isOpenMap?: boolean;
+  breadCrumbs: any;
 }
 
-const Main: FC<IProps> = ({ title, openFilter, setIsOpenMap, isOpenMap }) => {
-  const [isHorizontalShow, setIsHorizontalShow] = useState(false);
-  const [dataPrice, setDataPrice] = useState({});
-  const [isViewAll, setIsViewAll] = useState(false);
-  const [isShowCategory, setIsShowCategory] = useState(5);
-
+const Main: FC<IProps> = ({
+  title,
+  openFilter,
+  setIsOpenMap,
+  isOpenMap,
+  breadCrumbs,
+}) => {
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
+  const [isHorizontalShow, setIsHorizontalShow] = useState(false);
+  const [isShowProducts, setIsShowProducts] = useState(6);
+  const [isCount, setIsCount] = useState(6);
+  const [dataSort, setDataSort] = useState({});
 
-  const handleClickPrice = (key, value) => {
-    setDataPrice((prev) => ({ ...prev, [key]: value }));
+  const handleClickSort = (key, value) => {
+    setDataSort((prev) => ({ ...prev, [key]: value }));
   };
 
-  const breadCrumbs = useMemo(
-    () => [
-      {
-        id: 0,
-        title: "Home",
-        url: "/",
-      },
-      {
-        id: 0,
-        title: "Child and Adolescent Therapy",
-      },
-    ],
-    []
-  );
+  const handleShowProducts = () => {
+    if (isShowProducts + isCount <= productLst.length) {
+      setIsShowProducts(isShowProducts + isCount);
+    } else {
+      setIsShowProducts(productLst.length);
+    }
+  };
+
+  useEffect(() => {
+    setIsCount(4);
+  }, [isTablet]);
 
   return (
     <div className={styles.container}>
@@ -103,8 +106,8 @@ const Main: FC<IProps> = ({ title, openFilter, setIsOpenMap, isOpenMap }) => {
 
             <div className={styles.sort}>
               <SortBy
-                dataPrice={dataPrice}
-                handleClickPrice={handleClickPrice}
+                dataPrice={dataSort}
+                handleClickPrice={handleClickSort}
                 withoutLabel
               />
             </div>
@@ -131,8 +134,9 @@ const Main: FC<IProps> = ({ title, openFilter, setIsOpenMap, isOpenMap }) => {
           { [styles.openMap]: isOpenMap }
         )}
       >
-        {productLst.map(
-          ({ id, name, images, price, oldPrice, location, isWish }) => {
+        {productLst
+          .slice(0, isShowProducts)
+          .map(({ id, name, images, price, oldPrice, location, isWish }) => {
             return (
               <div
                 className={styles.block}
@@ -153,22 +157,23 @@ const Main: FC<IProps> = ({ title, openFilter, setIsOpenMap, isOpenMap }) => {
                 ></CardProduct>
               </div>
             );
-          }
-        )}
+          })}
       </div>
-      <div
-        className={styles.all}
-        onClick={() => setIsViewAll((prev) => !prev)}
-        data-aos-anchor-placement="center-bottom"
-        data-aos="fade"
-        data-aos-delay="300"
-      >
-        {/* {isViewAll ? "Hide latest deals" : "View all latest deals"} */}
-        View more
-        <span className={cn(styles.icon, { [styles.open]: isViewAll })}>
-          <ArrowSvg />
-        </span>
-      </div>
+
+      {isShowProducts !== productLst.length && (
+        <div
+          className={styles.all}
+          onClick={handleShowProducts}
+          data-aos-anchor-placement="center-bottom"
+          data-aos="fade"
+          data-aos-delay="300"
+        >
+          View more
+          <span className={styles.icon}>
+            <ArrowSvg />
+          </span>
+        </div>
+      )}
     </div>
   );
 };

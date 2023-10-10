@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import Layout from "components/Layout/Layout";
 import CategoryFilterPage from "components/CategoryFilterPage/CategoryFilterPage";
@@ -15,16 +15,34 @@ const Product: NextPage = () => {
 
   useEffect(() => {
     const currentItem = categoriesList.filter(
-      ({ slug }) => slug === router.query.product
+      ({ slug }) => slug === router.query.products
     );
 
     // @ts-ignore
     setIsCurrentList(currentItem[0] || initialCategory);
-  }, [router.query.product]);
+  }, [router.query.products]);
+
+  const breadCrumbs = useMemo(
+    () => [
+      {
+        id: 0,
+        title: "Home",
+        url: "/",
+      },
+      {
+        id: 1,
+        title: isCurrentList.title,
+      },
+    ],
+    [isCurrentList]
+  );
 
   return (
     <Layout title="Category filter" isSecondHeader mobileWithoutBottomMenu>
-      <CategoryFilterPage />
+      <CategoryFilterPage
+        isCurrentList={isCurrentList}
+        breadCrumbs={breadCrumbs}
+      />
     </Layout>
   );
 };

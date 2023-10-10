@@ -11,6 +11,10 @@ import Modal from "components/Modal/Modal";
 import Authorization from "components/Authorization/Authorization";
 import cn from "classnames";
 
+import { useDispatch, useSelector } from "react-redux";
+import { ILayoutReducer } from "./reducer";
+import { IReducer } from "../../reducers";
+
 import styles from "./layout.module.scss";
 
 interface IProps {
@@ -34,11 +38,13 @@ const Layout: FC<IProps> = ({
   mobileWithoutFooter,
   mobileWithoutBottomMenu,
 }) => {
+  // const dispatch = useDispatch();
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
-
-  const [isHiddenFooter, setIsHiddenFooter] = useState(false);
-
   const isMobile = useMediaQuery(768);
+  const { isHeaderHidden, isFooterHidden } = useSelector<
+    IReducer,
+    ILayoutReducer
+  >((state) => state.layout);
 
   useEffect(() => {
     AOS.init({
@@ -55,7 +61,8 @@ const Layout: FC<IProps> = ({
         <title>{title}</title>
       </Head>
       {isMobile ? (
-        !mobileWithoutHeader && (
+        !mobileWithoutHeader &&
+        !isHeaderHidden && (
           <HeaderMobile
             mobileWithoutSearchBar={mobileWithoutSearchBar}
             mobileWithoutBottomMenu={mobileWithoutBottomMenu}
@@ -74,7 +81,7 @@ const Layout: FC<IProps> = ({
       >
         {children}
       </div>
-      {(isMobile && mobileWithoutFooter) || isHiddenFooter ? "" : <Footer />}
+      {(isMobile && mobileWithoutFooter) || isFooterHidden ? "" : <Footer />}
     </div>
   );
 };

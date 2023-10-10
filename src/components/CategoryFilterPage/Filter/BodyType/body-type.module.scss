@@ -51,3 +51,12 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    gap: 10px;
+  }
+  .item {
+    gap: 0;
+  }
+}

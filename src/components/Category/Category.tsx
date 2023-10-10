@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
 import Link from "next/link";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./category.module.scss";
@@ -11,9 +11,16 @@ interface IProps {
   image: string;
   link: string;
   items: any;
+  subcategories: any;
 }
-const Category: FC<IProps> = ({ title, image, link, items }) => {
+const Category: FC<IProps> = ({ title, image, link, items, subcategories }) => {
+  const [isbaseUrl, setIsBaseUrl] = useState("");
+
   const isMobile = useMediaQuery(768);
+
+  useEffect(() => {
+    setIsBaseUrl(window.location.origin);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -25,9 +32,13 @@ const Category: FC<IProps> = ({ title, image, link, items }) => {
       </Link>
       {!isMobile && (
         <div className={styles.items}>
-          {items.map(({ id, title, slug }) => {
+          {subcategories.slice(0, 3).map(({ id, title, slug }) => {
             return (
-              <Link href={`product/${slug}`} key={id} className={styles.item}>
+              <Link
+                href={`${isbaseUrl}/categories/${link}/${slug}`}
+                key={id}
+                className={styles.item}
+              >
                 {title}
               </Link>
             );

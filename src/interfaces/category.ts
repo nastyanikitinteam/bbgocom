@@ -7,6 +7,7 @@ export interface ICategory {
   slug: string;
   update: string;
   items: Array<ISubcategories>;
+  subcategories: Array<ISubcategories>;
   tags: Array<ITags>;
 }
 
@@ -38,6 +39,7 @@ export const initialCategory = {
   slug: "",
   update: "",
   items: [],
+  subcategories: [],
   tags: [],
 };
 

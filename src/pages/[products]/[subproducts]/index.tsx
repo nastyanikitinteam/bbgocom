@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import Layout from "components/Layout/Layout";
 import CategoryFilterPage from "components/CategoryFilterPage/CategoryFilterPage";
@@ -10,12 +10,11 @@ import {
   ISubcategories,
   initialCategory,
   initialSubcategories,
-  ISubcategoriesItem,
-  initialSubcategoryItem,
 } from "src/interfaces/category";
 
 const Product: NextPage = () => {
   const router = useRouter();
+  const [isbaseUrl, setIsBaseUrl] = useState("");
 
   const [isCurrentList, setIsCurrentList] =
     useState<ICategory>(initialCategory);
@@ -23,42 +22,52 @@ const Product: NextPage = () => {
   const [isSubcategories, setIsSubcategories] =
     useState<ISubcategories>(initialSubcategories);
 
-  const [isSubcategoryItem, setIsSubcategoryItem] =
-    useState<ISubcategories>(initialSubcategories);
-
   useEffect(() => {
     const currentItem = categoriesList.filter(
-      ({ slug }) => slug === router.query.product
+      ({ slug }) => slug === router.query.products
     );
-
     // @ts-ignore
     setIsCurrentList(currentItem[0] || initialCategory);
-  }, [router.query.slug]);
+  }, [router.query.producs]);
 
   useEffect(() => {
-    const subcategoriesItems = isCurrentList.items.filter(
-      ({ slug }) => slug === router.query.slug
+    const subcategories = isCurrentList.subcategories.filter(
+      ({ slug }) => slug === router.query.subproducts
     );
-
     // @ts-ignore
-    setIsSubcategories(subcategoriesItems[0] || initialSubcategories);
+    setIsSubcategories(subcategories[0] || initialSubcategories);
   }, [isCurrentList]);
 
   useEffect(() => {
-    const subcategoriesItem = isCurrentList.items.filter(
-      ({ slug }) => slug === router.query.slug
-    );
+    setIsBaseUrl(window.location.origin);
+  }, []);
 
-    // @ts-ignore
-    setIsSubcategoryItem(subcategoriesItem[0] || initialSubcategoryItem);
-  }, [isSubcategoryItem]);
+  const breadCrumbs = useMemo(
+    () => [
+      {
+        id: 0,
+        title: "Home",
+        url: "/",
+      },
+      {
+        id: 1,
+        title: isCurrentList.title,
+        url: `${isbaseUrl}/categories/${isCurrentList.slug}`,
+      },
+      {
+        id: 2,
+        title: isSubcategories.title,
+      },
+    ],
+    [isSubcategories]
+  );
 
   return (
     <Layout title="Category filter" isSecondHeader mobileWithoutBottomMenu>
       <CategoryFilterPage
         isCurrentList={isCurrentList}
         isSubcategories={isSubcategories}
-        isSubcategoryItem={isSubcategoryItem}
+        breadCrumbs={breadCrumbs}
       />
     </Layout>
   );

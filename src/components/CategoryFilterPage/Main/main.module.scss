@@ -88,8 +88,9 @@
   cursor: pointer;
   transition: color 0.25s ease-in;
   color: #808080;
-  margin-top: 20px;
+  margin-top: 40px;
   white-space: nowrap;
+  height: 40px;
   .icon {
     display: flex;
     justify-content: center;
@@ -144,6 +145,7 @@
   align-items: center;
   gap: 8px;
   color: #000;
+  white-space: nowrap;
   .icon {
     display: flex;
     justify-content: center;
@@ -186,6 +188,9 @@
 }
 
 @media (max-width: 768px) {
+  .top {
+    min-height: 20px;
+  }
   .title {
     margin-top: 25px;
   }
@@ -198,6 +203,9 @@
   .info {
     margin: 10px 0 15px;
     flex-direction: row;
+  }
+  .all {
+    margin-top: 25px;
   }
 }
 

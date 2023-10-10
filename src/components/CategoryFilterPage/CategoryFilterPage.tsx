@@ -2,31 +2,34 @@ import { useEffect, useMemo, useState, useRef, FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Main from "./Main/Main";
 import MapContainer from "./MapContainer/MapContainer";
-import Map from "components/Map/Map";
 import Filter from "./Filter/Filter";
 import styles from "./category-filter-page.module.scss";
 import cn from "classnames";
 
-import ArrowIcon from "images/icons/drop.svg";
-import CloseIcon from "images/icons/modal-close.svg";
+import { useDispatch } from "react-redux";
+import { setHeaderHidden, setFooterHidden } from "components/Layout/reducer";
 
 interface IProps {
   isCurrentList?: any;
   isSubcategories?: any;
   isSubcategoryItem?: any;
+  breadCrumbs?: any;
 }
 
 const CategoryFilterPage: FC<IProps> = ({
   isCurrentList,
   isSubcategories,
   isSubcategoryItem,
+  breadCrumbs,
 }) => {
+  const dispatch = useDispatch();
   const [isOpenFilter, setIsOpenFilter] = useState(false);
   const [isOpenMap, setIsOpenMap] = useState(false);
   const [isOpenFullMap, setIsOpenFullMap] = useState(false);
   const [isMapWidth, setIsMapWidth] = useState(null);
   const blockRef = useRef(null);
   const isMobile = useMediaQuery(768);
+  const isLaptop = useMediaQuery(1400);
 
   useEffect(() => {
     !isMobile && setIsOpenFilter(false);
@@ -36,10 +39,10 @@ const CategoryFilterPage: FC<IProps> = ({
     const handleResize = () => {
       if (blockRef.current) {
         const width = blockRef.current.getBoundingClientRect().width;
-        setIsMapWidth((window.innerWidth - width) / 2);
+        setIsMapWidth((window.innerWidth - width - 7) / 2);
       }
     };
-    if (!isMobile) {
+    if (!isLaptop) {
       handleResize();
     }
     window.addEventListener("resize", handleResize);
@@ -48,9 +51,31 @@ const CategoryFilterPage: FC<IProps> = ({
     };
   }, []);
 
+  const handleHeaderState = (val) => {
+    dispatch(setHeaderHidden(val));
+  };
+
+  const handleFooterState = (val) => {
+    dispatch(setFooterHidden(val));
+  };
+
+  const handleFooterHeader = (val) => {
+    handleHeaderState(val);
+    handleFooterState(val);
+  };
+
   useEffect(() => {
-    isMobile && setIsOpenFilter(false);
+    if (isMobile) {
+      setIsOpenFilter(false);
+      isOpenMap ? handleFooterHeader(true) : handleFooterHeader(false);
+    }
   }, [isOpenMap]);
+
+  useEffect(() => {
+    if (isMobile) {
+      isOpenFilter ? handleFooterState(true) : handleFooterState(false);
+    }
+  }, [isOpenFilter]);
 
   return (
     <section className={styles.container}>
@@ -80,6 +105,7 @@ const CategoryFilterPage: FC<IProps> = ({
                 openFilter={() => setIsOpenFilter(true)}
                 isOpenMap={isOpenMap}
                 setIsOpenMap={setIsOpenMap}
+                breadCrumbs={breadCrumbs}
               />
             </div>
           )}

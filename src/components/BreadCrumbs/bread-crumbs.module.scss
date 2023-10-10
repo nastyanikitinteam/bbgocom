@@ -3,6 +3,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 5px;
+  width: 100%;
 }
 
 .item {
@@ -26,6 +27,15 @@
   }
 }
 
+.link {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .noLink {
   color: #38953c;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

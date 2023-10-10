@@ -39,6 +39,9 @@
 
 .item {
   color: #808080;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   &:hover {
     color: #5bb75f;
   }

@@ -67,10 +67,9 @@ const Tags: FC<IProps> = ({ isCurrentList }) => {
                 );
               })}
         </div>
-
         {!isMobile && (
           <Link
-            href={`${isbaseUrl}/${isCurrentList.slug}`}
+            href={`${isbaseUrl}/categories/${isCurrentList.slug}`}
             className={styles.show}
             data-aos-anchor-placement="top-bottom"
             data-aos="fade-up"

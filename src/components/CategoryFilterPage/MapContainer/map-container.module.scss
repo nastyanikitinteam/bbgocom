@@ -131,3 +131,10 @@
     height: calc(100% - 40px);
   }
 }
+
+@media (max-width: 374px) {
+  .mapBlock {
+    left: -10px;
+    width: calc(100% + 20px) !important;
+  }
+}

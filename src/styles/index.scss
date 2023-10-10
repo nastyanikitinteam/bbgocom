@@ -11,6 +11,18 @@ body {
   line-height: 20px;
   color: #000;
   letter-spacing: -0.3px;
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #d8d8d8;
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  }
 }
 
 .hidden {

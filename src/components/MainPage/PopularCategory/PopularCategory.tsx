@@ -76,20 +76,23 @@ const PopularCategory = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          {categoriesList.map(({ id, title, image, slug, items }) => {
-            return (
-              id < isShowCategory && (
-                <div className={styles.block} key={id}>
-                  <Category
-                    title={title}
-                    image={image}
-                    link={slug}
-                    items={items}
-                  />
-                </div>
-              )
-            );
-          })}
+          {categoriesList.map(
+            ({ id, title, image, slug, items, subcategories }) => {
+              return (
+                id < isShowCategory && (
+                  <div className={styles.block} key={id}>
+                    <Category
+                      title={title}
+                      image={image}
+                      link={slug}
+                      items={items}
+                      subcategories={subcategories}
+                    />
+                  </div>
+                )
+              );
+            }
+          )}
         </div>
         {!isMobile && (
           <div

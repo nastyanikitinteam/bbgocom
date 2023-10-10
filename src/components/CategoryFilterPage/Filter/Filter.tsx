@@ -50,7 +50,7 @@ const Filter: FC<IProps> = ({ addWidth, setIsOpenFilter }) => {
         <div
           className={styles.line}
           style={{
-            width: `calc(100% + ${addWidth}px)`,
+            width: `calc(100% + ${addWidth}px + 1px)`,
           }}
         ></div>
         <a href="" className={cn("default-button sm", styles.button)}>

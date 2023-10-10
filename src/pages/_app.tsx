@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Provider } from "react-redux";
 import type { AppProps } from "next/app";
 import ThemeContext from "../context";
+import storeWrapper from "../store";
 import "../styles/index.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -13,4 +15,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+// export default MyApp;
+
+export default storeWrapper.withRedux(MyApp);

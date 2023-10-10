@@ -190,12 +190,12 @@ export const categoriesList = [
       {
         id: 4,
         title: "Other categories",
-        slug: "",
+        slug: "other-categories",
         items: [
           {
             id: 0,
             title: "Land plots",
-            slug: "",
+            slug: "land-plots",
           },
           {
             id: 1,
@@ -257,34 +257,34 @@ export const categoriesList = [
       {
         id: 0,
         title: "Cars",
-        slug: "",
+        slug: "cars",
         items: [
           {
             id: 0,
             title: "New Cars",
-            slug: "",
+            slug: "new-cars",
           },
           {
             id: 1,
             title: "Used car",
-            slug: "",
+            slug: "used-car",
           },
         ],
       },
       {
         id: 1,
         title: "Motorcycles and motor vehicles",
-        slug: "",
+        slug: "motorcycles-and-motor-vehicles",
         items: [
           {
             id: 0,
             title: "Off-road",
-            slug: "",
+            slug: "off-road",
           },
           {
             id: 1,
             title: "Karting",
-            slug: "",
+            slug: "karting",
           },
           {
             id: 2,
@@ -306,7 +306,7 @@ export const categoriesList = [
       {
         id: 2,
         title: "Trucks and special equipment",
-        slug: "",
+        slug: "trucks-and-special-equipment",
         items: [
           {
             id: 0,
