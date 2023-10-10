@@ -43,12 +43,9 @@ const CardProduct: FC<IProps> = ({
   const [isOpenAddToWish, setIsOpenAddToWish] = useState(false);
   const [isOpenDeleteWish, setIsOpenDeleteWish] = useState(false);
 
+  // TODO: cb
   const handleWishItem = () => {
-    if (isWish) {
-      setIsOpenDeleteWish(true);
-    } else {
-      setIsOpenAddToWish(true);
-    }
+    isWish ? setIsOpenDeleteWish(true) : setIsOpenAddToWish(true);
   };
 
   return (

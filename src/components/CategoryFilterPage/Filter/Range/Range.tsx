@@ -19,6 +19,7 @@ const Range: FC<IProps> = ({ title, defaultVelue1, defaultVelue2 }) => {
             className={"default-input sm withoutIcon"}
             placeholder={defaultVelue1}
             onKeyPress={(event) => {
+              // TODO form elements UTILS
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
               }
@@ -32,6 +33,7 @@ const Range: FC<IProps> = ({ title, defaultVelue1, defaultVelue2 }) => {
             className={"default-input sm withoutIcon"}
             placeholder={defaultVelue2}
             onKeyPress={(event) => {
+              // TODO UTILS
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
               }

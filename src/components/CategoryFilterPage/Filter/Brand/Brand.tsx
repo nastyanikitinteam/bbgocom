@@ -14,12 +14,14 @@ interface IProps {
 }
 
 const Brand: FC<IProps> = ({ title, list }) => {
-  const [isShow, setIsShow] = useState(true);
-  const [selectedLetter, setSelectedLetter] = useState("");
-  const [isSearchQuery, setIsSearchQuery] = useState("");
+  const [isShow, setIsShow] = useState<boolean>(true);
+  const [selectedLetter, setSelectedLetter] = useState<string>("");
+  const [isSearchQuery, setIsSearchQuery] = useState<string>("");
 
+  // TODO ALEX
   const searchResults = searchArray(list, isSearchQuery);
 
+  // TODO ALEX
   function searchArray(array, query) {
     const results = [];
     const regex = new RegExp(query, "i");
@@ -31,15 +33,18 @@ const Brand: FC<IProps> = ({ title, list }) => {
     return results;
   }
 
+  // TODO MAP
   const filteredBrands = list.filter(
     (brand) => brand.charAt(0).toUpperCase() === selectedLetter
   );
 
+  // TOOD CB
   const handleLetterSelect = (letter) => {
     setIsSearchQuery("");
     setSelectedLetter(letter);
   };
 
+  // TODO CB
   const onChangeSearchInput = (event) => {
     setSelectedLetter("");
     setIsSearchQuery(event.target.value);

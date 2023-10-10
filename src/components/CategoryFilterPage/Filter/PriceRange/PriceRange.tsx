@@ -13,6 +13,7 @@ interface IProps {
 const PriceRange: FC<IProps> = ({ title, list }) => {
   const [isShowPartOfHistogramm, setIsShowPartOfHistogramm] = useState();
 
+  // todo useref
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(100000);
 

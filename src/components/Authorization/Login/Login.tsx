@@ -35,15 +35,14 @@ const Login: FC<IProps> = ({ changeActiveAuth }) => {
 
   const [isCountryList, setIsCountryList] = useState([]);
 
-  const processingCounrtryList = () => {
-    let arr = CountriesList.map(({ value, icon, name, code }) => {
-      return {
-        value: `${value} ${code}`,
-        label: <Country icon={icon} name={name} code={code} />,
-      };
-    });
-    setIsCountryList(arr);
-  };
+  const processingCounrtryList = useCallback(() => {
+    // TODO: Move to utils
+    const countries = CountriesList.map(({ value, icon, name, code }) => ({
+      value: `${value} ${code}`,
+      label: <Country icon={icon} name={name} code={code} />,
+    }));
+    setIsCountryList(countries);
+  }, [CountriesList]);
 
   useEffect(() => {
     if (!isCountryList.length) {
@@ -63,6 +62,7 @@ const Login: FC<IProps> = ({ changeActiveAuth }) => {
             You don't have an account yet?{" "}
             <a onClick={changeActiveAuth}>Sign Up</a>
           </p>
+          {/* TODO: TO ANOTHER COMPONENT */}
           <Form
             onSubmit={onSubmit}
             validate={validate}
@@ -117,6 +117,7 @@ const Login: FC<IProps> = ({ changeActiveAuth }) => {
             )}
           ></Form>
           <h3 className={styles.subtitle}>Or Log In with</h3>
+          {/* TODO: to another component */}
           <div className={styles.socials}>
             <a href="#" className={cn("default-button border", styles.social)}>
               <span className="icon">

@@ -16,9 +16,11 @@ interface IProps {
 const Category: FC<IProps> = ({ title, image, link, items, subcategories }) => {
   const [isbaseUrl, setIsBaseUrl] = useState("");
 
+  // TODO: 768 in config
   const isMobile = useMediaQuery(768);
 
   useEffect(() => {
+    //TODO: SERVER DOESNT HAVE WINDOW
     setIsBaseUrl(window.location.origin);
   }, []);
 

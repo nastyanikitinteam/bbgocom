@@ -11,6 +11,7 @@ const Tabs: FC<IProps> = ({ tabsList }) => {
 
   return (
     <div className={styles.container}>
+      {/* TODO: item +id */}
       {tabsList.map((item, id) => {
         return (
           <div

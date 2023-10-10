@@ -14,9 +14,10 @@ const Checkboxes: FC<IProps> = ({ title, list, isColumn }) => {
     <div className={styles.container}>
       <h3 className={styles.title}>{title}</h3>
       <div className={cn(styles.list, { [styles.column]: isColumn })}>
-        {list.length > 0 ? (
+        {list.length ? (
           list.map((item, id) => {
             return (
+              // TODO return, todo id + item, key
               <div className={styles.item} key={id}>
                 <Checkbox name={item} extClassName="filter" key={id}>
                   {item}

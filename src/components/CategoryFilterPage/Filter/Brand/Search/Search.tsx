@@ -16,9 +16,7 @@ const Search: FC<IProps> = ({
   onChangeSearchInput,
   setIsSearchQuery,
 }) => {
-  const cleanSearchInput = () => {
-    setIsSearchQuery("");
-  };
+  // TODO return
   return (
     <div className={styles.container}>
       <span
@@ -38,7 +36,7 @@ const Search: FC<IProps> = ({
         className={cn(styles.close, {
           [styles.active]: isSearchQuery.length > 0,
         })}
-        onClick={cleanSearchInput}
+        onClick={() => setIsSearchQuery("")}
       >
         <CloseIcon />
       </div>

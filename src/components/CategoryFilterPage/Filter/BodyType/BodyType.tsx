@@ -12,6 +12,7 @@ interface IProps {
 const BodyType: FC<IProps> = ({ title }) => {
   const [selectedType, setSelectedType] = useState([]);
 
+  // TODO cb
   const toggleType = (type) => {
     console.log(type, selectedType);
     if (selectedType.includes(type)) {
@@ -21,10 +22,12 @@ const BodyType: FC<IProps> = ({ title }) => {
     }
   };
 
+  // TODO
   const camelCaseToWords = (camelCaseString) => {
     return camelCaseString.replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase();
   };
 
+  // TODO
   const handleCleanButtonClick = () => {
     setSelectedType([]);
   };

@@ -22,6 +22,7 @@ const Range: FC<IProps> = ({
   inputValue1,
   inputValue2,
 }) => {
+  // todo
   const onChangeInput1 = (event) => {
     if (event.target.value > maxPrice) {
       setInputValue1(maxPrice);
@@ -54,6 +55,7 @@ const Range: FC<IProps> = ({
         className={cn("customSelect priceRange", styles.slider)}
         tooltip={{ open: false }}
       />
+      {/* TODO FORM ELEMENTS */}
       <div className={styles.bottom}>
         <div className={styles.item}>
           <input
@@ -62,6 +64,7 @@ const Range: FC<IProps> = ({
             className={cn("default-input sm", styles.priceMin)}
             onChange={onChangeInput1}
             onKeyPress={(event) => {
+              // TODO TO FUNCTION
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault();
               }

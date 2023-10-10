@@ -11,6 +11,7 @@ interface IProps {
 const ColorPicker: FC<IProps> = ({ title, colors }) => {
   const [selectedColors, setSelectedColors] = useState([]);
 
+  // TODO
   const toggleColor = (color) => {
     if (selectedColors.includes(color)) {
       setSelectedColors(selectedColors.filter((c) => c !== color));
@@ -19,6 +20,7 @@ const ColorPicker: FC<IProps> = ({ title, colors }) => {
     }
   };
 
+  // TODO: CONFIG
   const colorsList = {
     red: `#B7313F`,
     white: `#ffffff`,
@@ -39,10 +41,12 @@ const ColorPicker: FC<IProps> = ({ title, colors }) => {
     silver: `linear-gradient(156deg, #BEBEBE 3.18%, #FFF 48.11%, #D9D9D9 114.18%)`,
   };
 
+  // TODO
   const camelCaseToWords = (camelCaseString) => {
     return camelCaseString.replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase();
   };
 
+  // TODO
   const handleCleanButtonClick = () => {
     setSelectedColors([]);
   };
@@ -51,7 +55,7 @@ const ColorPicker: FC<IProps> = ({ title, colors }) => {
     <div className={styles.container}>
       <div className={styles.top}>
         <h3 className={styles.title}>{title}</h3>
-        {selectedColors.length > 0 && (
+        {selectedColors.length && (
           <div className={styles.clean} onClick={handleCleanButtonClick}>
             <span className={styles.icon}>
               <DelIcon />
@@ -66,6 +70,7 @@ const ColorPicker: FC<IProps> = ({ title, colors }) => {
           if (colorsList.hasOwnProperty(color)) {
             const rgbaColor = colorsList[color];
             return (
+              // todo index + something
               <div
                 key={index}
                 className={cn(

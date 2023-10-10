@@ -13,12 +13,15 @@ const Alphabetical: FC<IProps> = ({
   selectedLetter,
   onLetterSelect,
 }) => {
+  // TODO: ADD IT TO CONFIG, TO ARRAY
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
+  // TODO: USEMAP
   const existingLetters = carBrands
     .map((brand) => brand.charAt(0).toUpperCase())
     .filter((value, index, self) => self.indexOf(value) === index);
 
+  // TODO: CALLBACK
   const handleLetterClick = (letter) => {
     if (selectedLetter === letter) {
       onLetterSelect("");
@@ -31,6 +34,7 @@ const Alphabetical: FC<IProps> = ({
     <div className={styles.container}>
       <h3 className={styles.title}>Alphabetical index</h3>
       <div className={styles.list}>
+        {/* TODO: CHECK IF IS ALPHABET EXISTS */}
         {alphabet.map((letter) => (
           <span
             className={cn(

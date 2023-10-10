@@ -15,6 +15,7 @@ const Histogram: FC<IProps> = ({
   inputValue1,
   inputValue2,
 }) => {
+  // TODO
   const generateRandomPrices = (count) => {
     const prices = [];
     for (let i = 0; i < count; i++) {
@@ -25,6 +26,7 @@ const Histogram: FC<IProps> = ({
   };
 
   // const randomPrices = generateRandomPrices(99);
+  // TODO: CONFIG
   const randomPrices = [
     70059, 97767, 27598, 91349, 58807, 62100, 41657, 54513, 60865, 63628, 19872,
     44702, 29018, 19080, 41205, 12128, 84111, 59319, 71748, 46790, 66964, 69789,
@@ -40,7 +42,9 @@ const Histogram: FC<IProps> = ({
   const sortedPrices = randomPrices.slice();
   sortedPrices.sort((a, b) => a - b);
 
+  // TODO: to useref or config
   const numBlocks = 15;
+  // TODO
   const blockWidth = (maxPrice - minPrice) / numBlocks;
 
   const histogramData = new Array(numBlocks).fill(0);

@@ -37,13 +37,12 @@ const SignUp: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
 
   const [isCountryList, setIsCountryList] = useState([]);
 
+  // TODO: callback, move to utils
   const processingCounrtryList = () => {
-    let arr = CountriesList.map(({ value, icon, name, code }) => {
-      return {
-        value: value,
-        label: <Country icon={icon} name={name} code={code} />,
-      };
-    });
+    let arr = CountriesList.map(({ value, icon, name, code }) => ({
+      value: value,
+      label: <Country icon={icon} name={name} code={code} />,
+    }));
     setIsCountryList(arr);
   };
 

@@ -1,6 +1,5 @@
-import React, { useCallback, useState, useEffect, FC } from "react";
+import React, { useCallback } from "react";
 import { Form, Field } from "react-final-form";
-import Select from "components/Select/Select";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
@@ -10,10 +9,6 @@ import cn from "classnames";
 import styles from "./profile.module.scss";
 
 import LogoSvg from "images/main/logo.svg";
-
-// interface IProps {
-//   changeActiveAuth: () => void;
-// }
 
 const Login = () => {
   const validationSchema = yup.object().shape({
@@ -36,6 +31,7 @@ const Login = () => {
       </div>
       <h2 className={styles.title}>Profile</h2>
       <p className={styles.text}>Create an account</p>
+      {/* TODO: form */}
       <Form
         onSubmit={onSubmit}
         validate={validate}
