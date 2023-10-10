@@ -6,13 +6,13 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import Header from "components/Header/Header";
 import HeaderMobile from "components/Header/HeaderMobile/HeaderMobile";
 import Footer from "components/Footer/Footer";
-import ProfilePage from "components/ProfilePage/ProfilePage";
 import Modal from "components/Modal/Modal";
 import Authorization from "components/Authorization/Authorization";
 import cn from "classnames";
 
 import { useDispatch, useSelector } from "react-redux";
 import { ILayoutReducer } from "./reducer";
+import { IFilterReducer } from "components/CategoryFilterPage/reducer";
 import { IReducer } from "../../reducers";
 
 import styles from "./layout.module.scss";
@@ -45,6 +45,10 @@ const Layout: FC<IProps> = ({
     IReducer,
     ILayoutReducer
   >((state) => state.layout);
+
+  const { isCategoryFilterOpen } = useSelector<IReducer, IFilterReducer>(
+    (state) => state.categoryFilter
+  );
 
   useEffect(() => {
     AOS.init({
@@ -81,7 +85,13 @@ const Layout: FC<IProps> = ({
       >
         {children}
       </div>
-      {(isMobile && mobileWithoutFooter) || isFooterHidden ? "" : <Footer />}
+      {(isMobile && mobileWithoutFooter) ||
+      isFooterHidden ||
+      isCategoryFilterOpen ? (
+        ""
+      ) : (
+        <Footer />
+      )}
     </div>
   );
 };

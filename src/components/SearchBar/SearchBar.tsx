@@ -12,7 +12,12 @@ import LocationMain from "./SearchLocation/LocationMain/LocationMain";
 import LocationSearch from "./SearchLocation/LocationSearch/LocationSearch";
 import SearchHistory from "./SearchLocation/SearchHistory/SearchHistory";
 import Search from "./SearchLocation/Search/Search";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  IFilterReducer,
+  setIsCategoryFilterOpen,
+} from "components/CategoryFilterPage/reducer";
+import { IReducer } from "../../reducers";
 import styles from "./search-bar.module.scss";
 
 import SearchIcon from "images/icons/search.svg";
@@ -23,7 +28,11 @@ interface IProps {
 }
 
 const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
+  const dispatch = useDispatch();
   const containerRef = useRef(null as null | HTMLDivElement);
+  const { isCategoryFilterOpen } = useSelector<IReducer, IFilterReducer>(
+    (state) => state.categoryFilter
+  );
   const { height, setHeight } = useContext(ThemeContext);
   const [scrollTop, setScrollTop] = useState(0);
   const [isSearchBarTop, setIsSearchBarTop] = useState(false);
@@ -54,6 +63,10 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
   const [isSearchRegionQuery, setIsSearchRegionQuery] = useState("");
   const [isSearchQuery, setIsSearchQuery] = useState("");
   const [isPriceBlockDefault, setIsPriceBlockDefault] = useState(true);
+
+  const handleFilterState = (val) => {
+    dispatch(setIsCategoryFilterOpen(val));
+  };
 
   useEffect(() => {
     setHeight(containerRef?.current?.offsetTop);
@@ -146,6 +159,7 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
   }, [dataPrice]);
 
   useEffect(() => {
+    handleFilterState(false);
     if (isMobile) {
       if (
         isActiveChoice == "Filter" ||
@@ -214,10 +228,14 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
               <SearchIcon />
             </button>
           )}
-          {isMobile && isActiveChoice != "" && (
+          {isMobile && (isActiveChoice || isCategoryFilterOpen) != "" && (
             <div
               className={styles.cancel}
-              onClick={() => deleteFilterResult("cancel")}
+              onClick={() =>
+                isCategoryFilterOpen
+                  ? handleFilterState(false)
+                  : deleteFilterResult("cancel")
+              }
             >
               Cancel
             </div>

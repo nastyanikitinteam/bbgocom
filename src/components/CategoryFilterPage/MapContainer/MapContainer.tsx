@@ -11,7 +11,7 @@ import FilterIcon from "images/icons/filter-icon.svg";
 interface IProps {
   setIsOpenFullMap: (bool: any) => void;
   setIsOpenMap: (bool: boolean) => void;
-  setIsOpenFilter: (bool: boolean) => void;
+  handleFilter: (bool: boolean) => void;
   isOpenFullMap: boolean;
   isOpenMap: boolean;
   isMapWidth: string;
@@ -19,7 +19,7 @@ interface IProps {
 
 const MapContainer: FC<IProps> = ({
   setIsOpenFullMap,
-  setIsOpenFilter,
+  handleFilter,
   setIsOpenMap,
   isOpenFullMap,
   isOpenMap,
@@ -30,6 +30,11 @@ const MapContainer: FC<IProps> = ({
   const closeMap = () => {
     setIsOpenMap(false);
     setIsOpenFullMap(false);
+  };
+
+  const openFilter = () => {
+    closeMap();
+    handleFilter(true);
   };
 
   return (
@@ -47,10 +52,7 @@ const MapContainer: FC<IProps> = ({
             )}
             <h1 className={styles.title}>Map</h1>
             <div className={styles.actions}>
-              <button
-                className={styles.filter}
-                onClick={() => setIsOpenFilter(true)}
-              >
+              <button className={styles.filter} onClick={openFilter}>
                 <FilterIcon />
               </button>
             </div>

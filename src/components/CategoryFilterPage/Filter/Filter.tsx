@@ -21,14 +21,13 @@ import cn from "classnames";
 
 interface IProps {
   addWidth: string;
-  setIsOpenFilter: (bool: boolean) => void;
 }
 
-const Filter: FC<IProps> = ({ addWidth, setIsOpenFilter }) => {
+const Filter: FC<IProps> = ({ addWidth }) => {
   const isMobile = useMediaQuery(768);
 
   const reset = () => {
-    setIsOpenFilter(false);
+    console.log("123");
   };
 
   return (

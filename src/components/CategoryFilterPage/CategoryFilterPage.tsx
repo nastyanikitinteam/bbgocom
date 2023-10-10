@@ -6,7 +6,9 @@ import Filter from "./Filter/Filter";
 import styles from "./category-filter-page.module.scss";
 import cn from "classnames";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { IFilterReducer, setIsCategoryFilterOpen } from "./reducer";
+import { IReducer } from "../../reducers";
 import { setHeaderHidden, setFooterHidden } from "components/Layout/reducer";
 
 interface IProps {
@@ -23,17 +25,15 @@ const CategoryFilterPage: FC<IProps> = ({
   breadCrumbs,
 }) => {
   const dispatch = useDispatch();
-  const [isOpenFilter, setIsOpenFilter] = useState(false);
+  const { isCategoryFilterOpen } = useSelector<IReducer, IFilterReducer>(
+    (state) => state.categoryFilter
+  );
   const [isOpenMap, setIsOpenMap] = useState(false);
   const [isOpenFullMap, setIsOpenFullMap] = useState(false);
   const [isMapWidth, setIsMapWidth] = useState(null);
   const blockRef = useRef(null);
   const isMobile = useMediaQuery(768);
   const isLaptop = useMediaQuery(1400);
-
-  useEffect(() => {
-    !isMobile && setIsOpenFilter(false);
-  }, [isMobile]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,6 +59,14 @@ const CategoryFilterPage: FC<IProps> = ({
     dispatch(setFooterHidden(val));
   };
 
+  const handleFilterState = (val) => {
+    dispatch(setIsCategoryFilterOpen(val));
+  };
+
+  const handleFilter = (val) => {
+    handleFilterState(val);
+  };
+
   const handleFooterHeader = (val) => {
     handleHeaderState(val);
     handleFooterState(val);
@@ -66,27 +74,24 @@ const CategoryFilterPage: FC<IProps> = ({
 
   useEffect(() => {
     if (isMobile) {
-      setIsOpenFilter(false);
       isOpenMap ? handleFooterHeader(true) : handleFooterHeader(false);
     }
   }, [isOpenMap]);
 
   useEffect(() => {
-    if (isMobile) {
-      isOpenFilter ? handleFooterState(true) : handleFooterState(false);
-    }
-  }, [isOpenFilter]);
+    !isMobile && handleFilter(false);
+  }, [isMobile]);
 
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.content} ref={blockRef}>
-          {(!isMobile || isOpenFilter) && (
+          {(!isMobile || isCategoryFilterOpen) && (
             <div className={styles.info}>
-              <Filter addWidth={isMapWidth} setIsOpenFilter={setIsOpenFilter} />
+              <Filter addWidth={isMapWidth} />
             </div>
           )}
-          {!isOpenFilter && (
+          {!isCategoryFilterOpen && (
             <div
               className={cn(
                 styles.main,
@@ -102,7 +107,7 @@ const CategoryFilterPage: FC<IProps> = ({
                     ? isSubcategories.title
                     : isCurrentList.title
                 }
-                openFilter={() => setIsOpenFilter(true)}
+                openFilter={() => handleFilter(true)}
                 isOpenMap={isOpenMap}
                 setIsOpenMap={setIsOpenMap}
                 breadCrumbs={breadCrumbs}
@@ -116,7 +121,7 @@ const CategoryFilterPage: FC<IProps> = ({
               setIsOpenMap={setIsOpenMap}
               isMapWidth={isMapWidth}
               isOpenMap={isOpenMap}
-              setIsOpenFilter={setIsOpenFilter}
+              handleFilter={handleFilter}
             />
           )}
         </div>
