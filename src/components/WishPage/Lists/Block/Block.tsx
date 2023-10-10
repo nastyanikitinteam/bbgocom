@@ -5,6 +5,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import DropMenu from "components/DropMenu/DropMenu";
 import Modal from "components/Modal/Modal";
 import NewWishList from "components/WishPage/NewWishList/NewWishList";
+import Delete from "components/WishPage/Delete/Delete";
 import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
 import cn from "classnames";
 
@@ -18,6 +19,7 @@ interface IProps {
 const Block: FC<IProps> = ({ item }) => {
   const [isHover, setIsHover] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [isOpenDel, setIsOpenDel] = useState(false);
   const [isOpenAdd, setIsOpenAdd] = useState(false);
   const isMobile = useMediaQuery(768);
   const emptyBlocks = Array(isMobile ? 4 : 3).fill(null);
@@ -36,7 +38,7 @@ const Block: FC<IProps> = ({ item }) => {
         id: 1,
         title: "Delete",
         icon: <DelIcon />,
-        fn: () => console.log("work"),
+        fn: () => setIsOpenDel(true),
       },
     ],
     []
@@ -126,6 +128,16 @@ const Block: FC<IProps> = ({ item }) => {
           mobileIsBottom
         >
           <NewWishList cancel={() => setIsOpenEdit(false)} item={item} />
+        </Modal>
+      )}
+      {isOpenDel && (
+        <Modal
+          closeModal={() => setIsOpenDel(false)}
+          type="successful"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <Delete cancel={() => setIsOpenDel(false)} item={item} />
         </Modal>
       )}
     </div>
