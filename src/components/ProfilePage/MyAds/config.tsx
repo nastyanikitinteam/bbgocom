@@ -32,7 +32,11 @@ export const activeList = [
     ],
     price: "$1,250 000.00",
     oldPrice: "$1,500.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
 
   {
@@ -63,7 +67,11 @@ export const activeList = [
     ],
     price: "$1,250.00",
     oldPrice: "$1,500.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
 
   {
@@ -93,7 +101,11 @@ export const activeList = [
       },
     ],
     price: "$325,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
 ];
 export const waitingList = [
@@ -125,7 +137,11 @@ export const waitingList = [
     ],
     price: "$1,250 000.00",
     oldPrice: "$1,500.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
 
   {
@@ -156,7 +172,11 @@ export const waitingList = [
     ],
     price: "$1,250.00",
     oldPrice: "$1,500.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
 
   {
@@ -186,7 +206,11 @@ export const waitingList = [
       },
     ],
     price: "$325,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 685012444,
@@ -215,7 +239,11 @@ export const waitingList = [
       },
     ],
     price: "$325,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
 ];
 export const inActiveList = [
@@ -246,7 +274,11 @@ export const inActiveList = [
       },
     ],
     price: "$1,250 000.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
 
   {
@@ -277,7 +309,11 @@ export const inActiveList = [
     ],
     price: "$1,250.00",
     oldPrice: "$1,500.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
 ];
 export const rejectedList = [];

@@ -1,7 +1,7 @@
-import { useMemo, FC, ReactNode, useState } from "react";
+import { useMemo, FC, ReactNode, useState, useCallback } from "react";
 import styles from "./card-product.module.scss";
 import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
-import NewWishList from "components/WishPage/NewWishList/NewWishList";
+import Delete from "components/WishPage/Delete/Delete";
 import Modal from "components/Modal/Modal";
 import cn from "classnames";
 
@@ -16,7 +16,7 @@ interface IProps {
   images: any;
   price: string;
   oldPrice?: string;
-  location: string;
+  location?: any;
   isGreenCard?: boolean;
   children?: ReactNode;
   isHorizontal?: boolean;
@@ -40,13 +40,11 @@ const CardProduct: FC<IProps> = ({
   isMap,
   isOpenMap,
 }) => {
-  const [isOpenAddToWish, setIsOpenAddToWish] = useState(false);
-  const [isOpenDeleteWish, setIsOpenDeleteWish] = useState(false);
+  const [isOpenWishModal, setIsOpenWishModal] = useState(false);
 
-  // TODO: cb
-  const handleWishItem = () => {
-    isWish ? setIsOpenDeleteWish(true) : setIsOpenAddToWish(true);
-  };
+  const handleWihlist = useCallback(() => {
+    !isWish ? setIsOpenWishModal(true) : console.log("delete");
+  }, []);
 
   return (
     <>
@@ -62,7 +60,7 @@ const CardProduct: FC<IProps> = ({
         {children && <div className={styles.checkbox}>{children}</div>}
         <div
           className={cn(styles.wishlist, { [styles.active]: isWish })}
-          onClick={handleWishItem}
+          onClick={handleWihlist}
         >
           <StarIcon />
         </div>
@@ -78,7 +76,7 @@ const CardProduct: FC<IProps> = ({
               <span className={styles.icon}>
                 <MapIcon />
               </span>
-              {location}
+              {location.name}
             </div>
             <div className={styles.price}>
               {price}
@@ -88,15 +86,16 @@ const CardProduct: FC<IProps> = ({
         </div>
       </div>
 
-      {isOpenAddToWish && (
+      {isOpenWishModal && (
         <Modal
-          closeModal={() => setIsOpenAddToWish(false)}
+          closeModal={() => setIsOpenWishModal(false)}
           type="successful"
           otherCloseIcon
           mobileIsBottom
         >
-          {/* <NewWishList cancel={() => setIsOpenAddToWish(false)} /> */}
-          <AddToWishList cancel={() => setIsOpenAddToWish(false)} />
+          {!isWish && (
+            <AddToWishList cancel={() => setIsOpenWishModal(false)} />
+          )}
         </Modal>
       )}
     </>

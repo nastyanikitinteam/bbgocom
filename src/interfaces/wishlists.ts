@@ -13,12 +13,17 @@ interface IWishlistItem {
   images: Array<IWishlistImage>;
   price: string;
   oldPrice: string;
-  location: string;
+  location: Array<IWishlistLocation>;
 }
 
 interface IWishlistImage {
   id: number;
   image: string;
+}
+interface IWishlistLocation {
+  name: string;
+  lat: number;
+  lng: number;
 }
 
 export const initialWishlist = {

@@ -34,7 +34,11 @@ const Review: FC<IProps> = ({ info }) => {
         },
       ],
       price: "$35,255.00",
-      location: "Phuket, Thailand",
+      location: {
+        name: "Krung Thep Maha Nakhon, Thailand",
+        lat: 13.889370459447255,
+        lng: 100.59778134546144,
+      },
     },
   ];
   return (

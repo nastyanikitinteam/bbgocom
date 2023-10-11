@@ -15,6 +15,7 @@ interface IProps {
   isOpenFullMap: boolean;
   isOpenMap: boolean;
   isMapWidth: string;
+  productList: any;
 }
 
 const MapContainer: FC<IProps> = ({
@@ -24,6 +25,7 @@ const MapContainer: FC<IProps> = ({
   isOpenFullMap,
   isOpenMap,
   isMapWidth,
+  productList,
 }) => {
   const isMobile = useMediaQuery(768);
 
@@ -76,7 +78,7 @@ const MapContainer: FC<IProps> = ({
           {isOpenMap && !isMobile && (
             <div className={styles.closeMap} onClick={closeMap}></div>
           )}
-          <Map />
+          <Map productList={productList} />
         </div>
       </div>
     </>

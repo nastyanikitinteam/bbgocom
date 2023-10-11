@@ -23,7 +23,11 @@ export const reviewList = [
       },
     ],
     price: "$35,255.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
     review:
       "I've been wearing Ray-Ban Aviators for years, and I couldn't be happier with them. They're incredibly stylish and versatile, and they protect my eyes comfortable that I forget I'm even wearing them! \n \n The lenses are crystal clear, and the frame is sturdy yet lightweight. I love the classic look of Aviators, and I always get compliments when I wear them.",
     name: "Daniel Gastager",
@@ -43,7 +47,11 @@ export const reviewList = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
     review:
       "I've been wearing Ray-Ban Aviators for years, and I couldn't be happier with them. They're incredibly stylish and versatile, and they protect my eyes comfortable that I forget I'm even wearing them! \n \n The lenses are crystal clear, and the frame is sturdy yet lightweight. I love the classic look of Aviators, and I always get compliments when I wear them.",
     name: "Daniel Gastager",
@@ -71,7 +79,11 @@ export const reviewList = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
     review:
       "I've been wearing Ray-Ban Aviators for years, and I couldn't be happier with them. They're incredibly stylish and versatile, and they protect my eyes comfortable that I forget I'm even wearing them! \n \n The lenses are crystal clear, and the frame is sturdy yet lightweight. I love the classic look of Aviators, and I always get compliments when I wear them.",
     name: "Daniel Gastager",
@@ -100,7 +112,11 @@ export const reviewList = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
     review:
       "I've been wearing Ray-Ban Aviators for years, and I couldn't be happier with them. They're incredibly stylish and versatile, and they protect my eyes comfortable that I forget I'm even wearing them! \n \n The lenses are crystal clear, and the frame is sturdy yet lightweight. I love the classic look of Aviators, and I always get compliments when I wear them.",
     name: "Daniel Gastager",
@@ -129,7 +145,11 @@ export const reviewList = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
     review:
       "I've been wearing Ray-Ban Aviators for years, and I couldn't be happier with them. They're incredibly stylish and versatile, and they protect my eyes comfortable that I forget I'm even wearing them! \n \n The lenses are crystal clear, and the frame is sturdy yet lightweight. I love the classic look of Aviators, and I always get compliments when I wear them.",
     name: "Daniel Gastager",
@@ -158,7 +178,11 @@ export const reviewList = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
     review:
       "I've been wearing Ray-Ban Aviators for years, and I couldn't be happier with them. They're incredibly stylish and versatile, and they protect my eyes comfortable that I forget I'm even wearing them! \n \n The lenses are crystal clear, and the frame is sturdy yet lightweight. I love the classic look of Aviators, and I always get compliments when I wear them.",
     name: "Daniel Gastager",

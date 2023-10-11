@@ -18,6 +18,7 @@ const Authorization = () => {
   const [isConfirmNumber, setIsConfirmNumber] = useState(false);
   const [isRegisterStep, setIsRegisterStep] = useState(false);
 
+  // TODO: callback
   const changeActiveAuth = () => {
     if (isLogin) {
       setIsLogin(false);
@@ -28,6 +29,7 @@ const Authorization = () => {
     }
   };
 
+  // TODO: cb
   const openNextStepSignUp = () => {
     if (isSignUp) {
       setIsSignUp(false);

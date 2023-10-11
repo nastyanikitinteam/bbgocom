@@ -190,7 +190,7 @@ const ReviewedProducts = () => {
                         images={images}
                         price={price}
                         oldPrice={oldPrice}
-                        location={location.name}
+                        location={location}
                         isHorizontal={isHorizontalShow}
                       >
                         <Field

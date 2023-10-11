@@ -56,7 +56,7 @@ const Recommend = () => {
                     images={images}
                     price={price}
                     oldPrice={oldPrice}
-                    location={location.name}
+                    location={location}
                     isWish={isWish}
                   />
                 </div>

@@ -24,7 +24,11 @@ export const latestLst = [
       },
     ],
     price: "$35,255.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 1,
@@ -40,7 +44,11 @@ export const latestLst = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 2,
@@ -64,7 +72,11 @@ export const latestLst = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 3,
@@ -89,7 +101,11 @@ export const latestLst = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 4,
@@ -114,7 +130,11 @@ export const latestLst = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 5,
@@ -139,7 +159,11 @@ export const latestLst = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 6,
@@ -164,7 +188,11 @@ export const latestLst = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 7,
@@ -189,7 +217,11 @@ export const latestLst = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 8,
@@ -215,7 +247,11 @@ export const latestLst = [
     ],
     price: "$1,250.00",
 
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 9,
@@ -240,7 +276,11 @@ export const latestLst = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 10,
@@ -266,7 +306,11 @@ export const latestLst = [
     ],
     price: "$1,250.00",
 
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
   {
     id: 11,
@@ -291,6 +335,10 @@ export const latestLst = [
       },
     ],
     price: "$1,250.00",
-    location: "Phuket, Thailand",
+    location: {
+      name: "Bangkok, Thailand",
+      lat: 13.74350859277567,
+      lng: 100.52854465070521,
+    },
   },
 ];

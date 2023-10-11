@@ -27,7 +27,7 @@ const Filter: FC<IProps> = ({ addWidth }) => {
   const isMobile = useMediaQuery(768);
 
   const reset = () => {
-    console.log("123");
+    console.log("reset");
   };
 
   return (

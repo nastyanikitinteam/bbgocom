@@ -1,7 +1,5 @@
 import { useCallback, FC } from "react";
-import { Form, Field } from "react-final-form";
-import FormInput from "components/FormElements/FormInput/FormInput";
-import Textarea from "components/FormElements/Textarea/Textarea";
+import { Form } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import styles from "./delete.module.scss";

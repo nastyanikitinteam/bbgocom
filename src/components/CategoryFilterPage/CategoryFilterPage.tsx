@@ -5,6 +5,7 @@ import MapContainer from "./MapContainer/MapContainer";
 import Filter from "./Filter/Filter";
 import styles from "./category-filter-page.module.scss";
 import cn from "classnames";
+import { productLst } from "components/MainPage/Recommend/config";
 
 import { useDispatch, useSelector } from "react-redux";
 import { IFilterReducer, setIsCategoryFilterOpen } from "./reducer";
@@ -38,8 +39,11 @@ const CategoryFilterPage: FC<IProps> = ({
   useEffect(() => {
     const handleResize = () => {
       if (blockRef.current) {
+        const buttonIsVisible = window.visualViewport.width < window.innerWidth;
         const width = blockRef.current.getBoundingClientRect().width;
-        setIsMapWidth((window.innerWidth - width - 7) / 2);
+        buttonIsVisible
+          ? setIsMapWidth((window.innerWidth - width - 7) / 2)
+          : setIsMapWidth((window.innerWidth - width) / 2);
       }
     };
     if (!isLaptop) {
@@ -122,6 +126,7 @@ const CategoryFilterPage: FC<IProps> = ({
               isMapWidth={isMapWidth}
               isOpenMap={isOpenMap}
               handleFilter={handleFilter}
+              productList={productLst}
             />
           )}
         </div>

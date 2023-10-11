@@ -39,8 +39,11 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
   useEffect(() => {
     const handleResize = () => {
       if (blockRef.current) {
+        const buttonIsVisible = window.visualViewport.width < window.innerWidth;
         const width = blockRef.current.getBoundingClientRect().width;
-        setIsMapWidth((window.innerWidth - width - 7) / 2);
+        buttonIsVisible
+          ? setIsMapWidth((window.innerWidth - width - 7) / 2)
+          : setIsMapWidth((window.innerWidth - width) / 2);
       }
     };
     if (!isMobile) {
@@ -188,6 +191,7 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
               isMapWidth={isMapWidth}
               isOpenMap={isOpenMap}
               isWishList
+              productList={isCurrentList.items}
             />
           </div>
         </div>

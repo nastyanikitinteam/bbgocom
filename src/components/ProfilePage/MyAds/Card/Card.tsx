@@ -54,7 +54,7 @@ const Card: FC<IProps> = ({ item, children, type }) => {
                     <span className={styles.icon}>
                       <MapIcon />
                     </span>
-                    {item.location}
+                    {item.location.name}
                   </div>
                 </div>
               </div>
@@ -82,7 +82,7 @@ const Card: FC<IProps> = ({ item, children, type }) => {
                   <span className={styles.icon}>
                     <MapIcon />
                   </span>
-                  {item.location}
+                  {item.location.name}
                 </div>
                 <div className={styles.date}>
                   <span className={styles.icon}>

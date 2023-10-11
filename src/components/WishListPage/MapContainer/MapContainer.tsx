@@ -5,7 +5,6 @@ import styles from "./map-container.module.scss";
 import cn from "classnames";
 
 import ArrowIcon from "images/icons/drop.svg";
-import FilterIcon from "images/icons/filter-icon.svg";
 
 interface IProps {
   setIsOpenFullMap: (bool: any) => void;
@@ -14,6 +13,7 @@ interface IProps {
   isOpenMap: boolean;
   isMapWidth: string;
   isWishList?: boolean;
+  productList?: any;
 }
 
 const MapContainer: FC<IProps> = ({
@@ -22,6 +22,7 @@ const MapContainer: FC<IProps> = ({
   isOpenFullMap,
   isOpenMap,
   isMapWidth,
+  productList,
 }) => {
   const isMobile = useMediaQuery(768);
 
@@ -30,9 +31,7 @@ const MapContainer: FC<IProps> = ({
     setIsOpenFullMap(false);
   };
 
-  const openFilter = () => {
-    closeMap();
-  };
+  console.log(productList, "map");
 
   return (
     <div className={cn(styles.container, { [styles.full]: isOpenFullMap })}>
@@ -65,7 +64,7 @@ const MapContainer: FC<IProps> = ({
           width: `calc(100% + ${isMapWidth}px)`,
         }}
       >
-        <Map />
+        <Map isWishlist productList={productList} />
       </div>
     </div>
   );
