@@ -31,11 +31,9 @@ const MapContainer: FC<IProps> = ({
     setIsOpenFullMap(false);
   };
 
-  console.log(productList, "map");
-
   return (
     <div className={cn(styles.container, { [styles.full]: isOpenFullMap })}>
-      {isMobile && (
+      {/* {isMobile && (
         <div className={styles.top}>
           {isMobile && (
             <div className={cn(styles.back, "back")} onClick={closeMap}>
@@ -48,7 +46,7 @@ const MapContainer: FC<IProps> = ({
           <h1 className={styles.title}>Map</h1>
           <div className={styles.actions}></div>
         </div>
-      )}
+      )} */}
       {!isMobile && (
         <div
           className={styles.button}

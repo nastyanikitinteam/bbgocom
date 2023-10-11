@@ -47,12 +47,26 @@
   .container {
     max-width: none;
   }
+
+  .isModal {
+    border-radius: 15px 15px 0 0;
+    padding: 20px 20px;
+    // .socials {
+    //   max-width: 315px;
+    // }
+    // .item {
+    //   max-width: 315px;
+    // }
+  }
+
   .socials {
     gap: 0;
-    max-width: none;
+    // max-width: none;
+    max-width: 315px;
   }
   .item {
-    max-width: none;
+    // max-width: none;
+    max-width: 315px;
   }
   .social {
     svg {
