@@ -55,7 +55,7 @@ const ColorPicker: FC<IProps> = ({ title, colors }) => {
     <div className={styles.container}>
       <div className={styles.top}>
         <h3 className={styles.title}>{title}</h3>
-        {selectedColors.length && (
+        {selectedColors.length > 0 && (
           <div className={styles.clean} onClick={handleCleanButtonClick}>
             <span className={styles.icon}>
               <DelIcon />

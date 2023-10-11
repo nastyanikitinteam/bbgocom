@@ -28,7 +28,7 @@ const Product: NextPage = () => {
     );
     // @ts-ignore
     setIsCurrentList(currentItem[0] || initialCategory);
-  }, [router.query.producs]);
+  }, [router.query.products]);
 
   useEffect(() => {
     const subcategories = isCurrentList.subcategories.filter(

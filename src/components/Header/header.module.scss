@@ -131,6 +131,15 @@
   transition: box-shadow 0.25s ease-in;
 }
 
+@media (max-width: 998px) {
+  .wishlist {
+    padding: 0;
+  }
+  .list {
+    margin-left: 10px;
+  }
+}
+
 @keyframes showBlock {
   from {
     opacity: 0;

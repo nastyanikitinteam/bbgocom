@@ -32,7 +32,8 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
       <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
         <span className={styles.num}>6</span>Location
       </h3>
-      {!disabled && (
+
+      {disabled && (
         <>
           <div className={styles.items}>
             <div className={styles.item}>
@@ -50,14 +51,14 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
             <div className={styles.item}>
               <p className={styles.label}>Address</p>
               <div className={styles.input}>
-                <SelectContainer
+                {/* <SelectContainer
                   options={adressList}
                   classname="search big withIcon"
                   onChange={handleAdress}
                   placeholder="Enter address"
                   title="Enter address"
                   isSearch
-                />
+                /> */}
               </div>
             </div>
           </div>

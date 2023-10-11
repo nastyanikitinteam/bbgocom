@@ -151,16 +151,13 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
                 className={cn(
                   "default-button sm",
                   {
-                    onlyIcon:
-                      !withoutSearchBar &&
-                      (isSearchBarTop || isTablet || isSecondHeader),
+                    onlyIcon: isSearchBarTop || isTablet || isSecondHeader,
                   },
                   styles.button
                 )}
                 onClick={() => setIsOpenAuthorization(true)}
               >
-                {!withoutSearchBar &&
-                (isSearchBarTop || isTablet || isSecondHeader) ? (
+                {isSearchBarTop || isTablet || isSecondHeader ? (
                   <AddSvg />
                 ) : (
                   " Create an Ad"

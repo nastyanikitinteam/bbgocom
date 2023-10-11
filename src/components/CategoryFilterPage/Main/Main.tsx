@@ -33,6 +33,8 @@ const Main: FC<IProps> = ({
   const [isCount, setIsCount] = useState(6);
   const [dataSort, setDataSort] = useState({});
 
+  console.log(title);
+
   const handleClickSort = (key, value) => {
     setDataSort((prev) => ({ ...prev, [key]: value }));
   };
