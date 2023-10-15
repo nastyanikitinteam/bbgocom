@@ -132,7 +132,7 @@ const Index: FC<IProps> = ({ isWishlist, productList }) => {
   };
 
   const [mapContainer, setMapContainer] = useState(null);
-  const onLoad = useCallback((map) => addMarkers(map), []);
+  const onLoad = useCallback((map) => addMarkers(map), [productList]);
 
   const mapOptions = {
     zoom: 7,
@@ -154,18 +154,20 @@ const Index: FC<IProps> = ({ isWishlist, productList }) => {
   };
 
   return (
-    <GoogleMapProvider
-      googleMapsAPIKey="AIzaSyD63zJ4TU1D6YJxCz6JMggh7M_Q2KMtucI"
-      options={mapOptions}
-      mapContainer={mapContainer}
-      onLoad={onLoad}
-    >
-      <div
-        className={cn({ wishlist: isWishlist })}
-        ref={(node) => setMapContainer(node)}
-        style={{ height: "100%" }}
-      />
-    </GoogleMapProvider>
+    productList.length && (
+      <GoogleMapProvider
+        googleMapsAPIKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
+        options={mapOptions}
+        mapContainer={mapContainer}
+        onLoad={onLoad}
+      >
+        <div
+          className={cn({ wishlist: isWishlist })}
+          ref={(node) => setMapContainer(node)}
+          style={{ height: "100%" }}
+        />
+      </GoogleMapProvider>
+    )
   );
 };
 
