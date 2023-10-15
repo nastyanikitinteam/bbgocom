@@ -7,6 +7,10 @@
   gap: 10px;
   transition: all 0.25s ease-in;
   cursor: pointer;
+  &.isNew {
+    background: #e1f2ff;
+    border-color: #e1f2ff;
+  }
   &:hover {
     background: #f5f5f7;
     border-color: #f5f5f7;

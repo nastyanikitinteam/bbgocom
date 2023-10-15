@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useRef, useEffect } from "react";
 import cn from "classnames";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./main.module.scss";
@@ -17,10 +17,18 @@ interface IProps {
 }
 const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
   const isMobile = useMediaQuery(768);
+  const containerRef = useRef();
 
   const back = () => {
     setIsActiveChat(false);
   };
+
+  useEffect(() => {
+    if (containerRef.current) {
+      //@ts-ignore
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [isActiveChatID]);
 
   return chatLists
     .filter(({ id }) => id === isActiveChatID)
@@ -66,7 +74,7 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
 
           <div className={styles.main}>
             <Ad cover={cover} title={title} />
-            <div className={styles.list}>
+            <div className={styles.list} ref={containerRef}>
               {messages.map((item, id) => {
                 return (
                   <Message

@@ -3,6 +3,8 @@ import styles from "./message.module.scss";
 import cn from "classnames";
 
 import MessageStatusDone from "images/icons/message-status-done.svg";
+import MessageStatusError from "images/icons/message-status-error.svg";
+import MessageStatusSend from "images/icons/message-status-send.svg";
 
 interface IProps {
   userIsSender: boolean;
@@ -24,12 +26,20 @@ const Message: FC<IProps> = ({
   const [isStatus, setIsStatus] = useState("done");
 
   return (
-    <div className={cn(styles.container, { [styles.isUser]: userIsSender })}>
+    <div
+      className={cn(
+        styles.container,
+        { [styles.isUser]: userIsSender },
+        { [styles.error]: isStatus === "error" }
+      )}
+    >
       <div className={styles.block}>
         {images && (
           <div
             className={cn(styles.images, {
-              [styles.moreOne]: images.length > 1,
+              [styles.two]: images.length === 2,
+              [styles.three]: images.length === 3,
+              [styles.even]: images.length % 2 === 0,
             })}
           >
             {images.map((item) => {
@@ -51,6 +61,8 @@ const Message: FC<IProps> = ({
           <p className={styles.name}>{userIsSender ? "You" : name}</p>
           <span className={styles.status}>
             {isStatus === "done" && <MessageStatusDone />}
+            {isStatus === "error" && <MessageStatusError />}
+            {isStatus === "load" && <MessageStatusSend />}
           </span>
         </div>
       ) : (

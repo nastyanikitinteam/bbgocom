@@ -10,6 +10,7 @@ interface IProps {
   messages: any;
   isNew?: number;
   isActiveChatID: number;
+  onClick: () => void;
 }
 
 const Block: FC<IProps> = ({
@@ -20,12 +21,18 @@ const Block: FC<IProps> = ({
   messages,
   isNew,
   isActiveChatID,
+  onClick,
 }) => {
   return (
     <div
-      className={cn(styles.container, {
-        [styles.active]: id === isActiveChatID,
-      })}
+      className={cn(
+        styles.container,
+        {
+          [styles.active]: id === isActiveChatID,
+        },
+        { [styles.isNew]: isNew }
+      )}
+      onClick={onClick}
     >
       <div className={styles.avatar}>
         <img src={avatar} alt="" />

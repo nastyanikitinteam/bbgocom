@@ -107,7 +107,7 @@
     height: 100%;
     border-radius: 0;
     border: none;
-    padding-top: 20px;
+    padding-top: 12px;
   }
   .top {
     position: relative;
@@ -135,7 +135,8 @@
   .main {
     max-height: none;
     flex-grow: 1;
-    height: calc(100% - 128px);
+    // height: calc(100% - 128px);
+    height: calc(100vh - 140px);
   }
   .list {
     padding-top: 78px;

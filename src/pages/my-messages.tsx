@@ -6,7 +6,7 @@ import Chat from "components/ProfilePage/Chat/Chat";
 
 const MyWallet: NextPage = () => {
   return (
-    <ProfilePage title="My Messages" isShortMenu withoutInfoBlock>
+    <ProfilePage title="My Messages" withoutInfoBlock>
       <Chat />
     </ProfilePage>
   );
