@@ -38,7 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100% - 2px);
+  height: 100%;
   transform: translateX(60px);
   transition: all 0.25s ease-in;
   svg {
