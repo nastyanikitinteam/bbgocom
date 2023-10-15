@@ -23,11 +23,11 @@ const HeaderMobile: FC<IProps> = ({
   mobileWithoutBottomMenu,
 }) => {
   const [isOpenProfileMenu, setIsOpenProfileMenu] = useState(false);
-  const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
+  const [isNoLogin, setIsNoLogin] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    if (isOpenProfileMenu || isOpenAuthorization) {
+    if (isOpenProfileMenu) {
       document.body.classList.add("hidden");
     } else {
       document.body.classList.remove("hidden");
@@ -78,7 +78,7 @@ const HeaderMobile: FC<IProps> = ({
         {!mobileWithoutBottomMenu && (
           <div
             className={cn(styles.menu, {
-              [styles.openMenu]: isOpenProfileMenu || isOpenAuthorization,
+              [styles.openMenu]: isOpenProfileMenu,
             })}
           >
             {mobileMenu.map(({ id, icon, link, fn }) => {
@@ -87,9 +87,11 @@ const HeaderMobile: FC<IProps> = ({
                   href={link}
                   className={cn(
                     styles.item,
-                    router.pathname == link && [styles.active]
+                    router.pathname == link &&
+                      !isOpenProfileMenu && [styles.active]
                   )}
                   key={id}
+                  onClick={isOpenProfileMenu && handleProfileMenu}
                 >
                   {icon}
                 </Link>
@@ -108,8 +110,7 @@ const HeaderMobile: FC<IProps> = ({
           </div>
         )}
 
-        {isOpenAuthorization && <Authorization />}
-        {isOpenProfileMenu && <MobileMenu />}
+        {isOpenProfileMenu && (!isNoLogin ? <MobileMenu /> : <Authorization />)}
         {!mobileWithoutSearchBar && <SearchBar />}
       </div>
     </div>

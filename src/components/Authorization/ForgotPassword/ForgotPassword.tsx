@@ -38,15 +38,19 @@ const ForgotPassword: FC<IProps> = ({ handleForgotPasswordModal }) => {
         </span>
         Back
       </div>
-      <div className={styles.icon}>
-        <ForgotPasswordIcon />
-      </div>
-      <h2 className={styles.title}>Forgot password?</h2>
+
       <Form
         onSubmit={onSubmit}
         validate={validate}
         render={({ handleSubmit }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.icon}>
+              <ForgotPasswordIcon />
+            </div>
+            <h2 className={styles.title}>Forgot password?</h2>
+            <p className={styles.text}>
+              What email or phone number is associated with your BBGO profile?
+            </p>
             <div className={styles.item}>
               <Field
                 name="emailorphone"
@@ -56,9 +60,7 @@ const ForgotPassword: FC<IProps> = ({ handleForgotPasswordModal }) => {
                 extClassName="firstName"
               />
             </div>
-            <p className={styles.description}>
-              What email or phone number is associated with your BBGO profile?
-            </p>
+
             <div className={styles.button}>
               <button
                 type="submit"
