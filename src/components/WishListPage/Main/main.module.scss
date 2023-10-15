@@ -101,6 +101,12 @@
   }
 }
 
+@media (max-width: 998px) and (min-width: 769px) {
+  .list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 25px 0 20px;
