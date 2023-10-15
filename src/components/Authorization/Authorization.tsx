@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import styles from "./authorization.module.scss";
 import Login from "./Login/Login";
 import SignUp from "./SignUp/SignUp";
+import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import ConfirmNumber from "./ConfirmNumber/ConfirmNumber";
 import Profile from "./Profile/Profile";
 
@@ -15,11 +16,11 @@ import LogoSvg from "images/main/logo.svg";
 const Authorization = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isSignUp, setIsSignUp] = useState(false);
+  const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [isConfirmNumber, setIsConfirmNumber] = useState(false);
   const [isRegisterStep, setIsRegisterStep] = useState(false);
 
-  // TODO: callback
-  const changeActiveAuth = () => {
+  const changeActiveAuth = useCallback(() => {
     if (isLogin) {
       setIsLogin(false);
       setIsSignUp(true);
@@ -27,10 +28,19 @@ const Authorization = () => {
       setIsLogin(true);
       setIsSignUp(false);
     }
-  };
+  }, [isLogin]);
 
-  // TODO: cb
-  const openNextStepSignUp = () => {
+  const handleForgotPasswordModal = useCallback(() => {
+    if (isForgotPassword) {
+      setIsLogin(true);
+      setIsForgotPassword(false);
+    } else {
+      setIsLogin(false);
+      setIsForgotPassword(true);
+    }
+  }, [isForgotPassword]);
+
+  const openNextStepSignUp = useCallback(() => {
     if (isSignUp) {
       setIsSignUp(false);
       setIsConfirmNumber(true);
@@ -38,7 +48,7 @@ const Authorization = () => {
       setIsConfirmNumber(false);
       setIsRegisterStep(true);
     }
-  };
+  }, [isSignUp]);
 
   return (
     <div className={styles.container}>
@@ -68,13 +78,24 @@ const Authorization = () => {
         <div className={styles.icons} data-aos="fade" data-aos-delay="300">
           <img src={image2.src} alt="" />
         </div>
-        {isLogin && <Login changeActiveAuth={changeActiveAuth} />}
+        {isLogin && (
+          <Login
+            changeActiveAuth={changeActiveAuth}
+            handleForgotPasswordModal={handleForgotPasswordModal}
+          />
+        )}
         {isSignUp && (
           <SignUp
             changeActiveAuth={changeActiveAuth}
             openNextStepSignUp={openNextStepSignUp}
           />
         )}
+        {isForgotPassword && (
+          <ForgotPassword
+            handleForgotPasswordModal={handleForgotPasswordModal}
+          />
+        )}
+
         {isConfirmNumber && (
           <ConfirmNumber openNextStepSignUp={openNextStepSignUp} />
         )}

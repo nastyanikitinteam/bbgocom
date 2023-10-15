@@ -19,11 +19,12 @@ import LogoSvg from "images/main/logo.svg";
 
 interface IProps {
   changeActiveAuth: () => void;
+  handleForgotPasswordModal: () => void;
 }
 
-const Login: FC<IProps> = ({ changeActiveAuth }) => {
+const Login: FC<IProps> = ({ changeActiveAuth, handleForgotPasswordModal }) => {
   const validationSchema = yup.object().shape({
-    email: yup.string().email().required(`Введіть електрону пошту`),
+    // email: yup.string().email().required(`Введіть електрону пошту`),
     // password: yup.string().required(`Wrong phone format`),
   });
 
@@ -96,6 +97,12 @@ const Login: FC<IProps> = ({ changeActiveAuth }) => {
                     component={FormInput}
                   />
                 </div>
+                <p
+                  className={cn(styles.forgot, "link")}
+                  onClick={handleForgotPasswordModal}
+                >
+                  Forgot password
+                </p>
                 <div className={styles.terms}>
                   <Field name="terms" type="checkbox" component={Checkbox}>
                     By Log In, you agree to our <a>Terms of Use</a>

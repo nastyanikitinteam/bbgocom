@@ -19,7 +19,7 @@
 }
 
 .text {
-  margin-top: 11px;
+  margin-top: 10px;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -38,7 +38,7 @@
 }
 
 .form {
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .item {
@@ -49,6 +49,11 @@
   display: flex;
   justify-content: space-between;
   gap: 8px;
+}
+
+.forgot {
+  color: #808080;
+  margin-top: -5px;
 }
 
 .phone {
@@ -67,16 +72,16 @@
 }
 
 .terms {
-  margin-top: 27px;
+  margin-top: 17px;
 }
 
 .button {
   width: 100%;
-  margin-top: 27px;
+  margin-top: 22px;
 }
 
 .subtitle {
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
@@ -88,12 +93,14 @@
   justify-content: space-between;
   gap: 8px;
   margin-top: 15px;
+  .social {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
 .social {
   width: 100%;
-  padding-left: 5px;
-  padding-right: 5px;
   svg {
     width: 24px;
     height: 24px;
