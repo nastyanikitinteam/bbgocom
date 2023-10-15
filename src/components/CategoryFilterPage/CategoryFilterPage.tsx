@@ -106,10 +106,10 @@ const CategoryFilterPage: FC<IProps> = ({
               <Main
                 title={
                   isSubcategoryItem
-                    ? isSubcategoryItem.title
+                    ? isSubcategoryItem?.title
                     : isSubcategories
-                    ? isSubcategories.title
-                    : isCurrentList.title
+                    ? isSubcategories?.title
+                    : isCurrentList?.title
                 }
                 openFilter={() => handleFilter(true)}
                 isOpenMap={isOpenMap}
