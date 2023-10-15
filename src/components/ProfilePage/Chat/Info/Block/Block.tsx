@@ -25,18 +25,34 @@ const Block: FC<IProps> = ({
   isActiveChatID,
   onClick,
 }) => {
+  const [startX, setStartX] = useState(null);
   const [leftPosition, setLeftPosition] = useState(0);
 
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].clientX);
+  };
+
   const handleTouchMove = (e) => {
+    if (startX === null) {
+      return; // Ігнорувати перший рух пальцем
+    }
+
     const touchX = e.touches[0].clientX;
-    const deltaX = touchX - e.touches[0].clientX;
+    const deltaX = touchX - startX;
 
     if (deltaX < 0) {
       setLeftPosition(-60);
     } else {
       setLeftPosition(0);
     }
+
+    setStartX(touchX);
   };
+
+  const handleTouchEnd = () => {
+    setStartX(null);
+  };
+
   return (
     <div
       className={cn(
@@ -47,9 +63,12 @@ const Block: FC<IProps> = ({
         { [styles.isNew]: isNew }
       )}
       onClick={onClick}
+      // onMouseMove={handleTouchMove}
+      onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
-      <div className={styles.del}>
+      <div className={styles.del} style={{ right: `${-leftPosition}px` }}>
         <DelIcon />
       </div>
       <div className={styles.block} style={{ left: `${leftPosition}px` }}>

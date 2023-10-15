@@ -31,14 +31,16 @@
 
 .del {
   position: absolute;
-  top: 0;
+  top: 1px;
   right: 0;
   background: #ff5a27;
   width: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: calc(100% - 2px);
+  transform: translateX(60px);
+  transition: all 0.25s ease-in;
   svg {
     width: 24px;
     height: 24px;
