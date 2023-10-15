@@ -130,3 +130,9 @@
   color: #ffffff;
   margin-left: auto;
 }
+@media (max-width: 998px) {
+  .main {
+    left: auto !important;
+    right: 20px;
+  }
+}

@@ -2,7 +2,7 @@ import { useState, FC, useEffect, useRef } from "react";
 import Link from "next/link";
 import cn from "classnames";
 import styles from "./menu.module.scss";
-
+import useMediaQuery from "src/utils/useMediaQuery";
 import OrdersIcon from "images/icons/orders-icon.svg";
 import AdsIcon from "images/icons/ads-icon.svg";
 import MessagesIcon from "images/icons/messages-icon.svg";
@@ -28,7 +28,7 @@ const Menu: FC<IProps> = ({
   isSearchBarTop,
 }) => {
   const [isAvatar, setIsAvatar] = useState(false);
-
+  const isMobile = useMediaQuery(768);
   const containerRef = useRef(null);
 
   useEffect(() => {
