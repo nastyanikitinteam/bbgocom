@@ -41,6 +41,7 @@ const LocationMain: FC<IProps> = ({
       }
       handleClickRegion("nameOfRegion", region);
     }
+
     setIsActiveChoice("");
   };
 

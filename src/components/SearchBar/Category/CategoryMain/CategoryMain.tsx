@@ -1,8 +1,8 @@
-import { useState, useEffect, FC } from "react";
+import { useState, useEffect, FC, useCallback } from "react";
 import PortalContainer from "components/PortalContainer/PortalContainer";
 import { categoriesList } from "components/Category/config";
 import useMediaQuery from "src/utils/useMediaQuery";
-import CategoryMobile from "./CategoryMobile/CategoryMobile";
+import CategoryMobileFilter from "./CategoryMobile/CategoryMobileFilter";
 import Blocks from "./Blocks/Blocks";
 import cn from "classnames";
 
@@ -33,10 +33,14 @@ const CategoryMain: FC<IProps> = ({
 
   const isMobile = useMediaQuery(768);
 
-  const chooseCategory = (id, title) => {
-    handleClick("nameOfCategory", title);
-    setIsActiveCategory(id);
-  };
+  const chooseCategory = useCallback(
+    (id, title) => {
+      console.log(123123123);
+      handleClick("nameOfCategory", title);
+      setIsActiveCategory(id);
+    },
+    [categoriesList]
+  );
 
   useEffect(() => {
     const currentItem = categoriesList.filter(
@@ -48,7 +52,7 @@ const CategoryMain: FC<IProps> = ({
 
   return isMobile ? (
     <PortalContainer>
-      <CategoryMobile
+      <CategoryMobileFilter
         categoriesList={categoriesList}
         handleClick={handleClick}
         setIsActiveChoice={setIsActiveChoice}

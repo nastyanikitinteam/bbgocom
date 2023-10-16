@@ -7,7 +7,7 @@ import MapIcon from "images/icons/map-icon.svg";
 
 interface IProps {
   isSearchRegionQuery: string;
-  setIsActiveChoice: (bool: string) => void;
+  setIsActiveChoice?: (bool: string) => void;
   handleClickRegion: (key: string, value: string) => void;
   dataRegion: any;
   isMobile?: boolean;

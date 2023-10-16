@@ -1,6 +1,5 @@
 // @ts-nocheck
 import { FC, useCallback, useEffect, useState } from "react";
-import Link from "next/link";
 import styles from "./category-mobile.module.scss";
 import ArrowSvg from "images/icons/drop.svg";
 import CloseIcon from "images/icons/close-sm.svg";
@@ -21,29 +20,35 @@ const CategoryMobile: FC<IProps> = ({
   setIsActiveChoice,
   dataCategory,
   setDataCategory,
-  isPopularCategory,
-  setIsShowCategoryMenu,
 }) => {
   const [isCategoryList, setIsCategoryList] = useState({});
   const [isSubcategoryList, setIsSubcategoryList] = useState({});
   const [isSubcategoryItem, setIsSubcategoryItem] = useState({});
 
-  const [isbaseUrl, setIsBaseUrl] = useState("");
-
-  useEffect(() => {
-    //TODO: SERVER DOESNT HAVE WINDOW
-    setIsBaseUrl(window.location.origin);
-  }, []);
-
   const deletSubCategoryItemResult = () => {
+    if (dataCategory.nameOfCategoryItem) {
+      let obj = dataCategory;
+      delete obj.nameOfCategoryItem;
+      setDataCategory(obj);
+    }
     setIsSubcategoryItem({});
   };
 
   const deletSubCategoryResult = () => {
+    if (dataCategory.nameOfSubCategory) {
+      let obj = dataCategory;
+      delete obj.nameOfSubCategory;
+      setDataCategory(obj);
+    }
     setIsSubcategoryList({});
   };
 
   const deletCategoryResult = () => {
+    if (dataCategory.nameOfCategory) {
+      let obj = dataCategory;
+      delete obj.nameOfCategory;
+      setDataCategory(obj);
+    }
     setIsCategoryList({});
   };
 
@@ -52,11 +57,11 @@ const CategoryMobile: FC<IProps> = ({
       ? deletSubCategoryResult()
       : Object.entries(isCategoryList).length != 0
       ? deletCategoryResult()
-      : setIsShowCategoryMenu(false);
+      : setIsActiveChoice();
   };
 
   const close = () => {
-    setIsShowCategoryMenu(false);
+    setIsActiveChoice();
   };
 
   const handleCategoryList = useCallback((listId) => {
@@ -66,38 +71,32 @@ const CategoryMobile: FC<IProps> = ({
     const filteredCategoryList = categoriesList.filter(
       ({ id }) => id === listId
     );
+    handleClick("nameOfCategory", filteredCategoryList[0].title);
     setIsCategoryList(filteredCategoryList[0]);
   }, []);
 
   const handleSubcategoryList = useCallback(
     (listId) => {
-      //@ts-ignore
       const filteredSubcategories = isCategoryList.subcategories.filter(
         (subcategory) => subcategory.id === listId
       );
+      handleClick("nameOfSubCategory", filteredSubcategories[0].title);
       setIsSubcategoryList(filteredSubcategories[0]);
     },
     [isCategoryList]
   );
 
-  // const handleSubcategoryItem = useCallback(
-  //   (listId) => {
-  //     //@ts-ignore
-  //     const filteredSubcategoriesItem = isSubcategoryList.items.filter(
-  //       (item) => item.id === listId
-  //     );
-  //     setIsSubcategoryItem(filteredSubcategoriesItem);
-  //   },
-  //   [isSubcategoryList]
-  // );
-
-  useEffect(() => {
-    console.log(
-      isCategoryList?.title,
-      isSubcategoryList?.title,
-      isSubcategoryItem?.title
-    );
-  }, [isCategoryList, isSubcategoryList, isSubcategoryItem]);
+  const handleSubcategoryItem = useCallback(
+    (listId) => {
+      const filteredSubcategoriesItem = isSubcategoryList.items.filter(
+        (item) => item.id === listId
+      );
+      handleClick("nameOfCategoryItem", filteredSubcategoriesItem[0].title);
+      setIsSubcategoryItem(filteredSubcategoriesItem);
+      setIsActiveChoice();
+    },
+    [isSubcategoryList]
+  );
 
   return (
     <div className={styles.container}>
@@ -135,28 +134,23 @@ const CategoryMobile: FC<IProps> = ({
             })
           ) : (
             <>
-              <Link
-                href={
-                  Object.entries(isSubcategoryList).length === 0
-                    ? `category/${isCategoryList.slug}`
-                    : `${isbaseUrl}/categories/${isCategoryList.slug}/${isSubcategoryList.slug}`
-                }
+              <div
                 className={styles.mainItem}
                 key={isCategoryList.id}
-                // onClick={close}
+                onClick={close}
               >
                 <div className={styles.image}>
                   <img src={isCategoryList.image} alt="" />
                 </div>
                 <div className={styles.info}>
                   <h3 className={styles.subtitle}>{isCategoryList.title}</h3>
-                  {Object.entries(isSubcategoryList).length != 0 && (
+                  {Object.entries(isSubcategoryList).length !== 0 && (
                     <div className={styles.subcategory}>
                       {isSubcategoryList.title}
                     </div>
                   )}
                 </div>
-              </Link>
+              </div>
               {Object.entries(isSubcategoryList).length === 0
                 ? isCategoryList?.items?.map(({ id, title }) => {
                     return (
@@ -176,7 +170,7 @@ const CategoryMobile: FC<IProps> = ({
                       <div
                         className={styles.item}
                         key={id}
-                        // onClick={() => handleSubcategoryItem(id)}
+                        onClick={() => handleSubcategoryItem(id)}
                       >
                         <h3 className={styles.subtitle}>{title}</h3>
                         <span className={styles.arrow}>

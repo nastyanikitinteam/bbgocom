@@ -148,7 +148,7 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
         setIsActiveChoice("");
       }
     };
-    document.addEventListener("click", onClick);
+    !isMobile && document.addEventListener("click", onClick);
     return () => !isMobile && document.removeEventListener("click", onClick);
   }, [isMobile]);
 
@@ -162,6 +162,7 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
     handleFilterState(false);
     if (isMobile) {
       if (
+        isActiveChoice == "Category" ||
         isActiveChoice == "Filter" ||
         isActiveChoice == "SearchHistory" ||
         isActiveChoice == "Search"

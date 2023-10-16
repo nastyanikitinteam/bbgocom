@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import PriceMain from "../Price/PriceMain/PriceMain";
 import Category from "../Category/Category";
 import LocationMobile from "components/SearchBar/SearchLocation/LocationMobile/LocationMobile";

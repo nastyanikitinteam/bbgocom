@@ -120,7 +120,6 @@ const LocationMobile: FC<IProps> = ({
             <LocationSearch
               isSearchRegionQuery={isSearchRegionQuery}
               handleClickRegion={handleClickRegion}
-              setIsActiveChoice={setIsActiveChoice}
               dataRegion={dataRegion}
               isMobile
               closeList={closeList}

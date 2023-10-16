@@ -35,7 +35,7 @@ export const chatLists = [
         text: "Great! 👍",
         time: "12:38 PM",
         date: "02.09.2023",
-        images: [images1.src, images2.src, images1.src, images1.src],
+        images: [images1.src, images2.src, images1.src],
       },
       {
         userIsSender: false,
