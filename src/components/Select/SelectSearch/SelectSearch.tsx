@@ -47,9 +47,9 @@ const SelectSearch: FC<IProps> = ({
     return results;
   }
 
-  useEffect(() => {
-    console.log(searchResults);
-  }, [searchResults]);
+  // useEffect(() => {
+  //   console.log(searchResults);
+  // }, [searchResults]);
 
   return (
     <div>

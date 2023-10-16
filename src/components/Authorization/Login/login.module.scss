@@ -117,6 +117,9 @@
     stroke: #fff;
   }
 }
+.openProfile {
+  display: none;
+}
 
 @keyframes showBlock {
   from {
@@ -150,6 +153,11 @@
   .items {
     flex-direction: column;
     gap: 0;
+  }
+
+  .openProfile {
+    margin: 40px auto 0;
+    display: flex;
   }
 }
 

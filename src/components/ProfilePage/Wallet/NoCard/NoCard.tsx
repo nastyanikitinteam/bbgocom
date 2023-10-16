@@ -17,6 +17,7 @@ const NoCard: FC<IProps> = ({ setIsWallet, setIsActiveNewCard }) => {
   const addNewCard = () => {
     if (isMobile) {
       setIsActiveNewCard(true);
+      setIsWallet(true);
     } else {
       setIsWallet(true);
       setIsActiveNewCard(true);

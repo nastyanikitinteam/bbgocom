@@ -120,8 +120,16 @@ const Reviews = () => {
         {ReviewsList.slice(0, isShowReviews).map((item) => {
           return <Block key={item.id} item={item} />;
         })}
+        {isMobile && isShowReviews !== ReviewsList.length && (
+          <div className={styles.more} onClick={handleShowReviews}>
+            Show more
+            <span className={styles.icon}>
+              <ArrowSvg />
+            </span>
+          </div>
+        )}
       </div>
-      {isShowReviews !== ReviewsList.length && (
+      {!isMobile && isShowReviews !== ReviewsList.length && (
         <div className={styles.more} onClick={handleShowReviews}>
           Show more
           <span className={styles.icon}>

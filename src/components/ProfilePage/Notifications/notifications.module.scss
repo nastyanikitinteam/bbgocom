@@ -95,4 +95,11 @@
   .info {
     margin-bottom: 10px;
   }
+  .main {
+    max-height: calc(var(--app-height) - 127px);
+    overflow-y: auto;
+    padding-bottom: 20px;
+    width: calc(100% + 10px);
+    padding-right: 10px;
+  }
 }

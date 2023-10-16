@@ -37,3 +37,9 @@
     color: #fff;
   }
 }
+
+@media (max-width: 768px) {
+  .main {
+    max-height: calc(100% - 64px);
+  }
+}

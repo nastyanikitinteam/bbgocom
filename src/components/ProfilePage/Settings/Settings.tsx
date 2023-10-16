@@ -49,52 +49,54 @@ const Settings = () => {
                 : "Account settings"}
             </h3>
           </div>
-          {isOpenParam ? (
-            AccountInfo.filter(({ id }) => id === isActiveItem).map(
-              ({ id, title, items }) => {
-                return (
-                  <Block
-                    key={id}
-                    items={items}
-                    title={title}
-                    setIsOpenParam={setIsOpenParam}
-                  />
-                );
-              }
-            )
-          ) : (
-            <>
-              <AccountBlock />
-              <div className={styles.main}>
-                {AccountInfo.map(({ id, title }) => {
+          <div className={styles.content}>
+            {isOpenParam ? (
+              AccountInfo.filter(({ id }) => id === isActiveItem).map(
+                ({ id, title, items }) => {
                   return (
-                    <div
-                      className={styles.item}
+                    <Block
                       key={id}
-                      onClick={() => handleParam(id)}
-                    >
-                      <h3 className={styles.subtitle}>{title}</h3>
-                      <span className={styles.arrow}>
-                        <ArrowSvg />
-                      </span>
-                    </div>
+                      items={items}
+                      title={title}
+                      setIsOpenParam={setIsOpenParam}
+                    />
                   );
-                })}
-              </div>
-              <div className={styles.logOut}>
-                <span className={styles.icon}>
-                  <LogOutIcon />
-                </span>
-                Log Out
-              </div>
-              <div className={styles.del}>
-                <span className={styles.icon}>
-                  <DeleteIcon />
-                </span>
-                Delete account
-              </div>
-            </>
-          )}
+                }
+              )
+            ) : (
+              <>
+                <AccountBlock />
+                <div className={styles.main}>
+                  {AccountInfo.map(({ id, title }) => {
+                    return (
+                      <div
+                        className={styles.item}
+                        key={id}
+                        onClick={() => handleParam(id)}
+                      >
+                        <h3 className={styles.subtitle}>{title}</h3>
+                        <span className={styles.arrow}>
+                          <ArrowSvg />
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className={styles.logOut}>
+                  <span className={styles.icon}>
+                    <LogOutIcon />
+                  </span>
+                  Log Out
+                </div>
+                <div className={styles.del}>
+                  <span className={styles.icon}>
+                    <DeleteIcon />
+                  </span>
+                  Delete account
+                </div>
+              </>
+            )}
+          </div>
         </>
       ) : (
         AccountInfo.map(({ id, title, items }) => {

@@ -10,28 +10,31 @@
   position: relative;
   overflow: hidden;
   &.isNew {
+    border-color: #e1f2ff;
+
     .block {
       background: #e1f2ff;
-      border-color: #e1f2ff;
     }
   }
   &:hover {
+    border-color: #f5f5f7;
+
     .block {
       background: #f5f5f7;
-      border-color: #f5f5f7;
     }
   }
   &.active {
+    border-color: #ebfaec;
+
     .block {
       background: #ebfaec;
-      border-color: #ebfaec;
     }
   }
 }
 
 .del {
   position: absolute;
-  top: 1px;
+  top: 0px;
   right: 0;
   background: #ff5a27;
   width: 60px;

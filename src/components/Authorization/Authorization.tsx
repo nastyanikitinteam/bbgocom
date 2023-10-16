@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, FC } from "react";
 import styles from "./authorization.module.scss";
 import Login from "./Login/Login";
 import SignUp from "./SignUp/SignUp";
@@ -13,7 +13,11 @@ import image2 from "images/authorization/image-2.png";
 import shadow from "images/authorization/login-shadow.png";
 import LogoSvg from "images/main/logo.svg";
 
-const Authorization = () => {
+interface IProps {
+  setIsNoLogin: () => void;
+}
+
+const Authorization: FC<IProps> = ({ setIsNoLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [isSignUp, setIsSignUp] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
@@ -82,6 +86,7 @@ const Authorization = () => {
           <Login
             changeActiveAuth={changeActiveAuth}
             handleForgotPasswordModal={handleForgotPasswordModal}
+            setIsNoLogin={setIsNoLogin}
           />
         )}
         {isSignUp && (

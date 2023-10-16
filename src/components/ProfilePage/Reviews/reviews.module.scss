@@ -51,6 +51,11 @@
 
   .main {
     gap: 10px;
+    max-height: calc(var(--app-height) - 77px);
+    overflow-y: auto;
+    padding-bottom: 20px;
+    width: calc(100% + 10px);
+    padding-right: 10px;
   }
   .subtitle {
     margin-bottom: 6px;

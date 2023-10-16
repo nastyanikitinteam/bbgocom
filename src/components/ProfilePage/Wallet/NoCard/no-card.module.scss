@@ -50,10 +50,13 @@
 @media (max-width: 768px) {
   .container {
     border: none;
+    height: calc(var(--app-height) - 77px);
+    overflow-y: auto;
   }
   .block {
     max-width: 280px;
     margin: auto;
+    padding-bottom: 40px;
   }
   .description {
     font-size: 14px;

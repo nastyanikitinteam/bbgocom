@@ -244,8 +244,16 @@ const Notifications = () => {
                   </Block>
                 );
               })}
+              {isMobile && isShowNotification !== NotificationsList.length && (
+                <div className={styles.more} onClick={handleShowNotifications}>
+                  Show more
+                  <span className={styles.icon}>
+                    <ArrowSvg />
+                  </span>
+                </div>
+              )}
             </div>
-            {isShowNotification !== NotificationsList.length && (
+            {!isMobile && isShowNotification !== NotificationsList.length && (
               <div className={styles.more} onClick={handleShowNotifications}>
                 Show more
                 <span className={styles.icon}>

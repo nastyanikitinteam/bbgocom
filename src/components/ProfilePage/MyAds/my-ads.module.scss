@@ -173,11 +173,18 @@
   }
   .main {
     gap: 10px;
+    max-height: calc(var(--app-height) - 127px);
+    width: calc(100% + 10px);
+    padding-right: 10px;
+    padding-bottom: 20px;
+    overflow-y: auto;
   }
   .categories {
     flex-direction: column;
     border: none;
     border-radius: 0;
+    max-height: calc(var(--app-height) - 97px);
+    overflow-y: auto;
   }
   .category {
     display: flex;

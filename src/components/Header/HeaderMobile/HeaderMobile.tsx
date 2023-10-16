@@ -110,7 +110,12 @@ const HeaderMobile: FC<IProps> = ({
           </div>
         )}
 
-        {isOpenProfileMenu && (!isNoLogin ? <MobileMenu /> : <Authorization />)}
+        {isOpenProfileMenu &&
+          (!isNoLogin ? (
+            <MobileMenu />
+          ) : (
+            <Authorization setIsNoLogin={() => setIsNoLogin(false)} />
+          ))}
         {!mobileWithoutSearchBar && <SearchBar />}
       </div>
     </div>

@@ -20,9 +20,14 @@ import LogoSvg from "images/main/logo.svg";
 interface IProps {
   changeActiveAuth: () => void;
   handleForgotPasswordModal: () => void;
+  setIsNoLogin: () => void;
 }
 
-const Login: FC<IProps> = ({ changeActiveAuth, handleForgotPasswordModal }) => {
+const Login: FC<IProps> = ({
+  changeActiveAuth,
+  handleForgotPasswordModal,
+  setIsNoLogin,
+}) => {
   const validationSchema = yup.object().shape({
     // email: yup.string().email().required(`Введіть електрону пошту`),
     // password: yup.string().required(`Wrong phone format`),
@@ -151,6 +156,12 @@ const Login: FC<IProps> = ({ changeActiveAuth, handleForgotPasswordModal }) => {
           </p>
         </>
       )}
+      <div
+        className={cn("default-button", styles.openProfile)}
+        onClick={setIsNoLogin}
+      >
+        Open profile menu
+      </div>
     </div>
   );
 };

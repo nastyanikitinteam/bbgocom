@@ -1,6 +1,6 @@
 import React, { ReactNode, FC, useEffect, useState, useMemo } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css";
+// import "aos/dist/aos.css";
 import Head from "next/head";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Header from "components/Header/Header";
@@ -39,14 +39,16 @@ const ProfilePage: FC<IProps> = ({
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
 
-  useEffect(() => {
-    AOS.init({
-      duration: 700,
-      easing: "ease-in-out",
-      once: true,
-    });
-    AOS.refresh();
-  }, []);
+  // useEffect(() => {
+  //   if (!isMobile) {
+  //     AOS.init({
+  //       duration: 700,
+  //       easing: "ease-in-out",
+  //       once: true,
+  //     });
+  //     AOS.refresh();
+  //   }
+  // }, [isMobile]);
 
   const breadCrumbs = useMemo(
     () => [
@@ -62,6 +64,18 @@ const ProfilePage: FC<IProps> = ({
     ],
     []
   );
+
+  useEffect(() => {
+    if (isMobile) {
+      document.body.classList.add("hidden");
+    } else {
+      console.log("work");
+      document.body.classList.remove("hidden");
+    }
+    return () => {
+      document.body.classList.remove("hidden");
+    };
+  }, [isMobile]);
 
   return (
     <div className={styles["app"]}>

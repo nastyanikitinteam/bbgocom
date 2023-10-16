@@ -140,6 +140,7 @@
 @media (max-width: 950px) {
   .block {
     width: calc(50% - 20px);
+    max-width: none;
   }
 }
 @media (max-width: 768px) {
@@ -155,6 +156,10 @@
   }
   .info {
     margin-bottom: 10px;
+  }
+  .main {
+    max-height: calc(var(--app-height) - 127px);
+    overflow-y: auto;
   }
 }
 

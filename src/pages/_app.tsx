@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import type { AppProps } from "next/app";
 import ThemeContext from "../context";
@@ -7,6 +7,16 @@ import "../styles/index.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    const appHeight = () => {
+      const doc = document.documentElement;
+      doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+      console.log(window.innerHeight);
+    };
+    window.addEventListener("resize", appHeight);
+    appHeight();
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ height, setHeight }}>
