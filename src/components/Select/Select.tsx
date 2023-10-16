@@ -108,7 +108,11 @@ const SelectContainer: FC<IProps> = ({
           options
             .filter(({ value }) => value === isChooseOption)
             .map(({ value, label }) => {
-              return <div key={value}>{label}</div>;
+              return (
+                <div key={value} className={styles.text}>
+                  {label}
+                </div>
+              );
             })
         )}
         <span className={cn(styles.arrow, "default__indicator")}>

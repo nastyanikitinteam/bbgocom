@@ -38,6 +38,8 @@ const MyAds = () => {
   const back = () => {
     if (isShowCategory) {
       setIsShowCategory(false);
+      setCheckedItems([]);
+      setSelectAllChecked(false);
     } else {
       router.back();
     }

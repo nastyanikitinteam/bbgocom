@@ -95,3 +95,9 @@
 .placeholder {
   color: #808080;
 }
+
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

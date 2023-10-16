@@ -62,7 +62,6 @@ const Block: FC<IProps> = ({
         },
         { [styles.isNew]: isNew }
       )}
-      onClick={onClick}
       // onMouseMove={handleTouchMove}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -71,7 +70,11 @@ const Block: FC<IProps> = ({
       <div className={styles.del} style={{ right: `${-leftPosition}px` }}>
         <DelIcon />
       </div>
-      <div className={styles.block} style={{ left: `${leftPosition}px` }}>
+      <div
+        className={styles.block}
+        style={{ left: `${leftPosition}px` }}
+        onClick={onClick}
+      >
         <div className={styles.avatar}>
           <img src={avatar} alt="" />
         </div>

@@ -10,7 +10,7 @@ import styles from "./profile.module.scss";
 
 import LogoSvg from "images/main/logo.svg";
 
-const Login = () => {
+const Profile = () => {
   const validationSchema = yup.object().shape({
     firstName: yup.string().required(`No correct first name`),
     lastName: yup.string().required(`No correct last name`),
@@ -100,4 +100,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Profile;
