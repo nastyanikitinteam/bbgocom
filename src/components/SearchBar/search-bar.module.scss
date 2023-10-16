@@ -29,13 +29,13 @@
   @media (min-width: 999px) {
     &.secondVariant {
       position: relative;
-      margin: 0 20px;
+      margin: 0 auto;
       top: 0;
       max-width: 812px;
       .content {
         box-shadow: none;
         background: transparent;
-        padding: 0;
+        padding: 0 20px;
         .main {
           position: fixed;
           top: 80px;

@@ -44,7 +44,7 @@ const Menu: FC<IProps> = ({
       style={{ top: `${isTopPosition}px`, left: `${isLeftPosition}px` }}
       ref={containerRef}
     >
-      <div className={styles.account}>
+      <Link href="/account-settings" className={styles.account}>
         <div className={cn(styles.avatar, { [styles.noAvatar]: !isAvatar })}>
           {isAvatar ? <img src={avatar.src} alt="" /> : <AvatarIcon />}
         </div>
@@ -55,14 +55,14 @@ const Menu: FC<IProps> = ({
         <span className={styles.arrow}>
           <ArrowIcon />
         </span>
-      </div>
+      </Link>
       <div className={styles.list}>
-        <div className={styles.item}>
+        <Link href="/my-orders" className={styles.item}>
           <span className={styles.icon}>
             <OrdersIcon />
           </span>
           My orders
-        </div>
+        </Link>
         <Link href="/my-ads" className={styles.item}>
           <span className={styles.icon}>
             <AdsIcon />
