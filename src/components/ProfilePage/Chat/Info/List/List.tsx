@@ -25,18 +25,13 @@ const List: FC<IProps> = ({
       <div className={styles.list}>
         {chatLists
           .filter(({ isNew }) => (isNewList ? isNew : !isNew))
-          .map(({ id, name, avatar, title, messages, isNew }) => {
+          .map((item, id) => {
             return (
               <Block
-                id={id}
-                name={name}
-                avatar={avatar}
-                title={title}
-                messages={messages}
-                isNew={isNew}
+                item={item}
                 isActiveChatID={isActiveChatID}
-                onClick={() => handleActiveChat(id)}
-                key={id}
+                onClick={() => handleActiveChat(item.id)}
+                key={`${item}-${id}`}
               />
             );
           })}

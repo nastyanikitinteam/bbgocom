@@ -23,6 +23,7 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
   const [isOpenBlockModal, setIsOpenBlockModal] = useState(false);
   const [isCurrentChat, setIsCurrent] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const isSmallLaptop = useMediaQuery(1200);
   const isMobile = useMediaQuery(768);
   const containerRef = useRef();
 
@@ -55,6 +56,18 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
                 key={id}
               >
                 <div className={styles.top}>
+                  {isSmallLaptop && !isMobile && (
+                    <div
+                      className={cn(
+                        "default-button border onlyIcon",
+                        styles.button,
+                        styles.back
+                      )}
+                      onClick={back}
+                    >
+                      <ArrowSvg />
+                    </div>
+                  )}
                   {isMobile && (
                     <div className={cn("back", styles.back)} onClick={back}>
                       <span className="arrow">

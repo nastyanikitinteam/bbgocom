@@ -107,6 +107,12 @@
   overflow: hidden;
 }
 
+@media (min-width: 769px) {
+  .back {
+    transform: rotate(90deg);
+    margin-right: 5px;
+  }
+}
 @media (max-width: 768px) {
   .container {
     position: fixed;
