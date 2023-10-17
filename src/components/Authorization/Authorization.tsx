@@ -14,7 +14,7 @@ import shadow from "images/authorization/login-shadow.png";
 import LogoSvg from "images/main/logo.svg";
 
 interface IProps {
-  setIsNoLogin: () => void;
+  setIsNoLogin?: () => void;
 }
 
 const Authorization: FC<IProps> = ({ setIsNoLogin }) => {

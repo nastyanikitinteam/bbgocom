@@ -35,7 +35,7 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
       //@ts-ignore
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-  }, [isActiveChatID]);
+  }, [isCurrentChat]);
 
   useEffect(() => {
     setIsCurrent(chatLists.filter(({ id }) => id === isActiveChatID));

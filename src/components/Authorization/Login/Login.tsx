@@ -20,7 +20,7 @@ import LogoSvg from "images/main/logo.svg";
 interface IProps {
   changeActiveAuth: () => void;
   handleForgotPasswordModal: () => void;
-  setIsNoLogin: () => void;
+  setIsNoLogin?: () => void;
 }
 
 const Login: FC<IProps> = ({
@@ -156,12 +156,14 @@ const Login: FC<IProps> = ({
           </p>
         </>
       )}
-      <div
-        className={cn("default-button", styles.openProfile)}
-        onClick={setIsNoLogin}
-      >
-        Open profile menu
-      </div>
+      {setIsNoLogin && (
+        <div
+          className={cn("default-button", styles.openProfile)}
+          onClick={setIsNoLogin}
+        >
+          Open profile menu
+        </div>
+      )}
     </div>
   );
 };
