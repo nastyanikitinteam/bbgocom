@@ -22,6 +22,7 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
   const [isOpenDel, setIsOpenDel] = useState(false);
   const [isOpenBlockModal, setIsOpenBlockModal] = useState(false);
   const [isCurrentChat, setIsCurrent] = useState(false);
+  const [selectedFiles, setSelectedFiles] = useState([]);
   const isMobile = useMediaQuery(768);
   const containerRef = useRef();
 
@@ -47,7 +48,12 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
         isCurrentChat.map(
           ({ id, name, avatar, timeOnline, title, cover, messages, isNew }) => {
             return (
-              <div className={styles.container} key={id}>
+              <div
+                className={cn(styles.container, {
+                  [styles.withFiles]: selectedFiles.length !== 0,
+                })}
+                key={id}
+              >
                 <div className={styles.top}>
                   {isMobile && (
                     <div className={cn("back", styles.back)} onClick={back}>
@@ -112,7 +118,10 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
                   </div>
                 </div>
                 <div className={styles.bottom}>
-                  <Bottom />
+                  <Bottom
+                    selectedFiles={selectedFiles}
+                    setSelectedFiles={setSelectedFiles}
+                  />
                 </div>
               </div>
             );

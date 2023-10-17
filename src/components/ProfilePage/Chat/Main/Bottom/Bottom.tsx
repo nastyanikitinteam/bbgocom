@@ -1,16 +1,22 @@
-import { useCallback, useMemo, useState, useEffect } from "react";
+import { useCallback, useMemo, useState, FC } from "react";
 import { Form, Field } from "react-final-form";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import * as yup from "yup";
 import { validateForm } from "../../../../../utils/validateForm";
 import cn from "classnames";
 
-import styles from "./bottom.module.scss";
+import AttachFiles from "./AttachFiles/AttachFiles";
 
-import AttachIcon from "images/icons/attach.svg";
+import styles from "./bottom.module.scss";
+import CloseIcon from "images/icons/close.svg";
 import SendIcon from "images/icons/send.svg";
 
-const Bottom = () => {
+interface IProps {
+  setSelectedFiles: (bool: any) => void;
+  selectedFiles: any;
+}
+
+const Bottom: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
   const [isMessageText, setIsMessageeText] = useState("");
 
   const validationSchema = yup.object().shape({
@@ -32,6 +38,13 @@ const Bottom = () => {
     setIsMessageeText(val);
   };
 
+  const handleRemoveFile = (indexToRemove) => {
+    const updatedFiles = selectedFiles.filter(
+      (_, index) => index !== indexToRemove
+    );
+    setSelectedFiles(updatedFiles);
+  };
+
   const tagsList = useMemo(
     () => [
       {
@@ -46,18 +59,18 @@ const Bottom = () => {
         id: 2,
         title: "When can you watch?",
       },
-      // {
-      //   id: 3,
-      //   title: "Still selling?",
-      // },
-      // {
-      //   id: 4,
-      //   title: "There is a bargain?",
-      // },
-      // {
-      //   id: 5,
-      //   title: "When can you watch?",
-      // },
+      {
+        id: 3,
+        title: "Still selling?",
+      },
+      {
+        id: 4,
+        title: "There is a bargain?",
+      },
+      {
+        id: 5,
+        title: "When can you watch?",
+      },
     ],
     []
   );
@@ -69,21 +82,11 @@ const Bottom = () => {
       render={({ handleSubmit }) => (
         <form className={styles.container} onSubmit={handleSubmit}>
           <div className={styles.main}>
-            <button
-              type="submit"
-              className={styles.button}
-              aria-label={`Attach`}
-            >
-              <AttachIcon />
-            </button>
+            <AttachFiles
+              selectedFiles={selectedFiles}
+              setSelectedFiles={setSelectedFiles}
+            />
             <div className={styles.item}>
-              {/* <Field
-                name="messageText"
-                type="text"
-                placeholder={"Text"}
-                component={FormInput}
-                extClassName="message"
-              /> */}
               <input
                 type="text"
                 value={isMessageText}
@@ -96,6 +99,24 @@ const Bottom = () => {
               <SendIcon />
             </button>
           </div>
+          {selectedFiles.length !== 0 && (
+            <div className={styles.files}>
+              {selectedFiles.map((file, index) => (
+                <div className={styles.preview} key={index}>
+                  <img src={URL.createObjectURL(file)} alt={file.name} />
+                  <button
+                    onClick={() => handleRemoveFile(index)}
+                    className={styles.delete}
+                  >
+                    <span className={styles.deleteIcon}>
+                      <CloseIcon />
+                    </span>
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
           <div className={styles.bottom}>
             <div className={styles.tags}>
               {tagsList.map(({ id, title }) => {
