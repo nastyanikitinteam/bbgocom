@@ -52,7 +52,7 @@ const Message: FC<IProps> = ({
           </div>
         )}
 
-        {text && <p>{text}</p>}
+        {text && <p className={styles.text}>{text}</p>}
       </div>
 
       {userIsSender ? (

@@ -91,6 +91,12 @@
       grid-row-end: 3;
     }
   }
+  & + .text {
+    max-width: 376px;
+    a {
+      color: var(--primary-green, #5bb75f);
+    }
+  }
 }
 
 .image {
