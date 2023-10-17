@@ -9,7 +9,7 @@ import { wishlistArr } from "./Lists/config";
 import PlusIcon from "images/icons/plus.svg";
 
 const WishPage = () => {
-  const [isWishList, setIsWishList] = useState(true);
+  const [isWishList, setIsWishList] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(true);
 
   const isMobile = useMediaQuery(768);
@@ -54,7 +54,7 @@ const WishPage = () => {
               <List list={wishlistArr} />
             ) : (
               <div className={styles.block}>
-                <Create />
+                <Create setIsWishList={() => setIsWishList(true)} />
               </div>
             )}
           </div>

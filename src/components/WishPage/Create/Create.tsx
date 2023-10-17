@@ -1,9 +1,14 @@
+import { FC } from "react";
 import styles from "./create.module.scss";
 import cn from "classnames";
 
 import Car from "images/wishlist/auto.jpg";
 
-const Create = () => {
+interface IProps {
+  setIsWishList: () => void;
+}
+
+const Create: FC<IProps> = ({ setIsWishList }) => {
   return (
     <div className={styles.container}>
       <div className={styles.info}>
@@ -12,9 +17,12 @@ const Create = () => {
           As you search, tap the heart icon to save your favorite places to stay
           or things to do to a wishlist.
         </p>
-        <a href="#" className={cn(styles.button, "default-button")}>
+        <div
+          onClick={setIsWishList}
+          className={cn(styles.button, "default-button")}
+        >
           Start search
-        </a>
+        </div>
       </div>
       <div className={styles.image}>
         <img src={Car.src} alt="" />
