@@ -1,8 +1,8 @@
-import { useMemo, useState, FC, useEffect } from "react";
+import { useMemo, useState, FC, useRef, useCallback, useEffect } from "react";
 import { Form, Field } from "react-final-form";
-import FormInput from "components/FormElements/FormInput/FormInput";
-import Textarea from "components/FormElements/Textarea/Textarea";
+import axios from "axios"; // Якщо ви використовуєте Axios
 import SelectContainer from "components/Select/Select";
+import Map from "../Map/Map";
 import styles from "./location.module.scss";
 import cn from "classnames";
 
@@ -15,16 +15,79 @@ interface IProps {
 }
 
 const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
-  const handleRegion = (value: any) => {
-    if (value != null) {
-      handleDataArray(value, "region");
+  const [isMarkerAdress, setIsMarkerAdress] = useState([]);
+  const [isAdress, setIsAdress] = useState("");
+
+  const [isCoordinates, setIsCoordinates] = useState({ lat: 15, lng: 101 });
+
+  const [isMapZoom, setIsMapZoom] = useState(7);
+
+  const [error, setError] = useState(null);
+
+  const getCoordinatesFromAddress = async (address) => {
+    try {
+      const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
+      const response = await axios.get(
+        "https://maps.googleapis.com/maps/api/geocode/json",
+        {
+          params: {
+            address: address,
+            key: apiKey,
+          },
+        }
+      );
+
+      if (response.data.status === "OK" && response.data.results.length > 0) {
+        const location = response.data.results[0].geometry.location;
+        const { lat, lng } = location;
+
+        // Перевірка, чи координати належать Таїланду
+        const isThailand = response.data.results[0].address_components.some(
+          (component) =>
+            component.types.includes("country") && component.short_name === "TH"
+        );
+        setError(null);
+        if (isThailand) {
+          setIsCoordinates({ lat, lng });
+          setIsMapZoom(12);
+        } else {
+          console.log("error");
+          setError("Coordinate not to lie in Thailand");
+        }
+      } else {
+        setError("Address not found");
+      }
+    } catch (error) {
+      console.error("Troubleshooting when rectifying coordinates:", error);
+      setError("Troubleshooting when rectifying coordinates");
     }
   };
 
-  const handleAdress = (value: any) => {
+  const addressInputRef = useRef();
+
+  const handleRegion = (value: any) => {
     if (value != null) {
-      handleDataArray(value, "adress");
+      handleDataArray(value, "region");
+      setIsMapZoom(8);
     }
+    //@ts-ignore
+    const isCurrentRegion = regionList.filter(
+      (region) => region.value === value
+    )[0];
+    //@ts-ignore
+    setIsCoordinates(isCurrentRegion?.location);
+  };
+
+  const handleAdressInput = (value: any) => {
+    handleDataArray(value, "adress");
+    const newAddress = value.target.value;
+    setIsAdress(newAddress);
+
+    // getCoordinatesFromAddress(newAddress);
+  };
+
+  const handleBlur = () => {
+    getCoordinatesFromAddress(isAdress);
   };
 
   return (
@@ -51,16 +114,26 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
             <div className={styles.item}>
               <p className={styles.label}>Address</p>
               <div className={styles.input}>
-                {/* <SelectContainer
-                  options={adressList}
-                  classname="search big withIcon"
-                  onChange={handleAdress}
-                  placeholder="Enter address"
-                  title="Enter address"
-                  isSearch
-                /> */}
+                <input
+                  type="text"
+                  value={isAdress}
+                  className={cn("default-input search")}
+                  placeholder="Adress"
+                  onChange={handleAdressInput}
+                  ref={addressInputRef}
+                  onBlur={handleBlur}
+                  readOnly
+                />
               </div>
             </div>
+          </div>
+          <div className={styles.map}>
+            <Map
+              setIsMarkerAdress={setIsMarkerAdress}
+              addressInputRef={addressInputRef}
+              isCoordinates={isCoordinates}
+              isMapZoom={isMapZoom}
+            />
           </div>
         </>
       )}

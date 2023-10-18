@@ -47,7 +47,7 @@ const Create = () => {
   };
 
   useEffect(() => {
-    console.log(12, dataArray);
+    console.log(dataArray);
   }, [dataArray]);
 
   const onSubmit = useCallback((data, form) => {

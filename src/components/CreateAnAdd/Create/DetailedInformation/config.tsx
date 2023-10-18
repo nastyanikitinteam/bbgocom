@@ -97,26 +97,50 @@ export const regionList = [
   {
     value: "Northern Thailand",
     label: "Northern Thailand",
+    location: {
+      lat: 18,
+      lng: 99,
+    },
   },
   {
     value: "Northeastern Thailand",
     label: "Northeastern Thailand",
+    location: {
+      lat: 17,
+      lng: 103,
+    },
   },
   {
     value: "Western Thailand",
     label: "Western Thailand",
+    location: {
+      lat: 15,
+      lng: 99,
+    },
   },
   {
     value: "Central Thailand",
     label: "Central Thailand",
+    location: {
+      lat: 15,
+      lng: 101,
+    },
   },
   {
     value: "Eastern Thailand",
     label: "Eastern Thailand",
+    location: {
+      lat: 15,
+      lng: 104,
+    },
   },
   {
     value: "Southern Thailand",
     label: "Southern Thailand",
+    location: {
+      lat: 13,
+      lng: 100,
+    },
   },
 ];
 

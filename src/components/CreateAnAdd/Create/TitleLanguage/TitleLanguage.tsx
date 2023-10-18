@@ -102,7 +102,7 @@ const TitleLanguage: FC<IProps> = ({
             <div
               className={cn(styles.input, {
                 // @ts-ignore
-                [styles.disabled]: !dataArray?.language,
+                [styles.disabled]: !dataArray?.language || !dataArray?.title,
               })}
             >
               <Field
