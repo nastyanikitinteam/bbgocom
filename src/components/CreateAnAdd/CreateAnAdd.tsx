@@ -4,6 +4,7 @@ import styles from "./create-an-add.module.scss";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import bannerImg from "images/create-an-add/hero-banner.jpg";
 import Create from "./Create/Create";
+import MapContainer from "./Create/Map/MapContainer";
 
 const CreateAnAdd = () => {
   const isMobile = useMediaQuery(768);
@@ -34,7 +35,7 @@ const CreateAnAdd = () => {
           </div>
         </section>
       )}
-
+      <MapContainer />
       <Create />
     </>
   );
