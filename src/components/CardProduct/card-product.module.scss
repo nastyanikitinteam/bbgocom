@@ -102,6 +102,10 @@
   padding: 5px;
   z-index: 20;
   cursor: pointer;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
   path {
     fill: rgba(#000, 0.6);
     stroke: #ffffff;

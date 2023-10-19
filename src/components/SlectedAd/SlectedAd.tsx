@@ -1,10 +1,13 @@
-import { useMemo } from "react";
+import { useMemo, FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
+import Main from "./Main/Main";
 import styles from "./selected-ad.module.scss";
-// import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
-// import bannerImg from "images/create-an-add/hero-banner.jpg";
 
-const SelectedAd = () => {
+interface IProps {
+  isCurrentProduct: any;
+}
+
+const SelectedAd: FC<IProps> = ({ isCurrentProduct }) => {
   const isMobile = useMediaQuery(768);
 
   // const breadCrumbs = useMemo(
@@ -21,7 +24,7 @@ const SelectedAd = () => {
   //   ],
   //   []
   // );
-  return <>123</>;
+  return <Main isCurrentProduct={isCurrentProduct} />;
 };
 
 export default SelectedAd;
