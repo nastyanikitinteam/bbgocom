@@ -1,0 +1,92 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.action {
+  border-radius: 30px;
+  border: 1px solid var(--neutrals-stroke-gray, #d8d8d8);
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  &:hover {
+    box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.15);
+  }
+  &.isWish {
+    path {
+      fill: #5bb75f;
+      stroke: transparent;
+    }
+  }
+}
+
+.location {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #808080;
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 4px;
+    max-width: 18px;
+    min-width: 18px;
+    margin-top: 1px;
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.date {
+  color: #808080;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  span {
+    color: #000;
+    margin-left: 3px;
+  }
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-right: 8px;
+  }
+}
+
+@media (min-width: 769px) {
+  .title {
+    line-height: 48px;
+  }
+}

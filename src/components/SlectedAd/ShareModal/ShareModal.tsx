@@ -3,9 +3,7 @@ import Link from "next/link";
 import Share from "components/Share/Share";
 
 import styles from "./share-modal.module.scss";
-import cn from "classnames";
 
-import CongratulationsIcon from "images/icons/congratulations.svg";
 import MapIcon from "images/icons/map-icon.svg";
 
 interface IProps {
