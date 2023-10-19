@@ -1,14 +1,14 @@
 import type { NextPage } from "next";
 
-import CreateAnAdd from "components/CreateAnAdd/CreateAnAdd";
+import CreateAnAd from "components/CreateAnAd/CreateAnAd";
 import Layout from "components/Layout/Layout";
 
-const CreateAnAddPage: NextPage = () => {
+const CreateAnAdPage: NextPage = () => {
   return (
-    <Layout title="Create an add" isSecondHeader mobileWithoutSearchBar>
-      <CreateAnAdd />
+    <Layout title="Create an ad" isSecondHeader mobileWithoutSearchBar>
+      <CreateAnAd />
     </Layout>
   );
 };
 
-export default CreateAnAddPage;
+export default CreateAnAdPage;

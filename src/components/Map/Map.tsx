@@ -11,7 +11,7 @@ import MarkersSm from "images/main/markers-sm.png";
 import MarkersStarBlack from "images/main/marjers-star-black.png";
 import MarkersStarGreen from "images/main/marjers-star-green.png";
 import CardProduct from "components/CardProduct/CardProduct";
-// import { productLst } from "components/MainPage/Recommend/config";
+// import { productList } from "components/MainPage/Recommend/config";
 import cn from "classnames";
 
 interface IProps {
@@ -56,7 +56,9 @@ const Index: FC<IProps> = ({ isWishlist, productList }) => {
 
         ReactDOM.render(
           <CardProduct
+            id={item.id}
             title={item.name}
+            slug={item.slug}
             images={item.images}
             price={item.price}
             oldPrice={item.oldPrice}

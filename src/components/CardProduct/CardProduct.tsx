@@ -1,4 +1,12 @@
-import { useMemo, FC, ReactNode, useState, useCallback } from "react";
+import {
+  useMemo,
+  FC,
+  ReactNode,
+  useState,
+  useCallback,
+  useEffect,
+} from "react";
+import Link from "next/link";
 import styles from "./card-product.module.scss";
 import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
 import Delete from "components/WishPage/Delete/Delete";
@@ -12,7 +20,9 @@ import MapIcon from "images/icons/map-icon.svg";
 import StarIcon from "images/icons/star.svg";
 
 interface IProps {
+  id: number;
   title: string;
+  slug: string;
   images: any;
   price: string;
   oldPrice?: string;
@@ -27,7 +37,9 @@ interface IProps {
 }
 
 const CardProduct: FC<IProps> = ({
+  id,
   title,
+  slug,
   images,
   price,
   oldPrice,
@@ -41,6 +53,12 @@ const CardProduct: FC<IProps> = ({
   isOpenMap,
 }) => {
   const [isOpenWishModal, setIsOpenWishModal] = useState(false);
+  const [isbaseUrl, setIsBaseUrl] = useState("");
+
+  useEffect(() => {
+    //TODO: SERVER DOESNT HAVE WINDOW
+    setIsBaseUrl(window.location.origin);
+  }, []);
 
   const handleWihlist = useCallback(() => {
     !isWish ? setIsOpenWishModal(true) : console.log("delete");
@@ -48,7 +66,8 @@ const CardProduct: FC<IProps> = ({
 
   return (
     <>
-      <div
+      <Link
+        href={`${isbaseUrl}/selected-ad/${slug}`}
         className={cn(
           styles.container,
           { [styles.green]: isGreenCard },
@@ -84,7 +103,7 @@ const CardProduct: FC<IProps> = ({
             </div>
           </div>
         </div>
-      </div>
+      </Link>
 
       {isOpenWishModal && (
         <Modal

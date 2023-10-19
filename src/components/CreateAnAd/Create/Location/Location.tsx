@@ -133,6 +133,7 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
               addressInputRef={addressInputRef}
               isCoordinates={isCoordinates}
               isMapZoom={isMapZoom}
+              handleDataArray={handleDataArray}
             />
           </div>
         </>

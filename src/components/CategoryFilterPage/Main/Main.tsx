@@ -3,7 +3,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import CardProduct from "components/CardProduct/CardProduct";
 import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
-import { productLst } from "components/MainPage/Recommend/config";
+import { productList } from "components/MainPage/Recommend/config";
 import styles from "./main.module.scss";
 import cn from "classnames";
 
@@ -40,10 +40,10 @@ const Main: FC<IProps> = ({
   };
 
   const handleShowProducts = () => {
-    if (isShowProducts + isCount <= productLst.length) {
+    if (isShowProducts + isCount <= productList.length) {
       setIsShowProducts(isShowProducts + isCount);
     } else {
-      setIsShowProducts(productLst.length);
+      setIsShowProducts(productList.length);
     }
   };
 
@@ -136,33 +136,37 @@ const Main: FC<IProps> = ({
           { [styles.openMap]: isOpenMap }
         )}
       >
-        {productLst
+        {productList
           .slice(0, isShowProducts)
-          .map(({ id, name, images, price, oldPrice, location, isWish }) => {
-            return (
-              <div
-                className={styles.block}
-                key={id}
-                data-aos-anchor-placement="top-bottom"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <CardProduct
-                  title={name}
-                  images={images}
-                  price={price}
-                  oldPrice={oldPrice}
-                  location={location}
-                  isWish={isWish}
-                  isHorizontal={isHorizontalShow}
-                  isOpenMap={isOpenMap}
-                ></CardProduct>
-              </div>
-            );
-          })}
+          .map(
+            ({ id, name, slug, images, price, oldPrice, location, isWish }) => {
+              return (
+                <div
+                  className={styles.block}
+                  key={id}
+                  data-aos-anchor-placement="top-bottom"
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+                >
+                  <CardProduct
+                    id={id}
+                    title={name}
+                    slug={slug}
+                    images={images}
+                    price={price}
+                    oldPrice={oldPrice}
+                    location={location}
+                    isWish={isWish}
+                    isHorizontal={isHorizontalShow}
+                    isOpenMap={isOpenMap}
+                  ></CardProduct>
+                </div>
+              );
+            }
+          )}
       </div>
 
-      {isShowProducts !== productLst.length && (
+      {isShowProducts !== productList.length && (
         <div
           className={styles.all}
           onClick={handleShowProducts}

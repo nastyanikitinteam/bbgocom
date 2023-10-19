@@ -63,10 +63,21 @@ const LatestDeals = () => {
           {isMobile ? (
             <SwiperComponent {...(params as SwiperProps)}>
               {latestLst.map(
-                ({ id, title, images, price, oldPrice, location, isWish }) => {
+                ({
+                  id,
+                  title,
+                  slug,
+                  images,
+                  price,
+                  oldPrice,
+                  location,
+                  isWish,
+                }) => {
                   return (
                     <SwiperSlide key={id}>
                       <CardProduct
+                        id={id}
+                        slug={slug}
                         title={title}
                         images={images}
                         price={price}
@@ -84,7 +95,16 @@ const LatestDeals = () => {
             latestLst
               .slice(0, isShowCategory)
               .map(
-                ({ id, title, images, price, oldPrice, location, isWish }) => {
+                ({
+                  id,
+                  title,
+                  slug,
+                  images,
+                  price,
+                  oldPrice,
+                  location,
+                  isWish,
+                }) => {
                   return (
                     <div
                       className={styles.block}
@@ -94,7 +114,9 @@ const LatestDeals = () => {
                       data-aos-delay="300"
                     >
                       <CardProduct
+                        id={id}
                         title={title}
+                        slug={slug}
                         images={images}
                         price={price}
                         oldPrice={oldPrice}

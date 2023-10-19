@@ -67,7 +67,7 @@ const Main: FC<IProps> = ({
       </div>
       <div className={styles.list}>
         {isCurrentList.items.map(
-          ({ id, name, images, price, oldPrice, location }) => {
+          ({ id, name, slug, images, price, oldPrice, location }) => {
             return (
               <div
                 className={styles.block}
@@ -77,7 +77,9 @@ const Main: FC<IProps> = ({
                 data-aos-delay="300"
               >
                 <CardProduct
+                  id={id}
                   title={name}
+                  slug={slug}
                   images={images}
                   price={price}
                   oldPrice={oldPrice}

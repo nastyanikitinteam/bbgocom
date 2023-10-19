@@ -46,7 +46,9 @@ const Review: FC<IProps> = ({ info }) => {
       {!isMobile && (
         <div className={styles.product}>
           <CardProduct
+            id={info.id}
             title={info.title}
+            slug={info.slug}
             images={info.images}
             price={info.price}
             location={info.location}

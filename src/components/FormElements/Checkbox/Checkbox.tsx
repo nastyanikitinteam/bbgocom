@@ -33,8 +33,6 @@ const Checkbox: React.FC<IProps> = ({
   textColor,
   onClick,
   readonly = false,
-  number,
-  text,
   children,
   onChange,
   checked,

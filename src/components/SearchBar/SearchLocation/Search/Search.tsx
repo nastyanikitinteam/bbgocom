@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import { productLst } from "components/MainPage/Recommend/config";
+import { productList } from "components/MainPage/Recommend/config";
 import NoResult from "../NoResult/NoResults";
 
 import styles from "./search.module.scss";
@@ -16,7 +16,7 @@ const Search: FC<IProps> = ({
   handleClickSeacrh,
   setIsActiveChoice,
 }) => {
-  const searchResults = searchArray(productLst, isSearchQuery);
+  const searchResults = searchArray(productList, isSearchQuery);
 
   function searchArray(array, query) {
     const results = [];

@@ -5,6 +5,7 @@ export const latestLst = [
   {
     id: 0,
     title: "Rolex Daytona, 2022+ Daytona 116519 White Gold Black",
+    slug: "rolex-daytona-2022-daytona-116519-white-gold-black-0",
     images: [
       {
         id: 0,
@@ -33,6 +34,7 @@ export const latestLst = [
   {
     id: 1,
     title: "iPad Air Silver, 12.9-inch display, M2 chip, 2TB, Wi-Fi",
+    slug: "ipad-air-silver-12-9-inch-display-m2-chip-2tb-wi-fi-1",
     images: [
       {
         id: 0,
@@ -53,6 +55,7 @@ export const latestLst = [
   {
     id: 2,
     title: "Apple Watch Ultra, Titanium Case with Orange Alpine Loop",
+    slug: "apple-watch-ultra-titanium-case-with-orange-alpine-loop-2",
     images: [
       {
         id: 0,
@@ -82,6 +85,7 @@ export const latestLst = [
     id: 3,
     title:
       "MacBook Air with M2 chip, 8-Core GPU 8GB Unified Memory, 256GB SSD Storage",
+    slug: "macbook-air-with-m2-chip-8-core-gpu-8gb-unified-memory-256gb-ssd-storage-3",
     images: [
       {
         id: 0,
@@ -111,6 +115,7 @@ export const latestLst = [
     id: 4,
     title:
       "MacBook Air with M2 chip, 8-Core GPU 8GB Unified Memory, 256GB SSD Storage",
+    slug: "macbook-air-with-m2-chip-8-core-gpu-8gb-unified-memory-256gb-ssd-storage-4",
     images: [
       {
         id: 0,
@@ -140,6 +145,7 @@ export const latestLst = [
     id: 5,
     title:
       "MacBook Air with M2 chip, 8-Core GPU 8GB Unified Memory, 256GB SSD Storage",
+    slug: "macbook-air-with-m2-chip-8-core-gpu-8gb-unified-memory-256gb-ssd-storage-5",
     images: [
       {
         id: 0,
@@ -169,6 +175,7 @@ export const latestLst = [
     id: 6,
     title:
       "MacBook Air with M2 chip, 8-Core GPU 8GB Unified Memory, 256GB SSD Storage",
+    slug: "macbook-air-with-m2-chip-8-core-gpu-8gb-unified-memory-256gb-ssd-storage-6",
     images: [
       {
         id: 0,
@@ -198,6 +205,7 @@ export const latestLst = [
     id: 7,
     title:
       "MacBook Air with M2 chip, 8-Core GPU 8GB Unified Memory, 256GB SSD Storage",
+    slug: "macbook-air-with-m2-chip-8-core-gpu-8gb-unified-memory-256gb-ssd-storage-7",
     images: [
       {
         id: 0,
@@ -227,6 +235,7 @@ export const latestLst = [
     id: 8,
     title:
       "MacBook Air with M2 chip, 8-Core GPU 8GB Unified Memory, 256GB SSD Storage",
+    slug: "macbook-air-with-m2-chip-8-core-gpu-8gb-unified-memory-256gb-ssd-storage-8",
     images: [
       {
         id: 0,
@@ -257,6 +266,7 @@ export const latestLst = [
     id: 9,
     title:
       "MacBook Air with M2 chip, 8-Core GPU 8GB Unified Memory, 256GB SSD Storage",
+    slug: "macbook-air-with-m2-chip-8-core-gpu-8gb-unified-memory-256gb-ssd-storage-9",
     images: [
       {
         id: 0,
@@ -286,6 +296,7 @@ export const latestLst = [
     id: 10,
     title:
       "MacBook Air with M2 chip, 8-Core GPU 8GB Unified Memory, 256GB SSD Storage",
+    slug: "macbook-air-with-m2-chip-8-core-gpu-8gb-unified-memory-256gb-ssd-storage-10",
     images: [
       {
         id: 0,
@@ -316,6 +327,7 @@ export const latestLst = [
     id: 11,
     title:
       "MacBook Air with M2 chip, 8-Core GPU 8GB Unified Memory, 256GB SSD Storage",
+    slug: "macbook-air-with-m2-chip-8-core-gpu-8gb-unified-memory-256gb-ssd-storage-11",
     images: [
       {
         id: 0,

@@ -11,10 +11,11 @@ import cover9 from "images/product/cover-9.jpg";
 import cover10 from "images/product/cover-10.jpg";
 import cover11 from "images/product/cover-11.jpg";
 
-export const productLst = [
+export const productList = [
   {
     id: 0,
     name: "MacBook Air with M2 chip, 8-Core GPU 8GB Unified Memory, 256GB SSD Storage",
+    slug: "macbook-air-with-m2-chip-8-core-gpu-8gb-unified-memory-256gb-ssd-storage-0",
     images: [
       {
         id: 0,
@@ -45,6 +46,7 @@ export const productLst = [
   {
     id: 1,
     name: "iPad Air Silver, 12.9-inch display, M2 chip, 2TB, Wi-Fi",
+    slug: "ipad-air-silver-12-9-inch-display-m2-chip-2tb-wi-fi-1",
     images: [
       {
         id: 0,
@@ -65,6 +67,7 @@ export const productLst = [
   {
     id: 2,
     name: "Apple Watch Ultra, Titanium Case with Orange Alpine Loop",
+    slug: "apple-watch-ultra-titanium-case-with-orange-alpine-loop-2",
     images: [
       {
         id: 0,
@@ -94,6 +97,7 @@ export const productLst = [
   {
     id: 3,
     name: "Mac Pro, 3.5GHz 8‑core Intel Xeon W processor, Turbo Boost up to 4.0GHz, 32GB (4x8GB) ",
+    slug: "mac-pro-3-5ghz-8-core-intel-xeon-w-processor-turbo-boost-up-to-4-0ghz-32gb-4x8gb--3",
     images: [
       {
         id: 0,
@@ -123,6 +127,7 @@ export const productLst = [
   {
     id: 4,
     name: "Gibson Slash Les Paul Standard, The iconic Guns N' Roses guitarist has spec'd ou23 soaxmskm",
+    slug: "gibson-slash-les-paul-standard-the-iconic-guns-n-roses-guitarist-has-spec-d-ou23-soaxmskm-4",
     images: [
       {
         id: 0,
@@ -152,6 +157,7 @@ export const productLst = [
   {
     id: 5,
     name: "BMWi7, xDrive60 Limousine + M Paket + B/W + Fond",
+    slug: "bmwi7-xdrive60-limousine-m-paket-b-w-fond-5",
     images: [
       {
         id: 0,
@@ -181,6 +187,7 @@ export const productLst = [
   {
     id: 6,
     name: "2009 Gibson Custom ES-175 Figured Vintage Sunburst Archtop Guitar + COA OHSC",
+    slig: "2009-gibson-custom-es-175-figured-vintage-sunburst-archtop-guitar-coa-ohsc-6",
     images: [
       {
         id: 0,
@@ -210,6 +217,7 @@ export const productLst = [
   {
     id: 7,
     name: "35W Dual USB-C Port Compact Power Adapter",
+    slig: "35w-dual-usb-c-port-compact-power-adapter-7",
     images: [
       {
         id: 0,
@@ -238,6 +246,7 @@ export const productLst = [
   {
     id: 8,
     name: "Simulator soccer ball JELLO FB-6420",
+    slug: "simulator-soccer-ball-jello-fb-6420-8",
     images: [
       {
         id: 0,
@@ -266,6 +275,7 @@ export const productLst = [
   {
     id: 9,
     name: "Soccer ball FB-5927",
+    slug: "soccer-ball-fb-5927-9",
     images: [
       {
         id: 0,
@@ -294,6 +304,7 @@ export const productLst = [
   {
     id: 10,
     name: "Dress Puma Ferrari Style Wmn Dress 53334301 XXS Puma Black",
+    slug: "dress-puma-ferrari-style-wmn-dress-53334301-xxs-puma-black-10",
     images: [
       {
         id: 0,
@@ -322,6 +333,7 @@ export const productLst = [
   {
     id: 11,
     name: "Sarafan One by one 00000018333 L White",
+    slug: "sarafan-one-by-one-00000018333-l-white-11",
     images: [
       {
         id: 0,

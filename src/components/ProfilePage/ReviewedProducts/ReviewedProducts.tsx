@@ -5,7 +5,7 @@ import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import useMediaQuery from "src/utils/useMediaQuery";
 import CardProduct from "components/CardProduct/CardProduct";
 import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
-import { productLst } from "components/MainPage/Recommend/config";
+import { productList } from "components/MainPage/Recommend/config";
 import cn from "classnames";
 import styles from "./reviewed-products.module.scss";
 
@@ -48,7 +48,7 @@ const ReviewedProducts = () => {
       setCheckedItems([]);
       setSelectAllChecked(false);
     } else {
-      const allItemIds = productLst.map((item) => item.id);
+      const allItemIds = productList.map((item) => item.id);
       setCheckedItems(allItemIds);
       setSelectAllChecked(true);
     }
@@ -175,8 +175,8 @@ const ReviewedProducts = () => {
                 [styles.isHorizontal]: isHorizontalShow,
               })}
             >
-              {productLst.map(
-                ({ id, name, images, price, oldPrice, location }) => {
+              {productList.map(
+                ({ id, name, slug, images, price, oldPrice, location }) => {
                   return (
                     <div
                       className={styles.block}
@@ -186,7 +186,9 @@ const ReviewedProducts = () => {
                       data-aos-delay="300"
                     >
                       <CardProduct
+                        id={id}
                         title={name}
+                        slug={slug}
                         images={images}
                         price={price}
                         oldPrice={oldPrice}

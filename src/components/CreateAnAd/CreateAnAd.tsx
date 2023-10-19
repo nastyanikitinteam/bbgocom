@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
-import styles from "./create-an-add.module.scss";
+import styles from "./create-an-ad.module.scss";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import bannerImg from "images/create-an-add/hero-banner.jpg";
 import Create from "./Create/Create";
 
-const CreateAnAdd = () => {
+const CreateAnAd = () => {
   const isMobile = useMediaQuery(768);
 
   const breadCrumbs = useMemo(
@@ -39,4 +39,4 @@ const CreateAnAdd = () => {
   );
 };
 
-export default CreateAnAdd;
+export default CreateAnAd;

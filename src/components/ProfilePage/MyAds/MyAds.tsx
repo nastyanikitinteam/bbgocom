@@ -6,7 +6,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import CardProduct from "components/CardProduct/CardProduct";
 import Card from "./Card/Card";
 import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
-import { productLst } from "components/MainPage/Recommend/config";
+import { productList } from "components/MainPage/Recommend/config";
 import NoResult from "./NoResult/NoResults";
 import {
   categorieList,

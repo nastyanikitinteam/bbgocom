@@ -1,0 +1,32 @@
+import type { NextPage } from "next";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import SelectedAd from "components/SlectedAd/SlectedAd";
+
+import { productList } from "components/MainPage/Recommend/config";
+
+import { IProduct, initialProduct } from "src/interfaces/product";
+import Layout from "components/Layout/Layout";
+
+const SelectedAdPage: NextPage = () => {
+  const router = useRouter();
+
+  const [isCurrentProduct, setIsCurrentProduct] =
+    useState<IProduct>(initialProduct);
+
+  useEffect(() => {
+    const currentItem = productList.filter(
+      ({ slug }) => slug === router.query.slug
+    );
+    // @ts-ignore
+    setIsCurrentProduct(currentItem[0] || initialProduct);
+  }, [router.query.slug]);
+
+  return (
+    <Layout title={isCurrentProduct.name} isSecondHeader mobileWithoutSearchBar>
+      <SelectedAd />
+    </Layout>
+  );
+};
+
+export default SelectedAdPage;

@@ -7,6 +7,7 @@ import pointIcon from "images/icons/point.png";
 
 interface IProps {
   setIsMarkerAdress: (bool: any) => void;
+  handleDataArray: (event: any, title: any) => void;
   addressInputRef: any;
   isCoordinates: any;
   isMapZoom: number;
@@ -17,6 +18,7 @@ const Map: FC<IProps> = ({
   addressInputRef,
   isCoordinates,
   isMapZoom,
+  // handleDataArray,
 }) => {
   const disableDefaultUI = true;
   const render = (status: Status): ReactElement => {
@@ -93,6 +95,7 @@ const Map: FC<IProps> = ({
 
           // setIsMarkerAdress(results[0]);
           addressInputRef.current.value = formattedAddress;
+          // handleDataArray(formattedAddress, "region");
         }
       });
     };

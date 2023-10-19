@@ -5,7 +5,7 @@ import MapContainer from "./MapContainer/MapContainer";
 import Filter from "./Filter/Filter";
 import styles from "./category-filter-page.module.scss";
 import cn from "classnames";
-import { productLst } from "components/MainPage/Recommend/config";
+import { productList } from "components/MainPage/Recommend/config";
 
 import { useDispatch, useSelector } from "react-redux";
 import { IFilterReducer, setIsCategoryFilterOpen } from "./reducer";
@@ -126,7 +126,7 @@ const CategoryFilterPage: FC<IProps> = ({
               isMapWidth={isMapWidth}
               isOpenMap={isOpenMap}
               handleFilter={handleFilter}
-              productList={productLst}
+              productList={productList}
             />
           )}
         </div>

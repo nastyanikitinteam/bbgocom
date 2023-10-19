@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import CardProduct from "components/CardProduct/CardProduct";
 import useMediaQuery from "src/utils/useMediaQuery";
-import { productLst } from "./config";
+import { productList } from "./config";
 import cn from "classnames";
 
 import styles from "./recommend.module.scss";
@@ -40,28 +40,41 @@ const Recommend = () => {
         </h2>
 
         <div className={styles.blocks}>
-          {productLst
+          {productList
             .slice(0, isShowCategory)
-            .map(({ id, name, images, price, oldPrice, location, isWish }) => {
-              return (
-                <div
-                  className={styles.block}
-                  key={id}
-                  data-aos-anchor-placement="top-bottom"
-                  data-aos="fade-up"
-                  data-aos-delay="300"
-                >
-                  <CardProduct
-                    title={name}
-                    images={images}
-                    price={price}
-                    oldPrice={oldPrice}
-                    location={location}
-                    isWish={isWish}
-                  />
-                </div>
-              );
-            })}
+            .map(
+              ({
+                id,
+                name,
+                slug,
+                images,
+                price,
+                oldPrice,
+                location,
+                isWish,
+              }) => {
+                return (
+                  <div
+                    className={styles.block}
+                    key={id}
+                    data-aos-anchor-placement="top-bottom"
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                  >
+                    <CardProduct
+                      id={id}
+                      title={name}
+                      slug={slug}
+                      images={images}
+                      price={price}
+                      oldPrice={oldPrice}
+                      location={location}
+                      isWish={isWish}
+                    />
+                  </div>
+                );
+              }
+            )}
         </div>
         <div
           className={styles.all}
