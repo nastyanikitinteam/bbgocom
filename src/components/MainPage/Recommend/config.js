@@ -54,7 +54,35 @@ export const productList = [
       },
       {
         id: 1,
+        image: cover.src,
+      },
+      {
+        id: 2,
+        image: cover3.src,
+      },
+      {
+        id: 3,
+        image: cover.src,
+      },
+      {
+        id: 4,
+        image: cover.src,
+      },
+      {
+        id: 5,
         image: cover1.src,
+      },
+      {
+        id: 6,
+        image: cover.src,
+      },
+      {
+        id: 7,
+        image: cover3.src,
+      },
+      {
+        id: 8,
+        image: cover.src,
       },
     ],
     price: "$250.00",

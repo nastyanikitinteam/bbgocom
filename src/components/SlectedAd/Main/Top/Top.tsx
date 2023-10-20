@@ -40,12 +40,15 @@ const Top: FC<IProps> = ({
         </div>
       </div>
       <div className={styles.info}>
-        <div className={styles.location}>
-          <span className={styles.icon}>
-            <MapIcon />
-          </span>
-          {isCurrentProduct.location.name}
-        </div>
+        {isCurrentProduct.location && (
+          <div className={styles.location}>
+            <span className={styles.icon}>
+              <MapIcon />
+            </span>
+            {isCurrentProduct.location.name}
+          </div>
+        )}
+
         <div className={styles.date}>
           <span className={styles.icon}>
             <CalendarIcon />

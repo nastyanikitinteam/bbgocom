@@ -166,3 +166,24 @@
     bottom: 15px;
   }
 }
+
+.selected-slider {
+  .swiper-slide {
+    border-radius: 25px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.selected-slider-second {
+  height: 100%;
+  .swiper-slide {
+    border-radius: 15px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+}

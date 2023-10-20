@@ -1,21 +1,94 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useMemo, useEffect, useState } from "react";
+import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
 import styles from "./images.module.scss";
-import ShareModal from "../../ShareModal/ShareModal";
-import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
-import Modal from "components/Modal/Modal";
 import cn from "classnames";
 
-import StarIcon from "images/icons/star.svg";
-import ShareIcon from "images/icons/share.svg";
-import MapIcon from "images/icons/map-icon.svg";
-import CalendarIcon from "images/icons/calendar.svg";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import ArrowSvg from "images/icons/drop.svg";
 
 interface IProps {
   isCurrentProduct: any;
 }
 
 const Images: FC<IProps> = ({ isCurrentProduct }) => {
-  return <></>;
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  const paramsFirst = useMemo(
+    () => ({
+      slidesPerView: 1,
+      spaceBetween: 10,
+      initialSlide: 1,
+      thumbs: { swiper: thumbsSwiper },
+      modules: [FreeMode, Navigation, Thumbs],
+      navigation: {
+        nextEl: ".product-next-btn",
+        prevEl: ".product-prev-btn",
+      },
+      className: "selected-slider",
+    }),
+    [isCurrentProduct]
+  );
+
+  const paramsSecond = useMemo(
+    () => ({
+      onSwiper: setThumbsSwiper,
+      slidesPerView: 6,
+      spaceBetween: 10,
+      initialSlide: 1,
+      watchSlidesProgress: true,
+      freeMode: true,
+      direction: "vertical",
+      modules: [FreeMode, Thumbs],
+      className: "selected-slider-second",
+    }),
+    [isCurrentProduct]
+  );
+
+  return (
+    <div className={styles.container}>
+      {isCurrentProduct.images && (
+        <>
+          <div className={styles.second}>
+            <Swiper {...(paramsSecond as SwiperProps)}>
+              {isCurrentProduct.images.map(({ id, image }) => {
+                return (
+                  <SwiperSlide key={id}>
+                    <img src={image} alt="" />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
+          <div className={styles.main}>
+            <Swiper {...(paramsFirst as SwiperProps)}>
+              {isCurrentProduct.images.map(({ id, image }) => {
+                return (
+                  <SwiperSlide key={id}>
+                    <img src={image} alt="" />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+            <div
+              className={cn(styles.navigation, "default-navigation__buttons")}
+            >
+              <div className="default-navigation__button prev product-prev-btn">
+                <ArrowSvg />
+              </div>
+              <div className="default-navigation__button next product-next-btn">
+                <ArrowSvg />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default Images;

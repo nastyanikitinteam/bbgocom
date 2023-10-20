@@ -24,7 +24,7 @@ const SelectedAdPage: NextPage = () => {
 
   return (
     <Layout title={isCurrentProduct.name} isSecondHeader mobileWithoutSearchBar>
-      <SelectedAd isCurrentProduct={isCurrentProduct} />
+      {isCurrentProduct && <SelectedAd isCurrentProduct={isCurrentProduct} />}
     </Layout>
   );
 };

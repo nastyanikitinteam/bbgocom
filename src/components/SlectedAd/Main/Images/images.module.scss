@@ -1,0 +1,38 @@
+.container {
+  // max-width: 785px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  padding-left: 115px;
+  position: relative;
+}
+
+.second {
+  max-width: 95px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.main {
+  max-width: 670px;
+  width: 100%;
+  position: relative;
+}
+
+.navigation {
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 0 20px;
+  pointer-events: none;
+  div {
+    pointer-events: all;
+  }
+}
