@@ -4,6 +4,7 @@ import ShareModal from "../ShareModal/ShareModal";
 import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
 import Modal from "components/Modal/Modal";
 import Top from "./Top/Top";
+import Info from "./Info/Info";
 import Images from "./Images/Images";
 import cn from "classnames";
 
@@ -35,6 +36,9 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
           <div className={styles.content}>
             <div className={styles.left}>
               <Images isCurrentProduct={isCurrentProduct} />
+            </div>
+            <div className={styles.right}>
+              <Info isCurrentProduct={isCurrentProduct} />
             </div>
           </div>
         </div>

@@ -1,0 +1,21 @@
+.item {
+  position: relative;
+  textarea {
+    padding: 7px 41px 7px 14px;
+    min-height: 126px;
+    border-radius: 20px;
+  }
+}
+
+.label {
+  margin-bottom: 10px;
+}
+
+.send {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
