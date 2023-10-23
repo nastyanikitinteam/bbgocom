@@ -15,6 +15,16 @@
   }
 }
 
+.noPadding {
+  padding: 0 !important;
+  div {
+    padding: 0;
+  }
+}
+.banner {
+  border-radius: 10px;
+}
+
 @media (max-width: 998px) {
   .container {
     padding: 25px 0;
