@@ -3,6 +3,7 @@ import styles from "./main.module.scss";
 import ShareModal from "../ShareModal/ShareModal";
 import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
+import DetailedInformation from "./DetailedInformation/DetailedInformation";
 import Modal from "components/Modal/Modal";
 import Top from "./Top/Top";
 import Info from "./Info/Info";
@@ -45,7 +46,9 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
             </div>
           </div>
           <div className={styles.content}>
-            <div className={styles.left}></div>
+            <div className={styles.left}>
+              <DetailedInformation isCurrentProduct={isCurrentProduct} />
+            </div>
             <div className={styles.right}>
               <AdvertisingBanner bannerImg={bannerImg.src} noPadding />
             </div>

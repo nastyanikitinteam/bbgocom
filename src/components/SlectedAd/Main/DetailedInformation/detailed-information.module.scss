@@ -1,0 +1,38 @@
+.title {
+  margin-bottom: 20px;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 160px;
+  position: relative;
+  max-width: 560px;
+  width: 100%;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    left: calc(50% - 0.5px);
+    top: 10px;
+    height: calc(100% - 20px);
+    background: #d8d8d8;
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
