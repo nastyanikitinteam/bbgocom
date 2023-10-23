@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.button {
+  width: 100%;
+}
+
+.firstState {
+  path {
+    stroke: #fff;
+  }
+}
+
+.hidden {
+  display: none !important;
+}

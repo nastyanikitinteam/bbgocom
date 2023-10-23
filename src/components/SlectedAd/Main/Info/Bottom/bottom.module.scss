@@ -1,0 +1,30 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
+  }
+}
+
+.icon {
+  transform: rotate(-90deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
