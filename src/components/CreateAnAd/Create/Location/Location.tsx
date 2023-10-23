@@ -41,13 +41,13 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
         const location = response.data.results[0].geometry.location;
         const { lat, lng } = location;
 
-        // Перевірка, чи координати належать Таїланду
         const isThailand = response.data.results[0].address_components.some(
           (component) =>
             component.types.includes("country") && component.short_name === "TH"
         );
         setError(null);
         if (isThailand) {
+          console.log("work");
           setIsCoordinates({ lat, lng });
           setIsMapZoom(12);
         } else {
@@ -63,8 +63,6 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
     }
   };
 
-  const addressInputRef = useRef();
-
   const handleRegion = (value: any) => {
     if (value != null) {
       handleDataArray(value, "region");
@@ -79,16 +77,21 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
   };
 
   const handleAdressInput = (value: any) => {
-    handleDataArray(value, "adress");
+    // handleDataArray(value, "adress");
     const newAddress = value.target.value;
     setIsAdress(newAddress);
 
-    // getCoordinatesFromAddress(newAddress);
+    getCoordinatesFromAddress(newAddress);
   };
 
-  const handleBlur = () => {
-    getCoordinatesFromAddress(isAdress);
-  };
+  // const handleBlur = () => {
+  //   getCoordinatesFromAddress(isAdress);
+  // };
+
+  useEffect(() => {
+    // console.log(isAdress);
+    handleDataArray(isAdress, "adress");
+  }, [isAdress]);
 
   return (
     <div className={styles.container}>
@@ -96,7 +99,7 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
         <span className={styles.num}>6</span>Location
       </h3>
 
-      {disabled && (
+      {!disabled && (
         <>
           <div className={styles.items}>
             <div className={styles.item}>
@@ -120,9 +123,8 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
                   className={cn("default-input search")}
                   placeholder="Adress"
                   onChange={handleAdressInput}
-                  ref={addressInputRef}
-                  onBlur={handleBlur}
-                  readOnly
+                  // onBlur={handleBlur}
+                  // readOnly
                 />
               </div>
             </div>
@@ -130,10 +132,10 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
           <div className={styles.map}>
             <Map
               setIsMarkerAdress={setIsMarkerAdress}
-              addressInputRef={addressInputRef}
+              setIsAdress={setIsAdress}
               isCoordinates={isCoordinates}
               isMapZoom={isMapZoom}
-              handleDataArray={handleDataArray}
+              // handleDataArray={handleDataArray}
             />
           </div>
         </>

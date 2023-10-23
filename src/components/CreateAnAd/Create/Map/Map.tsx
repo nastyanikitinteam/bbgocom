@@ -1,5 +1,12 @@
 // @ts-nocheck
-import React, { useEffect, useRef, ReactElement, useState, FC } from "react";
+import React, {
+  useEffect,
+  useRef,
+  ReactElement,
+  useState,
+  FC,
+  memo,
+} from "react";
 import ReactDOM from "react-dom";
 import { Wrapper, Status } from "./index";
 
@@ -7,15 +14,15 @@ import pointIcon from "images/icons/point.png";
 
 interface IProps {
   setIsMarkerAdress: (bool: any) => void;
-  handleDataArray: (event: any, title: any) => void;
-  addressInputRef: any;
+  handleDataArray?: (event: any, title: any) => void;
+  setIsAdress: (str: string) => void;
   isCoordinates: any;
   isMapZoom: number;
 }
 
 const Map: FC<IProps> = ({
   setIsMarkerAdress,
-  addressInputRef,
+  setIsAdress,
   isCoordinates,
   isMapZoom,
   // handleDataArray,
@@ -30,19 +37,20 @@ const Map: FC<IProps> = ({
   const MyMapComponent = ({
     center,
     zoom,
+    zoomControl,
+    streetViewControl,
+    mapTypeControl,
+    fullscreenControl,
   }: {
     center: google.maps.LatLngLiteral;
     zoom: number;
-    zoomControl: true;
-    streetViewControl: false;
-    mapTypeControl: false;
-    fullscreenControl: false;
+    zoomControl: boolean;
+    streetViewControl: boolean;
+    mapTypeControl: boolean;
+    fullscreenControl: boolean;
   }) => {
     const mapRef = useRef();
     const markerRef = useRef();
-    // const addressInputRef = useRef();
-
-    const [isMarkerAdress, seMarkerAdress] = useState({});
 
     const [markerPosition, setMarkerPosition] = useState(center);
 
@@ -56,7 +64,171 @@ const Map: FC<IProps> = ({
       const map = new window.google.maps.Map(mapRef.current, {
         center,
         zoom,
-        disableDefaultUI,
+        // disableDefaultUI,
+        zoomControl,
+        streetViewControl,
+        mapTypeControl,
+        fullscreenControl,
+        styles: [
+          {
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#f5f5f5",
+              },
+            ],
+          },
+          {
+            elementType: "labels.icon",
+            stylers: [
+              {
+                visibility: "off",
+              },
+            ],
+          },
+          {
+            elementType: "labels.text.fill",
+            stylers: [
+              {
+                color: "#616161",
+              },
+            ],
+          },
+          {
+            elementType: "labels.text.stroke",
+            stylers: [
+              {
+                color: "#f5f5f5",
+              },
+            ],
+          },
+          {
+            featureType: "administrative.land_parcel",
+            elementType: "labels.text.fill",
+            stylers: [
+              {
+                color: "#bdbdbd",
+              },
+            ],
+          },
+          {
+            featureType: "poi",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#eeeeee",
+              },
+            ],
+          },
+          {
+            featureType: "poi",
+            elementType: "labels.text.fill",
+            stylers: [
+              {
+                color: "#757575",
+              },
+            ],
+          },
+          {
+            featureType: "poi.park",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#e5e5e5",
+              },
+            ],
+          },
+          {
+            featureType: "poi.park",
+            elementType: "labels.text.fill",
+            stylers: [
+              {
+                color: "#9e9e9e",
+              },
+            ],
+          },
+          {
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#ffffff",
+              },
+            ],
+          },
+          {
+            featureType: "road.arterial",
+            elementType: "labels.text.fill",
+            stylers: [
+              {
+                color: "#757575",
+              },
+            ],
+          },
+          {
+            featureType: "road.highway",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#dadada",
+              },
+            ],
+          },
+          {
+            featureType: "road.highway",
+            elementType: "labels.text.fill",
+            stylers: [
+              {
+                color: "#616161",
+              },
+            ],
+          },
+          {
+            featureType: "road.local",
+            elementType: "labels.text.fill",
+            stylers: [
+              {
+                color: "#9e9e9e",
+              },
+            ],
+          },
+          {
+            featureType: "transit.line",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#e5e5e5",
+              },
+            ],
+          },
+          {
+            featureType: "transit.station",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#eeeeee",
+              },
+            ],
+          },
+          {
+            featureType: "water",
+            elementType: "geometry",
+            stylers: [
+              {
+                color: "#c9c9c9",
+              },
+            ],
+          },
+          {
+            featureType: "water",
+            elementType: "labels.text.fill",
+            stylers: [
+              {
+                color: "#9e9e9e",
+              },
+            ],
+          },
+        ],
       });
 
       const marker = new window.google.maps.Marker({
@@ -82,20 +254,27 @@ const Map: FC<IProps> = ({
 
       geocoder.geocode({ location: coordinates }, (results, status) => {
         if (status === "OK" && results[0]) {
-          const filteredAddressComponents =
-            results[0].address_components.filter((component) => {
-              return !(
-                component.types.includes("plus_code") ||
-                component.types.includes("postal_code")
-              );
-            });
-          const formattedAddress = filteredAddressComponents
-            .map((component) => component.long_name)
-            .join(", ");
+          const isThailand = results[0].address_components.some(
+            (component) =>
+              component.types.includes("country") &&
+              component.short_name === "TH"
+          );
+          if (isThailand) {
+            const filteredAddressComponents =
+              results[0].address_components.filter((component) => {
+                return !(
+                  component.types.includes("plus_code") ||
+                  component.types.includes("postal_code")
+                );
+              });
+            const formattedAddress = filteredAddressComponents
+              .map((component) => component.long_name)
+              .join(", ");
 
-          // setIsMarkerAdress(results[0]);
-          addressInputRef.current.value = formattedAddress;
-          // handleDataArray(formattedAddress, "region");
+            setIsAdress(formattedAddress);
+          } else {
+            console.log("no Thailand");
+          }
         }
       });
     };
@@ -112,10 +291,14 @@ const Map: FC<IProps> = ({
       <MyMapComponent
         center={isCoordinates}
         zoom={isMapZoom}
-        disableDefaultUI={disableDefaultUI}
+        // disableDefaultUI={disableDefaultUI}
+        zoomControl={false}
+        streetViewControl={false}
+        mapTypeControl={false}
+        fullscreenControl={false}
       />
     </Wrapper>
   );
 };
 
-export default Map;
+export default memo(Map);
