@@ -9,6 +9,9 @@
   max-width: 785px;
   width: 100%;
   width: calc(100% - 575px);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .right {
