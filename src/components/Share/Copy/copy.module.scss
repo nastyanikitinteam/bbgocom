@@ -1,8 +1,13 @@
 .container {
   position: relative;
   input {
-    color: #808080;
     padding-right: 42px !important;
+  }
+  &:not(.copy) {
+    input {
+      color: #808080;
+      border-color: #d8d8d8;
+    }
   }
 }
 
