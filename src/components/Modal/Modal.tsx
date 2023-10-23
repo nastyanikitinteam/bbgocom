@@ -1,4 +1,4 @@
-import React, { ReactNode, FC, useEffect } from "react";
+import React, { ReactNode, FC, useEffect, useRef } from "react";
 import PortalContainer from "components/PortalContainer/PortalContainer";
 import styles from "./modal.module.scss";
 import cn from "classnames";
@@ -20,13 +20,17 @@ const Modal: FC<IProps> = ({
   otherCloseIcon,
   mobileIsBottom,
 }) => {
+  const containerRef = useRef(null as null | HTMLDivElement);
+
   return (
     <PortalContainer>
       <div className={cn(styles.container, "modal")}>
+        <div className={styles.back} onClick={closeModal}></div>
         <div
           className={cn(styles.block, `modal-${type}`, {
             [styles.noModal]: mobileIsBottom,
           })}
+          ref={containerRef}
         >
           <div
             className={cn(styles.close, { [styles.other]: otherCloseIcon })}

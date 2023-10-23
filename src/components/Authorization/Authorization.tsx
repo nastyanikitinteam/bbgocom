@@ -60,7 +60,7 @@ const Authorization: FC<IProps> = ({ setIsNoLogin }) => {
         <div className={styles.logo} data-aos="fade" data-aos-delay="100">
           <LogoSvg />
         </div>
-        <div className={styles.girl} data-aos="fade-up" data-aos-delay="100">
+        <div className={styles.girl}>
           <img src={girl.src} alt="" />
         </div>
         <div className={styles.bag} data-aos="fade-up" data-aos-delay="400">

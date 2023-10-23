@@ -33,6 +33,13 @@
   z-index: 2;
   position: relative;
   left: 10px;
+  opacity: 0;
+  animation-name: showBlockUp;
+  transform: translateY(50px);
+  animation-duration: 0.7s;
+  animation-delay: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 .bag {
@@ -120,5 +127,16 @@
     overflow-y: auto;
     padding-bottom: 90px;
     width: 100%;
+  }
+}
+
+@keyframes showBlockUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
