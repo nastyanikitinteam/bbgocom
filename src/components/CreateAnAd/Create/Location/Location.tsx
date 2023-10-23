@@ -15,7 +15,6 @@ interface IProps {
 }
 
 const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
-  const [isMarkerAdress, setIsMarkerAdress] = useState([]);
   const [isAdress, setIsAdress] = useState("");
 
   const [isCoordinates, setIsCoordinates] = useState({ lat: 15, lng: 101 });
@@ -131,7 +130,6 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
           </div>
           <div className={styles.map}>
             <Map
-              setIsMarkerAdress={setIsMarkerAdress}
               setIsAdress={setIsAdress}
               isCoordinates={isCoordinates}
               isMapZoom={isMapZoom}

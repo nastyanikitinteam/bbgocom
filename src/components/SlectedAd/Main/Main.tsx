@@ -5,6 +5,7 @@ import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
 import DetailedInformation from "./DetailedInformation/DetailedInformation";
 import Description from "./Description/Description";
+import Location from "./Location/Location";
 import Modal from "components/Modal/Modal";
 import Top from "./Top/Top";
 import Info from "./Info/Info";
@@ -53,6 +54,7 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
             </div>
             <div className={styles.right}>
               <AdvertisingBanner bannerImg={bannerImg.src} noPadding />
+              <Location isCurrentLocation={isCurrentProduct.location} />
             </div>
           </div>
         </div>

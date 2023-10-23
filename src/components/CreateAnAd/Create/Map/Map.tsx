@@ -13,15 +13,13 @@ import { Wrapper, Status } from "./index";
 import pointIcon from "images/icons/point.png";
 
 interface IProps {
-  setIsMarkerAdress: (bool: any) => void;
   handleDataArray?: (event: any, title: any) => void;
-  setIsAdress: (str: string) => void;
+  setIsAdress?: (str: string) => void;
   isCoordinates: any;
   isMapZoom: number;
 }
 
 const Map: FC<IProps> = ({
-  setIsMarkerAdress,
   setIsAdress,
   isCoordinates,
   isMapZoom,
@@ -239,14 +237,16 @@ const Map: FC<IProps> = ({
       });
 
       map.addListener("click", (event) => {
-        const newPosition = event.latLng.toJSON();
-        setMarkerPosition(newPosition);
-        marker.setPosition(event.latLng);
+        if (setIsAdress) {
+          const newPosition = event.latLng.toJSON();
+          setMarkerPosition(newPosition);
+          marker.setPosition(event.latLng);
 
-        getAddressFromCoordinates(newPosition);
+          getAddressFromCoordinates(newPosition);
+        }
       });
 
-      getAddressFromCoordinates(center);
+      setIsAdress && getAddressFromCoordinates(center);
     }, []);
 
     const getAddressFromCoordinates = (coordinates) => {
@@ -281,7 +281,11 @@ const Map: FC<IProps> = ({
 
     return (
       <div>
-        <div ref={mapRef} id="map" style={{ height: "300px" }} />
+        <div
+          ref={mapRef}
+          id="map"
+          style={{ height: "300px", borderRadius: "25px" }}
+        />
       </div>
     );
   };
