@@ -99,7 +99,7 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
         <span className={styles.num}>6</span>Location
       </h3>
 
-      {!disabled && (
+      {disabled && (
         <>
           <div className={styles.items}>
             <div className={styles.item}>

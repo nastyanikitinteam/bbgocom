@@ -26,6 +26,18 @@
   }
 }
 
+.selected {
+  .input {
+    padding: 7px 41px 7px 14px;
+    border-radius: 20px;
+  }
+  .errorIcon {
+    right: 10px;
+    top: auto;
+    bottom: 8px;
+  }
+}
+
 .errorInput {
   border-color: #ff5a27;
 }
@@ -78,7 +90,7 @@
 }
 
 .errorInput {
-  border-color: #ff5a27;
+  border-color: #ff5a27 !important;
 }
 
 .errorIcon {

@@ -35,7 +35,7 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
           />
           <div className={styles.content}>
             <div className={styles.left}>
-              <Images isCurrentProduct={isCurrentProduct} />
+              <Images isCurrentProductImages={isCurrentProduct.images} />
             </div>
             <div className={styles.right}>
               <Info isCurrentProduct={isCurrentProduct} />

@@ -1,0 +1,106 @@
+.container {
+  border-radius: 25px;
+  background: #fff;
+  box-shadow: 0px 45px 80px 0px rgba(21, 40, 61, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 40px;
+  text-align: center;
+  gap: 25px;
+}
+
+.block {
+  padding: 20px;
+  border-radius: 15px;
+  background: var(--neutrals-light-gray, #f5f5f7);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.avatar {
+  position: relative;
+  width: 80px;
+  margin: 0 auto;
+  img {
+    border-radius: 50%;
+  }
+}
+
+.info {
+  display: grid;
+  gap: 15px;
+}
+
+.check {
+  position: absolute;
+  top: 0;
+  right: 0;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -1px;
+}
+
+.location {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #808080;
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.3px;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 4px;
+    max-width: 18px;
+    min-width: 18px;
+    margin-top: 1px;
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  max-width: 320px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 15px;
+}
+
+.button {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  .title {
+    padding: 7px 0 8px;
+  }
+  .buttons {
+    max-width: none;
+  }
+}

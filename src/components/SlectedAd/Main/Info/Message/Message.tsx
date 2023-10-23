@@ -1,24 +1,69 @@
-import { useCallback } from "react";
+import { useCallback, useMemo, useState, FC } from "react";
 import { Form, Field } from "react-final-form";
 import Textarea from "components/FormElements/Textarea/Textarea";
-import Select from "components/Select/Select";
+import Modal from "components/Modal/Modal";
+import SuccessModal from "./SuccessModal/SuccessModal";
 import * as yup from "yup";
 import { validateForm } from "../../../../../utils/validateForm";
 import styles from "./message.module.scss";
 
 import SendIcon from "images/icons/send.svg";
 
-const Message = () => {
+interface IProps {
+  isCurrentProduct: any;
+}
+
+const Message: FC<IProps> = ({ isCurrentProduct }) => {
+  const [isMessageText, setIsMessageText] = useState("");
+  const [isOpenModalSuccess, setIsOpenModalSuccess] = useState(false);
+
   const validationSchema = yup.object().shape({
-    // email: yup.string().email().required(`Введіть електрону пошту`),
-    // password: yup.string().required(`Wrong phone format`),
+    // message: yup
+    // .string()
+    // .min(5, "Text must be at least 5 characters long")
+    // .required("This field is required"),
   });
 
   const validate = validateForm(validationSchema);
 
   const onSubmit = useCallback((data, form) => {
-    console.log(data);
+    console.log(isMessageText);
+    setIsOpenModalSuccess(true);
   }, []);
+
+  const onChangeTag = (val) => {
+    setIsMessageText(val);
+  };
+
+  const tagsList = useMemo(
+    () => [
+      {
+        id: 0,
+        title: "Still selling?",
+      },
+      {
+        id: 1,
+        title: "There is a bargain?",
+      },
+      {
+        id: 2,
+        title: "When can you watch?",
+      },
+      {
+        id: 3,
+        title: "Still selling?",
+      },
+      {
+        id: 4,
+        title: "There is a bargain?",
+      },
+      {
+        id: 5,
+        title: "When can you watch?",
+      },
+    ],
+    []
+  );
 
   return (
     <div className={styles.container}>
@@ -30,19 +75,48 @@ const Message = () => {
             <h3 className={styles.label}>Your Message</h3>
             <div className={styles.item}>
               <Field
-                name="Name"
+                name="message"
                 placeholder={"Hello!"}
-                type="text"
                 component={Textarea}
                 rows={4}
+                text={isMessageText}
+                extClassName="selected"
               />
               <button type="submit" className={styles.send} aria-label={`Send`}>
                 <SendIcon />
               </button>
             </div>
+            <div className={styles.bottom}>
+              <div className={styles.tags}>
+                {tagsList.map(({ id, title }) => {
+                  return (
+                    <div
+                      className={styles.tag}
+                      key={id}
+                      onClick={() => onChangeTag(title)}
+                    >
+                      {title}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </form>
         )}
       ></Form>
+      {isOpenModalSuccess && (
+        <Modal
+          closeModal={() => setIsOpenModalSuccess(false)}
+          type="successful"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <SuccessModal
+            closeModal={() => setIsOpenModalSuccess(false)}
+            isCurrentProduct={isCurrentProduct}
+          />
+        </Modal>
+      )}
     </div>
   );
 };

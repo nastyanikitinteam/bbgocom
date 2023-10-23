@@ -12,7 +12,7 @@ const Info: FC<IProps> = ({ isCurrentProduct }) => {
     <div className={styles.container}>
       <h2 className={styles.price}>{isCurrentProduct.price}</h2>
       <User isCurrentProduct={isCurrentProduct} />
-      <Message />
+      <Message isCurrentProduct={isCurrentProduct} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { FC, useMemo, useEffect, useState } from "react";
+import { FC, useMemo, useEffect, useState, useCallback } from "react";
 import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
 import styles from "./images.module.scss";
 import cn from "classnames";
@@ -12,30 +12,17 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import ArrowSvg from "images/icons/drop.svg";
 
 interface IProps {
-  isCurrentProduct: any;
+  isCurrentProductImages: any;
 }
 
-const Images: FC<IProps> = ({ isCurrentProduct }) => {
+const Images: FC<IProps> = ({ isCurrentProductImages }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [isSwiperInit, setIsSwiperInit] = useState(false);
+  const [isFirstParams, setIsFirstParams] = useState({});
+  const [isSecondParams, setIsSecondParams] = useState({});
 
-  const paramsFirst = useMemo(
-    () => ({
-      slidesPerView: 1,
-      spaceBetween: 10,
-      initialSlide: 1,
-      thumbs: { swiper: thumbsSwiper },
-      modules: [FreeMode, Navigation, Thumbs],
-      navigation: {
-        nextEl: ".product-next-btn",
-        prevEl: ".product-prev-btn",
-      },
-      className: "selected-slider",
-    }),
-    [isCurrentProduct]
-  );
-
-  const paramsSecond = useMemo(
-    () => ({
+  useEffect(() => {
+    setIsSecondParams({
       onSwiper: setThumbsSwiper,
       slidesPerView: 6,
       spaceBetween: 10,
@@ -45,17 +32,29 @@ const Images: FC<IProps> = ({ isCurrentProduct }) => {
       direction: "vertical",
       modules: [FreeMode, Thumbs],
       className: "selected-slider-second",
-    }),
-    [isCurrentProduct]
-  );
+    });
+    setIsFirstParams({
+      slidesPerView: 1,
+      spaceBetween: 10,
+      initialSlide: 1,
+      thumbs: { swiper: thumbsSwiper },
+      modules: [FreeMode, Navigation, Thumbs],
+
+      navigation: {
+        nextEl: ".product-next-btn",
+        prevEl: ".product-prev-btn",
+      },
+      className: "selected-slider",
+    });
+  }, [isCurrentProductImages]);
 
   return (
     <div className={styles.container}>
-      {isCurrentProduct.images && (
+      {isCurrentProductImages && (
         <>
           <div className={styles.second}>
-            <Swiper {...(paramsSecond as SwiperProps)}>
-              {isCurrentProduct.images.map(({ id, image }) => {
+            <Swiper {...(isSecondParams as SwiperProps)}>
+              {isCurrentProductImages.map(({ id, image }) => {
                 return (
                   <SwiperSlide key={id}>
                     <img src={image} alt="" />
@@ -65,8 +64,8 @@ const Images: FC<IProps> = ({ isCurrentProduct }) => {
             </Swiper>
           </div>
           <div className={styles.main}>
-            <Swiper {...(paramsFirst as SwiperProps)}>
-              {isCurrentProduct.images.map(({ id, image }) => {
+            <Swiper {...(isFirstParams as SwiperProps)}>
+              {isCurrentProductImages.map(({ id, image }) => {
                 return (
                   <SwiperSlide key={id}>
                     <img src={image} alt="" />

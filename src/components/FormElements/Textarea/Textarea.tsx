@@ -44,14 +44,25 @@ const Textarea: React.FC<IProps> = ({
   };
 
   useEffect(() => {
+    console.log(isValue);
     // @ts-ignore
     onChange && (keyName ? onChange(isValue, keyName) : onChange(isValue));
   }, [isValue]);
 
+  useEffect(() => {
+    text && setIsValue(text);
+  }, [text]);
+
   return (
     <>
       {label && <label className={styles.label}>{label}</label>}
-      <div className={cn(styles.block, { [styles.isSmall]: isSmall })}>
+      <div
+        className={cn(
+          styles.block,
+          { [styles.isSmall]: isSmall },
+          extClassName && styles[extClassName]
+        )}
+      >
         <textarea
           {...input}
           type={type}
