@@ -6,6 +6,7 @@ import SuccessModal from "./SuccessModal/SuccessModal";
 import * as yup from "yup";
 import { validateForm } from "../../../../../utils/validateForm";
 import styles from "./message.module.scss";
+import cn from "classnames";
 
 import SendIcon from "images/icons/send.svg";
 
@@ -31,7 +32,7 @@ const Message: FC<IProps> = ({ isCurrentProduct }) => {
     setIsOpenModalSuccess(true);
   }, []);
 
-  const onChangeTag = (val) => {
+  const onChangeInputVal = (val) => {
     setIsMessageText(val);
   };
 
@@ -81,6 +82,7 @@ const Message: FC<IProps> = ({ isCurrentProduct }) => {
                 rows={4}
                 text={isMessageText}
                 extClassName="selected"
+                onChange={onChangeInputVal}
               />
               <button type="submit" className={styles.send} aria-label={`Send`}>
                 <SendIcon />
@@ -91,9 +93,11 @@ const Message: FC<IProps> = ({ isCurrentProduct }) => {
                 {tagsList.map(({ id, title }) => {
                   return (
                     <div
-                      className={styles.tag}
+                      className={cn(styles.tag, {
+                        [styles.active]: isMessageText === title,
+                      })}
                       key={id}
-                      onClick={() => onChangeTag(title)}
+                      onClick={() => onChangeInputVal(title)}
                     >
                       {title}
                     </div>

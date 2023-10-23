@@ -39,7 +39,6 @@ const Images: FC<IProps> = ({ isCurrentProductImages }) => {
       initialSlide: 1,
       thumbs: { swiper: thumbsSwiper },
       modules: [FreeMode, Navigation, Thumbs],
-
       navigation: {
         nextEl: ".product-next-btn",
         prevEl: ".product-prev-btn",

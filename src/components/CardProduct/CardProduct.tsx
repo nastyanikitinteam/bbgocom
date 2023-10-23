@@ -66,8 +66,7 @@ const CardProduct: FC<IProps> = ({
 
   return (
     <>
-      <Link
-        href={`${isbaseUrl}/selected-ad/${slug}`}
+      <div
         className={cn(
           styles.container,
           { [styles.green]: isGreenCard },
@@ -83,7 +82,10 @@ const CardProduct: FC<IProps> = ({
         >
           <StarIcon />
         </div>
-        <div className={styles.block}>
+        <Link
+          href={`${isbaseUrl}/selected-ad/${slug}`}
+          className={styles.block}
+        >
           <div className={styles.image}>
             <div className={styles.photos}>
               <Slider slides={images} isCardProduct />
@@ -102,8 +104,8 @@ const CardProduct: FC<IProps> = ({
               {oldPrice && <span className={styles.old}>{oldPrice}</span>}
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
 
       {isOpenWishModal && (
         <Modal

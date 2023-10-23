@@ -68,4 +68,9 @@
     // border-color: #5BB75F;
     background: #fff;
   }
+  &.active {
+    background: var(--primary-green-active, #38953c);
+    border-color: var(--primary-green-active, #38953c);
+    color: #fff;
+  }
 }
