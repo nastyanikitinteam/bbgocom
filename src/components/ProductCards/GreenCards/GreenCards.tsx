@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, FC } from "react";
 
 import CardProduct from "components/CardProduct/CardProduct";
 import {
@@ -7,15 +7,24 @@ import {
   SwiperProps,
 } from "swiper/react";
 import useMediaQuery from "src/utils/useMediaQuery";
-import { latestLst } from "./config";
 import cn from "classnames";
 
-import styles from "./latest-deals.module.scss";
+import styles from "./green-cards.module.scss";
 import "swiper/css";
 
 import ArrowSvg from "images/icons/drop.svg";
 
-const LatestDeals = () => {
+interface IProps {
+  title: string;
+  productsList: any;
+  showButtonWithouTitle?: boolean;
+}
+
+const GreenCards: FC<IProps> = ({
+  title,
+  productsList,
+  showButtonWithouTitle,
+}) => {
   const [isViewAll, setIsViewAll] = useState(false);
   const [isShowCategory, setIsShowCategory] = useState(5);
 
@@ -52,7 +61,7 @@ const LatestDeals = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          Latest deals
+          {title}
         </h2>
         <div
           className={styles.blocks}
@@ -62,7 +71,7 @@ const LatestDeals = () => {
         >
           {isMobile ? (
             <SwiperComponent {...(params as SwiperProps)}>
-              {latestLst.map(
+              {productsList.map(
                 ({
                   id,
                   title,
@@ -92,7 +101,7 @@ const LatestDeals = () => {
               )}
             </SwiperComponent>
           ) : (
-            latestLst
+            productsList
               .slice(0, isShowCategory)
               .map(
                 ({
@@ -138,7 +147,10 @@ const LatestDeals = () => {
             data-aos="fade"
             data-aos-delay="300"
           >
-            {isViewAll ? "Hide latest deals" : "View all latest deals"}
+            <div className={styles.text}>
+              {isViewAll ? `Hide ` : `View all`}
+              {!showButtonWithouTitle && <span>{title}</span>}
+            </div>
             <span className={cn(styles.icon, { [styles.open]: isViewAll })}>
               <ArrowSvg />
             </span>
@@ -149,4 +161,4 @@ const LatestDeals = () => {
   );
 };
 
-export default LatestDeals;
+export default GreenCards;

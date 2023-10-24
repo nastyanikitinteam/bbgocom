@@ -4,7 +4,9 @@ import Hero from "./Hero/Hero";
 import Tags from "./Tags/Tags";
 import SubCategory from "./SubCategory/SubCategory";
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
-import LatestDeals from "components/MainPage/LatestDeals/LatestDeals";
+import GreenCards from "components/ProductCards/GreenCards/GreenCards";
+
+import { latestLst } from "components/ProductCards/config";
 
 import bannerImg from "images/category-page/real-estate-banner.jpg";
 
@@ -22,7 +24,7 @@ const CategoryPage: FC<IProps> = ({ isCurrentList }) => {
       <Tags isCurrentList={isCurrentList} />
       <SubCategory isCurrentList={isCurrentList} />
       <AdvertisingBanner bannerImg={isCurrentList.bannerImg} />
-      <LatestDeals />
+      <GreenCards title="Latest deals" productsList={latestLst} />
     </>
   );
 };

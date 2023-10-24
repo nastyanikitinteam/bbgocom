@@ -13,16 +13,23 @@
   width: calc(20% - 16px);
 }
 
+.text {
+  transition: all 0.25s ease-in;
+  color: #808080;
+  white-space: nowrap;
+  span {
+    text-transform: lowercase;
+  }
+}
+
 .all {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: color 0.25s ease-in;
-  color: #808080;
   margin-top: 40px;
-  white-space: nowrap;
   padding: 8px 0;
+
   .icon {
     display: flex;
     justify-content: center;
@@ -37,7 +44,9 @@
     transform: rotate(-180deg);
   }
   &:hover {
-    color: #5bb75f;
+    .text {
+      color: #5bb75f;
+    }
     path {
       stroke: #5bb75f;
     }

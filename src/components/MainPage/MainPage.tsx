@@ -2,12 +2,14 @@ import Hero from "./Hero/Hero";
 import PopularCategory from "./PopularCategory/PopularCategory";
 import Recommend from "./Recommend/Recommend";
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
-import LatestDeals from "./LatestDeals/LatestDeals";
+import GreenCards from "components/ProductCards/GreenCards/GreenCards";
 import PopularSearches from "./PopularSearches/PopularSearches";
 import WantSell from "./WantSell/WantSell";
 import Testimonials from "./Testimonials/Testimonials";
 import Who from "./Who/Who";
 import useMediaQuery from "src/utils/useMediaQuery";
+
+import { latestLst } from "components/ProductCards/config";
 
 import SearchBar from "components/SearchBar/SearchBar";
 
@@ -25,7 +27,7 @@ const MainPage = () => {
       <PopularCategory />
       <Recommend />
       <AdvertisingBanner bannerImg={bannerImg.src} />
-      <LatestDeals />
+      <GreenCards title="Latest deals" productsList={latestLst} />
       <PopularSearches />
       <WantSell />
       <Testimonials />
