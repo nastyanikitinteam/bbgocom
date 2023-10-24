@@ -3,7 +3,7 @@ import styles from "./description.module.scss";
 import { description } from "./config";
 import cn from "classnames";
 
-import ComplainIcon from "images/icons/Complain.svg";
+import ComplainIcon from "images/icons/сomplain.svg";
 import ArrowIcon from "images/icons/drop.svg";
 
 interface IProps {

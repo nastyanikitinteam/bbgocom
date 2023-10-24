@@ -26,7 +26,7 @@ const Images: FC<IProps> = ({ isCurrentProductImages }) => {
       onSwiper: setThumbsSwiper,
       slidesPerView: 6,
       spaceBetween: 10,
-      initialSlide: 1,
+      // initialSlide: 1,
       watchSlidesProgress: true,
       freeMode: true,
       direction: "vertical",
@@ -36,7 +36,7 @@ const Images: FC<IProps> = ({ isCurrentProductImages }) => {
     setIsFirstParams({
       slidesPerView: 1,
       spaceBetween: 10,
-      initialSlide: 1,
+      // initialSlide: 1,
       thumbs: { swiper: thumbsSwiper },
       modules: [FreeMode, Navigation, Thumbs],
       navigation: {

@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useState } from "react";
-import styles from "./main.module.scss";
+import { useRouter } from "next/router";
 import ShareModal from "../ShareModal/ShareModal";
 import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
@@ -10,9 +10,11 @@ import Modal from "components/Modal/Modal";
 import Top from "./Top/Top";
 import Info from "./Info/Info";
 import Images from "./Images/Images";
+import styles from "./main.module.scss";
 import cn from "classnames";
 
 import bannerImg from "images/main-page/banner.png";
+import ArrowSvg from "images/icons/drop.svg";
 
 interface IProps {
   isCurrentProduct: any;
@@ -21,6 +23,7 @@ interface IProps {
 const Main: FC<IProps> = ({ isCurrentProduct }) => {
   const [isShareModal, setIsShareModal] = useState(false);
   const [isOpenWishModal, setIsOpenWishModal] = useState(false);
+  const router = useRouter();
 
   const handleShareModal = useCallback(() => {
     setIsShareModal((prev) => !prev);
@@ -30,31 +33,43 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
     !isCurrentProduct.isWish ? setIsOpenWishModal(true) : console.log("delete");
   }, []);
 
+  const back = () => {
+    router.back();
+  };
+
   return (
     <>
-      <section className={styles.container}>
+      <section>
         <div className="wrapper">
-          <Top
-            isCurrentProduct={isCurrentProduct}
-            handleShareModal={handleShareModal}
-            handleWihlist={handleWihlist}
-          />
-          <div className={styles.content}>
-            <div className={styles.left}>
-              <Images isCurrentProductImages={isCurrentProduct.images} />
+          <div className={styles.container}>
+            <div className={styles.back} onClick={back}>
+              <span className={styles.icon}>
+                <ArrowSvg />
+              </span>
+              Back
             </div>
-            <div className={styles.right}>
-              <Info isCurrentProduct={isCurrentProduct} />
+            <Top
+              isCurrentProduct={isCurrentProduct}
+              handleShareModal={handleShareModal}
+              handleWihlist={handleWihlist}
+            />
+            <div className={styles.content}>
+              <div className={styles.left}>
+                <Images isCurrentProductImages={isCurrentProduct.images} />
+              </div>
+              <div className={styles.right}>
+                <Info isCurrentProduct={isCurrentProduct} />
+              </div>
             </div>
-          </div>
-          <div className={styles.content}>
-            <div className={styles.left}>
-              <DetailedInformation isCurrentProduct={isCurrentProduct} />
-              <Description isCurrentProduct={isCurrentProduct} />
-            </div>
-            <div className={styles.right}>
-              <AdvertisingBanner bannerImg={bannerImg.src} noPadding />
-              <Location isCurrentLocation={isCurrentProduct.location} />
+            <div className={styles.content}>
+              <div className={styles.left}>
+                <DetailedInformation isCurrentProduct={isCurrentProduct} />
+                <Description isCurrentProduct={isCurrentProduct} />
+              </div>
+              <div className={styles.right}>
+                <AdvertisingBanner bannerImg={bannerImg.src} noPadding />
+                <Location isCurrentLocation={isCurrentProduct.location} />
+              </div>
             </div>
           </div>
         </div>

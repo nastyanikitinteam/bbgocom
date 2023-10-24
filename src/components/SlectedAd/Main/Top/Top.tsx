@@ -22,7 +22,7 @@ const Top: FC<IProps> = ({
   handleShareModal,
 }) => {
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.top}>
         <h2 className={styles.title}>{isCurrentProduct.name}</h2>
         <div className={styles.actions}>
@@ -57,7 +57,7 @@ const Top: FC<IProps> = ({
           <span> 30.05.2023</span>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
