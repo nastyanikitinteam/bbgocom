@@ -9,11 +9,21 @@ interface IProps {
 }
 
 const Info: FC<IProps> = ({ isCurrentProduct }) => {
+  console.log(isCurrentProduct.oldPrice);
   return (
     <div className={styles.container}>
-      <h2 className={styles.price}>{isCurrentProduct.price}</h2>
+      <div className={styles.price}>
+        <h2 className={styles.mainPrice}>{isCurrentProduct.price}</h2>
+        {isCurrentProduct.oldPrice && (
+          <h3 className={styles.oldPrice}>{isCurrentProduct.oldPrice}</h3>
+        )}
+      </div>
+
       <User isCurrentProduct={isCurrentProduct} />
-      <Message isCurrentProduct={isCurrentProduct} />
+      <Message
+        isCurrentProduct={isCurrentProduct}
+        hasOldPrice={isCurrentProduct.oldPrice && true}
+      />
       <Bottom />
     </div>
   );

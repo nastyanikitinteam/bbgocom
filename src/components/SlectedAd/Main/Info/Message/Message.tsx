@@ -12,9 +12,10 @@ import SendIcon from "images/icons/send.svg";
 
 interface IProps {
   isCurrentProduct: any;
+  hasOldPrice?: boolean;
 }
 
-const Message: FC<IProps> = ({ isCurrentProduct }) => {
+const Message: FC<IProps> = ({ isCurrentProduct, hasOldPrice }) => {
   const [isMessageText, setIsMessageText] = useState("");
   const [isOpenModalSuccess, setIsOpenModalSuccess] = useState(false);
 
@@ -74,7 +75,7 @@ const Message: FC<IProps> = ({ isCurrentProduct }) => {
         render={({ handleSubmit }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <h3 className={styles.label}>Your Message</h3>
-            <div className={styles.item}>
+            <div className={cn(styles.item, { [styles.sm]: hasOldPrice })}>
               <Field
                 name="message"
                 placeholder={"Hello!"}

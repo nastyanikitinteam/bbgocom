@@ -6,3 +6,9 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.oldPrice {
+  color: var(--secondary-orange, #ff5a27);
+  text-decoration-line: line-through;
+  margin-top: 5px;
+}
