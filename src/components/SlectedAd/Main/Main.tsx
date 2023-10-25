@@ -11,6 +11,7 @@ import Modal from "components/Modal/Modal";
 import Top from "./Top/Top";
 import Info from "./Info/Info";
 import Sliders from "./Sliders/Sliders";
+import SliderMobile from "./Sliders/SliderMobile";
 import styles from "./main.module.scss";
 import cn from "classnames";
 
@@ -50,7 +51,9 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
               </span>
               {!isMobile && "Back"}
             </div>
-
+            {isMobile && (
+              <SliderMobile isCurrentProductImages={isCurrentProduct.images} />
+            )}
             <Top
               isCurrentProduct={isCurrentProduct}
               handleShareModal={handleShareModal}
