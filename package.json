@@ -45,6 +45,17 @@
     "slick-carousel": "^1.8.1",
     "swiper": "^10.0.0",
     "typescript": "5.1.6",
-    "yup": "^1.2.0"
+    "yup": "^1.2.0",
+    "i18next": "^23.2.8",
+    "i18next-browser-languagedetector": "^7.1.0",
+    "next-i18next": "^14.0.0",
+    "react-i18next": "^13.0.1",
+    "next-compose-plugins": "^2.2.1"
+  },
+  "devDependencies": {
+    "@lingui/cli": "^4.5.0",
+    "@lingui/loader": "^4.5.0",
+    "@lingui/macro": "^4.5.0",
+    "@lingui/react": "^4.5.0"
   }
 }

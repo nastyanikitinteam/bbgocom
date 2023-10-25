@@ -3,6 +3,7 @@ import { useMemo, useState, useEffect } from "react";
 import Category from "components/Category/Category";
 import CategoryMobile from "components/SearchBar/Category/CategoryMain/CategoryMobile/CategoryMobile";
 import useMediaQuery from "src/utils/useMediaQuery";
+import { useTranslation } from "react-i18next";
 
 import { categoriesList } from "components/Category/config";
 
@@ -20,6 +21,8 @@ const PopularCategory = () => {
   const isSmallLaptop = useMediaQuery(1300);
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
+
+  const { t } = useTranslation();
 
   const handleClickCategory = (key, value) => {
     setDataCategory((prev) => ({ ...prev, [key]: value }));
@@ -56,7 +59,7 @@ const PopularCategory = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          <h2 className={cn("title", styles.title)}>Popular Categories</h2>
+          <h2 className={cn("title", styles.title)}>{t(`popularCategory`)}</h2>
           {isMobile && (
             <div
               className={styles.all}

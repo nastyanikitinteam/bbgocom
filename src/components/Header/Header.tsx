@@ -1,17 +1,29 @@
-import { useMemo, useContext, useEffect, useState, FC } from "react";
+import {
+  useMemo,
+  useContext,
+  useEffect,
+  useState,
+  FC,
+  useCallback,
+} from "react";
 
 import Link from "next/link";
 import useMediaQuery from "src/utils/useMediaQuery";
 import ThemeContext from "src/context";
 import Authorization from "components/Authorization/Authorization";
 import Modal from "components/Modal/Modal";
-
+import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 import Account from "./Account/Account";
 import SearchBar from "components/SearchBar/SearchBar";
 import styles from "./header.module.scss";
 import LogoSvg from "images/main/logo.svg";
 import StarSvg from "images/icons/star.svg";
 import AddSvg from "images/icons/add-icon.svg";
+
+import UsaIcon from "images/countries/usa.svg";
+import RuIcon from "images/countries/russia.svg";
+import ThailandIcon from "images/countries/thailand.svg";
 
 import cn from "classnames";
 import Select from "components/Select/Select";
@@ -29,26 +41,55 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
   const [isSearchBarTop, setIsSearchBarTop] = useState(false);
   const [isWishItems, setIsWishItems] = useState(0);
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
+  const router = useRouter();
+  const { t } = useTranslation();
 
+  const { i18n } = useTranslation();
+
+  const isSmallLaptop = useMediaQuery(1100);
   const isTablet = useMediaQuery(998);
 
   const langList = useMemo(
     () => [
       {
-        value: "EN",
-        label: "EN",
+        value: "en",
+        label: (
+          <div className="option-withIcon">
+            <UsaIcon />
+            EN
+          </div>
+        ),
       },
       {
-        value: "RU",
-        label: "RU",
+        value: "ru",
+        label: (
+          <div className="option-withIcon">
+            <RuIcon />
+            RU
+          </div>
+        ),
       },
       {
-        value: "TH",
-        label: "TH",
+        value: "th",
+        label: (
+          <div className="option-withIcon">
+            <ThailandIcon />
+            TH
+          </div>
+        ),
       },
     ],
     []
   );
+
+  const changeLanguage = useCallback((locale: string) => {
+    i18n.changeLanguage(locale);
+
+    const { route, asPath, query } = router;
+    router.push({ pathname: route, query }, asPath, {
+      locale,
+    });
+  }, []);
 
   useEffect(() => {
     const handleScroll = (event) => {
@@ -87,9 +128,7 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
               <LogoSvg />
             </Link>
             {!isTablet && (
-              <p className={styles.logoDescription}>
-                Service of Private Advertisements
-              </p>
+              <p className={styles.logoDescription}>{t(`headerDescription`)}</p>
             )}
             {(!isSearchBarTop || withoutSearchBar) &&
               (!isTablet || withoutSearchBar) &&
@@ -121,16 +160,16 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
                 className={cn(styles.wishlist, {
                   [styles.small]:
                     !withoutSearchBar &&
-                    (isSearchBarTop || isTablet || isSecondHeader),
+                    (isSearchBarTop || isSmallLaptop || isSecondHeader),
                 })}
               >
                 <span className={styles.icon}>
                   <StarSvg />
                 </span>
                 {(!isSearchBarTop || withoutSearchBar) &&
-                  !isTablet &&
+                  !isSmallLaptop &&
                   !isSecondHeader &&
-                  "My Whishlist"}
+                  `${t(`wishTitle`)}`}
 
                 {!isSearchBarTop && isWishItems > 0 && (
                   <span className={styles.num}>{isWishItems}</span>
@@ -142,6 +181,10 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
                   options={langList}
                   classname="language-select"
                   language
+                  onChange={changeLanguage}
+                  chooseOption={langList.filter(
+                    (item) => item.value === router.locale
+                  )}
                 />
               </div>
               <div className={styles.account}>
@@ -160,7 +203,7 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
                 {isSearchBarTop || isTablet || isSecondHeader ? (
                   <AddSvg />
                 ) : (
-                  " Create an Ad"
+                  t(`createButton`)
                 )}
               </div>
             </div>

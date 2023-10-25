@@ -13,6 +13,8 @@ import { latestLst } from "components/ProductCards/config";
 
 import SearchBar from "components/SearchBar/SearchBar";
 
+import { useTranslation } from "react-i18next";
+
 import styles from "./main-page.module.scss";
 
 import bannerImg from "images/main-page/banner.png";
@@ -20,6 +22,7 @@ import bannerImg from "images/main-page/banner.png";
 const MainPage = () => {
   const SmallLaptop = useMediaQuery(768);
   const isTablet = useMediaQuery(998);
+  const { t } = useTranslation();
   return (
     <>
       <Hero />

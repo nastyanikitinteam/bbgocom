@@ -75,11 +75,6 @@ const SelectContainer: FC<IProps> = ({
 
   return !isMobile ? (
     <div className={styles.container}>
-      {language && (
-        <span className={styles.icon}>
-          <LanguageSvg />
-        </span>
-      )}
       <Select
         options={options}
         defaultValue={chooseOption ? chooseOption : !placeholder && options[0]}

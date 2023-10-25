@@ -1,5 +1,5 @@
 import { useMemo, useEffect } from "react";
-
+import { useTranslation } from "react-i18next";
 import Slider from "../../Slider/Slider";
 import styles from "./hero.module.scss";
 import cn from "classnames";
@@ -9,31 +9,33 @@ import slideBg1 from "images/main-page/slide-img-1.png";
 import slideBg1Mobile from "images/main-page/slide-img-1-mobile.png";
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   const sliderList = useMemo(
     () => [
       {
         id: 0,
-        background: slideBg1.src,
+        background: t(`heroImg`),
         backgroundMobile: slideBg1Mobile.src,
         button: {
-          name: "Create an Ad",
+          name: t(`createButton`),
           link: "/create-an-ad",
         },
       },
       {
         id: 1,
-        background: slideBg1.src,
+        background: t(`heroImg`),
       },
       {
         id: 2,
-        background: slideBg1.src,
+        background: t(`heroImg`),
       },
       {
         id: 3,
-        background: slideBg1.src,
+        background: t(`heroImg`),
       },
     ],
-    []
+    [t]
   );
 
   return (
@@ -45,7 +47,6 @@ const Hero = () => {
         data-aos-delay="300"
       >
         <Slider slides={sliderList} isHeroSection />
-
         {/* <div className={styles.searchBar}>
           <SearchBar />
         </div> */}
