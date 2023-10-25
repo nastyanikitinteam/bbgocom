@@ -215,7 +215,7 @@ export const productList = [
   {
     id: 6,
     name: "2009 Gibson Custom ES-175 Figured Vintage Sunburst Archtop Guitar + COA OHSC",
-    slig: "2009-gibson-custom-es-175-figured-vintage-sunburst-archtop-guitar-coa-ohsc-6",
+    slug: "2009-gibson-custom-es-175-figured-vintage-sunburst-archtop-guitar-coa-ohsc-6",
     images: [
       {
         id: 0,
@@ -245,7 +245,7 @@ export const productList = [
   {
     id: 7,
     name: "35W Dual USB-C Port Compact Power Adapter",
-    slig: "35w-dual-usb-c-port-compact-power-adapter-7",
+    slug: "35w-dual-usb-c-port-compact-power-adapter-7",
     images: [
       {
         id: 0,

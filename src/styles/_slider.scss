@@ -200,3 +200,14 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .selected-slider {
+    .swiper-slide {
+      border-radius: 0;
+      img {
+        border-radius: 0;
+      }
+    }
+  }
+}

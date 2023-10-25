@@ -23,8 +23,10 @@ const SelectedAdPage: NextPage = () => {
   }, [router.query.slug]);
 
   return (
-    <Layout title={isCurrentProduct.name} isSecondHeader mobileWithoutSearchBar>
-      {isCurrentProduct && <SelectedAd isCurrentProduct={isCurrentProduct} />}
+    <Layout title={isCurrentProduct.name} isSecondHeader mobileWithoutHeader>
+      {isCurrentProduct.name.length > 0 && (
+        <SelectedAd isCurrentProduct={isCurrentProduct} />
+      )}
     </Layout>
   );
 };

@@ -44,7 +44,6 @@ const Textarea: React.FC<IProps> = ({
   };
 
   useEffect(() => {
-    console.log(isValue);
     // @ts-ignore
     onChange && (keyName ? onChange(isValue, keyName) : onChange(isValue));
   }, [isValue]);

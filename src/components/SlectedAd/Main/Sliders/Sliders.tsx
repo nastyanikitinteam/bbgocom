@@ -1,6 +1,6 @@
 import { FC, useMemo, useEffect, useState, useCallback } from "react";
 import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
-import styles from "./images.module.scss";
+import styles from "./sliders.module.scss";
 import cn from "classnames";
 
 import "swiper/css";
@@ -26,7 +26,7 @@ const Images: FC<IProps> = ({ isCurrentProductImages }) => {
       onSwiper: setThumbsSwiper,
       slidesPerView: 6,
       spaceBetween: 10,
-      // initialSlide: 1,
+      initialSlide: 1,
       watchSlidesProgress: true,
       freeMode: true,
       direction: "vertical",
@@ -36,7 +36,7 @@ const Images: FC<IProps> = ({ isCurrentProductImages }) => {
     setIsFirstParams({
       slidesPerView: 1,
       spaceBetween: 10,
-      // initialSlide: 1,
+      initialSlide: 1,
       thumbs: { swiper: thumbsSwiper },
       modules: [FreeMode, Navigation, Thumbs],
       navigation: {
@@ -49,7 +49,7 @@ const Images: FC<IProps> = ({ isCurrentProductImages }) => {
 
   return (
     <div className={styles.container}>
-      {isCurrentProductImages && (
+      {isCurrentProductImages.length > 0 && (
         <>
           <div className={styles.second}>
             <Swiper {...(isSecondParams as SwiperProps)}>

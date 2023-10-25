@@ -1,8 +1,6 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import styles from "./top.module.scss";
-import ShareModal from "../../ShareModal/ShareModal";
-import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
-import Modal from "components/Modal/Modal";
+import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
 
 import StarIcon from "images/icons/star.svg";
@@ -21,6 +19,8 @@ const Top: FC<IProps> = ({
   handleWihlist,
   handleShareModal,
 }) => {
+  const isMobile = useMediaQuery(768);
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>

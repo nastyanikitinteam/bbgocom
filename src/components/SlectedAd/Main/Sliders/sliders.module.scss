@@ -38,3 +38,17 @@
     pointer-events: all;
   }
 }
+
+@media (max-width: 998px) {
+  .main {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+  }
+}

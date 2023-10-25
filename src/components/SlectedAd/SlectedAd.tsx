@@ -16,20 +16,6 @@ interface IProps {
 const SelectedAd: FC<IProps> = ({ isCurrentProduct }) => {
   const isMobile = useMediaQuery(768);
 
-  // const breadCrumbs = useMemo(
-  //   () => [
-  //     {
-  //       id: 0,
-  //       title: "Home",
-  //       url: "/",
-  //     },
-  //     {
-  //       id: 0,
-  //       title: "Create an add",
-  //     },
-  //   ],
-  //   []
-  // );
   return (
     <>
       <Main isCurrentProduct={isCurrentProduct} />

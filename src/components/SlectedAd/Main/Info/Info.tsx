@@ -9,7 +9,6 @@ interface IProps {
 }
 
 const Info: FC<IProps> = ({ isCurrentProduct }) => {
-  console.log(isCurrentProduct.oldPrice);
   return (
     <div className={styles.container}>
       <div className={styles.price}>
@@ -18,7 +17,6 @@ const Info: FC<IProps> = ({ isCurrentProduct }) => {
           <h3 className={styles.oldPrice}>{isCurrentProduct.oldPrice}</h3>
         )}
       </div>
-
       <User isCurrentProduct={isCurrentProduct} />
       <Message
         isCurrentProduct={isCurrentProduct}

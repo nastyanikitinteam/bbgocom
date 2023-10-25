@@ -1,5 +1,6 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import useMediaQuery from "src/utils/useMediaQuery";
 import ShareModal from "../ShareModal/ShareModal";
 import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
@@ -9,7 +10,7 @@ import Location from "./Location/Location";
 import Modal from "components/Modal/Modal";
 import Top from "./Top/Top";
 import Info from "./Info/Info";
-import Images from "./Images/Images";
+import Sliders from "./Sliders/Sliders";
 import styles from "./main.module.scss";
 import cn from "classnames";
 
@@ -23,6 +24,7 @@ interface IProps {
 const Main: FC<IProps> = ({ isCurrentProduct }) => {
   const [isShareModal, setIsShareModal] = useState(false);
   const [isOpenWishModal, setIsOpenWishModal] = useState(false);
+  const isMobile = useMediaQuery(768);
   const router = useRouter();
 
   const handleShareModal = useCallback(() => {
@@ -46,17 +48,23 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
               <span className={styles.icon}>
                 <ArrowSvg />
               </span>
-              Back
+              {!isMobile && "Back"}
             </div>
+            {/* {isMobile && (
+              <Sliders isCurrentProductImages={isCurrentProduct.images} />
+            )} */}
             <Top
               isCurrentProduct={isCurrentProduct}
               handleShareModal={handleShareModal}
               handleWihlist={handleWihlist}
             />
             <div className={styles.content}>
-              <div className={styles.left}>
-                <Images isCurrentProductImages={isCurrentProduct.images} />
-              </div>
+              {!isMobile && (
+                <div className={styles.left}>
+                  <Sliders isCurrentProductImages={isCurrentProduct.images} />
+                </div>
+              )}
+
               <div className={styles.right}>
                 <Info isCurrentProduct={isCurrentProduct} />
               </div>
