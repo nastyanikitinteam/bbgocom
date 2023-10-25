@@ -1,0 +1,25 @@
+.container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 0px;
+  background: #fff;
+}
+
+.button {
+  width: 100%;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  padding: 0 20px;
+}
+
+@media (max-width: 374px) {
+  .buttons {
+    padding: 0 10px;
+  }
+}

@@ -8,6 +8,7 @@ import DetailedInformation from "./DetailedInformation/DetailedInformation";
 import Description from "./Description/Description";
 import Location from "./Location/Location";
 import Modal from "components/Modal/Modal";
+import FixedMobileBlock from "./FixedMobileBlock/FixedMobileBlock";
 import Top from "./Top/Top";
 import Info from "./Info/Info";
 import Sliders from "./Sliders/Sliders";
@@ -91,6 +92,7 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
             </div>
           </div>
         </div>
+        {isMobile && <FixedMobileBlock isCurrentProduct={isCurrentProduct} />}
       </section>
       {isShareModal && (
         <Modal closeModal={handleShareModal} type="successful">
