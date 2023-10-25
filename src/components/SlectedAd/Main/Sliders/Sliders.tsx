@@ -1,4 +1,4 @@
-import { FC, useMemo, useEffect, useState, useCallback } from "react";
+import { FC, useRef, useEffect, useState, useCallback } from "react";
 import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
 import styles from "./sliders.module.scss";
 import cn from "classnames";
@@ -16,75 +16,87 @@ interface IProps {
 }
 
 const Images: FC<IProps> = ({ isCurrentProductImages }) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [isSwiperInit, setIsSwiperInit] = useState(false);
-  const [isFirstParams, setIsFirstParams] = useState({});
-  const [isSecondParams, setIsSecondParams] = useState({});
+  const [secondSwiper, setSecondSwiper] = useState(null);
+  const [mainSwiper, setMainSwiper] = useState(null);
+  const [isThumbStart, setIsThumbStart] = useState(false);
+
+  const handleSecondSwiperClick = (index) => {
+    secondSwiper.slideTo(index);
+  };
+
+  const handleFirstSwiperClick = (index) => {
+    mainSwiper.slideTo(index);
+  };
+
+  const secondParams = {
+    onSwiper: setSecondSwiper,
+    slidesPerView: 6,
+    spaceBetween: 10,
+    // initialSlide: 1,
+    watchSlidesProgress: true,
+    freeMode: true,
+    direction: "vertical",
+    modules: [FreeMode, Thumbs],
+    className: "selected-slider-second",
+    onClick: (swiper) => handleFirstSwiperClick(swiper.clickedIndex),
+  };
+
+  const firstParams = {
+    onSwiper: setMainSwiper,
+    slidesPerView: 1,
+    spaceBetween: 10,
+    initialSlide: 0,
+    modules: [FreeMode, Navigation, Thumbs],
+    navigation: {
+      nextEl: ".product-next-btn",
+      prevEl: ".product-prev-btn",
+    },
+    className: "selected-slider",
+    onSlideChange: () => !isThumbStart && setIsThumbStart(true),
+  };
 
   useEffect(() => {
-    setIsSecondParams({
-      onSwiper: setThumbsSwiper,
-      slidesPerView: 6,
-      spaceBetween: 10,
-      initialSlide: 1,
-      watchSlidesProgress: true,
-      freeMode: true,
-      direction: "vertical",
-      modules: [FreeMode, Thumbs],
-      className: "selected-slider-second",
-    });
-    setIsFirstParams({
-      slidesPerView: 1,
-      spaceBetween: 10,
-      initialSlide: 1,
-      thumbs: { swiper: thumbsSwiper },
-      modules: [FreeMode, Navigation, Thumbs],
-      navigation: {
-        nextEl: ".product-next-btn",
-        prevEl: ".product-prev-btn",
-      },
-      className: "selected-slider",
-    });
-  }, [isCurrentProductImages]);
+    if (secondSwiper !== null) {
+      mainSwiper.thumbs = {
+        swiper: secondSwiper,
+      };
+    }
+  }, [secondSwiper]);
 
   return (
     <div className={styles.container}>
-      {isCurrentProductImages.length > 0 && (
-        <>
-          <div className={styles.second}>
-            <Swiper {...(isSecondParams as SwiperProps)}>
-              {isCurrentProductImages.map(({ id, image }) => {
-                return (
-                  <SwiperSlide key={id}>
-                    <img src={image} alt="" />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>
-          <div className={styles.main}>
-            <Swiper {...(isFirstParams as SwiperProps)}>
-              {isCurrentProductImages.map(({ id, image }) => {
-                return (
-                  <SwiperSlide key={id}>
-                    <img src={image} alt="" />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-            <div
-              className={cn(styles.navigation, "default-navigation__buttons")}
-            >
-              <div className="default-navigation__button prev product-prev-btn">
-                <ArrowSvg />
-              </div>
-              <div className="default-navigation__button next product-next-btn">
-                <ArrowSvg />
-              </div>
+      <>
+        <div className={cn(styles.second, { nostart: !isThumbStart })}>
+          <Swiper {...(secondParams as SwiperProps)}>
+            {isCurrentProductImages.map(({ id, image }) => {
+              return (
+                <SwiperSlide key={id}>
+                  <img src={image} alt="" />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+        <div className={styles.main}>
+          <Swiper {...(firstParams as SwiperProps)}>
+            {isCurrentProductImages.map(({ id, image }) => {
+              return (
+                <SwiperSlide key={id}>
+                  <img src={image} alt="" />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+          <div className={cn(styles.navigation, "default-navigation__buttons")}>
+            <div className="default-navigation__button prev product-prev-btn">
+              <ArrowSvg />
+            </div>
+            <div className="default-navigation__button next product-next-btn">
+              <ArrowSvg />
             </div>
           </div>
-        </>
-      )}
+        </div>
+      </>
     </div>
   );
 };

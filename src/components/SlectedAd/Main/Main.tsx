@@ -50,9 +50,7 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
               </span>
               {!isMobile && "Back"}
             </div>
-            {/* {isMobile && (
-              <Sliders isCurrentProductImages={isCurrentProduct.images} />
-            )} */}
+
             <Top
               isCurrentProduct={isCurrentProduct}
               handleShareModal={handleShareModal}
