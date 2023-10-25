@@ -59,6 +59,16 @@
   transform: rotate(90deg);
 }
 
+.price {
+  margin-top: -10px;
+}
+
+.oldPrice {
+  color: var(--secondary-orange, #ff5a27);
+  text-decoration-line: line-through;
+  margin-top: 5px;
+}
+
 @media (max-width: 1200px) {
   .container {
     gap: 20px;

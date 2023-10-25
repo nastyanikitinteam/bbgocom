@@ -28,3 +28,12 @@
     height: 24px;
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .link {
+    justify-content: center;
+  }
+}

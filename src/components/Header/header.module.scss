@@ -138,11 +138,19 @@
 }
 
 @media (max-width: 998px) {
+  .logoDescription {
+    display: none;
+  }
   .wishlist {
     padding: 0;
   }
   .list {
     margin-left: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    display: none;
   }
 }
 

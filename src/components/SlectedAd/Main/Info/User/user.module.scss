@@ -70,3 +70,33 @@
     color: var(--neutrals-black, #000);
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    position: relative;
+    gap: 10px;
+  }
+
+  .status {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .main {
+    gap: 5px;
+  }
+  .info {
+    margin-top: 5px;
+  }
+  .name {
+    line-height: 20px;
+  }
+}

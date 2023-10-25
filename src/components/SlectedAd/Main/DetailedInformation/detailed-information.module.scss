@@ -58,3 +58,24 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .title {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+    margin-bottom: 20px;
+  }
+
+  .items {
+    gap: 15px 20px;
+  }
+  .item {
+    gap: 10px;
+  }
+  .icon {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

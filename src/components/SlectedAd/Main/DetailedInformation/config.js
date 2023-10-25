@@ -1,5 +1,4 @@
 import Area from "images/icons/information/areaIcon.svg";
-import Hatchback from "images/category-page/body-type/Hatchback.svg";
 import Bath from "images/icons/information/bathIcon.svg";
 import Build from "images/icons/information/buildIcon.svg";
 import Floor from "images/icons/information/floorIcon.svg";

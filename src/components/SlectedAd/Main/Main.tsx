@@ -65,7 +65,16 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
                   <Sliders isCurrentProductImages={isCurrentProduct.images} />
                 </div>
               )}
-
+              {isMobile && (
+                <div className={styles.price}>
+                  <h2 className={styles.mainPrice}>{isCurrentProduct.price}</h2>
+                  {isCurrentProduct.oldPrice && (
+                    <p className={styles.oldPrice}>
+                      {isCurrentProduct.oldPrice}
+                    </p>
+                  )}
+                </div>
+              )}
               <div className={styles.right}>
                 <Info isCurrentProduct={isCurrentProduct} />
               </div>

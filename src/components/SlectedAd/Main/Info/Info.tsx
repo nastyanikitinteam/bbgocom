@@ -1,5 +1,6 @@
 import { FC } from "react";
 import User from "./User/User";
+import useMediaQuery from "src/utils/useMediaQuery";
 import Message from "./Message/Message";
 import Bottom from "./Bottom/Bottom";
 import styles from "./info.module.scss";
@@ -9,19 +10,25 @@ interface IProps {
 }
 
 const Info: FC<IProps> = ({ isCurrentProduct }) => {
+  const isMobile = useMediaQuery(768);
+
   return (
     <div className={styles.container}>
-      <div className={styles.price}>
-        <h2 className={styles.mainPrice}>{isCurrentProduct.price}</h2>
-        {isCurrentProduct.oldPrice && (
-          <h3 className={styles.oldPrice}>{isCurrentProduct.oldPrice}</h3>
-        )}
-      </div>
+      {!isMobile && (
+        <div className={styles.price}>
+          <h2 className={styles.mainPrice}>{isCurrentProduct.price}</h2>
+          {isCurrentProduct.oldPrice && (
+            <h3 className={styles.oldPrice}>{isCurrentProduct.oldPrice}</h3>
+          )}
+        </div>
+      )}
       <User isCurrentProduct={isCurrentProduct} />
-      <Message
-        isCurrentProduct={isCurrentProduct}
-        hasOldPrice={isCurrentProduct.oldPrice && true}
-      />
+      {!isMobile && (
+        <Message
+          isCurrentProduct={isCurrentProduct}
+          hasOldPrice={isCurrentProduct.oldPrice && true}
+        />
+      )}
       <Bottom />
     </div>
   );
