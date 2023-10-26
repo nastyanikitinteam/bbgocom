@@ -35,7 +35,6 @@ const CategoryMain: FC<IProps> = ({
 
   const chooseCategory = useCallback(
     (id, title) => {
-      console.log(123123123);
       handleClick("nameOfCategory", title);
       setIsActiveCategory(id);
     },

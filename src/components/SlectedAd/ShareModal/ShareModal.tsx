@@ -14,6 +14,7 @@ interface IProps {
 const ShareModal: FC<IProps> = ({ closeModal, isCurrentProduct }) => {
   return (
     <div className={styles.container}>
+      <h3 className={styles.top}>Add to a wishlist</h3>
       <div className={styles.block}>
         <div className={styles.wrapper}>
           <div className={styles.image}>

@@ -46,7 +46,6 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
         );
         setError(null);
         if (isThailand) {
-          console.log("work");
           setIsCoordinates({ lat, lng });
           setIsMapZoom(12);
         } else {

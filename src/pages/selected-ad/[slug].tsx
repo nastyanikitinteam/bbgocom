@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import SelectedAd from "components/SlectedAd/SlectedAd";
+import FixedMobileBlock from "components/SlectedAd/Main/FixedMobileBlock/FixedMobileBlock";
 
 import { productList } from "components/MainPage/Recommend/config";
 
@@ -23,11 +24,14 @@ const SelectedAdPage: NextPage = () => {
   }, [router.query.slug]);
 
   return (
-    <Layout title={isCurrentProduct.name} isSecondHeader mobileWithoutHeader>
-      {isCurrentProduct.name.length > 0 && (
-        <SelectedAd isCurrentProduct={isCurrentProduct} />
-      )}
-    </Layout>
+    <>
+      <Layout title={isCurrentProduct.name} isSecondHeader mobileWithoutHeader>
+        {isCurrentProduct.name.length > 0 && (
+          <SelectedAd isCurrentProduct={isCurrentProduct} />
+        )}
+      </Layout>
+      <FixedMobileBlock isCurrentProduct={isCurrentProduct} />
+    </>
   );
 };
 

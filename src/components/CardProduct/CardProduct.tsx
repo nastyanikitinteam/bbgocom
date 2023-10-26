@@ -64,8 +64,6 @@ const CardProduct: FC<IProps> = ({
     !isWish ? setIsOpenWishModal(true) : console.log("delete");
   }, []);
 
-  console.log(isbaseUrl, "isbaseUrl");
-
   return (
     <>
       <div

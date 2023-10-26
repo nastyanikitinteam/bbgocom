@@ -22,7 +22,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       if (desiredLanguage !== "en") {
         const basePath = pathname.replace(`/${currentLanguage}`, "");
         const newURL = `/${desiredLanguage}${basePath}${asPath}`;
-        console.log(newURL);
         router.push(pathname, newURL, { locale: desiredLanguage });
       }
     } else {

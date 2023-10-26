@@ -27,7 +27,6 @@ const AddCard: FC<IProps> = ({
   const validate = validateForm(validationCard);
 
   const onSubmit = useCallback((data, form) => {
-    console.log(isMobile);
     if (isMobile) {
       setIsActiveNewCard(false);
       setIsWallet(true);
