@@ -22,7 +22,7 @@ const Category: NextPage = () => {
   }, [router.query.slug]);
 
   return (
-    <Layout title={isCurrentList.title} isSecondHeader mobileWithoutBottomMenu>
+    <Layout title={isCurrentList.title} isSecondHeader>
       <CategoryPage isCurrentList={isCurrentList} />
     </Layout>
   );

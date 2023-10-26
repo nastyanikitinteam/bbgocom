@@ -1,7 +1,9 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import Menu from "components/ProfilePage/Menu/Menu";
 import Banner from "components/ProfilePage/Menu/Banner/Banner";
 import styles from "./mobile-menu.module.scss";
+import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 import cn from "classnames";
 
 import LogoSvg from "images/main/logo.svg";
@@ -9,23 +11,35 @@ import LogoSvg from "images/main/logo.svg";
 const MobileMenu = () => {
   const [isActiveLang, setIsActiveLang] = useState("EN");
 
+  const { i18n } = useTranslation();
+  const router = useRouter();
+
   const langList = useMemo(
     () => [
       {
-        value: "EN",
+        value: "en",
         label: "EN",
       },
       {
-        value: "RU",
+        value: "ru",
         label: "RU",
       },
       {
-        value: "TH",
+        value: "th",
         label: "TH",
       },
     ],
     []
   );
+
+  const changeLanguage = useCallback((locale: string) => {
+    i18n.changeLanguage(locale);
+
+    const { route, asPath, query } = router;
+    router.push({ pathname: route, query }, asPath, {
+      locale,
+    });
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -34,16 +48,16 @@ const MobileMenu = () => {
           <LogoSvg />
         </div>
         <div className={styles.languages}>
-          {langList.map(({ value }) => {
+          {langList.map(({ value, label }) => {
             return (
               <div
                 className={cn(styles.lang, {
-                  [styles.active]: value === isActiveLang,
+                  [styles.active]: value === router.locale,
                 })}
                 key={value}
-                onClick={() => setIsActiveLang(value)}
+                onClick={() => changeLanguage(value)}
               >
-                {value}
+                {label}
               </div>
             );
           })}

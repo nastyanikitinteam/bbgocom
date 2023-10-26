@@ -1,6 +1,12 @@
 import { useState, useEffect, FC, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  IFilterReducer,
+  setIsCategoryFilterOpen,
+} from "components/CategoryFilterPage/reducer";
+import { IReducer } from "../../../reducers";
 import styles from "./header-mobile.module.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import SearchBar from "components/SearchBar/SearchBar";
@@ -24,6 +30,9 @@ const HeaderMobile: FC<IProps> = ({
 }) => {
   const [isOpenProfileMenu, setIsOpenProfileMenu] = useState(false);
   const [isNoLogin, setIsNoLogin] = useState(true);
+  const { isCategoryFilterOpen } = useSelector<IReducer, IFilterReducer>(
+    (state) => state.categoryFilter
+  );
   const router = useRouter();
 
   useEffect(() => {
@@ -75,7 +84,7 @@ const HeaderMobile: FC<IProps> = ({
   return (
     <div className={styles.container}>
       <div className="wrapper">
-        {!mobileWithoutBottomMenu && (
+        {!mobileWithoutBottomMenu && !isCategoryFilterOpen && (
           <div
             className={cn(styles.menu, {
               [styles.openMenu]: isOpenProfileMenu,

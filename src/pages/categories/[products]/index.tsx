@@ -38,7 +38,7 @@ const Product: NextPage = () => {
   );
 
   return (
-    <Layout title="Category filter" isSecondHeader mobileWithoutBottomMenu>
+    <Layout title="Category filter" isSecondHeader>
       <CategoryFilterPage
         isCurrentList={isCurrentList}
         breadCrumbs={breadCrumbs}
