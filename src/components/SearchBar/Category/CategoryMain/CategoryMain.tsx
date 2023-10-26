@@ -33,9 +33,27 @@ const CategoryMain: FC<IProps> = ({
 
   const isMobile = useMediaQuery(768);
 
+  const delNameOfSubCategory = useCallback(() => {
+    let obj = dataCategory;
+    delete obj.nameOfSubCategory;
+    setDataCategory(obj);
+  }, []);
+
+  const delNameOfCategoryItem = useCallback(() => {
+    let obj = dataCategory;
+    delete obj.nameOfCategoryItem;
+    setDataCategory(obj);
+  }, []);
+
   const chooseCategory = useCallback(
     (id, title) => {
       handleClick("nameOfCategory", title);
+      if (dataCategory.nameOfSubCategory) {
+        delNameOfSubCategory();
+      }
+      if (dataCategory.nameOfCategoryItem) {
+        delNameOfCategoryItem();
+      }
       setIsActiveCategory(id);
     },
     [categoriesList]
@@ -70,6 +88,7 @@ const CategoryMain: FC<IProps> = ({
               })}
               key={id}
               onMouseEnter={() => chooseCategory(id, title)}
+              onClick={() => setIsActiveChoice()}
             >
               <div className={styles.image}>
                 <img src={image} alt="" />
@@ -89,6 +108,8 @@ const CategoryMain: FC<IProps> = ({
           isSearchBarTop={isSearchBarTop}
           handleClick={handleClick}
           setIsActiveChoice={setIsActiveChoice}
+          dataCategory={dataCategory}
+          delNameOfCategoryItem={delNameOfCategoryItem}
         />
       </div>
     </div>

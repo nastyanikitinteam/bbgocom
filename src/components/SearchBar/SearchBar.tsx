@@ -129,6 +129,10 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
     });
   };
 
+  useEffect(() => {
+    console.log(dataCategory);
+  }, [dataCategory]);
+
   const deleteFilterResult = (param) => {
     handleClickPrice("default", null);
     setDataCategory({});

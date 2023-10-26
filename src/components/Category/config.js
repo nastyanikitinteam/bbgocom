@@ -698,7 +698,7 @@ export const categoriesList = [
             slug: "",
           },
           {
-            id: 4,
+            id: 5,
             title: "Other",
             slug: "",
           },
@@ -940,12 +940,12 @@ export const categoriesList = [
             slug: "",
           },
           {
-            id: 6,
+            id: 8,
             title: "Pedestals and drawer units",
             slug: "",
           },
           {
-            id: 8,
+            id: 9,
             title: "Other",
             slug: "",
           },
@@ -1562,7 +1562,7 @@ export const categoriesList = [
             slug: "",
           },
           {
-            id: 4,
+            id: 5,
             title: "Other",
             slug: "",
           },

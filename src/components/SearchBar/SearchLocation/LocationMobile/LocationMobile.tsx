@@ -9,12 +9,12 @@ import CloseIcon from "images/icons/close.svg";
 import LocationSearch from "../LocationSearch/LocationSearch";
 
 interface IProps {
-  setIsSearchRegionQuery: (bool: string) => void;
+  setIsSearchRegionQuery: (str: string) => void;
   isSearchRegionQuery: string;
   handleClickRegion: (key: string, value: string) => void;
-  setDataRegion: (bool: string) => void;
+  setDataRegion: (str: string) => void;
   dataRegion: any;
-  setIsActiveChoice: (bool: string) => void;
+  setIsActiveChoice: (str: string) => void;
 }
 
 const LocationMobile: FC<IProps> = ({

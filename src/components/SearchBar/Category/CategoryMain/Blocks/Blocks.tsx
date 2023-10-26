@@ -15,6 +15,8 @@ interface IProps {
   isCategoryPage?: boolean;
   currentSubcategories?: any;
   category?: string;
+  dataCategory: any;
+  delNameOfCategoryItem?: () => void;
 }
 
 const Blocks: FC<IProps> = ({
@@ -24,11 +26,21 @@ const Blocks: FC<IProps> = ({
   isCategoryPage,
   currentSubcategories,
   category,
+  dataCategory,
+  delNameOfCategoryItem,
 }) => {
   const [isbaseUrl, setIsBaseUrl] = useState("");
 
   const chooseCategoryItem = (id, title) => {
     handleClick("nameOfCategoryItem", title);
+    setIsActiveChoice();
+  };
+
+  const chooseSubCategory = (id, title) => {
+    handleClick("nameOfSubCategory", title);
+    if (dataCategory.nameOfCategoryItem) {
+      delNameOfCategoryItem();
+    }
     setIsActiveChoice();
   };
 
@@ -87,7 +99,7 @@ const Blocks: FC<IProps> = ({
                   className={cn(styles.block, {
                     [styles.categoryPage]: isCategoryPage,
                   })}
-                  onClick={() => handleClick("nameOfSubCategory", title)}
+                  onClick={() => chooseSubCategory(id, title)}
                 >
                   <h3 className={styles.title}>{title}</h3>
                   <ul className={styles.list}>
