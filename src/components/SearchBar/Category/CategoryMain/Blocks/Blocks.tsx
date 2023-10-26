@@ -15,7 +15,7 @@ interface IProps {
   isCategoryPage?: boolean;
   currentSubcategories?: any;
   category?: string;
-  dataCategory: any;
+  dataCategory?: any;
   delNameOfCategoryItem?: () => void;
 }
 
