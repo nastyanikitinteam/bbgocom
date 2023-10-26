@@ -55,20 +55,8 @@ const GreenCards: FC<IProps> = ({
   return (
     <section className={styles.container}>
       <div className={cn("wrapper", styles.wrapper)}>
-        <h2
-          className={cn("title", styles.title)}
-          data-aos-anchor-placement="center-bottom"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          {title}
-        </h2>
-        <div
-          className={styles.blocks}
-          data-aos-anchor-placement="top-bottom"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
+        <h2 className={cn("title", styles.title)}>{title}</h2>
+        <div className={styles.blocks}>
           {isMobile ? (
             <SwiperComponent {...(params as SwiperProps)}>
               {productsList.map(
@@ -115,13 +103,7 @@ const GreenCards: FC<IProps> = ({
                   isWish,
                 }) => {
                   return (
-                    <div
-                      className={styles.block}
-                      key={id}
-                      data-aos-anchor-placement="top-bottom"
-                      data-aos="fade-up"
-                      data-aos-delay="300"
-                    >
+                    <div className={styles.block} key={id}>
                       <CardProduct
                         id={id}
                         title={title}
@@ -143,9 +125,6 @@ const GreenCards: FC<IProps> = ({
           <div
             className={styles.all}
             onClick={() => setIsViewAll((prev) => !prev)}
-            data-aos-anchor-placement="center-bottom"
-            data-aos="fade"
-            data-aos-delay="300"
           >
             <div className={styles.text}>
               {isViewAll ? `Hide ` : `View all`}

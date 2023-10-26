@@ -49,7 +49,7 @@ const FilesUpload: FC<IProps> = ({
   const hadleFileInput = (newFiles) => {
     let updatedFiles = [...selectedFiles];
 
-    if (updatedFiles.length + newFiles.length > 6) {
+    if (updatedFiles.length + newFiles.length > 30) {
       alert("You cannot add more than 6 files.");
       return;
     }
@@ -84,10 +84,6 @@ const FilesUpload: FC<IProps> = ({
     );
     setSelectedFiles(updatedFiles);
   };
-
-  useEffect(() => {
-    console.log(selectedFiles);
-  }, [selectedFiles]);
 
   return (
     <div className={styles.container}>
@@ -124,12 +120,12 @@ const FilesUpload: FC<IProps> = ({
               </div>
             )}
             <div className={styles.deleteContainer}>
-              <button
+              <div
                 className={styles.deleteButton}
                 onClick={() => handleRemoveFile(0)}
               >
                 <CloseIcon />
-              </button>
+              </div>
             </div>
           </div>
         </div>
@@ -155,58 +151,64 @@ const FilesUpload: FC<IProps> = ({
           </div>
         </div>
       )}
-      <div className={styles.bottom}>
+      <div
+        className={cn(styles.bottom, {
+          [styles.big]: selectedFiles.length > 6,
+        })}
+      >
         <div className={styles.previews}>
-          {emptyBlocks.map((_, index) => {
-            if (selectedFiles.length > index) {
-              return (
-                <div
-                  className={styles.preview}
-                  key={index}
-                  draggable="true"
-                  onDragStart={(e) => handleDragStart(e, index)}
-                  onDragOver={(e) => handleDragOver(e, index)}
-                  onDragEnd={handleDragEnd}
-                >
-                  {selectedFiles[index].type.startsWith("video/") ? (
-                    <div className={styles.video}>
-                      <video
-                        src={URL.createObjectURL(selectedFiles[index])}
-                        muted={true}
-                      ></video>
+          {[...Array(Math.max(emptyBlocks.length, selectedFiles.length))].map(
+            (_, index) => {
+              if (selectedFiles.length > index) {
+                return (
+                  <div
+                    className={styles.preview}
+                    key={index}
+                    draggable="true"
+                    onDragStart={(e) => handleDragStart(e, index)}
+                    onDragOver={(e) => handleDragOver(e, index)}
+                    onDragEnd={handleDragEnd}
+                  >
+                    {selectedFiles[index].type.startsWith("video/") ? (
+                      <div className={styles.video}>
+                        <video
+                          src={URL.createObjectURL(selectedFiles[index])}
+                          muted={true}
+                        ></video>
+                      </div>
+                    ) : (
+                      <div className={styles.image}>
+                        <img
+                          src={URL.createObjectURL(selectedFiles[index])}
+                          alt={selectedFiles[index].name}
+                        />
+                      </div>
+                    )}
+                    <div className={styles.deleteContainer}>
+                      <div
+                        className={styles.deleteButton}
+                        onClick={() => handleRemoveFile(index)}
+                      >
+                        <CloseIcon />
+                      </div>
                     </div>
-                  ) : (
-                    <div className={styles.image}>
-                      <img
-                        src={URL.createObjectURL(selectedFiles[index])}
-                        alt={selectedFiles[index].name}
-                      />
-                    </div>
-                  )}
-                  <div className={styles.deleteContainer}>
-                    <button
-                      className={styles.deleteButton}
-                      onClick={() => handleRemoveFile(index)}
-                    >
-                      <CloseIcon />
-                    </button>
                   </div>
-                </div>
-              );
-            } else {
-              return (
-                <div
-                  className={styles.preview}
-                  key={index}
-                  onClick={() => fileInputRef.current.click()}
-                >
-                  <span className={styles.icon}>
-                    <PlusIcon />
-                  </span>
-                </div>
-              );
+                );
+              } else {
+                return (
+                  <div
+                    className={styles.preview}
+                    key={index}
+                    onClick={() => fileInputRef.current.click()}
+                  >
+                    <span className={styles.icon}>
+                      <PlusIcon />
+                    </span>
+                  </div>
+                );
+              }
             }
-          })}
+          )}
         </div>
       </div>
     </div>

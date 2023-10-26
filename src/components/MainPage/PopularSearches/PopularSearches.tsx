@@ -17,20 +17,8 @@ const PopularSearches = () => {
   return (
     <section className={styles.container}>
       <div className="wrapper">
-        <h2
-          className={cn("title", styles.title)}
-          data-aos-anchor-placement="center-bottom"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          The most popular searches
-        </h2>
-        <div
-          className={styles.tags}
-          data-aos-anchor-placement="center-bottom"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        >
+        <h2 className={cn("title", styles.title)}>The most popular searches</h2>
+        <div className={styles.tags}>
           {searchList.slice(0, isCount).map(({ id, title }) => {
             return (
               <div className={cn("tag", styles.tag)} key={id}>

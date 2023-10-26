@@ -10,12 +10,7 @@ interface IProps {
 
 const AdvertisingBanner: FC<IProps> = ({ bannerImg, noPadding }) => (
   <section className={cn(styles.container, { [styles.noPadding]: noPadding })}>
-    <div
-      className="wrapper"
-      data-aos-anchor-placement="center-bottom"
-      data-aos="fade-up"
-      data-aos-delay="300"
-    >
+    <div className="wrapper">
       <div className={styles.banner}>
         <img src={bannerImg} alt="" />
       </div>

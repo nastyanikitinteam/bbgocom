@@ -22,9 +22,27 @@ const CategoryPage: FC<IProps> = ({ isCurrentList }) => {
     <>
       <Hero isCurrentList={isCurrentList} />
       <Tags isCurrentList={isCurrentList} />
-      <SubCategory isCurrentList={isCurrentList} />
-      <AdvertisingBanner bannerImg={isCurrentList.bannerImg} />
-      <GreenCards title="Latest deals" productsList={latestLst} />
+      <div
+        data-aos-anchor-placement="top-bottom"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <SubCategory isCurrentList={isCurrentList} />
+      </div>
+      <div
+        data-aos-anchor-placement="top-bottom"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <AdvertisingBanner bannerImg={isCurrentList.bannerImg} />
+      </div>
+      <div
+        data-aos-anchor-placement="top-bottom"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <GreenCards title="Latest deals" productsList={latestLst} />
+      </div>
     </>
   );
 };

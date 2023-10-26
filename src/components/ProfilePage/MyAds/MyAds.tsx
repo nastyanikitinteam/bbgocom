@@ -159,11 +159,7 @@ const MyAds = () => {
 
             {(!isMobile || (isMobile && isShowCategory)) && (
               <>
-                <div
-                  className={styles.info}
-                  data-aos="fade"
-                  data-aos-delay="300"
-                >
+                <div className={styles.info}>
                   {checkedItems.length > 0 && !selectAllChecked ? (
                     <div className={styles.selected}>
                       <Field
@@ -227,13 +223,7 @@ const MyAds = () => {
                 <div className={styles.main}>
                   {isActiveCategoryList.map((item) => {
                     return (
-                      <div
-                        className={styles.block}
-                        key={item.id}
-                        data-aos-anchor-placement="top-bottom"
-                        data-aos="fade-up"
-                        data-aos-delay="300"
-                      >
+                      <div className={styles.block} key={item.id}>
                         <Card item={item} type={isActiveCategory}>
                           <Field
                             name={`notification${item.id}`}

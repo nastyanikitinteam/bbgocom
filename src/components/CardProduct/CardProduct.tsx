@@ -64,6 +64,8 @@ const CardProduct: FC<IProps> = ({
     !isWish ? setIsOpenWishModal(true) : console.log("delete");
   }, []);
 
+  console.log(isbaseUrl, "isbaseUrl");
+
   return (
     <>
       <div
@@ -83,7 +85,9 @@ const CardProduct: FC<IProps> = ({
           <StarIcon />
         </div>
         <Link
-          href={`${isbaseUrl}/selected-ad/${slug}`}
+          // href={`${isbaseUrl}/selected-ad/${slug}`}
+          href="/selected-ad/[slug]"
+          as={`/selected-ad/${slug}`}
           className={styles.block}
         >
           <div className={styles.image}>

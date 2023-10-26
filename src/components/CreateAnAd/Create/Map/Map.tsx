@@ -246,7 +246,7 @@ const Map: FC<IProps> = ({
         }
       });
 
-      setIsAdress && getAddressFromCoordinates(center);
+      // setIsAdress && getAddressFromCoordinates(center);
     }, []);
 
     const getAddressFromCoordinates = (coordinates) => {

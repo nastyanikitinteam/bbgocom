@@ -177,6 +177,27 @@
 
 .bottom {
   margin-top: 20px;
+  &.big {
+    overflow-y: auto;
+    margin-bottom: -10px;
+    padding-bottom: 10px;
+    &::-webkit-scrollbar {
+      height: 2px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #d8d8d8;
+      border-radius: 20px;
+    }
+    .previews {
+      min-width: max-content;
+    }
+    .preview {
+      max-width: 154px;
+    }
+  }
 }
 
 @media (max-width: 768px) {

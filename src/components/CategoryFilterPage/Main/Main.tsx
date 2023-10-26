@@ -141,13 +141,7 @@ const Main: FC<IProps> = ({
           .map(
             ({ id, name, slug, images, price, oldPrice, location, isWish }) => {
               return (
-                <div
-                  className={styles.block}
-                  key={id}
-                  data-aos-anchor-placement="top-bottom"
-                  data-aos="fade-up"
-                  data-aos-delay="300"
-                >
+                <div className={styles.block} key={id}>
                   <CardProduct
                     id={id}
                     title={name}
@@ -167,13 +161,7 @@ const Main: FC<IProps> = ({
       </div>
 
       {isShowProducts !== productList.length && (
-        <div
-          className={styles.all}
-          onClick={handleShowProducts}
-          data-aos-anchor-placement="center-bottom"
-          data-aos="fade"
-          data-aos-delay="300"
-        >
+        <div className={styles.all} onClick={handleShowProducts}>
           View more
           <span className={styles.icon}>
             <ArrowSvg />

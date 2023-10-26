@@ -103,12 +103,12 @@ const Blocks: FC<IProps> = ({
                       );
                     })}
                   </ul>
-                  <a href="#" className={styles.add}>
+                  <Link href="/create-an-ad" className={styles.add}>
                     <span className={styles.icon}>
                       <Plus />
                     </span>
                     Add new one
-                  </a>
+                  </Link>
                 </div>
               );
             })}

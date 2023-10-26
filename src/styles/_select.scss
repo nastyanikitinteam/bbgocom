@@ -122,9 +122,6 @@
   .default__single-value {
     margin: 0;
     padding: 0;
-    svg {
-      display: none;
-    }
   }
   .default__input-container {
     margin: 0;
@@ -144,6 +141,9 @@
   .default__single-value {
     color: #808080;
     margin: 0;
+    svg {
+      display: none;
+    }
   }
   .default__control {
     border: none;

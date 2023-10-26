@@ -28,10 +28,36 @@ const MainPage = () => {
       <Hero />
       {!isTablet && <SearchBar />}
       <PopularCategory />
-      <Recommend />
-      <AdvertisingBanner bannerImg={bannerImg.src} />
-      <GreenCards title="Latest deals" productsList={latestLst} />
-      <PopularSearches />
+      <div
+        data-aos-anchor-placement="top-bottom"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <Recommend />
+      </div>
+
+      <div
+        data-aos-anchor-placement="top-bottom"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <AdvertisingBanner bannerImg={bannerImg.src} />
+      </div>
+      <div
+        data-aos-anchor-placement="top-bottom"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <GreenCards title="Latest deals" productsList={latestLst} />
+      </div>
+      <div
+        data-aos-anchor-placement="top-bottom"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <PopularSearches />
+      </div>
+
       <WantSell />
       <Testimonials />
       <Who />
