@@ -123,7 +123,11 @@ const Create = () => {
         </div>
       </section>
       {isOpenModal && (
-        <Modal closeModal={() => setsOpenModal(false)} type="successful">
+        <Modal
+          closeModal={() => setsOpenModal(false)}
+          type="successful"
+          otherCloseIcon
+        >
           <SuccessfulModal closeModal={cancel} />
         </Modal>
       )}

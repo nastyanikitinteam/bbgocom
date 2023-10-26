@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import useMediaQuery from "src/utils/useMediaQuery";
 import SelectedAd from "components/SlectedAd/SlectedAd";
 import FixedMobileBlock from "components/SlectedAd/Main/FixedMobileBlock/FixedMobileBlock";
 
@@ -11,6 +12,7 @@ import Layout from "components/Layout/Layout";
 
 const SelectedAdPage: NextPage = () => {
   const router = useRouter();
+  const isMobile = useMediaQuery(768);
 
   const [isCurrentProduct, setIsCurrentProduct] =
     useState<IProduct>(initialProduct);
@@ -30,7 +32,7 @@ const SelectedAdPage: NextPage = () => {
           <SelectedAd isCurrentProduct={isCurrentProduct} />
         )}
       </Layout>
-      <FixedMobileBlock isCurrentProduct={isCurrentProduct} />
+      {isMobile && <FixedMobileBlock isCurrentProduct={isCurrentProduct} />}
     </>
   );
 };

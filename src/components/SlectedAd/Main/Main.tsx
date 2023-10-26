@@ -94,7 +94,12 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
         </div>
       </section>
       {isShareModal && (
-        <Modal closeModal={handleShareModal} type="successful" mobileIsBottom>
+        <Modal
+          closeModal={handleShareModal}
+          type="successful"
+          mobileIsBottom
+          otherCloseIcon
+        >
           <ShareModal
             closeModal={handleShareModal}
             isCurrentProduct={isCurrentProduct}

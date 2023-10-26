@@ -81,7 +81,7 @@
 }
 
 .bottom {
-  padding: 25px 40px;
+  padding: 25px 40px 40px;
 }
 .share {
   margin: 0 auto;
@@ -116,39 +116,10 @@
   .line {
     display: none;
   }
+  .bottom {
+    padding-bottom: 25px;
+  }
   .wrapper {
     max-width: 332px;
   }
 }
-
-// @media (max-width: 768px) {
-//   .container {
-//     border-radius: 15px 15px 0 0;
-//     padding: 20px 0;
-//     min-height: 494px;
-//   }
-
-//   .form {
-//     gap: 10px;
-//   }
-
-//   .top {
-//     padding: 0 20px;
-//     gap: 10px;
-//   }
-
-//   .title {
-//     padding: 7px 0 8px;
-//   }
-
-//   .items {
-//     padding: 0 20px 12px;
-//     max-height: 305px;
-//     height: 305px;
-//   }
-
-//   .bottom {
-//     padding: 12px 20px 0;
-//     margin-top: -12px;
-//   }
-// }
