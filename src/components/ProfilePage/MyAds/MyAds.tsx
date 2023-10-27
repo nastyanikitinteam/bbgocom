@@ -6,15 +6,9 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import CardProduct from "components/CardProduct/CardProduct";
 import Card from "./Card/Card";
 import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
-import { productList } from "components/MainPage/Recommend/config";
+// import { productList } from "components/MainPage/Recommend/config";
 import NoResult from "./NoResult/NoResults";
-import {
-  categorieList,
-  activeList,
-  waitingList,
-  inActiveList,
-  rejectedList,
-} from "./config";
+import { categorieList, productsList } from "./config";
 import cn from "classnames";
 import styles from "./my-ads.module.scss";
 
@@ -24,8 +18,14 @@ import DelIcon from "images/icons/delete.svg";
 const MyAds = () => {
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
-  const [isActiveCategory, setIsActiveCategory] = useState("Active");
-  const [isActiveCategoryList, setIsActiveCategoryList] = useState(activeList);
+
+  const [isActiveCategory, setIsActiveCategory] = useState(
+    categorieList[0].title
+  );
+
+  const [isActiveCategoryList, setIsActiveCategoryList] = useState(
+    productsList.filter((product) => product.adsList === isActiveCategory)
+  );
 
   const [isShowCategory, setIsShowCategory] = useState(false);
 
@@ -74,30 +74,45 @@ const MyAds = () => {
     setDataPrice((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleCategories = (title, list) => {
-    setIsActiveCategory(title);
-    setIsActiveCategoryList(list);
-    setCheckedItems([]);
-    setSelectAllChecked(false);
-    if (isMobile) {
-      setIsShowCategory(true);
-    }
-  };
+  const handleCategories = useCallback(
+    (title) => {
+      setIsActiveCategory(title);
+      const filteredList = productsList.filter(
+        (product) => product.adsList === title
+      );
+      setIsActiveCategoryList(filteredList);
+      setCheckedItems([]);
+      setSelectAllChecked(false);
+      if (isMobile) {
+        setIsShowCategory(true);
+      }
+    },
+    [isMobile]
+  );
+
+  console.log(isActiveCategoryList);
+
+  const countList = useCallback((title) => {
+    const filteredList = productsList.filter(
+      (product) => product.adsList === title
+    );
+    return filteredList.length;
+  }, []);
 
   return (
     <div className={styles.container}>
       {!isMobile && (
         <div className={styles.categories}>
-          {categorieList.map(({ id, title, items, list }) => {
+          {categorieList.map(({ id, title }) => {
             return (
               <div
                 className={cn(styles.category, {
                   [styles.active]: isActiveCategory === title,
                 })}
                 key={id}
-                onClick={() => handleCategories(title, list)}
+                onClick={() => handleCategories(title)}
               >
-                {title} ({items})
+                {title} ({countList(title)})
               </div>
             );
           })}
@@ -138,15 +153,15 @@ const MyAds = () => {
             )}
             {isMobile && !isShowCategory && (
               <div className={styles.categories}>
-                {categorieList.map(({ id, title, items, list }) => {
+                {categorieList.map(({ id, title }) => {
                   return (
                     <div
                       className={cn(styles.category)}
                       key={id}
-                      onClick={() => handleCategories(title, list)}
+                      onClick={() => handleCategories(title)}
                     >
                       <h3>
-                        {title} ({items})
+                        {title} ({countList(title)})
                       </h3>
                       <span className={styles.arrow}>
                         <ArrowSvg />
@@ -221,24 +236,26 @@ const MyAds = () => {
                   )}
                 </div>
                 <div className={styles.main}>
-                  {isActiveCategoryList.map((item) => {
-                    return (
-                      <div className={styles.block} key={item.id}>
-                        <Card item={item} type={isActiveCategory}>
-                          <Field
-                            name={`notification${item.id}`}
-                            type="checkbox"
-                            component={Checkbox}
-                            extClassName="noText"
-                            onClick={() => handleCheckboxChange(item.id)}
-                            checked={checkedItems.includes(item.id)}
-                          />
-                        </Card>
-                      </div>
-                    );
-                  })}
-                  {(isActiveCategoryList == rejectedList &&
-                    rejectedList.length) === 0 && <NoResult />}
+                  {isActiveCategoryList.length > 0 ? (
+                    isActiveCategoryList.map((item) => {
+                      return (
+                        <div className={styles.block} key={item.id}>
+                          <Card item={item} type={isActiveCategory}>
+                            <Field
+                              name={`notification${item.id}`}
+                              type="checkbox"
+                              component={Checkbox}
+                              extClassName="noText"
+                              onClick={() => handleCheckboxChange(item.id)}
+                              checked={checkedItems.includes(item.id)}
+                            />
+                          </Card>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <NoResult isActiveCategory={isActiveCategory} />
+                  )}
                 </div>
               </>
             )}

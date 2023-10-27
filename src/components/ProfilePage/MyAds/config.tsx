@@ -3,7 +3,7 @@ import cover1 from "images/main/card-product-real-estate.png";
 import cover2 from "images/main/card-product-2-real-estate.png";
 import cover3 from "images/main/card-product-3-real-estate.png";
 
-export const activeList = [
+export const productsList = [
   {
     id: 685012401,
     category: "Real Estate",
@@ -38,6 +38,7 @@ export const activeList = [
       lat: 13.74350859277567,
       lng: 100.52854465070521,
     },
+    adsList: "Active",
   },
 
   {
@@ -74,6 +75,7 @@ export const activeList = [
       lat: 13.74350859277567,
       lng: 100.52854465070521,
     },
+    adsList: "Active",
   },
 
   {
@@ -109,9 +111,8 @@ export const activeList = [
       lat: 13.74350859277567,
       lng: 100.52854465070521,
     },
+    adsList: "Active",
   },
-];
-export const waitingList = [
   {
     id: 685012401,
     category: "Real Estate",
@@ -146,6 +147,7 @@ export const waitingList = [
       lat: 13.74350859277567,
       lng: 100.52854465070521,
     },
+    adsList: "Waiting",
   },
 
   {
@@ -182,6 +184,7 @@ export const waitingList = [
       lat: 13.74350859277567,
       lng: 100.52854465070521,
     },
+    adsList: "Waiting",
   },
 
   {
@@ -217,13 +220,14 @@ export const waitingList = [
       lat: 13.74350859277567,
       lng: 100.52854465070521,
     },
+    adsList: "Waiting",
   },
   {
     id: 685012444,
     category: "Real Estate",
     subCategory: "Buy a home",
-    name: "Luxurious apartment on the 5th floor",
-    slug: "luxurious-apartment-on-the-5th-floor-2",
+    name: "Luxurious apartment",
+    slug: "luxurious-apartment",
     views: 1011231,
     date: "09.07.2023 - 08.08.2023",
     messages: 20,
@@ -251,9 +255,8 @@ export const waitingList = [
       lat: 13.74350859277567,
       lng: 100.52854465070521,
     },
+    adsList: "Waiting",
   },
-];
-export const inActiveList = [
   {
     id: 685012401,
     category: "Real Estate",
@@ -287,8 +290,8 @@ export const inActiveList = [
       lat: 13.74350859277567,
       lng: 100.52854465070521,
     },
+    adsList: "Inactive",
   },
-
   {
     id: 685012403,
     category: "Real Estate",
@@ -323,33 +326,27 @@ export const inActiveList = [
       lat: 13.74350859277567,
       lng: 100.52854465070521,
     },
+    adsList: "Inactive",
   },
 ];
+
 export const rejectedList = [];
 
 export const categorieList = [
   {
     id: 0,
     title: "Active",
-    items: activeList.length,
-    list: activeList,
   },
   {
     id: 1,
     title: "Waiting",
-    items: waitingList.length,
-    list: waitingList,
   },
   {
     id: 2,
     title: "Inactive",
-    items: inActiveList.length,
-    list: inActiveList,
   },
   {
     id: 3,
     title: "Rejected",
-    items: rejectedList.length,
-    list: rejectedList,
   },
 ];
