@@ -1,4 +1,5 @@
 import { useMemo, FC, ReactNode } from "react";
+import Link from "next/link";
 import styles from "./card.module.scss";
 import cn from "classnames";
 import useMediaQuery from "src/utils/useMediaQuery";
@@ -111,12 +112,16 @@ const Card: FC<IProps> = ({ item, children, type }) => {
               </div>
             )}
             {type === "Waiting" && (
-              <div className={styles.action}>
+              <Link
+                href="/selected-ad/[slug]"
+                as={`/selected-ad/${item.slug}`}
+                className={styles.action}
+              >
                 <span className={styles.icon}>
                   <ViewIcon />
                 </span>
                 View
-              </div>
+              </Link>
             )}
             {type === "Inactive" && (
               <div className={styles.action}>
@@ -129,7 +134,7 @@ const Card: FC<IProps> = ({ item, children, type }) => {
 
             <div className={styles.buttons}>
               <div className={cn("default-button border sm", styles.button)}>
-                Deactivate
+                {type === "Active" ? "Deactivate" : "Delete"}
               </div>
               <div className={cn("default-button sm", styles.button)}>
                 <span className={cn("icon", styles.icon)}>
