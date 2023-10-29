@@ -63,8 +63,9 @@ const Card: FC<IProps> = ({ item, changeMainCard }) => {
           closeModal={() => setIsActiveDeleteModal(false)}
           type="deleteCard"
           otherCloseIcon
+          mobileIsBottom
         >
-          <DeleteCard closeModal={setIsActiveDeleteModal} />
+          <DeleteCard closeModal={() => setIsActiveDeleteModal(false)} />
         </Modal>
       )}
     </>
