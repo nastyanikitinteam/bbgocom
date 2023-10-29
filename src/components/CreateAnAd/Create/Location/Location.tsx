@@ -65,14 +65,15 @@ const Location: FC<IProps> = ({
           setIsMapZoom(12);
         } else {
           console.log("error");
-          setError("Coordinate not to lie in Thailand");
+          // setError("Coordinate not to lie in Thailand");
         }
       } else {
-        setError("Address not found");
+        console.log("adress no found");
+        // setError("Address not found");
       }
     } catch (error) {
       console.error("Troubleshooting when rectifying coordinates:", error);
-      setError("Troubleshooting when rectifying coordinates");
+      // setError("Troubleshooting when rectifying coordinates");
     }
   };
 
@@ -93,7 +94,7 @@ const Location: FC<IProps> = ({
   const handleAdressInput = (value: any) => {
     const newAddress = value.target.value;
     setIsAdress(newAddress);
-    getCoordinatesFromAddress(newAddress);
+    newAddress.length !== 0 && getCoordinatesFromAddress(newAddress);
   };
 
   const handleInformationArray = useCallback((event, title) => {

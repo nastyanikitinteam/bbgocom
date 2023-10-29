@@ -120,6 +120,7 @@ const Create: FC<IProps> = ({ isCurrentAd }) => {
                   setDataArray={setDataArray}
                   // @ts-ignore
                   disabled={!dataArray?.location.name}
+                  isCreate={isCurrentAd && true}
                 />
               </form>
             )}
@@ -132,7 +133,7 @@ const Create: FC<IProps> = ({ isCurrentAd }) => {
           type="successful"
           otherCloseIcon
         >
-          <SuccessfulModal closeModal={cancel} />
+          <SuccessfulModal closeModal={cancel} isCurrentAd />
         </Modal>
       )}
     </>

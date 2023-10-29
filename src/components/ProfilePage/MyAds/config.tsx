@@ -30,6 +30,14 @@ export const adList = [
       numberOfRooms: "4 room",
       repair: "Renovated",
     },
+    contacts: {
+      phone: {
+        code: "+358",
+        country: "Finland",
+        number: "123123",
+      },
+      email: "example@gmail.com",
+    },
     images: [
       {
         id: 0,

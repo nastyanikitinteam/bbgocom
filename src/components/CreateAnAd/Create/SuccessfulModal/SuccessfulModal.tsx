@@ -8,9 +8,10 @@ import Share from "components/Share/Share";
 
 interface IProps {
   closeModal: () => void;
+  isCurrentAd?: boolean;
 }
 
-const SuccessfulModal: FC<IProps> = ({ closeModal }) => {
+const SuccessfulModal: FC<IProps> = ({ closeModal, isCurrentAd }) => {
   return (
     <div className={styles.container}>
       <div className={styles.cancel} onClick={closeModal}>
@@ -22,7 +23,9 @@ const SuccessfulModal: FC<IProps> = ({ closeModal }) => {
         </div>
         <h3 className={styles.title}>Congratulations!</h3>
         <p className={styles.text}>
-          You have successfully placed your add!It will be active until May 12
+          {isCurrentAd
+            ? "You have successfully changed your ad"
+            : " You have successfully placed your add!It will be active until May 12"}
         </p>
         <Link href="/my-ads" className={cn("default-button sm", styles.button)}>
           My Ads

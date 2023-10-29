@@ -1,4 +1,4 @@
-import { useMemo, useState, FC, useEffect } from "react";
+import { useCallback, useState, FC, useEffect } from "react";
 import { Form, Field } from "react-final-form";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import Select from "components/Select/Select";
@@ -18,6 +18,7 @@ interface IProps {
   disabled: boolean;
   handleDataArray: (event: any, title: any) => void;
   setDataArray: (bool: any) => void;
+  isCreate?: any;
 }
 
 const Contacts: FC<IProps> = ({
@@ -25,13 +26,30 @@ const Contacts: FC<IProps> = ({
   disabled,
   handleDataArray,
   setDataArray,
+  isCreate,
 }) => {
+  const [contactArray, setContactArray] = useState(
+    dataArray.contacts ? dataArray.contacts : {}
+  );
+
   const [isCountryList, setIsCountryList] = useState([]);
-  const [isPhone, setIsPhone] = useState({});
+
+  const [isPhone, setIsPhone] = useState(
+    dataArray?.contacts.phone ? dataArray.contacts.phone : {}
+  );
 
   const handlePhoneCode = (value: any) => {
     if (value != null) {
-      setIsPhone((prev) => ({ ...prev, code: value?.value }));
+      const parts = value.split(/\s+/);
+      const resultObject = {
+        country: parts[0],
+        code: parts[1],
+      };
+      setIsPhone((prev) => ({
+        ...prev,
+        country: resultObject?.country,
+        code: resultObject?.code,
+      }));
     }
   };
 
@@ -63,9 +81,31 @@ const Contacts: FC<IProps> = ({
     }
   }, [CountriesList]);
 
+  const handleInformationArray = useCallback((event, title) => {
+    if (event?.length) {
+      setContactArray((prev) => ({ ...prev, [title]: event }));
+    } else {
+      if (contactArray[title]) {
+        let obj = contactArray;
+        delete obj[title];
+        setContactArray(obj);
+      }
+    }
+  }, []);
+
   useEffect(() => {
-    setDataArray((prev) => ({ ...prev, phone: isPhone }));
+    setContactArray({
+      ...contactArray,
+      phone: isPhone,
+    });
   }, [isPhone]);
+
+  useEffect(() => {
+    setDataArray({
+      ...dataArray,
+      contacts: contactArray,
+    });
+  }, [contactArray]);
 
   return (
     <div className={styles.container}>
@@ -86,6 +126,15 @@ const Contacts: FC<IProps> = ({
                       classname="phone"
                       title="Choose Country"
                       onChange={handlePhoneCode}
+                      chooseOption={
+                        contactArray?.phone
+                          ? isCountryList.filter(
+                              (item) =>
+                                item.value ===
+                                `${contactArray.phone.country} ${contactArray.phone.code}`
+                            )
+                          : isCountryList[0]
+                      }
                     />
                   </div>
                   <div className={styles.number}>
@@ -98,6 +147,7 @@ const Contacts: FC<IProps> = ({
                       extClassName="noIcon"
                       keyName="number"
                       onChange={handlePhoneNumber}
+                      text={isPhone?.number && isPhone.number}
                     />
                   </div>
                 </div>
@@ -110,11 +160,12 @@ const Contacts: FC<IProps> = ({
                 <Field
                   name="email"
                   type="email"
+                  text={contactArray?.email && contactArray?.email}
                   placeholder={"Enter email"}
                   component={FormInput}
                   extClassName="email"
                   keyName="email"
-                  onChange={handleDataArray}
+                  onChange={handleInformationArray}
                 />
               </div>
             </div>
@@ -124,11 +175,13 @@ const Contacts: FC<IProps> = ({
               If you want to receive messages from users ( your mail will be
               visible to the sender only if the question is answered)
             </p>
-            <p>
-              By clicking «Post Ad» you accept the{" "}
-              <a href="#">License Agreement</a> and agree to the{" "}
-              <a href="#">Privacy Policy</a>
-            </p>
+            {!isCreate && (
+              <p>
+                By clicking «Post Ad» you accept the{" "}
+                <a href="#">License Agreement</a> and agree to the{" "}
+                <a href="#">Privacy Policy</a>
+              </p>
+            )}
           </div>
           <div className={styles.buttons}>
             <div className={cn("default-button border", styles.button)}>
@@ -142,7 +195,7 @@ const Contacts: FC<IProps> = ({
               <span className="icon">
                 <PostIcon />
               </span>
-              Post Ad
+              {isCreate ? "Edit" : "Post Ad"}
             </button>
           </div>
         </>

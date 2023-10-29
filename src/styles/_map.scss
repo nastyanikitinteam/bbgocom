@@ -90,3 +90,26 @@
     }
   }
 }
+
+.create-map {
+  .gm-style .gm-style-iw-c .gm-ui-hover-effect {
+    right: 0 !important;
+    top: 0 !important;
+    left: auto !important;
+  }
+
+  .poi-info-window {
+    padding: 20px;
+    border-radius: 15px;
+    background: #fff;
+    display: grid;
+    gap: 10px;
+    & > div {
+      background: transparent;
+    }
+    .title {
+      margin-bottom: 0;
+      text-align: left;
+    }
+  }
+}

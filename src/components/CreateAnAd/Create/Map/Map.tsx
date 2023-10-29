@@ -237,11 +237,12 @@ const Map: FC<IProps> = ({
       });
 
       map.addListener("click", (event) => {
+        const infoWindow = new google.maps.InfoWindow();
         if (setIsAdress) {
           const newPosition = event.latLng.toJSON();
           setMarkerPosition(newPosition);
           marker.setPosition(event.latLng);
-
+          infoWindow.close();
           getAddressFromCoordinates(newPosition);
         }
       });
@@ -285,6 +286,7 @@ const Map: FC<IProps> = ({
           ref={mapRef}
           id="map"
           style={{ height: "300px", borderRadius: "25px" }}
+          className="create-map"
         />
       </div>
     );
