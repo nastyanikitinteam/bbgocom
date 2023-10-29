@@ -9,6 +9,8 @@ import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
 // import { productList } from "components/MainPage/Recommend/config";
 import NoResult from "./NoResult/NoResults";
 import { categorieList, adList } from "./config";
+import Modal from "components/Modal/Modal";
+import DeactivateModal from "./DeactivateModal/DeactivateModal";
 import cn from "classnames";
 import styles from "./my-ads.module.scss";
 
@@ -18,6 +20,7 @@ import DelIcon from "images/icons/delete.svg";
 const MyAds = () => {
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
+  const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
 
   const [isActiveCategory, setIsActiveCategory] = useState(
     categorieList[0].title
@@ -216,18 +219,17 @@ const MyAds = () => {
                   )}
                   {checkedItems.length > 0 && !isMobile && (
                     <div className={styles.button}>
-                      <button
-                        type="submit"
+                      <div
                         className={cn(
                           "default-button border sm",
                           styles.button
                         )}
-                        aria-label={`Deactivate`}
+                        onClick={() => setIsActiveDeleteModal(true)}
                       >
                         {isActiveCategory === "Active"
                           ? "Deactivate"
                           : "Delete"}
-                      </button>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -258,6 +260,19 @@ const MyAds = () => {
           </form>
         )}
       ></Form>
+      {isActiveDeleteModal && (
+        <Modal
+          closeModal={() => setIsActiveDeleteModal(false)}
+          type="deleteCard"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <DeactivateModal
+            closeModal={() => setIsActiveDeleteModal(false)}
+            type={isActiveCategory}
+          />
+        </Modal>
+      )}
     </div>
   );
 };

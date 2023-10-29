@@ -4,6 +4,9 @@ import styles from "./card.module.scss";
 import cn from "classnames";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Slider from "components/Slider/Slider";
+import Modal from "components/Modal/Modal";
+import DeactivateModal from "../DeactivateModal/DeactivateModal";
+
 import MapIcon from "images/icons/map-icon.svg";
 import EditIcon from "images/icons/edit.svg";
 import MessagesIcon from "images/icons/messages-icon.svg";
@@ -18,6 +21,7 @@ interface IProps {
 }
 
 const Card: FC<IProps> = ({ item, children, type }) => {
+  const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
   const [isCurrency, setIsCurrency] = useState(
     item.currency === "THB" ? "฿" : item.currency === "RUB" ? "₽" : "$"
   );
@@ -143,7 +147,10 @@ const Card: FC<IProps> = ({ item, children, type }) => {
             )}
 
             <div className={styles.buttons}>
-              <div className={cn("default-button border sm", styles.button)}>
+              <div
+                className={cn("default-button border sm", styles.button)}
+                onClick={() => setIsActiveDeleteModal(true)}
+              >
                 {type === "Active" ? "Deactivate" : "Delete"}
               </div>
               <Link
@@ -160,6 +167,19 @@ const Card: FC<IProps> = ({ item, children, type }) => {
           </div>
         </div>
       </div>
+      {isActiveDeleteModal && (
+        <Modal
+          closeModal={() => setIsActiveDeleteModal(false)}
+          type="deleteCard"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <DeactivateModal
+            closeModal={() => setIsActiveDeleteModal(false)}
+            type={type}
+          />
+        </Modal>
+      )}
     </div>
   );
 };
