@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import cn from "classnames";
 import styles from "./form-input.module.scss";
 
@@ -27,6 +27,7 @@ interface IProps {
   maxLength?: number;
   keyName?: string;
   onChange?: () => void;
+  isPrice?: boolean;
 }
 
 const FormInput: React.FC<IProps> = ({
@@ -48,13 +49,25 @@ const FormInput: React.FC<IProps> = ({
   maxLength,
   onChange,
   keyName,
+  isPrice,
 }) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [cardNumber, setCardNumber] = useState("");
 
   const [isValue, setIsValue] = useState(text ? text : "");
 
-  const onChangeInput = (event) => {
+  const handlePriceInput = useCallback((event) => {
+    const inputValue = event.target.value.replace(/[^\d.]/g, "");
+    const parts = inputValue.split(".");
+    const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    let formattedInput = integerPart;
+    if (parts.length > 1) {
+      formattedInput += "." + parts[1];
+    }
+    setIsValue(formattedInput);
+  }, []);
+
+  const onChangeInput = useCallback((event) => {
     if (isCardNumber) {
       const input = event.target.value.replace(/\D/g, "");
       const formattedInput = input.replace(/(\d{4})(?=\d)/g, "$1 ");
@@ -63,10 +76,42 @@ const FormInput: React.FC<IProps> = ({
       const input = event.target.value.replace(/\D/g, "");
       const formattedInput = input.replace(/^(\d{2})/, "$1/").substr(0, 5);
       setIsValue(formattedInput);
+    } else if (isPrice) {
+      handlePriceInput(event);
     } else {
       setIsValue(event.target.value);
     }
-  };
+  }, []);
+
+  const checkPriceInput = useCallback((event) => {
+    if (
+      !/[0-9.]/.test(event.key) ||
+      (event.key === "." && event.target.value.includes("."))
+    ) {
+      event.preventDefault();
+    }
+    if (event.key === "." && event.target.value.includes(".")) {
+      event.preventDefault();
+    }
+    const parts = event.target.value.split(".");
+    if (parts[1] && parts[1].length >= 2) {
+      event.preventDefault();
+    }
+  }, []);
+
+  const checkNumberInput = useCallback((event) => {
+    if (!/[0-9]/.test(event.key)) {
+      event.preventDefault();
+    }
+  }, []);
+
+  const keyPress = useCallback((event) => {
+    if (number) {
+      checkNumberInput(event);
+    } else if (isPrice) {
+      checkPriceInput(event);
+    }
+  }, []);
 
   useEffect(() => {
     // @ts-ignore
@@ -107,14 +152,7 @@ const FormInput: React.FC<IProps> = ({
           type={isShowPassword ? "text" : input.type}
           readOnly={readonly}
           onChange={onChangeInput}
-          onKeyPress={
-            number &&
-            ((event) => {
-              if (!/[0-9]/.test(event.key)) {
-                event.preventDefault();
-              }
-            })
-          }
+          onKeyPress={keyPress}
           maxLength={maxLength ? maxLength : false}
         />
         {input.type === "password" && (

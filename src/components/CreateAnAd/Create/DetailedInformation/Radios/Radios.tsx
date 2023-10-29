@@ -1,4 +1,4 @@
-import { useState, FC } from "react";
+import { useState, FC, useEffect, memo } from "react";
 import styles from "./radios.module.scss";
 import Radio from "components/FormElements/Radio/Radio";
 import cn from "classnames";
@@ -9,6 +9,7 @@ interface IProps {
   isColumn?: boolean;
   handleDataArray: (event: any, title: any) => void;
   keyName: string;
+  informationArray?: any;
 }
 
 const Radios: FC<IProps> = ({
@@ -17,10 +18,20 @@ const Radios: FC<IProps> = ({
   isColumn,
   handleDataArray,
   keyName,
+  informationArray,
 }) => {
-  const handleRadioChange = (event) => {
-    handleDataArray(event.target.value, keyName);
+  const [isCheckedElement, setIsCheckeElement] = useState();
+
+  const handleRadioChange = (val) => {
+    handleDataArray(val, keyName);
   };
+
+  useEffect(() => {
+    if (keyName in informationArray) {
+      const titleValue = informationArray[keyName];
+      setIsCheckeElement(titleValue);
+    }
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -34,7 +45,8 @@ const Radios: FC<IProps> = ({
                   name={title}
                   value={item}
                   extClassName="filter"
-                  onChange={() => handleRadioChange(event)}
+                  onChange={handleRadioChange}
+                  isCheked={isCheckedElement}
                 >
                   {item}
                 </Radio>
@@ -49,4 +61,4 @@ const Radios: FC<IProps> = ({
   );
 };
 
-export default Radios;
+export default memo(Radios);

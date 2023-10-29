@@ -69,7 +69,6 @@ const ProfilePage: FC<IProps> = ({
     if (isMobile) {
       document.body.classList.add("hidden");
     } else {
-      console.log("work");
       document.body.classList.remove("hidden");
     }
     return () => {

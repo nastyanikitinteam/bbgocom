@@ -8,7 +8,7 @@ import Card from "./Card/Card";
 import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
 // import { productList } from "components/MainPage/Recommend/config";
 import NoResult from "./NoResult/NoResults";
-import { categorieList, productsList } from "./config";
+import { categorieList, adList } from "./config";
 import cn from "classnames";
 import styles from "./my-ads.module.scss";
 
@@ -24,7 +24,7 @@ const MyAds = () => {
   );
 
   const [isActiveCategoryList, setIsActiveCategoryList] = useState(
-    productsList.filter((product) => product.adsList === isActiveCategory)
+    adList.filter((product) => product.adsList === isActiveCategory)
   );
 
   const [isShowCategory, setIsShowCategory] = useState(false);
@@ -77,7 +77,7 @@ const MyAds = () => {
   const handleCategories = useCallback(
     (title) => {
       setIsActiveCategory(title);
-      const filteredList = productsList.filter(
+      const filteredList = adList.filter(
         (product) => product.adsList === title
       );
       setIsActiveCategoryList(filteredList);
@@ -90,12 +90,8 @@ const MyAds = () => {
     [isMobile]
   );
 
-  console.log(isActiveCategoryList);
-
   const countList = useCallback((title) => {
-    const filteredList = productsList.filter(
-      (product) => product.adsList === title
-    );
+    const filteredList = adList.filter((product) => product.adsList === title);
     return filteredList.length;
   }, []);
 

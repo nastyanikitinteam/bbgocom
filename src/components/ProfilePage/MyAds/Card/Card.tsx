@@ -1,4 +1,4 @@
-import { useMemo, FC, ReactNode } from "react";
+import { useMemo, FC, ReactNode, useState } from "react";
 import Link from "next/link";
 import styles from "./card.module.scss";
 import cn from "classnames";
@@ -18,6 +18,10 @@ interface IProps {
 }
 
 const Card: FC<IProps> = ({ item, children, type }) => {
+  const [isCurrency, setIsCurrency] = useState(
+    item.currency === "THB" ? "฿" : item.currency === "RUB" ? "₽" : "$"
+  );
+
   const isTablet = useMediaQuery(998);
 
   return (
@@ -50,7 +54,7 @@ const Card: FC<IProps> = ({ item, children, type }) => {
                   <img src={item.images[0].image} alt="" />
                 </div>
                 <div className={styles.description}>
-                  <h3 className={styles.title}>{item.name}</h3>
+                  <h3 className={styles.title}>{item.title}</h3>
                   <div className={styles.location}>
                     <span className={styles.icon}>
                       <MapIcon />
@@ -65,8 +69,12 @@ const Card: FC<IProps> = ({ item, children, type }) => {
           <div className={styles.items}>
             {!isTablet && (
               <div className={styles.item}>
-                <p className={styles.mainCategory}>{item.category}</p>
-                <p className={styles.subCategory}>{item.subCategory}</p>
+                <p className={styles.mainCategory}>
+                  {item.category.nameOfCategory}
+                </p>
+                <p className={styles.subCategory}>
+                  {item.category.nameOfSubCategory}
+                </p>
               </div>
             )}
             <div className={styles.item}>
@@ -77,7 +85,7 @@ const Card: FC<IProps> = ({ item, children, type }) => {
 
           {!isTablet && (
             <>
-              <h3 className={styles.title}>{item.name}</h3>
+              <h3 className={styles.title}>{item.title}</h3>
               <div className={styles.items}>
                 <div className={styles.location}>
                   <span className={styles.icon}>
@@ -97,12 +105,14 @@ const Card: FC<IProps> = ({ item, children, type }) => {
 
           <div className={styles.bottom}>
             <div className={styles.price}>
-              {item.price}
+              {isCurrency} {item.price}
               {item.oldPrice && (
-                <span className={styles.old}>{item.oldPrice}</span>
+                <span className={styles.old}>
+                  {isCurrency}
+                  {item.oldPrice}
+                </span>
               )}
             </div>
-
             {type === "Active" && (
               <div className={styles.action}>
                 <span className={styles.icon}>
@@ -136,12 +146,16 @@ const Card: FC<IProps> = ({ item, children, type }) => {
               <div className={cn("default-button border sm", styles.button)}>
                 {type === "Active" ? "Deactivate" : "Delete"}
               </div>
-              <div className={cn("default-button sm", styles.button)}>
+              <Link
+                href="/create-an-ad/[slug]"
+                as={`/create-an-ad/${item.slug}`}
+                className={cn("default-button sm", styles.button)}
+              >
                 <span className={cn("icon", styles.icon)}>
                   <EditIcon />
                 </span>
                 Edit
-              </div>
+              </Link>
             </div>
           </div>
         </div>

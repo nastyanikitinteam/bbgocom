@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useState, useEffect } from "react";
+import { useMemo, useCallback, useState, useEffect, FC } from "react";
 import { useRouter } from "next/router";
 import { Form, Field } from "react-final-form";
 import * as yup from "yup";
@@ -18,10 +18,13 @@ import cn from "classnames";
 import styles from "./create.module.scss";
 
 import ArrowSvg from "images/icons/drop.svg";
+interface IProps {
+  isCurrentAd?: any;
+}
 
-const Create = () => {
+const Create: FC<IProps> = ({ isCurrentAd }) => {
   const isMobile = useMediaQuery(768);
-  const [dataArray, setDataArray] = useState({});
+  const [dataArray, setDataArray] = useState(isCurrentAd ? isCurrentAd : {});
   const [isOpenModal, setsOpenModal] = useState(false);
 
   const router = useRouter();
@@ -47,7 +50,7 @@ const Create = () => {
   };
 
   useEffect(() => {
-    console.log(dataArray);
+    console.log(dataArray, "data");
   }, [dataArray]);
 
   const onSubmit = useCallback((data, form) => {
@@ -95,7 +98,7 @@ const Create = () => {
                   setDataArray={setDataArray}
                   handleDataArray={handleDataArray}
                   // @ts-ignore
-                  disabled={!dataArray?.files}
+                  disabled={!isCurrentAd && !dataArray?.files}
                 />
                 <DetailedInformation
                   dataArray={dataArray}
@@ -106,16 +109,17 @@ const Create = () => {
                 />
                 <Location
                   dataArray={dataArray}
+                  setDataArray={setDataArray}
                   handleDataArray={handleDataArray}
                   // @ts-ignore
-                  disabled={!dataArray?.enterArea}
+                  disabled={!dataArray?.information.totalArea}
                 />
                 <Contacts
                   dataArray={dataArray}
                   handleDataArray={handleDataArray}
                   setDataArray={setDataArray}
                   // @ts-ignore
-                  disabled={!dataArray?.adress}
+                  disabled={!dataArray?.location.name}
                 />
               </form>
             )}

@@ -19,7 +19,9 @@ const TitleLanguage: FC<IProps> = ({
   disabled,
   handleDataArray,
 }) => {
-  const [isActiveLang, setIsActiveLang] = useState("EN");
+  const [isActiveLang, setIsActiveLang] = useState(
+    dataArray?.language ? dataArray?.language : "EN"
+  );
   const isMobile = useMediaQuery(768);
 
   const langList = useMemo(
@@ -64,6 +66,7 @@ const TitleLanguage: FC<IProps> = ({
                   name="title"
                   placeholder={"Add Title"}
                   type="text"
+                  text={dataArray?.title && dataArray.title}
                   component={FormInput}
                   extClassName="theme"
                   keyName="title"
@@ -109,6 +112,7 @@ const TitleLanguage: FC<IProps> = ({
                 name="description"
                 placeholder={"Enter Description"}
                 type="text"
+                text={dataArray?.description && dataArray?.description}
                 component={Textarea}
                 row={isMobile ? 5 : 11}
                 keyName="description"

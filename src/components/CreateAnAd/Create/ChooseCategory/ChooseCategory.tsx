@@ -16,7 +16,10 @@ interface IProps {
 
 const ChooseCategory: FC<IProps> = ({ dataArray, setDataArray }) => {
   const [isActiveCategory, setIsActiveCategory] = useState(null);
-  const [dataCategory, setDataCategory] = useState({});
+
+  const [dataCategory, setDataCategory] = useState(
+    dataArray?.category ? dataArray?.category : {}
+  );
   const [isOpenCategoryMenu, setIsOpenCategoryMenu] = useState(false);
 
   const dealTypes = useMemo(
@@ -97,6 +100,10 @@ const ChooseCategory: FC<IProps> = ({ dataArray, setDataArray }) => {
           >
             <SelectContainer
               options={dealTypes}
+              chooseOption={
+                dataArray?.dealType &&
+                dealTypes.filter((item) => item.value === dataArray.dealType)
+              }
               classname="dealType big withIcon"
               placeholder="Choose deal type"
               title="Choose deal type"
@@ -114,6 +121,10 @@ const ChooseCategory: FC<IProps> = ({ dataArray, setDataArray }) => {
           >
             <SelectContainer
               options={salesmanList}
+              chooseOption={
+                dataArray?.salesman &&
+                salesmanList.filter((item) => item.value === dataArray.salesman)
+              }
               classname="salesman big withIcon"
               placeholder="Choose salesman"
               title="Choose salesman"

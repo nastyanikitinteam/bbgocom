@@ -1,6 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState, useEffect } from "react";
 import styles from "./radio.module.scss";
 import cn from "classnames";
+import { useSSR } from "react-i18next";
 
 interface IProps {
   placeholder?: string;
@@ -12,14 +13,14 @@ interface IProps {
   label?: string;
   meta?: any;
   required?: boolean;
-  onClick?: () => void;
   readonly?: boolean;
   number?: boolean;
   text?: string;
   children?: ReactNode;
   name?: string;
   value?: string;
-  onChange?: () => void;
+  onChange?: (str: string) => void;
+  isCheked?: string;
 }
 
 const Radio: React.FC<IProps> = ({
@@ -27,19 +28,26 @@ const Radio: React.FC<IProps> = ({
   label,
   meta,
   placeholder,
-  serverErrors,
   extClassName,
-  secondaryColor,
-  textColor,
-  onClick,
   readonly = false,
-  number,
-  text,
   children,
   name,
   value,
   onChange,
+  isCheked,
 }) => {
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleRadioChange = (event) => {
+    console.log(event);
+    setSelectedOption(event.target.value);
+    onChange && onChange(event.target.value);
+  };
+
+  useEffect(() => {
+    isCheked && setSelectedOption(isCheked);
+  }, [isCheked]);
+
   return (
     <label
       className={cn(styles.container, extClassName && styles[extClassName])}
@@ -50,10 +58,10 @@ const Radio: React.FC<IProps> = ({
         value={!input && value}
         className={styles.input}
         id={placeholder}
-        onClick={onClick}
-        onChange={onChange && onChange}
+        onChange={handleRadioChange}
         type="radio"
         readOnly={readonly}
+        checked={selectedOption === children}
       />
       <div className={styles.block}></div>
       {children && <p className={styles.text}>{children}</p>}

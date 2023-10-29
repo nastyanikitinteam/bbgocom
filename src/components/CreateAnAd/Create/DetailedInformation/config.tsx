@@ -32,6 +32,7 @@ export const numberOfRooms = [
   "5 room",
   "Free layout",
 ];
+
 export const carBrands = [
   "Toyota",
   "Ford",
@@ -212,5 +213,58 @@ export const adressList = [
   {
     value: "Phetchabun",
     label: "Phetchabun",
+  },
+];
+
+export const createList = [
+  {
+    key: "numberOfRooms",
+    type: "radio",
+    name: "Number of rooms",
+    variants: [
+      "Study",
+      "1 room",
+      "2 room",
+      "3 room",
+      "4 room",
+      "5 room",
+      "Free layout",
+    ],
+  },
+  {
+    key: "numberOfBathroom",
+    type: "radio",
+    name: "Number of bathroom",
+    variants: [
+      "1 Bathroom",
+      "2 Bathroom",
+      "3 Bathroom",
+      "4 Bathroom",
+      "Combined",
+    ],
+  },
+  {
+    key: "condition",
+    type: "radio",
+    name: "Condition",
+    variants: ["Resale", "New building"],
+  },
+  {
+    key: "repair",
+    type: "radio",
+    name: "Repair",
+    variants: ["Renovated", "Without repair"],
+  },
+  {
+    key: "floor",
+    type: "input",
+    name: "Floor",
+    placeholder: "Floor",
+  },
+  {
+    key: "totalArea",
+    type: "input",
+    name: "Total area, m²",
+    placeholder: "Enter area",
   },
 ];

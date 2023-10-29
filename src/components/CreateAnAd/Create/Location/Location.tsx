@@ -12,14 +12,29 @@ interface IProps {
   dataArray: any;
   disabled: boolean;
   handleDataArray: (event: any, title: any) => void;
+  setDataArray: (arr: any) => void;
 }
 
-const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
-  const [isAdress, setIsAdress] = useState("");
+const Location: FC<IProps> = ({
+  dataArray,
+  disabled,
+  handleDataArray,
+  setDataArray,
+}) => {
+  const [locationArray, setLocationArray] = useState(
+    dataArray.location ? dataArray.location : {}
+  );
 
-  const [isCoordinates, setIsCoordinates] = useState({ lat: 15, lng: 101 });
+  const [isAdress, setIsAdress] = useState(
+    locationArray?.name ? locationArray.name : ""
+  );
 
-  const [isMapZoom, setIsMapZoom] = useState(7);
+  const [isCoordinates, setIsCoordinates] = useState({
+    lat: locationArray?.lat ? locationArray.lat : 15,
+    lng: locationArray?.lng ? locationArray.lng : 101,
+  });
+
+  const [isMapZoom, setIsMapZoom] = useState(locationArray?.name ? 10 : 7);
 
   const [error, setError] = useState(null);
 
@@ -63,8 +78,9 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
 
   const handleRegion = (value: any) => {
     if (value != null) {
-      handleDataArray(value, "region");
+      handleInformationArray(value, "region");
       setIsMapZoom(8);
+      setIsAdress("");
     }
     //@ts-ignore
     const isCurrentRegion = regionList.filter(
@@ -75,21 +91,33 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
   };
 
   const handleAdressInput = (value: any) => {
-    // handleDataArray(value, "adress");
     const newAddress = value.target.value;
     setIsAdress(newAddress);
-
     getCoordinatesFromAddress(newAddress);
   };
 
-  // const handleBlur = () => {
-  //   getCoordinatesFromAddress(isAdress);
-  // };
+  const handleInformationArray = useCallback((event, title) => {
+    if (event?.length) {
+      setLocationArray((prev) => ({ ...prev, [title]: event }));
+    } else {
+      if (locationArray[title]) {
+        let obj = locationArray;
+        delete obj[title];
+        setLocationArray(obj);
+      }
+    }
+  }, []);
 
   useEffect(() => {
-    // console.log(isAdress);
-    handleDataArray(isAdress, "adress");
+    handleInformationArray(isAdress, "name");
   }, [isAdress]);
+
+  useEffect(() => {
+    setDataArray({
+      ...dataArray,
+      location: locationArray,
+    });
+  }, [locationArray]);
 
   return (
     <div className={styles.container}>
@@ -121,7 +149,6 @@ const Location: FC<IProps> = ({ dataArray, disabled, handleDataArray }) => {
                   className={cn("default-input search")}
                   placeholder="Adress"
                   onChange={handleAdressInput}
-                  // onBlur={handleBlur}
                   // readOnly
                 />
               </div>

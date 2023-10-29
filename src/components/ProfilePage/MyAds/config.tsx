@@ -3,16 +3,33 @@ import cover1 from "images/main/card-product-real-estate.png";
 import cover2 from "images/main/card-product-2-real-estate.png";
 import cover3 from "images/main/card-product-3-real-estate.png";
 
-export const productsList = [
+export const adList = [
   {
     id: 685012401,
-    category: "Real Estate",
-    subCategory: "Buy a home",
-    name: "Country house in the forest from a wooden frame, in a picturesque place",
+    category: {
+      nameOfCategory: "Real Estate",
+      nameOfCategoryItem: "Buy a home",
+      nameOfSubCategory: "Rooms",
+    },
+    title:
+      "Country house in the forest from a wooden frame, in a picturesque place",
     slug: "country-house-in-the-forest-from-a-wooden-frame-in-a-picturesque-place",
     views: 1011,
     date: "09.07.2023 - 08.08.2023",
     messages: 4,
+    currency: "USD",
+    dealType: "Sale",
+    salesman: "Company",
+    language: "TH",
+    description: "example",
+    information: {
+      totalArea: "2",
+      floor: "1",
+      condition: "Resale",
+      numberOfBathroom: "2 Bathroom",
+      numberOfRooms: "4 room",
+      repair: "Renovated",
+    },
     images: [
       {
         id: 0,
@@ -31,8 +48,8 @@ export const productsList = [
         image: cover1.src,
       },
     ],
-    price: "$1,250 000.00",
-    oldPrice: "$1,500.00",
+    price: "1 250 000.00",
+    oldprice: "1 500.00",
     location: {
       name: "Bangkok, Thailand",
       lat: 13.74350859277567,
@@ -43,13 +60,29 @@ export const productsList = [
 
   {
     id: 685012403,
-    category: "Real Estate",
-    subCategory: "Buy a home",
-    name: "Parking place for sale in a new underground parking",
+    category: {
+      nameOfCategory: "Motors",
+      nameOfCategoryItem: "Cars",
+      nameOfSubCategory: "New Cars",
+    },
+    title: "Parking place for sale in a new underground parking",
     slug: "parking-place-for-sale-in-a-new-underground-parking",
     views: 123,
     date: "09.07.2023 - 08.08.2023",
     messages: 4,
+    currency: "THB",
+    dealType: "Sale",
+    salesman: "Company",
+    language: "TH",
+    description: "example",
+    information: {
+      condition: "Resale",
+      totalArea: "2",
+      floor: "1",
+      numberOfBathroom: "2 Bathroom",
+      numberOfRooms: "4 room",
+      repair: "Renovated",
+    },
     images: [
       {
         id: 0,
@@ -68,8 +101,8 @@ export const productsList = [
         image: cover2.src,
       },
     ],
-    price: "$1,250.00",
-    oldPrice: "$1,500.00",
+    price: "1 250.00",
+    oldprice: "1 500.00",
     location: {
       name: "Bangkok, Thailand",
       lat: 13.74350859277567,
@@ -80,13 +113,29 @@ export const productsList = [
 
   {
     id: 685012405,
-    category: "Real Estate",
-    subCategory: "Buy a home",
-    name: "Luxurious apartment on the 5th floor",
+    category: {
+      nameOfCategory: "Real Estate",
+      nameOfCategoryItem: "Buy a home",
+      nameOfSubCategory: "Rooms",
+    },
+    title: "Luxurious apartment on the 5th floor",
     slug: "luxurious-apartment-on-the-5th-floor",
     views: 1011231,
     date: "09.07.2023 - 08.08.2023",
     messages: 20,
+    currency: "THB",
+    dealType: "Sale",
+    salesman: "Company",
+    language: "TH",
+    description: "example",
+    information: {
+      condition: "Resale",
+      totalArea: "2",
+      floor: "1",
+      numberOfBathroom: "2 Bathroom",
+      numberOfRooms: "4 room",
+      repair: "Renovated",
+    },
     images: [
       {
         id: 0,
@@ -105,7 +154,7 @@ export const productsList = [
         image: cover3.src,
       },
     ],
-    price: "$325,250.00",
+    price: "325 250.00",
     location: {
       name: "Bangkok, Thailand",
       lat: 13.74350859277567,
@@ -115,13 +164,29 @@ export const productsList = [
   },
   {
     id: 685012401,
-    category: "Real Estate",
-    subCategory: "Buy a home",
-    name: "Waiting example",
+    category: {
+      nameOfCategory: "Real Estate",
+      nameOfCategoryItem: "Buy a home",
+      nameOfSubCategory: "Rooms",
+    },
+    title: "Waiting example",
     slug: "waiting-example",
     views: 1011,
     date: "09.07.2023 - 08.08.2023",
     messages: 4,
+    currency: "THB",
+    dealType: "Sale",
+    salesman: "Company",
+    language: "TH",
+    description: "example",
+    information: {
+      condition: "Resale",
+      totalArea: "2",
+      floor: "1",
+      numberOfBathroom: "2 Bathroom",
+      numberOfRooms: "4 room",
+      repair: "Renovated",
+    },
     images: [
       {
         id: 0,
@@ -140,8 +205,8 @@ export const productsList = [
         image: cover1.src,
       },
     ],
-    price: "$1,250 000.00",
-    oldPrice: "$1,500.00",
+    price: "1 250 000.00",
+    oldprice: "1 500.00",
     location: {
       name: "Bangkok, Thailand",
       lat: 13.74350859277567,
@@ -152,13 +217,29 @@ export const productsList = [
 
   {
     id: 685012403,
-    category: "Real Estate",
-    subCategory: "Buy a home",
-    name: "Parking place for sale in a new underground parking",
+    category: {
+      nameOfCategory: "Real Estate",
+      nameOfCategoryItem: "Buy a home",
+      nameOfSubCategory: "Rooms",
+    },
+    title: "Parking place for sale in a new underground parking",
     slug: "parking-place-for-sale-in-a-new-underground-parking",
     views: 123,
     date: "09.07.2023 - 08.08.2023",
     messages: 4,
+    currency: "THB",
+    dealType: "Long Rent",
+    salesman: "Company",
+    language: "TH",
+    description: "example",
+    information: {
+      condition: "Resale",
+      totalArea: "2",
+      floor: "1",
+      numberOfBathroom: "2 Bathroom",
+      numberOfRooms: "4 room",
+      repair: "Renovated",
+    },
     images: [
       {
         id: 0,
@@ -177,8 +258,8 @@ export const productsList = [
         image: cover2.src,
       },
     ],
-    price: "$1,250.00",
-    oldPrice: "$1,500.00",
+    price: "1 250.00",
+    oldprice: "1 500.00",
     location: {
       name: "Bangkok, Thailand",
       lat: 13.74350859277567,
@@ -189,13 +270,29 @@ export const productsList = [
 
   {
     id: 685012405,
-    category: "Real Estate",
-    subCategory: "Buy a home",
-    name: "Luxurious apartment on the 5th floor",
+    category: {
+      nameOfCategory: "Real Estate",
+      nameOfCategoryItem: "Buy a home",
+      nameOfSubCategory: "Rooms",
+    },
+    title: "Luxurious apartment on the 5th floor",
     slug: "luxurious-apartment-on-the-5th-floor-2",
     views: 1011231,
     date: "09.07.2023 - 08.08.2023",
     messages: 20,
+    currency: "THB",
+    dealType: "Sale",
+    salesman: "Company",
+    language: "TH",
+    description: "example",
+    information: {
+      condition: "Resale",
+      totalArea: "2",
+      floor: "1",
+      numberOfBathroom: "2 Bathroom",
+      numberOfRooms: "4 room",
+      repair: "Renovated",
+    },
     images: [
       {
         id: 0,
@@ -214,7 +311,7 @@ export const productsList = [
         image: cover3.src,
       },
     ],
-    price: "$325,250.00",
+    price: "325 250.00",
     location: {
       name: "Bangkok, Thailand",
       lat: 13.74350859277567,
@@ -224,13 +321,29 @@ export const productsList = [
   },
   {
     id: 685012444,
-    category: "Real Estate",
-    subCategory: "Buy a home",
-    name: "Luxurious apartment",
+    category: {
+      nameOfCategory: "Real Estate",
+      nameOfCategoryItem: "Buy a home",
+      nameOfSubCategory: "Rooms",
+    },
+    title: "Luxurious apartment",
     slug: "luxurious-apartment",
     views: 1011231,
     date: "09.07.2023 - 08.08.2023",
     messages: 20,
+    currency: "THB",
+    dealType: "Long Rent",
+    salesman: "Company",
+    language: "TH",
+    description: "example",
+    information: {
+      condition: "Resale",
+      totalArea: "2",
+      floor: "1",
+      numberOfBathroom: "2 Bathroom",
+      numberOfRooms: "4 room",
+      repair: "Renovated",
+    },
     images: [
       {
         id: 0,
@@ -249,7 +362,7 @@ export const productsList = [
         image: cover3.src,
       },
     ],
-    price: "$325,250.00",
+    price: "325 250.00",
     location: {
       name: "Bangkok, Thailand",
       lat: 13.74350859277567,
@@ -259,13 +372,29 @@ export const productsList = [
   },
   {
     id: 685012401,
-    category: "Real Estate",
-    subCategory: "Buy a home",
-    name: "Inactive example",
+    category: {
+      nameOfCategory: "Real Estate",
+      nameOfCategoryItem: "Buy a home",
+      nameOfSubCategory: "Rooms",
+    },
+    title: "Inactive example",
     slug: "inactive-example",
     views: 1011,
     date: "09.07.2023 - 08.08.2023",
     messages: 4,
+    currency: "THB",
+    dealType: "Sale",
+    salesman: "Company",
+    language: "TH",
+    description: "example",
+    information: {
+      condition: "Resale",
+      totalArea: "2",
+      floor: "1",
+      numberOfBathroom: "2 Bathroom",
+      numberOfRooms: "4 room",
+      repair: "Renovated",
+    },
     images: [
       {
         id: 0,
@@ -284,7 +413,7 @@ export const productsList = [
         image: cover1.src,
       },
     ],
-    price: "$1,250 000.00",
+    price: "1 250 000.00",
     location: {
       name: "Bangkok, Thailand",
       lat: 13.74350859277567,
@@ -294,13 +423,29 @@ export const productsList = [
   },
   {
     id: 685012403,
-    category: "Real Estate",
-    subCategory: "Buy a home",
-    name: "Parking place for sale",
+    category: {
+      nameOfCategory: "Real Estate",
+      nameOfCategoryItem: "Buy a home",
+      nameOfSubCategory: "Rooms",
+    },
+    title: "Parking place for sale",
     slug: "Parking-place-for-sale",
     views: 123,
     date: "09.07.2023 - 08.08.2023",
     messages: 4,
+    currency: "THB",
+    dealType: "Sale",
+    salesman: "Company",
+    language: "TH",
+    description: "example",
+    information: {
+      condition: "Resale",
+      totalArea: "2",
+      floor: "1",
+      numberOfBathroom: "2 Bathroom",
+      numberOfRooms: "4 room",
+      repair: "Renovated",
+    },
     images: [
       {
         id: 0,
@@ -319,8 +464,8 @@ export const productsList = [
         image: cover2.src,
       },
     ],
-    price: "$1,250.00",
-    oldPrice: "$1,500.00",
+    price: "1 250.00",
+    oldprice: "1 500.00",
     location: {
       name: "Bangkok, Thailand",
       lat: 13.74350859277567,

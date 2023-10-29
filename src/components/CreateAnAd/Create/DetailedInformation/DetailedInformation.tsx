@@ -1,24 +1,15 @@
-import { useMemo, useState, FC, useEffect } from "react";
+import { useMemo, useState, FC, useEffect, memo, useCallback } from "react";
 import { Form, Field } from "react-final-form";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import Radios from "./Radios/Radios";
 import styles from "./detailed-information.module.scss";
 import cn from "classnames";
 
-import {
-  tabsList,
-  propertyType,
-  condition,
-  numberOfRooms,
-  numberOfBathrooms,
-  colors,
-  carBrands,
-  repair,
-} from "./config";
+import { createList } from "./config";
 
 interface IProps {
   dataArray: any;
-  setDataArray: (bool: any) => void;
+  setDataArray: (arr: any) => void;
   disabled: boolean;
   handleDataArray: (event: any, title: any) => void;
 }
@@ -29,19 +20,28 @@ const DetailedInformation: FC<IProps> = ({
   disabled,
   handleDataArray,
 }) => {
-  const [isActiveLang, setIsActiveLang] = useState("USD");
+  const [informationArray, setInformationArray] = useState(
+    dataArray.information ? dataArray.information : {}
+  );
 
-  const handleInput = (event, title) => {
+  const handleInformationArray = useCallback((event, title) => {
     if (event?.length) {
-      setDataArray((prev) => ({ ...prev, [title]: event }));
+      setInformationArray((prev) => ({ ...prev, [title]: event }));
     } else {
-      if (dataArray[title]) {
-        let obj = dataArray;
+      if (informationArray[title]) {
+        let obj = informationArray;
         delete obj[title];
-        setDataArray(obj);
+        setInformationArray(obj);
       }
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    setDataArray({
+      ...dataArray,
+      information: informationArray,
+    });
+  }, [informationArray]);
 
   return (
     <div className={styles.container}>
@@ -49,68 +49,41 @@ const DetailedInformation: FC<IProps> = ({
         <span className={styles.num}>5</span>Detailed information
       </h3>
       {!disabled && (
-        <>
-          <div className={styles.radios}>
-            <Radios
-              title="Number of rooms"
-              keyName="numberOfRooms"
-              list={numberOfRooms}
-              isColumn
-              handleDataArray={handleDataArray}
-            />
-            <Radios
-              title="Number of bathroom"
-              keyName="numberOfBathroom"
-              list={numberOfBathrooms}
-              isColumn
-              handleDataArray={handleDataArray}
-            />
-            <Radios
-              title="Condition"
-              keyName="condition"
-              list={condition}
-              isColumn
-              handleDataArray={handleDataArray}
-            />
-            <Radios
-              title="Repair"
-              keyName="repair"
-              list={repair}
-              isColumn
-              handleDataArray={handleDataArray}
-            />
-          </div>
-          <div className={styles.items}>
-            <div className={styles.item}>
-              <p className={styles.label}>Floor</p>
-              <div className={styles.input}>
-                <Field
-                  name="floor"
-                  placeholder={"Floor"}
-                  type="number"
-                  component={FormInput}
-                  keyName="foor"
-                  extClassName="foor"
-                  onChange={handleDataArray}
+        <div className={styles.items}>
+          {createList.map((item) => {
+            if (item.type === "radio") {
+              return (
+                <Radios
+                  key={item.key}
+                  title={item.name}
+                  keyName={item.key}
+                  list={item.variants}
+                  isColumn
+                  handleDataArray={handleInformationArray}
+                  informationArray={informationArray}
                 />
-              </div>
-            </div>
-            <div className={styles.item}>
-              <p className={styles.label}>Total area, m²</p>
-              <div className={styles.input}>
-                <Field
-                  name="enter area"
-                  placeholder={"Enter area"}
-                  type="number"
-                  component={FormInput}
-                  keyName="enterArea"
-                  extClassName="enterArea"
-                  onChange={handleDataArray}
-                />
-              </div>
-            </div>
-          </div>
-        </>
+              );
+            } else if (item.type === "input") {
+              return (
+                <div key={item.key} className={styles.item}>
+                  <p className={styles.label}>{item.name}</p>
+                  <div className={styles.input}>
+                    <Field
+                      name={item.name}
+                      placeholder={item.placeholder}
+                      type="number"
+                      component={FormInput}
+                      keyName={item.key}
+                      extClassName={item.key}
+                      onChange={handleInformationArray}
+                      text={informationArray[item.key]}
+                    />
+                  </div>
+                </div>
+              );
+            }
+          })}
+        </div>
       )}
     </div>
   );

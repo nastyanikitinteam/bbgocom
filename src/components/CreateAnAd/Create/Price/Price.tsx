@@ -18,7 +18,9 @@ const Price: FC<IProps> = ({
   disabled,
   handleDataArray,
 }) => {
-  const [isActiveCurrency, setIsActiveCurrency] = useState("USD");
+  const [isActiveCurrency, setIsActiveCurrency] = useState(
+    dataArray?.currency ? dataArray?.currency : "USD"
+  );
 
   const currencyList = useMemo(
     () => [
@@ -43,9 +45,9 @@ const Price: FC<IProps> = ({
     handleDataArray(value, "currency");
   };
 
-  useEffect(() => {
-    dataArray?.title && handleDataArray(isActiveCurrency, "currency");
-  }, [dataArray?.files]);
+  // useEffect(() => {
+  //   dataArray?.title && handleDataArray(isActiveCurrency, "currency");
+  // }, [dataArray?.files]);
 
   return (
     <div className={styles.container}>
@@ -86,11 +88,13 @@ const Price: FC<IProps> = ({
                 <Field
                   name="price"
                   placeholder={"0"}
-                  type="number"
+                  type="text"
+                  text={dataArray?.price && dataArray.price}
                   component={FormInput}
                   extClassName="price"
                   keyName="price"
                   onChange={handleDataArray}
+                  isPrice
                 />
               </div>
             </div>

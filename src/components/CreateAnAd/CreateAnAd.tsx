@@ -1,11 +1,16 @@
-import { useMemo } from "react";
+import { useMemo, FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./create-an-ad.module.scss";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import bannerImg from "images/create-an-add/hero-banner.jpg";
+import bannerEditImg from "images/create-an-add/hero-banner-edit.jpg";
 import Create from "./Create/Create";
 
-const CreateAnAd = () => {
+interface IProps {
+  isCurrentAd?: any;
+}
+
+const CreateAnAd: FC<IProps> = ({ isCurrentAd }) => {
   const isMobile = useMediaQuery(768);
 
   const breadCrumbs = useMemo(
@@ -29,12 +34,15 @@ const CreateAnAd = () => {
           <div className="wrapper">
             <BreadCrumbs crumbs={breadCrumbs} />
             <div className={styles.banner}>
-              <img src={bannerImg.src} alt="" />
+              <img
+                src={isCurrentAd ? bannerEditImg.src : bannerImg.src}
+                alt=""
+              />
             </div>
           </div>
         </section>
       )}
-      <Create />
+      <Create isCurrentAd={isCurrentAd} />
     </>
   );
 };
