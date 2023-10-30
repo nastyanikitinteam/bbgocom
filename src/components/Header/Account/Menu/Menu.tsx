@@ -57,12 +57,12 @@ const Menu: FC<IProps> = ({
         </span>
       </Link>
       <div className={styles.list}>
-        <Link href="/my-orders" className={styles.item}>
+        {/* <Link href="/my-orders" className={styles.item}>
           <span className={styles.icon}>
             <OrdersIcon />
           </span>
           My orders
-        </Link>
+        </Link> */}
         <Link href="/my-ads" className={styles.item}>
           <span className={styles.icon}>
             <AdsIcon />

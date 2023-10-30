@@ -6,6 +6,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import Slider from "components/Slider/Slider";
 import Modal from "components/Modal/Modal";
 import DeactivateModal from "../DeactivateModal/DeactivateModal";
+import ActivateModal from "../ActivateModal/ActivateModal";
 
 import MapIcon from "images/icons/map-icon.svg";
 import EditIcon from "images/icons/edit.svg";
@@ -22,6 +23,7 @@ interface IProps {
 
 const Card: FC<IProps> = ({ item, children, type }) => {
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
+  const [isActiveActivateModal, setIsActiveActivateModal] = useState(false);
   const [isCurrency, setIsCurrency] = useState(
     item.currency === "THB" ? "฿" : item.currency === "RUB" ? "₽" : "$"
   );
@@ -138,7 +140,10 @@ const Card: FC<IProps> = ({ item, children, type }) => {
               </Link>
             )}
             {type === "Inactive" && (
-              <div className={styles.action}>
+              <div
+                className={styles.action}
+                onClick={() => setIsActiveActivateModal(true)}
+              >
                 <span className={styles.icon}>
                   <LightningIcon />
                 </span>
@@ -176,6 +181,19 @@ const Card: FC<IProps> = ({ item, children, type }) => {
         >
           <DeactivateModal
             closeModal={() => setIsActiveDeleteModal(false)}
+            type={type}
+          />
+        </Modal>
+      )}
+      {isActiveActivateModal && (
+        <Modal
+          closeModal={() => setIsActiveActivateModal(false)}
+          type="deleteCard"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <ActivateModal
+            closeModal={() => setIsActiveActivateModal(false)}
             type={type}
           />
         </Modal>
