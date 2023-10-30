@@ -20,8 +20,8 @@ const Bottom: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
   const [isMessageText, setIsMessageeText] = useState("");
 
   const validationSchema = yup.object().shape({
-    email: yup.string().email().required(`Введіть електрону пошту`),
-    password: yup.string().required(`Wrong phone format`),
+    // email: yup.string().email().required(`Введіть електрону пошту`),
+    // password: yup.string().required(`Wrong phone format`),
   });
 
   const validate = validateForm(validationSchema);

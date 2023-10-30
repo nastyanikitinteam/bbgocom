@@ -19,8 +19,8 @@ const AdvertiseWithUs = () => {
   const router = useRouter();
 
   const validationSchema = yup.object().shape({
-    email: yup.string().email().required(`Введіть електрону пошту`),
-    message: yup.string().email().required(`Введіть електрону пошту`),
+    // email: yup.string().email().required(`Введіть електрону пошту`),
+    // message: yup.string().email().required(`Введіть електрону пошту`),
     // password: yup.string().required(`Wrong phone format`),
   });
 
