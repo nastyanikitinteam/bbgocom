@@ -62,7 +62,7 @@ const GreenCards: FC<IProps> = ({
               {productsList.map(
                 ({
                   id,
-                  title,
+                  name,
                   slug,
                   images,
                   price,
@@ -75,7 +75,7 @@ const GreenCards: FC<IProps> = ({
                       <CardProduct
                         id={id}
                         slug={slug}
-                        title={title}
+                        title={name}
                         images={images}
                         price={price}
                         oldPrice={oldPrice}
@@ -94,7 +94,7 @@ const GreenCards: FC<IProps> = ({
               .map(
                 ({
                   id,
-                  title,
+                  name,
                   slug,
                   images,
                   price,
@@ -106,7 +106,7 @@ const GreenCards: FC<IProps> = ({
                     <div className={styles.block} key={id}>
                       <CardProduct
                         id={id}
-                        title={title}
+                        title={name}
                         slug={slug}
                         images={images}
                         price={price}
@@ -127,7 +127,7 @@ const GreenCards: FC<IProps> = ({
             onClick={() => setIsViewAll((prev) => !prev)}
           >
             <div className={styles.text}>
-              {isViewAll ? `Hide ` : `View all`}
+              {isViewAll ? `Hide ` : `View all `}
               {!showButtonWithouTitle && <span>{title}</span>}
             </div>
             <span className={cn(styles.icon, { [styles.open]: isViewAll })}>

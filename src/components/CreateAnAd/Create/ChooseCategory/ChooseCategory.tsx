@@ -7,11 +7,13 @@ import Category from "components/SearchBar/Category/Category";
 import CategoryMain from "components/SearchBar/Category/CategoryMain/CategoryMain";
 import styles from "../steps.module.scss";
 
+import { dealTypes, salesmanList } from "./config";
+
 import cn from "classnames";
 
 interface IProps {
   dataArray: any;
-  setDataArray: (bool: any) => void;
+  setDataArray: (arr: any) => void;
 }
 
 const ChooseCategory: FC<IProps> = ({ dataArray, setDataArray }) => {
@@ -22,37 +24,6 @@ const ChooseCategory: FC<IProps> = ({ dataArray, setDataArray }) => {
   );
   const [isOpenCategoryMenu, setIsOpenCategoryMenu] = useState(false);
 
-  const dealTypes = useMemo(
-    () => [
-      {
-        value: "Sale",
-        label: "Sale",
-      },
-      {
-        value: "Daily Rent",
-        label: "Daily Rent",
-      },
-      {
-        value: "Long Rent",
-        label: "Long Rent",
-      },
-    ],
-    []
-  );
-  const salesmanList = useMemo(
-    () => [
-      {
-        value: "Company",
-        label: "Company",
-      },
-      {
-        value: "Man",
-        label: "Man",
-      },
-    ],
-    []
-  );
-
   const handleClickCategory = (key, value) => {
     setDataCategory((prev) => ({ ...prev, [key]: value }));
   };
@@ -62,6 +33,7 @@ const ChooseCategory: FC<IProps> = ({ dataArray, setDataArray }) => {
       setDataArray((prev) => ({ ...prev, dealType: value }));
     }
   };
+
   const handleSalesMan = (value: any) => {
     if (value != null) {
       setDataArray((prev) => ({ ...prev, salesman: value }));
