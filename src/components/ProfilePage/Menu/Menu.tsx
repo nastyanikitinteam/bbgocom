@@ -8,8 +8,6 @@ import { menuList, mobileMenuList } from "./config";
 import cn from "classnames";
 import styles from "./menu.module.scss";
 
-import LogOutIcon from "images/icons/log-out-icon.svg";
-
 const Menu = () => {
   const isMobile = useMediaQuery(768);
   const [isMenuList, setIsMenuList] = useState(

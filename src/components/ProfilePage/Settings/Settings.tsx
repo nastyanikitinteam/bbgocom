@@ -19,6 +19,7 @@ const Settings = () => {
   const isMobile = useMediaQuery(768);
   const [isActiveItem, setIsActiveItem] = useState(0);
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
+  const [isActiveLogOutModal, setIsActiveLogOutModal] = useState(false);
   const [isOpenParam, setIsOpenParam] = useState(false);
 
   const router = useRouter();
@@ -86,7 +87,10 @@ const Settings = () => {
                     );
                   })}
                 </div>
-                <div className={styles.logOut}>
+                <div
+                  className={styles.logOut}
+                  onClick={() => setIsActiveLogOutModal(true)}
+                >
                   <span className={styles.icon}>
                     <LogOutIcon />
                   </span>
@@ -123,6 +127,22 @@ const Settings = () => {
             description="Are you sure you want to delete your account?"
             title="Delete"
             icon={<AvatarIcon />}
+          />
+        </Modal>
+      )}
+      {isActiveLogOutModal && (
+        <Modal
+          closeModal={() => setIsActiveLogOutModal(false)}
+          type="deleteCard"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <DeactivateModal
+            closeModal={() => setIsActiveLogOutModal(false)}
+            event="Log out"
+            description="Are you sure you want to log out of your account?"
+            title="Log out"
+            icon={<LogOutIcon />}
           />
         </Modal>
       )}

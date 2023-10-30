@@ -3,6 +3,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./account-block.module.scss";
 import Modal from "components/Modal/Modal";
 import Share from "components/Share/Share";
+import DeactivateModal from "components/ProfilePage/MyAds/DeactivateModal/DeactivateModal";
 
 import ShareIcon from "images/icons/share.svg";
 import LogOutIcon from "images/icons/log-out-icon.svg";
@@ -12,6 +13,7 @@ import PhotoIcon from "images/icons/photo.svg";
 
 const AccountBlock = () => {
   const [isAvatar, setIsAvatar] = useState(true);
+  const [isActiveLogOutModal, setIsActiveLogOutModal] = useState(false);
   const [isOpenShare, setIsOpenShare] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isFile, setIsFile] = useState();
@@ -70,7 +72,10 @@ const AccountBlock = () => {
         <h3 className={styles.name}>Kimhan Nakpradith</h3>
         <p className={styles.date}>From April 2023</p>
         {!isMobile && (
-          <div className={styles.logOut}>
+          <div
+            className={styles.logOut}
+            onClick={() => setIsActiveLogOutModal(true)}
+          >
             <span className={styles.icon}>
               <LogOutIcon />
             </span>
@@ -86,6 +91,22 @@ const AccountBlock = () => {
           mobileIsBottom
         >
           <Share isModal />
+        </Modal>
+      )}
+      {isActiveLogOutModal && (
+        <Modal
+          closeModal={() => setIsActiveLogOutModal(false)}
+          type="deleteCard"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <DeactivateModal
+            closeModal={() => setIsActiveLogOutModal(false)}
+            event="Log out"
+            description="Are you sure you want to log out of your account?"
+            title="Log out"
+            icon={<LogOutIcon />}
+          />
         </Modal>
       )}
     </>
