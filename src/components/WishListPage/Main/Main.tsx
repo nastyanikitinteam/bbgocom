@@ -69,13 +69,7 @@ const Main: FC<IProps> = ({
         {isCurrentList.items.map(
           ({ id, name, slug, images, price, oldPrice, location }) => {
             return (
-              <div
-                className={styles.block}
-                key={id}
-                data-aos-anchor-placement="top-bottom"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
+              <div className={styles.block} key={id}>
                 <CardProduct
                   id={id}
                   title={name}

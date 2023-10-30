@@ -70,6 +70,7 @@
 @media (max-width: 768px) {
   .container {
     padding-top: 25px;
+    padding-bottom: 5px;
   }
   .wrapper {
     padding: 0;
@@ -77,10 +78,10 @@
   .blocks {
     flex-wrap: nowrap;
     overflow-y: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px 20px;
     justify-content: flex-start;
     gap: 10px;
+    margin: 0;
   }
   .all {
     margin-top: 0;
@@ -99,11 +100,16 @@
   .block {
     min-width: 100px;
     max-width: 100px;
+    margin-bottom: 0;
   }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 374px) {
   .top {
     padding: 0 10px;
+  }
+
+  .blocks {
+    padding: 0 10px 20px;
   }
 }

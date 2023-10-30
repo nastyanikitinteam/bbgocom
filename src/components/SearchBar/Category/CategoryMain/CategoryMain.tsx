@@ -13,11 +13,12 @@ import ArrowIcon from "images/icons/drop.svg";
 interface IProps {
   isSearchBarTop?: boolean;
   isActiveCategory: number;
-  setIsActiveCategory: (bool: number) => void;
+  setIsActiveCategory: (num: number) => void;
   setIsActiveChoice?: () => void;
   handleClick: (key: string, value: string) => void;
   dataCategory: any;
-  setDataCategory: (bool: string) => void;
+  setDataCategory: (str: string) => void;
+  isCreatePage?: boolean;
 }
 
 const CategoryMain: FC<IProps> = ({
@@ -28,6 +29,7 @@ const CategoryMain: FC<IProps> = ({
   setIsActiveChoice,
   dataCategory,
   setDataCategory,
+  isCreatePage,
 }) => {
   const [isCurrentList, setIsCurrentList] = useState([]);
 
@@ -88,7 +90,7 @@ const CategoryMain: FC<IProps> = ({
               })}
               key={id}
               onMouseEnter={() => chooseCategory(id, title)}
-              onClick={() => setIsActiveChoice()}
+              onClick={() => !isCreatePage && setIsActiveChoice()}
             >
               <div className={styles.image}>
                 <img src={image} alt="" />
@@ -110,6 +112,7 @@ const CategoryMain: FC<IProps> = ({
           setIsActiveChoice={setIsActiveChoice}
           dataCategory={dataCategory}
           delNameOfCategoryItem={delNameOfCategoryItem}
+          isCreatePage={isCreatePage}
         />
       </div>
     </div>

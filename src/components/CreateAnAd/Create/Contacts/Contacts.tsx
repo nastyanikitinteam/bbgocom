@@ -35,7 +35,7 @@ const Contacts: FC<IProps> = ({
   const [isCountryList, setIsCountryList] = useState([]);
 
   const [isPhone, setIsPhone] = useState(
-    dataArray?.contacts.phone ? dataArray.contacts.phone : {}
+    dataArray?.contacts?.phone ? dataArray.contacts.phone : {}
   );
 
   const handlePhoneCode = (value: any) => {

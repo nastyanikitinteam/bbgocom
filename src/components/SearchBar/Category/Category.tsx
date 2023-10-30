@@ -15,6 +15,7 @@ interface IProps {
   isOpenCategoryMenu?: boolean;
   isBig?: boolean;
   placeholder: string;
+  isCreatePage?: boolean;
 }
 
 const Category: FC<IProps> = ({
@@ -25,6 +26,7 @@ const Category: FC<IProps> = ({
   isOpenCategoryMenu,
   isBig,
   placeholder,
+  isCreatePage,
 }) => {
   return (
     <>
@@ -40,7 +42,11 @@ const Category: FC<IProps> = ({
           <CatalogIcon />
         </span>
         <p>
-          {dataCategory.nameOfCategoryItem
+          {isCreatePage
+            ? dataCategory.nameOfCategoryItem
+              ? dataCategory.nameOfCategoryItem
+              : placeholder
+            : dataCategory.nameOfCategoryItem
             ? dataCategory.nameOfCategoryItem
             : dataCategory.nameOfSubCategory
             ? dataCategory.nameOfSubCategory

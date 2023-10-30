@@ -17,6 +17,7 @@ interface IProps {
   category?: string;
   dataCategory?: any;
   delNameOfCategoryItem?: () => void;
+  isCreatePage?: boolean;
 }
 
 const Blocks: FC<IProps> = ({
@@ -28,6 +29,7 @@ const Blocks: FC<IProps> = ({
   category,
   dataCategory,
   delNameOfCategoryItem,
+  isCreatePage,
 }) => {
   const [isbaseUrl, setIsBaseUrl] = useState("");
 
@@ -97,9 +99,9 @@ const Blocks: FC<IProps> = ({
                 <div
                   key={id}
                   className={cn(styles.block, {
-                    [styles.categoryPage]: isCategoryPage,
+                    [styles.createPage]: isCreatePage,
                   })}
-                  onClick={() => chooseSubCategory(id, title)}
+                  onClick={() => !isCreatePage && chooseSubCategory(id, title)}
                 >
                   <h3 className={styles.title}>{title}</h3>
                   <ul className={styles.list}>
@@ -115,12 +117,14 @@ const Blocks: FC<IProps> = ({
                       );
                     })}
                   </ul>
-                  <Link href="/create-an-ad" className={styles.add}>
-                    <span className={styles.icon}>
-                      <Plus />
-                    </span>
-                    Add new one
-                  </Link>
+                  {!isCreatePage && (
+                    <Link href="/create-an-ad" className={styles.add}>
+                      <span className={styles.icon}>
+                        <Plus />
+                      </span>
+                      Add new one
+                    </Link>
+                  )}
                 </div>
               );
             })}

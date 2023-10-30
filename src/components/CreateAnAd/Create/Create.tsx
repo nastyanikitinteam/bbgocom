@@ -112,14 +112,14 @@ const Create: FC<IProps> = ({ isCurrentAd }) => {
                   setDataArray={setDataArray}
                   handleDataArray={handleDataArray}
                   // @ts-ignore
-                  disabled={!dataArray?.information.totalArea}
+                  disabled={!dataArray?.information?.totalArea}
                 />
                 <Contacts
                   dataArray={dataArray}
                   handleDataArray={handleDataArray}
                   setDataArray={setDataArray}
                   // @ts-ignore
-                  disabled={!dataArray?.location.name}
+                  disabled={!dataArray?.location?.name}
                   isCreate={isCurrentAd && true}
                 />
               </form>

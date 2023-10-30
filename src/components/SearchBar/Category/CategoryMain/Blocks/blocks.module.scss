@@ -45,6 +45,15 @@
   }
 }
 
+.createPage {
+  .title {
+    cursor: default;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
 .title {
   // margin-bottom: 15px;
   font-size: 18px;

@@ -87,6 +87,7 @@ const ChooseCategory: FC<IProps> = ({ dataArray, setDataArray }) => {
               isOpenCategoryMenu={isOpenCategoryMenu}
               isBig
               placeholder="Choose category"
+              isCreatePage
             />
           </div>
         </div>
@@ -141,6 +142,7 @@ const ChooseCategory: FC<IProps> = ({ dataArray, setDataArray }) => {
               setDataCategory={setDataCategory}
               handleClick={handleClickCategory}
               setIsActiveChoice={() => setIsOpenCategoryMenu(false)}
+              isCreatePage
             />
           </div>
         )}
