@@ -9,6 +9,8 @@ import InfoBlock from "./InfoBlock/InfoBlock";
 import Banner from "./Menu/Banner/Banner";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import Rules from "./Banner/Rules/Rules";
+import Modal from "components/Modal/Modal";
+import DeactivateModal from "./MyAds/DeactivateModal/DeactivateModal";
 import cn from "classnames";
 
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
@@ -16,6 +18,7 @@ import Menu from "components/ProfilePage/Menu/Menu";
 
 import bannerImg from "images/main-page/banner.png";
 import DeleteIcon from "images/icons/delete.svg";
+import AvatarIcon from "images/icons/avatar.svg";
 
 import styles from "./profile-page.module.scss";
 
@@ -36,19 +39,9 @@ const ProfilePage: FC<IProps> = ({
   showDeleteButton,
   isBanner,
 }) => {
+  const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
-
-  // useEffect(() => {
-  //   if (!isMobile) {
-  //     AOS.init({
-  //       duration: 700,
-  //       easing: "ease-in-out",
-  //       once: true,
-  //     });
-  //     AOS.refresh();
-  //   }
-  // }, [isMobile]);
 
   const breadCrumbs = useMemo(
     () => [
@@ -134,7 +127,10 @@ const ProfilePage: FC<IProps> = ({
                   )}
                 </div>
                 {showDeleteButton && (
-                  <div className={styles.del}>
+                  <div
+                    className={styles.del}
+                    onClick={() => setIsActiveDeleteModal(true)}
+                  >
                     <span className={styles.icon}>
                       <DeleteIcon />
                     </span>
@@ -161,6 +157,22 @@ const ProfilePage: FC<IProps> = ({
         <div className={styles.container} data-aos="fade" data-aos-delay="300">
           {children}
         </div>
+      )}
+      {isActiveDeleteModal && (
+        <Modal
+          closeModal={() => setIsActiveDeleteModal(false)}
+          type="deleteCard"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <DeactivateModal
+            closeModal={() => setIsActiveDeleteModal(false)}
+            event="Delete"
+            description="Are you sure you want to delete your account?"
+            title="Delete"
+            icon={<AvatarIcon />}
+          />
+        </Modal>
       )}
     </div>
   );

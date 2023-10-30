@@ -4,6 +4,8 @@ import cn from "classnames";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Block from "./Block/Block";
 import AccountBlock from "../InfoBlock/AccountBlock/AccountBlock";
+import Modal from "components/Modal/Modal";
+import DeactivateModal from "../MyAds/DeactivateModal/DeactivateModal";
 import styles from "./settings.module.scss";
 
 import { AccountInfo } from "./config";
@@ -11,10 +13,12 @@ import { AccountInfo } from "./config";
 import ArrowSvg from "images/icons/drop.svg";
 import LogOutIcon from "images/icons/log-out-icon.svg";
 import DeleteIcon from "images/icons/delete.svg";
+import AvatarIcon from "images/icons/avatar.svg";
 
 const Settings = () => {
   const isMobile = useMediaQuery(768);
   const [isActiveItem, setIsActiveItem] = useState(0);
+  const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
   const [isOpenParam, setIsOpenParam] = useState(false);
 
   const router = useRouter();
@@ -88,7 +92,10 @@ const Settings = () => {
                   </span>
                   Log Out
                 </div>
-                <div className={styles.del}>
+                <div
+                  className={styles.del}
+                  onClick={() => setIsActiveDeleteModal(true)}
+                >
                   <span className={styles.icon}>
                     <DeleteIcon />
                   </span>
@@ -102,6 +109,22 @@ const Settings = () => {
         AccountInfo.map(({ id, title, items }) => {
           return <Block title={title} items={items} key={id} />;
         })
+      )}
+      {isActiveDeleteModal && (
+        <Modal
+          closeModal={() => setIsActiveDeleteModal(false)}
+          type="deleteCard"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <DeactivateModal
+            closeModal={() => setIsActiveDeleteModal(false)}
+            event="Delete"
+            description="Are you sure you want to delete your account?"
+            title="Delete"
+            icon={<AvatarIcon />}
+          />
+        </Modal>
       )}
     </div>
   );

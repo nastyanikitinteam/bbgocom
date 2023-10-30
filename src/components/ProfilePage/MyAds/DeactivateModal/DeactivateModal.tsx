@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { FC, ReactNode, useCallback } from "react";
 import { Form } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../../utils/validateForm";
@@ -12,6 +12,7 @@ interface IProps {
   description?: string;
   title?: string;
   event?: string;
+  icon?: ReactNode;
 }
 
 const DeactivateModal: FC<IProps> = ({
@@ -19,6 +20,7 @@ const DeactivateModal: FC<IProps> = ({
   description,
   title,
   event,
+  icon,
 }) => {
   const validationSchema = yup.object().shape({});
   const validate = validateForm(validationSchema);
@@ -30,9 +32,7 @@ const DeactivateModal: FC<IProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.icon}>
-        <DeactivateIcon />
-      </div>
+      <div className={styles.icon}>{icon ? icon : <DeactivateIcon />}</div>
       <h3 className={styles.title}>{title}</h3>
       <Form
         onSubmit={onSubmit}

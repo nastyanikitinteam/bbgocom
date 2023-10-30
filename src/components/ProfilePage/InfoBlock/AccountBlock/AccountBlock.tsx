@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./account-block.module.scss";
 import Modal from "components/Modal/Modal";
@@ -13,16 +13,29 @@ import PhotoIcon from "images/icons/photo.svg";
 const AccountBlock = () => {
   const [isAvatar, setIsAvatar] = useState(true);
   const [isOpenShare, setIsOpenShare] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [isFile, setIsFile] = useState();
   const isMobile = useMediaQuery(768);
-
-  const handleFile = (e) => {
-    console.log(e);
-  };
 
   // useEffect(() => {
   //   console.log(isFile);
   // }, [isFile]);
+
+  const fileInputRef = useRef(null);
+
+  const handleFile = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const imageUrl = event.target.result;
+        setSelectedImage(imageUrl);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <>
@@ -31,13 +44,14 @@ const AccountBlock = () => {
           <ShareIcon />
         </div>
         <div className={styles.avatar}>
-          {isAvatar ? (
-            <img src={avatar.src} alt="" />
+          {selectedImage ? (
+            <img src={selectedImage} alt="Selected" />
           ) : (
-            <span className={styles.avatarIcon}>
-              <AvatarIcon />
-            </span>
+            <img src={avatar.src} alt="" />
           )}
+          {/* <span className={styles.avatarIcon}>
+            <AvatarIcon />
+          </span> */}
           <label className={styles.addPhoto}>
             <span className={styles.icon}>
               <PhotoIcon />
@@ -46,9 +60,10 @@ const AccountBlock = () => {
               id="image-input"
               type="file"
               accept=".png,.jpg,.jpeg,.gif"
-              onInput={(e) => {
+              onChange={(e) => {
                 handleFile(e);
               }}
+              ref={fileInputRef}
             />
           </label>
         </div>
