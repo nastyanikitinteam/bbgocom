@@ -2,6 +2,8 @@ import { useMemo, useRef, FC, useEffect, useState } from "react";
 import SelectContainer from "components/Select/Select";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./sortby.module.scss";
+
+import { sortList } from "./config";
 interface IProps {
   dataPrice: any;
   handleClickPrice: (key: string, value: string) => void;
@@ -10,31 +12,9 @@ interface IProps {
 
 const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice, withoutLabel }) => {
   const [isChooseOption, setIsChooseOption] = useState(false);
+  const [isClearValue, setIsClearValue] = useState(false);
 
   const selectRef = useRef();
-
-  const sortList = useMemo(
-    () => [
-      {
-        value: "The cheapest",
-        label: "The cheapest",
-      },
-      {
-        id: 1,
-        value: "The most expensive",
-        label: "The most expensive",
-      },
-      {
-        value: "The latest",
-        label: "The latest",
-      },
-      {
-        value: "Recommended",
-        label: "Recommended",
-      },
-    ],
-    []
-  );
 
   const selectedSortItem = sortList.find(
     (item, id) => item.value === dataPrice.sortBy
@@ -50,7 +30,10 @@ const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice, withoutLabel }) => {
   useEffect(() => {
     if (dataPrice.sortBy == undefined) {
       // @ts-ignore
-      selectRef?.current?.clearValue();
+      // selectRef?.current?.clearValue();
+      setIsClearValue(true);
+    } else {
+      setIsClearValue(false);
     }
   }, [dataPrice]);
 
@@ -64,6 +47,8 @@ const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice, withoutLabel }) => {
         placeholder="Default"
         title="Sort by"
         onChange={handleChange}
+        // ref={selectRef}
+        isClearValue={isClearValue}
       />
     </div>
   );

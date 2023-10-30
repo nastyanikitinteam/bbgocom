@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, forwardRef, useRef } from "react";
 import Select, { components } from "react-select";
 import PortalContainer from "components/PortalContainer/PortalContainer";
 import SelectSearch from "./SelectSearch/SelectSearch";
@@ -21,6 +21,7 @@ interface IProps {
   isSearch?: boolean;
   title?: string;
   chooseOption?: any;
+  isClearValue?: boolean;
 }
 const SelectContainer: FC<IProps> = ({
   options,
@@ -31,7 +32,9 @@ const SelectContainer: FC<IProps> = ({
   title,
   isSearch,
   chooseOption,
+  isClearValue,
 }) => {
+  const selectRef = useRef();
   const [isOpenList, setIsOpenList] = useState(false);
   const [isChooseOption, setIsChooseOption] = useState(
     placeholder ? placeholder : options[0].value
@@ -46,7 +49,7 @@ const SelectContainer: FC<IProps> = ({
     } else {
       setFillClass("");
     }
-    onChange && onChange(selectedOption.value);
+    onChange && onChange(selectedOption?.value);
   };
 
   const isMobile = useMediaQuery(768);
@@ -73,6 +76,14 @@ const SelectContainer: FC<IProps> = ({
     );
   };
 
+  useEffect(() => {
+    if (isClearValue) {
+      setIsChooseOption(placeholder);
+      //@ts-ignore
+      selectRef?.current?.clearValue();
+    }
+  }, [isClearValue]);
+
   return !isMobile ? (
     <div className={styles.container}>
       <Select
@@ -84,6 +95,7 @@ const SelectContainer: FC<IProps> = ({
         isSearchable={isSearch ? true : false}
         components={{ DropdownIndicator, NoOptionsMessage }}
         onChange={handleChange}
+        ref={selectRef}
         // menuIsOpen
       />
     </div>

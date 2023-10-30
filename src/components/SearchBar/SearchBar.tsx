@@ -106,11 +106,7 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
   };
   const handleClickPrice = (key, value) => {
     if (key === "default") {
-      setDataPrice({
-        minPrice: dataPriceDefault.minPrice,
-        maxPrice: dataPriceDefault.maxPrice,
-        currency: dataPriceDefault.currency,
-      });
+      setDataPrice(dataPriceDefault);
     } else {
       setDataPrice((prev) => ({ ...prev, [key]: value }));
     }
@@ -128,10 +124,6 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
       currency: dataPriceDefault.currency,
     });
   };
-
-  useEffect(() => {
-    console.log(dataCategory);
-  }, [dataCategory]);
 
   const deleteFilterResult = (param) => {
     handleClickPrice("default", null);
