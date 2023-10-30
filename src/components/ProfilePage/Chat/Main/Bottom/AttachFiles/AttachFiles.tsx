@@ -17,7 +17,11 @@ const AttachFiles: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
     const newFiles = Array.from(e.target.files);
     let updatedFiles = selectedFiles;
     if (Array.isArray(updatedFiles)) {
-      updatedFiles = updatedFiles.concat(newFiles);
+      if (updatedFiles.length + newFiles.length > 10) {
+        alert("You can select no more than 10 files.");
+      } else {
+        updatedFiles = updatedFiles.concat(newFiles);
+      }
     } else {
       updatedFiles = [...newFiles];
     }

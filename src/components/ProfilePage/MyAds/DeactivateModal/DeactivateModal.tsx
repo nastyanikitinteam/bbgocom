@@ -9,10 +9,17 @@ import DeactivateIcon from "images/icons/deactivate.svg";
 
 interface IProps {
   closeModal: () => void;
-  type: string;
+  description?: string;
+  title?: string;
+  event?: string;
 }
 
-const DeactivateModal: FC<IProps> = ({ closeModal, type }) => {
+const DeactivateModal: FC<IProps> = ({
+  closeModal,
+  description,
+  title,
+  event,
+}) => {
   const validationSchema = yup.object().shape({});
   const validate = validateForm(validationSchema);
 
@@ -26,18 +33,13 @@ const DeactivateModal: FC<IProps> = ({ closeModal, type }) => {
       <div className={styles.icon}>
         <DeactivateIcon />
       </div>
-      <h3 className={styles.title}>
-        {type === "Active" ? "Deactivate" : "Delete"} Ad
-      </h3>
+      <h3 className={styles.title}>{title}</h3>
       <Form
         onSubmit={onSubmit}
         validate={validate}
         render={({ handleSubmit }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <p className={styles.description}>
-              Are you sure you want to{" "}
-              {type === "Active" ? "deactivate" : "delete"} ads?
-            </p>
+            <p className={styles.description}>{description}</p>
             <div className={styles.buttons}>
               <a
                 href="#"
@@ -49,9 +51,9 @@ const DeactivateModal: FC<IProps> = ({ closeModal, type }) => {
               <button
                 type="submit"
                 className={cn("default-button red sm", styles.button)}
-                aria-label={`Deactivate`}
+                aria-label={event}
               >
-                {type === "Active" ? "Deactivate" : "Delete"}
+                {event}
               </button>
             </div>
           </form>

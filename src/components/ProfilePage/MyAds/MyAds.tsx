@@ -269,7 +269,13 @@ const MyAds = () => {
         >
           <DeactivateModal
             closeModal={() => setIsActiveDeleteModal(false)}
-            type={isActiveCategory}
+            event={isActiveCategory === "Active" ? "Deactivate" : "Delete"}
+            description={`Are you sure you want to ${
+              isActiveCategory === "Active" ? "deactivate" : "delete"
+            } ads? `}
+            title={`${
+              isActiveCategory === "Active" ? "Deactivate" : "Delete"
+            } Ads`}
           />
         </Modal>
       )}

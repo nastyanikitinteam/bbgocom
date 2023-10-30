@@ -181,7 +181,11 @@ const Card: FC<IProps> = ({ item, children, type }) => {
         >
           <DeactivateModal
             closeModal={() => setIsActiveDeleteModal(false)}
-            type={type}
+            event={type === "Active" ? "Deactivate" : "Delete"}
+            description={`Are you sure you want to ${
+              type === "Active" ? "deactivate" : "delete"
+            } ad? `}
+            title={`${type === "Active" ? "Deactivate" : "Delete"} Ad`}
           />
         </Modal>
       )}

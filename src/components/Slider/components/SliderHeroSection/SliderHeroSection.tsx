@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./slide-hero-section.module.scss";
 
@@ -26,9 +27,9 @@ const Slide: FC<IProps> = ({ param }) => {
     >
       {param.button && (
         <div className={styles.button}>
-          <a href={param.button.link} className="default-button">
+          <Link href={param.button.link} className="default-button">
             {param.button.name}
-          </a>
+          </Link>
         </div>
       )}
     </div>

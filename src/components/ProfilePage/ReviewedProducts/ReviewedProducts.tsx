@@ -5,6 +5,8 @@ import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import useMediaQuery from "src/utils/useMediaQuery";
 import CardProduct from "components/CardProduct/CardProduct";
 import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
+import Modal from "components/Modal/Modal";
+import DeactivateModal from "../MyAds/DeactivateModal/DeactivateModal";
 import { productList } from "components/MainPage/Recommend/config";
 import cn from "classnames";
 import styles from "./reviewed-products.module.scss";
@@ -18,6 +20,7 @@ const ReviewedProducts = () => {
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [isHorizontalShow, setIsHorizontalShow] = useState(false);
+  const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
 
   const [dataPrice, setDataPrice] = useState({});
 
@@ -78,17 +81,16 @@ const ReviewedProducts = () => {
                 </div>
                 <h3 className={styles.title}>Reviewed products</h3>
                 {checkedItems.length > 0 && (
-                  <div className={styles.button}>
-                    <button
-                      type="submit"
-                      className={styles.deleteSelected}
-                      aria-label={`Delete`}
-                    >
+                  <div
+                    className={styles.button}
+                    onClick={() => setIsActiveDeleteModal(true)}
+                  >
+                    <div className={styles.deleteSelected}>
                       <span className={styles.icon}>
                         <DelIcon />
                       </span>
                       Delete
-                    </button>
+                    </div>
                   </div>
                 )}
               </div>
@@ -160,13 +162,12 @@ const ReviewedProducts = () => {
               )}
               {checkedItems.length > 0 && !isMobile && (
                 <div className={styles.button}>
-                  <button
-                    type="submit"
+                  <div
                     className={cn("default-button border sm", styles.button)}
-                    aria-label={`Delete`}
+                    onClick={() => setIsActiveDeleteModal(true)}
                   >
                     Delete
-                  </button>
+                  </div>
                 </div>
               )}
             </div>
@@ -212,6 +213,21 @@ const ReviewedProducts = () => {
           </form>
         )}
       ></Form>
+      {isActiveDeleteModal && (
+        <Modal
+          closeModal={() => setIsActiveDeleteModal(false)}
+          type="deleteCard"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <DeactivateModal
+            closeModal={() => setIsActiveDeleteModal(false)}
+            event="Delete"
+            description="Are you sure you want to delete reviewed products?"
+            title="Delete"
+          />
+        </Modal>
+      )}
     </div>
   );
 };

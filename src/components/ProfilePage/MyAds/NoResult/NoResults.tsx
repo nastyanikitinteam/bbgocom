@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 import styles from "./noresult.module.scss";
 import cn from "classnames";
 import ListIcon from "images/icons/list-icon.svg";
@@ -28,7 +29,12 @@ const NoResult: FC<IProps> = ({ isActiveCategory }) => {
         <h3 className={styles.subtitle}>Empty</h3>
       )}
 
-      <a className={cn("default-button sm", styles.button)}>Create an Ad</a>
+      <Link
+        href="/create-an-ad"
+        className={cn("default-button sm", styles.button)}
+      >
+        Create an Ad
+      </Link>
     </div>
   );
 };
