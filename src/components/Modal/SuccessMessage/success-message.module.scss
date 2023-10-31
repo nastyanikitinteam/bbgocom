@@ -16,6 +16,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  max-width: 380px;
+  margin: 0 auto;
 }
 .avatar {
   position: relative;

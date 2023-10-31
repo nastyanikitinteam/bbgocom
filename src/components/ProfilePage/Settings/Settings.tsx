@@ -5,7 +5,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import Block from "./Block/Block";
 import AccountBlock from "../InfoBlock/AccountBlock/AccountBlock";
 import Modal from "components/Modal/Modal";
-import DeactivateModal from "../MyAds/DeactivateModal/DeactivateModal";
+import Confirm from "components/Modal/Confirm/Confirm";
 import styles from "./settings.module.scss";
 
 import { AccountInfo } from "./config";
@@ -121,7 +121,7 @@ const Settings = () => {
           otherCloseIcon
           mobileIsBottom
         >
-          <DeactivateModal
+          <Confirm
             closeModal={() => setIsActiveDeleteModal(false)}
             event="Delete"
             description="Are you sure you want to delete your account?"
@@ -137,7 +137,7 @@ const Settings = () => {
           otherCloseIcon
           mobileIsBottom
         >
-          <DeactivateModal
+          <Confirm
             closeModal={() => setIsActiveLogOutModal(false)}
             event="Log out"
             description="Are you sure you want to log out of your account?"

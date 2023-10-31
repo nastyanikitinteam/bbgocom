@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import styles from "./successful-modal.module.scss";
+import styles from "./successful-create.module.scss";
 import cn from "classnames";
 
 import CongratulationsIcon from "images/icons/congratulations.svg";
@@ -11,7 +11,7 @@ interface IProps {
   isCurrentAd?: boolean;
 }
 
-const SuccessfulModal: FC<IProps> = ({ closeModal, isCurrentAd }) => {
+const SuccessfulCreate: FC<IProps> = ({ closeModal, isCurrentAd }) => {
   return (
     <div className={styles.container}>
       <div className={styles.cancel} onClick={closeModal}>
@@ -39,4 +39,4 @@ const SuccessfulModal: FC<IProps> = ({ closeModal, isCurrentAd }) => {
   );
 };
 
-export default SuccessfulModal;
+export default SuccessfulCreate;

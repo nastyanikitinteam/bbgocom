@@ -1,8 +1,8 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import useMediaQuery from "src/utils/useMediaQuery";
-import ShareModal from "../ShareModal/ShareModal";
-import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
+import ShareProduct from "components/Modal/ShareProduct/ShareProduct";
+import AddToWishList from "components/Modal/AddToWishList/AddToWishList";
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
 import DetailedInformation from "./DetailedInformation/DetailedInformation";
 import Description from "./Description/Description";
@@ -100,7 +100,7 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
           mobileIsBottom
           otherCloseIcon
         >
-          <ShareModal
+          <ShareProduct
             closeModal={handleShareModal}
             isCurrentProduct={isCurrentProduct}
           />

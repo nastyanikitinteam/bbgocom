@@ -5,14 +5,14 @@ import cn from "classnames";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Slider from "components/Slider/Slider";
 import Modal from "components/Modal/Modal";
-import DeactivateModal from "../DeactivateModal/DeactivateModal";
-import ActivateModal from "../ActivateModal/ActivateModal";
+import Confirm from "components/Modal/Confirm/Confirm";
 
 import MapIcon from "images/icons/map-icon.svg";
 import EditIcon from "images/icons/edit.svg";
 import MessagesIcon from "images/icons/messages-icon.svg";
 import CalendarIcon from "images/icons/calendar.svg";
 import ViewIcon from "images/icons/eye-open-svgrepo-com.svg";
+import ActivateIcon from "images/icons/activate.svg";
 import LightningIcon from "images/icons/lightning.svg";
 
 interface IProps {
@@ -179,7 +179,7 @@ const Card: FC<IProps> = ({ item, children, type }) => {
           otherCloseIcon
           mobileIsBottom
         >
-          <DeactivateModal
+          <Confirm
             closeModal={() => setIsActiveDeleteModal(false)}
             event={type === "Active" ? "Deactivate" : "Delete"}
             description={`Are you sure you want to ${
@@ -196,9 +196,13 @@ const Card: FC<IProps> = ({ item, children, type }) => {
           otherCloseIcon
           mobileIsBottom
         >
-          <ActivateModal
+          <Confirm
             closeModal={() => setIsActiveActivateModal(false)}
-            type={type}
+            event="Activate"
+            description="Are you sure you want to activate ad?"
+            title="Activate Ad"
+            icon={<ActivateIcon />}
+            isGreen
           />
         </Modal>
       )}

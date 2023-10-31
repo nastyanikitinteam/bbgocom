@@ -1,9 +1,9 @@
 import { FC, ReactNode, useCallback } from "react";
 import { Form } from "react-final-form";
 import * as yup from "yup";
-import { validateForm } from "../../../../utils/validateForm";
+import { validateForm } from "../../../utils/validateForm";
 import cn from "classnames";
-import styles from "./deactivate-modal.module.scss";
+import styles from "./confirm.module.scss";
 
 import DeactivateIcon from "images/icons/deactivate.svg";
 
@@ -13,25 +13,26 @@ interface IProps {
   title?: string;
   event?: string;
   icon?: ReactNode;
+  isGreen?: boolean;
 }
 
-const DeactivateModal: FC<IProps> = ({
+const Confirm: FC<IProps> = ({
   closeModal,
   description,
   title,
   event,
   icon,
+  isGreen,
 }) => {
   const validationSchema = yup.object().shape({});
   const validate = validateForm(validationSchema);
 
   const onSubmit = useCallback((data, form) => {
-    console.log(data);
     closeModal();
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={cn(styles.container, { [styles.green]: isGreen })}>
       <div className={styles.icon}>{icon ? icon : <DeactivateIcon />}</div>
       <h3 className={styles.title}>{title}</h3>
       <Form
@@ -39,7 +40,10 @@ const DeactivateModal: FC<IProps> = ({
         validate={validate}
         render={({ handleSubmit }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <p className={styles.description}>{description}</p>
+            <p
+              className={styles.description}
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
             <div className={styles.buttons}>
               <a
                 href="#"
@@ -50,7 +54,9 @@ const DeactivateModal: FC<IProps> = ({
               </a>
               <button
                 type="submit"
-                className={cn("default-button red sm", styles.button)}
+                className={cn("default-button  sm", styles.button, {
+                  red: !isGreen,
+                })}
                 aria-label={event}
               >
                 {event}
@@ -63,4 +69,4 @@ const DeactivateModal: FC<IProps> = ({
   );
 };
 
-export default DeactivateModal;
+export default Confirm;

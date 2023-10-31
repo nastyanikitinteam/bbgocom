@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import Modal from "components/Modal/Modal";
+import Confirm from "components/Modal/Confirm/Confirm";
 import DeleteChat from "../../Main/DeleteChat/DeleteChat";
 import styles from "./block.module.scss";
 import cn from "classnames";
@@ -95,7 +96,13 @@ const Block: FC<IProps> = ({ item, isActiveChatID, onClick }) => {
           otherCloseIcon
           mobileIsBottom
         >
-          <DeleteChat cancel={() => setIsOpenDel(false)} item={item} />
+          <Confirm
+            closeModal={() => setIsOpenDel(false)}
+            event="Delete"
+            description={`Do you want to delete the chat with ${item?.name}?`}
+            title="Delete Chat?"
+            icon={<DelIcon />}
+          />
         </Modal>
       )}
     </>

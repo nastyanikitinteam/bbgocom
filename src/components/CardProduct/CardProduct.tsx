@@ -8,8 +8,7 @@ import {
 } from "react";
 import Link from "next/link";
 import styles from "./card-product.module.scss";
-import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
-import Delete from "components/WishPage/Delete/Delete";
+import AddToWishList from "components/Modal/AddToWishList/AddToWishList";
 import Modal from "components/Modal/Modal";
 import cn from "classnames";
 

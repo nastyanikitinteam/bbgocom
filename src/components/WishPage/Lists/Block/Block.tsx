@@ -4,13 +4,13 @@ import styles from "./block.module.scss";
 import useMediaQuery from "src/utils/useMediaQuery";
 import DropMenu from "components/DropMenu/DropMenu";
 import Modal from "components/Modal/Modal";
-import NewWishList from "components/WishPage/NewWishList/NewWishList";
-import Delete from "components/WishPage/Delete/Delete";
-import AddToWishList from "components/WishPage/AddToWishList/AddToWishList";
+import NewWishList from "components/Modal/NewWishList/NewWishList";
+import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
 
 import DelIcon from "images/icons/delete.svg";
 import EditIcon from "images/icons/edit.svg";
+import StarIcon from "images/icons/delete-star.svg";
 
 interface IProps {
   item: any;
@@ -136,7 +136,13 @@ const Block: FC<IProps> = ({ item }) => {
           otherCloseIcon
           mobileIsBottom
         >
-          <Delete cancel={() => setIsOpenDel(false)} item={item} />
+          <Confirm
+            closeModal={() => setIsOpenDel(false)}
+            event="Delete"
+            description={`Do you want to delete wishlist <span> ${item?.name}? </span>`}
+            title="Delete Wishlist"
+            icon={<StarIcon />}
+          />
         </Modal>
       )}
     </div>

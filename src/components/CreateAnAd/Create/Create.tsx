@@ -12,7 +12,7 @@ import DetailedInformation from "./DetailedInformation/DetailedInformation";
 import Location from "./Location/Location";
 import Contacts from "./Contacts/Contacts";
 import Modal from "components/Modal/Modal";
-import SuccessfulModal from "./SuccessfulModal/SuccessfulModal";
+import SuccessfulCreate from "components/Modal/SuccessfulCreate/SuccessfulCreate";
 
 import cn from "classnames";
 import styles from "./create.module.scss";
@@ -48,10 +48,6 @@ const Create: FC<IProps> = ({ isCurrentAd }) => {
     setDataArray({});
     router.back();
   };
-
-  useEffect(() => {
-    console.log(dataArray, "data");
-  }, [dataArray]);
 
   const onSubmit = useCallback((data, form) => {
     console.log(dataArray);
@@ -133,7 +129,7 @@ const Create: FC<IProps> = ({ isCurrentAd }) => {
           type="successful"
           otherCloseIcon
         >
-          <SuccessfulModal closeModal={cancel} isCurrentAd />
+          <SuccessfulCreate closeModal={cancel} isCurrentAd />
         </Modal>
       )}
     </>

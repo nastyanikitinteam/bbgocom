@@ -10,7 +10,7 @@ import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
 import NoResult from "./NoResult/NoResults";
 import { categorieList, adList } from "./config";
 import Modal from "components/Modal/Modal";
-import DeactivateModal from "./DeactivateModal/DeactivateModal";
+import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
 import styles from "./my-ads.module.scss";
 
@@ -267,7 +267,7 @@ const MyAds = () => {
           otherCloseIcon
           mobileIsBottom
         >
-          <DeactivateModal
+          <Confirm
             closeModal={() => setIsActiveDeleteModal(false)}
             event={isActiveCategory === "Active" ? "Deactivate" : "Delete"}
             description={`Are you sure you want to ${

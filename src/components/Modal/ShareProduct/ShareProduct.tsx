@@ -1,8 +1,7 @@
 import { FC } from "react";
-import Link from "next/link";
 import Share from "components/Share/Share";
 
-import styles from "./share-modal.module.scss";
+import styles from "./share-product.module.scss";
 
 import MapIcon from "images/icons/map-icon.svg";
 
@@ -11,7 +10,7 @@ interface IProps {
   isCurrentProduct: any;
 }
 
-const ShareModal: FC<IProps> = ({ closeModal, isCurrentProduct }) => {
+const ShareProduct: FC<IProps> = ({ closeModal, isCurrentProduct }) => {
   return (
     <div className={styles.container}>
       <h3 className={styles.top}>Add to a wishlist</h3>
@@ -40,4 +39,4 @@ const ShareModal: FC<IProps> = ({ closeModal, isCurrentProduct }) => {
   );
 };
 
-export default ShareModal;
+export default ShareProduct;

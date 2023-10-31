@@ -8,11 +8,23 @@
   text-align: center;
 }
 
+.green {
+  .icon {
+    background: var(--primary-light-green, #ebfaec);
+    path,
+    rect {
+      stroke: #5bb75f;
+    }
+  }
+}
+
 .description {
   color: var(--neutrals-gray, #808080);
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.2px;
+  max-width: 244px;
+  margin: 0 auto;
   span {
     color: #000;
     display: block;
@@ -29,15 +41,6 @@
   path,
   rect {
     stroke: #ff5a27;
-  }
-}
-
-.title {
-  @media (min-width: 769px) {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 32px;
-    letter-spacing: -1px;
   }
 }
 

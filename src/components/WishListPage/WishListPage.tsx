@@ -6,10 +6,9 @@ import DropMenu from "components/DropMenu/DropMenu";
 import MapContainer from "./MapContainer/MapContainer";
 import Main from "./Main/Main";
 import Modal from "components/Modal/Modal";
-import NewWishList from "components/WishPage/NewWishList/NewWishList";
+import NewWishList from "components/Modal/NewWishList/NewWishList";
 import Share from "components/Share/Share";
-import CardProduct from "components/CardProduct/CardProduct";
-import Delete from "components/WishPage/Delete/Delete";
+import Confirm from "components/Modal/Confirm/Confirm";
 import { wishlistArr } from "components/WishPage/Lists/config";
 import { IWishlist, initialWishlist } from "src/interfaces/wishlists";
 import cn from "classnames";
@@ -18,6 +17,7 @@ import ArrowIcon from "images/icons/drop.svg";
 import ShareIcon from "images/icons/share.svg";
 import EditIcon from "images/icons/edit.svg";
 import DelIcon from "images/icons/delete.svg";
+import StarIcon from "images/icons/delete-star.svg";
 
 interface IProps {
   activeSlug: string | string[];
@@ -194,7 +194,13 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
           otherCloseIcon
           mobileIsBottom
         >
-          <Delete cancel={() => setIsOpenDel(false)} item={isCurrentList} />
+          <Confirm
+            closeModal={() => setIsOpenDel(false)}
+            event="Delete"
+            description={`Do you want to delete wishlist <span> ${isCurrentList?.name}? </span>`}
+            title="Delete Wishlist"
+            icon={<StarIcon />}
+          />
         </Modal>
       )}
     </>

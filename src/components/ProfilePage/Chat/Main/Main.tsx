@@ -4,6 +4,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./main.module.scss";
 import Message from "../Message/Message";
 import Modal from "components/Modal/Modal";
+import Confirm from "components/Modal/Confirm/Confirm";
 import DeleteChat from "./DeleteChat/DeleteChat";
 import BlockChat from "./BlockChat/BlockChat";
 import Ad from "./Ad/Ad";
@@ -148,9 +149,12 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
           otherCloseIcon
           mobileIsBottom
         >
-          <DeleteChat
-            cancel={() => setIsOpenDel(false)}
-            item={isCurrentChat[0]}
+          <Confirm
+            closeModal={() => setIsOpenDel(false)}
+            event="Delete"
+            description={`Do you want to delete the chat with ${isCurrentChat[0]?.name}?`}
+            title="Delete Chat?"
+            icon={<DeleteIcon />}
           />
         </Modal>
       )}
@@ -161,9 +165,12 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
           otherCloseIcon
           mobileIsBottom
         >
-          <BlockChat
-            cancel={() => setIsOpenBlockModal(false)}
-            item={isCurrentChat[0]}
+          <Confirm
+            closeModal={() => setIsOpenBlockModal(false)}
+            event="Block"
+            description="Are you sure you want to block the user?"
+            title={`Block ${isCurrentChat[0]?.name}?`}
+            icon={<BlockIcon />}
           />
         </Modal>
       )}

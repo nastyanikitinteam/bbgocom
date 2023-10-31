@@ -1,10 +1,11 @@
 import { FC, useCallback, useState } from "react";
 import styles from "./card.module.scss";
 import Modal from "components/Modal/Modal";
-import DeleteCard from "../DeleteCard/DeleteCard";
+import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
 
 import DelIcon from "images/icons/delete.svg";
+import WalletIcon from "images/icons/wallet-big.svg";
 
 interface IProps {
   item: any;
@@ -65,7 +66,13 @@ const Card: FC<IProps> = ({ item, changeMainCard }) => {
           otherCloseIcon
           mobileIsBottom
         >
-          <DeleteCard closeModal={() => setIsActiveDeleteModal(false)} />
+          <Confirm
+            closeModal={() => setIsActiveDeleteModal(false)}
+            event="Delete card"
+            description="The card will be removed from your wallet and personal account"
+            title="Delete Card"
+            icon={<WalletIcon />}
+          />
         </Modal>
       )}
     </>

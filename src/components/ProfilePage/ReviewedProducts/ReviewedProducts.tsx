@@ -6,7 +6,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import CardProduct from "components/CardProduct/CardProduct";
 import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
 import Modal from "components/Modal/Modal";
-import DeactivateModal from "../MyAds/DeactivateModal/DeactivateModal";
+import Confirm from "components/Modal/Confirm/Confirm";
 import { productList } from "components/MainPage/Recommend/config";
 import cn from "classnames";
 import styles from "./reviewed-products.module.scss";
@@ -220,7 +220,7 @@ const ReviewedProducts = () => {
           otherCloseIcon
           mobileIsBottom
         >
-          <DeactivateModal
+          <Confirm
             closeModal={() => setIsActiveDeleteModal(false)}
             event="Delete"
             description="Are you sure you want to delete reviewed products?"

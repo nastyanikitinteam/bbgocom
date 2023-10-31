@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState, FC } from "react";
 import { Form, Field } from "react-final-form";
 import Textarea from "components/FormElements/Textarea/Textarea";
 import Modal from "components/Modal/Modal";
-import SuccessModal from "./SuccessModal/SuccessModal";
+import SuccessMessage from "components/Modal/SuccessMessage/SuccessMessage";
 import * as yup from "yup";
 import { validateForm } from "../../../../../utils/validateForm";
 import styles from "./message.module.scss";
@@ -116,7 +116,7 @@ const Message: FC<IProps> = ({ isCurrentProduct, hasOldPrice }) => {
           otherCloseIcon
           mobileIsBottom
         >
-          <SuccessModal
+          <SuccessMessage
             closeModal={() => setIsOpenModalSuccess(false)}
             isCurrentProduct={isCurrentProduct}
           />

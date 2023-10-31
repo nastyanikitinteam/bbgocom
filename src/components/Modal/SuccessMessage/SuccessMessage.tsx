@@ -2,7 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import cn from "classnames";
 
-import styles from "./success-modal.module.scss";
+import styles from "./success-message.module.scss";
 
 import MapIcon from "images/icons/map-icon.svg";
 import avatar from "images/main/avatar.png";
@@ -13,7 +13,7 @@ interface IProps {
   isCurrentProduct: any;
 }
 
-const SuccessModal: FC<IProps> = ({ closeModal, isCurrentProduct }) => {
+const SuccessMessage: FC<IProps> = ({ closeModal, isCurrentProduct }) => {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Your message has been sent</h3>
@@ -57,4 +57,4 @@ const SuccessModal: FC<IProps> = ({ closeModal, isCurrentProduct }) => {
   );
 };
 
-export default SuccessModal;
+export default SuccessMessage;

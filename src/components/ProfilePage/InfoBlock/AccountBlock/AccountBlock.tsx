@@ -3,8 +3,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./account-block.module.scss";
 import Modal from "components/Modal/Modal";
 import Share from "components/Share/Share";
-import DeactivateModal from "components/ProfilePage/MyAds/DeactivateModal/DeactivateModal";
-
+import Confirm from "components/Modal/Confirm/Confirm";
 import ShareIcon from "images/icons/share.svg";
 import LogOutIcon from "images/icons/log-out-icon.svg";
 import avatar from "images/main/avatar.png";
@@ -100,7 +99,7 @@ const AccountBlock = () => {
           otherCloseIcon
           mobileIsBottom
         >
-          <DeactivateModal
+          <Confirm
             closeModal={() => setIsActiveLogOutModal(false)}
             event="Log out"
             description="Are you sure you want to log out of your account?"

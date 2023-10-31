@@ -10,7 +10,7 @@ import Banner from "./Menu/Banner/Banner";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import Rules from "./Banner/Rules/Rules";
 import Modal from "components/Modal/Modal";
-import DeactivateModal from "./MyAds/DeactivateModal/DeactivateModal";
+import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
 
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
@@ -165,7 +165,7 @@ const ProfilePage: FC<IProps> = ({
           otherCloseIcon
           mobileIsBottom
         >
-          <DeactivateModal
+          <Confirm
             closeModal={() => setIsActiveDeleteModal(false)}
             event="Delete"
             description="Are you sure you want to delete your account?"

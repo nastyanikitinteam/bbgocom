@@ -3,7 +3,7 @@ import { Form, Field } from "react-final-form";
 import Textarea from "components/FormElements/Textarea/Textarea";
 import MessagesIcon from "images/icons/messages-icon.svg";
 import Modal from "components/Modal/Modal";
-import SuccessModal from "../../Info/Message/SuccessModal/SuccessModal";
+import SuccessMessage from "components/Modal/SuccessMessage/SuccessMessage";
 import * as yup from "yup";
 import { validateForm } from "../../../../../utils/validateForm";
 import styles from "./message.module.scss";
@@ -128,7 +128,10 @@ const Message: FC<IProps> = ({ setIsShowMessage, isCurrentProduct }) => {
           otherCloseIcon
           mobileIsBottom
         >
-          <SuccessModal closeModal={back} isCurrentProduct={isCurrentProduct} />
+          <SuccessMessage
+            closeModal={back}
+            isCurrentProduct={isCurrentProduct}
+          />
         </Modal>
       )}
     </>

@@ -3,7 +3,7 @@ import { Form, Field } from "react-final-form";
 import Item from "./Item/Item";
 import NoResult from "components/SearchBar/SearchLocation/NoResult/NoResults";
 import NewWishList from "../NewWishList/NewWishList";
-import { wishlistArr } from "../Lists/config";
+import { wishlistArr } from "../../WishPage/Lists/config";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import styles from "./add-to-wish-list.module.scss";
