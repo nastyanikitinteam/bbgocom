@@ -1,5 +1,3 @@
-import { useMemo, useEffect } from "react";
-
 import { footerArray } from "./config";
 
 import styles from "./footer.module.scss";

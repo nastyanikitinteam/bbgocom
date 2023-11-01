@@ -1,7 +1,7 @@
-import { useMemo, useState, FC, useEffect } from "react";
-import { Form, Field } from "react-final-form";
+import { useState, FC } from "react";
+import { Field } from "react-final-form";
 import FormInput from "components/FormElements/FormInput/FormInput";
-import Textarea from "components/FormElements/Textarea/Textarea";
+import { currencyList } from "config/currency";
 import styles from "./price.module.scss";
 import cn from "classnames";
 
@@ -20,24 +20,6 @@ const Price: FC<IProps> = ({
 }) => {
   const [isActiveCurrency, setIsActiveCurrency] = useState(
     dataArray?.currency ? dataArray?.currency : "USD"
-  );
-
-  const currencyList = useMemo(
-    () => [
-      {
-        value: "USD",
-        label: "USD",
-      },
-      {
-        value: "RUB",
-        label: "RUB",
-      },
-      {
-        value: "THB",
-        label: "THB",
-      },
-    ],
-    []
   );
 
   const handleLanguage = (value) => {

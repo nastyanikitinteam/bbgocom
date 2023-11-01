@@ -1,11 +1,4 @@
-import {
-  useMemo,
-  useContext,
-  useEffect,
-  useState,
-  FC,
-  useCallback,
-} from "react";
+import { useContext, useEffect, useState, FC, useCallback } from "react";
 
 import Link from "next/link";
 import useMediaQuery from "src/utils/useMediaQuery";
@@ -21,9 +14,7 @@ import LogoSvg from "images/main/logo.svg";
 import StarSvg from "images/icons/star.svg";
 import AddSvg from "images/icons/add-icon.svg";
 
-import UsaIcon from "images/countries/usa.svg";
-import RuIcon from "images/countries/russia.svg";
-import ThailandIcon from "images/countries/thailand.svg";
+import { languageListWithIcon } from "config/language";
 
 import cn from "classnames";
 import Select from "components/Select/Select";
@@ -48,39 +39,6 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
 
   const isSmallLaptop = useMediaQuery(1100);
   const isTablet = useMediaQuery(998);
-
-  const langList = useMemo(
-    () => [
-      {
-        value: "en",
-        label: (
-          <div className="option-withIcon">
-            <UsaIcon />
-            EN
-          </div>
-        ),
-      },
-      {
-        value: "ru",
-        label: (
-          <div className="option-withIcon">
-            <RuIcon />
-            RU
-          </div>
-        ),
-      },
-      {
-        value: "th",
-        label: (
-          <div className="option-withIcon">
-            <ThailandIcon />
-            TH
-          </div>
-        ),
-      },
-    ],
-    []
-  );
 
   const changeLanguage = useCallback((locale: string) => {
     i18n.changeLanguage(locale);
@@ -178,11 +136,11 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
 
               <div className={styles.language}>
                 <Select
-                  options={langList}
+                  options={languageListWithIcon}
                   classname="language-select"
                   language
                   onChange={changeLanguage}
-                  chooseOption={langList.filter(
+                  chooseOption={languageListWithIcon.filter(
                     (item) => item.value === router.locale
                   )}
                 />

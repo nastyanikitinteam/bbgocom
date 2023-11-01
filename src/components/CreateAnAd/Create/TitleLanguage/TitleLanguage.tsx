@@ -1,10 +1,12 @@
-import { useMemo, useState, FC, useEffect } from "react";
-import { Form, Field } from "react-final-form";
+import { useState, FC, useEffect } from "react";
+import { Field } from "react-final-form";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import Textarea from "components/FormElements/Textarea/Textarea";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./title-language.module.scss";
 import cn from "classnames";
+
+import { languageList } from "config/language";
 
 interface IProps {
   dataArray: any;
@@ -23,24 +25,6 @@ const TitleLanguage: FC<IProps> = ({
     dataArray?.language ? dataArray?.language : "EN"
   );
   const isMobile = useMediaQuery(768);
-
-  const langList = useMemo(
-    () => [
-      {
-        value: "EN",
-        label: "EN",
-      },
-      {
-        value: "RU",
-        label: "RU",
-      },
-      {
-        value: "TH",
-        label: "TH",
-      },
-    ],
-    []
-  );
 
   const handleLanguage = (value) => {
     setIsActiveLang(value);
@@ -83,7 +67,7 @@ const TitleLanguage: FC<IProps> = ({
                 })}
               >
                 <div className={styles.tabs}>
-                  {langList.map(({ value }) => {
+                  {languageList.map(({ value }) => {
                     return (
                       <div
                         className={cn(styles.tab, {

@@ -1,5 +1,5 @@
-import { useMemo, useState, FC, useEffect, memo, useCallback } from "react";
-import { Form, Field } from "react-final-form";
+import { useState, FC, useEffect, useCallback } from "react";
+import { Field } from "react-final-form";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import Radios from "./Radios/Radios";
 import styles from "./detailed-information.module.scss";

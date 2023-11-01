@@ -1,4 +1,4 @@
-import { FC, useState, useMemo, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import CardProduct from "components/CardProduct/CardProduct";

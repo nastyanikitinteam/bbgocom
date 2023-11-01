@@ -1,7 +1,4 @@
 import { useMemo, useState, FC, useEffect } from "react";
-import { Form, Field } from "react-final-form";
-import FormInput from "components/FormElements/FormInput/FormInput";
-import Textarea from "components/FormElements/Textarea/Textarea";
 import FilesUpload from "../../FilesUpload/FilesUpload";
 import styles from "./photo-video.module.scss";
 import cn from "classnames";

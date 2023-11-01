@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useRef, FC } from "react";
+import { useEffect, useState, useRef, FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Main from "./Main/Main";
 import MapContainer from "./MapContainer/MapContainer";

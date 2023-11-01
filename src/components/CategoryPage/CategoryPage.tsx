@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo } from "react";
+import { FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Hero from "./Hero/Hero";
 import Tags from "./Tags/Tags";
@@ -8,16 +8,11 @@ import GreenCards from "components/ProductCards/GreenCards/GreenCards";
 
 import { latestLst } from "components/ProductCards/config";
 
-import bannerImg from "images/category-page/real-estate-banner.jpg";
-
 interface IProps {
   isCurrentList: any;
 }
 
 const CategoryPage: FC<IProps> = ({ isCurrentList }) => {
-  const SmallLaptop = useMediaQuery(768);
-  const isTablet = useMediaQuery(998);
-
   return (
     <>
       <Hero isCurrentList={isCurrentList} />

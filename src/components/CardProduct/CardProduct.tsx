@@ -1,11 +1,4 @@
-import {
-  useMemo,
-  FC,
-  ReactNode,
-  useState,
-  useCallback,
-  useEffect,
-} from "react";
+import { FC, ReactNode, useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import styles from "./card-product.module.scss";
 import AddToWishList from "components/Modal/AddToWishList/AddToWishList";

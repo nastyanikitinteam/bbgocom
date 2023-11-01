@@ -17,7 +17,8 @@
     "paths": {
       "components/*": ["src/components/*"],
       "images/*": ["src/assets/images/*"],
-      "styles/*": ["src/styles/*"]
+      "styles/*": ["src/styles/*"],
+      "config/*": ["src/config/*"]
     },
     "incremental": true
   },

@@ -1,8 +1,5 @@
-import { useMemo, FC, useState, useEffect } from "react";
-import { Form, Field } from "react-final-form";
+import { FC, useState, useEffect } from "react";
 import SelectContainer from "components/Select/Select";
-import FormInput from "components/FormElements/FormInput/FormInput";
-import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import Category from "components/SearchBar/Category/Category";
 import CategoryMain from "components/SearchBar/Category/CategoryMain/CategoryMain";
 import styles from "../steps.module.scss";
