@@ -65,7 +65,11 @@
   transition: all 0.25s ease-in;
   cursor: pointer;
   input {
-    display: none;
+    // display: none;
+    position: absolute;
+    top: -99999px;
+    left: -999999px;
+    opacity: 0;
   }
   .icon {
     display: flex;

@@ -1,3 +1,10 @@
+import CreateAdIcon from "images/icons/Greate-Ad-mobile.svg";
+import HomeIcon from "images/icons/Home-mobile.svg";
+import MessageIcon from "images/icons/Message-mobile.svg";
+import ProfileIcon from "images/icons/Profile-mobile.svg";
+import WishlistIcon from "images/icons/Wishlist-mobile.svg";
+import React from "react";
+
 export const mobileMenu = [
   {
     id: 0,
@@ -22,6 +29,6 @@ export const mobileMenu = [
   {
     id: 4,
     icon: <ProfileIcon />,
-    fn: () => handleProfileMenu(),
+    fn: true,
   },
 ];

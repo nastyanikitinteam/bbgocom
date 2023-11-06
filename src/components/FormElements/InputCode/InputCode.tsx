@@ -1,14 +1,25 @@
-import React, { useState, useRef, FC } from "react";
+import React, { useState, useRef, FC, useEffect } from "react";
 import styles from "./input-code.module.scss";
+import cn from "classnames";
 
 interface IProps {
   length: number;
-  label: string;
   loading: boolean;
-  onComplete: (bool: any) => void;
+  onComplete: (any: any) => void;
+  meta: any;
+  input;
+  setConfirmCode: (any: any) => string;
 }
 
-const InputCode: FC<IProps> = ({ length, label, loading, onComplete }) => {
+const InputCode: FC<IProps> = ({
+  length,
+  loading,
+  meta,
+  onComplete,
+  input,
+  setConfirmCode,
+  ...props
+}) => {
   const [code, setCode] = useState([...Array(length)].map(() => ""));
   const inputs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -35,8 +46,17 @@ const InputCode: FC<IProps> = ({ length, label, loading, onComplete }) => {
     }
   };
 
+  useEffect(() => {
+    setConfirmCode({ code: code.join("") });
+  }, [code]);
+
   return (
-    <div className={styles.container}>
+    <div
+      className={cn(styles.container, {
+        [styles.error]: meta?.error && meta?.touched,
+      })}
+    >
+      <input type="text" className={styles.mainInput} {...input} {...props} />
       {code.map((num, idx) => {
         return (
           <input

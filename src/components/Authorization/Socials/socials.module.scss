@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 15px;
+  .social {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .whatsapp {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.social {
+  width: 100%;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}

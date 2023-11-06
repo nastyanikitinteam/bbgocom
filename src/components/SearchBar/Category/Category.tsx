@@ -1,7 +1,9 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useCallback } from "react";
 import cn from "classnames";
 import styles from "./category.module.scss";
 import { categoriesList } from "components/Category/config";
+
+import { Field } from "react-final-form";
 
 import ArrowIcon from "images/icons/drop.svg";
 import CatalogIcon from "images/icons/catalog-icon.svg";
@@ -28,12 +30,41 @@ const Category: FC<IProps> = ({
   placeholder,
   isCreatePage,
 }) => {
+  const [selectedTitle, setSelectedTitle] = useState("");
+
+  const filterTitle = useCallback(() => {
+    const category = categoriesList.find(
+      (category) => category.id === dataCategory.category
+    );
+    if (category) {
+      const subcategory = category.subcategories.find(
+        (subcategory) => subcategory.id === dataCategory.subcategorie
+      );
+      if (subcategory) {
+        const item = subcategory.items.find(
+          (item) => item.id === dataCategory.subcategorieItem
+        );
+        if (item) {
+          setSelectedTitle(item.title);
+        } else {
+          setSelectedTitle(subcategory.title);
+        }
+      } else {
+        setSelectedTitle(category.title);
+      }
+    }
+  }, [dataCategory]);
+
+  useEffect(() => {
+    filterTitle();
+  }, [dataCategory]);
+
   return (
     <>
       <div
         className={cn(styles.block, {
           [styles.active]: isActiveChoice || isOpenCategoryMenu,
-          [styles.fill]: dataCategory.nameOfCategory,
+          [styles.fill]: selectedTitle.length > 0,
           [styles.big]: isBig,
         })}
         onClick={() => handleActive()}
@@ -41,19 +72,7 @@ const Category: FC<IProps> = ({
         <span className={styles.icon}>
           <CatalogIcon />
         </span>
-        <p>
-          {isCreatePage
-            ? dataCategory.nameOfCategoryItem
-              ? dataCategory.nameOfCategoryItem
-              : placeholder
-            : dataCategory.nameOfCategoryItem
-            ? dataCategory.nameOfCategoryItem
-            : dataCategory.nameOfSubCategory
-            ? dataCategory.nameOfSubCategory
-            : dataCategory.nameOfCategory
-            ? dataCategory.nameOfCategory
-            : placeholder}
-        </p>
+        <p>{selectedTitle.length > 0 ? selectedTitle : placeholder}</p>
         <span className={styles.arrow}>
           <ArrowIcon />
         </span>

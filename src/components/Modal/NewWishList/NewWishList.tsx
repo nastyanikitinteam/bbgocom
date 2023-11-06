@@ -27,6 +27,9 @@ const NewWishList: FC<IProps> = ({ cancel, item }) => {
       <Form
         onSubmit={onSubmit}
         validate={validate}
+        initialValues={{
+          ...item,
+        }}
         render={({ handleSubmit }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.item}>
@@ -38,7 +41,6 @@ const NewWishList: FC<IProps> = ({ cancel, item }) => {
                 component={FormInput}
                 extClassName="enterName"
                 isSmall
-                text={item && item.name}
               />
             </div>
             <div className={styles.item}>
@@ -47,9 +49,8 @@ const NewWishList: FC<IProps> = ({ cancel, item }) => {
                 placeholder={"Enter Description"}
                 label="Description (optional)"
                 type="text"
-                text={item?.description && item.description}
                 component={Textarea}
-                row={6}
+                rows={6}
                 isSmall
               />
             </div>

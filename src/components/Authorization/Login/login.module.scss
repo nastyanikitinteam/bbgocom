@@ -25,7 +25,7 @@
   line-height: 24px;
   letter-spacing: -0.2px;
   color: #808080;
-  a {
+  span {
     color: #5bb75f;
     cursor: pointer;
   }
@@ -86,25 +86,6 @@
   font-weight: 500;
   line-height: 20px;
   letter-spacing: -0.2px;
-}
-
-.socials {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  margin-top: 15px;
-  .social {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-}
-
-.social {
-  width: 100%;
-  svg {
-    width: 24px;
-    height: 24px;
-  }
 }
 
 .description {

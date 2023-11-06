@@ -4,6 +4,7 @@ import { Form, Field } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
+import PasswordInput from "components/FormElements/FormInput/PasswordInput";
 
 import cn from "classnames";
 import styles from "./block.module.scss";
@@ -188,8 +189,7 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
                         <label className={styles.label}>Enter Password</label>
                         <Field
                           name="enterPassword"
-                          type="password"
-                          component={FormInput}
+                          component={PasswordInput}
                           extClassName="smNoIcon"
                           placeholder="Enter password"
                         />
@@ -201,8 +201,7 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
                         <label className={styles.label}>New Password</label>
                         <Field
                           name="newPassword"
-                          type="password"
-                          component={FormInput}
+                          component={PasswordInput}
                           extClassName="smNoIcon"
                           placeholder="Enter password"
                         />
@@ -214,8 +213,7 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
                         <label className={styles.label}>Confirm Password</label>
                         <Field
                           name="confirmPassword"
-                          type="password"
-                          component={FormInput}
+                          component={PasswordInput}
                           extClassName="smNoIcon"
                           placeholder="Enter password"
                         />

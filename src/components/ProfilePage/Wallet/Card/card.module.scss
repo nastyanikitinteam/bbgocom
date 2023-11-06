@@ -20,7 +20,11 @@
   justify-content: center;
   align-items: center;
   input {
-    display: none;
+    // display: none;
+    position: absolute;
+    top: -99999px;
+    left: -999999px;
+    opacity: 0;
     &:checked + .radioBlock {
       border: 6px solid #5bb75f;
     }

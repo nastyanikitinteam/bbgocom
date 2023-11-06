@@ -12,12 +12,7 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 import SearchBar from "components/SearchBar/SearchBar";
 import Authorization from "components/Authorization/Authorization";
 import cn from "classnames";
-
-import CreateAdIcon from "images/icons/Greate-Ad-mobile.svg";
-import HomeIcon from "images/icons/Home-mobile.svg";
-import MessageIcon from "images/icons/Message-mobile.svg";
-import ProfileIcon from "images/icons/Profile-mobile.svg";
-import WishlistIcon from "images/icons/Wishlist-mobile.svg";
+import { mobileMenu } from "config/menu";
 
 interface IProps {
   mobileWithoutSearchBar?: boolean;
@@ -60,29 +55,30 @@ const HeaderMobile: FC<IProps> = ({
             })}
           >
             {mobileMenu.map(({ id, icon, link, fn }) => {
-              return !fn ? (
+              return fn ? (
+                <div
+                  className={cn(styles.item, {
+                    [styles.active]: isOpenProfileMenu,
+                  })}
+                  key={id}
+                  onClick={handleProfileMenu}
+                >
+                  {icon}
+                </div>
+              ) : (
                 <Link
                   href={link}
                   className={cn(
                     styles.item,
                     router.pathname == link &&
-                      !isOpenProfileMenu && [styles.active]
+                      !isOpenProfileMenu &&
+                      styles.active
                   )}
                   key={id}
                   onClick={isOpenProfileMenu && handleProfileMenu}
                 >
                   {icon}
                 </Link>
-              ) : (
-                <div
-                  className={cn(styles.item, {
-                    [styles.active]: isOpenProfileMenu,
-                  })}
-                  key={id}
-                  onClick={fn}
-                >
-                  {icon}
-                </div>
               );
             })}
           </div>

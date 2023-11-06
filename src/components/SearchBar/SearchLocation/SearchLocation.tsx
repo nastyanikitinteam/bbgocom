@@ -100,6 +100,7 @@ const SearchLocation: FC<IProps> = ({
           dataSearch.nameOfSearch ? dataSearch.nameOfSearch : ""
         );
     }
+    //
     setIsActive(
       isActiveChoice === "Search" ||
         isActiveChoice === "Location" ||

@@ -1,111 +1,25 @@
 import { useCallback, useState, FC, useEffect } from "react";
-import { Form, Field } from "react-final-form";
+import { Field } from "react-final-form";
 import FormInput from "components/FormElements/FormInput/FormInput";
-import Select from "components/Select/Select";
-import Textarea from "components/FormElements/Textarea/Textarea";
-import SelectContainer from "components/Select/Select";
+import SelectContainer from "components/FormElements/Select/Select";
+import NumberInput from "components/FormElements/FormInput/NumberInput";
 import { CountriesList } from "components/Authorization/config";
+import PhoneCodeSelect from "components/FormElements/Select/PhoneCodeSelect";
 import Country from "components/Authorization/Country/Country";
 import styles from "./contacts.module.scss";
 import cn from "classnames";
 
+import { useFormState } from "react-final-form";
+
 import PostIcon from "images/icons/post.svg";
 
-import { regionList, adressList } from "../DetailedInformation/config";
-
 interface IProps {
-  dataArray: any;
-  disabled: boolean;
-  handleDataArray: (event: any, title: any) => void;
-  setDataArray: (bool: any) => void;
+  disabled?: boolean;
   isCreate?: any;
 }
 
-const Contacts: FC<IProps> = ({
-  dataArray,
-  disabled,
-  handleDataArray,
-  setDataArray,
-  isCreate,
-}) => {
-  const [contactArray, setContactArray] = useState(
-    dataArray.contacts ? dataArray.contacts : {}
-  );
-
-  const [isCountryList, setIsCountryList] = useState([]);
-
-  const [isPhone, setIsPhone] = useState(
-    dataArray?.contacts?.phone ? dataArray.contacts.phone : {}
-  );
-
-  const handlePhoneCode = (value: any) => {
-    if (value != null) {
-      const parts = value.split(/\s+/);
-      const resultObject = {
-        country: parts[0],
-        code: parts[1],
-      };
-      setIsPhone((prev) => ({
-        ...prev,
-        country: resultObject?.country,
-        code: resultObject?.code,
-      }));
-    }
-  };
-
-  const handlePhoneNumber = (value, title) => {
-    if (value.length > 0) {
-      setIsPhone((prev) => ({ ...prev, [title]: value }));
-    } else {
-      if (isPhone[title]) {
-        const newObj = { ...isPhone };
-        delete newObj[title];
-        setIsPhone(newObj);
-      }
-    }
-  };
-
-  const processingCounrtryList = () => {
-    let arr = CountriesList.map(({ value, icon, name, code }) => {
-      return {
-        value: `${value} ${code}`,
-        label: <Country icon={icon} name={name} code={code} />,
-      };
-    });
-    setIsCountryList(arr);
-  };
-
-  useEffect(() => {
-    if (!isCountryList.length) {
-      processingCounrtryList();
-    }
-  }, [CountriesList]);
-
-  const handleInformationArray = useCallback((event, title) => {
-    if (event?.length) {
-      setContactArray((prev) => ({ ...prev, [title]: event }));
-    } else {
-      if (contactArray[title]) {
-        let obj = contactArray;
-        delete obj[title];
-        setContactArray(obj);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    setContactArray({
-      ...contactArray,
-      phone: isPhone,
-    });
-  }, [isPhone]);
-
-  useEffect(() => {
-    setDataArray({
-      ...dataArray,
-      contacts: contactArray,
-    });
-  }, [contactArray]);
+const Contacts: FC<IProps> = ({ disabled, isCreate }) => {
+  const { values } = useFormState();
 
   return (
     <div className={styles.container}>
@@ -115,44 +29,28 @@ const Contacts: FC<IProps> = ({
       {!disabled && (
         <>
           <div className={styles.items}>
-            {isCountryList.length && (
-              <div className={styles.item}>
-                <p className={styles.label}>Phone</p>
-                <div className={cn(styles.input, styles.phone)}>
-                  <div className={styles.code}>
-                    <Select
-                      options={isCountryList}
-                      isSearch
-                      classname="phone"
-                      title="Choose Country"
-                      onChange={handlePhoneCode}
-                      chooseOption={
-                        contactArray?.phone
-                          ? isCountryList.filter(
-                              (item) =>
-                                item.value ===
-                                `${contactArray.phone.country} ${contactArray.phone.code}`
-                            )
-                          : isCountryList[0]
-                      }
-                    />
-                  </div>
-                  <div className={styles.number}>
-                    <Field
-                      name="phone"
-                      type="text"
-                      placeholder={"Phone"}
-                      component={FormInput}
-                      number
-                      extClassName="noIcon"
-                      keyName="number"
-                      onChange={handlePhoneNumber}
-                      text={isPhone?.number && isPhone.number}
-                    />
-                  </div>
+            <div className={styles.item}>
+              <p className={styles.label}>Phone</p>
+              <div className={cn(styles.input, styles.phone)}>
+                <div className={styles.code}>
+                  <Field
+                    name="phoneCode"
+                    //@ts-ignore
+                    component={PhoneCodeSelect}
+                    chooseOption={values.phoneCode}
+                  />
+                </div>
+                <div className={styles.number}>
+                  <Field
+                    name="phoneNumber"
+                    type="text"
+                    placeholder={"Phone"}
+                    component={NumberInput}
+                    extClassName="noIcon"
+                  />
                 </div>
               </div>
-            )}
+            </div>
 
             <div className={styles.item}>
               <p className={styles.label}>Email</p>
@@ -160,12 +58,9 @@ const Contacts: FC<IProps> = ({
                 <Field
                   name="email"
                   type="email"
-                  text={contactArray?.email && contactArray?.email}
                   placeholder={"Enter email"}
                   component={FormInput}
                   extClassName="email"
-                  keyName="email"
-                  onChange={handleInformationArray}
                 />
               </div>
             </div>

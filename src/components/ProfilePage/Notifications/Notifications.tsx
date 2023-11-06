@@ -1,10 +1,8 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Form, Field } from "react-final-form";
-import * as yup from "yup";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import useMediaQuery from "src/utils/useMediaQuery";
-import PortalContainer from "components/PortalContainer/PortalContainer";
 import Block from "./Block/Block";
 import cn from "classnames";
 import styles from "./notifications.module.scss";

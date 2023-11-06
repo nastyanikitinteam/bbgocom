@@ -18,6 +18,12 @@ interface IProps {
   dataCategory?: any;
   delNameOfCategoryItem?: () => void;
   isCreatePage?: boolean;
+  onChangeItem?: (
+    firstValue: number,
+    secondValue: number,
+    thirdValue: number
+  ) => void;
+  selectedCategoryId?: number;
 }
 
 const Blocks: FC<IProps> = ({
@@ -30,25 +36,40 @@ const Blocks: FC<IProps> = ({
   dataCategory,
   delNameOfCategoryItem,
   isCreatePage,
+  onChangeItem,
+  selectedCategoryId,
 }) => {
   const [isbaseUrl, setIsBaseUrl] = useState("");
 
+  const [selectedSubcategorieId, setSelectedSubcategorieId] = useState(
+    dataCategory.subcategorieItem ? dataCategory.subcategorieItem : null
+  );
+  const [selectedSubcategorieItemId, setSelectedSubcategorieItemId] = useState(
+    dataCategory.catsubcategorieItemegory ? dataCategory.subcategorieItem : null
+  );
+
   const chooseCategoryItem = (id, title) => {
-    handleClick("nameOfCategoryItem", title);
+    handleClick("subcategorieItem", id);
+    // setSelectedSubcategorieItemId(id);
     setIsActiveChoice();
   };
 
   const chooseSubCategory = (id, title) => {
-    handleClick("nameOfSubCategory", title);
-    if (dataCategory.nameOfCategoryItem) {
-      delNameOfCategoryItem();
-    }
+    handleClick("subcategorie", id);
+    // if (!isCreatePage && dataCategory.subcategorieItem) {
+    //   delNameOfCategoryItem();
+    // }
+    // setSelectedSubcategorieId(id);
     setIsActiveChoice();
   };
 
   useEffect(() => {
     setIsBaseUrl(window.location.origin);
   }, []);
+
+  // useEffect(() => {
+  //   console.log(dataCategory, "dataCategory");
+  // }, [dataCategory]);
 
   return (
     currentSubcategories && (
@@ -94,25 +115,56 @@ const Blocks: FC<IProps> = ({
                 </div>
               );
             })
-          : currentSubcategories.map(({ id, title, items }) => {
+          : currentSubcategories.map((parentItem) => {
               return (
                 <div
-                  key={id}
+                  key={parentItem.id}
                   className={cn(styles.block, {
                     [styles.createPage]: isCreatePage,
                   })}
-                  onClick={() => !isCreatePage && chooseSubCategory(id, title)}
                 >
-                  <h3 className={styles.title}>{title}</h3>
+                  <h3
+                    className={styles.title}
+                    onClick={() =>
+                      !isCreatePage &&
+                      chooseSubCategory(parentItem.id, parentItem.title)
+                    }
+                  >
+                    {parentItem.title}
+                  </h3>
                   <ul className={styles.list}>
-                    {items.map(({ id, title }) => {
+                    {parentItem.items.map((childrenItem) => {
                       return (
                         <li
-                          className={styles.item}
-                          key={id}
-                          onClick={() => chooseCategoryItem(id, title)}
+                          className={cn(styles.item, {
+                            [styles.active]:
+                              childrenItem.id ===
+                                dataCategory.subcategorieItem &&
+                              parentItem.id === dataCategory.subcategorie &&
+                              selectedCategoryId === dataCategory.category,
+                          })}
+                          key={childrenItem.id}
+                          onClick={() => {
+                            if (!isCreatePage) {
+                              console.log("work");
+                              chooseCategoryItem(
+                                childrenItem.id,
+                                childrenItem.title
+                              );
+                              chooseSubCategory(
+                                parentItem.id,
+                                parentItem.title
+                              );
+                            } else {
+                              onChangeItem(
+                                selectedCategoryId,
+                                parentItem.id,
+                                childrenItem.id
+                              );
+                            }
+                          }}
                         >
-                          {title}
+                          {childrenItem.title}
                         </li>
                       );
                     })}

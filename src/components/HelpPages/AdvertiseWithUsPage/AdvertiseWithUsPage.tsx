@@ -3,18 +3,16 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import { Form, Field } from "react-final-form";
-import Select from "components/Select/Select";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
+import NumberInput from "components/FormElements/FormInput/NumberInput";
 import styles from "./advertise-with-us-page.module.scss";
-import { CountriesList } from "../../Authorization/config";
-import Country from "../../Authorization/Country/Country";
 import Textarea from "components/FormElements/Textarea/Textarea";
+import PhoneCodeSelect from "components/FormElements/Select/PhoneCodeSelect";
 import cn from "classnames";
 
 const AdvertiseWithUs = () => {
-  const [isCountryList, setIsCountryList] = useState([]);
   const router = useRouter();
 
   const validationSchema = yup.object().shape({
@@ -44,22 +42,6 @@ const AdvertiseWithUs = () => {
     []
   );
 
-  const processingCounrtryList = () => {
-    let arr = CountriesList.map(({ value, icon, name, code }) => {
-      return {
-        value: `${value} ${code}`,
-        label: <Country icon={icon} name={name} code={code} />,
-      };
-    });
-    setIsCountryList(arr);
-  };
-
-  useEffect(() => {
-    if (!isCountryList.length) {
-      processingCounrtryList();
-    }
-  }, [CountriesList]);
-
   const back = () => {
     router.back();
   };
@@ -77,102 +59,98 @@ const AdvertiseWithUs = () => {
             <a href="/">here</a>. If you have a question about working with the
             service, you can find the answer <a href="/">here</a>.
           </p>
-          {isCountryList.length && (
-            <Form
-              onSubmit={onSubmit}
-              validate={validate}
-              render={({ handleSubmit }) => (
-                <form className={styles.form} onSubmit={handleSubmit}>
+          <Form
+            onSubmit={onSubmit}
+            validate={validate}
+            render={({ handleSubmit }) => (
+              <form className={styles.form} onSubmit={handleSubmit}>
+                <div className={styles.item}>
+                  <Field
+                    name="name"
+                    placeholder={"Enter name"}
+                    type="text"
+                    component={FormInput}
+                    extClassName="firstName"
+                    label="Name"
+                  />
+                </div>
+                <div className={cn(styles.phone, styles.item)}>
+                  <div className={styles.code}>
+                    <p className={styles.label}>Your phone</p>
+                    <Field
+                      name="phoneCode"
+                      //@ts-ignore
+                      component={PhoneCodeSelect}
+                    />
+                  </div>
+                  <div className={styles.number}>
+                    <Field
+                      name="phone"
+                      type="text"
+                      placeholder={"Phone"}
+                      component={NumberInput}
+                      extClassName="noIcon"
+                    />
+                  </div>
+                </div>
+                <div className={styles.items}>
                   <div className={styles.item}>
                     <Field
-                      name="name"
+                      name="company"
                       placeholder={"Enter name"}
                       type="text"
                       component={FormInput}
-                      extClassName="firstName"
-                      label="Name"
+                      extClassName="company"
+                      label="Company’s name"
                     />
-                  </div>
-                  <div className={cn(styles.phone, styles.item)}>
-                    <div className={styles.code}>
-                      <p className={styles.label}>Your phone</p>
-                      <Select
-                        options={isCountryList}
-                        isSearch
-                        classname="phone"
-                        title="Choose Country"
-                      />
-                    </div>
-                    <div className={styles.number}>
-                      <Field
-                        name="phone"
-                        type="text"
-                        placeholder={"Phone"}
-                        component={FormInput}
-                        number
-                        extClassName="noIcon"
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.items}>
-                    <div className={styles.item}>
-                      <Field
-                        name="company"
-                        placeholder={"Enter name"}
-                        type="text"
-                        component={FormInput}
-                        extClassName="company"
-                        label="Company’s name"
-                      />
-                    </div>
-                    <div className={styles.item}>
-                      <Field
-                        name="email"
-                        placeholder={"Enter email"}
-                        type="email"
-                        component={FormInput}
-                        extClassName="email"
-                        label="Email for Request"
-                      />
-                    </div>
                   </div>
                   <div className={styles.item}>
                     <Field
-                      name="message"
-                      placeholder={"Enter Message"}
-                      type="text"
-                      component={Textarea}
-                      label="Message"
+                      name="email"
+                      placeholder={"Enter email"}
+                      type="email"
+                      component={FormInput}
+                      extClassName="email"
+                      label="Email for Request"
                     />
                   </div>
-                  <p className={styles.description}>
-                    By clicking «Post Ad» you accept the{" "}
-                    <Link href="/">License Agreement</Link> and agree to the{" "}
-                    <Link href="/">Privacy Policy</Link>
-                  </p>
-                  <div className={styles.buttons}>
-                    <div className={styles.button}>
-                      <div
-                        onClick={back}
-                        className={cn("default-button  border", styles.button)}
-                      >
-                        Cancel
-                      </div>
-                    </div>
-                    <div className={styles.button}>
-                      <button
-                        type="submit"
-                        className={cn("default-button", styles.button)}
-                        aria-label={`Send`}
-                      >
-                        Send
-                      </button>
+                </div>
+                <div className={styles.item}>
+                  <Field
+                    name="message"
+                    placeholder={"Enter Message"}
+                    type="text"
+                    component={Textarea}
+                    label="Message"
+                  />
+                </div>
+                <p className={styles.description}>
+                  By clicking «Post Ad» you accept the{" "}
+                  <Link href="/">License Agreement</Link> and agree to the{" "}
+                  <Link href="/">Privacy Policy</Link>
+                </p>
+                <div className={styles.buttons}>
+                  <div className={styles.button}>
+                    <div
+                      onClick={back}
+                      className={cn("default-button  border", styles.button)}
+                    >
+                      Cancel
                     </div>
                   </div>
-                </form>
-              )}
-            ></Form>
-          )}
+                  <div className={styles.button}>
+                    <button
+                      type="submit"
+                      className={cn("default-button", styles.button)}
+                      aria-label={`Send`}
+                    >
+                      Send
+                    </button>
+                  </div>
+                </div>
+              </form>
+            )}
+          ></Form>
         </div>
       </div>
     </section>

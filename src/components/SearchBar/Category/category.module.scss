@@ -20,6 +20,8 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     line-clamp: 1;
+    color: #808080;
+    transition: all 0.25s ease-in;
     @media (max-width: 768px) {
       color: #808080;
     }
@@ -27,9 +29,24 @@
   &:hover {
     box-shadow: 0px 20px 40px 0px rgba(21, 40, 61, 0.1);
     border-color: transparent;
+    path {
+      stroke: #000;
+    }
+    p {
+      color: #000;
+    }
   }
   &.fill {
     border-color: #000;
+    path {
+      stroke: #000;
+    }
+    p {
+      color: #000;
+    }
+  }
+  &.active {
+    border-color: var(--primary-green-active, #38953c);
     path {
       stroke: #000;
     }

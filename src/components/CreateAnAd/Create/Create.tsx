@@ -1,4 +1,4 @@
-import { useCallback, useState, FC } from "react";
+import { useCallback, useState, FC, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Form, Field } from "react-final-form";
 import * as yup from "yup";
@@ -19,38 +19,65 @@ import styles from "./create.module.scss";
 
 import ArrowSvg from "images/icons/drop.svg";
 interface IProps {
-  isCurrentAd?: any;
+  currentAdInfo?: any;
 }
 
-const Create: FC<IProps> = ({ isCurrentAd }) => {
+const Create: FC<IProps> = ({ currentAdInfo }) => {
   const isMobile = useMediaQuery(768);
-  const [dataArray, setDataArray] = useState(isCurrentAd ? isCurrentAd : {});
+  const [adInfo, setAdInfo] = useState(currentAdInfo ? currentAdInfo : {});
+
+  const [dataCategory, setDataCategory] = useState(
+    currentAdInfo?.subcategorieItem
+      ? {
+          category: currentAdInfo?.category,
+          subcategorie: currentAdInfo?.subcategorie,
+          subcategorieItem: currentAdInfo?.subcategorieItem,
+        }
+      : {}
+  );
+
+  const [isActiveLang, setIsActiveLang] = useState(
+    currentAdInfo?.language ? currentAdInfo?.language : "EN"
+  );
+
+  const [isActiveCurrency, setIsActiveCurrency] = useState(
+    currentAdInfo?.currency ? currentAdInfo?.currency : "THB"
+  );
+
   const [isOpenModal, setsOpenModal] = useState(false);
 
   const router = useRouter();
 
-  const validationSchema = yup.object().shape({});
+  const validationSchema = yup.object().shape({
+    //
+  });
+
   const validate = validateForm(validationSchema);
 
   const handleDataArray = (event, title) => {
     if (event?.length) {
-      setDataArray((prev) => ({ ...prev, [title]: event }));
+      setAdInfo((prev) => ({ ...prev, [title]: event }));
     } else {
-      if (dataArray[title]) {
-        let obj = dataArray;
-        delete obj[title];
-        setDataArray(obj);
-      }
+      // if (adInfo[title]) {
+      //   let obj = adInfo;
+      //   delete obj[title];
+      //   setAdInfo(obj);
+      // }
     }
   };
 
   const cancel = () => {
-    setDataArray({});
+    setAdInfo({});
     router.back();
   };
 
   const onSubmit = useCallback((data, form) => {
-    console.log(dataArray);
+    // console.log(dataCategory, "dataCategory");
+    console.log(
+      { ...data, ...dataCategory, ["language"]: isActiveLang },
+      "data"
+    );
+    // console.log(adInfo);
     setsOpenModal(true);
   }, []);
 
@@ -69,54 +96,42 @@ const Create: FC<IProps> = ({ isCurrentAd }) => {
           <Form
             onSubmit={onSubmit}
             validate={validate}
+            initialValues={{
+              ...currentAdInfo,
+            }}
             render={({ handleSubmit }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <ChooseCategory
-                  dataArray={dataArray}
-                  setDataArray={setDataArray}
+                  dataCategory={dataCategory}
+                  setDataCategory={setDataCategory}
                 />
                 <TitleLanguage
-                  dataArray={dataArray}
-                  setDataArray={setDataArray}
-                  handleDataArray={handleDataArray}
-                  // @ts-ignore
-                  disabled={!dataArray?.salesman}
+                  isActiveLang={isActiveLang}
+                  setIsActiveLang={setIsActiveLang}
+                  // disabled={}
                 />
-                <PhotoVideo
-                  dataArray={dataArray}
-                  setDataArray={setDataArray}
+                {/* <PhotoVideo
+                  dataArray={adInfo}
+                  setDataArray={setAdInfo}
                   handleDataArray={handleDataArray}
-                  // @ts-ignore
-                  disabled={!dataArray?.description}
-                />
+                   // disabled={}
+                /> */}
                 <Price
-                  dataArray={dataArray}
-                  setDataArray={setDataArray}
-                  handleDataArray={handleDataArray}
-                  // @ts-ignore
-                  disabled={!isCurrentAd && !dataArray?.files}
+                  isActiveCurrency={isActiveCurrency}
+                  setIsActiveCurrency={setIsActiveCurrency}
+                  // disabled={}
                 />
                 <DetailedInformation
-                  dataArray={dataArray}
-                  setDataArray={setDataArray}
-                  handleDataArray={handleDataArray}
-                  // @ts-ignore
-                  disabled={!dataArray?.price}
+                // disabled={}
                 />
                 <Location
-                  dataArray={dataArray}
-                  setDataArray={setDataArray}
+                  dataArray={adInfo}
+                  setDataArray={setAdInfo}
                   handleDataArray={handleDataArray}
-                  // @ts-ignore
-                  disabled={!dataArray?.information?.totalArea}
+                  // disabled={}
                 />
                 <Contacts
-                  dataArray={dataArray}
-                  handleDataArray={handleDataArray}
-                  setDataArray={setDataArray}
-                  // @ts-ignore
-                  disabled={!dataArray?.location?.name}
-                  isCreate={isCurrentAd && true}
+                  isCreate={currentAdInfo && true} // disabled={}
                 />
               </form>
             )}

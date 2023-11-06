@@ -4,6 +4,9 @@ import { Form, Field } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
+import CardInput from "components/FormElements/FormInput/CardInput";
+import DateInput from "components/FormElements/FormInput/DateInput";
+import NumberInput from "components/FormElements/FormInput/NumberInput";
 import cn from "classnames";
 
 import styles from "./add-card.module.scss";
@@ -27,6 +30,7 @@ const AddCard: FC<IProps> = ({
   const validate = validateForm(validationCard);
 
   const onSubmit = useCallback((data, form) => {
+    console.log(data);
     if (isMobile) {
       setIsActiveNewCard(false);
       setIsWallet(true);
@@ -58,12 +62,10 @@ const AddCard: FC<IProps> = ({
                 <div className={styles.item}>
                   {isMobile && <p className={styles.label}>Card number</p>}
                   <Field
-                    name="number"
+                    name="cardNumber"
                     placeholder={"---- ---- ---- ----"}
                     type="text"
-                    component={FormInput}
-                    extClassName="card"
-                    isCardNumber
+                    component={CardInput}
                     maxLength={19}
                   />
                 </div>
@@ -71,25 +73,22 @@ const AddCard: FC<IProps> = ({
                   <div className={styles.item}>
                     {isMobile && <p className={styles.label}>Validity</p>}
                     <Field
-                      name="lastName"
+                      name="validity"
                       placeholder={"MM/YY"}
                       type="text"
-                      component={FormInput}
-                      extClassName="smNoIcon"
-                      isDate
+                      component={DateInput}
                       maxLength={5}
                     />
                   </div>
                   <div className={styles.item}>
                     {isMobile && <p className={styles.label}>CVV</p>}
                     <Field
-                      name="lastName"
+                      name="CVV"
                       placeholder={"CVV"}
                       type="text"
-                      component={FormInput}
+                      component={NumberInput}
                       extClassName="smNoIcon"
                       maxLength={3}
-                      number
                     />
                   </div>
                 </div>

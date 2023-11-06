@@ -1,0 +1,44 @@
+@import "../LoginForm/login-form.module.scss";
+
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 18px 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.2px;
+  margin-bottom: 25px;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+  }
+}
+
+.button {
+  svg {
+    transform: rotate(-90deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .info {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    padding: 8px 0;
+    margin-bottom: 17px;
+    & + .description {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: -0.3px;
+    }
+  }
+}

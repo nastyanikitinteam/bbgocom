@@ -154,12 +154,14 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
     );
   }, [dataPrice]);
 
+  // ["Category", "Filter"]
+  // if ([].includes(isActiveChoice))
   useEffect(() => {
     handleFilterState(false);
     if (isMobile) {
       if (
         isActiveChoice == "Category" ||
-        isActiveChoice == "Filter" ||
+        isActiveChoice === "Filter" ||
         isActiveChoice == "SearchHistory" ||
         isActiveChoice == "Search"
       ) {
@@ -188,6 +190,7 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
           {!isSmallLaptop && (
             <Category
               handleActive={() =>
+                // set (prev => prev === 'catego' ?)
                 setIsActiveChoice(
                   isActiveChoice === "Category" ? "" : "Category"
                 )

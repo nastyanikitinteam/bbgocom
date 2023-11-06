@@ -1,6 +1,7 @@
 import { useState, FC, useEffect, useCallback } from "react";
 import { Field } from "react-final-form";
 import FormInput from "components/FormElements/FormInput/FormInput";
+import NumberInput from "components/FormElements/FormInput/NumberInput";
 import Radios from "./Radios/Radios";
 import styles from "./detailed-information.module.scss";
 import cn from "classnames";
@@ -8,41 +9,10 @@ import cn from "classnames";
 import { createList } from "./config";
 
 interface IProps {
-  dataArray: any;
-  setDataArray: (arr: any) => void;
-  disabled: boolean;
-  handleDataArray: (event: any, title: any) => void;
+  disabled?: boolean;
 }
 
-const DetailedInformation: FC<IProps> = ({
-  dataArray,
-  setDataArray,
-  disabled,
-  handleDataArray,
-}) => {
-  const [informationArray, setInformationArray] = useState(
-    dataArray.information ? dataArray.information : {}
-  );
-
-  const handleInformationArray = useCallback((event, title) => {
-    if (event?.length) {
-      setInformationArray((prev) => ({ ...prev, [title]: event }));
-    } else {
-      if (informationArray[title]) {
-        let obj = informationArray;
-        delete obj[title];
-        setInformationArray(obj);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    setDataArray({
-      ...dataArray,
-      information: informationArray,
-    });
-  }, [informationArray]);
-
+const DetailedInformation: FC<IProps> = ({ disabled }) => {
   return (
     <div className={styles.container}>
       <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
@@ -59,8 +29,6 @@ const DetailedInformation: FC<IProps> = ({
                   keyName={item.key}
                   list={item.variants}
                   isColumn
-                  handleDataArray={handleInformationArray}
-                  informationArray={informationArray}
                 />
               );
             } else if (item.type === "input") {
@@ -69,14 +37,10 @@ const DetailedInformation: FC<IProps> = ({
                   <p className={styles.label}>{item.name}</p>
                   <div className={styles.input}>
                     <Field
-                      name={item.name}
+                      name={item.key}
                       placeholder={item.placeholder}
-                      type="number"
-                      component={FormInput}
-                      keyName={item.key}
+                      component={NumberInput}
                       extClassName={item.key}
-                      onChange={handleInformationArray}
-                      text={informationArray[item.key]}
                     />
                   </div>
                 </div>

@@ -23,51 +23,64 @@ interface IProps {
 
 const CategoryMain: FC<IProps> = ({
   isSearchBarTop,
-  isActiveCategory,
-  setIsActiveCategory,
   handleClick,
   setIsActiveChoice,
   dataCategory,
   setDataCategory,
   isCreatePage,
 }) => {
-  const [isCurrentList, setIsCurrentList] = useState([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(
+    dataCategory?.category ? dataCategory.category : null
+  );
+
+  const [selectedSubcategories, setSelectedSubcategories] = useState();
 
   const isMobile = useMediaQuery(768);
 
   const delNameOfSubCategory = useCallback(() => {
     let obj = dataCategory;
-    delete obj.nameOfSubCategory;
+    delete obj.subcategorie;
     setDataCategory(obj);
   }, []);
 
   const delNameOfCategoryItem = useCallback(() => {
     let obj = dataCategory;
-    delete obj.nameOfCategoryItem;
+    delete obj.subcategorieItem;
     setDataCategory(obj);
   }, []);
 
   const chooseCategory = useCallback(
-    (id, title) => {
-      handleClick("nameOfCategory", title);
-      if (dataCategory.nameOfSubCategory) {
-        delNameOfSubCategory();
+    (item) => {
+      if (!isCreatePage) {
+        handleClick("category", item.id);
+        if (dataCategory.subcategorie) {
+          delNameOfSubCategory();
+        }
+        if (dataCategory.subcategorieItem) {
+          delNameOfCategoryItem();
+        }
       }
-      if (dataCategory.nameOfCategoryItem) {
-        delNameOfCategoryItem();
-      }
-      setIsActiveCategory(id);
+      setSelectedCategoryId(item.id);
     },
     [categoriesList]
   );
 
-  useEffect(() => {
-    const currentItem = categoriesList.filter(
-      ({ id }) => id === isActiveCategory
-    );
+  const chooseCategoryItem = useCallback((categId, subId, itemId) => {
+    handleClick("category", categId);
+    handleClick("subcategorie", subId);
+    handleClick("subcategorieItem", itemId);
+    setIsActiveChoice();
+  }, []);
+
+  const filterCategoryList = (activeId) => {
+    const currentItem = categoriesList.filter(({ id }) => id === activeId);
     // @ts-ignore
-    setIsCurrentList(currentItem[0] || categoriesList[0]);
-  }, [isActiveCategory]);
+    setSelectedSubcategories(currentItem[0].subcategories);
+  };
+
+  useEffect(() => {
+    selectedCategoryId !== null && filterCategoryList(selectedCategoryId);
+  }, [selectedCategoryId]);
 
   return isMobile ? (
     <PortalContainer>
@@ -82,20 +95,20 @@ const CategoryMain: FC<IProps> = ({
   ) : (
     <div className={cn(styles.container, { [styles.top]: isSearchBarTop })}>
       <div className={styles.list}>
-        {categoriesList.map(({ id, title, image }) => {
+        {categoriesList.map((item) => {
           return (
             <div
               className={cn(styles.item, {
-                [styles.active]: isActiveCategory == id,
+                [styles.active]: selectedCategoryId == item.id,
               })}
-              key={id}
-              onMouseEnter={() => chooseCategory(id, title)}
+              key={item.id}
+              onMouseEnter={() => chooseCategory(item)}
               onClick={() => !isCreatePage && setIsActiveChoice()}
             >
               <div className={styles.image}>
-                <img src={image} alt="" />
+                <img src={item.image} alt="" />
               </div>
-              <h3 className={styles.title}>{title}</h3>
+              <h3 className={styles.title}>{item.title}</h3>
               <span className={styles.arrow}>
                 <ArrowIcon />
               </span>
@@ -106,13 +119,15 @@ const CategoryMain: FC<IProps> = ({
       <div className={styles.main}>
         <Blocks
           // @ts-ignore
-          currentSubcategories={isCurrentList.subcategories}
+          currentSubcategories={selectedSubcategories}
           isSearchBarTop={isSearchBarTop}
           handleClick={handleClick}
           setIsActiveChoice={setIsActiveChoice}
           dataCategory={dataCategory}
           delNameOfCategoryItem={delNameOfCategoryItem}
           isCreatePage={isCreatePage}
+          onChangeItem={chooseCategoryItem}
+          selectedCategoryId={selectedCategoryId}
         />
       </div>
     </div>

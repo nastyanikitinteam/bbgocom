@@ -6,22 +6,31 @@ import cover3 from "images/main/card-product-3-real-estate.png";
 export const adList = [
   {
     id: 685012401,
-    category: {
+    categoryArr: {
       nameOfCategory: "Real Estate",
       nameOfCategoryItem: "Buy a home",
       nameOfSubCategory: "Rooms",
     },
+    category: 4,
+    subcategorie: 2,
+    subcategorieItem: 3,
     title:
       "Country house in the forest from a wooden frame, in a picturesque place",
     slug: "country-house-in-the-forest-from-a-wooden-frame-in-a-picturesque-place",
     views: 1011,
     date: "09.07.2023 - 08.08.2023",
     messages: 4,
-    currency: "USD",
+    currency: "RUB",
     dealType: "Sale",
     salesman: "Company",
     language: "TH",
     description: "example",
+    condition: "Resale",
+    numberOfBathroom: "2 Bathroom",
+    numberOfRooms: "4 room",
+    repair: "Renovated",
+    totalArea: "2",
+    floor: "1",
     information: {
       totalArea: "2",
       floor: "1",
@@ -30,14 +39,9 @@ export const adList = [
       numberOfRooms: "4 room",
       repair: "Renovated",
     },
-    contacts: {
-      phone: {
-        code: "+358",
-        country: "Finland",
-        number: "123123",
-      },
-      email: "example@gmail.com",
-    },
+    phoneCode: "Finland +358",
+    phoneNumber: "123123",
+    email: "example@gmail.com",
     images: [
       {
         id: 0,

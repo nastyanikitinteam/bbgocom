@@ -10,7 +10,7 @@ import { regionList, adressList } from "../DetailedInformation/config";
 
 interface IProps {
   dataArray: any;
-  disabled: boolean;
+  disabled?: boolean;
   handleDataArray: (event: any, title: any) => void;
   setDataArray: (arr: any) => void;
 }

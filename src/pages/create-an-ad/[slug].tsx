@@ -10,17 +10,19 @@ import { IAd, initialAd } from "src/interfaces/adProduct";
 const CreateAnAdPage: NextPage = () => {
   const router = useRouter();
 
-  const [isCurrentAd, setIsCurrentAd] = useState<IAd>(initialAd);
+  const [currentAdInfo, setCurrentAdInfo] = useState<IAd>(initialAd);
 
   useEffect(() => {
     const currentAd = adList.filter(({ slug }) => slug === router.query.slug);
     // @ts-ignore
-    setIsCurrentAd(currentAd[0] || initialAd);
+    setCurrentAdInfo(currentAd[0] || initialAd);
   }, [router.query.slug]);
 
   return (
     <Layout title="Create an ad" isSecondHeader mobileWithoutSearchBar>
-      {isCurrentAd !== initialAd && <CreateAnAd isCurrentAd={isCurrentAd} />}
+      {currentAdInfo !== initialAd && (
+        <CreateAnAd currentAdInfo={currentAdInfo} />
+      )}
     </Layout>
   );
 };

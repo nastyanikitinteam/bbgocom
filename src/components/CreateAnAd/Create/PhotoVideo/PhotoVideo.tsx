@@ -6,7 +6,7 @@ import cn from "classnames";
 interface IProps {
   dataArray: any;
   setDataArray: (bool: any) => void;
-  disabled: boolean;
+  disabled?: boolean;
   handleDataArray: (event: any, title: any) => void;
 }
 

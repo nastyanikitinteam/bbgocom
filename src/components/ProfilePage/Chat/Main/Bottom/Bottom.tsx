@@ -1,9 +1,12 @@
 import { useCallback, useMemo, useState, FC } from "react";
 import { Form, Field } from "react-final-form";
+import Textarea from "components/FormElements/Textarea/Textarea";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import * as yup from "yup";
 import { validateForm } from "../../../../../utils/validateForm";
 import cn from "classnames";
+
+import { messageTags } from "config/messageTags";
 
 import AttachFiles from "./AttachFiles/AttachFiles";
 
@@ -17,8 +20,6 @@ interface IProps {
 }
 
 const Bottom: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
-  const [isMessageText, setIsMessageeText] = useState("");
-
   const validationSchema = yup.object().shape({
     // email: yup.string().email().required(`Введіть електрону пошту`),
     // password: yup.string().required(`Wrong phone format`),
@@ -28,15 +29,8 @@ const Bottom: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
 
   const onSubmit = useCallback((data, form) => {
     console.log(data);
+    form.reset();
   }, []);
-
-  const onChangeMessageInput = (event) => {
-    setIsMessageeText(event.target.value);
-  };
-
-  const onChangeTag = (val) => {
-    setIsMessageeText(val);
-  };
 
   const handleRemoveFile = (indexToRemove) => {
     const updatedFiles = selectedFiles.filter(
@@ -45,41 +39,16 @@ const Bottom: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
     setSelectedFiles(updatedFiles);
   };
 
-  const tagsList = useMemo(
-    () => [
-      {
-        id: 0,
-        title: "Still selling?",
-      },
-      {
-        id: 1,
-        title: "There is a bargain?",
-      },
-      {
-        id: 2,
-        title: "When can you watch?",
-      },
-      {
-        id: 3,
-        title: "Still selling?",
-      },
-      {
-        id: 4,
-        title: "There is a bargain?",
-      },
-      {
-        id: 5,
-        title: "When can you watch?",
-      },
-    ],
-    []
-  );
-
   return (
     <Form
       onSubmit={onSubmit}
       validate={validate}
-      render={({ handleSubmit }) => (
+      mutators={{
+        changeValue: ([field, value], state, { changeValue }) => {
+          changeValue(state, field, () => value);
+        },
+      }}
+      render={({ handleSubmit, form }) => (
         <form className={styles.container} onSubmit={handleSubmit}>
           <div className={styles.main}>
             <AttachFiles
@@ -87,12 +56,12 @@ const Bottom: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
               setSelectedFiles={setSelectedFiles}
             />
             <div className={styles.item}>
-              <input
-                type="text"
-                value={isMessageText}
-                className={styles.input}
+              <Field
+                name="message"
+                component={Textarea}
+                rows={1}
                 placeholder="text"
-                onChange={onChangeMessageInput}
+                extClassName="chat"
               />
             </div>
             <button type="submit" className={styles.button} aria-label={`Send`}>
@@ -119,12 +88,16 @@ const Bottom: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
 
           <div className={styles.bottom}>
             <div className={styles.tags}>
-              {tagsList.map(({ id, title }) => {
+              {messageTags.map(({ id, title }) => {
                 return (
                   <div
-                    className={styles.tag}
+                    className={cn(styles.tag, {
+                      [styles.active]: form.getState().values.message === title,
+                    })}
                     key={id}
-                    onClick={() => onChangeTag(title)}
+                    onClick={() => {
+                      form.mutators.changeValue("message", title);
+                    }}
                   >
                     {title}
                   </div>
