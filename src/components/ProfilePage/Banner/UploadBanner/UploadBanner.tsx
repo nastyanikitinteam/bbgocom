@@ -8,6 +8,8 @@ import FileUpload from "components/FileUpload/FileUpload";
 import cn from "classnames";
 import styles from "./uploadBanner.module.scss";
 
+import { languageList } from "config/language";
+
 const UploadBanner = () => {
   const [isActiveLang, setIsActiveLang] = useState("EN");
   const [selectedFile, setSelectedFile] = useState(null);
@@ -31,25 +33,6 @@ const UploadBanner = () => {
     setSelectedFile(null);
     setImageDimensions({ width: 0, height: 0 });
   };
-
-  const langList = useMemo(
-    () => [
-      {
-        value: "EN",
-        label: "EN",
-      },
-      {
-        value: "RU",
-        label: "RU",
-      },
-      {
-        value: "TH",
-        label: "TH",
-      },
-    ],
-    []
-  );
-
   return (
     <Form
       onSubmit={onSubmit}
@@ -81,7 +64,7 @@ const UploadBanner = () => {
           {isMobile && (
             <div className={cn(styles.item, styles.language)}>
               <div className={styles.languages}>
-                {langList.map(({ value }) => {
+                {languageList.map(({ value }) => {
                   return (
                     <div
                       className={cn(styles.lang, {
@@ -113,7 +96,7 @@ const UploadBanner = () => {
               <div className={cn(styles.item, styles.language)}>
                 <h3 className={styles.subtitle}>Language banner</h3>
                 <div className={styles.languages}>
-                  {langList.map(({ value }) => {
+                  {languageList.map(({ value }) => {
                     return (
                       <div
                         className={cn(styles.lang, {

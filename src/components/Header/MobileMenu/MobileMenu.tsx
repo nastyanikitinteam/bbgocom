@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback } from "react";
+import { useMemo, useCallback } from "react";
 import Menu from "components/ProfilePage/Menu/Menu";
 import Banner from "components/ProfilePage/Menu/Banner/Banner";
 import styles from "./mobile-menu.module.scss";
@@ -6,31 +6,13 @@ import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import cn from "classnames";
 
+import { languageList } from "config/language";
+
 import LogoSvg from "images/main/logo.svg";
 
 const MobileMenu = () => {
-  const [isActiveLang, setIsActiveLang] = useState("EN");
-
   const { i18n } = useTranslation();
   const router = useRouter();
-
-  const langList = useMemo(
-    () => [
-      {
-        value: "en",
-        label: "EN",
-      },
-      {
-        value: "ru",
-        label: "RU",
-      },
-      {
-        value: "th",
-        label: "TH",
-      },
-    ],
-    []
-  );
 
   const changeLanguage = useCallback((locale: string) => {
     i18n.changeLanguage(locale);
@@ -48,7 +30,7 @@ const MobileMenu = () => {
           <LogoSvg />
         </div>
         <div className={styles.languages}>
-          {langList.map(({ value, label }) => {
+          {languageList.map(({ value, label }) => {
             return (
               <div
                 className={cn(styles.lang, {

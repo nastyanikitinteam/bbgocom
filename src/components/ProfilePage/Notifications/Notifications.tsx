@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Form, Field } from "react-final-form";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
@@ -7,11 +7,10 @@ import Block from "./Block/Block";
 import cn from "classnames";
 import styles from "./notifications.module.scss";
 
+import { NotificationsList } from "config/profilePage";
+
 import ArrowSvg from "images/icons/drop.svg";
-import Avatar1 from "images/profile/notification-avatar1.png";
-import Avatar2 from "images/profile/notification-avatar2.png";
-import Avatar3 from "images/profile/notification-avatar3.png";
-import Avatar4 from "images/profile/notification-avatar4.png";
+
 import DelIcon from "images/icons/delete.svg";
 
 const Notifications = () => {
@@ -21,98 +20,6 @@ const Notifications = () => {
 
   const isMobile = useMediaQuery(768);
   const router = useRouter();
-
-  const NotificationsList = useMemo(
-    () => [
-      {
-        id: 0,
-        avatar: Avatar1.src,
-        title: "<span>Kia Carnival, 2016</span> has fallen in price 🤩",
-        date: "June 2023, 12:38 PM",
-        button: {
-          name: "Go to Ad",
-          link: "/",
-        },
-        isNew: true,
-      },
-      {
-        id: 1,
-        avatar: Avatar2.src,
-        title:
-          "Unfortunately, the Mercedes-Benz C-Class, 2017 has already been sold",
-        date: "June 2023, 12:38 PM",
-        isNew: true,
-      },
-      {
-        id: 2,
-        avatar: Avatar3.src,
-        title: "User <span>Julia Wells</span> left a review about you",
-        text: "",
-        date: "June 2023, 12:38 PM",
-        button: {
-          name: "Show",
-          link: "/",
-        },
-        isNew: true,
-      },
-      {
-        id: 3,
-        avatar: Avatar4.src,
-        title: "Update in BBGO",
-        text: "We have updated our service and now you have more opportunities to buy and sell",
-        date: "June 2023, 12:38 PM",
-        button: {
-          name: "Show",
-          link: "/",
-        },
-        isNew: false,
-      },
-      {
-        id: 4,
-        avatar: Avatar1.src,
-        title: "<span>Kia Carnival, 2016</span> has fallen in price 🤩",
-        date: "June 2023, 12:38 PM",
-        button: {
-          name: "Go to Ad",
-          link: "/",
-        },
-        isNew: false,
-      },
-      {
-        id: 5,
-        avatar: Avatar2.src,
-        title:
-          "Unfortunately, the Mercedes-Benz C-Class, 2017 has already been sold",
-        date: "June 2023, 12:38 PM",
-        isNew: false,
-      },
-      {
-        id: 6,
-        avatar: Avatar3.src,
-        title: "User <span>Julia Wells</span> left a review about you",
-        text: "",
-        date: "June 2023, 12:38 PM",
-        button: {
-          name: "Show",
-          link: "/",
-        },
-        isNew: false,
-      },
-      {
-        id: 7,
-        avatar: Avatar4.src,
-        title: "Update in BBGO",
-        text: "We have updated our service and now you have more opportunities to buy and sell",
-        date: "June 2023, 12:38 PM",
-        button: {
-          name: "Show",
-          link: "/",
-        },
-        isNew: false,
-      },
-    ],
-    []
-  );
 
   const back = () => {
     router.back();
