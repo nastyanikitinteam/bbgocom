@@ -10,6 +10,7 @@ export const resources = {
       heroImg: HeroImgEn.src,
       createButton: "Create an Ad",
       popularCategory: "Popular Categories",
+      mapErrorNoThailand: "Please select a location within Thailand",
     },
   },
   ru: {
@@ -19,6 +20,7 @@ export const resources = {
       heroImg: HeroImgRu.src,
       createButton: "Добавить обьявление",
       popularCategory: "Популярные категории",
+      mapErrorNoThailand: "Пожалуйста, выберите место на территории Тайланда",
     },
   },
   th: {
@@ -28,6 +30,7 @@ export const resources = {
       heroImg: HeroImgTh.src,
       createButton: "สร้างโฆษณา",
       popularCategory: "หมวดหมู่ยอดนิยม",
+      mapErrorNoThailand: "กรุณาเลือกตำแหน่งภายในประเทศไทย",
     },
   },
 };

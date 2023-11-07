@@ -41,10 +41,6 @@ const ChooseCategory: FC<IProps> = ({ dataCategory, setDataCategory }) => {
     return () => document.removeEventListener("click", onClick);
   }, [isOpenCategoryMenu]);
 
-  useEffect(() => {
-    console.log(dataCategory, "dataCategory");
-  }, [dataCategory]);
-
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>

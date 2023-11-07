@@ -1,10 +1,11 @@
 import { useState, useEffect, FC, useCallback } from "react";
 import PortalContainer from "components/PortalContainer/PortalContainer";
-import { categoriesList } from "components/Category/config";
 import useMediaQuery from "src/utils/useMediaQuery";
 import CategoryMobileFilter from "./CategoryMobile/CategoryMobileFilter";
 import Blocks from "./Blocks/Blocks";
 import cn from "classnames";
+
+import { categoriesList } from "config/categoriesList";
 
 import styles from "./category-main.module.scss";
 

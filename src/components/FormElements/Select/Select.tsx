@@ -82,8 +82,11 @@ const SelectContainer: FC<IProps> = ({
         onChange={(e) => {
           input.onChange(e);
           handleChange(e);
+          //@ts-ignore
+          props.onChange && props.onChange(e);
         }}
         ref={selectRef}
+        // {...props}
         // menuIsOpen
       />
     </div>
@@ -94,6 +97,9 @@ const SelectContainer: FC<IProps> = ({
       placeholder={placeholder}
       isSearch={isSearch}
       isClearValue={isClearValue}
+      input={input}
+      //@ts-ignore
+      props={props}
     />
   );
 };

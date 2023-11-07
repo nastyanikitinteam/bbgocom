@@ -5,7 +5,7 @@ import CategoryMobile from "components/SearchBar/Category/CategoryMain/CategoryM
 import useMediaQuery from "src/utils/useMediaQuery";
 import { useTranslation } from "react-i18next";
 
-import { categoriesList } from "components/Category/config";
+import { categoriesList } from "config/categoriesList";
 
 import styles from "./popular-category.module.scss";
 import cn from "classnames";
@@ -79,23 +79,20 @@ const PopularCategory = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          {categoriesList.map(
-            ({ id, title, image, slug, items, subcategories }) => {
-              return (
-                id < isShowCategory && (
-                  <div className={styles.block} key={id}>
-                    <Category
-                      title={title}
-                      image={image}
-                      link={slug}
-                      items={items}
-                      subcategories={subcategories}
-                    />
-                  </div>
-                )
-              );
-            }
-          )}
+          {categoriesList.map(({ id, title, image, slug, subcategories }) => {
+            return (
+              id < isShowCategory && (
+                <div className={styles.block} key={id}>
+                  <Category
+                    title={title}
+                    image={image}
+                    link={slug}
+                    subcategories={subcategories}
+                  />
+                </div>
+              )
+            );
+          })}
         </div>
         {!isMobile && (
           <div

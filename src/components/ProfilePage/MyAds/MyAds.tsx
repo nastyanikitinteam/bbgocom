@@ -3,12 +3,11 @@ import { useRouter } from "next/router";
 import { Form, Field } from "react-final-form";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import useMediaQuery from "src/utils/useMediaQuery";
-import CardProduct from "components/CardProduct/CardProduct";
 import Card from "./Card/Card";
 import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
-// import { productList } from "components/MainPage/Recommend/config";
 import NoResult from "./NoResult/NoResults";
-import { categorieList, adList } from "./config";
+
+import { categorieList, adsList } from "config/adsList";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
@@ -27,7 +26,7 @@ const MyAds = () => {
   );
 
   const [isActiveCategoryList, setIsActiveCategoryList] = useState(
-    adList.filter((product) => product.adsList === isActiveCategory)
+    adsList.filter((product) => product.adsList === isActiveCategory)
   );
 
   const [isShowCategory, setIsShowCategory] = useState(false);
@@ -80,7 +79,7 @@ const MyAds = () => {
   const handleCategories = useCallback(
     (title) => {
       setIsActiveCategory(title);
-      const filteredList = adList.filter(
+      const filteredList = adsList.filter(
         (product) => product.adsList === title
       );
       setIsActiveCategoryList(filteredList);
@@ -94,7 +93,7 @@ const MyAds = () => {
   );
 
   const countList = useCallback((title) => {
-    const filteredList = adList.filter((product) => product.adsList === title);
+    const filteredList = adsList.filter((product) => product.adsList === title);
     return filteredList.length;
   }, []);
 

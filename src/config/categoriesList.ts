@@ -76,23 +76,6 @@ export const categoriesList = [
       { id: 13, name: "Car spaces", slug: "" },
       { id: 14, name: "Rent Daily", slug: "" },
     ],
-    items: [
-      {
-        id: 0,
-        title: "Flats and apartments",
-        slug: "flats-and-apartments",
-      },
-      {
-        id: 1,
-        title: "Houses, villas",
-        slug: "houses-villas",
-      },
-      {
-        id: 2,
-        title: "Rooms",
-        slug: "rooms",
-      },
-    ],
     subcategories: [
       {
         id: 0,
@@ -236,23 +219,7 @@ export const categoriesList = [
       { id: 13, name: "Auto service", slug: "" },
       { id: 14, name: "Repair and maintenance", slug: "" },
     ],
-    items: [
-      {
-        id: 0,
-        title: "Cars",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Bikes, quadbike, scoot...",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Bicycles, foot scooters",
-        slug: "",
-      },
-    ],
+
     subcategories: [
       {
         id: 0,
@@ -409,23 +376,7 @@ export const categoriesList = [
       { id: 1, name: "Dogs", slug: "" },
       { id: 2, name: "Dog Accessories", slug: "" },
     ],
-    items: [
-      {
-        id: 0,
-        title: "Dogs",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Birds and Parrots",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Veterinary",
-        slug: "",
-      },
-    ],
+
     subcategories: [
       {
         id: 0,
@@ -616,23 +567,6 @@ export const categoriesList = [
       { id: 0, name: "Skincare", slug: "" },
       { id: 1, name: "Makeup", slug: "" },
       { id: 2, name: "Haircare", slug: "" },
-    ],
-    items: [
-      {
-        id: 0,
-        title: "Beauticians",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Hair Masters",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Beauty Salons and Spa",
-        slug: "",
-      },
     ],
     subcategories: [
       {
@@ -834,23 +768,6 @@ export const categoriesList = [
       { id: 5, name: "Doors", slug: "" },
       { id: 6, name: "Garden Equipment", slug: "" },
     ],
-    items: [
-      {
-        id: 0,
-        title: "Furniture, Interior",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Crockery and Kitchen…",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Art",
-        slug: "",
-      },
-    ],
     subcategories: [
       {
         id: 0,
@@ -1051,24 +968,6 @@ export const categoriesList = [
       { id: 12, name: "Job Search", slug: "" },
       { id: 13, name: "Interview Preparation", slug: "" },
       { id: 14, name: "Franchises", slug: "" },
-    ],
-
-    items: [
-      {
-        id: 0,
-        title: "Vacanciesv",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Job hunting",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Courses, education",
-        slug: "",
-      },
     ],
     subcategories: [
       {
@@ -1273,23 +1172,6 @@ export const categoriesList = [
       { id: 3, name: "Toys", slug: "" },
       { id: 4, name: "Scooters", slug: "" },
     ],
-    items: [
-      {
-        id: 0,
-        title: "All for school",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Shoes",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Clothes",
-        slug: "",
-      },
-    ],
     subcategories: [
       {
         id: 0,
@@ -1400,24 +1282,6 @@ export const categoriesList = [
       { id: 21, name: "Financial", slug: "" },
       { id: 22, name: "Computer", slug: "" },
       { id: 23, name: "Internet", slug: "" },
-    ],
-
-    items: [
-      {
-        id: 0,
-        title: "Cleaning",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Cooking",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Tourist services",
-        slug: "",
-      },
     ],
     subcategories: [
       {
@@ -1622,23 +1486,6 @@ export const categoriesList = [
       { id: 3, name: "Ceramics", slug: "" },
       { id: 4, name: "Paper Crafts", slug: "" },
       { id: 5, name: "Jewelry Making", slug: "" },
-    ],
-    items: [
-      {
-        id: 0,
-        title: "Hobbies and Interests",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Books and Magazines",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Music and Instruments",
-        slug: "",
-      },
     ],
     subcategories: [
       {
@@ -1846,23 +1693,6 @@ export const categoriesList = [
       { id: 6, name: "Dresses", slug: "" },
       { id: 7, name: "Sundresses", slug: "" },
       { id: 8, name: "Skirts", slug: "" },
-    ],
-    items: [
-      {
-        id: 0,
-        title: "Women’s clothing",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Women’s shoes",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Veterinary",
-        slug: "",
-      },
     ],
     subcategories: [
       {
@@ -2236,23 +2066,6 @@ export const categoriesList = [
       { id: 2, name: "Family Therapy", slug: "" },
       { id: 3, name: "Child", slug: "" },
     ],
-    items: [
-      {
-        id: 0,
-        title: "Events, Occasions",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Counseling, Training",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Meditation",
-        slug: "",
-      },
-    ],
     subcategories: [
       {
         id: 0,
@@ -2422,23 +2235,6 @@ export const categoriesList = [
       { id: 6, name: "Camping", slug: "" },
       { id: 7, name: "Rock Climbing", slug: "" },
       { id: 8, name: "Water Sports", slug: "" },
-    ],
-    items: [
-      {
-        id: 0,
-        title: "Individual Trainings",
-        slug: "",
-      },
-      {
-        id: 1,
-        title: "Group Training",
-        slug: "",
-      },
-      {
-        id: 2,
-        title: "Fitness, Yoga",
-        slug: "",
-      },
     ],
     subcategories: [
       {

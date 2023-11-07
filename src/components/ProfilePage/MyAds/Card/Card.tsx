@@ -1,8 +1,10 @@
-import { useMemo, FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./card.module.scss";
 import cn from "classnames";
 import useMediaQuery from "src/utils/useMediaQuery";
+import { categoriesList } from "config/categoriesList";
+
 import Slider from "components/Slider/Slider";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
@@ -22,13 +24,52 @@ interface IProps {
 }
 
 const Card: FC<IProps> = ({ item, children, type }) => {
+  const isTablet = useMediaQuery(998);
+
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
   const [isActiveActivateModal, setIsActiveActivateModal] = useState(false);
   const [isCurrency, setIsCurrency] = useState(
     item.currency === "THB" ? "฿" : item.currency === "RUB" ? "₽" : "$"
   );
 
-  const isTablet = useMediaQuery(998);
+  const [category, setCategory] = useState({});
+  const [subcategory, setSubcategory] = useState({});
+  const [subcategoryItem, setSubcategoryItem] = useState({});
+
+  useEffect(() => {
+    const selectedCategory = categoriesList.find(
+      (cat) => cat.id === item.categoryInfo.category
+    );
+    if (selectedCategory) {
+      setCategory(selectedCategory);
+    }
+  }, [categoriesList, item.categoryInfo.category]);
+
+  useEffect(() => {
+    //@ts-ignore
+    if (category.subcategories) {
+      // @ts-ignore
+      const selectedSubcategory = category.subcategories.find(
+        (cat) => cat.id === item.categoryInfo.subcategorie
+      );
+      if (selectedSubcategory) {
+        setSubcategory(selectedSubcategory);
+      }
+    }
+  }, [category]);
+
+  useEffect(() => {
+    //@ts-ignore
+    if (subcategory.items) {
+      // @ts-ignore
+      const selectedSubcategoryItem = subcategory.items.find(
+        (cat) => cat.id === item.categoryInfo.subcategorieItem
+      );
+      if (selectedSubcategoryItem) {
+        setSubcategoryItem(selectedSubcategoryItem);
+      }
+    }
+  }, [subcategory]);
 
   return (
     <div className={styles.container}>
@@ -75,12 +116,14 @@ const Card: FC<IProps> = ({ item, children, type }) => {
           <div className={styles.items}>
             {!isTablet && (
               <div className={styles.item}>
-                <p className={styles.mainCategory}>
-                  {item.category.nameOfCategory}
-                </p>
-                <p className={styles.subCategory}>
-                  {item.category.nameOfSubCategory}
-                </p>
+                {category && (
+                  //@ts-ignore
+                  <p className={styles.mainCategory}>{category.title}</p>
+                )}
+                {subcategory && (
+                  //@ts-ignore
+                  <p className={styles.subCategory}>{subcategory.title}</p>
+                )}
               </div>
             )}
             <div className={styles.item}>

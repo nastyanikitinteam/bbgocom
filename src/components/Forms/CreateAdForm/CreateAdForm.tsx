@@ -1,5 +1,5 @@
 import { useCallback, useState, FC, useEffect } from "react";
-import { Form } from "react-final-form";
+import { Form, Field } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import useMediaQuery from "src/utils/useMediaQuery";
@@ -21,19 +21,15 @@ interface IProps {
 
 const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
   const [adInfo, setAdInfo] = useState(currentAdInfo ? currentAdInfo : {});
-
   const [dataCategory, setDataCategory] = useState(
-    currentAdInfo?.subcategorieItem
-      ? {
-          category: currentAdInfo?.category,
-          subcategorie: currentAdInfo?.subcategorie,
-          subcategorieItem: currentAdInfo?.subcategorieItem,
-        }
-      : {}
+    currentAdInfo?.categoryInfo ? currentAdInfo?.categoryInfo : {}
   );
-  const [isActiveLang, setIsActiveLang] = useState(
+
+  const [choosedLang, setChoosedLang] = useState(
     currentAdInfo?.language ? currentAdInfo?.language : "EN"
   );
+
+  const [adressName, setIsAdressName] = useState({ adress: "" });
 
   const [isActiveCurrency, setIsActiveCurrency] = useState(
     currentAdInfo?.currency ? currentAdInfo?.currency : "THB"
@@ -45,24 +41,20 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
 
   const validate = validateForm(validationSchema);
 
-  const handleDataArray = (event, title) => {
-    if (event?.length) {
-      setAdInfo((prev) => ({ ...prev, [title]: event }));
-    } else {
-      // if (adInfo[title]) {
-      //   let obj = adInfo;
-      //   delete obj[title];
-      //   setAdInfo(obj);
-      // }
-    }
-  };
+  const onSubmit = useCallback(
+    (data, form) => {
+      console.log({
+        ...data,
+        categoryInfo: dataCategory,
+        language: choosedLang,
+      });
+      setIsOpenModal();
+    },
+    [dataCategory, choosedLang]
+  );
 
-  const onSubmit = useCallback((data, form) => {
-    console.log(
-      { ...data, ...dataCategory, ["language"]: isActiveLang },
-      "data"
-    );
-    setIsOpenModal();
+  const handleAdress = useCallback((val) => {
+    setIsAdressName({ adress: val });
   }, []);
 
   return (
@@ -70,9 +62,13 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
       <Form
         onSubmit={onSubmit}
         validate={validate}
-        initialValues={{
-          ...currentAdInfo,
-        }}
+        initialValues={
+          currentAdInfo
+            ? {
+                ...currentAdInfo,
+              }
+            : { ...adressName }
+        }
         render={({ handleSubmit }) => (
           <form className={styles.container} onSubmit={handleSubmit}>
             <ChooseCategory
@@ -80,8 +76,8 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
               setDataCategory={setDataCategory}
             />
             <TitleLanguage
-              isActiveLang={isActiveLang}
-              setIsActiveLang={setIsActiveLang}
+              choosedLang={choosedLang}
+              setChoosedLang={setChoosedLang}
               // disabled={}
             />
             <PhotoVideo
@@ -95,12 +91,10 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
             <DetailedInformation
             // disabled={}
             />
-            {/* <Location
-              dataArray={adInfo}
-              setDataArray={setAdInfo}
-              handleDataArray={handleDataArray}
+            <Location
+              handleAdress={handleAdress}
               // disabled={}
-            /> */}
+            />
             <Contacts
               isCreate={currentAdInfo && true} // disabled={}
             />

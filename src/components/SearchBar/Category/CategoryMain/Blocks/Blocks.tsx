@@ -3,7 +3,6 @@ import Link from "next/link";
 import styles from "./blocks.module.scss";
 import cn from "classnames";
 
-import { categoriesList } from "components/Category/config";
 import SignUpBlock from "components/CategoryPage/SubCategory/SignUpBlock/SignUpBlock";
 
 import Plus from "images/icons/plus.svg";

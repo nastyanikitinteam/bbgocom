@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 import Layout from "components/Layout/Layout";
 import CategoryFilterPage from "components/CategoryFilterPage/CategoryFilterPage";
 
-import { categoriesList } from "components/Category/config";
+import { categoriesList } from "config/categoriesList";
+
 import {
   ICategory,
   ISubcategories,

@@ -81,6 +81,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  right: 9px;
+  top: 8px;
   svg {
     width: 24px;
     height: 24px;
@@ -101,4 +104,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.inputContainer {
+  position: relative;
+  width: 100%;
 }

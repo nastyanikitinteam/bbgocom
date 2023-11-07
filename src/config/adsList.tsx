@@ -3,7 +3,7 @@ import cover1 from "images/main/card-product-real-estate.png";
 import cover2 from "images/main/card-product-2-real-estate.png";
 import cover3 from "images/main/card-product-3-real-estate.png";
 
-export const adList = [
+export const adsList = [
   {
     id: 685012401,
     categoryInfo: {

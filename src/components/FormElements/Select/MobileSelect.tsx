@@ -1,5 +1,6 @@
 import { FC, useEffect, useState, forwardRef, useRef } from "react";
 import Select, { components } from "react-select";
+import { Form, Field, useFormState, useForm } from "react-final-form";
 import PortalContainer from "components/PortalContainer/PortalContainer";
 import SelectSearch from "components/Select/SelectSearch/SelectSearch";
 import useMediaQuery from "src/utils/useMediaQuery";
@@ -19,6 +20,8 @@ interface IProps {
   isSearch?: boolean;
   title?: string;
   isClearValue?: boolean;
+  input;
+  props;
 }
 const MobileSelect: FC<IProps> = ({
   options,
@@ -27,15 +30,20 @@ const MobileSelect: FC<IProps> = ({
   title,
   isSearch,
   isClearValue,
+  input,
+  props,
 }) => {
+  const form = useForm();
   const [isOpenList, setIsOpenList] = useState(false);
   const [isChooseOption, setIsChooseOption] = useState(
     placeholder ? placeholder : options[0].value
   );
 
-  const handleListChange = (value: any) => {
+  const handleListChange = (item: any) => {
     setIsOpenList(false);
-    setIsChooseOption(value);
+    setIsChooseOption(item.value);
+    form && form.change(input.name, item);
+    props.onChange && props.onChange(item);
   };
 
   useEffect(() => {
@@ -57,6 +65,7 @@ const MobileSelect: FC<IProps> = ({
         {isChooseOption === placeholder ? (
           <p className={styles.placeholder}>{isChooseOption}</p>
         ) : (
+          options &&
           options
             .filter(({ value }) => value === isChooseOption)
             .map(({ value, label }) => {
@@ -92,21 +101,23 @@ const MobileSelect: FC<IProps> = ({
               isChooseOption={isChooseOption}
             />
           ) : (
-            <div className={styles.list}>
-              {options.map(({ value, label }) => {
-                return (
-                  <div
-                    key={value}
-                    className={cn(styles.item, {
-                      [styles.active]: value === isChooseOption,
-                    })}
-                    onClick={() => handleListChange(value)}
-                  >
-                    {label}
-                  </div>
-                );
-              })}
-            </div>
+            options && (
+              <div className={styles.list}>
+                {options.map((item) => {
+                  return (
+                    <div
+                      key={item.value}
+                      className={cn(styles.item, {
+                        [styles.active]: item.value === isChooseOption,
+                      })}
+                      onClick={() => handleListChange(item)}
+                    >
+                      {item.label}
+                    </div>
+                  );
+                })}
+              </div>
+            )
           )}
         </div>
       </PortalContainer>

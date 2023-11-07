@@ -3,17 +3,13 @@ import Link from "next/link";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./category.module.scss";
 
-import { categoriesList } from "components/Category/config";
-import { ICategory, initialCategory } from "src/interfaces/category";
-
 interface IProps {
   title: string;
   image: string;
   link: string;
-  items: any;
   subcategories: any;
 }
-const Category: FC<IProps> = ({ title, image, link, items, subcategories }) => {
+const Category: FC<IProps> = ({ title, image, link, subcategories }) => {
   const [isbaseUrl, setIsBaseUrl] = useState("");
 
   // TODO: 768 in config

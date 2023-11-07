@@ -11,14 +11,14 @@ import { languageList } from "config/language";
 
 interface IProps {
   disabled?: boolean;
-  isActiveLang: string;
-  setIsActiveLang: (str: string) => void;
+  choosedLang: string;
+  setChoosedLang: (str: string) => void;
 }
 
 const TitleLanguage: FC<IProps> = ({
   disabled,
-  isActiveLang,
-  setIsActiveLang,
+  choosedLang,
+  setChoosedLang,
 }) => {
   const isMobile = useMediaQuery(768);
 
@@ -51,10 +51,10 @@ const TitleLanguage: FC<IProps> = ({
                     return (
                       <div
                         className={cn(styles.tab, {
-                          [styles.active]: value === isActiveLang,
+                          [styles.active]: value === choosedLang,
                         })}
                         key={value}
-                        onClick={() => setIsActiveLang(value)}
+                        onClick={() => setChoosedLang(value)}
                       >
                         {value}
                       </div>

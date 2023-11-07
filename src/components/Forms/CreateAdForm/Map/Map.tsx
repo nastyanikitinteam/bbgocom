@@ -1,30 +1,20 @@
 // @ts-nocheck
-import React, {
-  useEffect,
-  useRef,
-  ReactElement,
-  useState,
-  FC,
-  memo,
-} from "react";
+import { useEffect, useRef, ReactElement, FC, memo, useState } from "react";
 import ReactDOM from "react-dom";
+import { useTranslation } from "react-i18next";
 import { Wrapper, Status } from "./index";
 
 import pointIcon from "images/icons/point.png";
 
 interface IProps {
-  handleDataArray?: (event: any, title: any) => void;
-  setIsAdress?: (str: string) => void;
+  handleAdress?: (str: string) => void;
   isCoordinates: any;
   isMapZoom: number;
 }
 
-const Map: FC<IProps> = ({
-  setIsAdress,
-  isCoordinates,
-  isMapZoom,
-  // handleDataArray,
-}) => {
+const Map: FC<IProps> = ({ handleAdress, isCoordinates, isMapZoom }) => {
+  const { t } = useTranslation();
+
   const disableDefaultUI = true;
   const render = (status: Status): ReactElement => {
     if (status === Status.LOADING) return <h3>{status} ..</h3>;
@@ -48,9 +38,6 @@ const Map: FC<IProps> = ({
     fullscreenControl: boolean;
   }) => {
     const mapRef = useRef();
-    const markerRef = useRef();
-
-    const [markerPosition, setMarkerPosition] = useState(center);
 
     const customMarkerIcon = {
       url: pointIcon.src,
@@ -238,19 +225,15 @@ const Map: FC<IProps> = ({
 
       map.addListener("click", (event) => {
         const infoWindow = new google.maps.InfoWindow();
-        if (setIsAdress) {
-          const newPosition = event.latLng.toJSON();
-          setMarkerPosition(newPosition);
-          marker.setPosition(event.latLng);
+        if (handleAdress) {
+          const newPosition = event.latLng;
           infoWindow.close();
-          getAddressFromCoordinates(newPosition);
+          getAddressFromCoordinates(newPosition, marker);
         }
       });
-
-      // setIsAdress && getAddressFromCoordinates(center);
     }, []);
 
-    const getAddressFromCoordinates = (coordinates) => {
+    const getAddressFromCoordinates = (coordinates, marker) => {
       const geocoder = new window.google.maps.Geocoder();
 
       geocoder.geocode({ location: coordinates }, (results, status) => {
@@ -265,16 +248,19 @@ const Map: FC<IProps> = ({
               results[0].address_components.filter((component) => {
                 return !(
                   component.types.includes("plus_code") ||
-                  component.types.includes("postal_code")
+                  component.types.includes("postal_code") ||
+                  component.types.includes("country")
                 );
               });
             const formattedAddress = filteredAddressComponents
               .map((component) => component.long_name)
               .join(", ");
 
-            setIsAdress(formattedAddress);
+            handleAdress(formattedAddress);
+            marker.setPosition(coordinates);
           } else {
-            console.log("no Thailand");
+            alert(`${t(`mapErrorNoThailand`)}`);
+            return false;
           }
         }
       });
@@ -297,7 +283,6 @@ const Map: FC<IProps> = ({
       <MyMapComponent
         center={isCoordinates}
         zoom={isMapZoom}
-        // disableDefaultUI={disableDefaultUI}
         zoomControl={false}
         streetViewControl={false}
         mapTypeControl={false}

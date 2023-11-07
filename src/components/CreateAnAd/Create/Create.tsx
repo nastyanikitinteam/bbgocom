@@ -1,7 +1,6 @@
 import { useState, FC } from "react";
 import { useRouter } from "next/router";
 import useMediaQuery from "src/utils/useMediaQuery";
-
 import Modal from "components/Modal/Modal";
 import SuccessfulCreate from "components/Modal/SuccessfulCreate/SuccessfulCreate";
 
@@ -15,7 +14,6 @@ interface IProps {
 
 const Create: FC<IProps> = ({ currentAdInfo }) => {
   const isMobile = useMediaQuery(768);
-  const [adInfo, setAdInfo] = useState(currentAdInfo ? currentAdInfo : {});
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const router = useRouter();

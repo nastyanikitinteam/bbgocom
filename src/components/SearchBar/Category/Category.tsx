@@ -1,13 +1,10 @@
 import { FC, useState, useEffect, useCallback } from "react";
 import cn from "classnames";
 import styles from "./category.module.scss";
-import { categoriesList } from "components/Category/config";
-
-import { Field } from "react-final-form";
+import { categoriesList } from "config/categoriesList";
 
 import ArrowIcon from "images/icons/drop.svg";
 import CatalogIcon from "images/icons/catalog-icon.svg";
-import { AbstractKeyword } from "typescript";
 
 interface IProps {
   handleActive?: () => void;
