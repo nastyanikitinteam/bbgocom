@@ -1,0 +1,11 @@
+@import "../steps.module.scss";
+
+.currency {
+  max-width: 260px;
+}
+
+@media (max-width: 768px) {
+  .currency {
+    max-width: none;
+  }
+}
