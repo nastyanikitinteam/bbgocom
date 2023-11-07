@@ -10,15 +10,15 @@ import { useFormState } from "react-final-form";
 import { languageList } from "config/language";
 
 interface IProps {
-  disabled?: boolean;
   choosedLang: string;
   setChoosedLang: (str: string) => void;
+  disabled: boolean;
 }
 
 const TitleLanguage: FC<IProps> = ({
-  disabled,
   choosedLang,
   setChoosedLang,
+  disabled,
 }) => {
   const isMobile = useMediaQuery(768);
 
@@ -27,7 +27,6 @@ const TitleLanguage: FC<IProps> = ({
       <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
         <span className={styles.num}>2</span>Title and Description
       </h3>
-
       {!disabled && (
         <>
           <div className={styles.items}>
@@ -69,8 +68,7 @@ const TitleLanguage: FC<IProps> = ({
             <div className={cn(styles.input)}>
               <Field
                 name="description"
-                placeholder={"Enter Description"}
-                type="text"
+                placeholder="Enter Description"
                 component={Textarea}
                 rows={isMobile ? 5 : 11}
               />

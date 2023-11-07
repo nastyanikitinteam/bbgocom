@@ -14,19 +14,22 @@ const PhotoVideo: FC<IProps> = ({ disabled }) => {
       <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
         <span className={styles.num}>3</span>Photo and video
       </h3>
-      <div>
-        <p className={styles.description}>
-          <span> * The first photo will be on the cover of the ad.</span> {"  "}
-          Drag to reorder photos.
-        </p>
-        <Field
-          name="photos"
-          //@ts-ignore
-          component={FileInputField}
-          title="Drag the image or <span>Open explorer</span>"
-          description="1600x1200 or higher is recommended. <br> Max. 10 MB each (20 MB for video)"
-        />
-      </div>
+      {!disabled && (
+        <div>
+          <p className={styles.description}>
+            <span> * The first photo will be on the cover of the ad.</span>{" "}
+            {"  "}
+            Drag to reorder photos.
+          </p>
+          <Field
+            name="photos"
+            //@ts-ignore
+            component={FileInputField}
+            title="Drag the image or <span>Open explorer</span>"
+            description="1600x1200 or higher is recommended. <br> Max. 10 MB each (20 MB for video)"
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -11,6 +11,7 @@ import ArrowSmSvg from "images/icons/drop-sm.svg";
 
 interface IProps {
   options: any;
+  meta: any;
   classname?: string;
   language?: boolean;
   placeholder?: string;
@@ -22,6 +23,7 @@ interface IProps {
 }
 const SelectContainer: FC<IProps> = ({
   options,
+  meta,
   classname,
   language,
   placeholder,
@@ -75,7 +77,9 @@ const SelectContainer: FC<IProps> = ({
         options={options}
         defaultValue={chooseOption ? chooseOption : !placeholder && options[0]}
         placeholder={placeholder && placeholder}
-        className={cn(`default-select ${classname} ${fillClass}`)}
+        className={cn(`default-select ${classname} ${fillClass}`, {
+          error: meta?.error && meta?.touched,
+        })}
         classNamePrefix="default"
         isSearchable={isSearch ? true : false}
         components={{ DropdownIndicator, NoOptionsMessage }}

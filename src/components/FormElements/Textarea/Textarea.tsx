@@ -8,16 +8,11 @@ interface IProps {
   type?: string;
   serverErrors?: string;
   extClassName?: string;
-  secondaryColor?: string;
-  textColor?: string;
   input?: any;
   label?: string;
   meta?: any;
   required?: boolean;
   isSmall?: boolean;
-  keyName?: string;
-  textValue?: string;
-  onChange?: (any: any) => void;
 }
 
 const Textarea: React.FC<IProps> = ({
@@ -26,11 +21,6 @@ const Textarea: React.FC<IProps> = ({
   placeholder,
   serverErrors,
   extClassName,
-  secondaryColor,
-  textColor,
-  keyName,
-  textValue,
-  onChange,
   isSmall,
   input,
   ...props
@@ -51,6 +41,7 @@ const Textarea: React.FC<IProps> = ({
               (serverErrors && !meta?.dirtySinceLastSubmit) ||
               (meta?.error && meta?.touched),
           })}
+          placeholder={placeholder && placeholder}
           rows={5}
           {...input}
           {...props}

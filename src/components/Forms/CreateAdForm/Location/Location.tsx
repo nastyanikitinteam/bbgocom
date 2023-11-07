@@ -12,9 +12,10 @@ import Selects from "./Selects/Selects";
 
 interface IProps {
   handleAdress: (val: string) => void;
+  disabled: boolean;
 }
 
-const Location: FC<IProps> = ({ handleAdress }) => {
+const Location: FC<IProps> = ({ handleAdress, disabled }) => {
   const { t } = useTranslation();
   const [isCoordinates, setIsCoordinates] = useState({
     lat: 15,
@@ -32,27 +33,31 @@ const Location: FC<IProps> = ({ handleAdress }) => {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>
+      <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
         <span className={styles.num}>6</span>Location
       </h3>
-      <div className={styles.items}>
-        <Selects
-          handleCoordinates={handleCoordinates}
-          setIsMapZoom={setIsMapZoom}
-          handleAdress={handleAdress}
-        />
-        <Adress
-          setIsMapZoom={setIsMapZoom}
-          setIsCoordinates={setIsCoordinates}
-        />
-      </div>
-      <div className={styles.map}>
-        <Map
-          handleAdress={handleAdress}
-          isCoordinates={isCoordinates}
-          isMapZoom={isMapZoom}
-        />
-      </div>
+      {!disabled && (
+        <>
+          <div className={styles.items}>
+            <Selects
+              handleCoordinates={handleCoordinates}
+              setIsMapZoom={setIsMapZoom}
+              handleAdress={handleAdress}
+            />
+            <Adress
+              setIsMapZoom={setIsMapZoom}
+              setIsCoordinates={setIsCoordinates}
+            />
+          </div>
+          <div className={styles.map}>
+            <Map
+              handleAdress={handleAdress}
+              isCoordinates={isCoordinates}
+              isMapZoom={isMapZoom}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };

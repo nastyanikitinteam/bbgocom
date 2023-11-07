@@ -15,6 +15,7 @@ interface IProps {
   isBig?: boolean;
   placeholder: string;
   isCreatePage?: boolean;
+  error?: boolean;
 }
 
 const Category: FC<IProps> = ({
@@ -26,6 +27,7 @@ const Category: FC<IProps> = ({
   isBig,
   placeholder,
   isCreatePage,
+  error,
 }) => {
   const [selectedTitle, setSelectedTitle] = useState("");
 
@@ -63,6 +65,7 @@ const Category: FC<IProps> = ({
           [styles.active]: isActiveChoice || isOpenCategoryMenu,
           [styles.fill]: selectedTitle.length > 0,
           [styles.big]: isBig,
+          [styles.error]: error,
         })}
         onClick={() => handleActive()}
       >

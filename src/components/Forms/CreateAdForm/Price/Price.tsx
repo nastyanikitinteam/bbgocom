@@ -22,10 +22,10 @@ const Price: FC<IProps> = ({
 
   return (
     <div className={styles.container}>
-      <h3 className={cn(styles.title)}>
+      <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
         <span className={styles.num}>4</span>Price
       </h3>
-      <>
+      {!disabled && (
         <div className={styles.items}>
           <div className={cn(styles.item, styles.currency)}>
             <p className={styles.label}>Currency</p>
@@ -59,7 +59,7 @@ const Price: FC<IProps> = ({
             </div>
           </div>
         </div>
-      </>
+      )}
     </div>
   );
 };

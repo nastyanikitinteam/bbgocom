@@ -1,4 +1,4 @@
-import { useCallback, useState, FC } from "react";
+import { useCallback, useState, FC, useEffect } from "react";
 import { Form } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
@@ -20,6 +20,7 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
   const [dataCategory, setDataCategory] = useState(
     currentAdInfo?.categoryInfo ? currentAdInfo?.categoryInfo : {}
   );
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const [choosedLang, setChoosedLang] = useState(
     currentAdInfo?.language ? currentAdInfo?.language : "EN"
@@ -32,7 +33,11 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
   );
 
   const validationSchema = yup.object().shape({
-    //
+    title: yup.string().required(`Enter title`),
+    price: yup.string().required(`Enter price`),
+    description: yup.string().required(`Enter description`),
+    dealType: yup.mixed().required(`Selected option`),
+    salesman: yup.mixed().required(`Selected option`),
   });
 
   const validate = validateForm(validationSchema);
@@ -41,7 +46,6 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
     (data, form) => {
       console.log({
         ...data,
-        categoryInfo: dataCategory,
         language: choosedLang,
       });
       setIsOpenModal();
@@ -53,6 +57,21 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
     setIsAdressName({ adress: val });
   }, []);
 
+  const checkDisabled = useCallback(
+    (obj) => {
+      for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          setIsDisabled(false);
+        }
+      }
+    },
+    [dataCategory]
+  );
+
+  useEffect(() => {
+    checkDisabled(dataCategory);
+  }, [dataCategory]);
+
   return (
     <>
       <Form
@@ -63,37 +82,29 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
             ? {
                 ...currentAdInfo,
               }
-            : { ...adressName }
+            : { ...adressName, categoryInfo: dataCategory }
         }
         render={({ handleSubmit }) => (
           <form className={styles.container} onSubmit={handleSubmit}>
             <ChooseCategory
               dataCategory={dataCategory}
               setDataCategory={setDataCategory}
+              disabled={isDisabled}
             />
             <TitleLanguage
               choosedLang={choosedLang}
               setChoosedLang={setChoosedLang}
-              // disabled={}
+              disabled={isDisabled}
             />
-            <PhotoVideo
-            // disabled={}
-            />
+            <PhotoVideo disabled={isDisabled} />
             <Price
               isActiveCurrency={isActiveCurrency}
               setIsActiveCurrency={setIsActiveCurrency}
-              // disabled={}
+              disabled={isDisabled}
             />
-            <DetailedInformation
-            // disabled={}
-            />
-            <Location
-              handleAdress={handleAdress}
-              // disabled={}
-            />
-            <Contacts
-              isCreate={currentAdInfo && true} // disabled={}
-            />
+            <DetailedInformation disabled={isDisabled} />
+            <Location handleAdress={handleAdress} disabled={isDisabled} />
+            <Contacts isCreate={currentAdInfo && true} disabled={isDisabled} />
           </form>
         )}
       ></Form>

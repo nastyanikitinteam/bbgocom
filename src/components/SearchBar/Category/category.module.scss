@@ -54,6 +54,9 @@
       color: #000;
     }
   }
+  &.error {
+    border-color: var(--secondary-orange, #ff5a27);
+  }
 }
 
 .big {

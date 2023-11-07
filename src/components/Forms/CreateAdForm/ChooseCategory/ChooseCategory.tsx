@@ -15,11 +15,16 @@ import cn from "classnames";
 interface IProps {
   dataCategory: any;
   setDataCategory: (arr: any) => void;
+  disabled: boolean;
 }
 
-const ChooseCategory: FC<IProps> = ({ dataCategory, setDataCategory }) => {
+const ChooseCategory: FC<IProps> = ({
+  dataCategory,
+  setDataCategory,
+  disabled,
+}) => {
   const isMobile = useMediaQuery(768);
-  const { values } = useFormState();
+  const { values, errors, submitFailed } = useFormState();
   const [isActiveCategory, setIsActiveCategory] = useState(null);
   const categoryContainerRef = useRef(null as null | HTMLDivElement);
   const categoryMenuRef = useRef(null as null | HTMLDivElement);
@@ -59,10 +64,11 @@ const ChooseCategory: FC<IProps> = ({ dataCategory, setDataCategory }) => {
               isBig
               placeholder="Choose category"
               isCreatePage
+              // error={submitFailed && errors.location}
             />
           </div>
         </div>
-        <div className={styles.item}>
+        <div className={cn(styles.item, { [styles.disabled]: disabled })}>
           <p className={styles.label}>Deal type</p>
           <div className={cn(styles.input)}>
             <Field
@@ -79,7 +85,7 @@ const ChooseCategory: FC<IProps> = ({ dataCategory, setDataCategory }) => {
             />
           </div>
         </div>
-        <div className={styles.item}>
+        <div className={cn(styles.item, { [styles.disabled]: disabled })}>
           <p className={styles.label}>Salesman</p>
           <div className={cn(styles.input)}>
             <Field

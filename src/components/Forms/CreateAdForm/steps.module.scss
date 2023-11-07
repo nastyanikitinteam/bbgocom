@@ -96,6 +96,13 @@
   .tab.active {
     background: #d8d8d8;
   }
+  .label {
+    color: var(--neutrals-stroke-gray, #d8d8d8);
+  }
+  .input {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 @media (max-width: 998px) {

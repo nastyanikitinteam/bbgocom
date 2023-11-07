@@ -59,6 +59,11 @@
       }
     }
   }
+  &.error {
+    .default__control {
+      border-color: var(--secondary-orange, #ff5a27);
+    }
+  }
   .default__placeholder {
     color: #808080;
     transition: all 0.25s ease-in;
