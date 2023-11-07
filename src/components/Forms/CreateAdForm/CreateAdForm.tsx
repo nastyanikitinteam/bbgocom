@@ -1,8 +1,7 @@
-import { useCallback, useState, FC, useEffect } from "react";
-import { Form, Field } from "react-final-form";
+import { useCallback, useState, FC } from "react";
+import { Form } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
-import useMediaQuery from "src/utils/useMediaQuery";
 import ChooseCategory from "./ChooseCategory/ChooseCategory";
 import TitleLanguage from "./TitleLanguage/TitleLanguage";
 import PhotoVideo from "./PhotoVideo/PhotoVideo";
@@ -10,8 +9,6 @@ import Price from "./Price/Price";
 import DetailedInformation from "./DetailedInformation/DetailedInformation";
 import Location from "./Location/Location";
 import Contacts from "./Contacts/Contacts";
-
-import cn from "classnames";
 import styles from "./create-ad-form.module.scss";
 
 interface IProps {
@@ -20,7 +17,6 @@ interface IProps {
 }
 
 const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
-  const [adInfo, setAdInfo] = useState(currentAdInfo ? currentAdInfo : {});
   const [dataCategory, setDataCategory] = useState(
     currentAdInfo?.categoryInfo ? currentAdInfo?.categoryInfo : {}
   );

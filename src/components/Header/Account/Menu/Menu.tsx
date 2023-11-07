@@ -35,8 +35,8 @@ const Menu: FC<IProps> = ({
     const onClick = (e) =>
       containerRef?.current.contains(e.target) || setIsOpenMenu(false);
     document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  }, []);
+    return () => !isMobile && document.removeEventListener("click", onClick);
+  }, [isMobile]);
 
   return (
     <div

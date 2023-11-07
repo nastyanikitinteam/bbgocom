@@ -31,10 +31,13 @@ const CategoryMain: FC<IProps> = ({
   isCreatePage,
 }) => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(
-    dataCategory?.category ? dataCategory.category : null
+    dataCategory?.category !== null ? dataCategory.category : null
   );
-
-  const [selectedSubcategories, setSelectedSubcategories] = useState();
+  const [selectedSubcategoryId, setSelectedSubcategoryId] = useState(
+    dataCategory?.subcategorie !== null ? dataCategory.subcategorie : null
+  );
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
 
   const isMobile = useMediaQuery(768);
 
@@ -75,22 +78,43 @@ const CategoryMain: FC<IProps> = ({
 
   const filterCategoryList = (activeId) => {
     const currentItem = categoriesList.filter(({ id }) => id === activeId);
-    // @ts-ignore
-    setSelectedSubcategories(currentItem[0].subcategories);
+    setSelectedCategory(currentItem[0]);
   };
+
+  const filterSubcategoryList = useCallback(
+    (activeId) => {
+      // @ts-ignore
+      const currentItem = selectedCategory?.subcategories.filter(
+        ({ id }) => id === activeId
+      );
+      setSelectedSubcategory(currentItem[0]);
+    },
+    [selectedCategory]
+  );
 
   useEffect(() => {
     selectedCategoryId !== null && filterCategoryList(selectedCategoryId);
   }, [selectedCategoryId]);
 
+  useEffect(() => {
+    selectedSubcategoryId !== null &&
+      //@ts-ignore
+      selectedCategory?.subcategories &&
+      filterSubcategoryList(selectedSubcategoryId);
+  }, [selectedCategory]);
+
   return isMobile ? (
     <PortalContainer>
       <CategoryMobileFilter
-        categoriesList={categoriesList}
-        handleClick={handleClick}
         setIsActiveChoice={setIsActiveChoice}
         dataCategory={dataCategory}
-        setDataCategory={setDataCategory}
+        onChangeItem={chooseCategoryItem}
+        selectedCategoryId={selectedCategoryId}
+        chooseCategory={chooseCategory}
+        selectedCategory={selectedCategory}
+        setSelectedSubcategory={setSelectedSubcategory}
+        selectedSubcategory={selectedSubcategory}
+        setSelectedCategory={setSelectedCategory}
       />
     </PortalContainer>
   ) : (
@@ -120,7 +144,7 @@ const CategoryMain: FC<IProps> = ({
       <div className={styles.main}>
         <Blocks
           // @ts-ignore
-          currentSubcategories={selectedSubcategories}
+          currentSubcategories={selectedCategory?.subcategories}
           isSearchBarTop={isSearchBarTop}
           handleClick={handleClick}
           setIsActiveChoice={setIsActiveChoice}

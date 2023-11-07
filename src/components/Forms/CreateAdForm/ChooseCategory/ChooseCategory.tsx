@@ -1,4 +1,5 @@
 import { FC, useState, useEffect, useRef } from "react";
+import useMediaQuery from "src/utils/useMediaQuery";
 import SelectContainer from "components/FormElements/Select/Select";
 import Category from "components/SearchBar/Category/Category";
 import CategoryMain from "components/SearchBar/Category/CategoryMain/CategoryMain";
@@ -17,6 +18,7 @@ interface IProps {
 }
 
 const ChooseCategory: FC<IProps> = ({ dataCategory, setDataCategory }) => {
+  const isMobile = useMediaQuery(768);
   const { values } = useFormState();
   const [isActiveCategory, setIsActiveCategory] = useState(null);
   const categoryContainerRef = useRef(null as null | HTMLDivElement);
@@ -37,7 +39,7 @@ const ChooseCategory: FC<IProps> = ({ dataCategory, setDataCategory }) => {
         setIsOpenCategoryMenu(false);
       }
     };
-    document.addEventListener("click", onClick);
+    !isMobile && document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
   }, [isOpenCategoryMenu]);
 

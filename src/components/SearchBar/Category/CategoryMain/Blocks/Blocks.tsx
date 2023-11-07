@@ -66,10 +66,6 @@ const Blocks: FC<IProps> = ({
     setIsBaseUrl(window.location.origin);
   }, []);
 
-  // useEffect(() => {
-  //   console.log(dataCategory, "dataCategory");
-  // }, [dataCategory]);
-
   return (
     currentSubcategories && (
       <div
@@ -145,7 +141,6 @@ const Blocks: FC<IProps> = ({
                           key={childrenItem.id}
                           onClick={() => {
                             if (!isCreatePage) {
-                              console.log("work");
                               chooseCategoryItem(
                                 childrenItem.id,
                                 childrenItem.title
