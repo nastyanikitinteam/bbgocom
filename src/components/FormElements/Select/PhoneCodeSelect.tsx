@@ -116,6 +116,8 @@ const PhoneCodeSelect: FC<IProps> = ({
       placeholder={placeholder}
       isSearch={true}
       isClearValue={isClearValue}
+      input={input}
+      props={props}
     />
   );
 };

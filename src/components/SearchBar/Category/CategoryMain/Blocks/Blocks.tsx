@@ -17,7 +17,7 @@ interface IProps {
   selectedCategoryId?: number;
   chooseCategoryItem?: (value: any) => void;
   chooseSubcategory?: (value: any) => void;
-  setIsActiveChoice: () => void;
+  setIsActiveChoice?: () => void;
 }
 
 const Blocks: FC<IProps> = ({
