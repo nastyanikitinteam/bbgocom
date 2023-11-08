@@ -217,7 +217,6 @@ const Map: FC<IProps> = ({ handleAdress, isCoordinates, isMapZoom }) => {
       });
 
       const marker = new window.google.maps.Marker({
-        position: center,
         map,
         draggable: false,
         icon: customMarkerIcon,

@@ -34,7 +34,7 @@ const Message: FC<IProps> = ({ isCurrentProduct, hasOldPrice }) => {
   const onSubmit = useCallback((data, form) => {
     console.log(data);
     setIsOpenModalSuccess(true);
-    form.reset();
+    form.restart();
   }, []);
 
   return (

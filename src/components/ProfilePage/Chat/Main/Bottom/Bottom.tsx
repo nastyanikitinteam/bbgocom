@@ -29,7 +29,7 @@ const Bottom: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
 
   const onSubmit = useCallback((data, form) => {
     console.log(data);
-    form.reset();
+    form.restart();
   }, []);
 
   const handleRemoveFile = (indexToRemove) => {
