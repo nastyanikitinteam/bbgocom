@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC } from "react";
 import styles from "./category-mobile.module.scss";
 import ArrowSvg from "images/icons/drop.svg";
 import CloseIcon from "images/icons/close-sm.svg";

@@ -33,7 +33,6 @@ const Blocks: FC<IProps> = ({
   setIsActiveChoice,
 }) => {
   const [isbaseUrl, setIsBaseUrl] = useState("");
-  const endSelect = true;
 
   const close = () => {
     setIsActiveChoice();

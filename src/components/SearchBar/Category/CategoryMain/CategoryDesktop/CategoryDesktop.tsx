@@ -1,6 +1,4 @@
-import { useState, useEffect, FC, useCallback } from "react";
-import PortalContainer from "components/PortalContainer/PortalContainer";
-import useMediaQuery from "src/utils/useMediaQuery";
+import { FC } from "react";
 import Blocks from "../Blocks/Blocks";
 import cn from "classnames";
 

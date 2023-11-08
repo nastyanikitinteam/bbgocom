@@ -4,14 +4,8 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import CategoryMobileFilter from "./CategoryMobile/CategoryMobileFilter";
 
 import CategoryDesktop from "./CategoryDesktop/CategoryDesktop";
-import Blocks from "./Blocks/Blocks";
-import cn from "classnames";
 
 import { categoriesList } from "config/categoriesList";
-
-import styles from "./category-main.module.scss";
-
-import ArrowIcon from "images/icons/drop.svg";
 
 interface IProps {
   isSearchBarTop?: boolean;
