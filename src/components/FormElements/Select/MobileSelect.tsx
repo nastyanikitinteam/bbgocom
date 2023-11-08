@@ -1,9 +1,8 @@
 import { FC, useEffect, useState, forwardRef, useRef } from "react";
 import Select, { components } from "react-select";
-import { Form, Field, useFormState, useForm } from "react-final-form";
+import { useForm } from "react-final-form";
 import PortalContainer from "components/PortalContainer/PortalContainer";
 import SelectSearch from "components/Select/SelectSearch/SelectSearch";
-import useMediaQuery from "src/utils/useMediaQuery";
 
 import styles from "./select.module.scss";
 import cn from "classnames";

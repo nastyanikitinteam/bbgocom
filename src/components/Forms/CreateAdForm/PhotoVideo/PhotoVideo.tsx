@@ -1,6 +1,6 @@
-import { useMemo, useState, FC, useEffect } from "react";
+import { FC } from "react";
 import { Field } from "react-final-form";
-import FileInputField from "components/FormElements/FieldsInput/CreateFields/CreateFields";
+import CreateFilesInput from "components/FormElements/FilesInput/CreateFilesInput/CreateFilesInput";
 import styles from "./photo-video.module.scss";
 import cn from "classnames";
 
@@ -24,7 +24,7 @@ const PhotoVideo: FC<IProps> = ({ disabled }) => {
           <Field
             name="photos"
             //@ts-ignore
-            component={FileInputField}
+            component={CreateFilesInput}
             title="Drag the image or <span>Open explorer</span>"
             description="1600x1200 or higher is recommended. <br> Max. 10 MB each (20 MB for video)"
           />

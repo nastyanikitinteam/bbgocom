@@ -1,6 +1,7 @@
 import React, { useState, useRef, FC, useEffect, useCallback } from "react";
 import Previews from "./Previews/Previews";
-import styles from "./create-fields.module.scss";
+import { useFormState } from "react-final-form";
+import styles from "./create-files-input.module.scss";
 import cn from "classnames";
 
 import UploadIcon from "images/icons/upload-img.svg";
@@ -12,7 +13,13 @@ interface IProps {
   input;
 }
 
-const CreateFields: FC<IProps> = ({ title, description, input, ...rest }) => {
+const CreateFilesInput: FC<IProps> = ({
+  title,
+  description,
+  input,
+  ...rest
+}) => {
+  const formState = useFormState();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [draggedIndex, setDraggedIndex] = useState(null);
   const maxSizeImages = 10 * 1024 * 1024;
@@ -162,4 +169,4 @@ const CreateFields: FC<IProps> = ({ title, description, input, ...rest }) => {
   );
 };
 
-export default CreateFields;
+export default CreateFilesInput;

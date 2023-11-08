@@ -15,16 +15,20 @@ import cn from "classnames";
 interface IProps {
   dataCategory: any;
   setDataCategory: (arr: any) => void;
+  setIsRestartForm: (bol: boolean) => void;
   disabled: boolean;
+  isRestartForm?: boolean;
 }
 
 const ChooseCategory: FC<IProps> = ({
   dataCategory,
   setDataCategory,
+  setIsRestartForm,
   disabled,
+  isRestartForm,
 }) => {
   const isMobile = useMediaQuery(768);
-  const { values, errors, submitFailed } = useFormState();
+  const { values, pristine } = useFormState();
   const [isActiveCategory, setIsActiveCategory] = useState(null);
   const categoryContainerRef = useRef(null as null | HTMLDivElement);
   const categoryMenuRef = useRef(null as null | HTMLDivElement);
@@ -48,6 +52,12 @@ const ChooseCategory: FC<IProps> = ({
     return () => document.removeEventListener("click", onClick);
   }, [isOpenCategoryMenu]);
 
+  useEffect(() => {
+    pristine && !dataCategory
+      ? setIsRestartForm(true)
+      : setIsRestartForm(false);
+  }, [pristine]);
+
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>
@@ -64,7 +74,6 @@ const ChooseCategory: FC<IProps> = ({
               isBig
               placeholder="Choose category"
               isCreatePage
-              // error={submitFailed && errors.location}
             />
           </div>
         </div>
@@ -82,6 +91,7 @@ const ChooseCategory: FC<IProps> = ({
                 values.dealType &&
                 dealTypes.filter((item) => item.value === values.dealType)
               }
+              isClearValue={isRestartForm}
             />
           </div>
         </div>
@@ -99,6 +109,7 @@ const ChooseCategory: FC<IProps> = ({
                 values.salesman &&
                 salesmanList.filter((item) => item.value === values.salesman)
               }
+              isClearValue={isRestartForm}
             />
           </div>
         </div>

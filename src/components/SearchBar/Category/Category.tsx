@@ -51,6 +51,8 @@ const Category: FC<IProps> = ({
       } else {
         setSelectedTitle(category.title);
       }
+    } else {
+      setSelectedTitle("");
     }
   }, [dataCategory]);
 

@@ -1,5 +1,5 @@
 import { useCallback, useState, FC, useEffect } from "react";
-import { Form } from "react-final-form";
+import { Form, useFormState } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import ChooseCategory from "./ChooseCategory/ChooseCategory";
@@ -17,6 +17,9 @@ interface IProps {
 }
 
 const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
+  const [isRestartForm, setIsRestartForm] = useState(
+    currentAdInfo ? false : true
+  );
   const [dataCategory, setDataCategory] = useState(
     currentAdInfo?.categoryInfo ? currentAdInfo?.categoryInfo : {}
   );
@@ -49,6 +52,10 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
         language: choosedLang,
       });
       setIsOpenModal();
+      if (!currentAdInfo) {
+        form.restart();
+        setDataCategory({});
+      }
     },
     [dataCategory, choosedLang]
   );
@@ -62,8 +69,10 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
       for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
           setIsDisabled(false);
+          return;
         }
       }
+      setIsDisabled(true);
     },
     [dataCategory]
   );
@@ -90,6 +99,8 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
               dataCategory={dataCategory}
               setDataCategory={setDataCategory}
               disabled={isDisabled}
+              isRestartForm={isRestartForm}
+              setIsRestartForm={setIsRestartForm}
             />
             <TitleLanguage
               choosedLang={choosedLang}
