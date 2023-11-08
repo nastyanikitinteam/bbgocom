@@ -5,7 +5,7 @@ import { Form, Field } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
-import FilesUpload from "components/FileUpload/FilesUpload";
+import ServiceFilesInput from "components/FormElements/FilesInput/ServiceFilesInput/ServiceFilesInput";
 import styles from "../AdvertiseForm/advertise-form.module.scss";
 import Textarea from "components/FormElements/Textarea/Textarea";
 import Modal from "components/Modal/Modal";
@@ -33,6 +33,7 @@ const ServiceForm = () => {
     console.log(data);
     setIsOpenModal(true);
     form.restart();
+    setSelectedFiles([]);
   }, []);
 
   const back = () => {
@@ -100,12 +101,15 @@ const ServiceForm = () => {
               />
             </div>
             <div className={styles.item}>
-              <FilesUpload
-                selectedFiles={selectedFiles}
-                setSelectedFiles={setSelectedFiles}
+              <Field
+                name="files"
+                //@ts-ignore
+                component={ServiceFilesInput}
                 title="<span>Attach file</span> or drop files here"
                 description="You can upload screenshots. File requirements: pdf, png, jpeg, heic and no more than 15 mb."
                 isSmall
+                selectedFiles={selectedFiles}
+                setSelectedFiles={setSelectedFiles}
               />
             </div>
             <p className={styles.description}>

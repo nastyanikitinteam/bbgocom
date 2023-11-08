@@ -19,7 +19,6 @@ const CreateFilesInput: FC<IProps> = ({
   input,
   ...rest
 }) => {
-  const formState = useFormState();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [draggedIndex, setDraggedIndex] = useState(null);
   const maxSizeImages = 10 * 1024 * 1024;
