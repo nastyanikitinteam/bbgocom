@@ -8,52 +8,43 @@ import cn from "classnames";
 import { categoriesList } from "config/categoriesList";
 
 interface IProps {
-  setIsActiveChoice?: () => void;
   dataCategory?: any;
-  isPopularCategory?: boolean;
-  setIsShowCategoryMenu?: (bool: boolean) => void;
-  onChangeItem?: (
-    firstValue: number,
-    secondValue: number,
-    thirdValue: number
-  ) => void;
   selectedCategoryId?: number;
-  chooseCategory?: (any: any) => void;
   selectedCategory?: any;
   selectedSubcategory?: any;
-  setSelectedSubcategory?: (any: any) => void;
-  setSelectedCategory?: (any: any) => void;
+  isCreatePage?: boolean;
+  back: () => void;
+  chooseCategory?: (any: any) => void;
+  chooseCategoryItem?: (value: any) => void;
+  chooseSubcategory?: (value: any) => void;
+  setIsActiveChoice?: () => void;
 }
 
 const CategoryMobile: FC<IProps> = ({
-  setIsActiveChoice,
   dataCategory,
-  onChangeItem,
   selectedCategoryId,
-  chooseCategory,
   selectedCategory,
   selectedSubcategory,
-  setSelectedSubcategory,
-  setSelectedCategory,
+  isCreatePage,
+  back,
+  chooseCategory,
+  chooseCategoryItem,
+  chooseSubcategory,
+  setIsActiveChoice,
 }) => {
-  const back = () => {
-    selectedSubcategory
-      ? setSelectedSubcategory(null)
-      : selectedCategory
-      ? setSelectedCategory(null)
-      : setIsActiveChoice();
-  };
-
   const close = () => {
     setIsActiveChoice();
   };
 
-  const handleSubcategoryList = useCallback(
-    (item) => {
-      setSelectedSubcategory(item);
-    },
-    [selectedCategory]
-  );
+  const handleCategoryInfo = () => {
+    if (selectedSubcategory) {
+      chooseSubcategory(selectedSubcategory);
+      close();
+    } else {
+      chooseCategory(selectedCategory);
+      close();
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -91,7 +82,12 @@ const CategoryMobile: FC<IProps> = ({
             })
           ) : (
             <>
-              <div className={styles.mainItem}>
+              <div
+                className={styles.mainItem}
+                onClick={() => {
+                  !isCreatePage && handleCategoryInfo();
+                }}
+              >
                 <div className={styles.image}>
                   <img src={selectedCategory.image} alt="" />
                 </div>
@@ -110,7 +106,7 @@ const CategoryMobile: FC<IProps> = ({
                       <div
                         className={styles.item}
                         key={item.id}
-                        onClick={() => handleSubcategoryList(item)}
+                        onClick={() => chooseSubcategory(item)}
                       >
                         <h3 className={styles.subtitle}>{item.title}</h3>
                         <span className={styles.arrow}>
@@ -124,18 +120,14 @@ const CategoryMobile: FC<IProps> = ({
                       <div
                         className={cn(styles.item, {
                           [styles.active]:
-                            item.id === dataCategory.subcategorieItem &&
+                            item.id === dataCategory.subcategoryItem &&
                             selectedSubcategory.id ===
-                              dataCategory.subcategorie &&
+                              dataCategory.subcategory &&
                             selectedCategoryId === dataCategory.category,
                         })}
                         key={item.id}
                         onClick={() => {
-                          onChangeItem(
-                            selectedCategoryId,
-                            selectedSubcategory.id,
-                            item.id
-                          );
+                          chooseCategoryItem(item);
                         }}
                       >
                         <h3 className={styles.subtitle}>{item.title}</h3>

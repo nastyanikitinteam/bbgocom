@@ -57,6 +57,11 @@
   &.error {
     border-color: var(--secondary-orange, #ff5a27);
   }
+  &.searchBar {
+    p {
+      color: #000;
+    }
+  }
 }
 
 .big {

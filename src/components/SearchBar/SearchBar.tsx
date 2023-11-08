@@ -113,7 +113,12 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
   };
 
   const send = () => {
-    console.log(dataCategory, dataRegion, dataSearch, dataPrice);
+    console.log({
+      ...dataCategory,
+      ...dataRegion,
+      ...dataSearch,
+      ...dataPrice,
+    });
     setIsActiveChoice("");
     setDataCategory({});
     setDataRegion({});
@@ -198,9 +203,9 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
               isActiveChoice={isActiveChoice === "Category"}
               dataCategory={dataCategory}
               placeholder="All"
+              isSearchBar
             />
           )}
-
           <SearchLocation
             setIsActiveChoice={setIsActiveChoice}
             isActiveChoice={isActiveChoice}

@@ -16,6 +16,7 @@ interface IProps {
   placeholder: string;
   isCreatePage?: boolean;
   error?: boolean;
+  isSearchBar?: boolean;
 }
 
 const Category: FC<IProps> = ({
@@ -27,6 +28,7 @@ const Category: FC<IProps> = ({
   isBig,
   placeholder,
   isCreatePage,
+  isSearchBar,
   error,
 }) => {
   const [selectedTitle, setSelectedTitle] = useState("");
@@ -37,11 +39,11 @@ const Category: FC<IProps> = ({
     );
     if (category) {
       const subcategory = category.subcategories.find(
-        (subcategory) => subcategory.id === dataCategory.subcategorie
+        (subcategory) => subcategory.id === dataCategory.subcategory
       );
       if (subcategory) {
         const item = subcategory.items.find(
-          (item) => item.id === dataCategory.subcategorieItem
+          (item) => item.id === dataCategory.subcategoryItem
         );
         if (item) {
           setSelectedTitle(item.title);
@@ -68,6 +70,7 @@ const Category: FC<IProps> = ({
           [styles.fill]: selectedTitle.length > 0,
           [styles.big]: isBig,
           [styles.error]: error,
+          [styles.searchBar]: isSearchBar,
         })}
         onClick={() => handleActive()}
       >

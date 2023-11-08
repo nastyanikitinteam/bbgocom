@@ -9,56 +9,33 @@ import Plus from "images/icons/plus.svg";
 
 interface IProps {
   isSearchBarTop?: boolean;
-  handleClick?: (key: string, value: string) => void;
-  setIsActiveChoice?: () => void;
   isCategoryPage?: boolean;
   currentSubcategories?: any;
   category?: string;
   dataCategory?: any;
-  delNameOfCategoryItem?: () => void;
   isCreatePage?: boolean;
-  onChangeItem?: (
-    firstValue: number,
-    secondValue: number,
-    thirdValue: number
-  ) => void;
   selectedCategoryId?: number;
+  chooseCategoryItem?: (value: any) => void;
+  chooseSubcategory?: (value: any) => void;
+  setIsActiveChoice: () => void;
 }
 
 const Blocks: FC<IProps> = ({
   isSearchBarTop,
-  handleClick,
-  setIsActiveChoice,
   isCategoryPage,
   currentSubcategories,
   category,
   dataCategory,
-  delNameOfCategoryItem,
   isCreatePage,
-  onChangeItem,
   selectedCategoryId,
+  chooseCategoryItem,
+  chooseSubcategory,
+  setIsActiveChoice,
 }) => {
   const [isbaseUrl, setIsBaseUrl] = useState("");
+  const endSelect = true;
 
-  const [selectedSubcategorieId, setSelectedSubcategorieId] = useState(
-    dataCategory.subcategorieItem ? dataCategory.subcategorieItem : null
-  );
-  const [selectedSubcategorieItemId, setSelectedSubcategorieItemId] = useState(
-    dataCategory.catsubcategorieItemegory ? dataCategory.subcategorieItem : null
-  );
-
-  const chooseCategoryItem = (id, title) => {
-    handleClick("subcategorieItem", id);
-    // setSelectedSubcategorieItemId(id);
-    setIsActiveChoice();
-  };
-
-  const chooseSubCategory = (id, title) => {
-    handleClick("subcategorie", id);
-    // if (!isCreatePage && dataCategory.subcategorieItem) {
-    //   delNameOfCategoryItem();
-    // }
-    // setSelectedSubcategorieId(id);
+  const close = () => {
     setIsActiveChoice();
   };
 
@@ -120,10 +97,12 @@ const Blocks: FC<IProps> = ({
                 >
                   <h3
                     className={styles.title}
-                    onClick={() =>
-                      !isCreatePage &&
-                      chooseSubCategory(parentItem.id, parentItem.title)
-                    }
+                    onClick={() => {
+                      if (!isCreatePage) {
+                        chooseSubcategory(parentItem);
+                        close();
+                      }
+                    }}
                   >
                     {parentItem.title}
                   </h3>
@@ -134,28 +113,15 @@ const Blocks: FC<IProps> = ({
                           className={cn(styles.item, {
                             [styles.active]:
                               childrenItem.id ===
-                                dataCategory.subcategorieItem &&
-                              parentItem.id === dataCategory.subcategorie &&
+                                dataCategory.subcategoryItem &&
+                              parentItem.id === dataCategory.subcategory &&
                               selectedCategoryId === dataCategory.category,
                           })}
                           key={childrenItem.id}
                           onClick={() => {
-                            if (!isCreatePage) {
-                              chooseCategoryItem(
-                                childrenItem.id,
-                                childrenItem.title
-                              );
-                              chooseSubCategory(
-                                parentItem.id,
-                                parentItem.title
-                              );
-                            } else {
-                              onChangeItem(
-                                selectedCategoryId,
-                                parentItem.id,
-                                childrenItem.id
-                              );
-                            }
+                            chooseCategoryItem(childrenItem);
+                            chooseSubcategory(parentItem);
+                            close();
                           }}
                         >
                           {childrenItem.title}

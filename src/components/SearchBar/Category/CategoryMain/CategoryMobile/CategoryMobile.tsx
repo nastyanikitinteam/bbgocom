@@ -7,21 +7,11 @@ import CloseIcon from "images/icons/close-sm.svg";
 
 interface IProps {
   categoriesList?: any;
-  handleClick?: (key: string, value: string) => void;
-  setIsActiveChoice?: () => void;
-  dataCategory?: any;
-  setDataCategory?: (bool: string) => void;
-  isPopularCategory?: boolean;
   setIsShowCategoryMenu?: (bool: boolean) => void;
 }
 
 const CategoryMobile: FC<IProps> = ({
   categoriesList,
-  handleClick,
-  setIsActiveChoice,
-  dataCategory,
-  setDataCategory,
-  isPopularCategory,
   setIsShowCategoryMenu,
 }) => {
   const [isCategoryList, setIsCategoryList] = useState({});
@@ -79,17 +69,6 @@ const CategoryMobile: FC<IProps> = ({
     },
     [isCategoryList]
   );
-
-  // const handleSubcategoryItem = useCallback(
-  //   (listId) => {
-  //     //@ts-ignore
-  //     const filteredSubcategoriesItem = isSubcategoryList.items.filter(
-  //       (item) => item.id === listId
-  //     );
-  //     setIsSubcategoryItem(filteredSubcategoriesItem);
-  //   },
-  //   [isSubcategoryList]
-  // );
 
   useEffect(() => {
     console.log(
