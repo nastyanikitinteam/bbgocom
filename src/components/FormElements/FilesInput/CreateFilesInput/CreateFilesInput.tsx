@@ -1,6 +1,5 @@
 import React, { useState, useRef, FC, useEffect, useCallback } from "react";
 import Previews from "./Previews/Previews";
-import { useFormState } from "react-final-form";
 import styles from "./create-files-input.module.scss";
 import cn from "classnames";
 

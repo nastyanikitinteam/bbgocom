@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import UploadBanner from "./UploadBanner/UploadBanner";
+import UploadBannerForm from "components/Forms/UploadBannerForm/UploadBannerForm";
 import BannerList from "./BannerList/BannerList";
 import BannerListMobile from "./BannerList/BannerListMobile";
 import Rules from "./Rules/Rules";
@@ -63,7 +63,7 @@ const Banner = () => {
             {isOpenRules ? (
               <Rules />
             ) : isOpenNewBanner ? (
-              <UploadBanner />
+              <UploadBannerForm setIsOpenNewBanner={setIsOpenNewBanner} />
             ) : (
               <BannerListMobile
                 isOpenRules={isOpenRules}
@@ -77,7 +77,7 @@ const Banner = () => {
           <div className={styles.main}>
             {!isOpenRules && (
               <>
-                <UploadBanner />
+                <UploadBannerForm />
                 {isSmallDisplay ? (
                   <BannerListMobile
                     isOpenRules={isOpenRules}

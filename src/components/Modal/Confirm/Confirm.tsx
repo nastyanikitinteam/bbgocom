@@ -7,6 +7,7 @@ import cn from "classnames";
 import styles from "./confirm.module.scss";
 
 import DeactivateIcon from "images/icons/deactivate.svg";
+import CheckIcon from "images/icons/message-status-done.svg";
 
 interface IProps {
   closeModal: () => void;
@@ -35,8 +36,16 @@ const Confirm: FC<IProps> = ({
   }, []);
 
   return (
-    <div className={cn(styles.container, { [styles.green]: isGreen })}>
-      <div className={styles.icon}>{icon ? icon : <DeactivateIcon />}</div>
+    <div
+      className={cn(
+        styles.container,
+        { [styles.green]: isGreen },
+        { [styles.defaultIcon]: !icon }
+      )}
+    >
+      <div className={styles.icon}>
+        {icon ? icon : isGreen ? <CheckIcon /> : <DeactivateIcon />}
+      </div>
       <h3 className={styles.title}>{title}</h3>
       {goHomePage ? (
         <>

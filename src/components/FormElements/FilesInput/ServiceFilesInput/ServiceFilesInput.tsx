@@ -1,4 +1,4 @@
-import React, { useState, useRef, FC, useEffect } from "react";
+import React, { useRef, FC, useEffect } from "react";
 import styles from "./service-files-input.module.scss";
 import CloseIcon from "images/icons/close.svg";
 import cn from "classnames";
@@ -22,7 +22,6 @@ const ServiceFilesInput: FC<IProps> = ({
   ...rest
 }) => {
   const fileInputRef = useRef(null);
-  const emptyBlocks = Array(5).fill(null);
   const maxSizeInBytes = 1024 * 1024;
 
   const hadleFileInput = (e) => {
@@ -85,7 +84,7 @@ const ServiceFilesInput: FC<IProps> = ({
     >
       <input
         type="file"
-        accept=".mov, .jpg, .jpeg, .png"
+        accept=".jpg, .jpeg, .png"
         onChange={hadleFileInput}
         ref={fileInputRef}
         multiple

@@ -35,6 +35,10 @@
         letter-spacing: -0.3px;
       }
     }
+    .errorIcon {
+      top: 8px;
+      right: 12px;
+    }
   }
 }
 
@@ -238,17 +242,6 @@
 .link {
   input {
     background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMgMTJWMTNDMyAxNy40MTgzIDYuNTgxNzIgMjEgMTEgMjFIMTNDMTcuNDE4MyAyMSAyMSAxNy40MTgzIDIxIDEzVjEyTTMgMTJWMTFDMyA2LjU4MTcyIDYuNTgxNzIgMyAxMSAzSDEzQzE3LjQxODMgMyAyMSA2LjU4MTcyIDIxIDExVjEyTTMgMTJIMjFNMTYgMTJDMTYgMTYuOTcwNiAxNC4yMDkxIDIxIDEyIDIxQzkuNzkwODYgMjEgOCAxNi45NzA2IDggMTJDOCA3LjAyOTQ0IDkuNzkwODYgMyAxMiAzQzE0LjIwOTEgMyAxNiA3LjAyOTQ0IDE2IDEyWiIgc3Ryb2tlPSIjODA4MDgwIiBzdHJva2Utd2lkdGg9IjEuMTUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K);
-    padding: 6px 9px 6px 47px;
-    font-size: 14px;
-    line-height: 26px;
-    letter-spacing: -0.3px;
-    background-position: 15px 7px;
-    &::placeholder {
-      font-size: 14px;
-      line-height: 26px;
-      letter-spacing: -0.3px;
-      color: #808080;
-    }
     &:hover,
     &:not(:placeholder-shown),
     &:focus {

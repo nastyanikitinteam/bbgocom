@@ -6,16 +6,39 @@
   flex-direction: column;
   gap: 25px;
   text-align: center;
+  &:not(.defaultIcon) {
+    .icon {
+      path,
+      rect {
+        stroke: #ff5a27;
+      }
+    }
+  }
+}
+.green {
+  &:not(.defaultIcon) {
+    .icon {
+      path,
+      rect {
+        stroke: #5bb75f;
+      }
+    }
+  }
 }
 
 .green {
   .icon {
     background: var(--primary-light-green, #ebfaec);
-    path,
-    rect {
-      stroke: #5bb75f;
-    }
   }
+}
+
+.icon {
+  border-radius: 50%;
+  background: #ffefe0;
+  padding: 20px;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto;
 }
 
 .description {
@@ -28,19 +51,6 @@
   span {
     color: #000;
     display: block;
-  }
-}
-
-.icon {
-  border-radius: 50%;
-  background: #ffefe0;
-  padding: 20px;
-  width: 84px;
-  height: 84px;
-  margin: 0 auto;
-  path,
-  rect {
-    stroke: #ff5a27;
   }
 }
 
