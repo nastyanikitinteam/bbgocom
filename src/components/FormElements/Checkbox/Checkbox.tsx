@@ -29,8 +29,6 @@ const Checkbox: React.FC<IProps> = ({
   placeholder,
   serverErrors,
   extClassName,
-  secondaryColor,
-  textColor,
   onClick,
   readonly = false,
   children,
@@ -46,13 +44,6 @@ const Checkbox: React.FC<IProps> = ({
         {...input}
         name={!input && name}
         className={styles.input}
-        style={
-          secondaryColor && {
-            background: secondaryColor,
-            color: textColor,
-            borderColor: textColor,
-          }
-        }
         id={placeholder}
         onClick={onClick}
         type="checkbox"

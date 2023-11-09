@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import styles from "./location.module.scss";
-import Map from "components/CreateAnAd/Create/Map/Map";
+import Map from "components/Forms/CreateAdForm/Map/Map";
 
 interface IProps {
   isCurrentLocation: any;

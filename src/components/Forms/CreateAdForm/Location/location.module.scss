@@ -1,0 +1,21 @@
+@import "../steps.module.scss";
+
+.map {
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.item.disabled {
+  .label {
+    color: var(--neutrals-stroke-gray, #d8d8d8);
+  }
+  .input {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

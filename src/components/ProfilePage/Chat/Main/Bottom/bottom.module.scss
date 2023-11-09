@@ -75,26 +75,6 @@
   }
 }
 
-.input {
-  border: none;
-  padding: 0;
-  border-radius: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.3px;
-  width: 100%;
-  &:hover {
-    box-shadow: none;
-  }
-  &::placeholder {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: -0.3px;
-  }
-}
-
 .files {
   display: flex;
   justify-content: flex-start;

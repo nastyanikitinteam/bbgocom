@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState, FC } from "react";
-import { Form, Field } from "react-final-form";
+import { Form, Field, useFormState } from "react-final-form";
 import Textarea from "components/FormElements/Textarea/Textarea";
 import Modal from "components/Modal/Modal";
 import SuccessMessage from "components/Modal/SuccessMessage/SuccessMessage";
@@ -7,6 +7,8 @@ import * as yup from "yup";
 import { validateForm } from "../../../../../utils/validateForm";
 import styles from "./message.module.scss";
 import cn from "classnames";
+
+import { messageTags } from "config/messageTags";
 
 import SendIcon from "images/icons/send.svg";
 
@@ -16,7 +18,8 @@ interface IProps {
 }
 
 const Message: FC<IProps> = ({ isCurrentProduct, hasOldPrice }) => {
-  const [isMessageText, setIsMessageText] = useState("");
+  // const formState = useFormState();
+
   const [isOpenModalSuccess, setIsOpenModalSuccess] = useState(false);
 
   const validationSchema = yup.object().shape({
@@ -29,50 +32,22 @@ const Message: FC<IProps> = ({ isCurrentProduct, hasOldPrice }) => {
   const validate = validateForm(validationSchema);
 
   const onSubmit = useCallback((data, form) => {
-    console.log(isMessageText);
+    console.log(data);
     setIsOpenModalSuccess(true);
+    form.restart();
   }, []);
-
-  const onChangeInputVal = (val) => {
-    setIsMessageText(val);
-  };
-
-  const tagsList = useMemo(
-    () => [
-      {
-        id: 0,
-        title: "Still selling?",
-      },
-      {
-        id: 1,
-        title: "There is a bargain?",
-      },
-      {
-        id: 2,
-        title: "When can you watch?",
-      },
-      {
-        id: 3,
-        title: "Still selling?",
-      },
-      {
-        id: 4,
-        title: "There is a bargain?",
-      },
-      {
-        id: 5,
-        title: "When can you watch?",
-      },
-    ],
-    []
-  );
 
   return (
     <div className={styles.container}>
       <Form
         onSubmit={onSubmit}
         validate={validate}
-        render={({ handleSubmit }) => (
+        mutators={{
+          changeValue: ([field, value], state, { changeValue }) => {
+            changeValue(state, field, () => value);
+          },
+        }}
+        render={({ handleSubmit, form }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <h3 className={styles.label}>Your Message</h3>
             <div className={cn(styles.item, { [styles.sm]: hasOldPrice })}>
@@ -81,9 +56,7 @@ const Message: FC<IProps> = ({ isCurrentProduct, hasOldPrice }) => {
                 placeholder={"Hello!"}
                 component={Textarea}
                 rows={4}
-                text={isMessageText}
                 extClassName="selected"
-                onChange={onChangeInputVal}
               />
               <button type="submit" className={styles.send} aria-label={`Send`}>
                 <SendIcon />
@@ -91,14 +64,17 @@ const Message: FC<IProps> = ({ isCurrentProduct, hasOldPrice }) => {
             </div>
             <div className={styles.bottom}>
               <div className={styles.tags}>
-                {tagsList.map(({ id, title }) => {
+                {messageTags.map(({ id, title }) => {
                   return (
                     <div
                       className={cn(styles.tag, {
-                        [styles.active]: isMessageText === title,
+                        [styles.active]:
+                          form.getState().values.message === title,
                       })}
                       key={id}
-                      onClick={() => onChangeInputVal(title)}
+                      onClick={() => {
+                        form.mutators.changeValue("message", title);
+                      }}
                     >
                       {title}
                     </div>

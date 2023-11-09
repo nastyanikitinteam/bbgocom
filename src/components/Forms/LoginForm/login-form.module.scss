@@ -1,0 +1,91 @@
+// @import "../authorization.module.scss";
+
+.form {
+  margin-top: 20px;
+}
+
+.item {
+  margin-bottom: 15px;
+}
+
+.items {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.forgot {
+  color: #808080;
+  margin-top: -5px;
+}
+
+.phone {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.code {
+  max-width: 148px;
+  width: 100%;
+}
+
+.number {
+  width: 100%;
+}
+
+.terms {
+  margin-top: 17px;
+}
+
+.button {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.button {
+  path {
+    stroke: #fff;
+  }
+}
+
+@keyframes showBlock {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .item {
+    margin-bottom: 10px;
+  }
+  .items {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    margin-top: 15px;
+  }
+  .code {
+    max-width: 114px;
+  }
+  .phone {
+    gap: 5px;
+  }
+  .terms {
+    margin-top: 17px;
+  }
+  .button {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.3px;
+    margin-top: 16px;
+  }
+}

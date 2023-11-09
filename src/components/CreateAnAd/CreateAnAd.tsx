@@ -7,10 +7,10 @@ import bannerEditImg from "images/create-an-add/hero-banner-edit.jpg";
 import Create from "./Create/Create";
 
 interface IProps {
-  isCurrentAd?: any;
+  currentAdInfo?: any;
 }
 
-const CreateAnAd: FC<IProps> = ({ isCurrentAd }) => {
+const CreateAnAd: FC<IProps> = ({ currentAdInfo }) => {
   const isMobile = useMediaQuery(768);
 
   const breadCrumbs = useMemo(
@@ -35,14 +35,14 @@ const CreateAnAd: FC<IProps> = ({ isCurrentAd }) => {
             <BreadCrumbs crumbs={breadCrumbs} />
             <div className={styles.banner}>
               <img
-                src={isCurrentAd ? bannerEditImg.src : bannerImg.src}
+                src={currentAdInfo ? bannerEditImg.src : bannerImg.src}
                 alt=""
               />
             </div>
           </div>
         </section>
       )}
-      <Create isCurrentAd={isCurrentAd} />
+      <Create currentAdInfo={currentAdInfo} />
     </>
   );
 };

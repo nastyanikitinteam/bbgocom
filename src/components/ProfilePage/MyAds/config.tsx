@@ -6,10 +6,10 @@ import cover3 from "images/main/card-product-3-real-estate.png";
 export const adList = [
   {
     id: 685012401,
-    category: {
-      nameOfCategory: "Real Estate",
-      nameOfCategoryItem: "Buy a home",
-      nameOfSubCategory: "Rooms",
+    categoryInfo: {
+      category: 4,
+      subcategorie: 2,
+      subcategorieItem: 3,
     },
     title:
       "Country house in the forest from a wooden frame, in a picturesque place",
@@ -17,11 +17,17 @@ export const adList = [
     views: 1011,
     date: "09.07.2023 - 08.08.2023",
     messages: 4,
-    currency: "USD",
+    currency: "RUB",
     dealType: "Sale",
     salesman: "Company",
     language: "TH",
     description: "example",
+    condition: "Resale",
+    numberOfBathroom: "2 Bathroom",
+    numberOfRooms: "4 room",
+    repair: "Renovated",
+    totalArea: "2",
+    floor: "1",
     information: {
       totalArea: "2",
       floor: "1",
@@ -30,14 +36,9 @@ export const adList = [
       numberOfRooms: "4 room",
       repair: "Renovated",
     },
-    contacts: {
-      phone: {
-        code: "+358",
-        country: "Finland",
-        number: "123123",
-      },
-      email: "example@gmail.com",
-    },
+    phoneCode: "Finland +358",
+    phoneNumber: "123123",
+    email: "example@gmail.com",
     images: [
       {
         id: 0,
@@ -68,10 +69,10 @@ export const adList = [
 
   {
     id: 685012403,
-    category: {
-      nameOfCategory: "Motors",
-      nameOfCategoryItem: "Cars",
-      nameOfSubCategory: "New Cars",
+    categoryInfo: {
+      category: 4,
+      subcategorie: 2,
+      subcategorieItem: 3,
     },
     title: "Parking place for sale in a new underground parking",
     slug: "parking-place-for-sale-in-a-new-underground-parking",
@@ -121,10 +122,10 @@ export const adList = [
 
   {
     id: 685012405,
-    category: {
-      nameOfCategory: "Real Estate",
-      nameOfCategoryItem: "Buy a home",
-      nameOfSubCategory: "Rooms",
+    categoryInfo: {
+      category: 4,
+      subcategorie: 2,
+      subcategorieItem: 3,
     },
     title: "Luxurious apartment on the 5th floor",
     slug: "luxurious-apartment-on-the-5th-floor",
@@ -172,10 +173,10 @@ export const adList = [
   },
   {
     id: 685012401,
-    category: {
-      nameOfCategory: "Real Estate",
-      nameOfCategoryItem: "Buy a home",
-      nameOfSubCategory: "Rooms",
+    categoryInfo: {
+      category: 4,
+      subcategorie: 2,
+      subcategorieItem: 3,
     },
     title: "Waiting example",
     slug: "waiting-example",
@@ -225,11 +226,12 @@ export const adList = [
 
   {
     id: 685012403,
-    category: {
-      nameOfCategory: "Real Estate",
-      nameOfCategoryItem: "Buy a home",
-      nameOfSubCategory: "Rooms",
+    categoryInfo: {
+      category: 4,
+      subcategorie: 2,
+      subcategorieItem: 3,
     },
+
     title: "Parking place for sale in a new underground parking",
     slug: "parking-place-for-sale-in-a-new-underground-parking",
     views: 123,
@@ -278,10 +280,10 @@ export const adList = [
 
   {
     id: 685012405,
-    category: {
-      nameOfCategory: "Real Estate",
-      nameOfCategoryItem: "Buy a home",
-      nameOfSubCategory: "Rooms",
+    categoryInfo: {
+      category: 4,
+      subcategorie: 2,
+      subcategorieItem: 3,
     },
     title: "Luxurious apartment on the 5th floor",
     slug: "luxurious-apartment-on-the-5th-floor-2",
@@ -329,10 +331,10 @@ export const adList = [
   },
   {
     id: 685012444,
-    category: {
-      nameOfCategory: "Real Estate",
-      nameOfCategoryItem: "Buy a home",
-      nameOfSubCategory: "Rooms",
+    categoryInfo: {
+      category: 4,
+      subcategorie: 2,
+      subcategorieItem: 3,
     },
     title: "Luxurious apartment",
     slug: "luxurious-apartment",
@@ -380,10 +382,10 @@ export const adList = [
   },
   {
     id: 685012401,
-    category: {
-      nameOfCategory: "Real Estate",
-      nameOfCategoryItem: "Buy a home",
-      nameOfSubCategory: "Rooms",
+    categoryInfo: {
+      category: 4,
+      subcategorie: 2,
+      subcategorieItem: 3,
     },
     title: "Inactive example",
     slug: "inactive-example",
@@ -431,10 +433,10 @@ export const adList = [
   },
   {
     id: 685012403,
-    category: {
-      nameOfCategory: "Real Estate",
-      nameOfCategoryItem: "Buy a home",
-      nameOfSubCategory: "Rooms",
+    categoryInfo: {
+      category: 4,
+      subcategorie: 2,
+      subcategorieItem: 3,
     },
     title: "Parking place for sale",
     slug: "Parking-place-for-sale",

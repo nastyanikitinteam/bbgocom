@@ -8,50 +8,23 @@ interface IProps {
   type?: string;
   serverErrors?: string;
   extClassName?: string;
-  secondaryColor?: string;
-  textColor?: string;
   input?: any;
   label?: string;
   meta?: any;
   required?: boolean;
   isSmall?: boolean;
-  row?: number;
-  keyName?: string;
-  text?: string;
-  onChange?: () => void;
 }
 
 const Textarea: React.FC<IProps> = ({
-  input,
   label,
   meta,
   placeholder,
-  type = "text",
   serverErrors,
   extClassName,
-  secondaryColor,
-  textColor,
-  row,
-  keyName,
-  text,
-  onChange,
   isSmall,
+  input,
+  ...props
 }) => {
-  const [isValue, setIsValue] = useState(text ? text : "");
-
-  const onChangeText = (event) => {
-    setIsValue(event.target.value);
-  };
-
-  useEffect(() => {
-    // @ts-ignore
-    onChange && (keyName ? onChange(isValue, keyName) : onChange(isValue));
-  }, [isValue]);
-
-  useEffect(() => {
-    text && setIsValue(text);
-  }, [text]);
-
   return (
     <>
       {label && <label className={styles.label}>{label}</label>}
@@ -63,18 +36,15 @@ const Textarea: React.FC<IProps> = ({
         )}
       >
         <textarea
-          {...input}
-          type={type}
-          value={isValue}
           className={cn(styles.input, {
             [styles.errorInput]:
               (serverErrors && !meta?.dirtySinceLastSubmit) ||
               (meta?.error && meta?.touched),
           })}
-          id={input.value}
-          placeholder={placeholder}
-          rows={row ? row : 5}
-          onChange={onChangeText}
+          placeholder={placeholder && placeholder}
+          rows={5}
+          {...input}
+          {...props}
         />
         {meta?.error && meta?.touched && (
           <div className={styles.errorIcon}>
@@ -82,9 +52,9 @@ const Textarea: React.FC<IProps> = ({
             <div className={styles.toolError}>{meta.error}</div>
           </div>
         )}
-        {!meta?.error && !meta?.dirtySinceLastSubmit && serverErrors && (
+        {/* {!meta?.error && !meta?.dirtySinceLastSubmit && serverErrors && (
           <div className="error serverError">{serverErrors}</div>
-        )}
+        )} */}
       </div>
     </>
   );

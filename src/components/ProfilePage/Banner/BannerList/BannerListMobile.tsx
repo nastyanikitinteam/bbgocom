@@ -5,6 +5,8 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import cn from "classnames";
 
+import { bannerList, bannersCategories } from "config/profilePage";
+
 import DotsIcon from "images/icons/dots.svg";
 import ArrowIcon from "images/icons/drop.svg";
 
@@ -17,69 +19,6 @@ const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
 
-  const bannerList = useMemo(
-    () => [
-      {
-        id: 0,
-        name: "My banners ads.jpg",
-        weight: "50 KB",
-        size: "1200x90 px",
-        dataUploaded: "May 4, 2023",
-        status: "Approved",
-      },
-      {
-        id: 1,
-        name: "123sdfd.jpg",
-        weight: "32 KB",
-        size: "970x90 px",
-        dataUploaded: "Apr 12, 2023",
-        status: "Waiting",
-      },
-      {
-        id: 2,
-        name: "Picture2023-03-03.png",
-        weight: "12 KB",
-        size: "728x90 px",
-        dataUploaded: "Apr 4, 2023",
-        status: "Rejected",
-      },
-      {
-        id: 3,
-        name: "My banners ads.jpg",
-        weight: "55 KB",
-        size: "320x600 px",
-        dataUploaded: "Feb 7, 2023",
-        status: "Approved",
-      },
-      {
-        id: 4,
-        name: "70-descuento-desktop-v3 1.png",
-        weight: "67 KB",
-        size: "320x250 px",
-        dataUploaded: "Mar 23, 2023",
-        status: "Approved",
-      },
-    ],
-    []
-  );
-
-  const categoriesList = useMemo(
-    () => [
-      {
-        id: 0,
-        name: "Approved",
-      },
-      {
-        id: 1,
-        name: "Waiting",
-      },
-      {
-        id: 2,
-        name: "Rejected",
-      },
-    ],
-    []
-  );
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [isActiveStatus, setIsActiveStatus] = useState("Approved");
@@ -130,9 +69,8 @@ const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
           render={({ handleSubmit }) => (
             <form className={styles.form} onSubmit={handleSubmit}>
               {!isMobile && <h3 className={styles.title}>Your banners</h3>}
-
               <div className={styles.categories}>
-                {categoriesList.map(({ id, name }) => {
+                {bannersCategories.map(({ id, name }) => {
                   return (
                     <div
                       className={cn(styles.category, {

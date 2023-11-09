@@ -18,7 +18,8 @@
       "components/*": ["src/components/*"],
       "images/*": ["src/assets/images/*"],
       "styles/*": ["src/styles/*"],
-      "config/*": ["src/config/*"]
+      "config/*": ["src/config/*"],
+      "utils/*": ["src/utils/*"]
     },
     "incremental": true
   },

@@ -3,46 +3,38 @@ import Link from "next/link";
 import styles from "./blocks.module.scss";
 import cn from "classnames";
 
-import { categoriesList } from "components/Category/config";
 import SignUpBlock from "components/CategoryPage/SubCategory/SignUpBlock/SignUpBlock";
 
 import Plus from "images/icons/plus.svg";
 
 interface IProps {
   isSearchBarTop?: boolean;
-  handleClick?: (key: string, value: string) => void;
-  setIsActiveChoice?: () => void;
   isCategoryPage?: boolean;
   currentSubcategories?: any;
   category?: string;
   dataCategory?: any;
-  delNameOfCategoryItem?: () => void;
   isCreatePage?: boolean;
+  selectedCategoryId?: number;
+  chooseCategoryItem?: (value: any) => void;
+  chooseSubcategory?: (value: any) => void;
+  setIsActiveChoice?: () => void;
 }
 
 const Blocks: FC<IProps> = ({
   isSearchBarTop,
-  handleClick,
-  setIsActiveChoice,
   isCategoryPage,
   currentSubcategories,
   category,
   dataCategory,
-  delNameOfCategoryItem,
   isCreatePage,
+  selectedCategoryId,
+  chooseCategoryItem,
+  chooseSubcategory,
+  setIsActiveChoice,
 }) => {
   const [isbaseUrl, setIsBaseUrl] = useState("");
 
-  const chooseCategoryItem = (id, title) => {
-    handleClick("nameOfCategoryItem", title);
-    setIsActiveChoice();
-  };
-
-  const chooseSubCategory = (id, title) => {
-    handleClick("nameOfSubCategory", title);
-    if (dataCategory.nameOfCategoryItem) {
-      delNameOfCategoryItem();
-    }
+  const close = () => {
     setIsActiveChoice();
   };
 
@@ -94,25 +86,44 @@ const Blocks: FC<IProps> = ({
                 </div>
               );
             })
-          : currentSubcategories.map(({ id, title, items }) => {
+          : currentSubcategories.map((parentItem) => {
               return (
                 <div
-                  key={id}
+                  key={parentItem.id}
                   className={cn(styles.block, {
                     [styles.createPage]: isCreatePage,
                   })}
-                  onClick={() => !isCreatePage && chooseSubCategory(id, title)}
                 >
-                  <h3 className={styles.title}>{title}</h3>
+                  <h3
+                    className={styles.title}
+                    onClick={() => {
+                      if (!isCreatePage) {
+                        chooseSubcategory(parentItem);
+                        close();
+                      }
+                    }}
+                  >
+                    {parentItem.title}
+                  </h3>
                   <ul className={styles.list}>
-                    {items.map(({ id, title }) => {
+                    {parentItem.items.map((childrenItem) => {
                       return (
                         <li
-                          className={styles.item}
-                          key={id}
-                          onClick={() => chooseCategoryItem(id, title)}
+                          className={cn(styles.item, {
+                            [styles.active]:
+                              childrenItem.id ===
+                                dataCategory.subcategoryItem &&
+                              parentItem.id === dataCategory.subcategory &&
+                              selectedCategoryId === dataCategory.category,
+                          })}
+                          key={childrenItem.id}
+                          onClick={() => {
+                            chooseCategoryItem(childrenItem);
+                            chooseSubcategory(parentItem);
+                            close();
+                          }}
                         >
-                          {title}
+                          {childrenItem.title}
                         </li>
                       );
                     })}

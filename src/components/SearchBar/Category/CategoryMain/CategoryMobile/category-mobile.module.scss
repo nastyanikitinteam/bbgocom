@@ -88,6 +88,18 @@
   letter-spacing: -0.2px;
   padding: 5px 0;
 }
+
+.active {
+  .subtitle {
+    color: var(--primary-green-active, #38953c);
+  }
+  .arrow {
+    path {
+      stroke: var(--primary-green-active, #38953c);
+    }
+  }
+}
+
 .image {
   max-width: 65px;
   min-width: 65px;

@@ -9,6 +9,8 @@ import { validateForm } from "../../../../../utils/validateForm";
 import styles from "./message.module.scss";
 import cn from "classnames";
 
+import { messageTags } from "config/messageTags";
+
 import ArrowSvg from "images/icons/drop.svg";
 import SendIcon from "images/icons/send.svg";
 
@@ -18,7 +20,6 @@ interface IProps {
 }
 
 const Message: FC<IProps> = ({ setIsShowMessage, isCurrentProduct }) => {
-  const [isMessageText, setIsMessageText] = useState("");
   const [isOpenModalSuccess, setIsOpenModalSuccess] = useState(false);
 
   const validationSchema = yup.object().shape({
@@ -31,43 +32,10 @@ const Message: FC<IProps> = ({ setIsShowMessage, isCurrentProduct }) => {
   const validate = validateForm(validationSchema);
 
   const onSubmit = useCallback((data, form) => {
-    console.log(isMessageText);
+    console.log(data);
     setIsOpenModalSuccess(true);
+    form.restart();
   }, []);
-
-  const onChangeInputVal = (val) => {
-    setIsMessageText(val);
-  };
-
-  const tagsList = useMemo(
-    () => [
-      {
-        id: 0,
-        title: "Still selling?",
-      },
-      {
-        id: 1,
-        title: "There is a bargain?",
-      },
-      {
-        id: 2,
-        title: "When can you watch?",
-      },
-      {
-        id: 3,
-        title: "Still selling?",
-      },
-      {
-        id: 4,
-        title: "There is a bargain?",
-      },
-      {
-        id: 5,
-        title: "When can you watch?",
-      },
-    ],
-    []
-  );
 
   const back = useCallback(() => {
     setIsOpenModalSuccess(false);
@@ -79,7 +47,12 @@ const Message: FC<IProps> = ({ setIsShowMessage, isCurrentProduct }) => {
       <Form
         onSubmit={onSubmit}
         validate={validate}
-        render={({ handleSubmit }) => (
+        mutators={{
+          changeValue: ([field, value], state, { changeValue }) => {
+            changeValue(state, field, () => value);
+          },
+        }}
+        render={({ handleSubmit, form }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.main}>
               <span className={cn(styles.back, styles.icon)} onClick={back}>
@@ -92,10 +65,8 @@ const Message: FC<IProps> = ({ setIsShowMessage, isCurrentProduct }) => {
                 name="message"
                 placeholder={"Hello!"}
                 component={Textarea}
-                row={1}
-                text={isMessageText}
+                rows={1}
                 extClassName="mobile"
-                onChange={onChangeInputVal}
               />
               <button type="submit" className={styles.send} aria-label={`Send`}>
                 <SendIcon />
@@ -103,14 +74,17 @@ const Message: FC<IProps> = ({ setIsShowMessage, isCurrentProduct }) => {
             </div>
             <div className={styles.bottom}>
               <div className={styles.tags}>
-                {tagsList.map(({ id, title }) => {
+                {messageTags.map(({ id, title }) => {
                   return (
                     <div
                       className={cn(styles.tag, {
-                        [styles.active]: isMessageText === title,
+                        [styles.active]:
+                          form.getState().values.message === title,
                       })}
                       key={id}
-                      onClick={() => onChangeInputVal(title)}
+                      onClick={() => {
+                        form.mutators.changeValue("message", title);
+                      }}
                     >
                       {title}
                     </div>

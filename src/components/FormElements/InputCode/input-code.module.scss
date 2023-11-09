@@ -3,6 +3,14 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  position: relative;
+}
+
+.mainInput {
+  position: absolute;
+  top: -99999px;
+  left: -99999px;
+  opacity: 0;
 }
 
 .input {
@@ -19,6 +27,12 @@
   letter-spacing: -0.2px;
   &::placeholder {
     color: #808080;
+  }
+}
+
+.error {
+  .input {
+    border-color: var(--secondary-orange, #ff5a27);
   }
 }
 

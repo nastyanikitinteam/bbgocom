@@ -1,11 +1,9 @@
-import { useMemo, useState, useEffect } from "react";
-
+import { useState, useEffect } from "react";
 import Category from "components/Category/Category";
 import CategoryMobile from "components/SearchBar/Category/CategoryMain/CategoryMobile/CategoryMobile";
 import useMediaQuery from "src/utils/useMediaQuery";
 import { useTranslation } from "react-i18next";
-
-import { categoriesList } from "components/Category/config";
+import { categoriesList } from "config/categoriesList";
 
 import styles from "./popular-category.module.scss";
 import cn from "classnames";
@@ -16,17 +14,12 @@ const PopularCategory = () => {
   const [isViewAll, setIsViewAll] = useState(false);
   const [isShowCategory, setIsShowCategory] = useState(7);
   const [isShowCategoryMenu, setIsShowCategoryMenu] = useState(false);
-  const [dataCategory, setDataCategory] = useState({});
 
   const isSmallLaptop = useMediaQuery(1300);
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
 
   const { t } = useTranslation();
-
-  const handleClickCategory = (key, value) => {
-    setDataCategory((prev) => ({ ...prev, [key]: value }));
-  };
 
   useEffect(() => {
     isViewAll ? setIsShowCategory(categoriesList.length) : setIsShowCategory(7);
@@ -79,23 +72,20 @@ const PopularCategory = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          {categoriesList.map(
-            ({ id, title, image, slug, items, subcategories }) => {
-              return (
-                id < isShowCategory && (
-                  <div className={styles.block} key={id}>
-                    <Category
-                      title={title}
-                      image={image}
-                      link={slug}
-                      items={items}
-                      subcategories={subcategories}
-                    />
-                  </div>
-                )
-              );
-            }
-          )}
+          {categoriesList.map(({ id, title, image, slug, subcategories }) => {
+            return (
+              id < isShowCategory && (
+                <div className={styles.block} key={id}>
+                  <Category
+                    title={title}
+                    image={image}
+                    link={slug}
+                    subcategories={subcategories}
+                  />
+                </div>
+              )
+            );
+          })}
         </div>
         {!isMobile && (
           <div
@@ -115,10 +105,6 @@ const PopularCategory = () => {
       {isShowCategoryMenu && (
         <CategoryMobile
           categoriesList={categoriesList}
-          handleClick={handleClickCategory}
-          dataCategory={dataCategory}
-          setDataCategory={setDataCategory}
-          isPopularCategory
           setIsShowCategoryMenu={setIsShowCategoryMenu}
         />
       )}

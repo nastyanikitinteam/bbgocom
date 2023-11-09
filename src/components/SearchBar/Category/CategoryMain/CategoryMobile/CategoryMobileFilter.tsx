@@ -1,102 +1,50 @@
 // @ts-nocheck
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC } from "react";
 import styles from "./category-mobile.module.scss";
 import ArrowSvg from "images/icons/drop.svg";
 import CloseIcon from "images/icons/close-sm.svg";
+import cn from "classnames";
+
+import { categoriesList } from "config/categoriesList";
 
 interface IProps {
-  categoriesList?: any;
-  handleClick?: (key: string, value: string) => void;
-  setIsActiveChoice?: () => void;
   dataCategory?: any;
-  setDataCategory?: (bool: string) => void;
-  isPopularCategory?: boolean;
-  setIsShowCategoryMenu?: (bool: boolean) => void;
+  selectedCategoryId?: number;
+  selectedCategory?: any;
+  selectedSubcategory?: any;
+  isCreatePage?: boolean;
+  back: () => void;
+  chooseCategory?: (any: any) => void;
+  chooseCategoryItem?: (value: any) => void;
+  chooseSubcategory?: (value: any) => void;
+  setIsActiveChoice?: () => void;
 }
 
 const CategoryMobile: FC<IProps> = ({
-  categoriesList,
-  handleClick,
-  setIsActiveChoice,
   dataCategory,
-  setDataCategory,
+  selectedCategoryId,
+  selectedCategory,
+  selectedSubcategory,
+  isCreatePage,
+  back,
+  chooseCategory,
+  chooseCategoryItem,
+  chooseSubcategory,
+  setIsActiveChoice,
 }) => {
-  const [isCategoryList, setIsCategoryList] = useState({});
-  const [isSubcategoryList, setIsSubcategoryList] = useState({});
-  const [isSubcategoryItem, setIsSubcategoryItem] = useState({});
-
-  const deletSubCategoryItemResult = () => {
-    if (dataCategory.nameOfCategoryItem) {
-      let obj = dataCategory;
-      delete obj.nameOfCategoryItem;
-      setDataCategory(obj);
-    }
-    setIsSubcategoryItem({});
-  };
-
-  const deletSubCategoryResult = () => {
-    if (dataCategory.nameOfSubCategory) {
-      let obj = dataCategory;
-      delete obj.nameOfSubCategory;
-      setDataCategory(obj);
-    }
-    setIsSubcategoryList({});
-  };
-
-  const deletCategoryResult = () => {
-    if (dataCategory.nameOfCategory) {
-      let obj = dataCategory;
-      delete obj.nameOfCategory;
-      setDataCategory(obj);
-    }
-    setIsCategoryList({});
-  };
-
-  const back = () => {
-    Object.entries(isSubcategoryList).length != 0
-      ? deletSubCategoryResult()
-      : Object.entries(isCategoryList).length != 0
-      ? deletCategoryResult()
-      : setIsActiveChoice();
-  };
-
   const close = () => {
     setIsActiveChoice();
   };
 
-  const handleCategoryList = useCallback((listId) => {
-    deletSubCategoryResult();
-    deletCategoryResult();
-    deletSubCategoryItemResult();
-    const filteredCategoryList = categoriesList.filter(
-      ({ id }) => id === listId
-    );
-    handleClick("nameOfCategory", filteredCategoryList[0].title);
-    setIsCategoryList(filteredCategoryList[0]);
-  }, []);
-
-  const handleSubcategoryList = useCallback(
-    (listId) => {
-      const filteredSubcategories = isCategoryList.subcategories.filter(
-        (subcategory) => subcategory.id === listId
-      );
-      handleClick("nameOfSubCategory", filteredSubcategories[0].title);
-      setIsSubcategoryList(filteredSubcategories[0]);
-    },
-    [isCategoryList]
-  );
-
-  const handleSubcategoryItem = useCallback(
-    (listId) => {
-      const filteredSubcategoriesItem = isSubcategoryList.items.filter(
-        (item) => item.id === listId
-      );
-      handleClick("nameOfCategoryItem", filteredSubcategoriesItem[0].title);
-      setIsSubcategoryItem(filteredSubcategoriesItem);
-      setIsActiveChoice();
-    },
-    [isSubcategoryList]
-  );
+  const handleCategoryInfo = () => {
+    if (selectedSubcategory) {
+      chooseSubcategory(selectedSubcategory);
+      close();
+    } else {
+      chooseCategory(selectedCategory);
+      close();
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -114,18 +62,18 @@ const CategoryMobile: FC<IProps> = ({
       </div>
       <div className={styles.main}>
         <div className={styles.list}>
-          {Object.entries(isCategoryList).length === 0 ? (
-            categoriesList.map(({ id, image, title }) => {
+          {!selectedCategory?.subcategories ? (
+            categoriesList.map((item) => {
               return (
                 <div
                   className={styles.item}
-                  key={id}
-                  onClick={() => handleCategoryList(id)}
+                  key={item.id}
+                  onClick={() => chooseCategory(item)}
                 >
                   <div className={styles.image}>
-                    <img src={image} alt="" />
+                    <img src={item.image} alt="" />
                   </div>
-                  <h3 className={styles.subtitle}>{title}</h3>
+                  <h3 className={styles.subtitle}>{item.title}</h3>
                   <span className={styles.arrow}>
                     <ArrowSvg />
                   </span>
@@ -136,43 +84,53 @@ const CategoryMobile: FC<IProps> = ({
             <>
               <div
                 className={styles.mainItem}
-                key={isCategoryList.id}
-                onClick={close}
+                onClick={() => {
+                  !isCreatePage && handleCategoryInfo();
+                }}
               >
                 <div className={styles.image}>
-                  <img src={isCategoryList.image} alt="" />
+                  <img src={selectedCategory.image} alt="" />
                 </div>
                 <div className={styles.info}>
-                  <h3 className={styles.subtitle}>{isCategoryList.title}</h3>
-                  {Object.entries(isSubcategoryList).length !== 0 && (
+                  <h3 className={styles.subtitle}>{selectedCategory.title}</h3>
+                  {selectedSubcategory && (
                     <div className={styles.subcategory}>
-                      {isSubcategoryList.title}
+                      {selectedSubcategory.title}
                     </div>
                   )}
                 </div>
               </div>
-              {Object.entries(isSubcategoryList).length === 0
-                ? isCategoryList?.items?.map(({ id, title }) => {
+              {!selectedSubcategory
+                ? selectedCategory.subcategories.map((item) => {
                     return (
                       <div
                         className={styles.item}
-                        onClick={() => handleSubcategoryList(id)}
+                        key={item.id}
+                        onClick={() => chooseSubcategory(item)}
                       >
-                        <h3 className={styles.subtitle}>{title}</h3>
+                        <h3 className={styles.subtitle}>{item.title}</h3>
                         <span className={styles.arrow}>
                           <ArrowSvg />
                         </span>
                       </div>
                     );
                   })
-                : isSubcategoryList?.items?.map(({ id, title }) => {
+                : selectedSubcategory?.items?.map((item) => {
                     return (
                       <div
-                        className={styles.item}
-                        key={id}
-                        onClick={() => handleSubcategoryItem(id)}
+                        className={cn(styles.item, {
+                          [styles.active]:
+                            item.id === dataCategory.subcategoryItem &&
+                            selectedSubcategory.id ===
+                              dataCategory.subcategory &&
+                            selectedCategoryId === dataCategory.category,
+                        })}
+                        key={item.id}
+                        onClick={() => {
+                          chooseCategoryItem(item);
+                        }}
                       >
-                        <h3 className={styles.subtitle}>{title}</h3>
+                        <h3 className={styles.subtitle}>{item.title}</h3>
                         <span className={styles.arrow}>
                           <ArrowSvg />
                         </span>

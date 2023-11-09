@@ -3,8 +3,13 @@
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  position: relative;
   input {
-    display: none;
+    // display: none;
+    position: absolute;
+    top: -99999px;
+    left: -999999px;
+    opacity: 0;
     &:checked + .block {
       border-color: #5bb75f;
       border-width: 6px;
