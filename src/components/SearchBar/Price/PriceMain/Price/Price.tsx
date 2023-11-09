@@ -1,10 +1,8 @@
 import { useState, useEffect, FC } from "react";
 import { Slider } from "antd";
+import { useTranslation } from "react-i18next";
 import cn from "classnames";
-
 import styles from "./price.module.scss";
-
-import PriceMin from "images/icons/price-min.svg";
 
 interface IProps {
   dataPrice: any;
@@ -12,6 +10,7 @@ interface IProps {
 }
 
 const Price: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
+  const { t } = useTranslation();
   const [inputValue1, setInputValue1] = useState(+dataPrice.minPrice);
   const [inputValue2, setInputValue2] = useState(+dataPrice.maxPrice);
 
@@ -47,10 +46,10 @@ const Price: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>Price, $:</h3>
+      <h3 className={styles.title}>{t(`searchbar.price`)}, $:</h3>
       <div className={styles.description}>
-        <span>Min 0$</span>
-        <span>Max $500 000+</span>
+        <span>{t(`searchbar.min`)} 0$</span>
+        <span>{t(`searchbar.max`)} $500 000+</span>
       </div>
       <Slider
         range

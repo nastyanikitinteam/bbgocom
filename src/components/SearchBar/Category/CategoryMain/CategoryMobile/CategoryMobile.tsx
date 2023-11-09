@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./category-mobile.module.scss";
 import ArrowSvg from "images/icons/drop.svg";
 import CloseIcon from "images/icons/close-sm.svg";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   categoriesList?: any;
@@ -17,6 +18,7 @@ const CategoryMobile: FC<IProps> = ({
   const [isCategoryList, setIsCategoryList] = useState({});
   const [isSubcategoryList, setIsSubcategoryList] = useState({});
   const [isSubcategoryItem, setIsSubcategoryItem] = useState({});
+  const { t } = useTranslation();
 
   const [isbaseUrl, setIsBaseUrl] = useState("");
 
@@ -87,7 +89,7 @@ const CategoryMobile: FC<IProps> = ({
           </span>
           Back
         </div>
-        <h3 className={styles.title}>Category</h3>
+        <h3 className={styles.title}>{t(`searchbar.category`)}</h3>
         <div className={styles.close} onClick={close}>
           <CloseIcon />
         </div>

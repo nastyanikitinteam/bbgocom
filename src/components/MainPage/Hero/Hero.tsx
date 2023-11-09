@@ -15,10 +15,10 @@ const Hero = () => {
     () => [
       {
         id: 0,
-        background: t(`heroImg`),
+        background: t(`home.bannerFirst`),
         backgroundMobile: slideBg1Mobile.src,
         button: {
-          name: t(`createButton`),
+          name: t(`general.createButton`),
           link: "/create-an-ad",
         },
       },

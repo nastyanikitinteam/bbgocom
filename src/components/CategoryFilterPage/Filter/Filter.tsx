@@ -9,6 +9,8 @@ import styles from "./filter.module.scss";
 import ColorPicker from "./ColorPicker/ColorPicker";
 import BodyType from "./BodyType/BodyType";
 
+import { useTranslation } from "react-i18next";
+
 import {
   tabsList,
   propertyType,
@@ -25,6 +27,7 @@ interface IProps {
 
 const Filter: FC<IProps> = ({ addWidth }) => {
   const isMobile = useMediaQuery(768);
+  const { t } = useTranslation();
 
   const reset = () => {
     console.log("reset");
@@ -33,7 +36,7 @@ const Filter: FC<IProps> = ({ addWidth }) => {
   return (
     <div className={styles.container}>
       <div className={styles.main}>
-        {isMobile && <h3 className={styles.title}>Filter</h3>}
+        {isMobile && <h3 className={styles.title}>{t(`searchbar.filter`)}</h3>}
         <Tabs tabsList={tabsList} />
         <BodyType title="Body type" />
         <ColorPicker title="Colors" colors={colors} />

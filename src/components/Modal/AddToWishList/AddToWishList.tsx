@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import styles from "./add-to-wish-list.module.scss";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 import SearchIcon from "images/icons/search.svg";
 import PlusIcon from "images/icons/add.svg";
@@ -22,6 +23,8 @@ const AddToWishList: FC<IProps> = ({ cancel }) => {
   const [isSearchQuery, setIsSearchQuery] = useState("");
   const validationSchema = yup.object().shape({});
   const validate = validateForm(validationSchema);
+
+  const { t } = useTranslation();
 
   const onSubmit = useCallback((data, form) => {
     console.log(data);
@@ -91,7 +94,7 @@ const AddToWishList: FC<IProps> = ({ cancel }) => {
                       );
                     })
                   ) : (
-                    <NoResult title="You haven't searched yet" />
+                    <NoResult title={t(`searchbar.noSearchResult`)} />
                   )}
                 </div>
 

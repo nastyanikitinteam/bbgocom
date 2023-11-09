@@ -1,5 +1,6 @@
 import { FC, useEffect } from "react";
 import { productList } from "components/MainPage/Recommend/config";
+import { useTranslation } from "react-i18next";
 import NoResult from "../NoResult/NoResults";
 
 import styles from "./search.module.scss";
@@ -17,6 +18,7 @@ const Search: FC<IProps> = ({
   setIsActiveChoice,
 }) => {
   const searchResults = searchArray(productList, isSearchQuery);
+  const { t } = useTranslation();
 
   function searchArray(array, query) {
     const results = [];
@@ -64,8 +66,8 @@ const Search: FC<IProps> = ({
         </div>
       ) : (
         <NoResult
-          title="You haven't searched yet"
-          description="Find the products you need"
+          title={t(`searchbar.noSearchResult`)}
+          description={t(`searchbar.noSearchResultDescription`)}
         />
       )}
     </div>

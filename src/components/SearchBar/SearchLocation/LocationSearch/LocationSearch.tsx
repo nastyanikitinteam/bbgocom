@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { regionList } from "../LocationMain/config";
+import { useTranslation } from "react-i18next";
 import NoResult from "../NoResult/NoResults";
 import styles from "./location-search.module.scss";
 
@@ -23,6 +24,7 @@ const LocationSearch: FC<IProps> = ({
   closeList,
 }) => {
   const searchResults = searchArray(regionList, isSearchRegionQuery);
+  const { t } = useTranslation();
 
   function searchArray(array, query) {
     const results = [];
@@ -91,8 +93,8 @@ const LocationSearch: FC<IProps> = ({
         </div>
       ) : (
         <NoResult
-          title="You haven't searched yet"
-          description="Find the products you need"
+          title={t(`searchbar.noSearchResult`)}
+          description={t(`searchbar.noSearchResultDescription`)}
         />
       )}
     </div>

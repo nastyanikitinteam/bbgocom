@@ -21,7 +21,9 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
             <Link href="/" className={styles.logo}>
               <LogoSvg />
             </Link>
-            <p className={styles.logoDescription}>{t(`headerDescription`)}</p>
+            <p className={styles.logoDescription}>
+              {t(`general.headerDescription`)}
+            </p>
           </div>
         </div>
       </div>

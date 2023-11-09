@@ -5,7 +5,7 @@ import { useState } from "react";
 import cn from "classnames";
 
 const InfoBlock = () => {
-  const [isSubscribed, setIsSubscribed] = useState(true);
+  const [isSubscribed, setIsSubscribed] = useState(false);
   return (
     <div
       className={cn(styles.container, { [styles.subscribed]: isSubscribed })}

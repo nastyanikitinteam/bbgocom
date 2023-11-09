@@ -1,6 +1,7 @@
 import { FC } from "react";
 import cn from "classnames";
 import useMediaQuery from "src/utils/useMediaQuery";
+import { useTranslation } from "react-i18next";
 
 import Currency from "./Currency/Currency";
 import SortBy from "./SortBy/SortBy";
@@ -21,12 +22,13 @@ const PriceMain: FC<IProps> = ({
   handleClickPrice,
 }) => {
   const isMobile = useMediaQuery(768);
+  const { t } = useTranslation();
 
   return (
     <div className={cn(styles.container, { [styles.menuTop]: isSearchBarTop })}>
       {!isMobile && (
         <div className={styles.top}>
-          <h3>Price Filter</h3>
+          <h3>{t(`searchbar.priceFilter`)}</h3>
           <div
             className={styles.clean}
             onClick={() => handleClickPrice("default", null)}
@@ -34,7 +36,7 @@ const PriceMain: FC<IProps> = ({
             <span className={styles.icon}>
               <DelIcon />
             </span>
-            Clean All
+            {t(`searchbar.cleanAll`)}
           </div>
         </div>
       )}

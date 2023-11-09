@@ -95,7 +95,9 @@ const PopularCategory = () => {
             data-aos="fade-up"
             data-aos-delay="300"
           >
-            {isViewAll ? "Hide Category" : "View all Category"}
+            {isViewAll
+              ? `Hide ${t(`searchbar.category`)}`
+              : `View all ${t(`searchbar.category`)}`}
             <span className={cn(styles.icon, { [styles.open]: isViewAll })}>
               <ArrowSvg />
             </span>

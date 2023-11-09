@@ -86,20 +86,24 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
               <LogoSvg />
             </Link>
             {!isTablet && (
-              <p className={styles.logoDescription}>{t(`headerDescription`)}</p>
+              <p className={styles.logoDescription}>
+                {t(`general.headerDescription`)}
+              </p>
             )}
             {(!isSearchBarTop || withoutSearchBar) &&
               (!isTablet || withoutSearchBar) &&
               !isSecondHeader && (
                 <ul className={styles.list}>
                   <li className={styles.item}>
-                    <Link href="/help">Help</Link>
+                    <Link href="/help">{t("general.help")}</Link>
                   </li>
                   <li className={styles.item}>
-                    <Link href="/advertise-with-us">Advertise with us</Link>
+                    <Link href="/advertise-with-us">
+                      {t("general.advertiseWithUs")}
+                    </Link>
                   </li>
                   <li className={styles.item}>
-                    <Link href="/rules">Rules</Link>
+                    <Link href="/rules">{t("general.rules")}</Link>
                   </li>
                 </ul>
               )}
@@ -127,7 +131,7 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
                 {(!isSearchBarTop || withoutSearchBar) &&
                   !isSmallLaptop &&
                   !isSecondHeader &&
-                  `${t(`wishTitle`)}`}
+                  `${t(`general.wishTitle`)}`}
 
                 {!isSearchBarTop && isWishItems > 0 && (
                   <span className={styles.num}>{isWishItems}</span>
@@ -161,7 +165,7 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
                 {isSearchBarTop || isTablet || isSecondHeader ? (
                   <AddSvg />
                 ) : (
-                  t(`createButton`)
+                  t(`general.createButton`)
                 )}
               </div>
             </div>

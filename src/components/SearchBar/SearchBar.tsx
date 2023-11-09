@@ -13,6 +13,7 @@ import LocationSearch from "./SearchLocation/LocationSearch/LocationSearch";
 import SearchHistory from "./SearchLocation/SearchHistory/SearchHistory";
 import Search from "./SearchLocation/Search/Search";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import {
   IFilterReducer,
   setIsCategoryFilterOpen,
@@ -28,6 +29,8 @@ interface IProps {
 }
 
 const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
   const containerRef = useRef(null as null | HTMLDivElement);
   const { isCategoryFilterOpen } = useSelector<IReducer, IFilterReducer>(
@@ -202,7 +205,7 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
               }
               isActiveChoice={isActiveChoice === "Category"}
               dataCategory={dataCategory}
-              placeholder="All"
+              placeholder={t(`searchbar.all`)}
               isSearchBar
             />
           )}

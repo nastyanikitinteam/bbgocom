@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import cn from "classnames";
 
 import { regionList } from "./config";
@@ -21,6 +21,7 @@ const LocationMain: FC<IProps> = ({
   dataRegion,
   setDataRegion,
 }) => {
+  const { t } = useTranslation();
   const chooseRegion = (name) => {
     if (dataRegion.nameOfCity) {
       let obj = dataRegion;
@@ -58,12 +59,12 @@ const LocationMain: FC<IProps> = ({
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <h3 className={styles.title}>Choose region</h3>
+        <h3 className={styles.title}>{t(`searchbar.chooseRegion`)}</h3>
         <div className={styles.choose} onClick={deleteRegionResult}>
           <span className={styles.icon}>
             <MapIcon />
           </span>
-          All Thailand
+          {t(`searchbar.allThailand`)}
         </div>
       </div>
       <div className={styles.content}>

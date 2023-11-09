@@ -3,6 +3,8 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./search-history.module.scss";
 import cn from "classnames";
 
+import { useTranslation } from "react-i18next";
+
 import DelIcon from "images/icons/del.svg";
 import ClearIcon from "images/icons/clean-icon.svg";
 import SearchIcon from "images/icons/search.svg";
@@ -16,6 +18,7 @@ const SearchHistory: FC<IProps> = ({
   handleClickSeacrh,
   setIsActiveChoice,
 }) => {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery(768);
 
   const serachList = [
@@ -53,13 +56,13 @@ const SearchHistory: FC<IProps> = ({
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <h3>Search history:</h3>
+        <h3>{t(`searchbar.searchHistory`)}:</h3>
         {!isMobile && (
           <div className={styles.clear}>
             <span className={styles.icon}>
               <DelIcon />
             </span>
-            Clean All
+            {t(`searchbar.cleanAll`)}
           </div>
         )}
       </div>
@@ -87,7 +90,7 @@ const SearchHistory: FC<IProps> = ({
             <span className="icon">
               <ClearIcon />
             </span>
-            Clean History
+            {t(`searchbar.cleanHistory`)}
           </div>
         </div>
       )}

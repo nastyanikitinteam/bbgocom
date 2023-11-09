@@ -3,6 +3,7 @@ import styles from "./select-search.module.scss";
 import cn from "classnames";
 import SearchIcon from "images/icons/search.svg";
 import NoResult from "components/SearchBar/SearchLocation/NoResult/NoResults";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   list: any;
@@ -17,6 +18,7 @@ const SelectSearch: FC<IProps> = ({
 }) => {
   const [isSearchQuery, setIsSearchQuery] = useState("");
   const searchResults = searchArray(list, isSearchQuery);
+  const { t } = useTranslation();
 
   const onChangeSearchInput = (event) => {
     setIsSearchQuery(event.target.value);
@@ -75,7 +77,7 @@ const SelectSearch: FC<IProps> = ({
             );
           })
         ) : (
-          <NoResult title="You haven't searched yet" />
+          <NoResult title={t(`searchbar.all`)} />
         )}
       </div>
     </div>

@@ -1,0 +1,25 @@
+const searchbar = {
+  all: "Все",
+  search: "Поиск",
+  iSearch: "Я ищу",
+  searchHistory: "История поиска",
+  cleanAll: "Очистить всё",
+  cleanHistory: "Очистить историю",
+  noSearchResult: "Вы ещё не искали",
+  noSearchResultDescription: "Найдите продукты, которые вам нужны",
+  allThailand: "Весь Таиланд",
+  chooseRegion: "Выберите регион",
+  apply: "Применить",
+  reset: "Сбросить",
+  location: "Местоположение",
+  category: "Категория",
+  filter: "Фильтр",
+  sortBy: "Сортировать по",
+  currency: "Валюта",
+  price: "Цена",
+  priceFilter: "Фильтр по цене",
+  min: "Минимум",
+  max: "Максимум",
+};
+
+export { searchbar };

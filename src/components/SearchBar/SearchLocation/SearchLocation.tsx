@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
 import styles from "./search-location.module.scss";
-
+import { useTranslation } from "react-i18next";
 import SearchIcon from "images/icons/search-icon.svg";
 import MapIcon from "images/icons/map-icon.svg";
 import FilterIcon from "images/icons/filter-icon.svg";
@@ -31,6 +31,8 @@ const SearchLocation: FC<IProps> = ({
   dataSearch,
   setDataSearch,
 }) => {
+  const { t } = useTranslation();
+
   const [isActive, setIsActive] = useState(false);
   const isMobile = useMediaQuery(768);
 
@@ -131,7 +133,7 @@ const SearchLocation: FC<IProps> = ({
           </span>
           <input
             type="text"
-            placeholder="I’m search"
+            placeholder={t(`searchbar.iSearch`)}
             value={isSearchQuery}
             onChange={onChangeSearchInput}
           />
@@ -166,7 +168,7 @@ const SearchLocation: FC<IProps> = ({
               type="text"
               value={isSearchRegionQuery}
               onChange={onChangeRegionInput}
-              placeholder="All Thailand"
+              placeholder={t(`searchbar.allThailand`)}
               onBlur={handleBlurRegion}
             />
           </div>

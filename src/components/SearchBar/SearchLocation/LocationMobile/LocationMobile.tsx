@@ -1,4 +1,4 @@
-import { useMemo, useRef, FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { regionList } from "../LocationMain/config";
 import PortalContainer from "components/PortalContainer/PortalContainer";
 import styles from "./location-mobile.module.scss";
@@ -7,6 +7,7 @@ import MapIcon from "images/icons/map-icon.svg";
 import ArrowSvg from "images/icons/drop.svg";
 import CloseIcon from "images/icons/close.svg";
 import LocationSearch from "../LocationSearch/LocationSearch";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   setIsSearchRegionQuery: (str: string) => void;
@@ -28,6 +29,7 @@ const LocationMobile: FC<IProps> = ({
   const [isOpenList, setIsOpenList] = useState(false);
   const [isInputValue, setIsInputValue] = useState("");
   const [isOpenSearchBlock, setIsOpenSearchBlock] = useState(false);
+  const { t } = useTranslation();
 
   const onChangeRegionInput = (event) => {
     setIsSearchRegionQuery(event.target.value);
@@ -74,7 +76,7 @@ const LocationMobile: FC<IProps> = ({
 
   return (
     <>
-      <h3 className={styles.title}>Location:</h3>
+      <h3 className={styles.title}>{t(`searchbar.location`)}</h3>
       <div
         className={cn(styles.input, {
           [styles.fill]: dataRegion.nameOfCity || dataRegion.nameOfRegion,
@@ -84,7 +86,11 @@ const LocationMobile: FC<IProps> = ({
         <span className={styles.icon}>
           <MapIcon />
         </span>
-        <p>{isSearchRegionQuery ? isSearchRegionQuery : "All Thailand"}</p>
+        <p>
+          {isSearchRegionQuery
+            ? isSearchRegionQuery
+            : t(`searchbar.allThailand`)}
+        </p>
         <span className={styles.arrow}>
           <ArrowSvg />
         </span>
@@ -95,7 +101,7 @@ const LocationMobile: FC<IProps> = ({
           onClick={closeList}
         ></div>
         <div className={cn(styles.block, { [styles.active]: isOpenList })}>
-          <h3 className={styles.subtitle}>Choose region</h3>
+          <h3 className={styles.subtitle}>{t(`searchbar.chooseRegion`)}</h3>
           <div className={styles.top}>
             <div
               className={cn(styles.input, {
@@ -109,7 +115,7 @@ const LocationMobile: FC<IProps> = ({
                 type="text"
                 value={isInputValue}
                 onChange={onChangeRegionInput}
-                placeholder="Search"
+                placeholder={t(`searchbar.search`)}
               />
             </div>
           </div>

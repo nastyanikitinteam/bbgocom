@@ -3,6 +3,7 @@ import cn from "classnames";
 import styles from "./currency.module.scss";
 
 import { currencyList } from "config/currency";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   dataPrice: any;
@@ -10,9 +11,11 @@ interface IProps {
 }
 
 const Currency: FC<IProps> = ({ dataPrice, handleClickPrice }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>Currency</h3>
+      <h3 className={styles.title}>{t(`searchbar.currency`)}</h3>
       <div className={styles.blocks}>
         {currencyList.map(({ value, label }) => {
           return (

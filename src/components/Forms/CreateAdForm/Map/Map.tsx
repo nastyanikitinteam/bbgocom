@@ -263,7 +263,7 @@ const Map: FC<IProps> = ({
             handleAdress(formattedAddress);
             marker.setPosition(coordinates);
           } else {
-            alert(`${t(`mapErrorNoThailand`)}`);
+            alert(`${t(`errors.mapErrorNoThailand`)}`);
             return false;
           }
         }

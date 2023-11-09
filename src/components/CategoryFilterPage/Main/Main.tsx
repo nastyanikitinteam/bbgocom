@@ -5,6 +5,7 @@ import CardProduct from "components/CardProduct/CardProduct";
 import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
 import { productList } from "components/MainPage/Recommend/config";
 import styles from "./main.module.scss";
+import { useTranslation } from "react-i18next";
 import cn from "classnames";
 
 import HorizonalIcon from "images/icons/typeOfShow-2.svg";
@@ -32,6 +33,7 @@ const Main: FC<IProps> = ({
   const [isShowProducts, setIsShowProducts] = useState(6);
   const [isCount, setIsCount] = useState(6);
   const [dataSort, setDataSort] = useState({});
+  const { t } = useTranslation();
 
   const handleClickSort = (key, value) => {
     setDataSort((prev) => ({ ...prev, [key]: value }));
@@ -119,7 +121,7 @@ const Main: FC<IProps> = ({
           <span className={styles.icon}>
             <MapIcon />
           </span>
-          Filter
+          {t(`searchbar.filter`)}
           <span className={styles.arrow}>
             <ArrowSvg />
           </span>

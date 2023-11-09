@@ -1,0 +1,25 @@
+const searchbar = {
+  all: "All",
+  search: "Search",
+  iSearch: "I'm searching",
+  searchHistory: "Search history",
+  cleanAll: "Clean All",
+  cleanHistory: "Clean History",
+  noSearchResult: "You haven't searched yet",
+  noSearchResultDescription: "Find the products you need",
+  allThailand: "All Thailand",
+  chooseRegion: "Choose region",
+  apply: "Apply",
+  reset: "Reset",
+  location: "Location",
+  category: "Category",
+  filter: "Filter",
+  sortBy: "Sort By",
+  currency: "Currency",
+  price: "Price",
+  priceFilter: "Price Filter",
+  min: "Min",
+  max: "Max",
+};
+
+export { searchbar };

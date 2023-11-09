@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import styles from "./location.module.scss";
 import Map from "components/Forms/CreateAdForm/Map/Map";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   isCurrentLocation: any;
@@ -8,6 +9,7 @@ interface IProps {
 
 const Info: FC<IProps> = ({ isCurrentLocation }) => {
   const [isCoordinates, setIsCoordinates] = useState({ lat: 15, lng: 101 });
+  const { t } = useTranslation();
 
   const [isMapZoom, setIsMapZoom] = useState(15);
 
@@ -20,7 +22,7 @@ const Info: FC<IProps> = ({ isCurrentLocation }) => {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>Location</h3>
+      <h3 className={styles.title}>{t(`searchbar.location`)}</h3>
       <div className={styles.map}>
         <Map
           isCoordinates={isCoordinates}

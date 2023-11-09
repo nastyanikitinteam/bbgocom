@@ -5,6 +5,7 @@ import ArrowSvg from "images/icons/drop.svg";
 import CloseIcon from "images/icons/close-sm.svg";
 import cn from "classnames";
 
+import { useTranslation } from "react-i18next";
 import { categoriesList } from "config/categoriesList";
 
 interface IProps {
@@ -32,6 +33,8 @@ const CategoryMobile: FC<IProps> = ({
   chooseSubcategory,
   setIsActiveChoice,
 }) => {
+  const { t } = useTranslation();
+
   const close = () => {
     setIsActiveChoice();
   };
@@ -55,7 +58,7 @@ const CategoryMobile: FC<IProps> = ({
           </span>
           Back
         </div>
-        <h3 className={styles.title}>Category</h3>
+        <h3 className={styles.title}>{t(`searchbar.category`)}</h3>
         <div className={styles.close} onClick={close}>
           <CloseIcon />
         </div>

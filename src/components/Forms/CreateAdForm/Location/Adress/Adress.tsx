@@ -39,7 +39,7 @@ const Adress: FC<IProps> = ({ setIsMapZoom, setIsCoordinates }) => {
           setIsCoordinates({ lat, lng });
           setIsMapZoom(12);
         } else {
-          alert(`${t(`mapErrorNoThailand`)}`);
+          alert(`${t(`errors.mapErrorNoThailand`)}`);
         }
       } else {
         alert("Adress no found");
