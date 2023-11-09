@@ -1,12 +1,13 @@
-import { useCallback, useState, useEffect, FC } from "react";
+import { useCallback, useState, FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import { Form, Field } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../../utils/validateForm";
-import FormInput from "components/FormElements/FormInput/FormInput";
 import CardInput from "components/FormElements/FormInput/CardInput";
 import DateInput from "components/FormElements/FormInput/DateInput";
 import NumberInput from "components/FormElements/FormInput/NumberInput";
+import Modal from "components/Modal/Modal";
+import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
 
 import styles from "./add-card.module.scss";
@@ -24,6 +25,7 @@ const AddCard: FC<IProps> = ({
   setIsActiveNewCard,
   setIsWallet,
 }) => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const validationCard = yup.object().shape({});
   const isMobile = useMediaQuery(768);
 
@@ -31,6 +33,7 @@ const AddCard: FC<IProps> = ({
 
   const onSubmit = useCallback((data, form) => {
     console.log(data);
+    setIsOpenModal(true);
     if (isMobile) {
       setIsActiveNewCard(false);
       setIsWallet(true);
@@ -121,6 +124,22 @@ const AddCard: FC<IProps> = ({
             Add Card
           </h2>
         </div>
+      )}
+      {isOpenModal && (
+        <Modal
+          closeModal={() => setIsOpenModal(false)}
+          type="deleteCard"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <Confirm
+            closeModal={() => setIsOpenModal(false)}
+            title="Successful!"
+            description="The card has been successfully added"
+            event="Done"
+            isGreen
+          />
+        </Modal>
       )}
     </div>
   );

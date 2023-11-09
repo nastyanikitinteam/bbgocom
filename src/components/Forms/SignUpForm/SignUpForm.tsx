@@ -1,10 +1,8 @@
 import React, { useCallback, useState, useEffect, FC } from "react";
 import Link from "next/link";
 import { Form, Field } from "react-final-form";
-import Select from "components/Select/Select";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
-import FormInput from "components/FormElements/FormInput/FormInput";
 import PhoneCodeSelect from "components/FormElements/Select/PhoneCodeSelect";
 import NumberInput from "components/FormElements/FormInput/NumberInput";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";

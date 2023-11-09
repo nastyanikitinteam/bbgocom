@@ -1,4 +1,4 @@
-import { useState, FC, useEffect } from "react";
+import { useState, FC } from "react";
 import styles from "./select-search.module.scss";
 import cn from "classnames";
 import SearchIcon from "images/icons/search.svg";
@@ -15,18 +15,11 @@ const SelectSearch: FC<IProps> = ({
   handleListChange,
   isChooseOption,
 }) => {
-  const [isOpenList, setIsOpenList] = useState(false);
-  const [isInputValue, setIsInputValue] = useState("");
-  const [isOpenSearchBlock, setIsOpenSearchBlock] = useState(false);
   const [isSearchQuery, setIsSearchQuery] = useState("");
-
-  // const [searchResults, setIsSearchList] = useState(list);
-
   const searchResults = searchArray(list, isSearchQuery);
 
   const onChangeSearchInput = (event) => {
     setIsSearchQuery(event.target.value);
-    // setIsSearchList(searchArray(list, event.target.value));
   };
 
   function searchArray(array, query) {
@@ -46,10 +39,6 @@ const SelectSearch: FC<IProps> = ({
 
     return results;
   }
-
-  // useEffect(() => {
-  //   console.log(searchResults);
-  // }, [searchResults]);
 
   return (
     <div>
@@ -72,16 +61,16 @@ const SelectSearch: FC<IProps> = ({
       </div>
       <div className={styles.list}>
         {searchResults.length > 0 ? (
-          searchResults.map(({ value, label }) => {
+          searchResults.map((item) => {
             return (
               <div
-                key={value}
+                key={item.value}
                 className={cn(styles.item, {
-                  [styles.active]: value === isChooseOption,
+                  [styles.active]: item.value === isChooseOption,
                 })}
-                onClick={() => handleListChange(value)}
+                onClick={() => handleListChange(item)}
               >
-                {label}
+                {item.label}
               </div>
             );
           })

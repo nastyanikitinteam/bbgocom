@@ -22,7 +22,11 @@ const Info: FC<IProps> = ({ isCurrentLocation }) => {
     <div className={styles.container}>
       <h3 className={styles.title}>Location</h3>
       <div className={styles.map}>
-        <Map isCoordinates={isCoordinates} isMapZoom={isMapZoom} />
+        <Map
+          isCoordinates={isCoordinates}
+          isMapZoom={isMapZoom}
+          isActiveMarker
+        />
       </div>
       <h3 className={styles.city}>{isCurrentLocation?.name}</h3>
       <p className={styles.adress}>Chiang Mai, Kingkaew Soi 2/7</p>

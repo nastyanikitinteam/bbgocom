@@ -10,12 +10,17 @@ interface IProps {
   handleAdress?: (str: string) => void;
   isCoordinates: any;
   isMapZoom: number;
+  isActiveMarker?: boolean;
 }
 
-const Map: FC<IProps> = ({ handleAdress, isCoordinates, isMapZoom }) => {
+const Map: FC<IProps> = ({
+  handleAdress,
+  isCoordinates,
+  isMapZoom,
+  isActiveMarker,
+}) => {
   const { t } = useTranslation();
 
-  const disableDefaultUI = true;
   const render = (status: Status): ReactElement => {
     if (status === Status.LOADING) return <h3>{status} ..</h3>;
     if (status === Status.FAILURE) return <h3>{status} ...</h3>;
@@ -49,7 +54,6 @@ const Map: FC<IProps> = ({ handleAdress, isCoordinates, isMapZoom }) => {
       const map = new window.google.maps.Map(mapRef.current, {
         center,
         zoom,
-        // disableDefaultUI,
         zoomControl,
         streetViewControl,
         mapTypeControl,
@@ -220,6 +224,7 @@ const Map: FC<IProps> = ({ handleAdress, isCoordinates, isMapZoom }) => {
         map,
         draggable: false,
         icon: customMarkerIcon,
+        position: isActiveMarker && center,
       });
 
       map.addListener("click", (event) => {

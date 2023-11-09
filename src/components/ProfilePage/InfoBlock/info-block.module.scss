@@ -8,6 +8,11 @@
   .container {
     flex-direction: row;
   }
+  .subscribed {
+    & > div {
+      max-width: none;
+    }
+  }
 }
 
 @media (max-width: 998px) {

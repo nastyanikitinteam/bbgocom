@@ -7,13 +7,19 @@ import cn from "classnames";
 interface IProps {
   setSelectedFiles: (bool: any) => void;
   selectedFiles: any;
+  input;
 }
 
-const AttachFiles: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
+const AttachFiles: FC<IProps> = ({
+  setSelectedFiles,
+  selectedFiles,
+  input,
+  ...rest
+}) => {
   const fileInputRef = useRef(null);
   const maxSizeInBytes = 10 * 1024 * 1024;
 
-  const handleFileChange = (e) => {
+  const hadleFileInput = (e) => {
     const newFiles = Array.from(e.target.files);
     let updatedFiles = selectedFiles;
     if (Array.isArray(updatedFiles)) {
@@ -36,16 +42,21 @@ const AttachFiles: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
     });
   };
 
+  useEffect(() => {
+    input.onChange(selectedFiles);
+  }, [selectedFiles]);
+
   return (
     <label className={styles.container}>
       <AttachIcon />
       <input
         type="file"
         accept=".jpg, .jpeg, .png"
-        onChange={handleFileChange}
-        style={{ display: "none" }}
+        onChange={hadleFileInput}
         ref={fileInputRef}
         multiple
+        className={styles.input}
+        {...rest}
       />
     </label>
   );

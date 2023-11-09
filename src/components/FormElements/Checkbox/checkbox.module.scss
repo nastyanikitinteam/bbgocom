@@ -2,12 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   input {
     // display: none;
     position: absolute;
-    top: -99999px;
-    left: -999999px;
+    top: 0;
+    left: 0;
     opacity: 0;
+    pointer-events: none;
     &:checked + .block {
       background-color: #5bb75f;
       border-color: #5bb75f;

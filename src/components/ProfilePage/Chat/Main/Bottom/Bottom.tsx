@@ -30,6 +30,7 @@ const Bottom: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
   const onSubmit = useCallback((data, form) => {
     console.log(data);
     form.restart();
+    setSelectedFiles([]);
   }, []);
 
   const handleRemoveFile = (indexToRemove) => {
@@ -51,10 +52,17 @@ const Bottom: FC<IProps> = ({ setSelectedFiles, selectedFiles }) => {
       render={({ handleSubmit, form }) => (
         <form className={styles.container} onSubmit={handleSubmit}>
           <div className={styles.main}>
-            <AttachFiles
+            <Field
+              name="files"
+              //@ts-ignore
+              component={AttachFiles}
               selectedFiles={selectedFiles}
               setSelectedFiles={setSelectedFiles}
             />
+            {/* <AttachFiles
+              selectedFiles={selectedFiles}
+              setSelectedFiles={setSelectedFiles}
+            /> */}
             <div className={styles.item}>
               <Field
                 name="message"

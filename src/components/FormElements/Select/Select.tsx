@@ -11,15 +11,15 @@ import ArrowSmSvg from "images/icons/drop-sm.svg";
 
 interface IProps {
   options: any;
-  meta: any;
+  meta?: any;
   classname?: string;
   language?: boolean;
   placeholder?: string;
   isSearch?: boolean;
   chooseOption?: any;
   isClearValue?: boolean;
-  input: any;
-  rest: any;
+  input?: any;
+  rest?: any;
 }
 const SelectContainer: FC<IProps> = ({
   options,
@@ -73,7 +73,7 @@ const SelectContainer: FC<IProps> = ({
   return !isMobile ? (
     <div className={styles.container}>
       <Select
-        name={input.name}
+        name={input?.name}
         options={options}
         defaultValue={chooseOption ? chooseOption : !placeholder && options[0]}
         placeholder={placeholder && placeholder}
@@ -84,7 +84,7 @@ const SelectContainer: FC<IProps> = ({
         isSearchable={isSearch ? true : false}
         components={{ DropdownIndicator, NoOptionsMessage }}
         onChange={(e) => {
-          input.onChange(e);
+          input?.onChange(e);
           handleChange(e);
           //@ts-ignore
           props.onChange && props.onChange(e);

@@ -82,43 +82,42 @@ const PhoneCodeSelect: FC<IProps> = ({
       processingCounrtryList();
     }
   }, [CountriesList]);
-
-  return !isMobile ? (
-    <div className={styles.container}>
-      {isCountryList.length && (
-        <>
-          <Select
-            name={input.name}
-            options={isCountryList}
-            defaultValue={
-              chooseOption
-                ? isCountryList.filter((item) => item.value === chooseOption)
-                : !placeholder && isCountryList[0]
-            }
-            className={cn(`default-select phone ${fillClass}`)}
-            classNamePrefix="default"
-            isSearchable={true}
-            components={{ DropdownIndicator, NoOptionsMessage }}
-            onChange={(e) => {
-              input.onChange(e);
-              handleChange(e);
-            }}
-            ref={selectRef}
-            // menuIsOpen
-          />
-        </>
-      )}
-    </div>
-  ) : (
-    <MobileSelect
-      options={isCountryList}
-      classname="phone"
-      placeholder={placeholder}
-      isSearch={true}
-      isClearValue={isClearValue}
-      input={input}
-      props={props}
-    />
+  // {isCountryList.length && (
+  return (
+    isCountryList.length &&
+    (!isMobile ? (
+      <div className={styles.container}>
+        <Select
+          name={input.name}
+          options={isCountryList}
+          defaultValue={
+            chooseOption
+              ? isCountryList.filter((item) => item.value === chooseOption)
+              : !placeholder && isCountryList[0]
+          }
+          className={cn(`default-select phone ${fillClass}`)}
+          classNamePrefix="default"
+          isSearchable={true}
+          components={{ DropdownIndicator, NoOptionsMessage }}
+          onChange={(e) => {
+            input.onChange(e);
+            handleChange(e);
+          }}
+          ref={selectRef}
+          // menuIsOpen
+        />
+      </div>
+    ) : (
+      <MobileSelect
+        options={isCountryList}
+        classname="phone"
+        placeholder={placeholder}
+        isSearch={true}
+        isClearValue={isClearValue}
+        input={input}
+        props={props}
+      />
+    ))
   );
 };
 

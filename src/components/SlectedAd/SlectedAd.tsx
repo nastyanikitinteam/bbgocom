@@ -1,9 +1,8 @@
-import { useMemo, FC } from "react";
+import { FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Main from "./Main/Main";
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
 import GreenCards from "components/ProductCards/GreenCards/GreenCards";
-import styles from "./selected-ad.module.scss";
 
 import { latestLst } from "components/ProductCards/config";
 import { productList } from "components/MainPage/Recommend/config";

@@ -19,12 +19,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   input {
-    // display: none;
     position: absolute;
-    top: -99999px;
-    left: -999999px;
+    top: 0;
+    left: 0;
     opacity: 0;
+    pointer-events: none;
     &:checked + .radioBlock {
       border: 6px solid #5bb75f;
     }

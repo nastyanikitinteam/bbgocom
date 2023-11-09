@@ -41,6 +41,7 @@ const MobileSelect: FC<IProps> = ({
   const handleListChange = (item: any) => {
     setIsOpenList(false);
     setIsChooseOption(item.value);
+    console.log(item, "item");
     form && form.change(input.name, item);
     props.onChange && props.onChange(item);
   };
