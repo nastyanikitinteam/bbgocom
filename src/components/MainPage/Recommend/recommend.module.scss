@@ -18,15 +18,20 @@
   color: #808080;
   margin-top: 50px;
   white-space: nowrap;
+  gap: 5px;
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.25s ease-in;
+    margin-left: 3px;
     svg {
       width: 24px;
       height: 24px;
     }
+  }
+  span {
+    text-transform: lowercase;
   }
   .open {
     transform: rotate(-180deg);

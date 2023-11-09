@@ -1,5 +1,6 @@
-import { useMemo, useEffect } from "react";
+import { useMemo } from "react";
 import { blocksList } from "config/mainPage";
+import { useTranslation } from "react-i18next";
 
 import {
   Swiper as SwiperComponent,
@@ -12,6 +13,7 @@ import styles from "./who.module.scss";
 
 const Who = () => {
   const isTablet = useMediaQuery(998);
+  const { t } = useTranslation();
 
   const params = useMemo(
     () => ({
@@ -32,7 +34,7 @@ const Who = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          Who we are
+          {t(`home.whoWeAre`)}
         </h2>
         <div className={styles.blocks}>
           {isTablet ? (
@@ -43,8 +45,8 @@ const Who = () => {
                     <div className={styles.image}>
                       <img src={image} alt="" />
                     </div>
-                    <h3 className={styles.name}>{title}</h3>
-                    <p className={styles.text}>{text}</p>
+                    <h3 className={styles.name}>{t(`${title}`)}</h3>
+                    <p className={styles.text}>{t(`${text}`)}</p>
                   </SwiperSlide>
                 );
               })}
@@ -62,8 +64,8 @@ const Who = () => {
                   <div className={styles.image}>
                     <img src={image} alt="" />
                   </div>
-                  <h3 className={styles.name}>{title}</h3>
-                  <p className={styles.text}>{text}</p>
+                  <h3 className={styles.name}>{t(`${title}`)}</h3>
+                  <p className={styles.text}>{t(`${text}`)}</p>
                 </div>
               );
             })
@@ -76,9 +78,9 @@ const Who = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          <p className={styles.description}>Do you have any questions?</p>
+          <p className={styles.description}> {t(`home.doYouHaveQuestuin`)}</p>
           <div className={cn("default-button sm", styles.button)}>
-            Help section
+            {t(`home.helpSection`)}
           </div>
         </div>
       </div>

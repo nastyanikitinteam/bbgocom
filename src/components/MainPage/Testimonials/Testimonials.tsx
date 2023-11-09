@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from "react";
+import { useMemo } from "react";
 
 import { Navigation, Pagination } from "swiper/modules";
 import {
@@ -9,6 +9,7 @@ import {
 import cn from "classnames";
 import Review from "./Review/Review";
 import { reviewList } from "./config";
+import { useTranslation } from "react-i18next";
 
 import "swiper/css";
 
@@ -17,6 +18,7 @@ import styles from "./testimonials.module.scss";
 import ArrowSvg from "images/icons/drop.svg";
 
 const Testimonials = () => {
+  const { t } = useTranslation();
   const params = useMemo(
     () => ({
       slidesPerView: 1,
@@ -66,7 +68,7 @@ const Testimonials = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          Testimonials
+          {t(`home.testimonials`)}
         </h2>
         <div
           className={styles.slider}

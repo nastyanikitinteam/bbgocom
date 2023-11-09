@@ -52,13 +52,15 @@ const PopularCategory = () => {
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          <h2 className={cn("title", styles.title)}>{t(`popularCategory`)}</h2>
+          <h2 className={cn("title", styles.title)}>
+            {t(`home.popularCategory`)}
+          </h2>
           {isMobile && (
             <div
               className={styles.all}
               onClick={() => setIsShowCategoryMenu(true)}
             >
-              View all
+              {t(`general.viewAll`)}
               <span className={styles.icon}>
                 <ArrowSvg />
               </span>
@@ -95,12 +97,11 @@ const PopularCategory = () => {
             data-aos="fade-up"
             data-aos-delay="300"
           >
-            {isViewAll
-              ? `Hide ${t(`searchbar.category`)}`
-              : `View all ${t(`searchbar.category`)}`}
-            <span className={cn(styles.icon, { [styles.open]: isViewAll })}>
+            {isViewAll ? t(`general.hide`) : t(`general.viewAll`)}
+            <span> {t(`home.category`)}</span>
+            <div className={cn(styles.icon, { [styles.open]: isViewAll })}>
               <ArrowSvg />
-            </span>
+            </div>
           </div>
         )}
       </div>

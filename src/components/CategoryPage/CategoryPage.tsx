@@ -1,11 +1,11 @@
 import { FC } from "react";
-import useMediaQuery from "src/utils/useMediaQuery";
 import Hero from "./Hero/Hero";
 import Tags from "./Tags/Tags";
 import SubCategory from "./SubCategory/SubCategory";
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
 import GreenCards from "components/ProductCards/GreenCards/GreenCards";
 
+import { useTranslation } from "react-i18next";
 import { latestLst } from "components/ProductCards/config";
 
 interface IProps {
@@ -13,6 +13,7 @@ interface IProps {
 }
 
 const CategoryPage: FC<IProps> = ({ isCurrentList }) => {
+  const { t } = useTranslation();
   return (
     <>
       <Hero isCurrentList={isCurrentList} />
@@ -36,7 +37,7 @@ const CategoryPage: FC<IProps> = ({ isCurrentList }) => {
         data-aos="fade-up"
         data-aos-delay="300"
       >
-        <GreenCards title="Latest deals" productsList={latestLst} />
+        <GreenCards title={t(`home.latestDeals`)} productsList={latestLst} />
       </div>
     </>
   );

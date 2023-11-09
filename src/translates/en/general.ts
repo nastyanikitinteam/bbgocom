@@ -5,6 +5,10 @@ const general = {
   rules: "Rules",
   wishTitle: "My Whishlist",
   createButton: "Create an Ad",
+  viewAll: "View all",
+  cancel: "Cancel",
+  back: "Back",
+  hide: "Hide",
 };
 
 export { general };

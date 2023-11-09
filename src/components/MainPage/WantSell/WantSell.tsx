@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-
 import cn from "classnames";
 import styles from "./want-sell.module.scss";
 
 import man from "images/main-page/man.png";
+import { useTranslation } from "react-i18next";
 
 const WantSell = () => {
+  const { t } = useTranslation();
   return (
     <section className={styles.container}>
       <div className="wrapper">
@@ -22,14 +22,11 @@ const WantSell = () => {
             data-aos-delay="400"
           >
             <h2 className={styles.title}>
-              Want to sell <span>on bbgo.com?</span>
+              {t(`home.wantToSell`)} <span>{t(`home.onBBGO`)}</span>
             </h2>
-            <p className={styles.text}>
-              Check out BBGO offers for business. Raise your applications to the
-              top and earn more.
-            </p>
+            <p className={styles.text}>{t(`home.checkOutBBGOOffers`)}</p>
             <div className={cn("default-button white", styles.button)}>
-              Start Selling
+              {t(`home.startSelling`)}
             </div>
           </div>
           <div

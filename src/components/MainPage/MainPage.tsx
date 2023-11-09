@@ -8,19 +8,14 @@ import WantSell from "./WantSell/WantSell";
 import Testimonials from "./Testimonials/Testimonials";
 import Who from "./Who/Who";
 import useMediaQuery from "src/utils/useMediaQuery";
-
-import { latestLst } from "components/ProductCards/config";
-
 import SearchBar from "components/SearchBar/SearchBar";
 
 import { useTranslation } from "react-i18next";
-
-import styles from "./main-page.module.scss";
+import { latestLst } from "components/ProductCards/config";
 
 import bannerImg from "images/main-page/banner.png";
 
 const MainPage = () => {
-  const SmallLaptop = useMediaQuery(768);
   const isTablet = useMediaQuery(998);
   const { t } = useTranslation();
   return (
@@ -48,7 +43,7 @@ const MainPage = () => {
         data-aos="fade-up"
         data-aos-delay="300"
       >
-        <GreenCards title="Latest deals" productsList={latestLst} />
+        <GreenCards title={t(`home.latestDeals`)} productsList={latestLst} />
       </div>
       <div
         data-aos-anchor-placement="top-bottom"

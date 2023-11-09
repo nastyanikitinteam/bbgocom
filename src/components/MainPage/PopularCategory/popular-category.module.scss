@@ -25,16 +25,20 @@
   color: #808080;
   margin-top: 48px;
   white-space: nowrap;
+  gap: 5px;
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.25s ease-in;
-    margin-left: 8px;
+    margin-left: 3px;
     svg {
       width: 24px;
       height: 24px;
     }
+  }
+  span {
+    text-transform: lowercase;
   }
   @media (max-width: 768px) {
     .icon {
@@ -84,7 +88,7 @@
     margin: 0;
   }
   .all {
-    margin-top: 0;
+    margin-top: 5px;
     margin-left: 15px;
   }
   .title {
@@ -95,7 +99,8 @@
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    // align-items: center;
   }
   .block {
     min-width: 100px;

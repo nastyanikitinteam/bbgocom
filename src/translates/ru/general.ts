@@ -5,6 +5,10 @@ const general = {
   rules: "Правила",
   wishTitle: "Мои избранные",
   createButton: "Добавить обьявление",
+  viewAll: "Посмотреть все",
+  cancel: "Отмена",
+  back: "Назад",
+  hide: "Скрыть",
 };
 
 export { general };

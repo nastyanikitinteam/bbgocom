@@ -8,6 +8,7 @@ import {
 } from "swiper/react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 import styles from "./green-cards.module.scss";
 import "swiper/css";
@@ -25,6 +26,7 @@ const GreenCards: FC<IProps> = ({
   productsList,
   showButtonWithouTitle,
 }) => {
+  const { t } = useTranslation();
   const [isViewAll, setIsViewAll] = useState(false);
   const [isShowCategory, setIsShowCategory] = useState(5);
 
@@ -127,7 +129,7 @@ const GreenCards: FC<IProps> = ({
             onClick={() => setIsViewAll((prev) => !prev)}
           >
             <div className={styles.text}>
-              {isViewAll ? `Hide ` : `View all `}
+              {isViewAll ? t(`general.hide`) : t(`general.viewAll`)}{" "}
               {!showButtonWithouTitle && <span>{title}</span>}
             </div>
             <span className={cn(styles.icon, { [styles.open]: isViewAll })}>

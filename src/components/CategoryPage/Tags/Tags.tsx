@@ -3,6 +3,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
 import { tagsList } from "./config";
 import styles from "./tags.module.scss";
+import { useTranslation } from "react-i18next";
 
 import ArrowSvg from "images/icons/drop.svg";
 import Link from "next/link";
@@ -15,6 +16,7 @@ const Tags: FC<IProps> = ({ isCurrentList }) => {
   const [isCount, setIsCount] = useState(tagsList.length);
   const [isbaseUrl, setIsBaseUrl] = useState("");
   const isMobile = useMediaQuery(768);
+  const { t } = useTranslation();
 
   useEffect(() => {
     isMobile ? setIsCount(15) : setIsCount(tagsList.length);
@@ -38,7 +40,7 @@ const Tags: FC<IProps> = ({ isCurrentList }) => {
           </h2>
           {isMobile && (
             <div className={styles.all}>
-              View all
+              {t(`general.viewAll`)}
               <span className={styles.icon}>
                 <ArrowSvg />
               </span>
