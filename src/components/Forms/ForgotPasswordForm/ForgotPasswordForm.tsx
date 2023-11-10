@@ -4,19 +4,19 @@ import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import cn from "classnames";
-
 import styles from "./forgot-password-form.module.scss";
-import ForgotPasswordIcon from "images/icons/forgot-password.svg";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   handleForgotPasswordModal: () => void;
 }
 
 const ForgotPasswordForm: FC<IProps> = ({ handleForgotPasswordModal }) => {
+  const { t } = useTranslation();
   const validationSchema = yup.object().shape({
     contact: yup
       .string()
-      .required(`Enter phone number or email`)
+      .required(`${t(`general.enterPhoneOrEmail`)}`)
       .test("Number/Email", "Wrong phone/email format", function (value) {
         const numberPhone = /^\+\d{10,13}$/;
         const emailRgx = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}\b/;
@@ -46,7 +46,7 @@ const ForgotPasswordForm: FC<IProps> = ({ handleForgotPasswordModal }) => {
             <Field
               name="contact"
               type="text"
-              placeholder={"Enter phone or email"}
+              placeholder={t(`general.enterPhoneOrEmail`)}
               component={FormInput}
               extClassName="firstName"
             />
@@ -57,7 +57,7 @@ const ForgotPasswordForm: FC<IProps> = ({ handleForgotPasswordModal }) => {
               className={cn("default-button", styles.button)}
               aria-label={`Change password`}
             >
-              Change password
+              {t(`general.changePassword`)}
             </button>
           </div>
         </form>

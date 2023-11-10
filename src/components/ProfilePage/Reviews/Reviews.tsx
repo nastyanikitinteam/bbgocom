@@ -8,8 +8,10 @@ import styles from "./reviews.module.scss";
 import ArrowSvg from "images/icons/drop.svg";
 
 import { reviewsList } from "config/profilePage";
+import { useTranslation } from "react-i18next";
 
 const Reviews = () => {
+  const { t } = useTranslation();
   const [isShowReviews, setIsShowReviews] = useState(3);
   const isMobile = useMediaQuery(768);
   const router = useRouter();
@@ -34,7 +36,7 @@ const Reviews = () => {
             <span className="arrow">
               <ArrowSvg />
             </span>
-            Back
+            {t(`general.back`)}
           </div>
           <h3 className={styles.title}>Reviews</h3>
         </div>

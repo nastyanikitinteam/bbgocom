@@ -1,17 +1,18 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Main from "./Main/Main";
 import Info from "./Info/Info";
 import MessagesIcon from "images/icons/messages-big.svg";
 import styles from "./chat.module.scss";
 import useMediaQuery from "src/utils/useMediaQuery";
-import cn from "classnames";
 
 import { chatLists, sellChatList } from "./config";
+import { useTranslation } from "react-i18next";
 
 import ArrowSvg from "images/icons/drop.svg";
 
 const Chat = () => {
+  const { t } = useTranslation();
   const [isActiveChat, setIsActiveChat] = useState(false);
   const [isActiveChatID, setIsActiveChatID] = useState();
   const [isActiveChatList, setIsActiveChatList] = useState(chatLists);
@@ -42,7 +43,7 @@ const Chat = () => {
             <span className="arrow">
               <ArrowSvg />
             </span>
-            Back
+            {t(`general.back`)}
           </div>
           <h3 className={styles.title}>My Messages</h3>
         </div>

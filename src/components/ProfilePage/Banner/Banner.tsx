@@ -8,6 +8,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./banner.module.scss";
 import ArrowIcon from "images/icons/drop.svg";
 import PlusIcon from "images/icons/plus.svg";
+import { useTranslation } from "react-i18next";
 
 const Banner = () => {
   const isSmallDisplay = useMediaQuery(1300);
@@ -15,6 +16,7 @@ const Banner = () => {
   const isMobile = useMediaQuery(768);
   const [isOpenRules, setIsOpenRules] = useState(false);
   const [isOpenNewBanner, setIsOpenNewBanner] = useState(false);
+  const { t } = useTranslation();
 
   const router = useRouter();
 
@@ -37,7 +39,7 @@ const Banner = () => {
               <span className="arrow">
                 <ArrowIcon />
               </span>
-              Back
+              {t(`general.back`)}
             </div>
             <h3 className={styles.title}>
               {isOpenNewBanner

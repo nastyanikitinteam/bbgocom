@@ -14,10 +14,12 @@ import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
 
 import MailSendIcon from "images/icons/mail-send.svg";
+import { useTranslation } from "react-i18next";
 
 const AdvertiseForm = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const router = useRouter();
+  const { t } = useTranslation();
 
   const validationSchema = yup.object().shape({
     name: yup.string().required(`Enter name`),
@@ -69,7 +71,7 @@ const AdvertiseForm = () => {
                 <Field
                   name="number"
                   type="text"
-                  placeholder={"Phone"}
+                  placeholder={t(`general.phone`)}
                   component={NumberInput}
                   extClassName="noIcon"
                 />
@@ -117,7 +119,7 @@ const AdvertiseForm = () => {
                   onClick={back}
                   className={cn("default-button  border", styles.button)}
                 >
-                  Cancel
+                  {t(`general.cancel`)}
                 </div>
               </div>
               <div className={styles.button}>
@@ -126,7 +128,7 @@ const AdvertiseForm = () => {
                   className={cn("default-button", styles.button)}
                   aria-label={`Send`}
                 >
-                  Send
+                  {t(`general.send`)}
                 </button>
               </div>
             </div>

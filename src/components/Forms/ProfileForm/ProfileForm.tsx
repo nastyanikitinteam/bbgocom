@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { Form, Field } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
+import { useTranslation } from "react-i18next";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import PasswordInput from "components/FormElements/FormInput/PasswordInput";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
@@ -10,6 +11,7 @@ import cn from "classnames";
 import styles from "./profile-form.module.scss";
 
 const ProfileForm = () => {
+  const { t } = useTranslation();
   const validationSchema = yup.object().shape({
     firstName: yup.string().required(`Enter first name`),
     lastName: yup.string().required(`Enter  last name`),
@@ -44,7 +46,7 @@ const ProfileForm = () => {
             <div className={styles.item}>
               <Field
                 name="firstName"
-                placeholder={"First name"}
+                placeholder={t(`general.firstName`)}
                 type="text"
                 component={FormInput}
                 extClassName="firstName"
@@ -53,7 +55,7 @@ const ProfileForm = () => {
             <div className={styles.item}>
               <Field
                 name="lastName"
-                placeholder={"Last name"}
+                placeholder={t(`general.lastName`)}
                 type="text"
                 component={FormInput}
                 extClassName="lastName"
@@ -63,7 +65,7 @@ const ProfileForm = () => {
           <div className={styles.item}>
             <Field
               name="email"
-              placeholder={"Email"}
+              placeholder={t(`general.email`)}
               type="email"
               component={FormInput}
               extClassName="email"
@@ -72,13 +74,13 @@ const ProfileForm = () => {
           <div className={styles.item}>
             <Field
               name="password"
-              placeholder={"Password"}
+              placeholder={t(`general.password`)}
               component={PasswordInput}
             />
           </div>
           <div className={styles.terms}>
             <Field name="terms" type="checkbox" component={Checkbox}>
-              Receive information about BBGO news and promotions
+              {t(`general.receiveBBGONewsAndPromotions`)}
             </Field>
           </div>
           <div className={styles.button}>
@@ -87,7 +89,7 @@ const ProfileForm = () => {
               className={cn("default-button", styles.button)}
               aria-label={`Crate an account`}
             >
-              Crate an account
+              {t(`general.createAccount`)}
             </button>
           </div>
         </form>

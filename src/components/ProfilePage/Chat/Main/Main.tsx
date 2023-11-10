@@ -5,10 +5,9 @@ import styles from "./main.module.scss";
 import Message from "../Message/Message";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
-import DeleteChat from "./DeleteChat/DeleteChat";
-import BlockChat from "./BlockChat/BlockChat";
 import Ad from "./Ad/Ad";
 import Bottom from "./Bottom/Bottom";
+import { useTranslation } from "react-i18next";
 
 import BlockIcon from "images/icons/block.svg";
 import DeleteIcon from "images/icons/delete.svg";
@@ -20,6 +19,7 @@ interface IProps {
   setIsActiveChat?: (bool: boolean) => void;
 }
 const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
+  const { t } = useTranslation();
   const [isOpenDel, setIsOpenDel] = useState(false);
   const [isOpenBlockModal, setIsOpenBlockModal] = useState(false);
   const [isCurrentChat, setIsCurrent] = useState(false);
@@ -74,7 +74,7 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
                       <span className="arrow">
                         <ArrowSvg />
                       </span>
-                      Back
+                      {t(`general.back`)}
                     </div>
                   )}
                   {!isMobile && (

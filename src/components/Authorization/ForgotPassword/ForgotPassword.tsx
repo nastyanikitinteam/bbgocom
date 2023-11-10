@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import ForgotPasswordForm from "components/Forms/ForgotPasswordForm/ForgotPasswordForm";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 import styles from "./forgot-password.module.scss";
 
@@ -12,6 +13,7 @@ interface IProps {
 }
 
 const ForgotPassword: FC<IProps> = ({ handleForgotPasswordModal }) => {
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       <div
@@ -21,14 +23,14 @@ const ForgotPassword: FC<IProps> = ({ handleForgotPasswordModal }) => {
         <span className="arrow">
           <ArrowSvg />
         </span>
-        Back
+        {t(`general.back`)}
       </div>
       <div className={styles.icon}>
         <ForgotPasswordIcon />
       </div>
-      <h2 className={styles.title}>Forgot password?</h2>
+      <h2 className={styles.title}>{t(`general.forgotPassword`)}?</h2>
       <p className={styles.text}>
-        What email or phone number is associated with your BBGO profile?
+        {t(`general.associatedWithEmailOrPhoneNumber`)}
       </p>
       <ForgotPasswordForm
         handleForgotPasswordModal={handleForgotPasswordModal}

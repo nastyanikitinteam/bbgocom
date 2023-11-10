@@ -7,6 +7,7 @@ import ArrowIcon from "images/icons/drop.svg";
 import ShareIcon from "images/icons/share.svg";
 import DropMenu from "components/DropMenu/DropMenu";
 import MapIcon from "images/icons/map-icon.svg";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   isOpenFullMap: boolean;
@@ -26,6 +27,7 @@ const Main: FC<IProps> = ({
   setIsOpenMap,
 }) => {
   const isMobile = useMediaQuery(768);
+  const { t } = useTranslation();
 
   return (
     <div className={cn(styles.container, { [styles.open]: isOpenFullMap })}>
@@ -34,7 +36,7 @@ const Main: FC<IProps> = ({
           <span className="arrow">
             <ArrowIcon />
           </span>
-          Back
+          {t(`general.back`)}
         </div>
       )}
 

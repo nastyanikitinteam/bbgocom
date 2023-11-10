@@ -9,6 +9,7 @@ import Confirm from "components/Modal/Confirm/Confirm";
 import styles from "./settings.module.scss";
 
 import { AccountInfo } from "./config";
+import { useTranslation } from "react-i18next";
 
 import ArrowSvg from "images/icons/drop.svg";
 import LogOutIcon from "images/icons/log-out-icon.svg";
@@ -21,6 +22,7 @@ const Settings = () => {
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
   const [isActiveLogOutModal, setIsActiveLogOutModal] = useState(false);
   const [isOpenParam, setIsOpenParam] = useState(false);
+  const { t } = useTranslation();
 
   const router = useRouter();
 
@@ -46,7 +48,7 @@ const Settings = () => {
               <span className="arrow">
                 <ArrowSvg />
               </span>
-              Back
+              {t(`general.back`)}
             </div>
             <h3 className={styles.title}>
               {isOpenParam

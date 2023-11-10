@@ -3,13 +3,12 @@ import { useRouter } from "next/router";
 import NoCard from "./NoCard/NoCard";
 import useMediaQuery from "src/utils/useMediaQuery";
 import PortalContainer from "components/PortalContainer/PortalContainer";
-import cn from "classnames";
-import styles from "./wallet.module.scss";
-
 import Card from "./Card/Card";
 import AddCard from "./AddCard/AddCard";
+import cn from "classnames";
+import styles from "./wallet.module.scss";
+import { useTranslation } from "react-i18next";
 
-import WalletIcon from "images/icons/wallet-big.svg";
 import PlusIcon from "images/icons/plus.svg";
 import VisaIcon from "images/icons/visa.svg";
 import MastercardIcon from "images/icons/mastercard.svg";
@@ -19,6 +18,7 @@ const Wallet = () => {
   const [isWallet, setIsWallet] = useState(false);
   const [isActiveNewCard, setIsActiveNewCard] = useState(false);
   const isMobile = useMediaQuery(768);
+  const { t } = useTranslation();
 
   const router = useRouter();
 
@@ -73,7 +73,7 @@ const Wallet = () => {
             <span className="arrow">
               <ArrowSvg />
             </span>
-            Back
+            {t(`general.back`)}
           </div>
           <h3 className={styles.title}>Wallet</h3>
           <a

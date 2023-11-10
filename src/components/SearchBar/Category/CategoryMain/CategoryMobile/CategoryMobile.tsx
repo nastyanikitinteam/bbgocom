@@ -87,7 +87,7 @@ const CategoryMobile: FC<IProps> = ({
           <span className={styles.arrow}>
             <ArrowSvg />
           </span>
-          Back
+          {t(`general.back`)}
         </div>
         <h3 className={styles.title}>{t(`searchbar.category`)}</h3>
         <div className={styles.close} onClick={close}>

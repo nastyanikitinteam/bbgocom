@@ -5,8 +5,8 @@ import styles from "./map-container.module.scss";
 import cn from "classnames";
 
 import ArrowIcon from "images/icons/drop.svg";
-import CloseIcon from "images/icons/modal-close.svg";
 import FilterIcon from "images/icons/filter-icon.svg";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   setIsOpenFullMap: (bool: any) => void;
@@ -27,6 +27,7 @@ const MapContainer: FC<IProps> = ({
   isMapWidth,
   productList,
 }) => {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery(768);
 
   const closeMap = () => {
@@ -49,7 +50,7 @@ const MapContainer: FC<IProps> = ({
                 <span className="arrow">
                   <ArrowIcon />
                 </span>
-                Back
+                {t(`general.back`)}
               </div>
             )}
             <h1 className={styles.title}>Map</h1>

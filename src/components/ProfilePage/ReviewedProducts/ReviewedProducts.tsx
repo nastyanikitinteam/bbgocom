@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Form, Field } from "react-final-form";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
@@ -8,6 +8,7 @@ import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
 import { productList } from "components/MainPage/Recommend/config";
+import { useTranslation } from "react-i18next";
 import cn from "classnames";
 import styles from "./reviewed-products.module.scss";
 
@@ -17,6 +18,7 @@ import HorizonalIcon from "images/icons/typeOfShow-2.svg";
 import BlocksIcon from "images/icons/typeOfShow-1.svg";
 
 const ReviewedProducts = () => {
+  const { t } = useTranslation();
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [isHorizontalShow, setIsHorizontalShow] = useState(false);
@@ -77,7 +79,7 @@ const ReviewedProducts = () => {
                   <span className="arrow">
                     <ArrowSvg />
                   </span>
-                  Back
+                  {t(`general.back`)}
                 </div>
                 <h3 className={styles.title}>Reviewed products</h3>
                 {checkedItems.length > 0 && (

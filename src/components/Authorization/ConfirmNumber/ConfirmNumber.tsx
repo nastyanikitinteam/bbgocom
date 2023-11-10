@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import ConfirmNumberForm from "components/Forms/ConfirmNumberForm/ConfirmNumberForm";
 import SocialsConfirm from "../Socials/SocialsConfirm";
+import { useTranslation } from "react-i18next";
 
 import styles from "./confirm-number.module.scss";
 
@@ -11,22 +12,22 @@ interface IProps {
 }
 
 const Login: FC<IProps> = ({ openNextStepSignUp }) => {
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
         <LogoSvg />
       </div>
-      <h2 className={styles.title}>Confirm number</h2>
+      <h2 className={styles.title}>{t(`general.confirmNumber`)}</h2>
       <p className={styles.text}>
-        Enter the code sent to
+        {t(`general.enterCodeSentTo`)}
         <b>+66 000 000-00-00</b>
       </p>
       <ConfirmNumberForm openNextStepSignUp={openNextStepSignUp} />
-      <h3 className={styles.subtitle}>Another way to get a code</h3>
+      <h3 className={styles.subtitle}>{t(`general.anotherWayToGetCode`)}</h3>
       <SocialsConfirm />
       <p className={styles.description}>
-        Within 1-2 minutes you will receive a message with a code to verify your
-        phone number
+        {t(`general.receiveCodeWithin1to2Minutes`)}
       </p>
     </div>
   );

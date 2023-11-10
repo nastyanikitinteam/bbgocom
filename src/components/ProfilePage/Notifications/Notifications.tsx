@@ -8,12 +8,14 @@ import cn from "classnames";
 import styles from "./notifications.module.scss";
 
 import { NotificationsList } from "config/profilePage";
+import { useTranslation } from "react-i18next";
 
 import ArrowSvg from "images/icons/drop.svg";
 
 import DelIcon from "images/icons/delete.svg";
 
 const Notifications = () => {
+  const { t } = useTranslation();
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [isShowNotification, setIsShowNotification] = useState(4);
@@ -72,7 +74,7 @@ const Notifications = () => {
                   <span className="arrow">
                     <ArrowSvg />
                   </span>
-                  Back
+                  {t(`general.back`)}
                 </div>
                 <h3 className={styles.title}>Notifications</h3>
                 {checkedItems.length > 0 && (

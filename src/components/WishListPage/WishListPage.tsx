@@ -11,6 +11,7 @@ import Share from "components/Share/Share";
 import Confirm from "components/Modal/Confirm/Confirm";
 import { wishlistArr } from "components/WishPage/Lists/config";
 import { IWishlist, initialWishlist } from "src/interfaces/wishlists";
+import { useTranslation } from "react-i18next";
 import cn from "classnames";
 
 import ArrowIcon from "images/icons/drop.svg";
@@ -35,6 +36,7 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
   const blockRef = useRef(null);
   const [isMapWidth, setIsMapWidth] = useState(null);
   const isMobile = useMediaQuery(768);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -98,7 +100,7 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
                   <span className="arrow">
                     <ArrowIcon />
                   </span>
-                  Back
+                  {t(`general.back`)}
                 </div>
                 <h1 className={styles.title}>
                   {isOpenMap ? "Map" : isCurrentList.name}

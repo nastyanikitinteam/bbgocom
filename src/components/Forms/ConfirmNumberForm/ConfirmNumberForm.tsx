@@ -2,6 +2,7 @@ import React, { useCallback, useState, FC } from "react";
 import { Form, Field } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
+import { useTranslation } from "react-i18next";
 import InputCode from "../../FormElements/InputCode/InputCode";
 
 import cn from "classnames";
@@ -16,6 +17,7 @@ interface IProps {
 }
 
 const ConfirmNumberForm: FC<IProps> = ({ openNextStepSignUp }) => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [confirmCode, setConfirmCode] = useState({ code: "" });
 
@@ -69,9 +71,11 @@ const ConfirmNumberForm: FC<IProps> = ({ openNextStepSignUp }) => {
             <span className={styles.icon}>
               <AgainIcon />
             </span>
-            Send code again
+            {t(`general.sendCodeAgain`)}
           </p>
-          <p className={styles.description}>Notifications must be enabled</p>
+          <p className={styles.description}>
+            {t(`general.notificationsMustBeEnabled`)}
+          </p>
           <div className={styles.button}>
             <button
               type="submit"
@@ -81,7 +85,7 @@ const ConfirmNumberForm: FC<IProps> = ({ openNextStepSignUp }) => {
               <span className="icon">
                 <ArrowIcon />
               </span>
-              Continue
+              {t(`general.continue`)}
             </button>
           </div>
         </form>

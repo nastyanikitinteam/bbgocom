@@ -7,11 +7,10 @@ import NumberInput from "components/FormElements/FormInput/NumberInput";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import PhoneCodeSelect from "components/FormElements/Select/PhoneCodeSelect";
 import cn from "classnames";
-
 import styles from "./login-form.module.scss";
-
 import LoginIcon from "images/icons/login.svg";
 
+import { useTranslation } from "react-i18next";
 interface IProps {
   changeActiveAuth: () => void;
   handleForgotPasswordModal: () => void;
@@ -19,6 +18,8 @@ interface IProps {
 }
 
 const LoginForm: FC<IProps> = ({ handleForgotPasswordModal }) => {
+  const { t } = useTranslation();
+
   const validationSchema = yup.object().shape({
     phone: yup
       .string()
@@ -58,7 +59,7 @@ const LoginForm: FC<IProps> = ({ handleForgotPasswordModal }) => {
               <Field
                 name="phone"
                 type="text"
-                placeholder={"Phone"}
+                placeholder={t(`general.phone`)}
                 component={NumberInput}
                 extClassName="noIcon"
               />
@@ -67,7 +68,7 @@ const LoginForm: FC<IProps> = ({ handleForgotPasswordModal }) => {
           <div className={styles.item}>
             <Field
               name="password"
-              placeholder={"Password"}
+              placeholder={t(`general.password`)}
               component={PasswordInput}
             />
           </div>
@@ -75,11 +76,11 @@ const LoginForm: FC<IProps> = ({ handleForgotPasswordModal }) => {
             className={cn(styles.forgot, "link")}
             onClick={handleForgotPasswordModal}
           >
-            Forgot password
+            {t(`general.forgotPassword`)}
           </p>
           <div className={styles.terms}>
             <Field name="terms" type="checkbox" component={Checkbox}>
-              By Log In, you agree to our <a>Terms of Use</a>
+              {t(`general.loginAgree`)} <a>{t(`general.withTermsOfUse`)}</a>
             </Field>
           </div>
           <div className={styles.button}>
@@ -91,7 +92,7 @@ const LoginForm: FC<IProps> = ({ handleForgotPasswordModal }) => {
               <span className="icon">
                 <LoginIcon />
               </span>
-              Log In
+              {t(`general.logIn`)}
             </button>
           </div>
         </form>

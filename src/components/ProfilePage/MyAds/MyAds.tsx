@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { useRouter } from "next/router";
 import { Form, Field } from "react-final-form";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
@@ -8,6 +8,7 @@ import SortBy from "components/SearchBar/Price/PriceMain/SortBy/SortBy";
 import NoResult from "./NoResult/NoResults";
 
 import { categorieList, adsList } from "config/adsList";
+import { useTranslation } from "react-i18next";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
@@ -17,6 +18,7 @@ import ArrowSvg from "images/icons/drop.svg";
 import DelIcon from "images/icons/delete.svg";
 
 const MyAds = () => {
+  const { t } = useTranslation();
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
@@ -126,7 +128,7 @@ const MyAds = () => {
                   <span className="arrow">
                     <ArrowSvg />
                   </span>
-                  Back
+                  {t(`general.back`)}
                 </div>
                 <h3 className={styles.title}>
                   {isShowCategory

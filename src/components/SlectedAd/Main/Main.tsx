@@ -14,7 +14,7 @@ import Info from "./Info/Info";
 import Sliders from "./Sliders/Sliders";
 import SliderMobile from "./Sliders/SliderMobile";
 import styles from "./main.module.scss";
-import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 import bannerImg from "images/main-page/banner.png";
 import ArrowSvg from "images/icons/drop.svg";
@@ -24,6 +24,7 @@ interface IProps {
 }
 
 const Main: FC<IProps> = ({ isCurrentProduct }) => {
+  const { t } = useTranslation();
   const [isShareModal, setIsShareModal] = useState(false);
   const [isOpenWishModal, setIsOpenWishModal] = useState(false);
   const isMobile = useMediaQuery(768);
@@ -50,7 +51,7 @@ const Main: FC<IProps> = ({ isCurrentProduct }) => {
               <span className={styles.icon}>
                 <ArrowSvg />
               </span>
-              {!isMobile && "Back"}
+              {!isMobile && t(`general.back`)}
             </div>
             {isMobile && (
               <SliderMobile isCurrentProductImages={isCurrentProduct.images} />

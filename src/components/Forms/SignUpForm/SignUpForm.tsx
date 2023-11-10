@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, FC } from "react";
+import React, { useCallback, FC } from "react";
 import Link from "next/link";
 import { Form, Field } from "react-final-form";
 import * as yup from "yup";
@@ -7,6 +7,7 @@ import PhoneCodeSelect from "components/FormElements/Select/PhoneCodeSelect";
 import NumberInput from "components/FormElements/FormInput/NumberInput";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 import styles from "./sign-up-form.module.scss";
 
@@ -18,6 +19,7 @@ interface IProps {
 }
 
 const SignUpForm: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
+  const { t } = useTranslation();
   const validationSchema = yup.object().shape({
     // phone: yup
     //   .string()
@@ -33,7 +35,6 @@ const SignUpForm: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
   });
 
   const validate = validateForm(validationSchema);
-
   const onSubmit = useCallback((data, form) => {
     console.log(data);
     openNextStepSignUp();
@@ -57,18 +58,19 @@ const SignUpForm: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
               <Field
                 name="phone"
                 type="text"
-                placeholder={"Phone"}
+                placeholder={t(`general.phone`)}
                 component={NumberInput}
                 extClassName="noIcon"
               />
             </div>
           </div>
           <p className={styles.info}>
-            The specified number will receive an SMS for authorization
+            {t(`general.specifiedNumberWillReceiveSMS`)}
           </p>
           <div className={styles.terms}>
             <Field name="terms" type="checkbox" component={Checkbox}>
-              By Sign Up, you agree to our <Link href="/">Terms of Use</Link>
+              {t(`general.bySignUpAgreement`)}{" "}
+              <Link href="/"> {t(`general.withTermsOfUse`)}</Link>
             </Field>
           </div>
           <div className={styles.button}>
@@ -80,7 +82,7 @@ const SignUpForm: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
               <span className="icon">
                 <AvatarIcon />
               </span>
-              Sign Up
+              {t(`general.signUp`)}
             </button>
           </div>
         </form>
