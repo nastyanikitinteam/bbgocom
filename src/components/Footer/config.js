@@ -1,93 +1,93 @@
 export const footerArray = [
   {
     id: 0,
-    title: "For Buyers",
+    title: "footer.forBuyers",
     list: [
       {
         id: 0,
-        name: "Security Recommendations",
+        name: "footer.securityRecommendations",
         link: "",
       },
       {
         id: 1,
-        name: "How to leave helpful feedback",
+        name: "footer.leaveHelpfulFeedback",
         link: "",
       },
       {
         id: 2,
-        name: "Get Support",
+        name: "footer.getSupport",
         link: "",
       },
       {
         id: 3,
-        name: "Help for buyers",
+        name: "footer.helpForBuyers",
         link: "",
       },
       {
         id: 4,
-        name: "About payment and delivery",
+        name: "footer.aboutPaymentAndDelivery",
         link: "",
       },
     ],
   },
   {
     id: 1,
-    title: "For Sellers",
+    title: "footer.forSellers",
     list: [
       {
         id: 0,
-        name: "Site Rules",
+        name: "footer.siteRules",
         link: "",
       },
       {
         id: 1,
-        name: "Advertising",
+        name: "footer.advertising",
         link: "",
       },
       {
         id: 2,
-        name: "How to start selling on bbgo.com",
+        name: "footer.howToStartSellingOnBBGO",
         link: "",
       },
       {
         id: 3,
-        name: "Rates",
+        name: "footer.rates",
         link: "",
       },
       {
         id: 4,
-        name: "Privacy Policy",
+        name: "footer.privacyPolicy",
         link: "",
       },
     ],
   },
   {
     id: 2,
-    title: "About Us",
+    title: "footer.aboutUs",
     list: [
       {
         id: 0,
-        name: "About bbgo.com",
+        name: "footer.aboutBBGO",
         link: "",
       },
       {
         id: 1,
-        name: "FAQ",
+        name: "footer.faq",
         link: "",
       },
       {
         id: 2,
-        name: "Contact Information",
+        name: "footer.contactInformation",
         link: "",
       },
       {
         id: 3,
-        name: "Content legality protection",
+        name: "footer.contentLegalityProtection",
         link: "",
       },
       {
         id: 4,
-        name: "Partnership",
+        name: "footer.partnership",
         link: "",
       },
     ],

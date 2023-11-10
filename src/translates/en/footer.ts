@@ -1,0 +1,26 @@
+const footer = {
+  forBuyers: "For Buyers",
+  securityRecommendations: "Security Recommendations",
+  leaveHelpfulFeedback: "How to leave helpful feedback",
+  getSupport: "Get Support",
+  helpForBuyers: "Help for buyers",
+  aboutPaymentAndDelivery: "About payment and delivery",
+  forSellers: "For Sellers",
+  siteRules: "Site Rules",
+  advertising: "Advertising",
+  howToStartSellingOnBBGO: "How to start selling on bbgo.com",
+  rates: "Rates",
+  privacyPolicy: "Privacy Policy",
+  aboutUs: "About Us",
+  aboutBBGO: "About bbgo.com",
+  faq: "FAQ",
+  contactInformation: "Contact Information",
+  contentLegalityProtection: "Content legality protection",
+  partnership: "Partnership",
+  app: "App",
+  scanQRCodeToInstallApp: "Scan the QR code to install the mobile app",
+  copyrightBBGO: "Copyright © 2023 BBGO. All rights reserved.",
+  reportBug: "Report a bug",
+};
+
+export { footer };
