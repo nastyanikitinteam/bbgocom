@@ -4,15 +4,15 @@ import ThailandIcon from "images/countries/thailand.svg";
 
 export const languageList = [
   {
-    value: "EN",
+    value: "en",
     label: "EN",
   },
   {
-    value: "RU",
+    value: "ru",
     label: "RU",
   },
   {
-    value: "TH",
+    value: "th",
     label: "TH",
   },
 ];
