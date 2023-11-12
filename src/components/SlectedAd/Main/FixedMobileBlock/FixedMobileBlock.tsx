@@ -2,15 +2,16 @@ import { useState, FC } from "react";
 import ShowNumber from "../Info/Bottom/ShowNumber/ShowNumber";
 import MessagesIcon from "images/icons/messages-icon.svg";
 import Message from "./Message/Message";
-import ArrowSvg from "images/icons/drop.svg";
 import styles from "./fixed-mobile-block.module.scss";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   isCurrentProduct: any;
 }
 
 const FixedMobileBlock: FC<IProps> = ({ isCurrentProduct }) => {
+  const { t } = useTranslation();
   const [isShowMessage, setIsShowMessage] = useState(false);
 
   return (
@@ -29,7 +30,7 @@ const FixedMobileBlock: FC<IProps> = ({ isCurrentProduct }) => {
             <span className="icon">
               <MessagesIcon />
             </span>
-            Message
+            {t(`general.message`)}
           </div>
           <ShowNumber />
         </div>

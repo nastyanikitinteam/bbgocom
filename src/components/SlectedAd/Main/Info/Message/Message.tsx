@@ -7,9 +7,8 @@ import * as yup from "yup";
 import { validateForm } from "../../../../../utils/validateForm";
 import styles from "./message.module.scss";
 import cn from "classnames";
-
 import { messageTags } from "config/messageTags";
-
+import { useTranslation } from "react-i18next";
 import SendIcon from "images/icons/send.svg";
 
 interface IProps {
@@ -19,7 +18,7 @@ interface IProps {
 
 const Message: FC<IProps> = ({ isCurrentProduct, hasOldPrice }) => {
   // const formState = useFormState();
-
+  const { t } = useTranslation();
   const [isOpenModalSuccess, setIsOpenModalSuccess] = useState(false);
 
   const validationSchema = yup.object().shape({
@@ -49,11 +48,11 @@ const Message: FC<IProps> = ({ isCurrentProduct, hasOldPrice }) => {
         }}
         render={({ handleSubmit, form }) => (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <h3 className={styles.label}>Your Message</h3>
+            <h3 className={styles.label}>{t(`selectedad.yourMessage`)}</h3>
             <div className={cn(styles.item, { [styles.sm]: hasOldPrice })}>
               <Field
                 name="message"
-                placeholder={"Hello!"}
+                placeholder={t(`selectedad.hello`)}
                 component={Textarea}
                 rows={4}
                 extClassName="selected"

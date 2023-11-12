@@ -1,12 +1,12 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC } from "react";
 import styles from "./top.module.scss";
 import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
-
 import StarIcon from "images/icons/star.svg";
 import ShareIcon from "images/icons/share.svg";
 import MapIcon from "images/icons/map-icon.svg";
 import CalendarIcon from "images/icons/calendar.svg";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   isCurrentProduct: any;
@@ -19,8 +19,7 @@ const Top: FC<IProps> = ({
   handleWihlist,
   handleShareModal,
 }) => {
-  const isMobile = useMediaQuery(768);
-
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -53,8 +52,7 @@ const Top: FC<IProps> = ({
           <span className={styles.icon}>
             <CalendarIcon />
           </span>
-          Added:
-          <span> 30.05.2023</span>
+          {t(`selectedad.added`)}:<span> 30.05.2023</span>
         </div>
       </div>
     </div>

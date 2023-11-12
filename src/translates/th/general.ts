@@ -70,6 +70,16 @@ const general = {
   edit: "แก้ไข",
   delete: "ลบ",
   create: "สร้าง",
+  done: "เสร็จสิ้น",
+  search: "ค้นหา",
+  from: "จาก",
+  online: "ออนไลน์",
+  more: "มากกว่า",
+  less: "น้อยกว่า",
+  shareWith: "แชร์กับ",
+  message: "ข้อความ",
+  messageSent: "ข้อความของคุณถูกส่งแล้ว",
+  myMessages: "ข้อความของฉัน",
 };
 
 export { general };

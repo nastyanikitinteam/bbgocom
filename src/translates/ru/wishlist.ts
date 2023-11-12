@@ -16,6 +16,9 @@ const wishlist = {
   enterDescription: "Введите описание",
   enterName: "Введите имя",
   toMap: "К карте",
+  addToWishlist: "Добавить в список желаемого",
+  done: "Готово",
+  newWishlist: "Новый список желаемого",
 };
 
 export { wishlist };

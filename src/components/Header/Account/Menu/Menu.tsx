@@ -3,7 +3,6 @@ import Link from "next/link";
 import cn from "classnames";
 import styles from "./menu.module.scss";
 import useMediaQuery from "src/utils/useMediaQuery";
-import OrdersIcon from "images/icons/orders-icon.svg";
 import AdsIcon from "images/icons/ads-icon.svg";
 import MessagesIcon from "images/icons/messages-icon.svg";
 import SettingIcon from "images/icons/setting-icon.svg";
@@ -11,7 +10,6 @@ import LogOutIcon from "images/icons/log-out-icon.svg";
 import AvatarIcon from "images/icons/avatar.svg";
 import ArrowIcon from "images/icons/drop.svg";
 import avatar from "images/main/avatar.png";
-
 interface IProps {
   isNewMessages: number;
   isTopPosition: number;

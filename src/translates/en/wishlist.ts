@@ -16,6 +16,8 @@ const wishlist = {
   enterDescription: "Enter description",
   enterName: "Enter name",
   toMap: "To map",
+  addToWishlist: "Add to a wishlist",
+  newWishlist: "New wishlist",
 };
 
 export { wishlist };

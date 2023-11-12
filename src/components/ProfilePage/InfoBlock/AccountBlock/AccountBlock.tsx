@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./account-block.module.scss";
 import Modal from "components/Modal/Modal";
@@ -7,15 +7,14 @@ import Confirm from "components/Modal/Confirm/Confirm";
 import ShareIcon from "images/icons/share.svg";
 import LogOutIcon from "images/icons/log-out-icon.svg";
 import avatar from "images/main/avatar.png";
-import AvatarIcon from "images/icons/avatar.svg";
 import PhotoIcon from "images/icons/photo.svg";
+import { useTranslation } from "react-i18next";
 
 const AccountBlock = () => {
-  const [isAvatar, setIsAvatar] = useState(true);
+  const { t } = useTranslation();
   const [isActiveLogOutModal, setIsActiveLogOutModal] = useState(false);
   const [isOpenShare, setIsOpenShare] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [isFile, setIsFile] = useState();
   const isMobile = useMediaQuery(768);
 
   // useEffect(() => {
@@ -69,7 +68,7 @@ const AccountBlock = () => {
           </label>
         </div>
         <h3 className={styles.name}>Kimhan Nakpradith</h3>
-        <p className={styles.date}>From April 2023</p>
+        <p className={styles.date}>{t(`general.from`)} April 2023</p>
         {!isMobile && (
           <div
             className={styles.logOut}

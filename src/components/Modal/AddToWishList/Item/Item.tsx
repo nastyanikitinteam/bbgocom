@@ -1,7 +1,7 @@
-import { FC, useMemo, useState } from "react";
+import { FC } from "react";
 import styles from "./item.module.scss";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 interface IProps {
   item: any;
   isActiveList: number;
@@ -9,6 +9,7 @@ interface IProps {
 }
 
 const Block: FC<IProps> = ({ item, isActiveList, setIsActiveList }) => {
+  const { t } = useTranslation();
   const emptyBlocks = Array(3).fill(null);
 
   return (
@@ -35,8 +36,12 @@ const Block: FC<IProps> = ({ item, isActiveList, setIsActiveList }) => {
       </div>
       <div className={styles.info}>
         <h3 className={styles.title}>{item.name}</h3>
-        <p className={styles.ads}>{item.items?.length} ads</p>
-        <p className={styles.date}>Updated 1 year ago</p>
+        <p className={styles.ads}>
+          {item.items?.length} {t(`wishlist.ads`)}
+        </p>
+        <p className={styles.date}>
+          {t(`general.updated`)} 1 {t(`general.year`)} {t(`general.ago`)}
+        </p>
       </div>
       <div className={styles.radio}></div>
     </div>

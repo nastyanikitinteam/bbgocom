@@ -6,6 +6,7 @@ import { footer } from "./footer";
 import { createad } from "./createad";
 import { category } from "./category";
 import { wishlist } from "./wishlist";
+import { selectedad } from "./selectedad";
 
 export const ruTranslates = {
   home,
@@ -16,4 +17,5 @@ export const ruTranslates = {
   createad,
   category,
   wishlist,
+  selectedad,
 };

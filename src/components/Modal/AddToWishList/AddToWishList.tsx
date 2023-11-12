@@ -63,7 +63,9 @@ const AddToWishList: FC<IProps> = ({ cancel }) => {
             render={({ handleSubmit }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.top}>
-                  <h3 className={styles.title}>Add to a wishlist</h3>
+                  <h3 className={styles.title}>
+                    {t(`wishlist.addToWishlist`)}
+                  </h3>
                   <div
                     className={cn(styles.search, {
                       [styles.fill]: isSearchQuery.length > 0,
@@ -76,7 +78,7 @@ const AddToWishList: FC<IProps> = ({ cancel }) => {
                       type="text"
                       value={isSearchQuery}
                       onChange={onChangeSearchInput}
-                      placeholder="Search"
+                      placeholder={t(`general.search`)}
                     />
                   </div>
                 </div>
@@ -106,14 +108,14 @@ const AddToWishList: FC<IProps> = ({ cancel }) => {
                     <span className={styles.icon}>
                       <PlusIcon />
                     </span>
-                    New wishlist
+                    {t(`wishlist.newWishlist`)}
                   </div>
                   <button
                     type="submit"
                     className={cn("default-button sm", styles.button)}
                     aria-label="Done"
                   >
-                    Done
+                    {t(`general.done`)}
                   </button>
                 </div>
               </form>

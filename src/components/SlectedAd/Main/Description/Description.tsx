@@ -2,9 +2,9 @@ import { FC, useState } from "react";
 import styles from "./description.module.scss";
 import { description } from "./config";
 import cn from "classnames";
-
 import ComplainIcon from "images/icons/сomplain.svg";
 import ArrowIcon from "images/icons/drop.svg";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   isCurrentProduct: any;
@@ -12,17 +12,19 @@ interface IProps {
 
 const Description: FC<IProps> = ({ isCurrentProduct }) => {
   const [isShowDescription, setIsShowDescription] = useState(false);
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>Description</h3>
+      <h3 className={styles.title}>{t(`selectedad.description`)}</h3>
       <div className={styles.block}>
-        <p className={styles.info}>ID: 685012401</p>
-        <p className={styles.info}>Views: 1011</p>
+        <p className={styles.info}>{t(`selectedad.id`)}: 685012401</p>
+        <p className={styles.info}>{t(`selectedad.views`)}: 1011</p>
         <div className={styles.complain}>
           <span className={styles.icon}>
             <ComplainIcon />
           </span>
-          Complain
+          {t(`selectedad.complain`)}
         </div>
       </div>
       <div
@@ -51,7 +53,8 @@ const Description: FC<IProps> = ({ isCurrentProduct }) => {
         className={cn(styles.more, { [styles.show]: isShowDescription })}
         onClick={() => setIsShowDescription((prev) => !prev)}
       >
-        {isShowDescription ? "Less" : "More"} Show
+        {isShowDescription ? t(`general.less`) : t(`general.more`)}{" "}
+        {t(`selectedad.show`)}
         <span className={styles.icon}>
           <ArrowIcon />
         </span>

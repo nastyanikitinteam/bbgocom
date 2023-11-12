@@ -2,7 +2,7 @@ import { useMemo, useState, useRef, FC } from "react";
 import styles from "./share.module.scss";
 import Copy from "./Copy/Copy";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import { socialsList } from "config/socials";
 
 interface IProps {
@@ -10,9 +10,11 @@ interface IProps {
 }
 
 const Share: FC<IProps> = ({ isModal }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={cn(styles.container, { [styles.isModal]: isModal })}>
-      <h4 className={styles.title}>Share with</h4>
+      <h4 className={styles.title}>{t(`general.shareWith`)}</h4>
       <div className={styles.socials}>
         {socialsList.map(({ id, icon }) => {
           return (

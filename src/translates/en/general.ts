@@ -72,6 +72,16 @@ const general = {
   edit: "Edit",
   delete: "Delete",
   create: "Create",
+  done: "Done",
+  search: "Search",
+  from: "From",
+  online: "Online",
+  more: "More",
+  less: "Less",
+  shareWith: "Share with",
+  message: "Message",
+  messageSent: "Your message has been sent",
+  myMessages: "My messages",
 };
 
 export { general };

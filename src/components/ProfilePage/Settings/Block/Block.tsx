@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { validateForm } from "../../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import PasswordInput from "components/FormElements/FormInput/PasswordInput";
-
+import { useTranslation } from "react-i18next";
 import cn from "classnames";
 import styles from "./block.module.scss";
 
@@ -22,9 +22,9 @@ interface IProps {
 }
 
 const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
+  const { t } = useTranslation();
   const [isEdit, setIsEdit] = useState(false);
   const [isAvatar, setIsAvatar] = useState(false);
-
   const isMobile = useMediaQuery(768);
 
   const validationSchema = yup.object().shape({
@@ -67,7 +67,7 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
               </div>
               <div className={styles.info}>
                 <h3 className={styles.name}>Alex1236</h3>
-                <p className={styles.date}>From April 2023</p>
+                <p className={styles.date}>{t(`general.from`)} April 2023</p>
               </div>
               <span className={styles.share}>
                 <ShareIcon />

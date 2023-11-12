@@ -10,7 +10,7 @@ import styles from "./message.module.scss";
 import cn from "classnames";
 
 import { messageTags } from "config/messageTags";
-
+import { useTranslation } from "react-i18next";
 import ArrowSvg from "images/icons/drop.svg";
 import SendIcon from "images/icons/send.svg";
 
@@ -20,6 +20,7 @@ interface IProps {
 }
 
 const Message: FC<IProps> = ({ setIsShowMessage, isCurrentProduct }) => {
+  const { t } = useTranslation();
   const [isOpenModalSuccess, setIsOpenModalSuccess] = useState(false);
 
   const validationSchema = yup.object().shape({
@@ -63,7 +64,7 @@ const Message: FC<IProps> = ({ setIsShowMessage, isCurrentProduct }) => {
               </span>
               <Field
                 name="message"
-                placeholder={"Hello!"}
+                placeholder={t(`selectedad.hello`)}
                 component={Textarea}
                 rows={1}
                 extClassName="mobile"

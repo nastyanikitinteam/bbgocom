@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Link from "next/link";
 import styles from "./show-number.module.scss";
 import cn from "classnames";
 import CallIcon from "images/icons/call.svg";
+import { useTranslation } from "react-i18next";
 
 const ShowNumber = () => {
   const [isShowNumber, setIsShowNumber] = useState(false);
-
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       <div
@@ -18,7 +18,7 @@ const ShowNumber = () => {
         <span className="icon">
           <CallIcon />
         </span>
-        Show phone
+        {t(`selectedad.showPhone`)}
       </div>
       <a
         className={cn("default-button border", styles.button, {

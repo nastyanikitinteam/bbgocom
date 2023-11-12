@@ -86,7 +86,7 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
                     <p className={styles.name}> {name}</p>
                     {!isMobile && (
                       <p className={styles.onlineStatus}>
-                        Online:{" "}
+                        {t(`general.online`)}:{" "}
                         <span className={styles.onlineTime}>{timeOnline}</span>
                       </p>
                     )}
