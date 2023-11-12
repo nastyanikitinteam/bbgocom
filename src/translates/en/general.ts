@@ -49,6 +49,11 @@ const general = {
     "BBGO will send you exclusive offers, ideas, promotional emails and push notifications. You can opt out in your account settings or in a marketing notice.",
   home: "Home",
   select: "Select",
+  reset: "Reset",
+  showOnMap: "Show on Map",
+  viewMore: "View more",
+  default: "Default",
+  showMore: "Show more",
 };
 
 export { general };

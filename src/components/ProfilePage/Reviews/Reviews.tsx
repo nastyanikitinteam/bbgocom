@@ -51,7 +51,7 @@ const Reviews = () => {
         })}
         {isMobile && isShowReviews !== reviewsList.length && (
           <div className={styles.more} onClick={handleShowReviews}>
-            Show more
+            {t(`general.showMore`)}
             <span className={styles.icon}>
               <ArrowSvg />
             </span>
@@ -60,7 +60,7 @@ const Reviews = () => {
       </div>
       {!isMobile && isShowReviews !== reviewsList.length && (
         <div className={styles.more} onClick={handleShowReviews}>
-          Show more
+          {t(`general.showMore`)}
           <span className={styles.icon}>
             <ArrowSvg />
           </span>

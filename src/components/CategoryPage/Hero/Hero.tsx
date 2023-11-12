@@ -55,8 +55,8 @@ const Hero: FC<IProps> = ({ isCurrentList }) => {
             <img src={isHeroBg} alt="" />
           </div>
           <div className={styles.button}>
-            <Link href="" className="default-button">
-              Сreate an Ad
+            <Link href="/create-an-ad" className="default-button">
+              {t(`general.createButton`)}
             </Link>
           </div>
         </div>

@@ -64,14 +64,16 @@ const Main: FC<IProps> = ({
             <span className={styles.icon}>
               <MapIcon />
             </span>
-            Show to map
+            {t(`general.showOnMap`)}
           </div>
         )}
       </div>
       <h2 className={styles.title}>{title}</h2>
 
       <div className={styles.info}>
-        <p className={styles.description}>12,215 units avaliable</p>
+        <p className={styles.description}>
+          12,215 {t(`category.unitsAvailable`)}
+        </p>
         {isMobile && (
           <div
             className={cn(styles.toMap, "link")}
@@ -80,7 +82,7 @@ const Main: FC<IProps> = ({
             <span className={styles.icon}>
               <MapIcon />
             </span>
-            Show to map
+            {t(`general.showOnMap`)}
           </div>
         )}
         {!isMobile && (
@@ -162,7 +164,7 @@ const Main: FC<IProps> = ({
 
       {isShowProducts !== productList.length && (
         <div className={styles.all} onClick={handleShowProducts}>
-          View more
+          {t(`general.viewMore`)}
           <span className={styles.icon}>
             <ArrowSvg />
           </span>

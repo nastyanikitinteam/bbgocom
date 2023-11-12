@@ -4,6 +4,7 @@ import { errors } from "./errors";
 import { searchbar } from "./searchbar";
 import { footer } from "./footer";
 import { createad } from "./createad";
+import { category } from "./category";
 
 export const thTranslates = {
   home,
@@ -12,4 +13,5 @@ export const thTranslates = {
   searchbar,
   footer,
   createad,
+  category,
 };

@@ -87,7 +87,7 @@ const Notifications = () => {
                       <span className={styles.icon}>
                         <DelIcon />
                       </span>
-                      Delete
+                      {t(`general.delete`)}
                     </button>
                   </div>
                 )}
@@ -153,7 +153,7 @@ const Notifications = () => {
               })}
               {isMobile && isShowNotification !== NotificationsList.length && (
                 <div className={styles.more} onClick={handleShowNotifications}>
-                  Show more
+                  {t(`general.showMore`)}
                   <span className={styles.icon}>
                     <ArrowSvg />
                   </span>
@@ -162,7 +162,7 @@ const Notifications = () => {
             </div>
             {!isMobile && isShowNotification !== NotificationsList.length && (
               <div className={styles.more} onClick={handleShowNotifications}>
-                Show more
+                {t(`general.showMore`)}
                 <span className={styles.icon}>
                   <ArrowSvg />
                 </span>

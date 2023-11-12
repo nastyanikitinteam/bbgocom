@@ -4,6 +4,7 @@ import { errors } from "./errors";
 import { searchbar } from "./searchbar";
 import { footer } from "./footer";
 import { createad } from "./createad";
+import { category } from "./category";
 
 export const ruTranslates = {
   home,
@@ -12,4 +13,5 @@ export const ruTranslates = {
   searchbar,
   footer,
   createad,
+  category,
 };

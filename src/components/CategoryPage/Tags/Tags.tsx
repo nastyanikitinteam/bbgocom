@@ -77,7 +77,7 @@ const Tags: FC<IProps> = ({ isCurrentList }) => {
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            Show 1,258 348 offers
+            {t(`category.show`)} 1,258 348 {t(`category.offers`)}
             <span className={styles.icon}>
               <ArrowSvg />
             </span>

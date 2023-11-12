@@ -11,10 +11,11 @@ import Textarea from "components/FormElements/Textarea/Textarea";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import MailSendIcon from "images/icons/mail-send.svg";
 
 const ServiceForm = () => {
+  const { t } = useTranslation();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const router = useRouter();
@@ -123,7 +124,7 @@ const ServiceForm = () => {
                   onClick={back}
                   className={cn("default-button  border", styles.button)}
                 >
-                  Cancel
+                  {t(`general.cancel`)}
                 </div>
               </div>
               <div className={styles.button}>

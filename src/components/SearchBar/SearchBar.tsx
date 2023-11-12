@@ -245,7 +245,7 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
                   : deleteFilterResult("cancel")
               }
             >
-              Cancel
+              {t(`general.cancel`)}
             </div>
           )}
         </div>

@@ -56,14 +56,15 @@ const Filter: FC<IProps> = ({ addWidth }) => {
           }}
         ></div>
         <a href="" className={cn("default-button sm", styles.button)}>
-          Show 150 000 units
+          {t(`category.show`)} 150 000
+          {/* {t(`category.units`)} */}
         </a>
         <a
           href=""
           className={cn("default-button sm border", styles.button)}
           onClick={reset}
         >
-          Reset
+          {t(`general.reset`)}
         </a>
       </div>
     </div>
