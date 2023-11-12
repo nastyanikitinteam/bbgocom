@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import Layout from "components/Layout/Layout";
 import CategoryFilterPage from "components/CategoryFilterPage/CategoryFilterPage";
+import { useTranslation } from "react-i18next";
 
 import { categoriesList } from "config/categoriesList";
 
@@ -16,6 +17,7 @@ import {
 } from "src/interfaces/category";
 
 const Product: NextPage = () => {
+  const { t } = useTranslation();
   const router = useRouter();
   const [isbaseUrl, setIsBaseUrl] = useState("");
 
@@ -60,7 +62,7 @@ const Product: NextPage = () => {
     () => [
       {
         id: 0,
-        title: "Home",
+        title: `general.home`,
         url: "/",
       },
       {

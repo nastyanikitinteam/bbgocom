@@ -5,12 +5,12 @@ import Create from "./Create/Create";
 import List from "./Lists/List";
 import styles from "./wish-page.module.scss";
 import { wishlistArr } from "./Lists/config";
-
+import { useTranslation } from "react-i18next";
 import PlusIcon from "images/icons/plus.svg";
 
 const WishPage = () => {
+  const { t } = useTranslation();
   const [isWishList, setIsWishList] = useState(false);
-  const [isOpenEdit, setIsOpenEdit] = useState(true);
 
   const isMobile = useMediaQuery(768);
 
@@ -18,7 +18,7 @@ const WishPage = () => {
     () => [
       {
         id: 0,
-        title: "Home",
+        title: `general.home`,
         url: "/",
       },
       {

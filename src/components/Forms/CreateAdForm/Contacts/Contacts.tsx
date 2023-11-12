@@ -1,16 +1,13 @@
-import { useCallback, useState, FC, useEffect } from "react";
+import { FC } from "react";
+import Link from "next/link";
 import { Field } from "react-final-form";
 import FormInput from "components/FormElements/FormInput/FormInput";
-import SelectContainer from "components/FormElements/Select/Select";
 import NumberInput from "components/FormElements/FormInput/NumberInput";
-import { CountriesList } from "components/Authorization/config";
 import PhoneCodeSelect from "components/FormElements/Select/PhoneCodeSelect";
-import Country from "components/Authorization/Country/Country";
 import styles from "./contacts.module.scss";
 import cn from "classnames";
-
+import { useTranslation, Trans } from "react-i18next";
 import { useFormState } from "react-final-form";
-
 import PostIcon from "images/icons/post.svg";
 
 interface IProps {
@@ -20,17 +17,18 @@ interface IProps {
 
 const Contacts: FC<IProps> = ({ disabled, isCreate }) => {
   const { values } = useFormState();
-
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
-        <span className={styles.num}>7</span>Contacts
+        <span className={styles.num}>7</span>
+        {t(`createad.contacts`)}
       </h3>
       {!disabled && (
         <>
           <div className={styles.items}>
             <div className={styles.item}>
-              <p className={styles.label}>Phone</p>
+              <p className={styles.label}> {t(`createad.phone`)}</p>
               <div className={cn(styles.input, styles.phone)}>
                 <div className={styles.code}>
                   <Field
@@ -44,7 +42,7 @@ const Contacts: FC<IProps> = ({ disabled, isCreate }) => {
                   <Field
                     name="phoneNumber"
                     type="text"
-                    placeholder={"Phone"}
+                    placeholder={t(`createad.phone`)}
                     component={NumberInput}
                     extClassName="noIcon"
                   />
@@ -53,12 +51,12 @@ const Contacts: FC<IProps> = ({ disabled, isCreate }) => {
             </div>
 
             <div className={styles.item}>
-              <p className={styles.label}>Email</p>
+              <p className={styles.label}>{t(`createad.email`)}</p>
               <div className={styles.input}>
                 <Field
                   name="email"
                   type="email"
-                  placeholder={"Enter email"}
+                  placeholder={t(`createad.enterEmail`)}
                   component={FormInput}
                   extClassName="email"
                 />
@@ -66,21 +64,17 @@ const Contacts: FC<IProps> = ({ disabled, isCreate }) => {
             </div>
           </div>
           <div className={styles.description}>
+            <p>{t(`createad.receiveMessagesDisclaimer`)}</p>
             <p>
-              If you want to receive messages from users ( your mail will be
-              visible to the sender only if the question is answered)
+              <Trans
+                i18nKey={"createad.postAdAgreement"}
+                components={[<Link href="/" />, <Link href="/trn" />]}
+              />
             </p>
-            {!isCreate && (
-              <p>
-                By clicking «Post Ad» you accept the{" "}
-                <a href="#">License Agreement</a> and agree to the{" "}
-                <a href="#">Privacy Policy</a>
-              </p>
-            )}
           </div>
           <div className={styles.buttons}>
             <div className={cn("default-button border", styles.button)}>
-              Cancel
+              {t(`general.cancel`)}
             </div>
             <button
               type="submit"
@@ -90,7 +84,7 @@ const Contacts: FC<IProps> = ({ disabled, isCreate }) => {
               <span className="icon">
                 <PostIcon />
               </span>
-              {isCreate ? "Edit" : "Post Ad"}
+              {isCreate ? `${t(`createad.edit`)}` : `${t(`createad.postAd`)}`}
             </button>
           </div>
         </>

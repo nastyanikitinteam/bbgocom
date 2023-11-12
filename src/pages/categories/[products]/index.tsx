@@ -3,17 +3,18 @@ import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 import Layout from "components/Layout/Layout";
 import CategoryFilterPage from "components/CategoryFilterPage/CategoryFilterPage";
-
+import { useTranslation } from "react-i18next";
 import { categoriesList } from "config/categoriesList";
 import { ICategory, initialCategory } from "src/interfaces/category";
 
 const Product: NextPage = () => {
   const router = useRouter();
-
+  const { t } = useTranslation();
   const [isCurrentList, setIsCurrentList] =
     useState<ICategory>(initialCategory);
 
   useEffect(() => {
+    const { t } = useTranslation();
     const currentItem = categoriesList.filter(
       ({ slug }) => slug === router.query.products
     );
@@ -26,7 +27,7 @@ const Product: NextPage = () => {
     () => [
       {
         id: 0,
-        title: "Home",
+        title: `general.home`,
         url: "/",
       },
       {

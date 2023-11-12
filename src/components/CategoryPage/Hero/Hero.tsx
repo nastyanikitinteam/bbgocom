@@ -2,9 +2,9 @@ import { FC, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import useMediaQuery from "src/utils/useMediaQuery";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
+import { useTranslation } from "react-i18next";
 
 import styles from "./hero.module.scss";
-import heroImg from "images/category-page/real-estate-hero.jpg";
 
 interface IProps {
   isCurrentList: any;
@@ -12,7 +12,7 @@ interface IProps {
 
 const Hero: FC<IProps> = ({ isCurrentList }) => {
   const isMobile = useMediaQuery(500);
-
+  const { t } = useTranslation();
   const [isHeroBg, setIsHeroBg] = useState(
     isMobile ? isCurrentList.heroMobileImg : isCurrentList.heroImg
   );
@@ -21,7 +21,7 @@ const Hero: FC<IProps> = ({ isCurrentList }) => {
     () => [
       {
         id: 0,
-        title: "Home",
+        title: `general.home`,
         url: "/",
       },
       {

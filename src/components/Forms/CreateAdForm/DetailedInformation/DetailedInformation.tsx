@@ -5,7 +5,7 @@ import NumberInput from "components/FormElements/FormInput/NumberInput";
 import Radios from "./Radios/Radios";
 import styles from "./detailed-information.module.scss";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import { createList } from "./config";
 
 interface IProps {
@@ -13,10 +13,12 @@ interface IProps {
 }
 
 const DetailedInformation: FC<IProps> = ({ disabled }) => {
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
-        <span className={styles.num}>5</span>Detailed information
+        <span className={styles.num}>5</span>
+        {t(`createad.detailedInformation`)}
       </h3>
       {!disabled && (
         <div className={styles.items}>

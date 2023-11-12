@@ -45,6 +45,8 @@ const general = {
   receiveBBGONewsAndPromotions: "รับข้อมูลเกี่ยวกับข่าวสารและโปรโมชั่นของ BBGO",
   bbgoExclusiveOffersAndNotifications:
     "BBGO จะส่งข้อเสนอพิเศษ, ไอเดีย, อีเมลโปรโมชั่นและการแจ้งเตือนผ่านการกด. คุณสามารถเลือกที่จะไม่รับได้ในการตั้งค่าบัญชีหรือในการแจ้งเตือนทางการตลาด",
+  home: "หน้าแรก",
+  select: "เลือก",
 };
 
 export { general };

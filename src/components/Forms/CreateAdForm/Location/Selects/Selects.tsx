@@ -4,8 +4,8 @@ import { Field, useFormState } from "react-final-form";
 import SelectContainer from "components/FormElements/Select/Select";
 import styles from "./selects.module.scss";
 import cn from "classnames";
-
-import { regionList, adressList, locationList } from "config/location";
+import { useTranslation } from "react-i18next";
+import { locationList } from "config/location";
 
 interface IProps {
   handleCoordinates: (val: any) => void;
@@ -18,6 +18,7 @@ const Selects: FC<IProps> = ({
   setIsMapZoom,
   handleAdress,
 }) => {
+  const { t } = useTranslation();
   const { values } = useFormState();
 
   const [selectedRegion, setSelectedRegion] = useState({});
@@ -52,14 +53,14 @@ const Selects: FC<IProps> = ({
   return (
     <>
       <div className={styles.item}>
-        <p className={styles.label}>Region</p>
+        <p className={styles.label}>{t(`createad.region`)}</p>
         <div className={styles.input}>
           <Field
             name="location.region"
             //@ts-ignore
             component={SelectContainer}
             options={locationList}
-            placeholder="Select region"
+            placeholder={t(`createad.selectRegion`)}
             classname="big"
             onChange={(e) => {
               setSelectedRegion(e);
@@ -74,7 +75,7 @@ const Selects: FC<IProps> = ({
           [styles.disabled]: !selectedRegion?.province,
         })}
       >
-        <p className={styles.label}>Province</p>
+        <p className={styles.label}>{t(`createad.province`)}</p>
         <div className={styles.input}>
           <Field
             name="location.province"
@@ -82,7 +83,7 @@ const Selects: FC<IProps> = ({
             component={SelectContainer}
             //@ts-ignore
             options={selectedRegion?.province}
-            placeholder="Select province"
+            placeholder={t(`createad.selectProvince`)}
             classname="big"
             onChange={(e) => {
               setSelectedProvince(e);
@@ -99,7 +100,7 @@ const Selects: FC<IProps> = ({
           [styles.disabled]: !selectedProvince?.district,
         })}
       >
-        <p className={styles.label}>District</p>
+        <p className={styles.label}>{t(`createad.district`)}</p>
         <div className={styles.input}>
           <Field
             name="location.district"
@@ -107,7 +108,7 @@ const Selects: FC<IProps> = ({
             component={SelectContainer}
             //@ts-ignore
             options={selectedProvince?.district}
-            placeholder="Select district"
+            placeholder={t(`createad.selectDistrict`)}
             classname="big"
             onChange={(e) => {
               setSelectedDistrict(e);
@@ -124,7 +125,7 @@ const Selects: FC<IProps> = ({
           [styles.disabled]: !selectedDistrict?.subdistrict,
         })}
       >
-        <p className={styles.label}>Sub District</p>
+        <p className={styles.label}>{t(`createad.subDistrict`)}</p>
         <div className={styles.input}>
           <Field
             name="location.subdistrict"
@@ -132,7 +133,7 @@ const Selects: FC<IProps> = ({
             component={SelectContainer}
             //@ts-ignore
             options={selectedDistrict?.subdistrict}
-            placeholder="Select sub districtt"
+            placeholder={t(`createad.selectSubDistrict`)}
             classname="big"
             onChange={(e) => {
               setSelectedSubDistrict(e);

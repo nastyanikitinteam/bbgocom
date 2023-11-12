@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Modal from "components/Modal/Modal";
 import SuccessfulCreate from "components/Modal/SuccessfulCreate/SuccessfulCreate";
-
+import { useTranslation } from "react-i18next";
 import CreateAdForm from "components/Forms/CreateAdForm/CreateAdForm";
 
 import styles from "./create.module.scss";
@@ -13,9 +13,9 @@ interface IProps {
 }
 
 const Create: FC<IProps> = ({ currentAdInfo }) => {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery(768);
   const [isOpenModal, setIsOpenModal] = useState(false);
-
   const router = useRouter();
 
   const cancel = () => {
@@ -29,9 +29,9 @@ const Create: FC<IProps> = ({ currentAdInfo }) => {
           {isMobile && (
             <div className={styles.top}>
               <div className="cancel" onClick={cancel}>
-                Cancel
+                {t(`general.cancel`)}
               </div>
-              <h3 className={styles.title}>New Add</h3>
+              <h3 className={styles.title}>{t(`createad.newAd`)}</h3>
             </div>
           )}
           <CreateAdForm

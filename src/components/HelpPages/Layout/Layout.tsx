@@ -10,6 +10,7 @@ import Footer from "components/Footer/Footer";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import Info from "../Info/Info";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 import styles from "./layout.module.scss";
 
@@ -28,6 +29,7 @@ const Layout: FC<IProps> = ({
   isBlocktype,
   isUserArgeement,
 }) => {
+  const { t } = useTranslation();
   const [isActiveRules, setIsActiveRules] = useState(null);
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
@@ -35,7 +37,7 @@ const Layout: FC<IProps> = ({
     () => [
       {
         id: 0,
-        title: "Home",
+        title: `general.home`,
         url: "/",
       },
       {

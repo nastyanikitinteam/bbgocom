@@ -20,7 +20,7 @@ interface IProps {
 
 const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [selectedLang, setSelectedLang] = useState("EN");
+  const [selectedLang, setSelectedLang] = useState("en");
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageDimensions, setImageDimensions] = useState({
     width: 0,
@@ -46,7 +46,7 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
 
   const handleRemoveFile = () => {
     setSelectedFile(null);
-    setSelectedLang("EN");
+    setSelectedLang("en");
     setImageDimensions({ width: 0, height: 0 });
   };
 

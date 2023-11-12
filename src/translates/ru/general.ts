@@ -46,6 +46,8 @@ const general = {
   receiveBBGONewsAndPromotions: "Получать информацию о новостях и акциях BBGO",
   bbgoExclusiveOffersAndNotifications:
     "BBGO отправит вам эксклюзивные предложения, идеи, рекламные электронные письма и уведомления. Вы можете отказаться в настройках своего аккаунта или в маркетинговом уведомлении.",
+  home: "Главная",
+  select: "Выбрать",
 };
 
 export { general };

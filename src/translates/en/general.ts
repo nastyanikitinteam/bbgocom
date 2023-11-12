@@ -47,6 +47,8 @@ const general = {
     "Receive information about BBGO news and promotions",
   bbgoExclusiveOffersAndNotifications:
     "BBGO will send you exclusive offers, ideas, promotional emails and push notifications. You can opt out in your account settings or in a marketing notice.",
+  home: "Home",
+  select: "Select",
 };
 
 export { general };

@@ -3,5 +3,13 @@ import { general } from "./general";
 import { errors } from "./errors";
 import { searchbar } from "./searchbar";
 import { footer } from "./footer";
+import { createad } from "./createad";
 
-export const ruTranslates = { home, general, errors, searchbar, footer };
+export const ruTranslates = {
+  home,
+  general,
+  errors,
+  searchbar,
+  footer,
+  createad,
+};

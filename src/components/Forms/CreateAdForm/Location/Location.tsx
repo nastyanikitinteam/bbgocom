@@ -1,7 +1,4 @@
-import { useState, FC, useCallback, useEffect } from "react";
-import { Form, Field } from "react-final-form";
-import axios from "axios"; // Якщо ви використовуєте Axios
-import FormInput from "components/FormElements/FormInput/FormInput";
+import { useState, FC } from "react";
 import Adress from "./Adress/Adress";
 import Map from "../Map/Map";
 import { useTranslation } from "react-i18next";
@@ -34,7 +31,8 @@ const Location: FC<IProps> = ({ handleAdress, disabled }) => {
   return (
     <div className={styles.container}>
       <h3 className={cn(styles.title, { [styles.disabled]: disabled })}>
-        <span className={styles.num}>6</span>Location
+        <span className={styles.num}>6</span>
+        {t(`createad.location`)}
       </h3>
       {!disabled && (
         <>

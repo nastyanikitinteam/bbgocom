@@ -2,13 +2,16 @@ import { useMemo } from "react";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import ServiceForm from "components/Forms/ServiceForm/ServiceForm";
 import styles from "./help-page.module.scss";
+import { useTranslation } from "react-i18next";
 
 const AdvertiseWithUs = () => {
+  const { t } = useTranslation();
+
   const breadCrumbs = useMemo(
     () => [
       {
         id: 0,
-        title: "Home",
+        title: `general.home`,
         url: "/",
       },
       {

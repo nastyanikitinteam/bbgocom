@@ -56,11 +56,11 @@ const Adress: FC<IProps> = ({ setIsMapZoom, setIsCoordinates }) => {
 
   return (
     <div className={styles.item}>
-      <p className={styles.label}>Address</p>
+      <p className={styles.label}>{t(`createad.address`)}</p>
       <div className={styles.input}>
         <Field
           name="adress"
-          placeholder="Adress"
+          placeholder={t(`createad.address`)}
           type="text"
           component={FormInput}
           extClassName="search"

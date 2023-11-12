@@ -3,7 +3,7 @@ import Link from "next/link";
 import isString from "lodash/isString";
 import isEmpty from "lodash/isEmpty";
 import ArrowIcon from "images/icons/drop.svg";
-
+import { useTranslation } from "react-i18next";
 import styles from "./bread-crumbs.module.scss";
 
 interface IProps {
@@ -12,6 +12,8 @@ interface IProps {
 
 const BreadCrumbs: React.FC<IProps> = ({ crumbs = [] }) => {
   // TODO: return
+
+  const { t } = useTranslation();
   return (
     <div className={styles.container} data-aos="fade" data-aos-delay="300">
       {!isEmpty(crumbs) &&
@@ -21,14 +23,14 @@ const BreadCrumbs: React.FC<IProps> = ({ crumbs = [] }) => {
           if (isLastCrumb) {
             return (
               <div key={url + title} className={styles.noLink}>
-                {title}
+                {t(title)}
               </div>
             );
           }
           return (
             <div key={url + title} className={styles.item}>
               <Link href={url} className={styles.link}>
-                {title}
+                {t(title)}
               </Link>
               <span className={styles.icon}>
                 <ArrowIcon />

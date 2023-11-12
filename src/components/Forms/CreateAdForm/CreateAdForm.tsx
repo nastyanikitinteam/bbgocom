@@ -26,7 +26,7 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
   const [isDisabled, setIsDisabled] = useState(true);
 
   const [choosedLang, setChoosedLang] = useState(
-    currentAdInfo?.language ? currentAdInfo?.language : "EN"
+    currentAdInfo?.language ? currentAdInfo?.language : "en"
   );
 
   const [adressName, setIsAdressName] = useState({ adress: "" });

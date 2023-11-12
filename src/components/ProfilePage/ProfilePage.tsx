@@ -1,6 +1,4 @@
 import React, { ReactNode, FC, useEffect, useState, useMemo } from "react";
-import AOS from "aos";
-// import "aos/dist/aos.css";
 import Head from "next/head";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Header from "components/Header/Header";
@@ -15,12 +13,11 @@ import cn from "classnames";
 
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
 import Menu from "components/ProfilePage/Menu/Menu";
-
 import bannerImg from "images/main-page/banner.png";
 import DeleteIcon from "images/icons/delete.svg";
 import AvatarIcon from "images/icons/avatar.svg";
-
 import styles from "./profile-page.module.scss";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   title: string;
@@ -39,6 +36,7 @@ const ProfilePage: FC<IProps> = ({
   showDeleteButton,
   isBanner,
 }) => {
+  const { t } = useTranslation();
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
@@ -47,7 +45,7 @@ const ProfilePage: FC<IProps> = ({
     () => [
       {
         id: 0,
-        title: "Home",
+        title: `general.home`,
         url: "/",
       },
       {
