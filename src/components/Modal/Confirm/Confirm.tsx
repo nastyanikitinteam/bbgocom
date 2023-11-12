@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import cn from "classnames";
 import styles from "./confirm.module.scss";
-
+import { useTranslation } from "react-i18next";
 import DeactivateIcon from "images/icons/deactivate.svg";
 import CheckIcon from "images/icons/message-status-done.svg";
 
@@ -28,6 +28,7 @@ const Confirm: FC<IProps> = ({
   isGreen,
   goHomePage,
 }) => {
+  const { t } = useTranslation();
   const validationSchema = yup.object().shape({});
   const validate = validateForm(validationSchema);
 
@@ -85,7 +86,7 @@ const Confirm: FC<IProps> = ({
                   className={cn("default-button border sm", styles.button)}
                   onClick={closeModal}
                 >
-                  Cancel
+                  {t("general.cancel")}
                 </div>
                 <button
                   type="submit"

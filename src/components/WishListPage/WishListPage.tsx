@@ -69,13 +69,13 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
     () => [
       {
         id: 0,
-        title: "Edit",
+        title: "general.edit",
         icon: <EditIcon />,
         fn: () => setIsOpenEdit(true),
       },
       {
         id: 1,
-        title: "Delete",
+        title: "general.delete",
         icon: <DelIcon />,
         fn: () => setIsOpenDel(true),
       },
@@ -198,9 +198,11 @@ const WishListPage: FC<IProps> = ({ activeSlug }) => {
         >
           <Confirm
             closeModal={() => setIsOpenDel(false)}
-            event="Delete"
-            description={`Do you want to delete wishlist <span> ${isCurrentList?.name}? </span>`}
-            title="Delete Wishlist"
+            event={t("general.delete")}
+            description={`${t("wishlist.confirmDeleteWishlist")} <span> ${
+              isCurrentList?.name
+            }? </span>`}
+            title={t("wishlist.deleteWishlist")}
             icon={<StarIcon />}
           />
         </Modal>

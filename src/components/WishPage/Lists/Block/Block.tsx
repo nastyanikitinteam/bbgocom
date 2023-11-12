@@ -7,16 +7,16 @@ import Modal from "components/Modal/Modal";
 import NewWishList from "components/Modal/NewWishList/NewWishList";
 import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
-
 import DelIcon from "images/icons/delete.svg";
 import EditIcon from "images/icons/edit.svg";
 import StarIcon from "images/icons/delete-star.svg";
-
+import { useTranslation } from "react-i18next";
 interface IProps {
   item: any;
 }
 
 const Block: FC<IProps> = ({ item }) => {
+  const { t } = useTranslation();
   const [isHover, setIsHover] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenDel, setIsOpenDel] = useState(false);
@@ -29,13 +29,13 @@ const Block: FC<IProps> = ({ item }) => {
     () => [
       {
         id: 0,
-        title: "Edit",
+        title: "general.edit",
         icon: <EditIcon />,
         fn: () => setIsOpenEdit(true),
       },
       {
         id: 1,
-        title: "Delete",
+        title: "general.delete",
         icon: <DelIcon />,
         fn: () => setIsOpenDel(true),
       },
@@ -47,22 +47,32 @@ const Block: FC<IProps> = ({ item }) => {
     let timeAgoString = "";
     if (differenceInSeconds >= 31536000) {
       const years = Math.floor(differenceInSeconds / 31536000);
-      timeAgoString = `${years} ${years > 1 ? "years" : "year"}`;
+      timeAgoString = `${years} ${
+        years > 1 ? t("general.years") : t("general.year")
+      }`;
     } else if (differenceInSeconds >= 2592000) {
       const months = Math.floor(differenceInSeconds / 2592000);
-      timeAgoString = `${months} ${months > 1 ? "months" : "month"}`;
+      timeAgoString = `${months} ${
+        months > 1 ? t("general.months") : t("general.month")
+      }`;
     } else if (differenceInSeconds >= 86400) {
       const days = Math.floor(differenceInSeconds / 86400);
-      timeAgoString = `${days} ${days > 1 ? "days" : "day"}`;
+      timeAgoString = `${days} ${
+        days > 1 ? t("general.days") : t("general.day")
+      }`;
     } else if (differenceInSeconds >= 3600) {
       const hours = Math.floor(differenceInSeconds / 3600);
-      timeAgoString = `${hours} ${hours > 1 ? "hours" : "hour"}`;
+      timeAgoString = `${hours} ${
+        hours > 1 ? t("general.hours") : t("general.hour")
+      }`;
     } else if (differenceInSeconds >= 60) {
       const minutes = Math.floor(differenceInSeconds / 60);
-      timeAgoString = `${minutes} ${minutes > 1 ? "minutes" : "minute"}`;
+      timeAgoString = `${minutes} ${
+        minutes > 1 ? t("general.minutes") : t("general.minute")
+      }`;
     } else {
       timeAgoString = `${differenceInSeconds} ${
-        differenceInSeconds > 1 ? "seconds" : "second"
+        differenceInSeconds > 1 ? t("general.seconds") : t("general.second")
       }`;
     }
     return timeAgoString;
@@ -112,8 +122,12 @@ const Block: FC<IProps> = ({ item }) => {
           onMouseLeave={() => setIsHover(false)}
         >
           <h3 className={styles.title}>{item.name}</h3>
-          <p className={styles.ads}>{item.items.length} ads</p>
-          <p className={styles.date}>Updated {timeAgo} ago</p>
+          <p className={styles.ads}>
+            {item.items.length} {t(`wishlist.ads`)}
+          </p>
+          <p className={styles.date}>
+            {t(`general.updated`)} {timeAgo} {t(`general.ago`)}
+          </p>
         </div>
         <div className={styles.more}>
           <DropMenu list={dropMenuList} />
@@ -138,9 +152,11 @@ const Block: FC<IProps> = ({ item }) => {
         >
           <Confirm
             closeModal={() => setIsOpenDel(false)}
-            event="Delete"
-            description={`Do you want to delete wishlist <span> ${item?.name}? </span>`}
-            title="Delete Wishlist"
+            event={t("general.delete")}
+            description={`${t("wishlist.confirmDeleteWishlist")} <span>  ${
+              item?.name
+            }? </span>`}
+            title={t("wishlist.deleteWishlist")}
             icon={<StarIcon />}
           />
         </Modal>

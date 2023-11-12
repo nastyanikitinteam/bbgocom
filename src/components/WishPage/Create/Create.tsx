@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "./create.module.scss";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import Car from "images/wishlist/auto.jpg";
 
 interface IProps {
@@ -9,19 +9,17 @@ interface IProps {
 }
 
 const Create: FC<IProps> = ({ setIsWishList }) => {
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       <div className={styles.info}>
-        <h3 className={styles.title}>Create your first wishlist</h3>
-        <p className={styles.text}>
-          As you search, tap the heart icon to save your favorite places to stay
-          or things to do to a wishlist.
-        </p>
+        <h3 className={styles.title}>{t(`wishlist.createFirstWishlist`)}</h3>
+        <p className={styles.text}>{t(`wishlist.searchInstructions`)}</p>
         <div
           onClick={setIsWishList}
           className={cn(styles.button, "default-button")}
         >
-          Start search
+          {t(`wishlist.startSearch`)}
         </div>
       </div>
       <div className={styles.image}>

@@ -1,12 +1,13 @@
 import { FC } from "react";
 import styles from "./drop-menu.module.scss";
 import DotsIcon from "images/icons/dots.svg";
-
+import { useTranslation } from "react-i18next";
 interface IProps {
   list: any;
 }
 
 const DropMenu: FC<IProps> = ({ list }) => {
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       <div className={styles.button}>
@@ -18,7 +19,7 @@ const DropMenu: FC<IProps> = ({ list }) => {
             return (
               <div className={styles.item} key={id} onClick={fn && fn}>
                 <span className={styles.icon}>{icon}</span>
-                {title}
+                {t(title)}
               </div>
             );
           })}

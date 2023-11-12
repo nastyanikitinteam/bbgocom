@@ -53,13 +53,13 @@ const Main: FC<IProps> = ({
           </div>
         )}
         <p className={styles.ads}>
-          {isCurrentList.items.length} ads
+          {isCurrentList.items.length} {t(`wishlist.ads`)}
           {isMobile && (
             <div className={styles.toMap} onClick={setIsOpenMap}>
               <span className={styles.icon}>
                 <MapIcon />
               </span>
-              To map
+              {t(`wishlist.toMap`)}
             </div>
           )}
         </p>

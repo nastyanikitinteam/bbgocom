@@ -23,7 +23,7 @@ const WishPage = () => {
       },
       {
         id: 0,
-        title: "My Whishlist",
+        title: `wishlist.myWishlists`,
       },
     ],
     []
@@ -38,14 +38,16 @@ const WishPage = () => {
 
             <div className={styles.top}>
               <h1 className={styles.title}>
-                {isWishList ? "My Wishlists" : "Wishlists"}
+                {isWishList
+                  ? t(`wishlist.myWishlists`)
+                  : t(`wishlist.wishlists`)}
               </h1>
               {isMobile && (
                 <a href="#" className={styles.add}>
                   <span className={styles.icon}>
                     <PlusIcon />
                   </span>
-                  Add New
+                  {t(`general.addNew`)}
                 </a>
               )}
             </div>

@@ -5,6 +5,7 @@ import { searchbar } from "./searchbar";
 import { footer } from "./footer";
 import { createad } from "./createad";
 import { category } from "./category";
+import { wishlist } from "./wishlist";
 
 export const enTranslates = {
   home,
@@ -14,4 +15,5 @@ export const enTranslates = {
   footer,
   createad,
   category,
+  wishlist,
 };

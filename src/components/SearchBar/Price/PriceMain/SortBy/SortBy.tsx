@@ -43,7 +43,7 @@ const SortBy: FC<IProps> = ({ dataPrice, handleClickPrice, withoutLabel }) => {
         options={sortList}
         chooseOption={selectedSortItem}
         classname="sort withIcon"
-        placeholder="Default"
+        placeholder={t(`general.default`)}
         title={t(`searchbar.sortBy`)}
         onChange={handleChange}
         // ref={selectRef}

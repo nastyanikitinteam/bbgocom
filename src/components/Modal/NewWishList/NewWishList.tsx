@@ -6,16 +6,16 @@ import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import styles from "./new-wish-list.module.scss";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 interface IProps {
   cancel: () => void;
   item?: any;
 }
 
 const NewWishList: FC<IProps> = ({ cancel, item }) => {
+  const { t } = useTranslation();
   const validationSchema = yup.object().shape({});
   const validate = validateForm(validationSchema);
-
   const onSubmit = useCallback((data, form) => {
     console.log(data);
     cancel();
@@ -23,7 +23,7 @@ const NewWishList: FC<IProps> = ({ cancel, item }) => {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>Name this wishlist</h3>
+      <h3 className={styles.title}>{t(`wishlist.nameThisWishlist`)}</h3>
       <Form
         onSubmit={onSubmit}
         validate={validate}
@@ -35,8 +35,8 @@ const NewWishList: FC<IProps> = ({ cancel, item }) => {
             <div className={styles.item}>
               <Field
                 name="name"
-                placeholder={"Enter name"}
-                label="Name wishlist"
+                placeholder={t(`wishlist.enterName`)}
+                label={t(`wishlist.nameWishlist`)}
                 type="text"
                 component={FormInput}
                 extClassName="enterName"
@@ -46,8 +46,8 @@ const NewWishList: FC<IProps> = ({ cancel, item }) => {
             <div className={styles.item}>
               <Field
                 name="description"
-                placeholder={"Enter Description"}
-                label="Description (optional)"
+                placeholder={t(`wishlist.enterDescription`)}
+                label={t(`wishlist.descriptionOptional`)}
                 type="text"
                 component={Textarea}
                 rows={6}
@@ -59,14 +59,14 @@ const NewWishList: FC<IProps> = ({ cancel, item }) => {
                 className={cn("default-button border sm", styles.button)}
                 onClick={cancel}
               >
-                Cancel
+                {t(`general.cancel`)}
               </div>
               <button
                 type="submit"
                 className={cn("default-button sm", styles.button)}
-                aria-label={item ? "Edit wishlist" : "Create wishlist"}
+                aria-label={item ? t(`general.edit`) : t(`general.create`)}
               >
-                {item ? "Edit wishlist" : "Create wishlist"}
+                {item ? t(`general.edit`) : t(`general.create`)}
               </button>
             </div>
           </form>
