@@ -3,7 +3,7 @@ import styles from "./card.module.scss";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import DelIcon from "images/icons/delete.svg";
 import WalletIcon from "images/icons/wallet-big.svg";
 
@@ -13,6 +13,7 @@ interface IProps {
 }
 
 const Card: FC<IProps> = ({ item, changeMainCard }) => {
+  const { t } = useTranslation();
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
 
   const onSubmit = useCallback((data, form) => {
@@ -47,7 +48,9 @@ const Card: FC<IProps> = ({ item, changeMainCard }) => {
               />
               <div className={styles.radioBlock}></div>
               <p className={styles.text}>
-                {item.isMainCard ? "Main card" : "To make the main one"}
+                {item.isMainCard
+                  ? t(`profile.mainCard`)
+                  : t(`profile.makeMainCard`)}
               </p>
             </label>
           </div>
@@ -68,9 +71,9 @@ const Card: FC<IProps> = ({ item, changeMainCard }) => {
         >
           <Confirm
             closeModal={() => setIsActiveDeleteModal(false)}
-            event="Delete card"
-            description="The card will be removed from your wallet and personal account"
-            title="Delete Card"
+            event={t(`profile.deleteCard`)}
+            description={t(`profile.removeCardWarning`)}
+            title={t(`profile.deleteCard`)}
             icon={<WalletIcon />}
           />
         </Modal>

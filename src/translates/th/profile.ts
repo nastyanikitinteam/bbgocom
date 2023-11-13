@@ -67,6 +67,19 @@ const profile = {
   deleteChatWith: "คุณต้องการลบแชทกับ",
   goToAd: "ไปที่โฆษณา",
   you: "คุณ",
+  noCardAdded: "คุณยังไม่ได้เพิ่มบัตร",
+  addCardPrompt: "เพิ่มบัตรเพื่อให้สามารถใช้บริการที่ต้องชำระเงิน BBGO",
+  addCard: "เพิ่มบัตร",
+  mainCard: "บัตรหลัก",
+  makeMainCard: "ทำให้เป็นบัตรหลัก",
+  removeCardWarning: "บัตรจะถูกนำออกจากกระเป๋าเงินและบัญชีส่วนบุคคลของคุณ",
+  deleteCard: "ลบบัตร",
+  successful: "สำเร็จ!",
+  cardSuccessfullyAdded: "บัตรถูกเพิ่มเรียบร้อยแล้ว",
+  cardNumber: "หมายเลขบัตร",
+  cvv: "CVV",
+  validity: "อายุการใช้งาน",
+  mmYY: "เดือน/ปี",
 };
 
 export { profile };

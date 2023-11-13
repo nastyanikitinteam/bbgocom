@@ -75,17 +75,16 @@ const Wallet = () => {
             </span>
             {t(`general.back`)}
           </div>
-          <h3 className={styles.title}>Wallet</h3>
-          <a
-            href="#"
+          <h3 className={styles.title}>{t(`profile.wallet`)}</h3>
+          <div
             className={styles.addCard}
             onClick={() => setIsActiveNewCard(true)}
           >
             <span className={styles.icon}>
               <PlusIcon />
             </span>
-            Add New
-          </a>
+            {t(`general.addNew`)}
+          </div>
         </div>
       )}
       {isMobile && (

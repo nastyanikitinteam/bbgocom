@@ -9,7 +9,7 @@ import NumberInput from "components/FormElements/FormInput/NumberInput";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import styles from "./add-card.module.scss";
 import PlusIcon from "images/icons/plus.svg";
 import CloseIcon from "images/icons/close.svg";
@@ -28,6 +28,7 @@ const AddCard: FC<IProps> = ({
   const [isOpenModal, setIsOpenModal] = useState(false);
   const validationCard = yup.object().shape({});
   const isMobile = useMediaQuery(768);
+  const { t } = useTranslation();
 
   const validate = validateForm(validationCard);
 
@@ -46,7 +47,7 @@ const AddCard: FC<IProps> = ({
     <div className={cn(styles.container, { [styles.active]: isActiveNewCard })}>
       {isMobile && (
         <>
-          <h3 className={styles.subtitle}>Add card</h3>
+          <h3 className={styles.subtitle}>{t(`profile.addCard`)}</h3>
           <div
             className={styles.close}
             onClick={() => setIsActiveNewCard(false)}
@@ -63,7 +64,9 @@ const AddCard: FC<IProps> = ({
             render={({ handleSubmit }) => (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.item}>
-                  {isMobile && <p className={styles.label}>Card number</p>}
+                  {isMobile && (
+                    <p className={styles.label}>{t(`profile.cardNumber`)}</p>
+                  )}
                   <Field
                     name="cardNumber"
                     placeholder={"---- ---- ---- ----"}
@@ -74,20 +77,24 @@ const AddCard: FC<IProps> = ({
                 </div>
                 <div className={styles.items}>
                   <div className={styles.item}>
-                    {isMobile && <p className={styles.label}>Validity</p>}
+                    {isMobile && (
+                      <p className={styles.label}>{t(`profile.validity`)}</p>
+                    )}
                     <Field
                       name="validity"
-                      placeholder={"MM/YY"}
+                      placeholder={t(`profile.mmYY`)}
                       type="text"
                       component={DateInput}
                       maxLength={5}
                     />
                   </div>
                   <div className={styles.item}>
-                    {isMobile && <p className={styles.label}>CVV</p>}
+                    {isMobile && (
+                      <p className={styles.label}>{t(`profile.cvv`)}</p>
+                    )}
                     <Field
                       name="CVV"
-                      placeholder={"CVV"}
+                      placeholder={t(`profile.cvv`)}
                       type="text"
                       component={NumberInput}
                       extClassName="smNoIcon"
@@ -101,14 +108,14 @@ const AddCard: FC<IProps> = ({
                     className={cn("default-button border sm", styles.button)}
                     onClick={() => setIsActiveNewCard(false)}
                   >
-                    Cancel
+                    {t(`general.cancel`)}
                   </a>
                   <button
                     type="submit"
                     className={cn("default-button sm", styles.button)}
                     aria-label={`Add Card`}
                   >
-                    Add Card
+                    {t(`profile.addCard`)}
                   </button>
                 </div>
               </form>
@@ -121,7 +128,7 @@ const AddCard: FC<IProps> = ({
             <span className={styles.icon}>
               <PlusIcon />
             </span>
-            Add Card
+            {t(`profile.addCard`)}
           </h2>
         </div>
       )}
@@ -134,9 +141,9 @@ const AddCard: FC<IProps> = ({
         >
           <Confirm
             closeModal={() => setIsOpenModal(false)}
-            title="Successful!"
-            description="The card has been successfully added"
-            event="Done"
+            title={t(`profile.successful`)}
+            description={t(`profile.cardSuccessfullyAdded`)}
+            event={t(`general.done`)}
             isGreen
           />
         </Modal>

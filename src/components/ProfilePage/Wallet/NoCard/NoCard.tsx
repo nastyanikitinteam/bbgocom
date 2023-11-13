@@ -2,7 +2,7 @@ import { useState, FC } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import cn from "classnames";
 import styles from "./no-card.module.scss";
-
+import { useTranslation } from "react-i18next";
 import WalletIcon from "images/icons/wallet-big.svg";
 import PlusIcon from "images/icons/plus.svg";
 
@@ -12,8 +12,8 @@ interface IProps {
 }
 
 const NoCard: FC<IProps> = ({ setIsWallet, setIsActiveNewCard }) => {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery(768);
-
   const addNewCard = () => {
     if (isMobile) {
       setIsActiveNewCard(true);
@@ -30,10 +30,8 @@ const NoCard: FC<IProps> = ({ setIsWallet, setIsActiveNewCard }) => {
         <div className={styles.icon}>
           <WalletIcon />
         </div>
-        <h3 className={styles.title}>You don't have a card added yet</h3>
-        <p className={styles.description}>
-          Add a card to be able to use paid services BBGO
-        </p>
+        <h3 className={styles.title}>{t(`profile.noCardAdded`)}</h3>
+        <p className={styles.description}>{t(`profile.addCardPrompt`)}</p>
         <a
           href="#"
           className={cn("default-button sm", styles.button)}
@@ -42,7 +40,7 @@ const NoCard: FC<IProps> = ({ setIsWallet, setIsActiveNewCard }) => {
           <span className="icon">
             <PlusIcon />
           </span>
-          Add Card
+          {t(`profile.addCard`)}
         </a>
       </div>
     </div>

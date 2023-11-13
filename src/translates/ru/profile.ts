@@ -70,6 +70,20 @@ const profile = {
   deleteChatWith: "Вы хотите удалить чат с",
   goToAd: "Перейти к объявлению",
   you: "Вы",
+  noCardAdded: "У вас пока нет добавленной карты",
+  addCardPrompt: "Добавьте карту, чтобы использовать платные услуги BBGO",
+  addCard: "Добавить карту",
+  mainCard: "Основная карта",
+  makeMainCard: "Сделать основной",
+  removeCardWarning:
+    "Карта будет удалена из вашего кошелька и личного аккаунта",
+  deleteCard: "Удалить карту",
+  successful: "Успешно!",
+  cardSuccessfullyAdded: "Карта успешно добавлена",
+  cardNumber: "Номер карты",
+  cvv: "CVV",
+  validity: "Срок действия",
+  mmYY: "ММ/ГГ",
 };
 
 export { profile };

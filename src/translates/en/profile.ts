@@ -68,6 +68,20 @@ const profile = {
   deleteChatWith: "Do you want to delete the chat with",
   goToAd: "Go to Ad",
   you: "You",
+  noCardAdded: "You don't have a card added yet",
+  addCardPrompt: "Add a card to be able to use paid services BBGO",
+  addCard: "Add card",
+  mainCard: "Main card",
+  makeMainCard: "To make it the main one",
+  removeCardWarning:
+    "The card will be removed from your wallet and personal account",
+  deleteCard: "Delete Card",
+  successful: "Successful!",
+  cardSuccessfullyAdded: "The card has been successfully added",
+  cardNumber: "Card number",
+  cvv: "CVV",
+  validity: "Validity",
+  mmYY: "MM/YY",
 };
 
 export { profile };
