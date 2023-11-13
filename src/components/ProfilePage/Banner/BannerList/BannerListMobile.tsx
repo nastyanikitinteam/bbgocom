@@ -6,7 +6,7 @@ import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import cn from "classnames";
 
 import { bannerList, bannersCategories } from "config/profilePage";
-
+import { useTranslation } from "react-i18next";
 import DotsIcon from "images/icons/dots.svg";
 import ArrowIcon from "images/icons/drop.svg";
 
@@ -18,10 +18,10 @@ interface IProps {
 const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
   const isTablet = useMediaQuery(998);
   const isMobile = useMediaQuery(768);
-
+  const { t } = useTranslation();
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
-  const [isActiveStatus, setIsActiveStatus] = useState("Approved");
+  const [isActiveStatus, setIsActiveStatus] = useState("approved");
   const [isActiveCategoryList, setIsActiveCategoryList] = useState(bannerList);
 
   const handleSelectAllChange = () => {
@@ -57,7 +57,7 @@ const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
 
   useEffect(() => {
     setIsActiveCategoryList(
-      bannerList.filter(({ status }) => status === isActiveStatus)
+      bannerList.filter(({ status }) => status.name === isActiveStatus)
     );
   }, [isActiveStatus]);
 
@@ -70,7 +70,7 @@ const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
             <form className={styles.form} onSubmit={handleSubmit}>
               {!isMobile && <h3 className={styles.title}>Your banners</h3>}
               <div className={styles.categories}>
-                {bannersCategories.map(({ id, name }) => {
+                {bannersCategories.map(({ id, name, value }) => {
                   return (
                     <div
                       className={cn(styles.category, {
@@ -79,7 +79,7 @@ const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
                       key={id}
                       onClick={() => handleCategories(name)}
                     >
-                      {name}
+                      {t(value)}
                     </div>
                   );
                 })}
@@ -95,7 +95,7 @@ const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
                       checked={checkedItems.length > 0}
                       extClassName="blackWhenChecked"
                     >
-                      Choosed: {checkedItems.length}
+                      {t("profile.choosed")}: {checkedItems.length}
                     </Field>
                   </div>
                 ) : (
@@ -109,8 +109,8 @@ const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
                       extClassName="blackWhenChecked"
                     >
                       {selectAllChecked
-                        ? `Choosed: ${checkedItems.length}`
-                        : "Choose all"}
+                        ? `${t("profile.choosed")}: ${checkedItems.length}`
+                        : t(`profile.chooseAll`)}
                     </Field>
                   </div>
                 )}
@@ -156,7 +156,7 @@ const BannerListMobile: FC<IProps> = ({ isOpenRules, setIsOpenRules }) => {
           className={styles.rullesButton}
           onClick={() => setIsOpenRules(true)}
         >
-          Rules and requirements for banner advertising
+          {t(`rules.rulesAndRequirements`)}
           <span className={styles.icon}>
             <ArrowIcon />
           </span>

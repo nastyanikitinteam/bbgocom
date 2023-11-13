@@ -491,17 +491,21 @@ export const categorieList = [
   {
     id: 0,
     title: "Active",
+    name: "profile.active",
   },
   {
     id: 1,
     title: "Waiting",
+    name: "profile.waiting",
   },
   {
     id: 2,
     title: "Inactive",
+    name: "profile.inactive",
   },
   {
     id: 3,
     title: "Rejected",
+    name: "profile.rejected",
   },
 ];

@@ -6,7 +6,7 @@ import Banner from "components/ProfilePage/Banner/Banner";
 
 const MyWallet: NextPage = () => {
   return (
-    <ProfilePage title="Banners" withoutInfoBlock isBanner>
+    <ProfilePage title="profile.banners" withoutInfoBlock isBanner>
       <Banner />
     </ProfilePage>
   );

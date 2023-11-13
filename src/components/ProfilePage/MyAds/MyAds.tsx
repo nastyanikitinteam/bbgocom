@@ -103,7 +103,7 @@ const MyAds = () => {
     <div className={styles.container}>
       {!isMobile && (
         <div className={styles.categories}>
-          {categorieList.map(({ id, title }) => {
+          {categorieList.map(({ id, title, name }) => {
             return (
               <div
                 className={cn(styles.category, {
@@ -112,7 +112,7 @@ const MyAds = () => {
                 key={id}
                 onClick={() => handleCategories(title)}
               >
-                {title} ({countList(title)})
+                {t(name)} ({countList(title)})
               </div>
             );
           })}
@@ -133,7 +133,7 @@ const MyAds = () => {
                 <h3 className={styles.title}>
                   {isShowCategory
                     ? `${isActiveCategory} (${isActiveCategoryList.length})`
-                    : "My Ads"}
+                    : t(`profile.myAdsSecond`)}
                 </h3>
                 {checkedItems.length > 0 && (
                   <div className={styles.button}>
@@ -145,7 +145,9 @@ const MyAds = () => {
                       <span className={styles.icon}>
                         <DelIcon />
                       </span>
-                      {isActiveCategory === "Active" ? "Deactivate" : "Delete"}
+                      {isActiveCategory === "Active"
+                        ? t(`general.deactivate`)
+                        : t(`general.delete`)}
                     </button>
                   </div>
                 )}
@@ -153,7 +155,7 @@ const MyAds = () => {
             )}
             {isMobile && !isShowCategory && (
               <div className={styles.categories}>
-                {categorieList.map(({ id, title }) => {
+                {categorieList.map(({ id, title, name }) => {
                   return (
                     <div
                       className={cn(styles.category)}
@@ -161,7 +163,7 @@ const MyAds = () => {
                       onClick={() => handleCategories(title)}
                     >
                       <h3>
-                        {title} ({countList(title)})
+                        {t(name)} ({countList(title)})
                       </h3>
                       <span className={styles.arrow}>
                         <ArrowSvg />
@@ -199,10 +201,10 @@ const MyAds = () => {
                         extClassName="blackWhenChecked"
                       >
                         {selectAllChecked
-                          ? `Selected: ${checkedItems.length}`
+                          ? `${t(`general.selected`)}: ${checkedItems.length}`
                           : isTablet
-                          ? "Select all"
-                          : "Select all the desired ads from the list to apply the same actions to them"}
+                          ? t(`general.selectAll`)
+                          : t(`profile.selectAllAds`)}
                       </Field>
                     </div>
                   )}
@@ -228,8 +230,8 @@ const MyAds = () => {
                         onClick={() => setIsActiveDeleteModal(true)}
                       >
                         {isActiveCategory === "Active"
-                          ? "Deactivate"
-                          : "Delete"}
+                          ? t(`general.deactivate`)
+                          : t(`general.delete`)}
                       </div>
                     </div>
                   )}
@@ -270,13 +272,21 @@ const MyAds = () => {
         >
           <Confirm
             closeModal={() => setIsActiveDeleteModal(false)}
-            event={isActiveCategory === "Active" ? "Deactivate" : "Delete"}
-            description={`Are you sure you want to ${
-              isActiveCategory === "Active" ? "deactivate" : "delete"
-            } ads? `}
+            event={
+              isActiveCategory === "Active"
+                ? t(`general.deactivate`)
+                : t(`general.delete`)
+            }
+            description={`${t(`profile.areYouSure`)} ${
+              isActiveCategory === "Active"
+                ? t(`profile.deactivate`)
+                : t(`profile.delete`)
+            } ${t(`profile.ads`)}? `}
             title={`${
-              isActiveCategory === "Active" ? "Deactivate" : "Delete"
-            } Ads`}
+              isActiveCategory === "Active"
+                ? t(`general.deactivate`)
+                : t(`general.delete`)
+            } ${t(`profile.ads`)}`}
           />
         </Modal>
       )}

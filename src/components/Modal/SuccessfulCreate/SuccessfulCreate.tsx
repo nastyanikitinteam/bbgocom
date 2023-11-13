@@ -2,7 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import styles from "./successful-create.module.scss";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import CongratulationsIcon from "images/icons/congratulations.svg";
 import Share from "components/Share/Share";
 
@@ -12,6 +12,7 @@ interface IProps {
 }
 
 const SuccessfulCreate: FC<IProps> = ({ closeModal, isCurrentAd }) => {
+  const { t } = useTranslation();
   return (
     <div className={styles.container}>
       <div className={styles.cancel} onClick={closeModal}>
@@ -28,7 +29,7 @@ const SuccessfulCreate: FC<IProps> = ({ closeModal, isCurrentAd }) => {
             : " You have successfully placed your add!It will be active until May 12"}
         </p>
         <Link href="/my-ads" className={cn("default-button sm", styles.button)}>
-          My Ads
+          {t(`profile.myAdsSecond`)}
         </Link>
       </div>
       <div className={styles.line}></div>

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import styles from "./message.module.scss";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import MessageStatusDone from "images/icons/message-status-done.svg";
 import MessageStatusError from "images/icons/message-status-error.svg";
 import MessageStatusSend from "images/icons/message-status-send.svg";
@@ -23,6 +23,7 @@ const Message: FC<IProps> = ({
   name,
   images,
 }) => {
+  const { t } = useTranslation();
   const [isStatus, setIsStatus] = useState("done");
 
   return (
@@ -58,7 +59,9 @@ const Message: FC<IProps> = ({
       {userIsSender ? (
         <div className={styles.description}>
           <p className={styles.time}>{time}</p>
-          <p className={styles.name}>{userIsSender ? "You" : name}</p>
+          <p className={styles.name}>
+            {userIsSender ? t(`profile.you`) : name}
+          </p>
           <span className={styles.status}>
             {isStatus === "done" && <MessageStatusDone />}
             {isStatus === "error" && <MessageStatusError />}
@@ -67,7 +70,9 @@ const Message: FC<IProps> = ({
         </div>
       ) : (
         <div className={styles.description}>
-          <p className={styles.name}>{userIsSender ? "You" : name}</p>
+          <p className={styles.name}>
+            {userIsSender ? t(`profile.you`) : name}
+          </p>
           <p className={styles.time}>{time}</p>
         </div>
       )}

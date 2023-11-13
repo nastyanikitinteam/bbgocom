@@ -4,7 +4,7 @@ import styles from "./card.module.scss";
 import cn from "classnames";
 import useMediaQuery from "src/utils/useMediaQuery";
 import { categoriesList } from "config/categoriesList";
-
+import { useTranslation } from "react-i18next";
 import Slider from "components/Slider/Slider";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
@@ -25,7 +25,7 @@ interface IProps {
 
 const Card: FC<IProps> = ({ item, children, type }) => {
   const isTablet = useMediaQuery(998);
-
+  const { t } = useTranslation();
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
   const [isActiveActivateModal, setIsActiveActivateModal] = useState(false);
   const [isCurrency, setIsCurrency] = useState(
@@ -127,8 +127,12 @@ const Card: FC<IProps> = ({ item, children, type }) => {
               </div>
             )}
             <div className={styles.item}>
-              <p>ID: {item.id}</p>
-              <p>Views: {item.views}</p>
+              <p>
+                {t(`selectedad.id`)}: {item.id}
+              </p>
+              <p>
+                {t(`selectedad.views`)}: {item.views}
+              </p>
             </div>
           </div>
 
@@ -179,7 +183,7 @@ const Card: FC<IProps> = ({ item, children, type }) => {
                 <span className={styles.icon}>
                   <ViewIcon />
                 </span>
-                View
+                {t(`general.view`)}
               </Link>
             )}
             {type === "Inactive" && (
@@ -190,7 +194,7 @@ const Card: FC<IProps> = ({ item, children, type }) => {
                 <span className={styles.icon}>
                   <LightningIcon />
                 </span>
-                Activate
+                {t(`general.activate`)}
               </div>
             )}
 
@@ -199,7 +203,9 @@ const Card: FC<IProps> = ({ item, children, type }) => {
                 className={cn("default-button border sm", styles.button)}
                 onClick={() => setIsActiveDeleteModal(true)}
               >
-                {type === "Active" ? "Deactivate" : "Delete"}
+                {type === "Active"
+                  ? t(`general.deactivate`)
+                  : t(`general.delete`)}
               </div>
               <Link
                 href="/create-an-ad/[slug]"
@@ -209,7 +215,7 @@ const Card: FC<IProps> = ({ item, children, type }) => {
                 <span className={cn("icon", styles.icon)}>
                   <EditIcon />
                 </span>
-                Edit
+                {t(`general.edit`)}
               </Link>
             </div>
           </div>
@@ -224,11 +230,15 @@ const Card: FC<IProps> = ({ item, children, type }) => {
         >
           <Confirm
             closeModal={() => setIsActiveDeleteModal(false)}
-            event={type === "Active" ? "Deactivate" : "Delete"}
-            description={`Are you sure you want to ${
-              type === "Active" ? "deactivate" : "delete"
-            } ad? `}
-            title={`${type === "Active" ? "Deactivate" : "Delete"} Ad`}
+            event={
+              type === "Active" ? t(`general.deactivate`) : t(`general.delete`)
+            }
+            description={`${t(`profile.areYouSure`)} ${
+              type === "Active" ? t(`profile.deactivate`) : t(`profile.delete`)
+            } ${t(`general.ad`)}? `}
+            title={`${
+              type === "Active" ? t(`general.deactivate`) : t(`general.delete`)
+            } ${t(`general.ad`)}`}
           />
         </Modal>
       )}
@@ -241,9 +251,9 @@ const Card: FC<IProps> = ({ item, children, type }) => {
         >
           <Confirm
             closeModal={() => setIsActiveActivateModal(false)}
-            event="Activate"
-            description="Are you sure you want to activate ad?"
-            title="Activate Ad"
+            event={t(`general.activate`)}
+            description={t(`profile.confirmActivateAd`)}
+            title={`${t(`general.activate`)} ${t(`general.ad`)}`}
             icon={<ActivateIcon />}
             isGreen
           />

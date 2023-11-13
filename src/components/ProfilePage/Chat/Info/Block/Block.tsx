@@ -1,10 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
-import DeleteChat from "../../Main/DeleteChat/DeleteChat";
 import styles from "./block.module.scss";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import DelIcon from "images/icons/delete.svg";
 
 interface IProps {
@@ -14,6 +13,7 @@ interface IProps {
 }
 
 const Block: FC<IProps> = ({ item, isActiveChatID, onClick }) => {
+  const { t } = useTranslation();
   const [startX, setStartX] = useState(null);
   const [leftPosition, setLeftPosition] = useState(0);
   const [isOpenDel, setIsOpenDel] = useState(false);
@@ -98,9 +98,9 @@ const Block: FC<IProps> = ({ item, isActiveChatID, onClick }) => {
         >
           <Confirm
             closeModal={() => setIsOpenDel(false)}
-            event="Delete"
-            description={`Do you want to delete the chat with ${item?.name}?`}
-            title="Delete Chat?"
+            event={t(`general.delete`)}
+            description={`${t(`profile.deleteChatWith`)} ${item?.name}?`}
+            title={t(`profile.deleteChat`)}
             icon={<DelIcon />}
           />
         </Modal>

@@ -122,10 +122,10 @@ const ReviewedProducts = () => {
                     extClassName="blackWhenChecked"
                   >
                     {selectAllChecked
-                      ? `Selected: ${checkedItems.length}`
+                      ? `${t(`general.selected`)}: ${checkedItems.length}`
                       : isTablet
-                      ? "Select all"
-                      : "Select all the desired ads from the list to apply the same actions to them"}
+                      ? t(`general.selectAll`)
+                      : t(`profile.selectAllAds`)}
                   </Field>
                 </div>
               )}

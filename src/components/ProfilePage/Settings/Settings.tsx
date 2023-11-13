@@ -53,7 +53,7 @@ const Settings = () => {
             <h3 className={styles.title}>
               {isOpenParam
                 ? AccountInfo[isActiveItem].title
-                : "Account settings"}
+                : t(`profile.accountSettings`)}
             </h3>
           </div>
           <div className={styles.content}>
@@ -64,7 +64,7 @@ const Settings = () => {
                     <Block
                       key={id}
                       items={items}
-                      title={title}
+                      title={t(title)}
                       setIsOpenParam={setIsOpenParam}
                     />
                   );
@@ -81,7 +81,7 @@ const Settings = () => {
                         key={id}
                         onClick={() => handleParam(id)}
                       >
-                        <h3 className={styles.subtitle}>{title}</h3>
+                        <h3 className={styles.subtitle}>{t(title)}</h3>
                         <span className={styles.arrow}>
                           <ArrowSvg />
                         </span>
@@ -96,7 +96,7 @@ const Settings = () => {
                   <span className={styles.icon}>
                     <LogOutIcon />
                   </span>
-                  Log Out
+                  {t(`general.logOut`)}
                 </div>
                 <div
                   className={styles.del}
@@ -105,7 +105,7 @@ const Settings = () => {
                   <span className={styles.icon}>
                     <DeleteIcon />
                   </span>
-                  Delete account
+                  {t(`general.deleteAccount`)}
                 </div>
               </>
             )}
@@ -113,7 +113,7 @@ const Settings = () => {
         </>
       ) : (
         AccountInfo.map(({ id, title, items }) => {
-          return <Block title={title} items={items} key={id} />;
+          return <Block title={t(title)} items={items} key={id} />;
         })
       )}
       {isActiveDeleteModal && (
@@ -125,9 +125,9 @@ const Settings = () => {
         >
           <Confirm
             closeModal={() => setIsActiveDeleteModal(false)}
-            event="Delete"
+            event={t(`general.delete`)}
             description="Are you sure you want to delete your account?"
-            title="Delete"
+            title={t(`general.delete`)}
             icon={<AvatarIcon />}
           />
         </Modal>
@@ -141,9 +141,9 @@ const Settings = () => {
         >
           <Confirm
             closeModal={() => setIsActiveLogOutModal(false)}
-            event="Log out"
-            description="Are you sure you want to log out of your account?"
-            title="Log out"
+            event={t(`general.logOut`)}
+            description={t(`profile.confirmLogOut`)}
+            title={t(`general.logOut`)}
             icon={<LogOutIcon />}
           />
         </Modal>

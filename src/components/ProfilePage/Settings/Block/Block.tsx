@@ -48,7 +48,7 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
 
   return (
     <div className={styles.container}>
-      {isMobile && title === "Personal info" && (
+      {isMobile && title === t("profile.personalInfo") && (
         <div className={cn(styles.account, { [styles.editAvatar]: isEdit })}>
           {!isEdit ? (
             <>
@@ -121,14 +121,14 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
                         className={cn("default-button border sm")}
                         onClick={() => setIsEdit(false)}
                       >
-                        Cancel
+                        {t(`general.cancel`)}
                       </div>
                       <button
                         type="submit"
                         className={cn("default-button sm", styles.button)}
                         aria-label={`Save`}
                       >
-                        Save
+                        {t(`general.save`)}
                       </button>
                     </>
                   ) : (
@@ -139,7 +139,7 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
                       <span className={cn("icon", styles.icon)}>
                         <EditIcon />
                       </span>
-                      Edit
+                      {t(`general.edit`)}
                     </div>
                   )}
                 </div>
@@ -151,7 +151,7 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
                 .map(({ id, label, name, type, value }) => {
                   return (
                     <div className={styles.item} key={id}>
-                      <label className={styles.label}>{label}</label>
+                      <label className={styles.label}>{t(label)}</label>
                       {isEdit ? (
                         <Field
                           name={name}
@@ -175,7 +175,7 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
                 .map(({ id, label, name, type, value }) => {
                   return !isEdit ? (
                     <div className={styles.item} key={id}>
-                      <label className={styles.label}>{label}</label>
+                      <label className={styles.label}>{t(label)}</label>
                       <p className={styles.text}>
                         {value.replace(/[\s\S]/g, "*")}
                       </p>
@@ -186,36 +186,42 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
                         className={cn(styles.item, styles.itemPass)}
                         key={id}
                       >
-                        <label className={styles.label}>Enter Password</label>
+                        <label className={styles.label}>
+                          {t(`profile.enterPassword`)}
+                        </label>
                         <Field
                           name="enterPassword"
                           component={PasswordInput}
                           extClassName="smNoIcon"
-                          placeholder="Enter password"
+                          placeholder={t(`profile.enterPassword`)}
                         />
                       </div>
                       <div
                         className={cn(styles.item, styles.itemPass)}
                         key={id}
                       >
-                        <label className={styles.label}>New Password</label>
+                        <label className={styles.label}>
+                          {t(`profile.newPassword`)}
+                        </label>
                         <Field
                           name="newPassword"
                           component={PasswordInput}
                           extClassName="smNoIcon"
-                          placeholder="Enter password"
+                          placeholder={t(`profile.enterPassword`)}
                         />
                       </div>
                       <div
                         className={cn(styles.item, styles.itemPass)}
                         key={id}
                       >
-                        <label className={styles.label}>Confirm Password</label>
+                        <label className={styles.label}>
+                          {t(`profile.confirmPassword`)}
+                        </label>
                         <Field
                           name="confirmPassword"
                           component={PasswordInput}
                           extClassName="smNoIcon"
-                          placeholder="Enter password"
+                          placeholder={t(`profile.enterPassword`)}
                         />
                       </div>
                     </>
@@ -230,14 +236,14 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
                       className={cn("default-button border sm", styles.button)}
                       onClick={() => setIsEdit(false)}
                     >
-                      Cancel
+                      {t(`general.cancel`)}
                     </div>
                     <button
                       type="submit"
                       className={cn("default-button sm", styles.button)}
                       aria-label={`Save`}
                     >
-                      Save
+                      {t(`general.save`)}
                     </button>
                   </>
                 ) : (
@@ -251,7 +257,7 @@ const Block: FC<IProps> = ({ title, items, setIsOpenParam }) => {
                     <span className={cn("icon", styles.icon)}>
                       <EditIcon />
                     </span>
-                    Edit
+                    {t(`general.edit`)}
                   </div>
                 )}
               </div>

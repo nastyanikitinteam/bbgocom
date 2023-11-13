@@ -80,6 +80,21 @@ const general = {
   message: "ข้อความ",
   messageSent: "ข้อความของคุณถูกส่งแล้ว",
   myMessages: "ข้อความของฉัน",
+  save: "บันทึก",
+  deleteAccount: "ลบบัญชี",
+  logOut: "ออกจากระบบ",
+  selected: "เลือกแล้ว",
+  selectAll: "เลือกทั้งหมด",
+  yourAdvertisement: "โฆษณาของคุณ",
+  addYourBanners: "เพิ่มแบนเนอร์ของคุณ",
+  add: "เพิ่ม",
+  deactivate: "ปิดใช้งาน",
+  active: "ทำงาน",
+  view: "ดู",
+  ad: "โฆษณา",
+  activate: "เปิดใช้งาน",
+  empty: "ว่างเปล่า",
+  subscribe: "สมัครรับ",
 };
 
 export { general };

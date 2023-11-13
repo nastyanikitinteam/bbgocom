@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
-
 import ProfilePage from "components/ProfilePage/ProfilePage";
-import useMediaQuery from "src/utils/useMediaQuery";
 import Settings from "components/ProfilePage/Settings/Settings";
+import { useTranslation } from "react-i18next";
 
 const MySettings: NextPage = () => {
+  const { t } = useTranslation();
+
   return (
-    <ProfilePage title="Account settings" showDeleteButton>
+    <ProfilePage title="profile.accountSettings" showDeleteButton>
       <Settings />
     </ProfilePage>
   );

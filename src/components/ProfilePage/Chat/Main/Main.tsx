@@ -151,9 +151,11 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
         >
           <Confirm
             closeModal={() => setIsOpenDel(false)}
-            event="Delete"
-            description={`Do you want to delete the chat with ${isCurrentChat[0]?.name}?`}
-            title="Delete Chat?"
+            event={t(`general.delete`)}
+            description={`${t(`profile.deleteChatWith`)} ${
+              isCurrentChat[0]?.name
+            }?`}
+            title={t(`profile.deleteChat`)}
             icon={<DeleteIcon />}
           />
         </Modal>
@@ -167,9 +169,9 @@ const Main: FC<IProps> = ({ isActiveChatID, chatLists, setIsActiveChat }) => {
         >
           <Confirm
             closeModal={() => setIsOpenBlockModal(false)}
-            event="Block"
-            description="Are you sure you want to block the user?"
-            title={`Block ${isCurrentChat[0]?.name}?`}
+            event={t(`profile.block`)}
+            description={t(`profile.confirmBlock`)}
+            title={`${t(`profile.block`)} ${isCurrentChat[0]?.name}?`}
             icon={<BlockIcon />}
           />
         </Modal>

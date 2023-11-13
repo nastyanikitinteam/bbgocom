@@ -99,7 +99,10 @@ export const bannerList = [
     weight: "50 KB",
     size: "1200x90 px",
     dataUploaded: "May 4, 2023",
-    status: "Approved",
+    status: {
+      name: "approved",
+      value: "profile.approved",
+    },
   },
   {
     id: 1,
@@ -107,7 +110,10 @@ export const bannerList = [
     weight: "32 KB",
     size: "970x90 px",
     dataUploaded: "Apr 12, 2023",
-    status: "Waiting",
+    status: {
+      name: "waiting",
+      value: "profile.waiting",
+    },
   },
   {
     id: 2,
@@ -115,7 +121,10 @@ export const bannerList = [
     weight: "12 KB",
     size: "728x90 px",
     dataUploaded: "Apr 4, 2023",
-    status: "Rejected",
+    status: {
+      name: "rejected",
+      value: "profile.rejected",
+    },
   },
   {
     id: 3,
@@ -123,7 +132,10 @@ export const bannerList = [
     weight: "55 KB",
     size: "320x600 px",
     dataUploaded: "Feb 7, 2023",
-    status: "Approved",
+    status: {
+      name: "approved",
+      value: "profile.approved",
+    },
   },
   {
     id: 4,
@@ -131,7 +143,10 @@ export const bannerList = [
     weight: "67 KB",
     size: "320x250 px",
     dataUploaded: "Mar 23, 2023",
-    status: "Approved",
+    status: {
+      name: "approved",
+      value: "profile.approved",
+    },
   },
 ];
 
@@ -248,14 +263,17 @@ export const ratingStatus = [
 export const bannersCategories = [
   {
     id: 0,
-    name: "Approved",
+    name: "approved",
+    value: "profile.approved",
   },
   {
     id: 1,
-    name: "Waiting",
+    name: "waiting",
+    value: "profile.waiting",
   },
   {
     id: 2,
-    name: "Rejected",
+    name: "rejected",
+    value: "profile.rejected",
   },
 ];

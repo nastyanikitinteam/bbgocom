@@ -6,7 +6,7 @@ import useMediaQuery from "src/utils/useMediaQuery";
 
 const MyWallet: NextPage = () => {
   return (
-    <ProfilePage title="My Ads" isShortMenu withoutInfoBlock>
+    <ProfilePage title="profile.myAdsSecond" isShortMenu withoutInfoBlock>
       <MyAds />
     </ProfilePage>
   );

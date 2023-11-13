@@ -118,8 +118,8 @@ const Notifications = () => {
                     extClassName="blackWhenChecked"
                   >
                     {selectAllChecked
-                      ? `Selected: ${checkedItems.length}`
-                      : "Select all"}
+                      ? `${t(`general.selected`)}: ${checkedItems.length}`
+                      : t(`general.selectAll`)}
                   </Field>
                 </div>
               )}

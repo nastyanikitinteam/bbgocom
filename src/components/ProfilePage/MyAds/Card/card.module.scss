@@ -262,6 +262,9 @@
   .action {
     padding: 0;
   }
+  .image {
+    min-width: 200px;
+  }
 }
 
 @media (max-width: 999px) {

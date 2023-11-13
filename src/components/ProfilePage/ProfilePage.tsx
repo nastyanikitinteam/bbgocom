@@ -10,7 +10,6 @@ import Rules from "./Banner/Rules/Rules";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
-
 import AdvertisingBanner from "components/AdvertisingBanner/AdvertisingBanner";
 import Menu from "components/ProfilePage/Menu/Menu";
 import bannerImg from "images/main-page/banner.png";
@@ -50,7 +49,7 @@ const ProfilePage: FC<IProps> = ({
       },
       {
         id: 0,
-        title: "Profile",
+        title: "profile.profile",
       },
     ],
     []
@@ -70,7 +69,7 @@ const ProfilePage: FC<IProps> = ({
   return (
     <div className={styles["app"]}>
       <Head>
-        <title>{title}</title>
+        <title>{t(title)}</title>
       </Head>
       {!isMobile ? (
         <>
@@ -84,7 +83,7 @@ const ProfilePage: FC<IProps> = ({
                   data-aos="fade"
                   data-aos-delay="300"
                 >
-                  {title}
+                  {t(title)}
                 </h1>
                 <div className={styles.content}>
                   <div className={styles.left}>
@@ -132,7 +131,7 @@ const ProfilePage: FC<IProps> = ({
                     <span className={styles.icon}>
                       <DeleteIcon />
                     </span>
-                    Delete account
+                    {t(`general.deleteAccount`)}
                   </div>
                 )}
                 {isBanner && isTablet && <Rules />}
@@ -165,9 +164,9 @@ const ProfilePage: FC<IProps> = ({
         >
           <Confirm
             closeModal={() => setIsActiveDeleteModal(false)}
-            event="Delete"
-            description="Are you sure you want to delete your account?"
-            title="Delete"
+            event={t(`general.delete`)}
+            description={t(`profile.confirmDeleteAccount`)}
+            title={t(`general.delete`)}
             icon={<AvatarIcon />}
           />
         </Modal>

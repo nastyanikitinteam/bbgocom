@@ -77,7 +77,7 @@ const AccountBlock = () => {
             <span className={styles.icon}>
               <LogOutIcon />
             </span>
-            Log Out
+            {t(`general.logOut`)}
           </div>
         )}
       </div>
@@ -100,9 +100,9 @@ const AccountBlock = () => {
         >
           <Confirm
             closeModal={() => setIsActiveLogOutModal(false)}
-            event="Log out"
-            description="Are you sure you want to log out of your account?"
-            title="Log out"
+            event={t(`general.logOut`)}
+            description={t(`profile.confirmLogOut`)}
+            title={t(`general.logOut`)}
             icon={<LogOutIcon />}
           />
         </Modal>

@@ -1,8 +1,7 @@
-import { FC, useState } from "react";
-import Block from "./Block/Block";
+import { FC } from "react";
 import List from "./List/List";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import styles from "./info.module.scss";
 
 interface IProps {
@@ -22,6 +21,8 @@ const Info: FC<IProps> = ({
   setIsActiveCategory,
   isActiveCategory,
 }) => {
+  const { t } = useTranslation();
+
   const handleActiveChat = (chatId) => {
     setIsActiveChat(true);
     setIsActiveChatID(chatId);
@@ -37,7 +38,7 @@ const Info: FC<IProps> = ({
             })}
             onClick={() => setIsActiveCategory("Buy")}
           >
-            Buy
+            {t(`profile.buy`)}
           </div>
           <div
             className={cn(styles.category, {
@@ -45,7 +46,7 @@ const Info: FC<IProps> = ({
             })}
             onClick={() => setIsActiveCategory("Sell")}
           >
-            Sell
+            {t(`profile.sell`)}
           </div>
         </div>
       </div>

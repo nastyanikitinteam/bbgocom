@@ -1,6 +1,7 @@
 import { useState, FC, useEffect, useRef } from "react";
 import Link from "next/link";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 import styles from "./menu.module.scss";
 import useMediaQuery from "src/utils/useMediaQuery";
 import AdsIcon from "images/icons/ads-icon.svg";
@@ -28,7 +29,6 @@ const Menu: FC<IProps> = ({
   const [isAvatar, setIsAvatar] = useState(false);
   const isMobile = useMediaQuery(768);
   const containerRef = useRef(null);
-
   useEffect(() => {
     const onClick = (e) =>
       containerRef?.current.contains(e.target) || setIsOpenMenu(false);

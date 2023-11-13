@@ -9,8 +9,7 @@ import Confirm from "components/Modal/Confirm/Confirm";
 import Modal from "components/Modal/Modal";
 import cn from "classnames";
 import styles from "./upload-banner-form.module.scss";
-
-import CheckIcon from "images/icons/message-status-done.svg";
+import { useTranslation } from "react-i18next";
 
 import { languageList } from "config/language";
 
@@ -19,6 +18,7 @@ interface IProps {
 }
 
 const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
+  const { t } = useTranslation();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectedLang, setSelectedLang] = useState("en");
   const [selectedFile, setSelectedFile] = useState(null);
@@ -59,7 +59,7 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
           <form className={styles.container} onSubmit={handleSubmit}>
             {!isMobile && (
               <div className={styles.top}>
-                <h3 className={styles.title}>Upload banner</h3>
+                <h3 className={styles.title}>{t(`profile.uploadBanner`)}</h3>
                 {selectedFile && !isSmallDisplay && (
                   <div className={styles.buttons}>
                     <div
@@ -69,14 +69,14 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
                         form.restart();
                       }}
                     >
-                      Cancel
+                      {t(`general.cancel`)}
                     </div>
                     <button
                       type="submit"
                       className={cn("default-button sm", styles.button)}
                       aria-label={`Upload`}
                     >
-                      Upload
+                      {t(`general.upload`)}
                     </button>
                   </div>
                 )}
@@ -85,7 +85,7 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
             {isMobile && (
               <div className={cn(styles.item, styles.language)}>
                 <div className={styles.languages}>
-                  {languageList.map(({ value }) => {
+                  {languageList.map(({ value, label }) => {
                     return (
                       <div
                         className={cn(styles.lang, {
@@ -94,7 +94,7 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
                         key={value}
                         onClick={() => setSelectedLang(value)}
                       >
-                        {value}
+                        {label}
                       </div>
                     );
                   })}
@@ -107,8 +107,8 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
                 name="files"
                 //@ts-ignore
                 component={BannerFileInput}
-                title="Drag the image or <span> Open explorer</span>"
-                description={`size <100KB and file type PNG/GIF/JPEG`}
+                title={t(`profile.dragImageOrOpenExplorer`)}
+                description={t(`profile.sizeAndFileType`)}
                 isSmall
                 selectedFile={selectedFile}
                 setSelectedFile={setSelectedFile}
@@ -119,9 +119,11 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
             <div className={styles.bottom}>
               {!isMobile && (
                 <div className={cn(styles.item, styles.language)}>
-                  <h3 className={styles.subtitle}>Language banner</h3>
+                  <h3 className={styles.subtitle}>
+                    {t(`profile.languageBanner`)}
+                  </h3>
                   <div className={styles.languages}>
-                    {languageList.map(({ value }) => {
+                    {languageList.map(({ value, label }) => {
                       return (
                         <div
                           className={cn(styles.lang, {
@@ -130,7 +132,7 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
                           key={value}
                           onClick={() => setSelectedLang(value)}
                         >
-                          {value}
+                          {label}
                         </div>
                       );
                     })}
@@ -139,7 +141,7 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
               )}
 
               <div className={styles.link}>
-                <h3 className={styles.subtitle}>Add link</h3>
+                <h3 className={styles.subtitle}>{t(`profile.addLink`)}</h3>
                 <Field
                   name="link"
                   type="text"
@@ -156,14 +158,14 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
                   className={cn(styles.button, "default-button border sm")}
                   onClick={handleRemoveFile}
                 >
-                  Cancel
+                  {t(`general.cancel`)}
                 </div>
                 <button
                   type="submit"
                   className={cn("default-button sm", styles.button)}
                   aria-label={`Upload`}
                 >
-                  Upload
+                  {t(`general.upload`)}
                 </button>
               </div>
             )}
@@ -175,7 +177,7 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
                 })}
                 aria-label={`Upload`}
               >
-                Save
+                {t(`general.save`)}
               </button>
             )}
           </form>

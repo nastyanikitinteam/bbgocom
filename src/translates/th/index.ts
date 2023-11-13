@@ -7,6 +7,8 @@ import { createad } from "./createad";
 import { category } from "./category";
 import { wishlist } from "./wishlist";
 import { selectedad } from "./selectedad";
+import { profile } from "./profile";
+import { rules } from "./rules";
 
 export const thTranslates = {
   home,
@@ -18,4 +20,6 @@ export const thTranslates = {
   category,
   wishlist,
   selectedad,
+  profile,
+  rules,
 };

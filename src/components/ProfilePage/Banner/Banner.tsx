@@ -43,22 +43,21 @@ const Banner = () => {
             </div>
             <h3 className={styles.title}>
               {isOpenNewBanner
-                ? "Upload Banner"
+                ? t("profile.uploadBanner")
                 : isOpenRules
                 ? ""
-                : "Your Banners"}
+                : t("profile.yourBanners")}
             </h3>
             {!isOpenNewBanner && !isOpenRules && (
-              <a
-                href="#"
+              <div
                 className={styles.addNew}
                 onClick={() => setIsOpenNewBanner(true)}
               >
                 <span className={styles.icon}>
                   <PlusIcon />
                 </span>
-                Add New
-              </a>
+                {t("general.addNew")}
+              </div>
             )}
           </div>
           <div className={styles.main}>

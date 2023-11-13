@@ -5,12 +5,13 @@ import Checkbox from "components/FormElements/Checkbox/Checkbox";
 import cn from "classnames";
 
 import { bannerList } from "config/profilePage";
-
+import { useTranslation } from "react-i18next";
 import DotsIcon from "images/icons/dots.svg";
 
 const BannerList = () => {
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
+  const { t } = useTranslation();
 
   const handleSelectAllChange = () => {
     if (selectAllChecked || checkedItems.length > 0) {
@@ -39,7 +40,7 @@ const BannerList = () => {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>Your banners</h3>
+      <h3 className={styles.title}>{t(`profile.yourBanners`)}</h3>
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
@@ -59,11 +60,13 @@ const BannerList = () => {
                       ></Field>
                     </span>
                   </th>
-                  <th className={styles.subtitle}>File name</th>
-                  <th className={styles.subtitle}>Size</th>
-                  <th className={styles.subtitle}>Data uploaded</th>
-                  <th className={styles.subtitle}>Status</th>
-                  <th className={styles.subtitle}>Action</th>
+                  <th className={styles.subtitle}>{t(`profile.fileName`)}</th>
+                  <th className={styles.subtitle}>{t(`profile.size`)}</th>
+                  <th className={styles.subtitle}>
+                    {t(`profile.dataUploaded`)}
+                  </th>
+                  <th className={styles.subtitle}>{t(`profile.status`)}</th>
+                  <th className={styles.subtitle}>{t(`profile.action`)}</th>
                 </tr>
               </thead>
               <tbody>
@@ -95,14 +98,14 @@ const BannerList = () => {
                             className={cn(
                               styles.status,
                               {
-                                [styles.waiting]: status === "Waiting",
+                                [styles.waiting]: status.name === "waiting",
                               },
                               {
-                                [styles.rejected]: status === "Rejected",
+                                [styles.rejected]: status.name === "rejected",
                               }
                             )}
                           >
-                            {status}
+                            {t(status.value)}
                           </span>
                         </td>
                         <td className={styles.item}>

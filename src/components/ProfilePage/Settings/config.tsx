@@ -1,32 +1,32 @@
 export const AccountInfo = [
   {
     id: 0,
-    title: "Personal info",
+    title: "profile.personalInfo",
     items: [
       {
         id: 0,
-        label: "First Name",
+        label: "profile.firstName",
         name: "firstName",
         type: "text",
         value: "Kimhan",
       },
       {
         id: 1,
-        label: "Last Name",
+        label: "profile.lastName",
         name: "lastName",
         type: "text",
         value: "Nakpradith",
       },
       {
         id: 2,
-        label: "Email address",
+        label: "profile.emailAddress",
         name: "email",
         type: "email",
         value: "kimhannakpradith@gmail.com",
       },
       {
         id: 3,
-        label: "Phone",
+        label: "profile.phone",
         name: "phone",
         type: "text",
         value: "+66 358 325 66",
@@ -35,18 +35,18 @@ export const AccountInfo = [
   },
   {
     id: 1,
-    title: "Address",
+    title: "profile.address",
     items: [
       {
         id: 0,
-        label: "Country",
+        label: "profile.country",
         name: "country",
         type: "text",
         value: "Thailand",
       },
       {
         id: 1,
-        label: "City/State",
+        label: "profile.cityState",
         name: "city/state",
         type: "text",
         value: "Phuket, Western Thailand",
@@ -55,11 +55,11 @@ export const AccountInfo = [
   },
   {
     id: 2,
-    title: "Security",
+    title: "profile.security",
     items: [
       {
         id: 0,
-        label: "Password",
+        label: "profile.password",
         name: "passsword",
         type: "password",
         value: "123sdf123",

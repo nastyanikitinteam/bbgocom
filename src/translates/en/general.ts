@@ -82,6 +82,21 @@ const general = {
   message: "Message",
   messageSent: "Your message has been sent",
   myMessages: "My messages",
+  save: "Save",
+  deleteAccount: "Delete account",
+  logOut: "Log out",
+  selected: "Selected",
+  selectAll: "Select all",
+  yourAdvertisement: "Your advertisement",
+  addYourBanners: "Add your banners",
+  add: "Add",
+  deactivate: "Deactivate",
+  active: "Active",
+  view: "View",
+  ad: "ad",
+  activate: "Activate",
+  empty: "Empty",
+  subscribe: "Subscribe",
 };
 
 export { general };

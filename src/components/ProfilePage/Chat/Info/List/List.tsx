@@ -1,7 +1,6 @@
 import { FC } from "react";
 import Block from "../Block/Block";
-import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import styles from "./list.module.scss";
 
 interface IProps {
@@ -17,10 +16,12 @@ const List: FC<IProps> = ({
   isActiveChatID,
   isNewList,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
       <p className={styles.description}>
-        {isNewList ? "New Message" : "All Message"}
+        {isNewList ? t(`profile.newMessages`) : t(`profile.allMessages`)}
       </p>
       <div className={styles.list}>
         {chatLists

@@ -45,7 +45,7 @@ const Chat = () => {
             </span>
             {t(`general.back`)}
           </div>
-          <h3 className={styles.title}>My Messages</h3>
+          <h3 className={styles.title}>{t(`profile.myMessages`)}</h3>
         </div>
       )}
       {isSmallLaptop ? (
@@ -84,7 +84,9 @@ const Chat = () => {
                 <div className={styles.image}>
                   <MessagesIcon />
                 </div>
-                <h3 className={styles.subtitle}>Select a message to read it</h3>
+                <h3 className={styles.subtitle}>
+                  {t(`profile.selectMessage`)}
+                </h3>
               </div>
             )}
           </div>
