@@ -92,6 +92,7 @@ const profile = {
   excellentReviews: "ผู้เขียนนี้ได้รับรีวิวดีเยี่ยมมากมาย",
   yourReviews: "รีวิวของคุณ",
   confirmDeleteReviewedProducts: "คุณแน่ใจหรือไม่ที่จะลบผลิตภัณฑ์ที่รีวิวแล้ว?",
+  confirmDeleteNotifications: "คุณแน่ใจหรือไม่ที่จะลบการแจ้งเตือน?",
 };
 
 export { profile };

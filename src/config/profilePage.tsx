@@ -10,7 +10,7 @@ export const NotificationsList = [
     title: "<span>Kia Carnival, 2016</span> has fallen in price 🤩",
     date: "June 2023, 12:38 PM",
     button: {
-      name: "Go to Ad",
+      name: "profile.goToAd",
       link: "/",
     },
     isNew: true,
@@ -30,7 +30,7 @@ export const NotificationsList = [
     text: "",
     date: "June 2023, 12:38 PM",
     button: {
-      name: "Show",
+      name: "category.show",
       link: "/",
     },
     isNew: true,
@@ -42,7 +42,7 @@ export const NotificationsList = [
     text: "We have updated our service and now you have more opportunities to buy and sell",
     date: "June 2023, 12:38 PM",
     button: {
-      name: "Show",
+      name: "category.show",
       link: "/",
     },
     isNew: false,
@@ -53,7 +53,7 @@ export const NotificationsList = [
     title: "<span>Kia Carnival, 2016</span> has fallen in price 🤩",
     date: "June 2023, 12:38 PM",
     button: {
-      name: "Go to Ad",
+      name: "profile.goToAd",
       link: "/",
     },
     isNew: false,
@@ -73,7 +73,7 @@ export const NotificationsList = [
     text: "",
     date: "June 2023, 12:38 PM",
     button: {
-      name: "Show",
+      name: "category.show",
       link: "/",
     },
     isNew: false,
@@ -85,7 +85,7 @@ export const NotificationsList = [
     text: "We have updated our service and now you have more opportunities to buy and sell",
     date: "June 2023, 12:38 PM",
     button: {
-      name: "Show",
+      name: "category.show",
       link: "/",
     },
     isNew: false,

@@ -97,6 +97,7 @@ const profile = {
   yourReviews: "Ваши отзывы",
   confirmDeleteReviewedProducts:
     "Вы уверены, что хотите удалить отзывы о продуктах?",
+  confirmDeleteNotifications: "Вы уверены, что хотите удалить уведомления?",
 };
 
 export { profile };

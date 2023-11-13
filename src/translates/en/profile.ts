@@ -95,6 +95,7 @@ const profile = {
   yourReviews: "Your reviews",
   confirmDeleteReviewedProducts:
     "Are you sure you want to delete reviewed products?",
+  confirmDeleteNotifications: "Are you sure you want to delete notifications?",
 };
 
 export { profile };

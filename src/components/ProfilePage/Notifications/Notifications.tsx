@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { useRouter } from "next/router";
 import { Form, Field } from "react-final-form";
 import Checkbox from "components/FormElements/Checkbox/Checkbox";
@@ -6,6 +6,8 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import Block from "./Block/Block";
 import cn from "classnames";
 import styles from "./notifications.module.scss";
+import Modal from "components/Modal/Modal";
+import Confirm from "components/Modal/Confirm/Confirm";
 
 import { NotificationsList } from "config/profilePage";
 import { useTranslation } from "react-i18next";
@@ -19,6 +21,7 @@ const Notifications = () => {
   const [checkedItems, setCheckedItems] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [isShowNotification, setIsShowNotification] = useState(4);
+  const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
 
   const isMobile = useMediaQuery(768);
   const router = useRouter();
@@ -29,6 +32,12 @@ const Notifications = () => {
 
   const onSubmit = useCallback((data, form) => {
     console.log(data);
+    setCheckedItems([]);
+    setSelectAllChecked(false);
+  }, []);
+
+  const deleteItems = useCallback(() => {
+    setIsActiveDeleteModal(false);
     setCheckedItems([]);
     setSelectAllChecked(false);
   }, []);
@@ -76,19 +85,18 @@ const Notifications = () => {
                   </span>
                   {t(`general.back`)}
                 </div>
-                <h3 className={styles.title}>Notifications</h3>
+                <h3 className={styles.title}> {t(`profile.notifications`)}</h3>
                 {checkedItems.length > 0 && (
                   <div className={styles.button}>
-                    <button
-                      type="submit"
+                    <div
+                      onClick={() => setIsActiveDeleteModal(true)}
                       className={styles.deleteSelected}
-                      aria-label={`Delete`}
                     >
                       <span className={styles.icon}>
                         <DelIcon />
                       </span>
                       {t(`general.delete`)}
-                    </button>
+                    </div>
                   </div>
                 )}
               </div>
@@ -104,7 +112,7 @@ const Notifications = () => {
                     checked={checkedItems.length > 0}
                     extClassName="blackWhenChecked"
                   >
-                    Selected: {checkedItems.length}
+                    {t(`general.selected`)}: {checkedItems.length}
                   </Field>
                 </div>
               ) : (
@@ -126,13 +134,12 @@ const Notifications = () => {
 
               {checkedItems.length > 0 && !isMobile && (
                 <div className={styles.button}>
-                  <button
-                    type="submit"
+                  <div
+                    onClick={() => setIsActiveDeleteModal(true)}
                     className={cn("default-button border sm", styles.button)}
-                    aria-label={`Delete`}
                   >
-                    Delete
-                  </button>
+                    {t(`general.delete`)}
+                  </div>
                 </div>
               )}
             </div>
@@ -171,6 +178,21 @@ const Notifications = () => {
           </form>
         )}
       ></Form>
+      {isActiveDeleteModal && (
+        <Modal
+          closeModal={() => setIsActiveDeleteModal(false)}
+          type="deleteCard"
+          otherCloseIcon
+          mobileIsBottom
+        >
+          <Confirm
+            closeModal={deleteItems}
+            event={t(`general.delete`)}
+            description={t(`profile.confirmDeleteReviewedProducts`)}
+            title={t(`general.delete`)}
+          />
+        </Modal>
+      )}
     </div>
   );
 };

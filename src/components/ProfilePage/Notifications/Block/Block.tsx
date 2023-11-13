@@ -2,6 +2,7 @@ import { FC, ReactNode } from "react";
 import useMediaQuery from "src/utils/useMediaQuery";
 import styles from "./block.module.scss";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   item: any;
@@ -10,6 +11,7 @@ interface IProps {
 
 const Block: FC<IProps> = ({ item, children }) => {
   const isMobile = useMediaQuery(768);
+  const { t } = useTranslation();
 
   return (
     <div className={cn(styles.container, { [styles.new]: item.isNew })}>
@@ -44,7 +46,7 @@ const Block: FC<IProps> = ({ item, children }) => {
           href={item.button.link}
           className={cn("default-button sm", styles.button)}
         >
-          {item.button.name}
+          {t(item.button.name)}
         </a>
       )}
     </div>

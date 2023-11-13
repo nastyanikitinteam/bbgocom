@@ -5,7 +5,7 @@ import Notifications from "components/ProfilePage/Notifications/Notifications";
 
 const MyWallet: NextPage = () => {
   return (
-    <ProfilePage title="Notifications" isShortMenu>
+    <ProfilePage title="profile.notifications" isShortMenu>
       <Notifications />
     </ProfilePage>
   );
