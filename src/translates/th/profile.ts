@@ -80,6 +80,18 @@ const profile = {
   cvv: "CVV",
   validity: "อายุการใช้งาน",
   mmYY: "เดือน/ปี",
+  bad: "แย่",
+  badReviews: "ผู้เขียนนี้ได้รับรีวิวแย่มาก",
+  acceptable: "ยอมรับได้",
+  acceptableReviews: "ผู้เขียนนี้ได้รับรีวิวที่ยอมรับได้มากมาย",
+  normal: "ปกติ",
+  normalReviews: "ผู้เขียนนี้ได้รับรีวิวปกติมากมาย",
+  good: "ดี",
+  goodReviews: "ผู้เขียนนี้ได้รับรีวิวดีมากมาย",
+  excellent: "ดีเยี่ยม",
+  excellentReviews: "ผู้เขียนนี้ได้รับรีวิวดีเยี่ยมมากมาย",
+  yourReviews: "รีวิวของคุณ",
+  confirmDeleteReviewedProducts: "คุณแน่ใจหรือไม่ที่จะลบผลิตภัณฑ์ที่รีวิวแล้ว?",
 };
 
 export { profile };

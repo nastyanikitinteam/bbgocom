@@ -91,6 +91,10 @@
   max-width: 164px;
   min-width: 164px;
   display: flex;
+  &.big {
+    min-width: 200px;
+    max-width: 200px;
+  }
 }
 
 .more {

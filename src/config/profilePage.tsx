@@ -231,32 +231,32 @@ export const ratingStatus = [
   {
     rating: 1,
     icon: <BadIcon />,
-    title: "Bad",
-    description: "This author has received many bad reviews",
+    title: "profile.bad",
+    description: "profile.badReviews",
   },
   {
     rating: 2,
     icon: <AcceptableIcon />,
-    title: "Acceptable",
-    description: "This author has received many acceptable reviews",
+    title: "profile.acceptable",
+    description: "profile.acceptableReviews",
   },
   {
     rating: 3,
     icon: <NormalIcon />,
-    title: "Normal",
-    description: "This author has received many normal reviews",
+    title: "profile.normal",
+    description: "profile.normalReviews",
   },
   {
     rating: 4,
     icon: <GoodIcon />,
-    title: "Good",
-    description: "This author has received many good reviews",
+    title: "profile.good",
+    description: "profile.goodReviews",
   },
   {
     rating: 5,
     icon: <ExcellentIcon />,
-    title: "Excellent",
-    description: "This author has received many excellent reviews",
+    title: "profile.excellent",
+    description: "profile.excellentReviews",
   },
 ];
 

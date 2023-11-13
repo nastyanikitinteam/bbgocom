@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import SelectContainer from "components/Select/Select";
 import styles from "./sortby.module.scss";
 import { useTranslation } from "react-i18next";
-
+import { useRouter } from "next/router";
 import { sortList } from "./config";
 interface IProps {
   dataPrice: any;

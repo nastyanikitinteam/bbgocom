@@ -84,6 +84,19 @@ const profile = {
   cvv: "CVV",
   validity: "Срок действия",
   mmYY: "ММ/ГГ",
+  bad: "Плохо",
+  badReviews: "Этот автор получил много плохих отзывов",
+  acceptable: "Приемлемо",
+  acceptableReviews: "Этот автор получил много приемлемых отзывов",
+  normal: "Нормально",
+  normalReviews: "Этот автор получил много нормальных отзывов",
+  good: "Хорошо",
+  goodReviews: "Этот автор получил много хороших отзывов",
+  excellent: "Отлично",
+  excellentReviews: "Этот автор получил много отличных отзывов",
+  yourReviews: "Ваши отзывы",
+  confirmDeleteReviewedProducts:
+    "Вы уверены, что хотите удалить отзывы о продуктах?",
 };
 
 export { profile };

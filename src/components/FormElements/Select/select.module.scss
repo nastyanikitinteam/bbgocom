@@ -98,6 +98,13 @@
 
 .placeholder {
   color: #808080;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
 }
 
 .text {

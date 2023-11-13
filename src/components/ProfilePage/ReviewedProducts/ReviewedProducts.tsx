@@ -40,6 +40,12 @@ const ReviewedProducts = () => {
     setSelectAllChecked(false);
   }, []);
 
+  const deleteItems = useCallback(() => {
+    setIsActiveDeleteModal(false);
+    setCheckedItems([]);
+    setSelectAllChecked(false);
+  }, []);
+
   const handleCheckboxChange = (itemId) => {
     if (checkedItems.includes(itemId)) {
       setCheckedItems(checkedItems.filter((id) => id !== itemId));
@@ -81,7 +87,9 @@ const ReviewedProducts = () => {
                   </span>
                   {t(`general.back`)}
                 </div>
-                <h3 className={styles.title}>Reviewed products</h3>
+                <h3 className={styles.title}>
+                  {t(`profile.reviewedProducts`)}
+                </h3>
                 {checkedItems.length > 0 && (
                   <div
                     className={styles.button}
@@ -91,7 +99,7 @@ const ReviewedProducts = () => {
                       <span className={styles.icon}>
                         <DelIcon />
                       </span>
-                      Delete
+                      {t(`general.delete`)}
                     </div>
                   </div>
                 )}
@@ -108,7 +116,7 @@ const ReviewedProducts = () => {
                     checked={checkedItems.length > 0}
                     extClassName="blackWhenChecked"
                   >
-                    Selected: {checkedItems.length}
+                    {t(`general.selected`)}: {checkedItems.length}
                   </Field>
                 </div>
               ) : (
@@ -153,7 +161,11 @@ const ReviewedProducts = () => {
                     </>
                   )}
 
-                  <div className={styles.sort}>
+                  <div
+                    className={cn(styles.sort, {
+                      [styles.big]: router.locale === "ru",
+                    })}
+                  >
                     <SortBy
                       dataPrice={dataPrice}
                       handleClickPrice={handleClickPrice}
@@ -168,7 +180,7 @@ const ReviewedProducts = () => {
                     className={cn("default-button border sm", styles.button)}
                     onClick={() => setIsActiveDeleteModal(true)}
                   >
-                    Delete
+                    {t(`general.delete`)}
                   </div>
                 </div>
               )}
@@ -223,10 +235,10 @@ const ReviewedProducts = () => {
           mobileIsBottom
         >
           <Confirm
-            closeModal={() => setIsActiveDeleteModal(false)}
-            event="Delete"
-            description="Are you sure you want to delete reviewed products?"
-            title="Delete"
+            closeModal={deleteItems}
+            event={t(`general.delete`)}
+            description={t(`profile.confirmDeleteReviewedProducts`)}
+            title={t(`general.delete`)}
           />
         </Modal>
       )}

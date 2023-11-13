@@ -7,7 +7,7 @@ import ReviewedProducts from "components/ProfilePage/ReviewedProducts/ReviewedPr
 
 const MyWallet: NextPage = () => {
   return (
-    <ProfilePage title="Reviewed products" isShortMenu withoutInfoBlock>
+    <ProfilePage title="profile.reviewedProducts" isShortMenu withoutInfoBlock>
       <ReviewedProducts />
     </ProfilePage>
   );

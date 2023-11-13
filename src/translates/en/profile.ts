@@ -82,6 +82,19 @@ const profile = {
   cvv: "CVV",
   validity: "Validity",
   mmYY: "MM/YY",
+  bad: "Bad",
+  badReviews: "This author has received many bad reviews",
+  acceptable: "Acceptable",
+  acceptableReviews: "This author has received many acceptable reviews",
+  normal: "Normal",
+  normalReviews: "This author has received many normal reviews",
+  good: "Good",
+  goodReviews: "This author has received many good reviews",
+  excellent: "Excellent",
+  excellentReviews: "This author has received many excellent reviews",
+  yourReviews: "Your reviews",
+  confirmDeleteReviewedProducts:
+    "Are you sure you want to delete reviewed products?",
 };
 
 export { profile };

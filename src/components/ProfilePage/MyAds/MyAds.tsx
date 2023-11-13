@@ -55,6 +55,12 @@ const MyAds = () => {
     setSelectAllChecked(false);
   }, []);
 
+  const deleteItems = useCallback(() => {
+    setIsActiveDeleteModal(false);
+    setCheckedItems([]);
+    setSelectAllChecked(false);
+  }, []);
+
   const handleCheckboxChange = (itemId) => {
     if (checkedItems.includes(itemId)) {
       setCheckedItems(checkedItems.filter((id) => id !== itemId));
@@ -187,7 +193,7 @@ const MyAds = () => {
                         checked={checkedItems.length > 0}
                         extClassName="blackWhenChecked"
                       >
-                        Selected: {checkedItems.length}
+                        {t(`general.selected`)}: {checkedItems.length}
                       </Field>
                     </div>
                   ) : (
@@ -211,7 +217,11 @@ const MyAds = () => {
 
                   {checkedItems.length === 0 && (
                     <div className={styles.filter}>
-                      <div className={styles.sort}>
+                      <div
+                        className={cn(styles.sort, {
+                          [styles.big]: router.locale === "ru",
+                        })}
+                      >
                         <SortBy
                           dataPrice={dataPrice}
                           handleClickPrice={handleClickPrice}
@@ -271,7 +281,7 @@ const MyAds = () => {
           mobileIsBottom
         >
           <Confirm
-            closeModal={() => setIsActiveDeleteModal(false)}
+            closeModal={deleteItems}
             event={
               isActiveCategory === "Active"
                 ? t(`general.deactivate`)

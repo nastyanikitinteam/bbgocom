@@ -38,14 +38,14 @@ const Reviews = () => {
             </span>
             {t(`general.back`)}
           </div>
-          <h3 className={styles.title}>Reviews</h3>
+          <h3 className={styles.title}>{t(`profile.reviews`)}</h3>
         </div>
       )}
       <div className={styles.main}>
         <div className={styles.rating}>
           <Rating />
         </div>
-        <h3 className={styles.subtitle}>Your reviews</h3>
+        <h3 className={styles.subtitle}>{t(`profile.yourReviews`)}</h3>
         {reviewsList.slice(0, isShowReviews).map((item) => {
           return <Block key={item.id} item={item} />;
         })}
