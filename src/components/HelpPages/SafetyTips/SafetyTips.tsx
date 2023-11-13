@@ -1,8 +1,10 @@
-import { useMemo } from "react";
 import Layout from "../Layout/Layout";
-import { safetyTipsList } from "./config";
+import { useTranslation } from "react-i18next";
 
 const SafetyTips = () => {
+  const { t } = useTranslation();
+  const content = t("rules.safetyTipsList", { returnObjects: true });
+
   const infoContent = {
     title: "rules.questionsLeft",
     text: "rules.writeUsYourQuestion",
@@ -14,7 +16,7 @@ const SafetyTips = () => {
 
   return (
     <Layout
-      list={safetyTipsList}
+      list={Array.isArray(content) && content}
       title="rules.safetyTips"
       infoContent={infoContent}
       isBlocktype
