@@ -10,7 +10,7 @@ import Footer from "components/Footer/Footer";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import Info from "../Info/Info";
 import cn from "classnames";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 
 import styles from "./layout.module.scss";
 
@@ -127,12 +127,14 @@ const Layout: FC<IProps> = ({
                         className={styles.block}
                         key={id}
                       >
-                        <div className={styles.cover}>
-                          <img src={item.content.cover} alt="" />
-                        </div>
-                        <div className={styles.blockInfo}>
-                          <h3>{item.title}</h3>
-                          <p className={styles.text}>{item.content.text} </p>
+                        <div className={styles.blockContent}>
+                          <div className={styles.cover}>
+                            <img src={item.content.cover} alt="" />
+                          </div>
+                          <div className={styles.blockInfo}>
+                            <h3>{item.title}</h3>
+                            <p className={styles.text}>{item.content.text} </p>
+                          </div>
                         </div>
                       </div>
                     );
@@ -143,17 +145,14 @@ const Layout: FC<IProps> = ({
                   {isUserArgeement && (
                     <>
                       <p>
-                        <b>
-                          This document is an offer by BBGO LLC ("Company") to
-                          registered users ("users", "you") to enter into a
-                          framework service agreement ("Agreement",) on the
-                          terms and conditions set forth below (the "offer").
-                        </b>
+                        <b>{t("rules.documentOffer")}</b>
                       </p>
                       <p>
                         <b>
-                          The offer may contain terms as defined in the{" "}
-                          <Link href="">Terms of Use.</Link>
+                          <Trans
+                            i18nKey={"rules.offerTerms"}
+                            components={[<Link href="/" />]}
+                          />
                         </b>
                       </p>
                     </>
@@ -165,12 +164,14 @@ const Layout: FC<IProps> = ({
                         className={styles.block}
                         key={id}
                       >
-                        <h3>
-                          {id + 1}. {item.title}
-                        </h3>
-                        <div
-                          dangerouslySetInnerHTML={{ __html: item.content }}
-                        />
+                        <div className={styles.blockContent}>
+                          <h3>
+                            {id + 1}. {item.title}
+                          </h3>
+                          <div
+                            dangerouslySetInnerHTML={{ __html: item.content }}
+                          />
+                        </div>
                       </div>
                     );
                   })}
@@ -178,11 +179,7 @@ const Layout: FC<IProps> = ({
               )}
               {isUserArgeement && (
                 <div className={styles.argeementBlock}>
-                  The concluded agreement is a contract with open conditions.
-                  Essential conditions of each service transaction are formed
-                  online individually for the user with the help of the
-                  interface, through which the user selects the service and its
-                  parameters, the parties agree on the terms of the transaction.
+                  {t("rules.concludedAgreement")}
                 </div>
               )}
             </div>
