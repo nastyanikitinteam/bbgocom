@@ -14,7 +14,7 @@ import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
 
 import MailSendIcon from "images/icons/mail-send.svg";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 
 const AdvertiseForm = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -51,16 +51,16 @@ const AdvertiseForm = () => {
             <div className={styles.item}>
               <Field
                 name="name"
-                placeholder={"Enter name"}
+                placeholder={t(`help.enterName`)}
                 type="text"
                 component={FormInput}
                 extClassName="firstName"
-                label="Name"
+                label={t(`help.name`)}
               />
             </div>
             <div className={cn(styles.phone, styles.item)}>
               <div className={styles.code}>
-                <p className={styles.label}>Your phone</p>
+                <p className={styles.label}>{t(`help.yourPhone`)}</p>
                 <Field
                   name="phoneCode"
                   //@ts-ignore
@@ -81,37 +81,38 @@ const AdvertiseForm = () => {
               <div className={styles.item}>
                 <Field
                   name="company"
-                  placeholder={"Enter name"}
+                  placeholder={t(`help.enterName`)}
                   type="text"
                   component={FormInput}
                   extClassName="company"
-                  label="Company’s name"
+                  label={t(`help.companyName`)}
                 />
               </div>
               <div className={styles.item}>
                 <Field
                   name="email"
-                  placeholder={"Enter email"}
+                  placeholder={t(`help.enterEmail`)}
                   type="email"
                   component={FormInput}
                   extClassName="email"
-                  label="Email for Request"
+                  label={t(`help.emailForRequest`)}
                 />
               </div>
             </div>
             <div className={styles.item}>
               <Field
                 name="message"
-                placeholder={"Enter Message"}
+                placeholder={t(`help.enterMessage`)}
                 type="text"
                 component={Textarea}
-                label="Message"
+                label={t(`help.message`)}
               />
             </div>
             <p className={styles.description}>
-              By clicking «Post Ad» you accept the{" "}
-              <Link href="/">License Agreement</Link> and agree to the{" "}
-              <Link href="/">Privacy Policy</Link>
+              <Trans
+                i18nKey={"createad.postAdAgreement"}
+                components={[<Link href="/" />, <Link href="/trn" />]}
+              />
             </p>
             <div className={styles.buttons}>
               <div className={styles.button}>
@@ -144,9 +145,9 @@ const AdvertiseForm = () => {
         >
           <Confirm
             closeModal={() => setIsOpenModal(false)}
-            title="Successful!"
-            description="Your request has been successfully sent"
-            event="Go to Home"
+            title={t(`profile.successful`)}
+            description={t(`help.requestSentSuccess`)}
+            event={t(`help.goToHome`)}
             icon={<MailSendIcon />}
             isGreen
             goHomePage

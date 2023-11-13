@@ -192,9 +192,9 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
         >
           <Confirm
             closeModal={() => setIsOpenModal(false)}
-            title="Successful!"
-            description="Your banner has been successfully sent"
-            event="Go to Home"
+            title={t(`profile.successful`)}
+            description={t(`profile.bannerSentSuccess`)}
+            event={t(`help.goToHome`)}
             isGreen
             goHomePage
           />

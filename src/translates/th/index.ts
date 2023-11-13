@@ -9,6 +9,7 @@ import { wishlist } from "./wishlist";
 import { selectedad } from "./selectedad";
 import { profile } from "./profile";
 import { rules } from "./rules";
+import { help } from "./help";
 
 export const thTranslates = {
   home,
@@ -22,4 +23,5 @@ export const thTranslates = {
   selectedad,
   profile,
   rules,
+  help,
 };

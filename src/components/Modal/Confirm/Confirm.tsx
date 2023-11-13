@@ -59,7 +59,7 @@ const Confirm: FC<IProps> = ({
               className={cn("default-button border sm", styles.button)}
               onClick={closeModal}
             >
-              {t(`profile.cancel`)}
+              {t(`general.cancel`)}
             </div>
             <Link
               href="/"

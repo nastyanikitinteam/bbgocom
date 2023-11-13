@@ -95,6 +95,7 @@ const general = {
   activate: "เปิดใช้งาน",
   empty: "ว่างเปล่า",
   subscribe: "สมัครรับ",
+  upload: "อัปโหลด",
 };
 
 export { general };

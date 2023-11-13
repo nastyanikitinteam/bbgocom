@@ -97,6 +97,7 @@ const general = {
   activate: "Activate",
   empty: "Empty",
   subscribe: "Subscribe",
+  upload: "Upload",
 };
 
 export { general };

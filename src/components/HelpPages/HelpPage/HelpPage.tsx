@@ -16,7 +16,7 @@ const AdvertiseWithUs = () => {
       },
       {
         id: 0,
-        title: "Help",
+        title: "help.help",
       },
     ],
     []
@@ -27,7 +27,7 @@ const AdvertiseWithUs = () => {
       <div className="wrapper">
         <BreadCrumbs crumbs={breadCrumbs} />
         <div className={styles.content}>
-          <h1 className={styles.title}>Service Request Form</h1>
+          <h1 className={styles.title}>{t(`help.serviceRequestForm`)}</h1>
           <ServiceForm />
         </div>
       </div>

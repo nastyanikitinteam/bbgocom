@@ -11,7 +11,7 @@ import Textarea from "components/FormElements/Textarea/Textarea";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
 import cn from "classnames";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 import MailSendIcon from "images/icons/mail-send.svg";
 
 const ServiceForm = () => {
@@ -52,53 +52,53 @@ const ServiceForm = () => {
               <div className={styles.item}>
                 <Field
                   name="theme"
-                  placeholder={"Enter theme"}
+                  placeholder={t(`help.enterTheme`)}
                   type="text"
                   component={FormInput}
                   extClassName="theme"
-                  label="Theme of Request"
+                  label={t(`help.themeOfRequest`)}
                 />
               </div>
               <div className={styles.item}>
                 <Field
                   name="email"
-                  placeholder={"Enter email"}
+                  placeholder={t(`help.enterEmail`)}
                   type="email"
                   component={FormInput}
                   extClassName="email"
-                  label="Email for Request"
+                  label={t(`help.emailForRequest`)}
                 />
               </div>
             </div>
             <div className={styles.item}>
               <Field
                 name="name"
-                placeholder={"Enter name"}
+                placeholder={t(`help.enterName`)}
                 type="text"
                 component={FormInput}
                 extClassName="firstName"
-                label="Name"
+                label={t(`help.name`)}
               />
             </div>
 
             <div className={styles.item}>
               <Field
                 name="company"
-                placeholder={"Enter name"}
+                placeholder={t(`help.enterName`)}
                 type="text"
                 component={FormInput}
                 extClassName="company"
-                label="Company’s name"
+                label={t(`help.companyName`)}
               />
             </div>
 
             <div className={styles.item}>
               <Field
                 name="message"
-                placeholder={"Enter Message"}
+                placeholder={t(`help.enterMessage`)}
                 type="text"
                 component={Textarea}
-                label="Message"
+                label={t(`help.message`)}
               />
             </div>
             <div className={styles.item}>
@@ -106,17 +106,18 @@ const ServiceForm = () => {
                 name="files"
                 //@ts-ignore
                 component={ServiceFilesInput}
-                title="<span>Attach file</span> or drop files here"
-                description="You can upload screenshots. File requirements: pdf, png, jpeg, heic and no more than 15 mb."
+                title={t(`help.attachFile`)}
+                description={t(`help.uploadScreenshots`)}
                 isSmall
                 selectedFiles={selectedFiles}
                 setSelectedFiles={setSelectedFiles}
               />
             </div>
             <p className={styles.description}>
-              By clicking «Post Ad» you accept the{" "}
-              <Link href="/">License Agreement</Link> and agree to the{" "}
-              <Link href="/">Privacy Policy</Link>
+              <Trans
+                i18nKey={"createad.postAdAgreement"}
+                components={[<Link href="/" />, <Link href="/trn" />]}
+              />
             </p>
             <div className={styles.buttons}>
               <div className={styles.button}>
@@ -133,7 +134,7 @@ const ServiceForm = () => {
                   className={cn("default-button", styles.button)}
                   aria-label={`Send`}
                 >
-                  Send
+                  {t(`general.send`)}
                 </button>
               </div>
             </div>
@@ -149,9 +150,9 @@ const ServiceForm = () => {
         >
           <Confirm
             closeModal={() => setIsOpenModal(false)}
-            title="Successful!"
-            description="Your request has been successfully sent"
-            event="Go to Home"
+            title={t(`profile.successful`)}
+            description={t(`help.requestSentSuccess`)}
+            event={t(`help.goToHome`)}
             icon={<MailSendIcon />}
             isGreen
             goHomePage

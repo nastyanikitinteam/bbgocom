@@ -9,6 +9,7 @@ import { wishlist } from "./wishlist";
 import { selectedad } from "./selectedad";
 import { profile } from "./profile";
 import { rules } from "./rules";
+import { help } from "./help";
 
 export const enTranslates = {
   home,
@@ -21,4 +22,6 @@ export const enTranslates = {
   wishlist,
   selectedad,
   profile,
+  rules,
+  help,
 };

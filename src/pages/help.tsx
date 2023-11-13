@@ -5,7 +5,7 @@ import HelpPage from "components/HelpPages/HelpPage/HelpPage";
 
 const Help: NextPage = () => {
   return (
-    <Layout title="Help" withoutSearchBar mobileWithoutHeader>
+    <Layout title="help.help" withoutSearchBar mobileWithoutHeader>
       <HelpPage />
     </Layout>
   );

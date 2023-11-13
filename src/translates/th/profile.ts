@@ -93,6 +93,7 @@ const profile = {
   yourReviews: "รีวิวของคุณ",
   confirmDeleteReviewedProducts: "คุณแน่ใจหรือไม่ที่จะลบผลิตภัณฑ์ที่รีวิวแล้ว?",
   confirmDeleteNotifications: "คุณแน่ใจหรือไม่ที่จะลบการแจ้งเตือน?",
+  bannerSentSuccess: "แบนเนอร์ของคุณถูกส่งเรียบร้อยแล้ว",
 };
 
 export { profile };

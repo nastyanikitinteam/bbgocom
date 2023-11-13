@@ -98,6 +98,7 @@ const profile = {
   confirmDeleteReviewedProducts:
     "Вы уверены, что хотите удалить отзывы о продуктах?",
   confirmDeleteNotifications: "Вы уверены, что хотите удалить уведомления?",
+  bannerSentSuccess: "Ваш баннер был успешно отправлен",
 };
 
 export { profile };
