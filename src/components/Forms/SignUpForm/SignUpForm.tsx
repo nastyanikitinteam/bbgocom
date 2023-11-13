@@ -23,8 +23,8 @@ const SignUpForm: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
   const validationSchema = yup.object().shape({
     // phone: yup
     //   .string()
-    //   .required(`Enter phone number`)
-    //   .test("Number", "Wrong phone number format", function (value) {
+    //   .required(t(`errors.enterPhoneNumber`))
+    //  .test("Number", t(`errors.wrongPhoneNumberFormat`), function (value) {
     //     const numberPhone = /^\d{10}$/;
     //     let isValidPhone = numberPhone.test(value);
     //     if (!isValidPhone) {

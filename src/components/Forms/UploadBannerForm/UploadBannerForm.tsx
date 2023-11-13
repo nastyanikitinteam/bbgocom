@@ -30,8 +30,11 @@ const UploadBannerForm: FC<IProps> = ({ setIsOpenNewBanner }) => {
   const isMobile = useMediaQuery(768);
 
   const validationSchema = yup.object().shape({
-    files: yup.mixed().required(`Selected file`),
-    link: yup.string().url("Invalid link format").required("Link is required"),
+    files: yup.mixed().required(t(`errors.selectedFile`)),
+    link: yup
+      .string()
+      .url(t(`errors.invalidLinkFormat`))
+      .required(t(`errors.linkIsRequired`)),
   });
 
   const validate = validateForm(validationSchema);

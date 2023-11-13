@@ -42,7 +42,7 @@ const Adress: FC<IProps> = ({ setIsMapZoom, setIsCoordinates }) => {
           alert(`${t(`errors.mapErrorNoThailand`)}`);
         }
       } else {
-        alert("Adress no found");
+        alert(t(`errors.addressNotFound`));
       }
     } catch (error) {
       console.error("Troubleshooting when rectifying coordinates:", error);

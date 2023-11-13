@@ -13,13 +13,13 @@ import styles from "./profile-form.module.scss";
 const ProfileForm = () => {
   const { t } = useTranslation();
   const validationSchema = yup.object().shape({
-    firstName: yup.string().required(`Enter first name`),
-    lastName: yup.string().required(`Enter  last name`),
+    firstName: yup.string().required(t(`errors.enterFirstName`)),
+    lastName: yup.string().required(t(`errors.enterLastName`)),
     email: yup
       .string()
       .email()
-      .required(`Enter email`)
-      .test("Email", "Wrong email format", function (value) {
+      .required(t(`errors.enterEmail`))
+      .test("Email", t(`errors.wrongEmailFormat`), function (value) {
         const emailRgx = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}\b/;
         let isValidEmail = emailRgx.test(value);
         if (!isValidEmail) {
@@ -27,7 +27,7 @@ const ProfileForm = () => {
         }
         return true;
       }),
-    password: yup.string().required(`Enter password`),
+    password: yup.string().required(t(`errors.enterPassword`)),
   });
 
   const validate = validateForm(validationSchema);

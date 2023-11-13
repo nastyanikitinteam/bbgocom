@@ -74,7 +74,6 @@
       border-color: transparent;
     }
   }
-
   &:focus {
     border-color: #38953c;
   }
@@ -85,13 +84,12 @@
     letter-spacing: -0.2px;
     color: #808080;
   }
-}
-
-.errorInput {
-  border-color: #ff5a27;
-  padding-right: 50px;
-  & + .passwordShow {
-    right: 45px;
+  &.errorInput {
+    border-color: #ff5a27;
+    padding-right: 50px;
+    & + .passwordShow {
+      right: 45px;
+    }
   }
 }
 

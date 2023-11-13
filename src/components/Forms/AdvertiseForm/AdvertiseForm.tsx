@@ -22,11 +22,11 @@ const AdvertiseForm = () => {
   const { t } = useTranslation();
 
   const validationSchema = yup.object().shape({
-    name: yup.string().required(`Enter name`),
-    number: yup.string().required(`Enter phone number`),
-    company: yup.string().required(`Enter company`),
-    email: yup.string().email().required(`Enter email`),
-    message: yup.string().required(`Enter message`),
+    name: yup.string().required(t(`errors.enterName`)),
+    number: yup.string().required(t(`errors.enterPhoneNumber`)),
+    company: yup.string().required(t(`errors.enterCompany`)),
+    email: yup.string().email().required(t(`errors.enterEmail`)),
+    message: yup.string().required(t(`errors.enterMessage`)),
   });
 
   const validate = validateForm(validationSchema);

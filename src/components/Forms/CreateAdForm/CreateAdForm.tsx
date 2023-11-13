@@ -10,13 +10,14 @@ import DetailedInformation from "./DetailedInformation/DetailedInformation";
 import Location from "./Location/Location";
 import Contacts from "./Contacts/Contacts";
 import styles from "./create-ad-form.module.scss";
-
+import { useTranslation } from "react-i18next";
 interface IProps {
   currentAdInfo?: any;
   setIsOpenModal: () => void;
 }
 
 const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
+  const { t } = useTranslation();
   const [isRestartForm, setIsRestartForm] = useState(
     currentAdInfo ? false : true
   );
@@ -36,11 +37,11 @@ const createAdForm: FC<IProps> = ({ currentAdInfo, setIsOpenModal }) => {
   );
 
   const validationSchema = yup.object().shape({
-    title: yup.string().required(`Enter title`),
-    price: yup.string().required(`Enter price`),
-    description: yup.string().required(`Enter description`),
-    dealType: yup.mixed().required(`Selected option`),
-    salesman: yup.mixed().required(`Selected option`),
+    title: yup.string().required(t(`errors.enterTitle`)),
+    price: yup.string().required(t(`errors.enterPrice`)),
+    description: yup.string().required(t(`errors.enterDescription`)),
+    dealType: yup.mixed().required(t(`errors.selectedOption`)),
+    salesman: yup.mixed().required(t(`errors.selectedOption`)),
   });
 
   const validate = validateForm(validationSchema);

@@ -17,16 +17,20 @@ const ForgotPasswordForm: FC<IProps> = ({ handleForgotPasswordModal }) => {
     contact: yup
       .string()
       .required(`${t(`general.enterPhoneOrEmail`)}`)
-      .test("Number/Email", "Wrong phone/email format", function (value) {
-        const numberPhone = /^\+\d{10,13}$/;
-        const emailRgx = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}\b/;
-        let isValidEmail = emailRgx.test(value);
-        let isValidPhone = numberPhone.test(value);
-        if (!isValidEmail && !isValidPhone) {
-          return false;
+      .test(
+        "Number/Email",
+        t(`errors.wrongPhoneOrEmailFormat`),
+        function (value) {
+          const numberPhone = /^\+\d{10,13}$/;
+          const emailRgx = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}\b/;
+          let isValidEmail = emailRgx.test(value);
+          let isValidPhone = numberPhone.test(value);
+          if (!isValidEmail && !isValidPhone) {
+            return false;
+          }
+          return true;
         }
-        return true;
-      }),
+      ),
   });
 
   const validate = validateForm(validationSchema);

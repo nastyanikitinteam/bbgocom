@@ -2,7 +2,7 @@ import React, { useRef, FC, useEffect } from "react";
 import styles from "./banner-file-input.module.scss";
 import CloseIcon from "images/icons/close.svg";
 import UploadIcon from "images/icons/upload-img.svg";
-
+import { useTranslation } from "react-i18next";
 interface IProps {
   title: string;
   description: string;
@@ -27,13 +27,14 @@ const BannerFileInput: FC<IProps> = ({
 }) => {
   const fileInputRef = useRef(null);
   const maxSizeInBytes = 1024 * 1024;
+  const { t } = useTranslation();
 
   const hadleFileInput = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
 
     if (file.size > maxSizeInBytes) {
-      alert("The file is too big. Drag a file smaller than 1 MB.");
+      alert(t(`errors.fileTooBig1MB`));
       setSelectedFile(null);
       setImageDimensions({ width: 0, height: 0 });
       return;
@@ -48,7 +49,7 @@ const BannerFileInput: FC<IProps> = ({
     setSelectedFile(file);
 
     if (file.size > maxSizeInBytes) {
-      alert("The file is too big. Drag a file smaller than 1 MB.");
+      alert(t(`errors.fileTooBig1MB`));
       setSelectedFile(null);
       setImageDimensions({ width: 0, height: 0 });
       return;

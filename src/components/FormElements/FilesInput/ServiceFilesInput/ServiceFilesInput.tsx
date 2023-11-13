@@ -2,7 +2,7 @@ import React, { useRef, FC, useEffect } from "react";
 import styles from "./service-files-input.module.scss";
 import CloseIcon from "images/icons/close.svg";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 interface IProps {
   title: string;
   description: string;
@@ -23,6 +23,7 @@ const ServiceFilesInput: FC<IProps> = ({
 }) => {
   const fileInputRef = useRef(null);
   const maxSizeInBytes = 1024 * 1024;
+  const { t } = useTranslation();
 
   const hadleFileInput = (e) => {
     const newFiles = Array.from(e.target.files);
@@ -37,7 +38,7 @@ const ServiceFilesInput: FC<IProps> = ({
     newFiles.forEach((file) => {
       // @ts-ignore
       if (file.size > maxSizeInBytes) {
-        alert("The file is too big. Drag a file smaller than 1 MB.");
+        alert(t(`errors.fileTooBig1MB`));
         setSelectedFiles([]);
         return;
       }
@@ -58,7 +59,7 @@ const ServiceFilesInput: FC<IProps> = ({
     newFiles.forEach((file) => {
       // @ts-ignore
       if (file.size > maxSizeInBytes) {
-        alert("The file is too big. Drag a file smaller than 1 MB.");
+        alert(t(`errors.fileTooBig1MB`));
         setSelectedFiles([]);
         return;
       }

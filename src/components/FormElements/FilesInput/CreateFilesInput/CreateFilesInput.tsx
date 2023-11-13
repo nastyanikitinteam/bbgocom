@@ -2,7 +2,7 @@ import React, { useState, useRef, FC, useEffect, useCallback } from "react";
 import Previews from "./Previews/Previews";
 import styles from "./create-files-input.module.scss";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import UploadIcon from "images/icons/upload-img.svg";
 import CloseIcon from "images/icons/close.svg";
 
@@ -23,19 +23,20 @@ const CreateFilesInput: FC<IProps> = ({
   const maxSizeImages = 10 * 1024 * 1024;
   const maxSizeVideos = 20 * 1024 * 1024;
   const fileInputRef = useRef(null);
+  const { t } = useTranslation();
 
   const hadleFileInput = (newFiles) => {
     let updatedFiles = [...selectedFiles];
     if (updatedFiles.length + newFiles.length > 30) {
-      alert("You cannot add more than 6 files.");
+      alert(t(`errors.cannotAddMoreThan6Files`));
       return;
     }
     newFiles.forEach((file) => {
       // @ts-ignore
       if (file.type.startsWith("video/") && file.size > maxSizeVideos) {
-        alert("The file is too big. Drag a file smaller than 20 MB.");
+        alert(t(`errors.fileTooBig20MB`));
       } else if (!file.type.startsWith("video/") && file.size > maxSizeImages) {
-        alert("The file is too big. Drag a file smaller than 10 MB.");
+        alert(t(`errors.fileTooBig10MB`));
       } else {
         updatedFiles.push(file);
       }

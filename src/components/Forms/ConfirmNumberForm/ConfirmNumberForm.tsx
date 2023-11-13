@@ -24,8 +24,8 @@ const ConfirmNumberForm: FC<IProps> = ({ openNextStepSignUp }) => {
   const validationSchema = yup.object().shape({
     code: yup
       .string()
-      .required(`Enter code`)
-      .test("Code", "Wrong codet", function (value) {
+      .required(t(`errors.enterCode`))
+      .test("Code", t(`errors.wrongCode`), function (value) {
         const codeRgx = /^\d{6}$/;
         let isValidCode = codeRgx.test(value);
         if (!isValidCode) {

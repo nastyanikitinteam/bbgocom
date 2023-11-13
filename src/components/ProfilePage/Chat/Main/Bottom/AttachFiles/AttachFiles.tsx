@@ -1,8 +1,7 @@
 import React, { useState, useRef, FC, useEffect } from "react";
 import styles from "./attach-files.module.scss";
-import CloseIcon from "images/icons/close.svg";
 import AttachIcon from "images/icons/attach.svg";
-import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   setSelectedFiles: (bool: any) => void;
@@ -18,13 +17,14 @@ const AttachFiles: FC<IProps> = ({
 }) => {
   const fileInputRef = useRef(null);
   const maxSizeInBytes = 10 * 1024 * 1024;
+  const { t } = useTranslation();
 
   const hadleFileInput = (e) => {
     const newFiles = Array.from(e.target.files);
     let updatedFiles = selectedFiles;
     if (Array.isArray(updatedFiles)) {
       if (updatedFiles.length + newFiles.length > 10) {
-        alert("You can select no more than 10 files.");
+        alert(t(`errors.selectNoMoreThan10Files`));
       } else {
         updatedFiles = updatedFiles.concat(newFiles);
       }
@@ -35,7 +35,7 @@ const AttachFiles: FC<IProps> = ({
     newFiles.forEach((file) => {
       // @ts-ignore
       if (file.size > maxSizeInBytes) {
-        alert("The file is too big");
+        alert(t(`errors.fileTooBig`));
         setSelectedFiles([]);
         return;
       }

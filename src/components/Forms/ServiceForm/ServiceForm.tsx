@@ -21,11 +21,11 @@ const ServiceForm = () => {
   const router = useRouter();
 
   const validationSchema = yup.object().shape({
-    theme: yup.string().required(`Enter theme`),
-    email: yup.string().email().required(`Enter email`),
-    name: yup.string().required(`Enter name`),
-    company: yup.string().required(`Enter company`),
-    message: yup.string().required(`Enter message`),
+    theme: yup.string().required(t(`errors.enterTheme`)),
+    email: yup.string().email().required(t(`errors.enterEmail`)),
+    name: yup.string().required(t(`errors.enterName`)),
+    company: yup.string().required(t(`errors.enterCompany`)),
+    message: yup.string().required(t(`errors.enterMessage`)),
   });
 
   const validate = validateForm(validationSchema);

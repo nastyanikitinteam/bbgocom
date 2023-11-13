@@ -4,7 +4,6 @@ import Head from "next/head";
 import useMediaQuery from "src/utils/useMediaQuery";
 import Header from "./Header/Header";
 import cn from "classnames";
-
 import { useTranslation } from "react-i18next";
 
 import styles from "./error-page.module.scss";
@@ -28,16 +27,15 @@ const ErrorPage: FC<IProps> = ({ title }) => {
       <Header />
       <section className={styles.container}>
         <div className={styles.main}>
-          <h1 className={styles.title}>Oops!! Page Not Fount</h1>
+          <h1 className={styles.title}>{t(`errors.pageNotFound`)}</h1>
           <p className={styles.description}>
-            The page you're looking for is nowhere to be found. Don't worry,
-            though; we can help you get back on track.
+            {t(`errors.pageNotFoundMessage`)}
           </p>
           <div className={styles.image}>
             <img src={errorImage.src} alt="" />
           </div>
           <Link href={"/"} className={cn("default-button", styles.button)}>
-            Back to Home
+            {t(`errors.backToHome`)}
           </Link>
         </div>
       </section>

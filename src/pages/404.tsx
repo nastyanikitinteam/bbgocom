@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 
-import Layout from "components/Layout/Layout";
 import ErrorPage from "components/ErrorPage/ErrorPage";
 
 const Home: NextPage = () => {
