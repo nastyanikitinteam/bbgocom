@@ -5,6 +5,7 @@ import cn from "classnames";
 import { useTranslation } from "react-i18next";
 import CongratulationsIcon from "images/icons/congratulations.svg";
 import Share from "components/Share/Share";
+import { createad } from "src/translates/en/createad";
 
 interface IProps {
   closeModal: () => void;
@@ -16,17 +17,17 @@ const SuccessfulCreate: FC<IProps> = ({ closeModal, isCurrentAd }) => {
   return (
     <div className={styles.container}>
       <div className={styles.cancel} onClick={closeModal}>
-        Cancel
+        {t(`general.cancel`)}
       </div>
       <div className={styles.wrapper}>
         <div className={styles.icon}>
           <CongratulationsIcon />
         </div>
-        <h3 className={styles.title}>Congratulations!</h3>
+        <h3 className={styles.title}>{t("createad.congratulations")}!</h3>
         <p className={styles.text}>
           {isCurrentAd
-            ? "You have successfully changed your ad"
-            : " You have successfully placed your add!It will be active until May 12"}
+            ? t("createad.successfullyChangedAd")
+            : t("createad.successMessage")}
         </p>
         <Link href="/my-ads" className={cn("default-button sm", styles.button)}>
           {t(`profile.myAdsSecond`)}

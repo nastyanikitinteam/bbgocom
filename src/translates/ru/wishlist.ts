@@ -1,4 +1,5 @@
 const wishlist = {
+  wishlist: "Список желаемого",
   wishlists: "Списки желаемого",
   createFirstWishlist: "Создайте свой первый список желаемого",
   searchInstructions:

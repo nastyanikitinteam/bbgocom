@@ -41,6 +41,8 @@ const createad = {
   edit: "Редактировать",
   congratulations: "Поздравляю!",
   successfullyChangedAd: "Вы успешно изменили свое объявление",
+  successMessage:
+    "Вы успешно разместили свое объявление! Оно будет активным до 12 мая",
 };
 
 export { createad };

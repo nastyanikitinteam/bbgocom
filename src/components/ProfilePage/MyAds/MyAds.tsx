@@ -23,12 +23,10 @@ const MyAds = () => {
   const [selectAllChecked, setSelectAllChecked] = useState(false);
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
 
-  const [isActiveCategory, setIsActiveCategory] = useState(
-    categorieList[0].title
-  );
+  const [isActiveCategory, setIsActiveCategory] = useState(categorieList[0]);
 
   const [isActiveCategoryList, setIsActiveCategoryList] = useState(
-    adsList.filter((product) => product.adsList === isActiveCategory)
+    adsList.filter((product) => product.adsList === isActiveCategory.title)
   );
 
   const [isShowCategory, setIsShowCategory] = useState(false);
@@ -85,10 +83,10 @@ const MyAds = () => {
   };
 
   const handleCategories = useCallback(
-    (title) => {
-      setIsActiveCategory(title);
+    (item) => {
+      setIsActiveCategory(item);
       const filteredList = adsList.filter(
-        (product) => product.adsList === title
+        (product) => product.adsList === item.title
       );
       setIsActiveCategoryList(filteredList);
       setCheckedItems([]);
@@ -109,16 +107,16 @@ const MyAds = () => {
     <div className={styles.container}>
       {!isMobile && (
         <div className={styles.categories}>
-          {categorieList.map(({ id, title, name }) => {
+          {categorieList.map((item) => {
             return (
               <div
                 className={cn(styles.category, {
-                  [styles.active]: isActiveCategory === title,
+                  [styles.active]: isActiveCategory.title === item.title,
                 })}
-                key={id}
-                onClick={() => handleCategories(title)}
+                key={item.id}
+                onClick={() => handleCategories(item)}
               >
-                {t(name)} ({countList(title)})
+                {t(item.name)} ({countList(item.title)})
               </div>
             );
           })}
@@ -138,7 +136,9 @@ const MyAds = () => {
                 </div>
                 <h3 className={styles.title}>
                   {isShowCategory
-                    ? `${isActiveCategory} (${isActiveCategoryList.length})`
+                    ? `${t(isActiveCategory.name)} (${
+                        isActiveCategoryList.length
+                      })`
                     : t(`profile.myAdsSecond`)}
                 </h3>
                 {checkedItems.length > 0 && (
@@ -151,9 +151,9 @@ const MyAds = () => {
                       <span className={styles.icon}>
                         <DelIcon />
                       </span>
-                      {isActiveCategory === "Active"
+                      {/* {isActiveCategory.title === "Active"
                         ? t(`general.deactivate`)
-                        : t(`general.delete`)}
+                        : t(`general.delete`)} */}
                     </button>
                   </div>
                 )}
@@ -161,15 +161,15 @@ const MyAds = () => {
             )}
             {isMobile && !isShowCategory && (
               <div className={styles.categories}>
-                {categorieList.map(({ id, title, name }) => {
+                {categorieList.map((item) => {
                   return (
                     <div
                       className={cn(styles.category)}
-                      key={id}
-                      onClick={() => handleCategories(title)}
+                      key={item.id}
+                      onClick={() => handleCategories(item)}
                     >
                       <h3>
-                        {t(name)} ({countList(title)})
+                        {t(item.name)} ({countList(item.title)})
                       </h3>
                       <span className={styles.arrow}>
                         <ArrowSvg />
@@ -239,7 +239,7 @@ const MyAds = () => {
                         )}
                         onClick={() => setIsActiveDeleteModal(true)}
                       >
-                        {isActiveCategory === "Active"
+                        {isActiveCategory.title === "Active"
                           ? t(`general.deactivate`)
                           : t(`general.delete`)}
                       </div>
@@ -251,7 +251,7 @@ const MyAds = () => {
                     isActiveCategoryList.map((item) => {
                       return (
                         <div className={styles.block} key={item.id}>
-                          <Card item={item} type={isActiveCategory}>
+                          <Card item={item} type={isActiveCategory.title}>
                             <Field
                               name={`notification${item.id}`}
                               type="checkbox"
@@ -265,7 +265,7 @@ const MyAds = () => {
                       );
                     })
                   ) : (
-                    <NoResult isActiveCategory={isActiveCategory} />
+                    <NoResult isActiveCategory={isActiveCategory.title} />
                   )}
                 </div>
               </>
@@ -283,17 +283,17 @@ const MyAds = () => {
           <Confirm
             closeModal={deleteItems}
             event={
-              isActiveCategory === "Active"
+              isActiveCategory.title === "Active"
                 ? t(`general.deactivate`)
                 : t(`general.delete`)
             }
             description={`${t(`profile.areYouSure`)} ${
-              isActiveCategory === "Active"
+              isActiveCategory.title === "Active"
                 ? t(`profile.deactivate`)
                 : t(`profile.delete`)
             } ${t(`profile.ads`)}? `}
             title={`${
-              isActiveCategory === "Active"
+              isActiveCategory.title === "Active"
                 ? t(`general.deactivate`)
                 : t(`general.delete`)
             } ${t(`profile.ads`)}`}

@@ -5,6 +5,7 @@ import cn from "classnames";
 import useMediaQuery from "src/utils/useMediaQuery";
 import { categoriesList } from "config/categoriesList";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 import Slider from "components/Slider/Slider";
 import Modal from "components/Modal/Modal";
 import Confirm from "components/Modal/Confirm/Confirm";
@@ -25,6 +26,7 @@ interface IProps {
 
 const Card: FC<IProps> = ({ item, children, type }) => {
   const isTablet = useMediaQuery(998);
+  const router = useRouter();
   const { t } = useTranslation();
   const [isActiveDeleteModal, setIsActiveDeleteModal] = useState(false);
   const [isActiveActivateModal, setIsActiveActivateModal] = useState(false);
@@ -198,7 +200,11 @@ const Card: FC<IProps> = ({ item, children, type }) => {
               </div>
             )}
 
-            <div className={styles.buttons}>
+            <div
+              className={cn(styles.buttons, {
+                [styles.other]: router.locale === "ru",
+              })}
+            >
               <div
                 className={cn("default-button border sm", styles.button)}
                 onClick={() => setIsActiveDeleteModal(true)}

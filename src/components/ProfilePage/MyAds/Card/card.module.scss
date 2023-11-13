@@ -343,3 +343,15 @@
     margin-top: 5px;
   }
 }
+
+@media (max-width: 480px) {
+  .buttons.other {
+    flex-direction: column;
+    .button {
+      width: 100%;
+      &:first-child {
+        order: 2;
+      }
+    }
+  }
+}

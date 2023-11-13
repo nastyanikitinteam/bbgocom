@@ -1,4 +1,5 @@
 const wishlist = {
+  wishlist: "Wishlist",
   wishlists: "Wishlists",
   createFirstWishlist: "Create your first wishlist",
   searchInstructions:

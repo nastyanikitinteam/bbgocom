@@ -6,10 +6,8 @@ import useMediaQuery from "src/utils/useMediaQuery";
 import Header from "components/Header/Header";
 import HeaderMobile from "components/Header/HeaderMobile/HeaderMobile";
 import Footer from "components/Footer/Footer";
-import Modal from "components/Modal/Modal";
-import Authorization from "components/Authorization/Authorization";
 import cn from "classnames";
-
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { ILayoutReducer } from "./reducer";
 import { IFilterReducer } from "components/CategoryFilterPage/reducer";
@@ -39,6 +37,7 @@ const Layout: FC<IProps> = ({
   mobileWithoutBottomMenu,
 }) => {
   // const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [isOpenAuthorization, setIsOpenAuthorization] = useState(false);
   const isMobile = useMediaQuery(768);
   const { isHeaderHidden, isFooterHidden } = useSelector<
@@ -62,7 +61,7 @@ const Layout: FC<IProps> = ({
   return (
     <div className={styles["app"]}>
       <Head>
-        <title>{title}</title>
+        <title>{t(title)}</title>
       </Head>
       {isMobile ? (
         !mobileWithoutHeader &&

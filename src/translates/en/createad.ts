@@ -40,6 +40,8 @@ const createad = {
   edit: "Edit",
   congratulations: "Congratulations!",
   successfullyChangedAd: "You have successfully changed your ad",
+  successMessage:
+    "You have successfully placed your ad! It will be active until May 12",
 };
 
 export { createad };

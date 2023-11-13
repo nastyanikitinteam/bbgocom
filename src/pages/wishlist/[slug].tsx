@@ -9,7 +9,7 @@ const Wishlist: NextPage = () => {
 
   return (
     <Layout
-      title="Wishlist"
+      title="wishlist.wishlist"
       withoutSearchBar
       mobileWithoutHeader
       mobileWithoutFooter
