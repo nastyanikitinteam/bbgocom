@@ -4,10 +4,10 @@ import { safetyTipsList } from "./config";
 
 const SafetyTips = () => {
   const infoContent = {
-    title: "Questions left? 💬",
-    text: "Write us your question and we will try to solve it as soon as possible.",
+    title: "rules.questionsLeft",
+    text: "rules.writeUsYourQuestion",
     button: {
-      name: "Message",
+      name: "help.message",
       link: "/",
     },
   };
@@ -15,7 +15,7 @@ const SafetyTips = () => {
   return (
     <Layout
       list={safetyTipsList}
-      title="Safety tips"
+      title="rules.safetyTips"
       infoContent={infoContent}
       isBlocktype
     />

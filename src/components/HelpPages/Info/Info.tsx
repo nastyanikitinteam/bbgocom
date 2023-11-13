@@ -3,12 +3,15 @@ import Link from "next/link";
 import styles from "./info.module.scss";
 import BookIcon from "images/icons/book-icon.svg";
 import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   content: any;
 }
 
 const Info: FC<IProps> = ({ content }) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className={cn(
@@ -25,15 +28,15 @@ const Info: FC<IProps> = ({ content }) => {
       )}
 
       <div className={styles.content}>
-        <h3 className={styles.title}>{content.title}</h3>
-        <p className={styles.text}>{content.text}</p>
+        <h3 className={styles.title}>{t(content.title)}</h3>
+        <p className={styles.text}>{t(content.text)}</p>
       </div>
       {content.button && (
         <Link
           href={content.button.link}
           className={cn("default-button sm", styles.button)}
         >
-          {content.button.name}
+          {t(content.button.name)}
         </Link>
       )}
     </div>

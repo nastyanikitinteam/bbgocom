@@ -1,4 +1,4 @@
-import React, { ReactNode, FC, useEffect, useState, useMemo } from "react";
+import React, { FC, useEffect, useState, useMemo } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
@@ -90,14 +90,14 @@ const Layout: FC<IProps> = ({
   return (
     <div className={styles["app"]}>
       <Head>
-        <title>{title}</title>
+        <title>{t(title)}</title>
       </Head>
       {!isMobile && <Header withoutSearchBar />}
 
       <div className={styles.container}>
         <div className="wrapper">
           <BreadCrumbs crumbs={breadCrumbs} />
-          <h1 className={styles.title}>{title}</h1>
+          <h1 className={styles.title}>{t(title)}</h1>
           <div className={styles.content}>
             {isTablet && <Info content={infoContent} />}
             <div

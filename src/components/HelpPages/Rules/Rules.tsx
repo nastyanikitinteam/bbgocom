@@ -1,16 +1,24 @@
-import { useMemo } from "react";
 import Layout from "../Layout/Layout";
-import { rulesList } from "./config";
 import BookIcon from "images/icons/book-icon.svg";
+import { useTranslation } from "react-i18next";
 
 const Rules = () => {
+  const { t } = useTranslation();
+  const content = t("rules.rulesList", { returnObjects: true });
+
   const infoContent = {
-    title: "Welcome to BBGO! 👋",
-    text: "We're glad you're here. Settle in and have a good time, but follow our set of rules.",
+    title: "rules.welcomeToBBGO",
+    text: "rules.gladYouAreHere",
     image: <BookIcon />,
   };
 
-  return <Layout list={rulesList} title="Rules" infoContent={infoContent} />;
+  return (
+    <Layout
+      list={Array.isArray(content) && content}
+      title="general.rules"
+      infoContent={infoContent}
+    />
+  );
 };
 
 export default Rules;
