@@ -68,6 +68,12 @@
   }
 }
 
+.active {
+  a {
+    color: #5bb75f;
+  }
+}
+
 .info {
   display: flex;
   justify-content: flex-end;
@@ -114,6 +120,12 @@
     display: inline-block;
   }
   &:hover {
+    color: #5bb75f;
+    path {
+      stroke: #5bb75f;
+    }
+  }
+  &.active {
     color: #5bb75f;
     path {
       stroke: #5bb75f;

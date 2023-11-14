@@ -14,6 +14,7 @@ import LogoSvg from "images/main/logo.svg";
 import StarSvg from "images/icons/star.svg";
 import AddSvg from "images/icons/add-icon.svg";
 
+import { helpMenu } from "config/menu";
 import { languageListWithIcon } from "config/language";
 
 import cn from "classnames";
@@ -26,7 +27,6 @@ interface IProps {
 
 const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
   const { height } = useContext(ThemeContext);
-
   const [scrollTop, setScrollTop] = useState(0);
   const [isHeaderActive, setIsHeaderActive] = useState(false);
   const [isSearchBarTop, setIsSearchBarTop] = useState(false);
@@ -94,17 +94,21 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
               (!isTablet || withoutSearchBar) &&
               !isSecondHeader && (
                 <ul className={styles.list}>
-                  <li className={styles.item}>
-                    <Link href="/help">{t("general.help")}</Link>
-                  </li>
-                  <li className={styles.item}>
-                    <Link href="/advertise-with-us">
-                      {t("general.advertiseWithUs")}
-                    </Link>
-                  </li>
-                  <li className={styles.item}>
-                    <Link href="/rules">{t("general.rules")}</Link>
-                  </li>
+                  {helpMenu.map(({ id, name, link }) => {
+                    return (
+                      <li
+                        className={cn(
+                          styles.item,
+                          router.pathname === link && styles.active
+                        )}
+                        key={id}
+                      >
+                        <Link href={link} key={id}>
+                          {t(name)}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             {(isTablet || isSecondHeader) && !withoutSearchBar && (
@@ -119,11 +123,15 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
             <div className={styles.info}>
               <Link
                 href="/wishlist"
-                className={cn(styles.wishlist, {
-                  [styles.small]:
-                    !withoutSearchBar &&
-                    (isSearchBarTop || isSmallLaptop || isSecondHeader),
-                })}
+                className={cn(
+                  styles.wishlist,
+                  {
+                    [styles.small]:
+                      !withoutSearchBar &&
+                      (isSearchBarTop || isSmallLaptop || isSecondHeader),
+                  },
+                  router.pathname === "/wishlist" && styles.active
+                )}
               >
                 <span className={styles.icon}>
                   <StarSvg />

@@ -15,7 +15,7 @@ const BreadCrumbs: React.FC<IProps> = ({ crumbs = [] }) => {
 
   const { t } = useTranslation();
   return (
-    <div className={styles.container} data-aos="fade" data-aos-delay="300">
+    <div className={styles.container}>
       {!isEmpty(crumbs) &&
         !isString(crumbs) &&
         crumbs.map(({ url, title }, index) => {

@@ -17,10 +17,6 @@ const AccountBlock = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const isMobile = useMediaQuery(768);
 
-  // useEffect(() => {
-  //   console.log(isFile);
-  // }, [isFile]);
-
   const fileInputRef = useRef(null);
 
   const handleFile = (e) => {
