@@ -110,13 +110,17 @@ const MyAds = () => {
           {categorieList.map((item) => {
             return (
               <div
-                className={cn(styles.category, {
-                  [styles.active]: isActiveCategory.title === item.title,
-                })}
+                className={cn(
+                  styles.category,
+                  {
+                    [styles.active]: isActiveCategory.title === item.title,
+                  },
+                  { [styles.rus]: router.locale === "ru" }
+                )}
                 key={item.id}
                 onClick={() => handleCategories(item)}
               >
-                {t(item.name)} ({countList(item.title)})
+                {t(item.name)} <span>({countList(item.title)})</span>
               </div>
             );
           })}
