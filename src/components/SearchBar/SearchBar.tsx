@@ -219,6 +219,7 @@ const SearchBar: FC<IProps> = ({ isSecondHeader }) => {
             isSearchQuery={isSearchQuery}
             dataSearch={dataSearch}
             setDataSearch={setDataSearch}
+            handleClickSeacrh={handleClickSeacrh}
           />
           {!isSmallLaptop && (
             <Price

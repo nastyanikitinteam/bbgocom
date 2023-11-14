@@ -18,6 +18,7 @@ interface IProps {
   isSearchQuery: string;
   dataSearch: any;
   setDataSearch: (bool: string) => void;
+  handleClickSeacrh: (key: string, value: string) => void;
 }
 
 const SearchLocation: FC<IProps> = ({
@@ -30,6 +31,7 @@ const SearchLocation: FC<IProps> = ({
   isSearchQuery,
   dataSearch,
   setDataSearch,
+  handleClickSeacrh,
 }) => {
   const { t } = useTranslation();
 
@@ -55,6 +57,7 @@ const SearchLocation: FC<IProps> = ({
 
   const onChangeSearchInput = (event) => {
     setIsSearchQuery(event.target.value);
+    handleClickSeacrh("nameOfSearch", event.target.value);
     showActiveBlock(event.target.value, "Search", "SearchHistory");
   };
 
@@ -76,6 +79,7 @@ const SearchLocation: FC<IProps> = ({
   const cleanSearchInput = () => {
     setIsActiveChoice("SearchHistory");
     setIsSearchQuery("");
+    console.log(12);
     let obj = dataSearch;
     delete obj.nameOfSearch;
     setDataSearch(obj);
@@ -102,7 +106,6 @@ const SearchLocation: FC<IProps> = ({
           dataSearch.nameOfSearch ? dataSearch.nameOfSearch : ""
         );
     }
-    //
     setIsActive(
       isActiveChoice === "Search" ||
         isActiveChoice === "Location" ||
