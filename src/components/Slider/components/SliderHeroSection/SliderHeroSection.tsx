@@ -7,14 +7,9 @@ interface IProps {
   param: any;
 }
 
-// interface IProp {
-//   name: string;
-//   link: string;
-// }
-// backgroundMobile;
-
 const Slide: FC<IProps> = ({ param }) => {
-  const isMobile = useMediaQuery(400);
+  const isMobile = useMediaQuery(480);
+
   return (
     <div
       className={styles.container}

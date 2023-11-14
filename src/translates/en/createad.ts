@@ -1,4 +1,9 @@
+import bannerImg from "images/create-an-add/hero-banner.jpg";
+import bannerEditImg from "images/create-an-add/hero-banner-edit.jpg";
+
 const createad = {
+  banner: bannerImg.src,
+  bannerEdit: bannerEditImg.src,
   newAd: "New Ad",
   chooseCategory: "Choose category",
   category: "Category",

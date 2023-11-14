@@ -1,7 +1,9 @@
-import HeroImgEn from "images/main-page/slide-img-1.png";
+import HeroImgEn from "images/main-page/slide-img-1.jpg";
+import HeroImgEnMobile from "images/main-page/slide-img-1-mobile.jpg";
 
 const home = {
   bannerFirst: HeroImgEn.src,
+  bannerFirstMobile: HeroImgEnMobile.src,
   popularCategory: "Popular Categories",
   recommended: "Recommended",
   category: "Categories",

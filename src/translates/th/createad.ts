@@ -1,4 +1,9 @@
+import bannerImg from "images/create-an-add/hero-banner-th.jpg";
+import bannerEditImg from "images/create-an-add/hero-banner-edit-th.jpg";
+
 const createad = {
+  banner: bannerImg.src,
+  bannerEdit: bannerEditImg.src,
   newAd: "โฆษณาใหม่",
   chooseCategory: "เลือกหมวดหมู่",
   category: "หมวดหมู่",

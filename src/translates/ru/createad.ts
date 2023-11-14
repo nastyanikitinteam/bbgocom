@@ -1,4 +1,9 @@
+import bannerImg from "images/create-an-add/hero-banner-ru.jpg";
+import bannerEditImg from "images/create-an-add/hero-banner-edit-ru.jpg";
+
 const createad = {
+  banner: bannerImg.src,
+  bannerEdit: bannerEditImg.src,
   newAd: "Новое объявление",
   chooseCategory: "Выберите категорию",
   category: "Категория",

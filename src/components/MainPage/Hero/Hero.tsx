@@ -1,12 +1,7 @@
-import { useMemo, useEffect } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import Slider from "../../Slider/Slider";
 import styles from "./hero.module.scss";
-import cn from "classnames";
-import SearchBar from "components/SearchBar/SearchBar";
-
-import slideBg1 from "images/main-page/slide-img-1.png";
-import slideBg1Mobile from "images/main-page/slide-img-1-mobile.png";
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -16,7 +11,7 @@ const Hero = () => {
       {
         id: 0,
         background: t(`home.bannerFirst`),
-        backgroundMobile: slideBg1Mobile.src,
+        backgroundMobile: t(`home.bannerFirstMobile`),
         button: {
           name: t(`general.createButton`),
           link: "/create-an-ad",
@@ -47,9 +42,6 @@ const Hero = () => {
         data-aos-delay="300"
       >
         <Slider slides={sliderList} isHeroSection />
-        {/* <div className={styles.searchBar}>
-          <SearchBar />
-        </div> */}
       </div>
     </section>
   );

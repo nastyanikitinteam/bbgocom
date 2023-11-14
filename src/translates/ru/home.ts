@@ -1,7 +1,9 @@
 import HeroImgRu from "images/main-page/slide-img-1-ru.jpg";
+import HeroImgRuMobile from "images/main-page/slide-img-1-ru-mobile.jpg";
 
 const home = {
   bannerFirst: HeroImgRu.src,
+  bannerFirstMobile: HeroImgRuMobile.src,
   popularCategory: "Популярные категории",
   recommended: "Рекомендации",
   category: "Категории",

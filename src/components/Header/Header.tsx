@@ -164,13 +164,13 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
                 className={cn(
                   "default-button sm",
                   {
-                    onlyIcon: isSearchBarTop || isTablet || isSecondHeader,
+                    onlyIcon: isSearchBarTop || isSmallLaptop || isSecondHeader,
                   },
                   styles.button
                 )}
                 onClick={() => setIsOpenAuthorization(true)}
               >
-                {isSearchBarTop || isTablet || isSecondHeader ? (
+                {isSearchBarTop || isSmallLaptop || isSecondHeader ? (
                   <AddSvg />
                 ) : (
                   t(`general.createButton`)

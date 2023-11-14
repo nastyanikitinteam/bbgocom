@@ -149,6 +149,14 @@
   transition: box-shadow 0.25s ease-in;
 }
 
+@media (max-width: 1200px) and (min-width: 1101px) {
+  .list {
+    margin-left: 15px;
+  }
+  .item {
+    margin-left: 20px;
+  }
+}
 @media (max-width: 998px) {
   .logoDescription {
     display: none;

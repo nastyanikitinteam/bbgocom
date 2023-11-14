@@ -1,7 +1,9 @@
 import HeroImgTh from "images/main-page/slide-img-1-th.jpg";
+import HeroImgThMobile from "images/main-page/slide-img-1-th-mobile.jpg";
 
 const home = {
   bannerFirst: HeroImgTh.src,
+  bannerFirstMobile: HeroImgThMobile.src,
   popularCategory: "หมวดหมู่ยอดนิยม",
   recommended: "แนะนำ",
   category: "หมวดหมู่",

@@ -37,7 +37,11 @@ const CreateAnAd: FC<IProps> = ({ currentAdInfo }) => {
             <BreadCrumbs crumbs={breadCrumbs} />
             <div className={styles.banner}>
               <img
-                src={currentAdInfo ? bannerEditImg.src : bannerImg.src}
+                src={
+                  currentAdInfo
+                    ? t("createad.bannerEdit")
+                    : t("createad.banner")
+                }
                 alt=""
               />
             </div>
