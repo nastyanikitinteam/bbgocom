@@ -10,12 +10,14 @@ const Rules: FC<IProps> = ({ setIsOpenRules }) => {
   const items = t("rules.itemsBanners", { returnObjects: true });
   console.log(items);
   return (
+    Array.isArray(items) &&
     items.length > 0 && (
       <div className={styles.container}>
         <h3 className={styles.title}>{t(`rules.rulesAndRequirements`)}</h3>
         <ol className={styles.list}>
-          {Array.isArray(items) &&
-            items.map((item, index) => <li key={index}>{item}</li>)}
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
         </ol>
       </div>
     )

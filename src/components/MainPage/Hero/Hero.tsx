@@ -19,15 +19,18 @@ const Hero = () => {
       },
       {
         id: 1,
-        background: t(`heroImg`),
+        background: t(`home.bannerFirst`),
+        backgroundMobile: t(`home.bannerFirstMobile`),
       },
       {
         id: 2,
-        background: t(`heroImg`),
+        background: t(`home.bannerFirst`),
+        backgroundMobile: t(`home.bannerFirstMobile`),
       },
       {
         id: 3,
-        background: t(`heroImg`),
+        background: t(`home.bannerFirst`),
+        backgroundMobile: t(`home.bannerFirstMobile`),
       },
     ],
     [t]
