@@ -36,8 +36,9 @@ const Menu: FC<IProps> = ({
   const { t } = useTranslation();
 
   useEffect(() => {
-    const onClick = (e) =>
+    const onClick = (e) => {
       containerRef?.current.contains(e.target) || setIsOpenMenu(false);
+    };
     document.addEventListener("click", onClick);
     return () => !isMobile && document.removeEventListener("click", onClick);
   }, [isMobile]);

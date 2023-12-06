@@ -12,6 +12,7 @@
   min-width: 294px;
   max-height: 75vh;
   overflow-y: auto;
+  z-index: 2;
   // transition: all 0.25s ease-in;
   @media (max-width: 1500px) {
     right: 20px;
