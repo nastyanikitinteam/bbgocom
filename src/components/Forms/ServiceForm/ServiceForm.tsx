@@ -22,9 +22,15 @@ const ServiceForm = () => {
 
   const validationSchema = yup.object().shape({
     theme: yup.string().required(t(`errors.enterTheme`)),
-    email: yup.string().email().required(t(`errors.enterEmail`)),
+    email: yup
+      .string()
+      .email(t(`errors.wrongEmailFormat`))
+      .test("contains-dot", t(`errors.wrongEmailFormat`), (value) => {
+        const [localPart, domainPart] = value.split("@");
+        return domainPart.includes(".");
+      })
+      .required(t(`errors.enterEmail`)),
     name: yup.string().required(t(`errors.enterName`)),
-    company: yup.string().required(t(`errors.enterCompany`)),
     message: yup.string().required(t(`errors.enterMessage`)),
   });
 
@@ -83,17 +89,6 @@ const ServiceForm = () => {
 
             <div className={styles.item}>
               <Field
-                name="company"
-                placeholder={t(`help.enterName`)}
-                type="text"
-                component={FormInput}
-                extClassName="company"
-                label={t(`help.companyName`)}
-              />
-            </div>
-
-            <div className={styles.item}>
-              <Field
                 name="message"
                 placeholder={t(`help.enterMessage`)}
                 type="text"
@@ -111,6 +106,7 @@ const ServiceForm = () => {
                 isSmall
                 selectedFiles={selectedFiles}
                 setSelectedFiles={setSelectedFiles}
+                label={t(`help.attachedFiles`)}
               />
             </div>
             <p className={styles.description}>

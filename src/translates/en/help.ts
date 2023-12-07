@@ -21,6 +21,7 @@ const help = {
   goToHome: "Go to Home",
   displayAdvertisingRequest:
     "If you need display advertising, please fill out the form below. We will determine your needs and form a suitable offer. If you would like to advertise your product or service, you can do so <0>here</0>. If you have a question about working with the service, you can find the answer <1>here</1>.",
+  attachedFiles: "Attached Files",
 };
 
 export { help };

@@ -7,6 +7,7 @@ interface IProps {
   title: string;
   description: string;
   isSmall?: boolean;
+  label?: string;
   setSelectedFiles: (bool: any) => void;
   selectedFiles: any;
   input;
@@ -16,6 +17,7 @@ const ServiceFilesInput: FC<IProps> = ({
   title,
   description,
   isSmall,
+  label,
   setSelectedFiles,
   selectedFiles,
   input,
@@ -78,56 +80,59 @@ const ServiceFilesInput: FC<IProps> = ({
   }, [selectedFiles]);
 
   return (
-    <div
-      className={cn(styles.container, { [styles.small]: isSmall })}
-      onDragOver={(e) => e.preventDefault()}
-      onDrop={handleDrop}
-    >
-      <input
-        type="file"
-        accept=".jpg, .jpeg, .png"
-        onChange={hadleFileInput}
-        ref={fileInputRef}
-        multiple
-        className={styles.input}
-        {...rest}
-      />
-      {selectedFiles.length > 0 ? (
-        <div className={styles.files}>
-          {selectedFiles.map((file, index) => (
-            <div className={styles.preview} key={index}>
-              <img src={URL.createObjectURL(file)} alt={file.name} />
-              <button
-                onClick={() => handleRemoveFile(index)}
-                className={styles.delete}
-              >
-                <span className={styles.deleteIcon}>
-                  <CloseIcon />
-                </span>
-              </button>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <>
-          <div
-            className={styles.drop}
-            onClick={() => fileInputRef.current.click()}
-          >
-            <div className={styles.info}>
-              <h3
-                className={styles.title}
-                dangerouslySetInnerHTML={{ __html: title }}
-              />
-              <p
-                className={styles.description}
-                dangerouslySetInnerHTML={{ __html: description }}
-              />
-            </div>
+    <>
+      {label && <label className={styles.label}>{label}</label>}
+      <div
+        className={cn(styles.container, { [styles.small]: isSmall })}
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={handleDrop}
+      >
+        <input
+          type="file"
+          accept=".jpg, .jpeg, .png"
+          onChange={hadleFileInput}
+          ref={fileInputRef}
+          multiple
+          className={styles.input}
+          {...rest}
+        />
+        {selectedFiles.length > 0 ? (
+          <div className={styles.files}>
+            {selectedFiles.map((file, index) => (
+              <div className={styles.preview} key={index}>
+                <img src={URL.createObjectURL(file)} alt={file.name} />
+                <button
+                  onClick={() => handleRemoveFile(index)}
+                  className={styles.delete}
+                >
+                  <span className={styles.deleteIcon}>
+                    <CloseIcon />
+                  </span>
+                </button>
+              </div>
+            ))}
           </div>
-        </>
-      )}
-    </div>
+        ) : (
+          <>
+            <div
+              className={styles.drop}
+              onClick={() => fileInputRef.current.click()}
+            >
+              <div className={styles.info}>
+                <h3
+                  className={styles.title}
+                  dangerouslySetInnerHTML={{ __html: title }}
+                />
+                <p
+                  className={styles.description}
+                  dangerouslySetInnerHTML={{ __html: description }}
+                />
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

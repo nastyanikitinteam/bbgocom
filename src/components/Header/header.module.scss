@@ -71,11 +71,10 @@
       color: #5bb75f;
     }
   }
-}
-
-.active {
-  a {
-    color: #5bb75f;
+  &.active {
+    a {
+      color: #5bb75f;
+    }
   }
 }
 

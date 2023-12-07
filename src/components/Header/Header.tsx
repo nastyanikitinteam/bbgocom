@@ -65,7 +65,7 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
     } else {
       setIsHeaderActive(false);
     }
-    if (scrollTop > height) {
+    if (scrollTop > height && !withoutSearchBar) {
       setIsSearchBarTop(true);
     } else {
       setIsSearchBarTop(false);
