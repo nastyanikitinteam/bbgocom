@@ -15,9 +15,10 @@ import LogoSvg from "images/main/logo.svg";
 
 interface IProps {
   setIsNoLogin?: () => void;
+  setIsOpenProfileMenu: () => void;
 }
 
-const Authorization: FC<IProps> = ({ setIsNoLogin }) => {
+const Authorization: FC<IProps> = ({ setIsNoLogin, setIsOpenProfileMenu }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [isSignUp, setIsSignUp] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
@@ -87,12 +88,14 @@ const Authorization: FC<IProps> = ({ setIsNoLogin }) => {
             changeActiveAuth={changeActiveAuth}
             handleForgotPasswordModal={handleForgotPasswordModal}
             setIsNoLogin={setIsNoLogin}
+            setIsOpenProfileMenu={setIsOpenProfileMenu}
           />
         )}
         {isSignUp && (
           <SignUp
             changeActiveAuth={changeActiveAuth}
             openNextStepSignUp={openNextStepSignUp}
+            setIsOpenProfileMenu={setIsOpenProfileMenu}
           />
         )}
         {isForgotPassword && (
@@ -102,9 +105,14 @@ const Authorization: FC<IProps> = ({ setIsNoLogin }) => {
         )}
 
         {isConfirmNumber && (
-          <ConfirmNumber openNextStepSignUp={openNextStepSignUp} />
+          <ConfirmNumber
+            openNextStepSignUp={openNextStepSignUp}
+            setIsOpenProfileMenu={setIsOpenProfileMenu}
+          />
         )}
-        {isRegisterStep && <Profile />}
+        {isRegisterStep && (
+          <Profile setIsOpenProfileMenu={setIsOpenProfileMenu} />
+        )}
       </div>
     </div>
   );

@@ -1,11 +1,8 @@
 import { useState, useEffect, FC } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  IFilterReducer,
-  setIsCategoryFilterOpen,
-} from "components/CategoryFilterPage/reducer";
+import { useSelector } from "react-redux";
+import { IFilterReducer } from "components/CategoryFilterPage/reducer";
 import { IReducer } from "../../../reducers";
 import styles from "./header-mobile.module.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
@@ -88,7 +85,10 @@ const HeaderMobile: FC<IProps> = ({
           (!isNoLogin ? (
             <MobileMenu />
           ) : (
-            <Authorization setIsNoLogin={() => setIsNoLogin(false)} />
+            <Authorization
+              setIsNoLogin={() => setIsNoLogin(false)}
+              setIsOpenProfileMenu={() => setIsOpenProfileMenu(false)}
+            />
           ))}
         {!mobileWithoutSearchBar && <SearchBar />}
       </div>

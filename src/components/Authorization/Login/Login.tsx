@@ -10,19 +10,21 @@ interface IProps {
   changeActiveAuth: () => void;
   handleForgotPasswordModal: () => void;
   setIsNoLogin?: () => void;
+  setIsOpenProfileMenu: () => void;
 }
 
 const Login: FC<IProps> = ({
   changeActiveAuth,
   handleForgotPasswordModal,
   setIsNoLogin,
+  setIsOpenProfileMenu,
 }) => {
   const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
       <>
-        <div className={styles.logo}>
+        <div className={styles.logo} onClick={setIsOpenProfileMenu}>
           <LogoSvg />
         </div>
         <h2 className={styles.title}>{t(`general.logIn`)}</h2>

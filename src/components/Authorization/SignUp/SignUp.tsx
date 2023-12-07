@@ -9,13 +9,18 @@ import { useTranslation } from "react-i18next";
 interface IProps {
   changeActiveAuth: () => void;
   openNextStepSignUp: () => void;
+  setIsOpenProfileMenu: () => void;
 }
 
-const SignUp: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
+const SignUp: FC<IProps> = ({
+  changeActiveAuth,
+  openNextStepSignUp,
+  setIsOpenProfileMenu,
+}) => {
   const { t } = useTranslation();
   return (
     <div className={styles.container}>
-      <div className={styles.logo}>
+      <div className={styles.logo} onClick={setIsOpenProfileMenu}>
         <LogoSvg />
       </div>
       <h2 className={styles.title}>{t(`general.signUp`)}</h2>

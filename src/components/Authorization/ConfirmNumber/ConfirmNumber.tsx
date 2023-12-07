@@ -9,13 +9,14 @@ import LogoSvg from "images/main/logo.svg";
 
 interface IProps {
   openNextStepSignUp: () => void;
+  setIsOpenProfileMenu: () => void;
 }
 
-const Login: FC<IProps> = ({ openNextStepSignUp }) => {
+const Login: FC<IProps> = ({ openNextStepSignUp, setIsOpenProfileMenu }) => {
   const { t } = useTranslation();
   return (
     <div className={styles.container}>
-      <div className={styles.logo}>
+      <div className={styles.logo} onClick={setIsOpenProfileMenu}>
         <LogoSvg />
       </div>
       <h2 className={styles.title}>{t(`general.confirmNumber`)}</h2>
