@@ -93,9 +93,6 @@ const PopularCategory = () => {
           <div
             className={styles.all}
             onClick={() => setIsViewAll((prev) => !prev)}
-            data-aos-anchor-placement="center-bottom"
-            data-aos="fade-up"
-            data-aos-delay="300"
           >
             {isViewAll ? t(`general.hide`) : t(`general.viewAll`)}
             <span> {t(`home.category`)}</span>

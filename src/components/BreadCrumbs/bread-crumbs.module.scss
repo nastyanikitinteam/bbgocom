@@ -12,8 +12,10 @@
   gap: 5px;
 }
 
-.link:hover {
-  color: #38953c;
+@media (hover: hover) {
+  .link:hover {
+    color: #38953c;
+  }
 }
 
 .icon {

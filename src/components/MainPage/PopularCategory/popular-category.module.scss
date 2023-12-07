@@ -21,11 +21,12 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  // transition: color 0.25s ease-in;
+  transition: color 0.25s ease-in;
   color: #808080;
-  margin-top: 48px;
   white-space: nowrap;
   gap: 5px;
+  width: max-content;
+  margin: 48px auto 0;
   .icon {
     display: flex;
     justify-content: center;
@@ -48,10 +49,12 @@
   .open {
     transform: rotate(-180deg);
   }
-  &:hover {
-    color: #5bb75f;
-    path {
-      stroke: #5bb75f;
+  @media (hover: hover) {
+    &:hover {
+      color: #5bb75f;
+      path {
+        stroke: #5bb75f;
+      }
     }
   }
 }
@@ -90,6 +93,7 @@
   .all {
     margin-top: 5px;
     margin-left: 15px;
+    margin-right: 0;
   }
   .title {
     margin-bottom: 0;
@@ -113,7 +117,6 @@
   .top {
     padding: 0 10px;
   }
-
   .blocks {
     padding: 0 10px 20px;
   }

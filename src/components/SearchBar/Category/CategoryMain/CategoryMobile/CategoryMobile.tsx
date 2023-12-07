@@ -58,11 +58,14 @@ const CategoryMobile: FC<IProps> = ({
     const filteredCategoryList = categoriesList.filter(
       ({ id }) => id === listId
     );
+    console.log(filteredCategoryList, "filteredCategoryList");
+
     setIsCategoryList(filteredCategoryList[0]);
   }, []);
 
   const handleSubcategoryList = useCallback(
     (listId) => {
+      console.log("setIsSubcategoryList");
       //@ts-ignore
       const filteredSubcategories = isCategoryList.subcategories.filter(
         (subcategory) => subcategory.id === listId
@@ -74,11 +77,15 @@ const CategoryMobile: FC<IProps> = ({
 
   useEffect(() => {
     console.log(
-      isCategoryList?.title,
+      isCategoryList,
       isSubcategoryList?.title,
       isSubcategoryItem?.title
     );
   }, [isCategoryList, isSubcategoryList, isSubcategoryItem]);
+
+  // useEffect(() => {
+  //   console.log(categoriesList, "categoriesLists");
+  // }, [categoriesList]);
 
   return (
     <div className={styles.container}>
@@ -139,7 +146,7 @@ const CategoryMobile: FC<IProps> = ({
                 </div>
               </Link>
               {Object.entries(isSubcategoryList).length === 0
-                ? isCategoryList?.items?.map(({ id, title }) => {
+                ? isCategoryList?.subcategories?.map(({ id, title }) => {
                     return (
                       <div
                         className={styles.item}

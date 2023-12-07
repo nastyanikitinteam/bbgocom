@@ -16,9 +16,10 @@
   cursor: pointer;
   transition: color 0.25s ease-in;
   color: #808080;
-  margin-top: 50px;
   white-space: nowrap;
   gap: 5px;
+  width: max-content;
+  margin: 50px auto 0;
   .icon {
     display: flex;
     justify-content: center;
@@ -36,12 +37,15 @@
   .open {
     transform: rotate(-180deg);
   }
-  &:hover {
-    color: #5bb75f;
-    path {
-      stroke: #5bb75f;
+  @media (hover: hover) {
+    &:hover {
+      color: #5bb75f;
+      path {
+        stroke: #5bb75f;
+      }
     }
   }
+
   @media (max-width: 768px) {
     margin-top: 25px;
   }
