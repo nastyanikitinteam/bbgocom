@@ -144,9 +144,9 @@ const Layout: FC<IProps> = ({
                 <div className={styles.sections}>
                   {isUserArgeement && (
                     <>
-                      <p>
+                      {/* <p>
                         <b>{t("rules.documentOffer")}</b>
-                      </p>
+                      </p> */}
                       <p>
                         <b>
                           <Trans

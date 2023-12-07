@@ -400,10 +400,8 @@ const rules = {
     `,
     },
   ],
-  documentOffer:
-    "This document is an offer by BBGO LLC ('Company') to registered users ('users', 'you') to enter into a framework service agreement ('Agreement') on the terms and conditions set forth below (the 'offer').",
   offerTerms:
-    "The offer may contain terms as defined in the <0>Terms of Use</0>.",
+    "This document is an offer by BBGO LLC ('Company') to registered users ('users', 'you') to enter into a framework service agreement ('Agreement') on the terms and conditions set forth below (the 'offer'). <br><br> The offer may contain terms as defined in the <0>Terms of Use</0>.",
   concludedAgreement:
     "The concluded agreement is a contract with open conditions. Essential conditions of each service transaction are formed online individually for the user with the help of the interface, through which the user selects the service and its parameters, the parties agree on the terms of the transaction.",
 };
