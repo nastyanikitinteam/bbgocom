@@ -25,7 +25,14 @@ const AdvertiseForm = () => {
     name: yup.string().required(t(`errors.enterName`)),
     number: yup.string().required(t(`errors.enterPhoneNumber`)),
     company: yup.string().required(t(`errors.enterCompany`)),
-    email: yup.string().email().required(t(`errors.enterEmail`)),
+    email: yup
+      .string()
+      .email(t(`errors.wrongEmailFormat`))
+      .test("contains-dot", t(`errors.wrongEmailFormat`), (value) => {
+        const [localPart, domainPart] = value.split("@");
+        return domainPart.includes(".");
+      })
+      .required(t(`errors.enterEmail`)),
     message: yup.string().required(t(`errors.enterMessage`)),
   });
 
@@ -71,7 +78,8 @@ const AdvertiseForm = () => {
                 <Field
                   name="number"
                   type="text"
-                  placeholder={t(`general.phone`)}
+                  // placeholder={t(`general.phone`)}
+                  placeholder="00 000-00-00"
                   component={NumberInput}
                   extClassName="noIcon"
                 />

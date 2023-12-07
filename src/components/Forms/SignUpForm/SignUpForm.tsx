@@ -58,7 +58,8 @@ const SignUpForm: FC<IProps> = ({ changeActiveAuth, openNextStepSignUp }) => {
               <Field
                 name="phone"
                 type="text"
-                placeholder={t(`general.phone`)}
+                // placeholder={t(`general.phone`)}
+                placeholder="00 000-00-00"
                 component={NumberInput}
                 extClassName="noIcon"
               />
