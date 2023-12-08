@@ -14,11 +14,9 @@ const Product: NextPage = () => {
     useState<ICategory>(initialCategory);
 
   useEffect(() => {
-    const { t } = useTranslation();
     const currentItem = categoriesList.filter(
       ({ slug }) => slug === router.query.products
     );
-
     // @ts-ignore
     setIsCurrentList(currentItem[0] || initialCategory);
   }, [router.query.products]);

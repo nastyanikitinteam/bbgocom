@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 interface IProps {
   changeActiveAuth: () => void;
   openNextStepSignUp: () => void;
-  setIsOpenProfileMenu: () => void;
+  setIsOpenProfileMenu?: () => void;
 }
 
 const SignUp: FC<IProps> = ({

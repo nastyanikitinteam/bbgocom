@@ -39,12 +39,15 @@ const Tags: FC<IProps> = ({ isCurrentList }) => {
             {isCurrentList.title}
           </h2>
           {isMobile && (
-            <div className={styles.all}>
+            <Link
+              href={`${isbaseUrl}/categories/${isCurrentList.slug}`}
+              className={styles.all}
+            >
               {t(`general.viewAll`)}
               <span className={styles.icon}>
                 <ArrowSvg />
               </span>
-            </div>
+            </Link>
           )}
         </div>
         <div

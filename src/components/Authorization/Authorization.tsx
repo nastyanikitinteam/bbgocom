@@ -15,7 +15,7 @@ import LogoSvg from "images/main/logo.svg";
 
 interface IProps {
   setIsNoLogin?: () => void;
-  setIsOpenProfileMenu: () => void;
+  setIsOpenProfileMenu?: () => void;
 }
 
 const Authorization: FC<IProps> = ({ setIsNoLogin, setIsOpenProfileMenu }) => {

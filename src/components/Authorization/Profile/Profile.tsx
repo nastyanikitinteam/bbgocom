@@ -7,7 +7,7 @@ import styles from "./profile.module.scss";
 import LogoSvg from "images/main/logo.svg";
 
 interface IProps {
-  setIsOpenProfileMenu: () => void;
+  setIsOpenProfileMenu?: () => void;
 }
 
 const Profile: FC<IProps> = ({ setIsOpenProfileMenu }) => {

@@ -64,7 +64,7 @@ const Testimonials = () => {
       <div className="wrapper">
         <h2
           className={cn("title", styles.title)}
-          data-aos-anchor-placement="center-bottom"
+          data-aos-anchor-placement="top-bottom"
           data-aos="fade-up"
           data-aos-delay="300"
         >
@@ -72,7 +72,7 @@ const Testimonials = () => {
         </h2>
         <div
           className={styles.slider}
-          data-aos-anchor-placement="center-bottom"
+          data-aos-anchor-placement="top-bottom"
           data-aos="fade-up"
           data-aos-delay="400"
         >

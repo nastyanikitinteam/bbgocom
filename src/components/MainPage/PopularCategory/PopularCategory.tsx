@@ -46,12 +46,7 @@ const PopularCategory = () => {
   return (
     <section className={styles.container}>
       <div className={cn("wrapper", styles.wrapper)}>
-        <div
-          className={styles.top}
-          data-aos-anchor-placement="center-bottom"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
+        <div className={styles.top}>
           <h2 className={cn("title", styles.title)}>
             {t(`home.popularCategory`)}
           </h2>
@@ -68,12 +63,7 @@ const PopularCategory = () => {
           )}
         </div>
 
-        <div
-          className={styles.blocks}
-          data-aos-anchor-placement="center-bottom"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
+        <div className={styles.blocks}>
           {categoriesList.map(({ id, title, image, slug, subcategories }) => {
             return (
               id < isShowCategory && (

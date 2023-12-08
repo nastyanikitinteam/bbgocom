@@ -10,7 +10,7 @@ interface IProps {
   changeActiveAuth: () => void;
   handleForgotPasswordModal: () => void;
   setIsNoLogin?: () => void;
-  setIsOpenProfileMenu: () => void;
+  setIsOpenProfileMenu?: () => void;
 }
 
 const Login: FC<IProps> = ({

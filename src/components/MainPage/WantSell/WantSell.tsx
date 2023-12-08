@@ -11,13 +11,13 @@ const WantSell = () => {
       <div className="wrapper">
         <div
           className={styles.block}
-          data-aos-anchor-placement="center-bottom"
+          data-aos-anchor-placement="top-bottom"
           data-aos="fade-up"
           data-aos-delay="300"
         >
           <div
             className={styles.info}
-            data-aos-anchor-placement="center-bottom"
+            data-aos-anchor-placement="top-bottom"
             data-aos="fade-up"
             data-aos-delay="400"
           >
@@ -31,7 +31,7 @@ const WantSell = () => {
           </div>
           <div
             className={styles.image}
-            data-aos-anchor-placement="center-bottom"
+            data-aos-anchor-placement="top-bottom"
             data-aos="fade-up"
             data-aos-delay="400"
           >

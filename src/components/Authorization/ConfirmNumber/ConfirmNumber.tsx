@@ -9,7 +9,7 @@ import LogoSvg from "images/main/logo.svg";
 
 interface IProps {
   openNextStepSignUp: () => void;
-  setIsOpenProfileMenu: () => void;
+  setIsOpenProfileMenu?: () => void;
 }
 
 const Login: FC<IProps> = ({ openNextStepSignUp, setIsOpenProfileMenu }) => {

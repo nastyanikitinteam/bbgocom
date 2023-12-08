@@ -30,7 +30,7 @@ const Who = () => {
       <div className="wrapper">
         <h2
           className={cn("title", styles.title)}
-          data-aos-anchor-placement="center-bottom"
+          data-aos-anchor-placement="top-bottom"
           data-aos="fade-up"
           data-aos-delay="300"
         >
@@ -57,7 +57,7 @@ const Who = () => {
                 <div
                   key={id}
                   className={styles.block}
-                  data-aos-anchor-placement="center-bottom"
+                  data-aos-anchor-placement="top-bottom"
                   data-aos="fade"
                   data-aos-delay={200 + 200 * id}
                 >
@@ -74,7 +74,7 @@ const Who = () => {
 
         <div
           className={styles.info}
-          data-aos-anchor-placement="center-bottom"
+          data-aos-anchor-placement="top-bottom"
           data-aos="fade-up"
           data-aos-delay="300"
         >

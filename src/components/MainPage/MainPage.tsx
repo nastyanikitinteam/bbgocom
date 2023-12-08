@@ -22,7 +22,14 @@ const MainPage = () => {
     <>
       <Hero />
       {!isTablet && <SearchBar />}
-      <PopularCategory />
+
+      <div
+        data-aos-anchor-placement="top-bottom"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <PopularCategory />
+      </div>
       <div
         data-aos-anchor-placement="top-bottom"
         data-aos="fade-up"

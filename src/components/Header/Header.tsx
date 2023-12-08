@@ -78,7 +78,7 @@ const Header: FC<IProps> = ({ isSecondHeader, withoutSearchBar }) => {
         className={cn(styles.container, {
           [styles.active]: isHeaderActive || isSecondHeader,
         })}
-        data-aos-anchor-placement="center-bottom"
+        data-aos-anchor-placement="top-bottom"
       >
         <div className="wrapper">
           <div className={styles.content}>
